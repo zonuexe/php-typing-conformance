@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Conformance\TestGroup\TestGroupLoader;
 use Conformance\Checker\PhpStanChecker;
+use Conformance\Checker\PsalmChecker;
 use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Expectation\ExpectationEvaluator;
 use Conformance\Expectation\ExpectationParser;
@@ -13,6 +14,7 @@ use Conformance\Result\ResultRepository;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/Checker/Checker.php';
 require_once __DIR__ . '/Checker/PhpStanChecker.php';
+require_once __DIR__ . '/Checker/PsalmChecker.php';
 require_once __DIR__ . '/Discovery/TestCase.php';
 require_once __DIR__ . '/Discovery/TestCaseDiscovery.php';
 require_once __DIR__ . '/Expectation/ExpectedDiagnostic.php';
@@ -29,6 +31,7 @@ $testGroupsFile = $rootDir . '/src/test-groups.toml';
 $testsDir = $rootDir . '/tests';
 $resultsDir = $rootDir . '/results';
 $projectRoot = dirname($rootDir);
+$psalmConfigPath = $rootDir . '/psalm.xml';
 
 $loader = new TestGroupLoader();
 $testGroups = $loader->load($testGroupsFile);
@@ -40,6 +43,11 @@ $resultRepository = new ResultRepository($resultsDir);
 $phpStanChecker = new PhpStanChecker(
     projectRoot: $projectRoot,
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
+);
+$psalmChecker = new PsalmChecker(
+    projectRoot: $projectRoot,
+    binaryPath: $projectRoot . '/vendor-bin/psalm/vendor/bin/psalm',
+    configPath: $psalmConfigPath,
 );
 
 printf("Loaded %d test groups\n", count($testGroups));
@@ -79,30 +87,33 @@ foreach ($testCases as $testCase) {
         );
     }
 
-    $phpStanDiagnostics = $phpStanChecker->analyse($testCase);
-    printf("  phpstan: %d diagnostic line(s)\n", count($phpStanDiagnostics));
-    $evaluation = $expectationEvaluator->evaluate($expectedDiagnostics, $phpStanDiagnostics);
-    printf("  automated: %s\n", $evaluation->conformanceAutomated);
+    foreach ([$phpStanChecker, $psalmChecker] as $checker) {
+        $diagnostics = $checker->analyse($testCase);
+        printf("  %s: %d diagnostic line(s)\n", $checker->name(), count($diagnostics));
 
-    $outputLines = [];
-    foreach ($phpStanDiagnostics as $lineNumber => $messages) {
-        foreach ($messages as $message) {
-            $outputLines[] = sprintf('%s:%d: %s', $testCase->fileName, $lineNumber, $message);
+        $evaluation = $expectationEvaluator->evaluate($expectedDiagnostics, $diagnostics);
+        printf("  %s automated: %s\n", $checker->name(), $evaluation->conformanceAutomated);
+
+        $outputLines = [];
+        foreach ($diagnostics as $lineNumber => $messages) {
+            foreach ($messages as $message) {
+                $outputLines[] = sprintf('%s:%d: %s', $testCase->fileName, $lineNumber, $message);
+            }
         }
+
+        $record = new ResultRecord(
+            tool: $checker->name(),
+            testName: $testCase->name,
+            status: 'Unknown',
+            conformanceAutomated: $evaluation->conformanceAutomated,
+            output: implode("\n", $outputLines),
+            errorsDiff: $evaluation->errorsDiff,
+            notes: '',
+            ignoreErrors: [],
+            expectedDiagnosticCount: count($expectedDiagnostics),
+        );
+
+        $resultPath = $resultRepository->save($record);
+        printf("  wrote %s\n", $resultPath);
     }
-
-    $record = new ResultRecord(
-        tool: $phpStanChecker->name(),
-        testName: $testCase->name,
-        status: 'Unknown',
-        conformanceAutomated: $evaluation->conformanceAutomated,
-        output: implode("\n", $outputLines),
-        errorsDiff: $evaluation->errorsDiff,
-        notes: '',
-        ignoreErrors: [],
-        expectedDiagnosticCount: count($expectedDiagnostics),
-    );
-
-    $resultPath = $resultRepository->save($record);
-    printf("  wrote %s\n", $resultPath);
 }

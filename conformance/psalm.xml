@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="1"
+    findUnusedCode="false"
+    findUnusedBaselineEntry="false"
+    resolveFromConfigFile="true"
+>
+    <projectFiles>
+        <directory name="tests" />
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
+    </projectFiles>
+</psalm>

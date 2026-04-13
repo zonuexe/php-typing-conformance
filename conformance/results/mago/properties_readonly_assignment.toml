@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "properties_readonly_assignment.php:21: Cannot write to protected property `$value` on class `ReadonlyBox`. [invalid-property-write]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

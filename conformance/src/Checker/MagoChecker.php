@@ -1,0 +1,159 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Conformance\Checker;
+
+use Conformance\Discovery\TestCase;
+use RuntimeException;
+
+final class MagoChecker implements Checker
+{
+    public function __construct(
+        private readonly string $binaryPath,
+        private readonly string $workspacePath,
+    ) {
+    }
+
+    public function name(): string
+    {
+        return 'mago';
+    }
+
+    public function version(): string
+    {
+        $command = escapeshellarg($this->binaryPath) . ' --version';
+        exec($command . ' 2>&1', $output, $exitCode);
+
+        if ($exitCode !== 0) {
+            throw new RuntimeException('Failed to determine Mago version.');
+        }
+
+        return trim(implode("\n", $output));
+    }
+
+    /**
+     * @return array<int, list<string>>
+     */
+    public function analyse(TestCase $testCase): array
+    {
+        $relativePath = $this->toWorkspaceRelativePath($testCase->path);
+        $command = sprintf(
+            '%s --workspace %s --colors never analyze --reporting-format json %s 2>&1',
+            escapeshellarg($this->binaryPath),
+            escapeshellarg($this->workspacePath),
+            escapeshellarg($relativePath),
+        );
+
+        exec($command, $output, $exitCode);
+
+        if ($exitCode !== 0 && $exitCode !== 1) {
+            throw new RuntimeException(sprintf('Mago invocation failed for %s', $testCase->fileName));
+        }
+
+        return $this->parseOutput($testCase, implode("\n", $output));
+    }
+
+    /**
+     * @return array<int, list<string>>
+     */
+    private function parseOutput(TestCase $testCase, string $output): array
+    {
+        $json = $this->extractJsonPayload($output);
+
+        /** @var array<string, mixed>|null $data */
+        $data = json_decode($json, true);
+        if (!is_array($data)) {
+            throw new RuntimeException(sprintf('Failed to parse Mago output for %s', $testCase->fileName));
+        }
+
+        $issues = $data['issues'] ?? [];
+        if (!is_array($issues)) {
+            return [];
+        }
+
+        $diagnostics = [];
+
+        foreach ($issues as $issue) {
+            if (!is_array($issue)) {
+                continue;
+            }
+
+            $annotations = $issue['annotations'] ?? [];
+            if (!is_array($annotations) || $annotations === []) {
+                continue;
+            }
+
+            $primary = $this->findPrimaryAnnotation($annotations);
+            if ($primary === null) {
+                continue;
+            }
+
+            $path = (string) ($primary['span']['file_id']['path'] ?? '');
+            if ($path !== $testCase->path) {
+                continue;
+            }
+
+            $lineNumber = (int) (($primary['span']['start']['line'] ?? -1) + 1);
+            $message = trim((string) ($issue['message'] ?? ''));
+            $code = trim((string) ($issue['code'] ?? ''));
+
+            if ($lineNumber <= 0 || $message === '') {
+                continue;
+            }
+
+            $formatted = $code !== '' ? sprintf('%s [%s]', $message, $code) : $message;
+            $diagnostics[$lineNumber] ??= [];
+            $diagnostics[$lineNumber][] = $formatted;
+        }
+
+        ksort($diagnostics);
+
+        return $diagnostics;
+    }
+
+    private function extractJsonPayload(string $output): string
+    {
+        $start = strpos($output, '{');
+        if ($start === false) {
+            if (str_contains($output, 'No issues found.')) {
+                return '{"issues":[]}';
+            }
+
+            throw new RuntimeException('Mago output did not contain JSON payload.');
+        }
+
+        return substr($output, $start);
+    }
+
+    /**
+     * @param list<mixed> $annotations
+     * @return array<string, mixed>|null
+     */
+    private function findPrimaryAnnotation(array $annotations): ?array
+    {
+        foreach ($annotations as $annotation) {
+            if (is_array($annotation) && (($annotation['kind'] ?? null) === 'Primary')) {
+                return $annotation;
+            }
+        }
+
+        foreach ($annotations as $annotation) {
+            if (is_array($annotation)) {
+                return $annotation;
+            }
+        }
+
+        return null;
+    }
+
+    private function toWorkspaceRelativePath(string $path): string
+    {
+        $prefix = rtrim($this->workspacePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        if (!str_starts_with($path, $prefix)) {
+            throw new RuntimeException(sprintf('Path %s is outside workspace %s', $path, $this->workspacePath));
+        }
+
+        return substr($path, strlen($prefix));
+    }
+}

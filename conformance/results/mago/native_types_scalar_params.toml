@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+native_types_scalar_params.php:23: Invalid argument type for argument #1 of `takesInt`: expected `int`, but found `string('x')`. [invalid-argument]
+native_types_scalar_params.php:24: Invalid argument type for argument #1 of `takesString`: expected `string`, but found `int(1)`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

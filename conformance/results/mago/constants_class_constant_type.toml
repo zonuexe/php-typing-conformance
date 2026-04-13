@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "constants_class_constant_type.php:22: Invalid argument type for argument #1 of `takesString`: expected `string`, but found `int(200)`. [invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

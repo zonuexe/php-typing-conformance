@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Conformance\TestGroup\TestGroupLoader;
 use Conformance\Checker\PhpStanChecker;
 use Conformance\Checker\PsalmChecker;
+use Conformance\Checker\MagoChecker;
 use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Expectation\ExpectationEvaluator;
 use Conformance\Expectation\ExpectationParser;
@@ -14,6 +15,7 @@ use Conformance\Reporting\SummaryReport;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/Checker/Checker.php';
+require_once __DIR__ . '/Checker/MagoChecker.php';
 require_once __DIR__ . '/Checker/PhpStanChecker.php';
 require_once __DIR__ . '/Checker/PsalmChecker.php';
 require_once __DIR__ . '/Discovery/TestCase.php';
@@ -47,12 +49,16 @@ $phpStanChecker = new PhpStanChecker(
     projectRoot: $projectRoot,
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
 );
+$magoChecker = new MagoChecker(
+    binaryPath: $projectRoot . '/vendor-bin/mago/vendor/bin/mago',
+    workspacePath: $rootDir,
+);
 $psalmChecker = new PsalmChecker(
     projectRoot: $projectRoot,
     binaryPath: $projectRoot . '/vendor-bin/psalm/vendor/bin/psalm',
     configPath: $psalmConfigPath,
 );
-$checkers = [$phpStanChecker, $psalmChecker];
+$checkers = [$phpStanChecker, $psalmChecker, $magoChecker];
 
 printf("Loaded %d test groups\n", count($testGroups));
 

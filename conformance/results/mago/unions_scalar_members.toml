@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+unions_scalar_members.php:25: Invalid argument type for argument #1 of `takesIntOrString`: expected `int|string`, but found `float(1.5)`. [invalid-argument]
+unions_scalar_members.php:26: Invalid argument type for argument #1 of `takesNullableInt`: expected `int|null`, but found `string('x')`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

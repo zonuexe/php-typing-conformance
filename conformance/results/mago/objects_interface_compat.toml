@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "objects_interface_compat.php:39: Possible argument type mismatch for argument #1 of `takesHasName`: expected `HasName`, but possibly received `AnonymousUser`. [possibly-invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

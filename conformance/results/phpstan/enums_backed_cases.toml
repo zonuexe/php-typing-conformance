@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "enums_backed_cases.php:23: Parameter #1 $status of function takesStatus expects Status, string given. [identifier=argument.type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -3,12 +3,15 @@
 declare(strict_types=1);
 
 use Conformance\TestGroup\TestGroupLoader;
+use Conformance\Checker\PhpStanChecker;
 use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Expectation\ExpectationParser;
 use Conformance\Result\ResultRecord;
 use Conformance\Result\ResultRepository;
 
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/Checker/Checker.php';
+require_once __DIR__ . '/Checker/PhpStanChecker.php';
 require_once __DIR__ . '/Discovery/TestCase.php';
 require_once __DIR__ . '/Discovery/TestCaseDiscovery.php';
 require_once __DIR__ . '/Expectation/ExpectedDiagnostic.php';
@@ -22,6 +25,7 @@ $rootDir = dirname(__DIR__);
 $testGroupsFile = $rootDir . '/src/test-groups.toml';
 $testsDir = $rootDir . '/tests';
 $resultsDir = $rootDir . '/results';
+$projectRoot = dirname($rootDir);
 
 $loader = new TestGroupLoader();
 $testGroups = $loader->load($testGroupsFile);
@@ -29,6 +33,10 @@ $discovery = new TestCaseDiscovery();
 $testCases = $discovery->discover($testsDir, $testGroups);
 $expectationParser = new ExpectationParser();
 $resultRepository = new ResultRepository($resultsDir);
+$phpStanChecker = new PhpStanChecker(
+    projectRoot: $projectRoot,
+    binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
+);
 
 printf("Loaded %d test groups\n", count($testGroups));
 
@@ -67,12 +75,22 @@ foreach ($testCases as $testCase) {
         );
     }
 
+    $phpStanDiagnostics = $phpStanChecker->analyse($testCase);
+    printf("  phpstan: %d diagnostic line(s)\n", count($phpStanDiagnostics));
+
+    $outputLines = [];
+    foreach ($phpStanDiagnostics as $lineNumber => $messages) {
+        foreach ($messages as $message) {
+            $outputLines[] = sprintf('%s:%d: %s', $testCase->fileName, $lineNumber, $message);
+        }
+    }
+
     $record = new ResultRecord(
-        tool: 'scaffold',
+        tool: $phpStanChecker->name(),
         testName: $testCase->name,
         status: 'Unknown',
         conformanceAutomated: 'Unknown',
-        output: '',
+        output: implode("\n", $outputLines),
         errorsDiff: '',
         notes: '',
         ignoreErrors: [],

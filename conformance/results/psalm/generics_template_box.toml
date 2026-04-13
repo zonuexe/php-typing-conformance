@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "generics_template_box.php:36: Argument 1 of takesIntBox expects Box<int>, but Box<'x'> provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

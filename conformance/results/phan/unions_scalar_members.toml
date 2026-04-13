@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+unions_scalar_members.php:27: Argument 1 ($value) is 1.5 of type float (value: 1.5) but \\Conformance\\Tests\\UnionsScalarMembers\\takesIntOrString() takes int|string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/unions_scalar_members.php:14 [PhanTypeMismatchArgumentReal]
+unions_scalar_members.php:28: Argument 1 ($value) is 'x' of type string but \\Conformance\\Tests\\UnionsScalarMembers\\takesNullableInt() takes ?int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/unions_scalar_members.php:18 [PhanTypeMismatchArgumentReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

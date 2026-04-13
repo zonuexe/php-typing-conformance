@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conformance\Tests\ConstantsClassConstantType;
+
 /**
  * Basic class constant value compatibility checks.
  *

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conformance\Tests\ExceptionsThrowsDocblock;
+
 /**
  * Basic @throws compatibility checks.
  *
@@ -9,7 +11,7 @@ declare(strict_types=1);
  * - phpDocumentor @throws
  */
 
-final class CustomException extends RuntimeException
+final class CustomException extends \RuntimeException
 {
 }
 
@@ -22,7 +24,7 @@ function alwaysThrows(): never
 }
 
 /**
- * @throws RuntimeException
+ * @throws \RuntimeException
  */
 function documentedAsRuntime(): void
 {

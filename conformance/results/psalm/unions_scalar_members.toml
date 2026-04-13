@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-unions_scalar_members.php:25: Argument 1 of takesIntOrString expects int|string, but float(1.5) provided [InvalidArgument]
-unions_scalar_members.php:26: Argument 1 of takesNullableInt expects int|null, but 'x' provided [InvalidArgument]"""
+unions_scalar_members.php:27: Argument 1 of Conformance\\Tests\\UnionsScalarMembers\\takesIntOrString expects int|string, but float(1.5) provided [InvalidScalarArgument]
+unions_scalar_members.php:28: Argument 1 of Conformance\\Tests\\UnionsScalarMembers\\takesNullableInt expects int|null, but 'x' provided [InvalidScalarArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

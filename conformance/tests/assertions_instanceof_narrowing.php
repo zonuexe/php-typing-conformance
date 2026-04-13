@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conformance\Tests\AssertionsInstanceofNarrowing;
+
 /**
  * Basic instanceof-based narrowing checks.
  *

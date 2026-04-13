@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conformance\Tests\ObjectsInterfaceCompat;
+
 /**
  * Basic interface compatibility checks.
  *

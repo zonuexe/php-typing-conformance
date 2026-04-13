@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conformance\Tests\PhpdocBasicsParamTypes;
+
 /**
  * Basic PHPDoc-only parameter type checks.
  *

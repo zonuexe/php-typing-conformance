@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "enums_backed_cases.php:23: Invalid argument type for argument #1 of `takesStatus`: expected `enum(Status)`, but found `string('active')`. [invalid-argument]"
+output = "enums_backed_cases.php:25: Invalid argument type for argument #1 of `Conformance\\Tests\\EnumsBackedCases\\takesStatus`: expected `enum(Conformance\\Tests\\EnumsBackedCases\\Status)`, but found `string('active')`. [invalid-argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

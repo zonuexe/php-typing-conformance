@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+native_types_scalar_params.php:25: Argument 1 ($value) is 'x' of type string but \\Conformance\\Tests\\NativeTypesScalarParams\\takesInt() takes int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_scalar_params.php:14 [PhanTypeMismatchArgumentReal]
+native_types_scalar_params.php:26: Argument 1 ($value) is 1 of type int (value: 1) but \\Conformance\\Tests\\NativeTypesScalarParams\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_scalar_params.php:18 [PhanTypeMismatchArgumentReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conformance\Tests\PropertiesReadonlyAssignment;
+
 /**
  * Basic readonly property write checks.
  *

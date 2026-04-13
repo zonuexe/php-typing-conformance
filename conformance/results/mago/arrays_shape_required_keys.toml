@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "arrays_shape_required_keys.php:22: Possible argument type mismatch for argument #1 of `takesConfig`: expected `array{'host': string, 'port': int}`, but possibly received `array{'host': string('localhost')}`. [possibly-invalid-argument]"
+output = "arrays_shape_required_keys.php:24: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysShapeRequiredKeys\\takesConfig`: expected `array{'host': string, 'port': int}`, but possibly received `array{'host': string('localhost')}`. [possibly-invalid-argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "enums_backed_cases.php:25: Argument 1 ($status) is 'active' of type string but \\Conformance\\Tests\\EnumsBackedCases\\takesStatus() takes \\Conformance\\Tests\\EnumsBackedCases\\Status defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/enums_backed_cases.php:20 [PhanTypeMismatchArgumentReal]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

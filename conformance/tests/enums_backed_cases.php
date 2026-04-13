@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conformance\Tests\EnumsBackedCases;
+
 /**
  * Basic backed enum compatibility checks.
  *

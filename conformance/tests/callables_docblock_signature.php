@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conformance\Tests\CallablesDocblockSignature;
+
 /**
  * Basic callable signature compatibility checks expressed in PHPDoc.
  *

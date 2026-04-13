@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "assertions_instanceof_narrowing.php:44: Method `name` does not exist on type `Guest`. [non-existent-method]"
+output = "assertions_instanceof_narrowing.php:46: Method `name` does not exist on type `Conformance\\Tests\\AssertionsInstanceofNarrowing\\Guest`. [non-existent-method]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

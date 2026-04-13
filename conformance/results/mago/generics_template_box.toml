@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "generics_template_box.php:36: Invalid argument type for argument #1 of `takesIntBox`: expected `Box<int>`, but found `Box<string('x')>`. [invalid-argument]"
+output = "generics_template_box.php:38: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsTemplateBox\\takesIntBox`: expected `Conformance\\Tests\\GenericsTemplateBox\\Box<int>`, but found `Conformance\\Tests\\GenericsTemplateBox\\Box<string('x')>`. [invalid-argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

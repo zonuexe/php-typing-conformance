@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "callables_docblock_signature.php:27: Argument 1 ($callback) is (fn) of type Closure(string):string but \\Conformance\\Tests\\CallablesDocblockSignature\\takesIntToStringCallable() takes callable(int):string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/callables_docblock_signature.php:18 (expected type to be the same or a subtype, but saw a supertype instead) [PhanTypeMismatchArgumentSuperType]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

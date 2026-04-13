@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Conformance\Tests\NativeTypesScalarParams;
+
 /**
  * Basic scalar parameter compatibility checks.
  *

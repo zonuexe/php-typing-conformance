@@ -2,6 +2,8 @@
 
 An automated conformance test suite that compares how different PHP static analysis tools interpret native types and PHPDoc annotations. Results are continuously built against the latest tool versions.
 
+This project is inspired by the Python typing project's repository: [python/typing](https://github.com/python/typing). How the conformance material here relates to that upstream suite is summarized in [`conformance/README.md`](conformance/README.md).
+
 ## Repository Setup
 
 This repository includes several heavy reference submodules under `references/`. Do not fully checkout all submodules by default.

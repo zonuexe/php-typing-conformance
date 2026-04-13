@@ -1,9 +1,9 @@
-status = 'Unknown'
-conformance_automated = 'Pass'
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = '''
+output = """
 native_types_scalar_params.php:23: Argument 1 of takesInt expects int, but 'x' provided [InvalidArgument]
-native_types_scalar_params.php:24: Argument 1 of takesString expects string, but 1 provided [InvalidArgument]'''
-errors_diff = ''
-notes = ''
+native_types_scalar_params.php:24: Argument 1 of takesString expects string, but 1 provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
 ignore_errors = []

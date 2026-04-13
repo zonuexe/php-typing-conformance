@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "callables_docblock_signature.php:25: Parameter #1 $callback of function takesIntToStringCallable expects callable(int): string, Closure(string): string given. [identifier=argument.type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

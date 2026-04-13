@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_basics_param_types.php:21: Argument 1 of takesDocblockInt expects int, but 'x' provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

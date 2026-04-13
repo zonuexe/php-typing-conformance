@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Result;
 
 use Internal\Toml\Toml;
+use Throwable;
 use RuntimeException;
 
 final class ResultRepository
@@ -39,7 +40,7 @@ final class ResultRepository
             );
         }
 
-        $toml = (string) Toml::encode($payload);
+        $toml = $this->encodeResultPayload($payload);
 
         if (file_put_contents($path, $toml) === false) {
             throw new RuntimeException(sprintf('Failed to write result file: %s', $path));
@@ -79,6 +80,64 @@ final class ResultRepository
             throw new RuntimeException(sprintf('Failed to read result file: %s', $path));
         }
 
-        return Toml::parseToArray($contents);
+        try {
+            return Toml::parseToArray($contents);
+        } catch (Throwable) {
+            return [];
+        }
+    }
+
+    /**
+     * @param array<string, mixed> $payload
+     */
+    private function encodeResultPayload(array $payload): string
+    {
+        $lines = [];
+
+        foreach ($payload as $key => $value) {
+            $lines[] = $this->encodeKeyValue($key, $value);
+        }
+
+        return implode("\n", $lines) . "\n";
+    }
+
+    private function encodeKeyValue(string $key, mixed $value): string
+    {
+        return sprintf('%s = %s', $key, $this->encodeValue($value));
+    }
+
+    private function encodeValue(mixed $value): string
+    {
+        if (is_string($value)) {
+            return $this->encodeString($value);
+        }
+
+        if (is_int($value)) {
+            return (string) $value;
+        }
+
+        if (is_array($value)) {
+            $items = array_map(fn (mixed $item): string => $this->encodeValue($item), $value);
+            return '[' . implode(', ', $items) . ']';
+        }
+
+        throw new RuntimeException(sprintf('Unsupported value type: %s', get_debug_type($value)));
+    }
+
+    private function encodeString(string $value): string
+    {
+        if (str_contains($value, "\n")) {
+            $escaped = str_replace(
+                ["\\", '"""'],
+                ["\\\\", '\"\"\"'],
+                $value,
+            );
+
+            return "\"\"\"\n" . $escaped . "\"\"\"";
+        }
+
+        $escaped = addcslashes($value, "\\\"\n\r\t");
+
+        return '"' . $escaped . '"';
     }
 }

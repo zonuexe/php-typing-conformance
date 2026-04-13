@@ -1,5 +1,5 @@
 status = 'Unknown'
-conformance_automated = 'Unknown'
+conformance_automated = 'Pass'
 expected_diagnostic_count = 2
 output = '''
 native_types_scalar_params.php:23: Parameter #1 $value of function takesInt expects int, string given. [identifier=argument.type]

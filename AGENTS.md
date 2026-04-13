@@ -24,6 +24,7 @@ There is not yet a `conformance/` implementation subtree.
 │   └── design-doc.md
 ├── references/
 │   ├── fig-standards/
+│   ├── mago/
 │   ├── noverify/
 │   ├── phan.wiki/
 │   ├── phpDocumentor/
@@ -91,6 +92,7 @@ Operationally:
 Current external reference checkouts:
 
 - `references/fig-standards/`: `php-fig/fig-standards` Git submodule
+- `references/mago/`: Mago source and docs
 - `references/phpDocumentor/`: phpDocumentor source and docs
 - `references/phpstan/`: PHPStan source and website docs
 - `references/psalm/`: Psalm source and docs
@@ -112,6 +114,7 @@ That target uses sparse checkout and only pulls the documentation-relevant parts
 Practical usage:
 
 - use `fig-standards` for PSR and FIG-level reference material,
+- use `mago` for Mago rule and analyzer behavior documentation,
 - use `phpDocumentor` for PHPDoc semantics and documentation conventions,
 - use analyzer-specific directories when documenting tool-specific behavior, support gaps, or extensions.
 

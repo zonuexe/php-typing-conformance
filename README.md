@@ -14,6 +14,8 @@ make init-submodules
 
 This fetches only the documentation-relevant parts of each submodule, which keeps local setup smaller and faster.
 
+Current references include `python-typing`, `fig-standards`, `mago`, `phpstan`, `psalm`, `phpDocumentor`, `phan.wiki`, and `noverify`.
+
 ## Copyright
 
 ```

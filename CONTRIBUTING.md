@@ -24,6 +24,7 @@ The `init-submodules` target:
 Current reference repositories covered by this target:
 
 - `references/fig-standards/`
+- `references/mago/`
 - `references/phpstan/`
 - `references/psalm/`
 - `references/phpDocumentor/`

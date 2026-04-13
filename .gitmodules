@@ -21,3 +21,6 @@
 [submodule "references/python-typing"]
 	path = references/python-typing
 	url = git@github.com:python/typing.git
+[submodule "references/mago"]
+	path = references/mago
+	url = https://github.com/carthage-software/mago.git

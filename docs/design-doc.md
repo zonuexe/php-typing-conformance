@@ -264,6 +264,176 @@ This report should be generated from stored result files so that:
 - result changes are reviewable in git,
 - CI can rebuild reports without rerunning all analyzers.
 
+## Proposed PHP Compatibility Test Plan
+
+The most useful idea to copy from `references/python-typing/` is not any specific Python feature. It is the way the suite is decomposed into topic-prefixed test files backed by explicit group metadata.
+
+The PHP version should adopt the same pattern:
+
+- one stable prefix per test group,
+- one focused topic per test file,
+- one or more inline `// E` expectations per fixture,
+- one reference source attached to each group or test.
+
+### Proposed test groups
+
+The following group set is a reasonable PHP translation of the `python-typing` structure:
+
+- `native_types`: scalar types, `mixed`, `void`, `never`, `null`, nullable types.
+- `unions`: union types and redundancy / compatibility checks.
+- `intersections`: intersection types and object-only constraints.
+- `callables`: callable signatures, closures, first-class callables, callback PHPDoc forms.
+- `generics`: template types in PHPDoc, template bounds, template inheritance, generic collections.
+- `arrays`: array shapes, list semantics, key/value compatibility, non-empty arrays.
+- `objects`: object type compatibility, inheritance, interface implementation, `static`, late static return.
+- `properties`: typed properties, readonly behavior, promoted properties, initialization rules.
+- `constants`: class constants, enum cases, constant value typing.
+- `enums`: backed enums, pure enums, enum case usage, enum method typing.
+- `exceptions`: throwable contracts, `@throws`, exception flow assumptions where tools model them.
+- `phpdoc_basics`: `@param`, `@return`, `@var`, `@throws`, inline `@var`, docblock/native consistency.
+- `phpdoc_advanced`: conditional types, utility types, integer ranges, literal strings, key-of / value-of.
+- `assertions`: `assert`, tool-specific assertion tags, narrowing via guard methods or helper functions.
+- `directives`: suppressions, ignore comments, baseline interactions, analyzer directives that affect diagnostics.
+- `stubs`: behavior when external stubs or vendor signatures override source information.
+- `psr`: compatibility expectations derived from FIG or PSR documents.
+- `historical`: deprecated doc syntaxes, legacy annotations, compatibility behavior kept for ecosystem reasons.
+
+This group list is intentionally broader than PHP's native language grammar. PHP static analysis behavior is split across the language itself, PHPDoc conventions, and analyzer-defined type systems.
+
+### Mapping from the Python reference
+
+Several Python groups map directly to PHP-style concerns:
+
+- `generics` -> PHPDoc templates and generic inheritance.
+- `callables` -> callable signatures and closure typing.
+- `aliases` -> PHPDoc type aliases and imported aliases.
+- `literals` -> literal scalars, literal-string-like features, constant-value types.
+- `enums` -> native PHP enums plus tool inference around cases and backed values.
+- `directives` -> ignores, suppressions, baselines, and analyzer hints.
+- `historical` -> legacy annotations that tools still parse for compatibility.
+
+Other Python groups do not map directly and should be translated rather than copied:
+
+- `typeddicts` becomes array-shape and keyed-array tests.
+- `protocols` becomes a mix of interfaces, structural assumptions, and analyzer-specific object-shape behavior.
+- `dataclasses` is mostly irrelevant for PHP and should instead become property-promotion, readonly, and constructor-contract tests.
+- `narrowing` becomes assertion-driven narrowing, `instanceof`, null checks, enum checks, and guard helpers.
+
+### Test file design rules
+
+Each test file should follow rules close to the Python suite:
+
+- filename starts with the group prefix, such as `generics_template_bounds.php`,
+- the file contains one coherent subtopic,
+- comments explain why an error is expected,
+- comments cite the relevant reference when possible,
+- helper files that support a test should use a leading underscore and not be treated as standalone cases.
+
+Recommended expectation syntax for PHP fixtures:
+
+```php
+<?php
+
+/** @param string $value */
+function takesString(string $value): void {}
+
+takesString(1); // E: int is not accepted by string parameter
+```
+
+Grouped or optional expectations should mirror the Python design:
+
+- `// E`
+- `// E?`
+- `// E[tag]`
+- `// E[tag+]`
+
+### Priority test matrix for the first milestone
+
+The initial PHP suite should not try to cover every advanced feature. It should start with high-signal compatibility points that most analyzers claim to support.
+
+Recommended first-wave tests:
+
+1. `native_types_*`
+   - scalar parameter and return compatibility
+   - nullable arguments and returns
+   - `mixed`, `void`, and `never`
+2. `unions_*`
+   - union acceptance and rejection
+   - duplicate or redundant members
+   - nullable shorthand vs explicit union
+3. `objects_*`
+   - inheritance and interface substitutability
+   - `static` return types
+   - parent/child parameter variance where tools disagree
+4. `phpdoc_basics_*`
+   - native type vs docblock mismatch
+   - parameter / return doc parsing
+   - inline `@var`
+5. `arrays_*`
+   - homogeneous arrays
+   - list-style arrays
+   - array shapes in PHPDoc
+6. `generics_*`
+   - basic templates
+   - template constraints
+   - generic collections through inheritance
+7. `directives_*`
+   - ignore comments
+   - baseline or suppression behavior where relevant
+
+This first wave is enough to expose meaningful differences between PHPStan, Psalm, Phan, NoVerify, and Mago without immediately getting trapped in niche extensions.
+
+### Second-wave tests
+
+After the first milestone, add tests that are known to produce tool divergence:
+
+- conditional and dependent PHPDoc types,
+- integer ranges and refined scalar subtypes,
+- literal-string and taint-adjacent string categories,
+- key-of / value-of and constant-derived types,
+- object shapes or structural object typing,
+- stub precedence and vendor override behavior,
+- enum exhaustiveness assumptions,
+- analyzer assertion annotations.
+
+These are especially valuable because they show where tools are extending PHP beyond the core language.
+
+### Metadata needed for each group
+
+Like `references/python-typing/conformance/src/test_groups.toml`, the PHP suite should define group metadata in one file. Each group entry should include:
+
+- `name`
+- `source_category`
+- `references`
+- `description`
+
+For example:
+
+```toml
+[generics]
+name = "PHPDoc generics"
+source_category = "phpdoc"
+references = [
+  "references/phpDocumentor/docs/references/phpdoc",
+  "references/phpstan/website/src",
+  "references/psalm/docs/annotating_code/type_syntax",
+]
+```
+
+This is more explicit than the Python version because PHP requires multiple source authorities.
+
+### Result interpretation policy
+
+The Python suite assumes one official spec and asks whether a checker conforms to it. The PHP suite should be slightly more precise.
+
+Each test result should be interpreted against one of these policies:
+
+- `normative`: expected by the language or an accepted standard,
+- `conventional`: expected by widely used PHPDoc or ecosystem practice,
+- `extension`: documented tool extension being compared, not required for all tools.
+
+This prevents the report from unfairly treating every unsupported analyzer extension as a conformance failure.
+
 ## Differences from the Python Reference
 
 The Python repository provides the structural template, but PHP needs a stricter separation of source categories because there is no single canonical typing specification.

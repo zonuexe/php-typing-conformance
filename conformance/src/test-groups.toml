@@ -1,0 +1,157 @@
+[native_types]
+name = "Native types"
+source_category = "language"
+description = "Scalar, nullable, mixed, void, never, and null typing behavior."
+references = []
+
+[unions]
+name = "Union types"
+source_category = "language"
+description = "Union acceptance, rejection, redundancy, and nullable shorthand behavior."
+references = []
+
+[intersections]
+name = "Intersection types"
+source_category = "language"
+description = "Intersection compatibility and object-only constraints."
+references = []
+
+[callables]
+name = "Callables"
+source_category = "language"
+description = "Callable signatures, closures, first-class callables, and callback-like PHPDoc forms."
+references = [
+  "references/phpstan/website/src/writing-php-code",
+  "references/psalm/docs/annotating_code/type_syntax",
+  "references/phan.wiki/Annotating-Your-Source-Code.md",
+]
+
+[generics]
+name = "PHPDoc generics"
+source_category = "phpdoc"
+description = "Template types, bounds, inheritance, and generic collection behavior."
+references = [
+  "references/phpDocumentor/docs/references/phpdoc",
+  "references/phpstan/website/src/writing-php-code",
+  "references/psalm/docs/annotating_code/type_syntax",
+  "references/phan.wiki/Generic-Types.md",
+]
+
+[arrays]
+name = "Arrays and shapes"
+source_category = "phpdoc"
+description = "Array shapes, list semantics, keyed arrays, and non-empty array behavior."
+references = [
+  "references/phpDocumentor/docs/references/phpdoc",
+  "references/phpstan/website/src/writing-php-code",
+  "references/psalm/docs/annotating_code/type_syntax",
+  "references/phan.wiki/About-Union-Types.md",
+]
+
+[objects]
+name = "Object compatibility"
+source_category = "language"
+description = "Inheritance, interfaces, static return types, and substitutability."
+references = []
+
+[properties]
+name = "Properties"
+source_category = "language"
+description = "Typed properties, readonly behavior, promotion, and initialization constraints."
+references = []
+
+[constants]
+name = "Constants"
+source_category = "language"
+description = "Class constants, constant values, and related type inference."
+references = []
+
+[enums]
+name = "Enums"
+source_category = "language"
+description = "Backed enums, pure enums, case usage, and enum value typing."
+references = [
+  "references/phpstan/website/src/writing-php-code",
+  "references/psalm/docs/annotating_code/type_syntax",
+]
+
+[exceptions]
+name = "Exceptions"
+source_category = "conventional"
+description = "Throwable contracts, @throws annotations, and exception-flow assumptions."
+references = [
+  "references/phpDocumentor/docs/references/phpdoc",
+  "references/phpstan/website/src",
+  "references/psalm/docs",
+  "references/phan.wiki",
+]
+
+[phpdoc_basics]
+name = "PHPDoc basics"
+source_category = "phpdoc"
+description = "Core @param, @return, @var, and native/docblock consistency."
+references = [
+  "references/phpDocumentor/docs/references/phpdoc",
+  "references/fig-standards/proposed/phpdoc.md",
+  "references/fig-standards/proposed/phpdoc-tags.md",
+]
+
+[phpdoc_advanced]
+name = "Advanced PHPDoc types"
+source_category = "ecosystem"
+description = "Conditional types, utility types, ranges, literal strings, key-of, and value-of."
+references = [
+  "references/phpstan/website/src",
+  "references/psalm/docs/annotating_code/type_syntax",
+  "references/phan.wiki/Advanced-Type-System-V6.md",
+]
+
+[assertions]
+name = "Assertions and narrowing"
+source_category = "ecosystem"
+description = "assert()-driven narrowing, instanceof, null checks, and analyzer assertion annotations."
+references = [
+  "references/phpstan/website/src",
+  "references/psalm/docs",
+  "references/phan.wiki",
+]
+
+[directives]
+name = "Analyzer directives"
+source_category = "extension"
+description = "Ignore comments, suppressions, baselines, and analysis-affecting directives."
+references = [
+  "references/phpstan/website/src/user-guide",
+  "references/psalm/docs/running_psalm",
+  "references/noverify/docs",
+  "references/phan.wiki/Issue-Types-Reference.md",
+]
+
+[stubs]
+name = "Stubs and external signatures"
+source_category = "ecosystem"
+description = "Stub precedence, external signature sources, and vendor override behavior."
+references = [
+  "references/phpDocumentor/docs/references/phpdoc",
+  "references/phpstan/website/src/developing-extensions",
+  "references/psalm/docs",
+  "references/phan.wiki/How-To-Use-Stubs.md",
+]
+
+[psr]
+name = "FIG and PSR compatibility"
+source_category = "fig"
+description = "Typing expectations derived from FIG or PSR documents."
+references = [
+  "references/fig-standards/accepted",
+  "references/fig-standards/proposed",
+]
+
+[historical]
+name = "Historical and legacy behavior"
+source_category = "historical"
+description = "Deprecated annotations, legacy syntax, and compatibility behavior preserved for ecosystem reasons."
+references = [
+  "references/phpDocumentor/docs/references/phpdoc",
+  "references/phan.wiki/Annotating-Your-Source-Code.md",
+]

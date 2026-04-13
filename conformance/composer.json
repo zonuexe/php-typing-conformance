@@ -1,0 +1,8 @@
+{
+    "name": "zonuexe/php-typing-conformance-runner",
+    "description": "Conformance runner for PHP static analyzer compatibility tests.",
+    "type": "project",
+    "require": {
+        "internal/toml": "^1.1"
+    }
+}

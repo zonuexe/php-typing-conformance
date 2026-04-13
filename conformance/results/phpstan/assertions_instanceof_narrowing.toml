@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "assertions_instanceof_narrowing.php:44: Call to an undefined method Guest::name(). [identifier=method.notFound]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

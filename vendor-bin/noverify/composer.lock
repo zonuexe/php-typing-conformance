@@ -1,0 +1,72 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "c1c560938920b384cf8262466352cdab",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "vkcom/noverify",
+            "version": "v0.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/VKCOM/noverify.git",
+                "reference": "16071478583388f3d8d3e2d5f51dac31f3b12791"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/VKCOM/noverify/zipball/16071478583388f3d8d3e2d5f51dac31f3b12791",
+                "reference": "16071478583388f3d8d3e2d5f51dac31f3b12791",
+                "shasum": ""
+            },
+            "require": {
+                "ext-zip": "*",
+                "php": ">=7.1"
+            },
+            "bin": [
+                "src/cmd/composer-get/bin/noverify-get"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NoVerify\\": "src/cmd/composer-get/src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yuriy Nasretdinov",
+                    "email": "nasretdinov@gmail.com"
+                },
+                {
+                    "name": "Iskander Sharipov",
+                    "email": "quasilyte@gmail.com"
+                },
+                {
+                    "name": "Petr Makhnev",
+                    "email": "mr.makhneff@gmail.com"
+                }
+            ],
+            "description": "Pretty fast linter (code static analysis utility) for PHP",
+            "homepage": "https://github.com/VKCOM/noverify",
+            "support": {
+                "issues": "https://github.com/VKCOM/noverify/issues",
+                "source": "https://github.com/VKCOM/noverify/tree/v0.5.5"
+            },
+            "time": "2025-04-22T11:44:53+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
+}

@@ -1,0 +1,20 @@
+[submodule "references/fig-standards"]
+	path = references/fig-standards
+	url = https://github.com/php-fig/fig-standards.git
+[submodule "references/phpstan"]
+	path = references/phpstan
+	url = https://github.com/phpstan/phpstan.git
+	branch = 2.1.x
+[submodule "references/psalm"]
+	path = references/psalm
+	url = https://github.com/vimeo/psalm.git
+	branch = 6.x
+[submodule "references/phpDocumentor"]
+	path = references/phpDocumentor
+	url = https://github.com/phpDocumentor/phpDocumentor.git
+[submodule "references/noverify"]
+	path = references/noverify
+	url = https://github.com/VKCOM/noverify.git
+[submodule "references/phan.wiki"]
+	path = references/phan.wiki
+	url = https://github.com/phan/phan.wiki.git

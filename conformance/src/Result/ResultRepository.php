@@ -48,6 +48,23 @@ final class ResultRepository
         return $path;
     }
 
+    public function saveVersion(string $tool, string $version): string
+    {
+        $toolDir = $this->resultsRoot . DIRECTORY_SEPARATOR . $tool;
+        if (!is_dir($toolDir) && !mkdir($toolDir, 0777, true) && !is_dir($toolDir)) {
+            throw new RuntimeException(sprintf('Failed to create results directory: %s', $toolDir));
+        }
+
+        $path = $toolDir . DIRECTORY_SEPARATOR . 'version.toml';
+        $toml = (string) Toml::encode(['version' => $version]);
+
+        if (file_put_contents($path, $toml) === false) {
+            throw new RuntimeException(sprintf('Failed to write version file: %s', $path));
+        }
+
+        return $path;
+    }
+
     /**
      * @return array<string, mixed>
      */

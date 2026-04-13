@@ -10,6 +10,7 @@ use Conformance\Expectation\ExpectationEvaluator;
 use Conformance\Expectation\ExpectationParser;
 use Conformance\Result\ResultRecord;
 use Conformance\Result\ResultRepository;
+use Conformance\Reporting\SummaryReport;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/Checker/Checker.php';
@@ -23,6 +24,7 @@ require_once __DIR__ . '/Expectation/ExpectationEvaluator.php';
 require_once __DIR__ . '/Expectation/ExpectationParser.php';
 require_once __DIR__ . '/Result/ResultRecord.php';
 require_once __DIR__ . '/Result/ResultRepository.php';
+require_once __DIR__ . '/Reporting/SummaryReport.php';
 require_once __DIR__ . '/TestGroup/TestGroup.php';
 require_once __DIR__ . '/TestGroup/TestGroupLoader.php';
 
@@ -40,6 +42,7 @@ $testCases = $discovery->discover($testsDir, $testGroups);
 $expectationEvaluator = new ExpectationEvaluator();
 $expectationParser = new ExpectationParser();
 $resultRepository = new ResultRepository($resultsDir);
+$summaryReport = new SummaryReport();
 $phpStanChecker = new PhpStanChecker(
     projectRoot: $projectRoot,
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
@@ -49,6 +52,7 @@ $psalmChecker = new PsalmChecker(
     binaryPath: $projectRoot . '/vendor-bin/psalm/vendor/bin/psalm',
     configPath: $psalmConfigPath,
 );
+$checkers = [$phpStanChecker, $psalmChecker];
 
 printf("Loaded %d test groups\n", count($testGroups));
 
@@ -87,7 +91,7 @@ foreach ($testCases as $testCase) {
         );
     }
 
-    foreach ([$phpStanChecker, $psalmChecker] as $checker) {
+    foreach ($checkers as $checker) {
         $diagnostics = $checker->analyse($testCase);
         printf("  %s: %d diagnostic line(s)\n", $checker->name(), count($diagnostics));
 
@@ -117,3 +121,19 @@ foreach ($testCases as $testCase) {
         printf("  wrote %s\n", $resultPath);
     }
 }
+
+foreach ($checkers as $checker) {
+    $versionPath = $resultRepository->saveVersion($checker->name(), $checker->version());
+    printf("Saved %s version to %s\n", $checker->name(), $versionPath);
+}
+
+$summaryPath = $resultsDir . '/results.html';
+$summaryReport->generate(
+    resultsRoot: $resultsDir,
+    outputPath: $summaryPath,
+    testGroups: $testGroups,
+    testCases: $testCases,
+    tools: array_map(static fn ($checker): string => $checker->name(), $checkers),
+);
+
+printf("Generated summary report at %s\n", $summaryPath);

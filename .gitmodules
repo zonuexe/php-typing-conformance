@@ -18,3 +18,6 @@
 [submodule "references/phan.wiki"]
 	path = references/phan.wiki
 	url = https://github.com/phan/phan.wiki.git
+[submodule "references/python-typing"]
+	path = references/python-typing
+	url = git@github.com:python/typing.git

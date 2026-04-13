@@ -45,6 +45,7 @@ The project needs external materials that define or justify expected behavior. T
 
 The current `references/` subtree already serves multiple roles:
 
+- `references/python-typing/`: full reference implementation that inspired this repository's architecture.
 - `references/fig-standards/`: FIG and PSR standards material.
 - `references/phpDocumentor/`: phpDocumentor source and documentation.
 - `references/phpstan/`: PHPStan source tree and website documentation.
@@ -56,6 +57,7 @@ This is the correct direction for the repository. PHP typing behavior is defined
 
 The architecture should therefore treat `references/` as a structured reference layer with at least three categories:
 
+- architectural reference implementations,
 - standards and conventions,
 - documentation for type syntax and PHPDoc semantics,
 - analyzer documentation used to explain supported or unsupported behavior.
@@ -88,6 +90,7 @@ Each environment is an isolated Composer installation for one analyzer.
 - `docs/design-doc.md`
 - `AGENTS.md`
 - `references/fig-standards/`
+- `references/python-typing/`
 - `references/phpDocumentor/`
 - `references/phpstan/`
 - `references/psalm/`
@@ -105,6 +108,7 @@ The missing piece is the actual conformance subsystem. The intended structure sh
 ├── docs/
 │   └── design-doc.md
 ├── references/
+│   ├── python-typing/
 │   ├── fig-standards/
 │   ├── phpDocumentor/
 │   ├── phpstan/
@@ -140,11 +144,14 @@ Stores external standards and source material. This subtree is read-mostly and s
 
 Within this layer, different directories serve different purposes:
 
+- architectural references, such as `python-typing`,
 - standards references, such as FIG / PSR material,
 - PHPDoc and documentation references, such as phpDocumentor,
 - analyzer references, such as PHPStan, Psalm, Phan, and NoVerify docs.
 
 The conformance suite should cite these sources explicitly rather than treating all tests as if they came from one unified specification.
+
+Unlike the documentation-oriented reference repositories, `references/python-typing/` is intentionally kept as a fuller checkout because it is useful to inspect its repository structure, runner code, tests, and reporting pipeline together.
 
 ### `vendor-bin/`
 

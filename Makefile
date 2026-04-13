@@ -1,6 +1,7 @@
 .PHONY: init-submodules
 
 init-submodules:
+	git submodule update --init --filter=blob:none references/python-typing
 	git submodule update --init --filter=blob:none --no-checkout references/fig-standards
 	git -C references/fig-standards sparse-checkout init --cone
 	git -C references/fig-standards sparse-checkout set accepted bylaws proposed

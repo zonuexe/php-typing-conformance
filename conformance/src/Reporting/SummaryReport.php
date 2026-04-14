@@ -101,16 +101,22 @@ final class SummaryReport
                     $automated = (string) ($result['conformance_automated'] ?? 'Unknown');
                     $status = (string) ($result['status'] ?? 'Unknown');
                     $display = $status !== 'Unknown' ? $status : $automated;
+                    $firstDetectedLevel = $result['first_detected_level'] ?? null;
                     $class = match ($display) {
                         'Pass' => 'pass',
                         'Fail' => 'fail',
                         default => 'unknown',
                     };
 
+                    $cell = htmlspecialchars($display, ENT_QUOTES);
+                    if (is_int($firstDetectedLevel)) {
+                        $cell .= sprintf('<br><small>Level %d</small>', $firstDetectedLevel);
+                    }
+
                     $html[] = sprintf(
                         '<td class="%s">%s</td>',
                         $class,
-                        htmlspecialchars($display, ENT_QUOTES),
+                        $cell,
                     );
                 }
 
@@ -149,6 +155,7 @@ final class SummaryReport
 
         return match ($tool) {
             'phpstan' => $this->extractVersion($version, '/(\d+\.\d+\.\d+)$/'),
+            'phpstan-strict' => $this->extractVersion($version, '/(\d+\.\d+\.\d+)$/'),
             'psalm' => $this->extractVersion($version, '/Psalm\s+(\d+\.\d+\.\d+)/'),
             'mago' => $this->extractVersion($version, '/mago\s+(\d+\.\d+\.\d+)/i'),
             'phan' => $this->extractVersion($version, '/Phan\s+(\d+\.\d+\.\d+)/'),
@@ -165,6 +172,7 @@ final class SummaryReport
 
         return match ($tool) {
             'phpstan' => sprintf('https://github.com/phpstan/phpstan/releases/tag/%s', $shortVersion),
+            'phpstan-strict' => sprintf('https://github.com/phpstan/phpstan/releases/tag/%s', $shortVersion),
             'psalm' => sprintf('https://github.com/vimeo/psalm/releases/tag/%s', $shortVersion),
             'mago' => sprintf('https://github.com/carthage-software/mago/releases/tag/%s', $shortVersion),
             'phan' => sprintf('https://github.com/phan/phan/releases/tag/%s', $shortVersion),

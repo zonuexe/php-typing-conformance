@@ -1,7 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "properties_readonly_assignment.php:23: Assign to protected(set) property Conformance\\Tests\\PropertiesReadonlyAssignment\\ReadonlyBox::$value. [identifier=assign.propertyProtectedSet]"
+output = "properties_readonly_assignment.php:23: Assign to protected(set) property Conformance\\Tests\\PropertiesReadonlyAssignment\\ReadonlyBox::$value. [identifier=assign.propertyProtectedSet] [detected-from-level=2]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+first_detected_level = 2

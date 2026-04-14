@@ -10,16 +10,18 @@ use RuntimeException;
 final class PhpStanChecker implements Checker
 {
     public function __construct(
-        private readonly string $projectRoot,
+        private readonly string $toolName,
         private readonly string $binaryPath,
         private readonly string $configPath,
-        private readonly string $noStrictConfigPath,
+        private readonly bool $stopAtFirstDetectedLevel,
     ) {
     }
 
+    private ?int $firstDetectedLevel = null;
+
     public function name(): string
     {
-        return 'phpstan';
+        return $this->toolName;
     }
 
     public function version(): string
@@ -39,10 +41,18 @@ final class PhpStanChecker implements Checker
      */
     public function analyse(TestCase $testCase): array
     {
-        $strictDiagnostics = $this->runAnalysis($testCase, $this->configPath);
-        $noStrictDiagnostics = $this->runAnalysis($testCase, $this->noStrictConfigPath);
+        $this->firstDetectedLevel = null;
 
-        return $this->markOptInDiagnostics($strictDiagnostics, $noStrictDiagnostics);
+        if ($this->stopAtFirstDetectedLevel) {
+            return $this->runUntilFirstDetectedLevel($testCase);
+        }
+
+        return $this->runAnalysis($testCase, $this->configPath, 'max');
+    }
+
+    public function firstDetectedLevel(): ?int
+    {
+        return $this->firstDetectedLevel;
     }
 
     /**
@@ -87,12 +97,13 @@ final class PhpStanChecker implements Checker
     /**
      * @return array<int, list<string>>
      */
-    private function runAnalysis(TestCase $testCase, string $configPath): array
+    private function runAnalysis(TestCase $testCase, string $configPath, string $level): array
     {
         $command = sprintf(
-            '%s analyse -c %s --no-progress --error-format=raw %s 2>&1',
+            '%s analyse -c %s --level=%s --no-progress --error-format=raw %s 2>&1',
             escapeshellarg($this->binaryPath),
             escapeshellarg($configPath),
+            escapeshellarg($level),
             escapeshellarg($testCase->path),
         );
 
@@ -106,27 +117,45 @@ final class PhpStanChecker implements Checker
     }
 
     /**
-     * @param array<int, list<string>> $strictDiagnostics
-     * @param array<int, list<string>> $noStrictDiagnostics
      * @return array<int, list<string>>
      */
-    private function markOptInDiagnostics(array $strictDiagnostics, array $noStrictDiagnostics): array
+    private function runUntilFirstDetectedLevel(TestCase $testCase): array
+    {
+        for ($level = 0; $level <= 10; $level++) {
+            $diagnostics = $this->runAnalysis(
+                $testCase,
+                $this->configPath,
+                $level === 10 ? 'max' : (string) $level,
+            );
+
+            if ($diagnostics === []) {
+                continue;
+            }
+
+            $this->firstDetectedLevel = $level;
+
+            return $this->annotateDetectionLevel($diagnostics, $level);
+        }
+
+        return [];
+    }
+
+    /**
+     * @param array<int, list<string>> $diagnostics
+     * @return array<int, list<string>>
+     */
+    private function annotateDetectionLevel(array $diagnostics, int $level): array
     {
         $annotatedDiagnostics = [];
 
-        foreach ($strictDiagnostics as $lineNumber => $messages) {
+        foreach ($diagnostics as $lineNumber => $messages) {
             $annotatedDiagnostics[$lineNumber] = [];
-            $remainingNoStrict = $noStrictDiagnostics[$lineNumber] ?? [];
-
             foreach ($messages as $message) {
-                $matchIndex = array_search($message, $remainingNoStrict, true);
-                if ($matchIndex === false) {
-                    $message .= ' [opt-in: phpstan-strict-rules]';
-                } else {
-                    unset($remainingNoStrict[$matchIndex]);
-                }
-
-                $annotatedDiagnostics[$lineNumber][] = $message;
+                $annotatedDiagnostics[$lineNumber][] = sprintf(
+                    '%s [detected-from-level=%d]',
+                    $message,
+                    $level,
+                );
             }
         }
 

@@ -1,7 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "enums_backed_cases.php:25: Parameter #1 $status of function Conformance\\Tests\\EnumsBackedCases\\takesStatus expects Conformance\\Tests\\EnumsBackedCases\\Status, string given. [identifier=argument.type]"
+output = "enums_backed_cases.php:25: Parameter #1 $status of function Conformance\\Tests\\EnumsBackedCases\\takesStatus expects Conformance\\Tests\\EnumsBackedCases\\Status, string given. [identifier=argument.type] [detected-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+first_detected_level = 5

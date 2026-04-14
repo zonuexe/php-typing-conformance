@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
-errors_diff = "Line 15: Expected 1 error(s)"
+errors_diff = ""
 notes = ""
 ignore_errors = []

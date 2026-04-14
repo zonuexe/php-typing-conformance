@@ -10,13 +10,17 @@ final class ExpectationEvaluator
      * @param list<ExpectedDiagnostic> $expectedDiagnostics
      * @param array<int, list<string>> $actualDiagnostics
      */
-    public function evaluate(array $expectedDiagnostics, array $actualDiagnostics): ExpectationEvaluation
+    public function evaluate(array $expectedDiagnostics, array $actualDiagnostics, string $toolName): ExpectationEvaluation
     {
         $requiredByLine = [];
         $optionalByLine = [];
         $groups = [];
 
         foreach ($expectedDiagnostics as $diagnostic) {
+            if ($diagnostic->tool !== null && $diagnostic->tool !== $toolName) {
+                continue;
+            }
+
             if ($diagnostic->tag !== null) {
                 $groups[$diagnostic->tag] ??= [
                     'lines' => [],

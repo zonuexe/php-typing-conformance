@@ -1,7 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "arrays_shape_required_keys.php:24: Parameter #1 $config of function Conformance\\Tests\\ArraysShapeRequiredKeys\\takesConfig expects array{host: string, port: int}, array{host: 'localhost'} given. [identifier=argument.type]"
+output = "arrays_shape_required_keys.php:24: Parameter #1 $config of function Conformance\\Tests\\ArraysShapeRequiredKeys\\takesConfig expects array{host: string, port: int}, array{host: 'localhost'} given. [identifier=argument.type] [detected-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+first_detected_level = 5

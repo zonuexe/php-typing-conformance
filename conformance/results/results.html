@@ -20,101 +20,114 @@ small a { color: inherit; }
 <table>
 <thead><tr><th>Test</th>
 <th>phpstan<br><small><a href="https://github.com/phpstan/phpstan/releases/tag/2.1.47" title="PHPStan - PHP Static Analysis Tool 2.1.47">2.1.47</a></small></th>
+<th>phpstan-strict<br><small><a href="https://github.com/phpstan/phpstan/releases/tag/2.1.47" title="PHPStan - PHP Static Analysis Tool 2.1.47">2.1.47</a></small></th>
 <th>psalm<br><small><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" title="Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">6.16.1</a></small></th>
 <th>mago<br><small><a href="https://github.com/carthage-software/mago/releases/tag/1.19.0" title="mago 1.19.0">1.19.0</a></small></th>
 <th>phan<br><small><a href="https://github.com/phan/phan/releases/tag/6.0.5" title="Phan 6.0.5 PHP version used to run Phan: 8.5.4">6.0.5</a></small></th>
 <th>noverify<br><small><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" title="NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529">0.5.5</a></small></th>
 </tr></thead><tbody>
-<tr class="group"><td colspan="6">Native types</td></tr>
+<tr class="group"><td colspan="7">Native types</td></tr>
 <tr><td>native_types_scalar_params</td>
+<td class="pass">Pass<br><small>Level 5</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Union types</td></tr>
+<tr class="group"><td colspan="7">Union types</td></tr>
 <tr><td>unions_scalar_members</td>
+<td class="pass">Pass<br><small>Level 5</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Callables</td></tr>
+<tr class="group"><td colspan="7">Callables</td></tr>
 <tr><td>callables_docblock_signature</td>
+<td class="pass">Pass<br><small>Level 5</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">PHPDoc generics</td></tr>
+<tr class="group"><td colspan="7">PHPDoc generics</td></tr>
 <tr><td>generics_template_box</td>
+<td class="pass">Pass<br><small>Level 5</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Arrays and shapes</td></tr>
+<tr class="group"><td colspan="7">Arrays and shapes</td></tr>
 <tr><td>arrays_shape_required_keys</td>
+<td class="pass">Pass<br><small>Level 5</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Object compatibility</td></tr>
+<tr class="group"><td colspan="7">Object compatibility</td></tr>
 <tr><td>objects_interface_compat</td>
+<td class="pass">Pass<br><small>Level 5</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Properties</td></tr>
+<tr class="group"><td colspan="7">Properties</td></tr>
 <tr><td>properties_readonly_assignment</td>
+<td class="pass">Pass<br><small>Level 2</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Constants</td></tr>
+<tr class="group"><td colspan="7">Constants</td></tr>
 <tr><td>constants_class_constant_type</td>
+<td class="pass">Pass<br><small>Level 5</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Enums</td></tr>
+<tr class="group"><td colspan="7">Enums</td></tr>
 <tr><td>enums_backed_cases</td>
+<td class="pass">Pass<br><small>Level 5</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Exceptions</td></tr>
+<tr class="group"><td colspan="7">Exceptions</td></tr>
 <tr><td>exceptions_throws_docblock</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
+<td class="pass">Pass</td>
 </tr>
-<tr class="group"><td colspan="6">PHPDoc basics</td></tr>
+<tr class="group"><td colspan="7">PHPDoc basics</td></tr>
 <tr><td>phpdoc_basics_param_types</td>
+<td class="pass">Pass<br><small>Level 5</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Advanced PHPDoc types</td></tr>
+<tr class="group"><td colspan="7">Advanced PHPDoc types</td></tr>
 <tr><td>phpdoc_advanced_param_typehint_alias_compatible</td>
+<td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
@@ -122,6 +135,7 @@ small a { color: inherit; }
 <td class="pass">Pass</td>
 </tr>
 <tr><td>phpdoc_advanced_param_typehint_array_nullable_mismatch</td>
+<td class="fail">Fail</td>
 <td class="fail">Fail</td>
 <td class="fail">Fail</td>
 <td class="fail">Fail</td>
@@ -134,8 +148,10 @@ small a { color: inherit; }
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
+<td class="pass">Pass</td>
 </tr>
 <tr><td>phpdoc_advanced_param_typehint_byref_compatible</td>
+<td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
@@ -148,29 +164,33 @@ small a { color: inherit; }
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
+<td class="pass">Pass</td>
 </tr>
 <tr><td>phpdoc_advanced_param_typehint_nullable_mismatch</td>
 <td class="fail">Fail</td>
 <td class="fail">Fail</td>
 <td class="fail">Fail</td>
+<td class="fail">Fail</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 </tr>
-<tr class="group"><td colspan="6">Assertions and narrowing</td></tr>
+<tr class="group"><td colspan="7">Assertions and narrowing</td></tr>
 <tr><td>assertions_instanceof_narrowing</td>
+<td class="pass">Pass<br><small>Level 2</small></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
-<tr class="group"><td colspan="6">Analyzer directives</td></tr>
+<tr class="group"><td colspan="7">Analyzer directives</td></tr>
 <tr><td>directives_phpstan_strict_bool_condition</td>
 <td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="fail">Fail</td>
-<td class="fail">Fail</td>
-<td class="fail">Fail</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
 </tr>
 </tbody></table>
 </body></html>

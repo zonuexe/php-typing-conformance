@@ -27,12 +27,13 @@ final class ExpectationParser
         foreach ($lines as $index => $line) {
             $lineNumber = $index + 1;
 
-            if (!preg_match_all('/\/\/\s*E(\?)?(?:\[([^\]]+)\])?(?::\s*(.*))?$/', $line, $matches, PREG_SET_ORDER)) {
+            if (!preg_match_all('/\/\/\s*E(\?)?(?:<([^>]+)>)?(?:\[([^\]]+)\])?(?::\s*(.*))?$/', $line, $matches, PREG_SET_ORDER)) {
                 continue;
             }
 
             foreach ($matches as $match) {
-                $tag = $match[2] ?? null;
+                $tool = $match[2] ?? null;
+                $tag = $match[3] ?? null;
                 $allowMultiple = false;
 
                 if (is_string($tag) && str_ends_with($tag, '+')) {
@@ -43,9 +44,10 @@ final class ExpectationParser
                 $diagnostics[] = new ExpectedDiagnostic(
                     line: $lineNumber,
                     required: ($match[1] ?? '') !== '?',
+                    tool: $tool !== '' ? $tool : null,
                     tag: $tag !== '' ? $tag : null,
                     allowMultiple: $allowMultiple,
-                    comment: trim((string) ($match[3] ?? '')),
+                    comment: trim((string) ($match[4] ?? '')),
                 );
             }
         }

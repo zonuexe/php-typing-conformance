@@ -14,6 +14,7 @@ final readonly class ResultRecord
         public string $testName,
         public string $status,
         public string $conformanceAutomated,
+        public ?int $firstDetectedLevel,
         public string $output,
         public string $errorsDiff,
         public string $notes,
@@ -27,7 +28,7 @@ final readonly class ResultRecord
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'status' => $this->status,
             'conformance_automated' => $this->conformanceAutomated,
             'expected_diagnostic_count' => $this->expectedDiagnosticCount,
@@ -36,5 +37,11 @@ final readonly class ResultRecord
             'notes' => $this->notes,
             'ignore_errors' => $this->ignoreErrors,
         ];
+
+        if ($this->firstDetectedLevel !== null) {
+            $payload['first_detected_level'] = $this->firstDetectedLevel;
+        }
+
+        return $payload;
     }
 }

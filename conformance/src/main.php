@@ -52,10 +52,16 @@ $expectationParser = new ExpectationParser();
 $resultRepository = new ResultRepository($resultsDir);
 $summaryReport = new SummaryReport();
 $phpStanChecker = new PhpStanChecker(
-    projectRoot: $projectRoot,
+    toolName: 'phpstan',
+    binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
+    configPath: $phpStanNoStrictConfigPath,
+    stopAtFirstDetectedLevel: true,
+);
+$phpStanStrictChecker = new PhpStanChecker(
+    toolName: 'phpstan-strict',
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
     configPath: $phpStanConfigPath,
-    noStrictConfigPath: $phpStanNoStrictConfigPath,
+    stopAtFirstDetectedLevel: false,
 );
 $magoChecker = new MagoChecker(
     binaryPath: $projectRoot . '/vendor-bin/mago/vendor/bin/mago',
@@ -73,7 +79,7 @@ $psalmChecker = new PsalmChecker(
     binaryPath: $projectRoot . '/vendor-bin/psalm/vendor/bin/psalm',
     configPath: $psalmConfigPath,
 );
-$checkers = [$phpStanChecker, $psalmChecker, $magoChecker, $phanChecker, $noVerifyChecker];
+$checkers = [$phpStanChecker, $phpStanStrictChecker, $psalmChecker, $magoChecker, $phanChecker, $noVerifyChecker];
 
 printf("Loaded %d test groups\n", count($testGroups));
 
@@ -100,13 +106,15 @@ foreach ($testCases as $testCase) {
 
     foreach ($expectedDiagnostics as $diagnostic) {
         $kind = $diagnostic->required ? 'required' : 'optional';
+        $tool = $diagnostic->tool !== null ? sprintf(', tool=%s', $diagnostic->tool) : '';
         $tag = $diagnostic->tag !== null ? sprintf(', tag=%s', $diagnostic->tag) : '';
         $multi = $diagnostic->allowMultiple ? ', multiple' : '';
 
         printf(
-            "  line %d: %s%s%s\n",
+            "  line %d: %s%s%s%s\n",
             $diagnostic->line,
             $kind,
+            $tool,
             $tag,
             $multi,
         );
@@ -116,7 +124,7 @@ foreach ($testCases as $testCase) {
         $diagnostics = $checker->analyse($testCase);
         printf("  %s: %d diagnostic line(s)\n", $checker->name(), count($diagnostics));
 
-        $evaluation = $expectationEvaluator->evaluate($expectedDiagnostics, $diagnostics);
+        $evaluation = $expectationEvaluator->evaluate($expectedDiagnostics, $diagnostics, $checker->name());
         printf("  %s automated: %s\n", $checker->name(), $evaluation->conformanceAutomated);
 
         $outputLines = [];
@@ -131,6 +139,7 @@ foreach ($testCases as $testCase) {
             testName: $testCase->name,
             status: 'Unknown',
             conformanceAutomated: $evaluation->conformanceAutomated,
+            firstDetectedLevel: $checker instanceof PhpStanChecker ? $checker->firstDetectedLevel() : null,
             output: implode("\n", $outputLines),
             errorsDiff: $evaluation->errorsDiff,
             notes: '',

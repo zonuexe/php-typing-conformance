@@ -9,6 +9,7 @@ final readonly class ExpectedDiagnostic
     public function __construct(
         public int $line,
         public bool $required,
+        public ?string $tool,
         public ?string $tag,
         public bool $allowMultiple,
         public string $comment,

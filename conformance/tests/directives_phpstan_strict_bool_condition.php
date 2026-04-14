@@ -12,7 +12,7 @@ namespace Conformance\Tests\DirectivesPhpstanStrictBoolCondition;
  */
 function isPositive(int $value): bool
 {
-    if ($value) { // E: strict PHPStan requires an explicit boolean condition
+    if ($value) { // E<phpstan-strict>: strict PHPStan requires an explicit boolean condition
         return true;
     }
 

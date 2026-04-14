@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "assertions_instanceof_narrowing.php:46: Call to undefined method {\\Conformance\\Tests\\AssertionsInstanceofNarrowing\\Guest|object}->name() [undefinedMethod]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

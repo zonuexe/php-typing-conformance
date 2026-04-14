@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "callables_return_type_mismatch.php:28: Parameter #1 $callback of function Conformance\\Tests\\CallablesReturnTypeMismatch\\takesStringCallback expects callable(int): string, Closure(int): int given. [identifier=argument.type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

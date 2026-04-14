@@ -37,6 +37,14 @@ small a { color: inherit; }
 <td class="fail">Fail</td>
 </tr>
 <tr class="group"><td colspan="7">Union types</td></tr>
+<tr><td>unions_object_member_rejection</td>
+<td class="pass">Pass <small>(Lv5+)</small></td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="fail">Fail</td>
+</tr>
 <tr><td>unions_scalar_members</td>
 <td class="pass">Pass <small>(Lv5+)</small></td>
 <td class="pass">Pass</td>
@@ -63,6 +71,14 @@ small a { color: inherit; }
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
 </tr>
+<tr><td>callables_return_type_mismatch</td>
+<td class="pass">Pass <small>(Lv5+)</small></td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="fail">Fail</td>
+</tr>
 <tr class="group"><td colspan="7">PHPDoc generics</td></tr>
 <tr><td>generics_template_bound</td>
 <td class="pass">Pass <small>(Lv5+)</small></td>
@@ -81,6 +97,14 @@ small a { color: inherit; }
 <td class="fail">Fail</td>
 </tr>
 <tr class="group"><td colspan="7">Arrays and shapes</td></tr>
+<tr><td>arrays_list_element_type</td>
+<td class="pass">Pass <small>(Lv5+)</small></td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="fail">Fail</td>
+</tr>
 <tr><td>arrays_non_empty_list</td>
 <td class="pass">Pass <small>(Lv5+)</small></td>
 <td class="pass">Pass</td>
@@ -115,6 +139,14 @@ small a { color: inherit; }
 <td class="fail">Fail</td>
 </tr>
 <tr class="group"><td colspan="7">Properties</td></tr>
+<tr><td>properties_promoted_param_mismatch</td>
+<td class="pass">Pass <small>(Lv5+)</small></td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="fail">Fail</td>
+</tr>
 <tr><td>properties_readonly_assignment</td>
 <td class="pass">Pass <small>(Lv2+)</small></td>
 <td class="pass">Pass</td>
@@ -122,6 +154,14 @@ small a { color: inherit; }
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
+</tr>
+<tr><td>properties_uninitialized_read</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
 </tr>
 <tr class="group"><td colspan="7">Constants</td></tr>
 <tr><td>constants_class_constant_type</td>
@@ -140,6 +180,14 @@ small a { color: inherit; }
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="fail">Fail</td>
+</tr>
+<tr><td>enums_case_object_vs_backing_scalar</td>
+<td class="pass">Pass <small>(Lv5+)</small></td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
 </tr>
 <tr class="group"><td colspan="7">Exceptions</td></tr>
 <tr><td>exceptions_throws_docblock</td>
@@ -172,7 +220,7 @@ small a { color: inherit; }
 <td class="by-design" title="Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572">By design</td>
 <td class="by-design" title="Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572">By design</td>
 <td class="by-design" title="Intentionally not reported in Psalm by design. See https://github.com/vimeo/psalm/issues/3785">By design</td>
-<td class="fail">Fail</td>
+<td class="by-design" title="Intentionally not reported by design.">By design</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 </tr>
@@ -204,11 +252,19 @@ small a { color: inherit; }
 <td class="by-design" title="Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572">By design</td>
 <td class="by-design" title="Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572">By design</td>
 <td class="by-design" title="Intentionally not reported in Psalm by design. See https://github.com/vimeo/psalm/issues/3785">By design</td>
-<td class="fail">Fail</td>
+<td class="by-design" title="Intentionally not reported by design.">By design</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 </tr>
 <tr class="group"><td colspan="7">Assertions and narrowing</td></tr>
+<tr><td>assertions_assert_non_empty_list</td>
+<td class="pass">Pass <small>(Lv3+)</small></td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="pass">Pass</td>
+<td class="fail">Fail</td>
+</tr>
 <tr><td>assertions_instanceof_narrowing</td>
 <td class="pass">Pass <small>(Lv2+)</small></td>
 <td class="pass">Pass</td>

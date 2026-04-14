@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "unions_object_member_rejection.php:32: Argument 1 of Conformance\\Tests\\UnionsObjectMemberRejection\\takesUserOrGuest expects Conformance\\Tests\\UnionsObjectMemberRejection\\Guest|Conformance\\Tests\\UnionsObjectMemberRejection\\User, but Conformance\\Tests\\UnionsObjectMemberRejection\\Robot provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

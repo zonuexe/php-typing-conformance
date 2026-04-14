@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "properties_promoted_param_mismatch.php:23: Parameter #1 $id of class Conformance\\Tests\\PropertiesPromotedParamMismatch\\IdBox constructor expects int, string given. [identifier=argument.type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

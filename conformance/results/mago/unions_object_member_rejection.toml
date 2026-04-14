@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "unions_object_member_rejection.php:32: Invalid argument type for argument #1 of `Conformance\\Tests\\UnionsObjectMemberRejection\\takesUserOrGuest`: expected `Conformance\\Tests\\UnionsObjectMemberRejection\\Guest|Conformance\\Tests\\UnionsObjectMemberRejection\\User`, but found `Conformance\\Tests\\UnionsObjectMemberRejection\\Robot`. [invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

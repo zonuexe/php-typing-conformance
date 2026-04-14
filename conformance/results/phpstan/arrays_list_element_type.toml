@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "arrays_list_element_type.php:24: Parameter #1 $values of function Conformance\\Tests\\ArraysListElementType\\takesIntList expects list<int>, array{'x'} given. [identifier=argument.type] [detected-from-level=5]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+first_detected_level = 5

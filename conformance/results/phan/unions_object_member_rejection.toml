@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "unions_object_member_rejection.php:32: Argument 1 ($value) is new Robot() of type \\Conformance\\Tests\\UnionsObjectMemberRejection\\Robot but \\Conformance\\Tests\\UnionsObjectMemberRejection\\takesUserOrGuest() takes \\Conformance\\Tests\\UnionsObjectMemberRejection\\Guest|\\Conformance\\Tests\\UnionsObjectMemberRejection\\User defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/unions_object_member_rejection.php:27 [PhanTypeMismatchArgumentReal]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

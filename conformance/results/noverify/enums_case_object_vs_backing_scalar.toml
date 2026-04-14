@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "enums_case_object_vs_backing_scalar.php:25: Class constant \\Conformance\\Tests\\EnumsCaseObjectVsBackingScalar\\Status::Active does not exist [undefinedConstant]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

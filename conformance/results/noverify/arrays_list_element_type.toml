@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = "arrays_list_element_type.php:19: param $values miss matched with phpdoc type <<list<int>>> [funcParamTypeMissMatch]"
+errors_diff = """
+Line 24: Expected 1 error(s)
+Line 19: Unexpected errors ["param $values miss matched with phpdoc type <<list<int>>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

@@ -50,13 +50,13 @@ final class SummaryReport
             $fullVersion = $this->loadVersion($resultsRoot, $tool);
             $shortVersion = $this->shortVersion($tool, $fullVersion);
             $releaseUrl = $this->releaseUrl($tool, $shortVersion);
-            $title = htmlspecialchars(str_replace("\n", ' ', $fullVersion), ENT_QUOTES);
-            $versionHtml = htmlspecialchars($shortVersion, ENT_QUOTES);
+            $title = htmlspecialchars(str_replace("\n", ' ', $fullVersion));
+            $versionHtml = htmlspecialchars($shortVersion);
 
             if ($releaseUrl !== null) {
                 $versionHtml = sprintf(
                     '<a href="%s" title="%s">%s</a>',
-                    htmlspecialchars($releaseUrl, ENT_QUOTES),
+                    htmlspecialchars($releaseUrl),
                     $title,
                     $versionHtml,
                 );
@@ -70,7 +70,7 @@ final class SummaryReport
 
             $html[] = sprintf(
                 '<th>%s<br><small>%s</small></th>',
-                htmlspecialchars($tool, ENT_QUOTES),
+                htmlspecialchars($tool),
                 $versionHtml,
             );
         }
@@ -90,11 +90,11 @@ final class SummaryReport
             $html[] = sprintf(
                 '<tr class="group"><td colspan="%d">%s</td></tr>',
                 count($tools) + 1,
-                htmlspecialchars($group->name, ENT_QUOTES),
+                htmlspecialchars($group->name),
             );
 
             foreach ($groupCases as $testCase) {
-                $html[] = sprintf('<tr><td>%s</td>', htmlspecialchars($testCase->name, ENT_QUOTES));
+                $html[] = sprintf('<tr><td>%s</td>', htmlspecialchars($testCase->name));
 
                 foreach ($tools as $tool) {
                     $result = $this->loadResult($resultsRoot, $tool, $testCase->name);
@@ -108,9 +108,12 @@ final class SummaryReport
                         default => 'unknown',
                     };
 
-                    $cell = htmlspecialchars($display, ENT_QUOTES);
+                    $cell = htmlspecialchars($display);
                     if (is_int($firstDetectedLevel)) {
-                        $cell .= sprintf('<br><small>Level %d</small>', $firstDetectedLevel);
+                        $levelLabel = $firstDetectedLevel === 10
+                            ? '(Lvmax)'
+                            : sprintf('(Lv%d+)', $firstDetectedLevel);
+                        $cell .= ' <small>' . htmlspecialchars($levelLabel) . '</small>';
                     }
 
                     $html[] = sprintf(

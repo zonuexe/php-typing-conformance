@@ -12,6 +12,8 @@ final class PhpStanChecker implements Checker
     public function __construct(
         private readonly string $projectRoot,
         private readonly string $binaryPath,
+        private readonly string $configPath,
+        private readonly string $noStrictConfigPath,
     ) {
     }
 
@@ -37,19 +39,10 @@ final class PhpStanChecker implements Checker
      */
     public function analyse(TestCase $testCase): array
     {
-        $command = sprintf(
-            '%s analyse --level=max --no-progress --error-format=raw %s 2>&1',
-            escapeshellarg($this->binaryPath),
-            escapeshellarg($testCase->path),
-        );
+        $strictDiagnostics = $this->runAnalysis($testCase, $this->configPath);
+        $noStrictDiagnostics = $this->runAnalysis($testCase, $this->noStrictConfigPath);
 
-        exec($command, $output, $exitCode);
-
-        if ($exitCode !== 0 && $exitCode !== 1) {
-            throw new RuntimeException(sprintf('PHPStan invocation failed for %s', $testCase->fileName));
-        }
-
-        return $this->parseOutput($testCase, $output);
+        return $this->markOptInDiagnostics($strictDiagnostics, $noStrictDiagnostics);
     }
 
     /**
@@ -89,5 +82,54 @@ final class PhpStanChecker implements Checker
         ksort($diagnostics);
 
         return $diagnostics;
+    }
+
+    /**
+     * @return array<int, list<string>>
+     */
+    private function runAnalysis(TestCase $testCase, string $configPath): array
+    {
+        $command = sprintf(
+            '%s analyse -c %s --no-progress --error-format=raw %s 2>&1',
+            escapeshellarg($this->binaryPath),
+            escapeshellarg($configPath),
+            escapeshellarg($testCase->path),
+        );
+
+        exec($command, $output, $exitCode);
+
+        if ($exitCode !== 0 && $exitCode !== 1) {
+            throw new RuntimeException(sprintf('PHPStan invocation failed for %s', $testCase->fileName));
+        }
+
+        return $this->parseOutput($testCase, $output);
+    }
+
+    /**
+     * @param array<int, list<string>> $strictDiagnostics
+     * @param array<int, list<string>> $noStrictDiagnostics
+     * @return array<int, list<string>>
+     */
+    private function markOptInDiagnostics(array $strictDiagnostics, array $noStrictDiagnostics): array
+    {
+        $annotatedDiagnostics = [];
+
+        foreach ($strictDiagnostics as $lineNumber => $messages) {
+            $annotatedDiagnostics[$lineNumber] = [];
+            $remainingNoStrict = $noStrictDiagnostics[$lineNumber] ?? [];
+
+            foreach ($messages as $message) {
+                $matchIndex = array_search($message, $remainingNoStrict, true);
+                if ($matchIndex === false) {
+                    $message .= ' [opt-in: phpstan-strict-rules]';
+                } else {
+                    unset($remainingNoStrict[$matchIndex]);
+                }
+
+                $annotatedDiagnostics[$lineNumber][] = $message;
+            }
+        }
+
+        return $annotatedDiagnostics;
     }
 }

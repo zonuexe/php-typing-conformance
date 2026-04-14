@@ -39,6 +39,8 @@ $testGroupsFile = $rootDir . '/src/test-groups.toml';
 $testsDir = $rootDir . '/tests';
 $resultsDir = $rootDir . '/results';
 $projectRoot = dirname($rootDir);
+$phpStanConfigPath = $rootDir . '/phpstan.dist.neon';
+$phpStanNoStrictConfigPath = $rootDir . '/phpstan-no-strict.neon';
 $psalmConfigPath = $rootDir . '/psalm.xml';
 
 $loader = new TestGroupLoader();
@@ -52,6 +54,8 @@ $summaryReport = new SummaryReport();
 $phpStanChecker = new PhpStanChecker(
     projectRoot: $projectRoot,
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
+    configPath: $phpStanConfigPath,
+    noStrictConfigPath: $phpStanNoStrictConfigPath,
 );
 $magoChecker = new MagoChecker(
     binaryPath: $projectRoot . '/vendor-bin/mago/vendor/bin/mago',

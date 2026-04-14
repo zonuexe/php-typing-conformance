@@ -1,0 +1,8 @@
+includes:
+	- %rootDir%/conf/bleedingEdge.neon
+parameters:
+	level: max
+	paths:
+	- tests/
+	strictRules:
+		allRules: false

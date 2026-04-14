@@ -2,24 +2,26 @@
 
 ## Repository Purpose
 
-This repository is building a PHP static-analysis conformance suite. Right now, the codebase is mostly:
-
-- Composer metadata,
-- isolated analyzer installations,
-- design documentation,
-- external reference material.
-
-There is not yet a `conformance/` implementation subtree.
+This repository builds a PHP static-analysis conformance suite inspired by `python/typing` conformance testing, but adapted to PHP language features, PHPDoc semantics, and analyzer-specific behavior.
 
 ## Current Directory Layout
 
 ```text
 .
 ├── AGENTS.md
+├── CONTRIBUTING.md
+├── Makefile
 ├── README.md
-├── LICENSE
-├── composer.json
-├── composer.lock
+├── conformance/
+│   ├── composer.json
+│   ├── fixtures/
+│   ├── phpstan.dist.neon
+│   ├── phpstan-no-strict.neon
+│   ├── psalm.xml
+│   ├── results/
+│   ├── src/
+│   ├── templates/
+│   └── tests/
 ├── docs/
 │   └── design-doc.md
 ├── references/
@@ -29,7 +31,8 @@ There is not yet a `conformance/` implementation subtree.
 │   ├── phan.wiki/
 │   ├── phpDocumentor/
 │   ├── phpstan/
-│   └── psalm/
+│   ├── psalm/
+│   └── python-typing/
 ├── vendor/
 │   ├── bin/
 │   └── bamarni/composer-bin-plugin
@@ -43,10 +46,14 @@ There is not yet a `conformance/` implementation subtree.
 
 ## What Lives Where
 
+- `conformance/tests/`: one PHP test case per file, with inline expectations.
+- `conformance/fixtures/`: support files loaded together with a primary test case.
+- `conformance/src/`: discovery, expectation parsing, checker adapters, result persistence, and report generation.
+- `conformance/results/`: generated per-tool TOML results, `version.toml`, and `results.html`.
 - `docs/`: design and architecture documents.
-- `references/`: external material used as normative or explanatory references.
+- `references/`: upstream specs, docs, and source trees used for behavior research and citations.
 - `vendor-bin/`: one isolated Composer environment per analyzer.
-- `vendor/`: root-level Composer plugin dependencies and shared Composer bin shims.
+- `vendor/`: root Composer plugin dependencies and shared bin shims.
 
 ## Tool Installation Rules
 
@@ -56,14 +63,12 @@ The normal binary path pattern is:
 vendor-bin/<tool>/vendor/bin/<tool>
 ```
 
-Concrete paths currently present:
+Concrete paths currently used:
 
 - `vendor-bin/phpstan/vendor/bin/phpstan`
 - `vendor-bin/psalm/vendor/bin/psalm`
 - `vendor-bin/phan/vendor/bin/phan`
 - `vendor-bin/mago/vendor/bin/mago`
-
-Related helper binaries also exist for some tools, especially under Psalm and Phan.
 
 ## NoVerify Exception
 
@@ -72,7 +77,7 @@ NoVerify is bootstrapped differently.
 Bootstrap command:
 
 ```text
-vendor-bin/noverify/vendor/bin/noverify-get
+./vendor-bin/noverify/vendor/bin/noverify-get --version 0.5.5
 ```
 
 Installed executable after bootstrap:
@@ -84,55 +89,95 @@ vendor/bin/noverify
 Operationally:
 
 - do not assume `vendor-bin/noverify/vendor/bin/noverify` exists,
-- run the bootstrap tool first if NoVerify has not yet been installed,
-- invoke NoVerify from `vendor/bin/noverify`.
+- invoke NoVerify from `vendor/bin/noverify`,
+- if results differ unexpectedly, confirm the installed NoVerify version first.
 
 ## References
 
 Current external reference checkouts:
 
-- `references/fig-standards/`: `php-fig/fig-standards` Git submodule
+- `references/python-typing/`: upstream inspiration for grouped conformance tests and reporting
+- `references/fig-standards/`: FIG and PSR reference material
 - `references/mago/`: Mago source and docs
-- `references/phpDocumentor/`: phpDocumentor source and docs
+- `references/phpDocumentor/`: PHPDoc semantics and conventions
 - `references/phpstan/`: PHPStan source and website docs
 - `references/psalm/`: Psalm source and docs
 - `references/phan.wiki/`: Phan wiki mirror
 - `references/noverify/`: NoVerify source and docs
 
-Use this subtree for specification lookup and citation, not for local implementation work.
-
-These submodules are intentionally heavy upstream repositories. Contributors should not fully checkout them by default.
-
-After cloning the repository, initialize them with:
+These submodules are intentionally heavy upstream repositories. After cloning, initialize them with:
 
 ```text
 make init-submodules
 ```
 
-That target uses sparse checkout and only pulls the documentation-relevant parts of each reference repository.
+That target uses sparse checkout for the documentation-oriented repositories. `references/python-typing/` is initialized with `--filter=blob:none` only and is not sparse-checked out.
 
-Practical usage:
+## Conformance Workflow
 
-- use `fig-standards` for PSR and FIG-level reference material,
-- use `mago` for Mago rule and analyzer behavior documentation,
-- use `phpDocumentor` for PHPDoc semantics and documentation conventions,
-- use analyzer-specific directories when documenting tool-specific behavior, support gaps, or extensions.
+- Full run: `php conformance/src/main.php`
+- HTML-only regeneration from existing TOML results: `make render-report-html`
+- Main report output: `conformance/results/results.html`
+
+Current checker columns in the report:
+
+- `phpstan`
+- `phpstan-strict`
+- `psalm`
+- `mago`
+- `phan`
+- `noverify`
+
+PHPStan handling is intentionally split:
+
+- `phpstan`: non-strict config, records the first level where diagnostics appear, displays `Lv N+`, and persists max-level output
+- `phpstan-strict`: strict-rules config at max only
+
+## Test Authoring Conventions
+
+- Keep one primary idea per test file.
+- Use file-scoped namespaces to avoid cross-test symbol collisions.
+- Put companion definitions in `conformance/fixtures/` when the main test needs support code.
+- Use inline expectation markers rather than external expectation files.
+- Prefer required expectations (`// E`) for stable checker behavior and optional expectations (`// E?`) when a diagnostic is tool- or version-sensitive.
+- Use tool-specific expectations when only one analyzer should report a diagnostic, for example `// E<psalm>`.
+
+## Python-To-PHP Porting Notes
+
+When adapting ideas from `references/python-typing/`, do not copy test shapes mechanically. The useful transfer is the test philosophy, not the syntax.
+
+- Preserve the `python-typing` structure of small, focused, grouped tests with inline expectations.
+- Translate Python concepts to the nearest PHP concept instead of forcing 1:1 feature parity.
+- Treat PHP as a mixed-spec environment: native language rules, PHPDoc conventions, and analyzer extensions all matter.
+- Prefer explicit source categories such as `language`, `phpdoc`, `ecosystem`, `extension`, and `historical` when adding new groups or tests.
+
+Important mappings that have worked well so far:
+
+- `TypedDict`-style cases map to PHP array shapes and list/non-empty-list cases.
+- `Protocol`-style cases map to interfaces, object compatibility, and intersection types.
+- narrowing cases map to `instanceof`, null guards, assertions, and analyzer-specific flow reasoning.
+- generic conformance cases map mostly to PHPDoc templates rather than native syntax.
+- distribution/support-package cases map to fixture support files and stub-like companion definitions.
+
+Known PHP-specific pitfalls:
+
+- PHP has no single canonical typing spec equivalent to Python typing behavior; tool divergence is expected.
+- Some behaviors are intentionally not reported by some tools and should be recorded as `By design`, not as regressions.
+- PHPDoc syntax is richer and less standardized than native PHP syntax, so tests involving shapes, generics, callable signatures, aliases, and nullability need tool-specific validation.
+- Historical PHP behaviors such as implicit nullability and legacy resources deserve their own coverage instead of being folded into modern native-type cases.
+- Parse-time invalid syntax and analysis-time type errors can coexist in one file; some analyzers stop earlier than others.
+
+Practical guidance:
+
+- Start from a minimal PHP example, then add only the smallest PHPDoc or language feature needed to preserve the original conformance question.
+- Prefer tests that expose checker differences cleanly over tests that combine many PHP-specific features at once.
+- When a Python case depends on library distribution behavior, consider whether it should become a fixture-based support file test, a stub test, or be skipped entirely.
+- If a ported case ends up testing only one tool's extension, place it under the appropriate PHP-specific group instead of pretending it is language-level conformance.
 
 ## Development Conventions
 
 - Prefer tool-local binaries over globally installed commands.
 - Treat `vendor-bin/<tool>/composer.lock` as the authoritative version pin for that analyzer.
-- Keep future conformance runner code separate from `vendor-bin/`.
-- Treat `vendor-bin/` and `references/` as infrastructure and source material, not as places to add project logic.
+- Treat `references/` as source material, not as a place to edit project logic.
 - Put architecture-level decisions in `docs/design-doc.md`.
-- Put implementation and workflow notes for contributors in `AGENTS.md`.
-
-## Expected Next Step
-
-When implementation begins, add a dedicated `conformance/` subtree rather than mixing runtime code into the repository root. That subtree should eventually contain:
-
-- test files,
-- fixtures,
-- checker adapters,
-- result persistence,
-- report generation.
+- Put contributor workflow and repository-specific cautions in `AGENTS.md`.

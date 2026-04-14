@@ -1,9 +1,0 @@
-status = "Unknown"
-conformance_automated = "Pass"
-expected_diagnostic_count = 4
-output = """
-phpdoc_advanced_vendor_prefixed_param_tags.php:38: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedVendorPrefixedParamTags\\takesPhpStanParam`: expected `int`, but found `string('x')`. [invalid-argument]
-phpdoc_advanced_vendor_prefixed_param_tags.php:41: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedVendorPrefixedParamTags\\takesPsalmParam`: expected `int`, but found `string('x')`. [invalid-argument]"""
-errors_diff = ""
-notes = ""
-ignore_errors = []

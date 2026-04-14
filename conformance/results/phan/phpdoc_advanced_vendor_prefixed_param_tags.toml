@@ -1,9 +1,0 @@
-status = "Unknown"
-conformance_automated = "Pass"
-expected_diagnostic_count = 4
-output = """
-phpdoc_advanced_vendor_prefixed_param_tags.php:41: Argument 1 ($value) is 'x' of type string but \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedParamTags\\takesPsalmParam() takes int (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_param_tags.php:26 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
-phpdoc_advanced_vendor_prefixed_param_tags.php:44: Argument 1 ($value) is 'x' of type string but \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedParamTags\\takesPhanParam() takes int (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_param_tags.php:33 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
-errors_diff = ""
-notes = ""
-ignore_errors = []

@@ -34,6 +34,7 @@ final class SummaryReport
         $html[] = 'body { font-family: system-ui, sans-serif; margin: 24px; }';
         $html[] = 'table { width: 100%; border-collapse: collapse; }';
         $html[] = 'th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }';
+        $html[] = 'small a { color: inherit; }';
         $html[] = '.group { background: #f3f3f3; font-weight: 700; }';
         $html[] = '.pass { background: #dff7df; }';
         $html[] = '.fail { background: #f9d6d6; }';
@@ -46,10 +47,31 @@ final class SummaryReport
         $html[] = '<thead><tr><th>Test</th>';
 
         foreach ($tools as $tool) {
+            $fullVersion = $this->loadVersion($resultsRoot, $tool);
+            $shortVersion = $this->shortVersion($tool, $fullVersion);
+            $releaseUrl = $this->releaseUrl($tool, $shortVersion);
+            $title = htmlspecialchars(str_replace("\n", ' ', $fullVersion), ENT_QUOTES);
+            $versionHtml = htmlspecialchars($shortVersion, ENT_QUOTES);
+
+            if ($releaseUrl !== null) {
+                $versionHtml = sprintf(
+                    '<a href="%s" title="%s">%s</a>',
+                    htmlspecialchars($releaseUrl, ENT_QUOTES),
+                    $title,
+                    $versionHtml,
+                );
+            } else {
+                $versionHtml = sprintf(
+                    '<span title="%s">%s</span>',
+                    $title,
+                    $versionHtml,
+                );
+            }
+
             $html[] = sprintf(
                 '<th>%s<br><small>%s</small></th>',
                 htmlspecialchars($tool, ENT_QUOTES),
-                htmlspecialchars($this->loadVersion($resultsRoot, $tool), ENT_QUOTES),
+                $versionHtml,
             );
         }
 
@@ -119,6 +141,45 @@ final class SummaryReport
         $data = Toml::parseToArray($contents);
 
         return (string) ($data['version'] ?? 'unknown');
+    }
+
+    private function shortVersion(string $tool, string $fullVersion): string
+    {
+        $version = trim($fullVersion);
+
+        return match ($tool) {
+            'phpstan' => $this->extractVersion($version, '/(\d+\.\d+\.\d+)$/'),
+            'psalm' => $this->extractVersion($version, '/Psalm\s+(\d+\.\d+\.\d+)/'),
+            'mago' => $this->extractVersion($version, '/mago\s+(\d+\.\d+\.\d+)/i'),
+            'phan' => $this->extractVersion($version, '/Phan\s+(\d+\.\d+\.\d+)/'),
+            'noverify' => $this->extractVersion($version, '/version\s+(\d+\.\d+\.\d+)/i'),
+            default => $version,
+        };
+    }
+
+    private function releaseUrl(string $tool, string $shortVersion): ?string
+    {
+        if ($shortVersion === 'unknown') {
+            return null;
+        }
+
+        return match ($tool) {
+            'phpstan' => sprintf('https://github.com/phpstan/phpstan/releases/tag/%s', $shortVersion),
+            'psalm' => sprintf('https://github.com/vimeo/psalm/releases/tag/%s', $shortVersion),
+            'mago' => sprintf('https://github.com/carthage-software/mago/releases/tag/%s', $shortVersion),
+            'phan' => sprintf('https://github.com/phan/phan/releases/tag/%s', $shortVersion),
+            'noverify' => sprintf('https://github.com/VKCOM/noverify/releases/tag/v%s', $shortVersion),
+            default => null,
+        };
+    }
+
+    private function extractVersion(string $version, string $pattern): string
+    {
+        if (preg_match($pattern, $version, $matches) === 1) {
+            return $matches[1];
+        }
+
+        return $version;
     }
 
     /**

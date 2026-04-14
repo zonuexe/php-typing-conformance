@@ -8,6 +8,7 @@
 body { font-family: system-ui, sans-serif; margin: 24px; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+small a { color: inherit; }
 .group { background: #f3f3f3; font-weight: 700; }
 .pass { background: #dff7df; }
 .fail { background: #f9d6d6; }
@@ -18,12 +19,11 @@ th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical
 <h1>PHP Typing Conformance Results</h1>
 <table>
 <thead><tr><th>Test</th>
-<th>phpstan<br><small>PHPStan - PHP Static Analysis Tool 2.1.47</small></th>
-<th>psalm<br><small>Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</small></th>
-<th>mago<br><small>mago 1.19.0</small></th>
-<th>phan<br><small>Phan 6.0.5
-PHP version used to run Phan: 8.5.4</small></th>
-<th>noverify<br><small>NoVerify, version 0.5.3: built on: 2022.06.23 13:22:25 OS: MacBook-Pro-Petr.local arm64 Commit: 4f51f91b339e205692c658914f284278dd03b2d8</small></th>
+<th>phpstan<br><small><a href="https://github.com/phpstan/phpstan/releases/tag/2.1.47" title="PHPStan - PHP Static Analysis Tool 2.1.47">2.1.47</a></small></th>
+<th>psalm<br><small><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" title="Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">6.16.1</a></small></th>
+<th>mago<br><small><a href="https://github.com/carthage-software/mago/releases/tag/1.19.0" title="mago 1.19.0">1.19.0</a></small></th>
+<th>phan<br><small><a href="https://github.com/phan/phan/releases/tag/6.0.5" title="Phan 6.0.5 PHP version used to run Phan: 8.5.4">6.0.5</a></small></th>
+<th>noverify<br><small><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" title="NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529">0.5.5</a></small></th>
 </tr></thead><tbody>
 <tr class="group"><td colspan="6">Native types</td></tr>
 <tr><td>native_types_scalar_params</td>
@@ -126,7 +126,7 @@ PHP version used to run Phan: 8.5.4</small></th>
 <td class="fail">Fail</td>
 <td class="fail">Fail</td>
 <td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<td class="pass">Pass</td>
 </tr>
 <tr><td>phpdoc_advanced_param_typehint_boolean_synonym</td>
 <td class="pass">Pass</td>
@@ -140,7 +140,7 @@ PHP version used to run Phan: 8.5.4</small></th>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<td class="fail">Fail</td>
 </tr>
 <tr><td>phpdoc_advanced_param_typehint_callable_compatible</td>
 <td class="pass">Pass</td>
@@ -154,7 +154,7 @@ PHP version used to run Phan: 8.5.4</small></th>
 <td class="fail">Fail</td>
 <td class="fail">Fail</td>
 <td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<td class="pass">Pass</td>
 </tr>
 <tr class="group"><td colspan="6">Assertions and narrowing</td></tr>
 <tr><td>assertions_instanceof_narrowing</td>
@@ -162,7 +162,7 @@ PHP version used to run Phan: 8.5.4</small></th>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<td class="fail">Fail</td>
 </tr>
 </tbody></table>
 </body></html>

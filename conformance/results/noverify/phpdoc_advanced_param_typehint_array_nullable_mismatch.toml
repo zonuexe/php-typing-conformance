@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
-errors_diff = "Lines 15, 18: Expected error (tag array_param_mismatch)"
+output = "phpdoc_advanced_param_typehint_array_nullable_mismatch.php:18: param $items miss matched with phpdoc type <<list<int>>> [funcParamTypeMissMatch]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

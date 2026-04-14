@@ -1,7 +1,12 @@
 status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = "Line 38: Expected 1 error(s)"
+output = """
+generics_template_box.php:25: param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]
+generics_template_box.php:33: param $box miss matched with phpdoc type <<Box<int>>> [funcParamTypeMissMatch]"""
+errors_diff = """
+Line 38: Expected 1 error(s)
+Line 25: Unexpected errors ["param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]"]
+Line 33: Unexpected errors ["param $box miss matched with phpdoc type <<Box<int>>> [funcParamTypeMissMatch]"]"""
 notes = ""
 ignore_errors = []

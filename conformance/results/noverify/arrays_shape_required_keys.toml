@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = "Line 24: Expected 1 error(s)"
+output = "arrays_shape_required_keys.php:18: param $config miss matched with phpdoc type <<array{host: string, port: int}>> [funcParamTypeMissMatch]"
+errors_diff = """
+Line 24: Expected 1 error(s)
+Line 18: Unexpected errors ["param $config miss matched with phpdoc type <<array{host: string, port: int}>> [funcParamTypeMissMatch]"]"""
 notes = ""
 ignore_errors = []

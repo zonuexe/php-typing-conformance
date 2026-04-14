@@ -121,6 +121,19 @@ foreach ($testCases as $testCase) {
     }
 
     foreach ($checkers as $checker) {
+        if ($checker instanceof PhpStanChecker) {
+            $checker->setKnownFirstDetectedLevel(null);
+
+            if ($checker->name() === 'phpstan') {
+                $existingResult = $resultRepository->loadResult($checker->name(), $testCase->name);
+                $existingLevel = $existingResult['first_detected_level'] ?? null;
+
+                if (is_int($existingLevel)) {
+                    $checker->setKnownFirstDetectedLevel($existingLevel);
+                }
+            }
+        }
+
         $diagnostics = $checker->analyse($testCase);
         printf("  %s: %d diagnostic line(s)\n", $checker->name(), count($diagnostics));
 

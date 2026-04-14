@@ -69,6 +69,16 @@ final class ResultRepository
     /**
      * @return array<string, mixed>
      */
+    public function loadResult(string $tool, string $testName): array
+    {
+        $path = $this->resultsRoot . DIRECTORY_SEPARATOR . $tool . DIRECTORY_SEPARATOR . $testName . '.toml';
+
+        return $this->load($path);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
     private function load(string $path): array
     {
         if (!is_file($path)) {

@@ -18,6 +18,7 @@ final class PhpStanChecker implements Checker
     }
 
     private ?int $firstDetectedLevel = null;
+    private ?int $knownFirstDetectedLevel = null;
 
     public function name(): string
     {
@@ -53,6 +54,11 @@ final class PhpStanChecker implements Checker
     public function firstDetectedLevel(): ?int
     {
         return $this->firstDetectedLevel;
+    }
+
+    public function setKnownFirstDetectedLevel(?int $level): void
+    {
+        $this->knownFirstDetectedLevel = $level;
     }
 
     /**
@@ -121,6 +127,13 @@ final class PhpStanChecker implements Checker
      */
     private function runUntilFirstDetectedLevel(TestCase $testCase): array
     {
+        if ($this->knownFirstDetectedLevel !== null) {
+            $knownDiagnostics = $this->runKnownLevelCheck($testCase, $this->knownFirstDetectedLevel);
+            if ($knownDiagnostics !== null) {
+                return $knownDiagnostics;
+            }
+        }
+
         for ($level = 0; $level <= 10; $level++) {
             $diagnostics = $this->runAnalysis(
                 $testCase,
@@ -138,6 +151,38 @@ final class PhpStanChecker implements Checker
         }
 
         return [];
+    }
+
+    /**
+     * @return array<int, list<string>>|null
+     */
+    private function runKnownLevelCheck(TestCase $testCase, int $knownLevel): ?array
+    {
+        $knownDiagnostics = $this->runAnalysis(
+            $testCase,
+            $this->configPath,
+            $knownLevel === 10 ? 'max' : (string) $knownLevel,
+        );
+
+        if ($knownDiagnostics === []) {
+            return null;
+        }
+
+        if ($knownLevel > 0) {
+            $previousDiagnostics = $this->runAnalysis(
+                $testCase,
+                $this->configPath,
+                (string) ($knownLevel - 1),
+            );
+
+            if ($previousDiagnostics !== []) {
+                return null;
+            }
+        }
+
+        $this->firstDetectedLevel = $knownLevel;
+
+        return $this->annotateDetectionLevel($knownDiagnostics, $knownLevel);
     }
 
     /**

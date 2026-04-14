@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "objects_static_return_mismatch.php:23: Returning new Builder() of type \\Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder but rebuild() is declared to return \\Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder [PhanTypeMismatchReturnReal]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

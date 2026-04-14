@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "arrays_non_empty_list.php:23: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysNonEmptyList\\takesNonEmptyList`: expected `non-empty-list<int>`, but possibly received `array{}`. [possibly-invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

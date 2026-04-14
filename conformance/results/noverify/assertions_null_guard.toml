@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+assertions_null_guard.php:29: potential null dereference in user when accessing method [notNullSafetyVariable]
+assertions_null_guard.php:38: potential null dereference in user when accessing method [notNullSafetyVariable]"""
+errors_diff = "Line 29: Unexpected errors [\"potential null dereference in user when accessing method [notNullSafetyVariable]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+generics_template_bound.php:43: param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]
+generics_template_bound.php:51: param $box miss matched with phpdoc type <<NamedBox<User>>> [funcParamTypeMissMatch]"""
+errors_diff = """
+Line 56: Expected 1 error(s)
+Line 43: Unexpected errors ["param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]"]
+Line 51: Unexpected errors ["param $box miss matched with phpdoc type <<NamedBox<User>>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

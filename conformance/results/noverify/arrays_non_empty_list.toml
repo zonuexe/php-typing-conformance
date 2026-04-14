@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = "arrays_non_empty_list.php:18: param $values miss matched with phpdoc type <<non-empty-list<int>>> [funcParamTypeMissMatch]"
+errors_diff = """
+Line 23: Expected 1 error(s)
+Line 18: Unexpected errors ["param $values miss matched with phpdoc type <<non-empty-list<int>>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

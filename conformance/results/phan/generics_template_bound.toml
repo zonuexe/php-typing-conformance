@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+generics_template_bound.php:56: Template type T of \\Conformance\\Tests\\GenericsTemplateBound\\NamedBox::__construct() must be compatible with \\Conformance\\Tests\\GenericsTemplateBound\\HasName, but \\Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser was provided in call to \\Conformance\\Tests\\GenericsTemplateBound\\NamedBox::__construct() [PhanTemplateTypeConstraintViolation]
+generics_template_bound.php:56: Argument 1 ($box) is new NamedBox(new AnonymousUser()) of type \\Conformance\\Tests\\GenericsTemplateBound\\NamedBox|\\Conformance\\Tests\\GenericsTemplateBound\\NamedBox<\\Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser> but \\Conformance\\Tests\\GenericsTemplateBound\\takesNamedBox() takes \\Conformance\\Tests\\GenericsTemplateBound\\NamedBox<\\Conformance\\Tests\\GenericsTemplateBound\\User> (real type \\Conformance\\Tests\\GenericsTemplateBound\\NamedBox) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_template_bound.php:51 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

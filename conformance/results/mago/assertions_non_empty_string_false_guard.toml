@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+assertions_non_empty_string_false_guard.php:37: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString`: expected `truthy-string`, but possibly received `non-empty-string`. [possibly-invalid-argument]
+assertions_non_empty_string_false_guard.php:41: Argument #1 of function `Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonEmptyString` is `false`, but parameter type `non-empty-string` does not accept it. [false-argument]
+assertions_non_empty_string_false_guard.php:42: Argument #1 of function `Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString` is `false`, but parameter type `truthy-string` does not accept it. [false-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

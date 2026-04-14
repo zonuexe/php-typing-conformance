@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+arrays_list_shape_destructuring.php:48: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\takesInt`: expected `int`, but found `bool`. [invalid-argument]
+arrays_list_shape_destructuring.php:49: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\takesString`: expected `string`, but found `bool`. [invalid-argument]
+arrays_list_shape_destructuring.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\takesBool`: expected `bool`, but found `int`. [invalid-argument]
+arrays_list_shape_destructuring.php:54: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\inspectListShape`: expected `list{bool, float, string, int}`, but possibly received `list{true, float(1.5), int(2), string('x')}`. [possibly-invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

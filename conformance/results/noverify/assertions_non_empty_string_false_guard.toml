@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+assertions_non_empty_string_false_guard.php:19: param $value miss matched with phpdoc type <<non-empty-string>> [funcParamTypeMissMatch]
+assertions_non_empty_string_false_guard.php:24: Class or interface named \\Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\non-falsy-string does not exist [undefinedClass]
+assertions_non_empty_string_false_guard.php:26: param $value miss matched with phpdoc type <<non-falsy-string>> [funcParamTypeMissMatch]
+assertions_non_empty_string_false_guard.php:41: potentially not safe call in function Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonEmptyString signature of param value [notSafeCall]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

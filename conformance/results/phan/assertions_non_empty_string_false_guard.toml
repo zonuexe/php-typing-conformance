@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+assertions_non_empty_string_false_guard.php:24: Saw possibly unextractable annotation for a fragment of comment '* @param non-falsy-string $value // E?: some tools do not parse non-falsy-string PHPDoc syntax': after non, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+assertions_non_empty_string_false_guard.php:24: Saw a token Phan may have failed to parse after '* @param non-falsy-string $value // E?: some tools do not parse non-falsy-string PHPDoc syntax': after non, saw '-' [PhanUnextractableAnnotationSuffix]
+assertions_non_empty_string_false_guard.php:41: Argument 1 ($value) is $value of type false but \\Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonEmptyString() takes non-empty-string (real type string) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_non_empty_string_false_guard.php:19 [PhanTypeMismatchArgumentReal]
+assertions_non_empty_string_false_guard.php:42: Argument 1 ($value) is $value of type false but \\Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_non_empty_string_false_guard.php:26 [PhanTypeMismatchArgumentReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

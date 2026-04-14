@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+arrays_list_shape_destructuring.php:48: Parameter #1 $value of function Conformance\\Tests\\ArraysListShapeDestructuring\\takesInt expects int, bool given. [identifier=argument.type]
+arrays_list_shape_destructuring.php:49: Parameter #1 $value of function Conformance\\Tests\\ArraysListShapeDestructuring\\takesString expects string, bool given. [identifier=argument.type]
+arrays_list_shape_destructuring.php:50: Parameter #1 $value of function Conformance\\Tests\\ArraysListShapeDestructuring\\takesBool expects bool, int given. [identifier=argument.type]
+arrays_list_shape_destructuring.php:54: Parameter #1 $list of function Conformance\\Tests\\ArraysListShapeDestructuring\\inspectListShape expects array{bool, float, string, int}, array{true, 1.5, 2, 'x'} given. [identifier=argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

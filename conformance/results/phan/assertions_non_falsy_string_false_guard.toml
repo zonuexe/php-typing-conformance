@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 11
+output = """
+assertions_non_falsy_string_false_guard.php:17: Saw possibly unextractable annotation for a fragment of comment '* @param non-falsy-string $value // E?: some tools do not parse non-falsy-string PHPDoc syntax': after non, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+assertions_non_falsy_string_false_guard.php:17: Saw a token Phan may have failed to parse after '* @param non-falsy-string $value // E?: some tools do not parse non-falsy-string PHPDoc syntax': after non, saw '-' [PhanUnextractableAnnotationSuffix]
+assertions_non_falsy_string_false_guard.php:31: Saw possibly unextractable annotation for a fragment of comment '* @param non-falsy-string|false $value // E?: some tools do not parse non-falsy-string unions in PHPDoc syntax': after non, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+assertions_non_falsy_string_false_guard.php:31: Saw a token Phan may have failed to parse after '* @param non-falsy-string|false $value // E?: some tools do not parse non-falsy-string unions in PHPDoc syntax': after non, saw '-' [PhanUnextractableAnnotationSuffix]
+assertions_non_falsy_string_false_guard.php:33: Parameter $value has undeclared type \\Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\non [PhanUndeclaredTypeParameter]
+assertions_non_falsy_string_false_guard.php:36: Argument 1 ($value) is $value of type \\Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\non but \\Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\takesNonFalsyString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_non_falsy_string_false_guard.php:19 [PhanTypeMismatchArgument]
+assertions_non_falsy_string_false_guard.php:37: Argument 1 ($value) is $value of type \\Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\non but \\Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\takesNonEmptyString() takes non-empty-string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_non_falsy_string_false_guard.php:26 [PhanTypeMismatchArgument]
+assertions_non_falsy_string_false_guard.php:41: Argument 1 ($value) is $value of type false but \\Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\takesNonFalsyString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_non_falsy_string_false_guard.php:19 [PhanTypeMismatchArgumentReal]
+assertions_non_falsy_string_false_guard.php:42: Argument 1 ($value) is $value of type false but \\Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\takesNonEmptyString() takes non-empty-string (real type string) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_non_falsy_string_false_guard.php:26 [PhanTypeMismatchArgumentReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

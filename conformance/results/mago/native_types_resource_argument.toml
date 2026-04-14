@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+native_types_resource_argument.php:17: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\NativeTypesResourceArgument\\resource`. [non-existent-class-like]
+native_types_resource_argument.php:38: Invalid argument type for argument #1 of `Conformance\\Tests\\NativeTypesResourceArgument\\takesResource`: expected `unknown-ref(Conformance\\Tests\\NativeTypesResourceArgument\\resource)`, but found `open-resource`. [invalid-argument]
+native_types_resource_argument.php:39: Invalid argument type for argument #1 of `Conformance\\Tests\\NativeTypesResourceArgument\\takesString`: expected `string`, but found `open-resource`. [invalid-argument]
+native_types_resource_argument.php:40: Invalid argument type for argument #1 of `Conformance\\Tests\\NativeTypesResourceArgument\\takesInt`: expected `int`, but found `open-resource`. [invalid-argument]
+native_types_resource_argument.php:41: Invalid argument type for argument #1 of `Conformance\\Tests\\NativeTypesResourceArgument\\takesBool`: expected `bool`, but found `open-resource`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

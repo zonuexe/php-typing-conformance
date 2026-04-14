@@ -1,4 +1,4 @@
-.PHONY: init-submodules
+.PHONY: init-submodules render-report-html
 
 init-submodules:
 	git submodule update --init --filter=blob:none references/python-typing
@@ -30,3 +30,6 @@ init-submodules:
 	git -C references/phan.wiki sparse-checkout init --cone
 	git -C references/phan.wiki sparse-checkout set scripts
 	git -C references/phan.wiki checkout
+
+render-report-html:
+	php conformance/src/render-report-html.php

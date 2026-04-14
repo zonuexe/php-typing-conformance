@@ -8,6 +8,10 @@ use Conformance\Discovery\TestCase;
 use Conformance\TestGroup\TestGroup;
 use Internal\Toml\Toml;
 use RuntimeException;
+use function htmlspecialchars;
+use function preg_match;
+use function sprintf;
+use function trim;
 
 final class SummaryReport
 {
@@ -35,6 +39,9 @@ final class SummaryReport
         $html[] = 'table { width: 100%; border-collapse: collapse; }';
         $html[] = 'th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }';
         $html[] = 'small a { color: inherit; }';
+        $html[] = 'details { margin-top: 4px; }';
+        $html[] = 'details summary { cursor: pointer; font-size: 0.875em; }';
+        $html[] = 'details p { margin: 6px 0 0; font-size: 0.875em; }';
         $html[] = '.group { background: #f3f3f3; font-weight: 700; }';
         $html[] = '.pass { background: #dff7df; }';
         $html[] = '.fail { background: #f9d6d6; }';
@@ -113,18 +120,22 @@ final class SummaryReport
                     $cell = htmlspecialchars($display);
                     if (is_int($firstDetectedLevel)) {
                         $levelLabel = $firstDetectedLevel === 10
-                            ? '(Lvmax)'
-                            : sprintf('(Lv%d+)', $firstDetectedLevel);
+                            ? '(Lv max)'
+                            : sprintf('(Lv %d+)', $firstDetectedLevel);
                         $cell .= ' <small>' . htmlspecialchars($levelLabel) . '</small>';
                     }
 
                     $notes = trim((string) ($result['notes'] ?? ''));
-                    $title = $notes !== '' ? sprintf(' title="%s"', htmlspecialchars($notes)) : '';
+                    if ($notes !== '') {
+                        $cell .= sprintf(
+                            '<details><summary>Notes</summary><p>%s</p></details>',
+                            htmlspecialchars($notes),
+                        );
+                    }
 
                     $html[] = sprintf(
-                        '<td class="%s"%s>%s</td>',
+                        '<td class="%s">%s</td>',
                         $class,
-                        $title,
                         $cell,
                     );
                 }

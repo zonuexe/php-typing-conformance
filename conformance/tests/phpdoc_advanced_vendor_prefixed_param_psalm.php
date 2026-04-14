@@ -21,4 +21,4 @@ function takesPsalmParam($value): void
 }
 
 takesPsalmParam(1);
-takesPsalmParam('x'); // E?: vendor-prefixed psalm param tag may be honored
+takesPsalmParam('x'); // E: vendor-prefixed psalm param tag should be enforced

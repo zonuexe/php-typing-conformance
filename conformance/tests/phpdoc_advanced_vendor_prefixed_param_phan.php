@@ -21,4 +21,4 @@ function takesPhanParam($value): void // E?: some tools do not treat @phan-param
 }
 
 takesPhanParam(1);
-takesPhanParam('x'); // E?: vendor-prefixed phan param tag may be honored
+takesPhanParam('x'); // E: vendor-prefixed phan param tag should be enforced

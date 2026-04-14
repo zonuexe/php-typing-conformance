@@ -20,4 +20,4 @@ function takesPhpStanParam($value): void
 }
 
 takesPhpStanParam(1);
-takesPhpStanParam('x'); // E?: vendor-prefixed phpstan param tag may be honored
+takesPhpStanParam('x'); // E: vendor-prefixed phpstan param tag should be enforced

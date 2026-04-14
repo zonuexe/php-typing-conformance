@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_param_typehint_nullable_mismatch.php:15: Doc-block of $name in greet is phpdoc param type string which is not a permitted replacement of the nullable param type ?string declared in the signature ('?T' should be documented as 'T|null' or '?T') [PhanTypeMismatchDeclaredParamNullable]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

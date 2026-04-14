@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "assertions_assert_non_empty_list.php:32: Offset 0 does not exist on array{}. [identifier=offsetAccess.notFound] [detected-from-level=3]"
+output = """
+assertions_assert_non_empty_list.php:32: Function Conformance\\Tests\\AssertionsAssertNonEmptyList\\rejectsEmptyBranch() should return int but returns mixed. [identifier=return.type] [detected-from-level=3]
+assertions_assert_non_empty_list.php:32: Offset 0 does not exist on array{}. [identifier=offsetAccess.notFound] [detected-from-level=3]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

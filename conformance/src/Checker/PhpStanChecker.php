@@ -152,7 +152,16 @@ final class PhpStanChecker implements Checker
 
             $this->firstDetectedLevel = $level;
 
-            return $this->annotateDetectionLevel($diagnostics, $level);
+            if ($level === 10) {
+                return $this->annotateDetectionLevel($diagnostics, $level);
+            }
+
+            $maxDiagnostics = $this->runAnalysis($testCase, $this->configPath, 'max');
+
+            return $this->annotateDetectionLevel(
+                $maxDiagnostics === [] ? $diagnostics : $maxDiagnostics,
+                $level,
+            );
         }
 
         return [];
@@ -187,7 +196,16 @@ final class PhpStanChecker implements Checker
 
         $this->firstDetectedLevel = $knownLevel;
 
-        return $this->annotateDetectionLevel($knownDiagnostics, $knownLevel);
+        if ($knownLevel === 10) {
+            return $this->annotateDetectionLevel($knownDiagnostics, $knownLevel);
+        }
+
+        $maxDiagnostics = $this->runAnalysis($testCase, $this->configPath, 'max');
+
+        return $this->annotateDetectionLevel(
+            $maxDiagnostics === [] ? $knownDiagnostics : $maxDiagnostics,
+            $knownLevel,
+        );
     }
 
     /**

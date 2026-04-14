@@ -38,6 +38,7 @@ final class SummaryReport
         $html[] = '.group { background: #f3f3f3; font-weight: 700; }';
         $html[] = '.pass { background: #dff7df; }';
         $html[] = '.fail { background: #f9d6d6; }';
+        $html[] = '.by-design { background: #f6e7c8; }';
         $html[] = '.unknown { background: #f0f0f0; }';
         $html[] = '</style>';
         $html[] = '</head>';
@@ -105,6 +106,7 @@ final class SummaryReport
                     $class = match ($display) {
                         'Pass' => 'pass',
                         'Fail' => 'fail',
+                        'By design' => 'by-design',
                         default => 'unknown',
                     };
 
@@ -116,9 +118,13 @@ final class SummaryReport
                         $cell .= ' <small>' . htmlspecialchars($levelLabel) . '</small>';
                     }
 
+                    $notes = trim((string) ($result['notes'] ?? ''));
+                    $title = $notes !== '' ? sprintf(' title="%s"', htmlspecialchars($notes)) : '';
+
                     $html[] = sprintf(
-                        '<td class="%s">%s</td>',
+                        '<td class="%s"%s>%s</td>',
                         $class,
+                        $title,
                         $cell,
                     );
                 }

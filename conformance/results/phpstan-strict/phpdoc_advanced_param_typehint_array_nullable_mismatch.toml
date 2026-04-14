@@ -1,7 +1,7 @@
-status = "Unknown"
+status = "By design"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = "Lines 15, 18: Expected error (tag array_param_mismatch)"
-notes = ""
+notes = "Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572"
 ignore_errors = []

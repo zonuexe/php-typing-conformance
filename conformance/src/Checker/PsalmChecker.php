@@ -38,11 +38,16 @@ final class PsalmChecker implements Checker
      */
     public function analyse(TestCase $testCase): array
     {
+        $paths = array_map(
+            static fn (string $path): string => escapeshellarg($path),
+            [...$testCase->supportPaths, $testCase->path],
+        );
+
         $command = sprintf(
             '%s --config=%s --no-progress --output-format=json %s 2>&1',
             escapeshellarg($this->binaryPath),
             escapeshellarg($this->configPath),
-            escapeshellarg($testCase->path),
+            implode(' ', $paths),
         );
 
         exec($command, $output, $exitCode);

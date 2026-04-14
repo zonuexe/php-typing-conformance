@@ -105,12 +105,17 @@ final class PhpStanChecker implements Checker
      */
     private function runAnalysis(TestCase $testCase, string $configPath, string $level): array
     {
+        $paths = array_map(
+            static fn (string $path): string => escapeshellarg($path),
+            [...$testCase->supportPaths, $testCase->path],
+        );
+
         $command = sprintf(
             '%s analyse -c %s --level=%s --no-progress --error-format=raw %s 2>&1',
             escapeshellarg($this->binaryPath),
             escapeshellarg($configPath),
             escapeshellarg($level),
-            escapeshellarg($testCase->path),
+            implode(' ', $paths),
         );
 
         exec($command, $output, $exitCode);

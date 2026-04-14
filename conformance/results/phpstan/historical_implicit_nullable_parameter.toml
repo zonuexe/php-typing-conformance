@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "historical_implicit_nullable_parameter.php:14: Deprecated in PHP 8.4: Parameter #1 $values (array) is implicitly nullable via default value null. [identifier=parameter.implicitlyNullable] [detected-from-level=0]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+first_detected_level = 0

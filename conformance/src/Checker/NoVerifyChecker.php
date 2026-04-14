@@ -36,10 +36,12 @@ final class NoVerifyChecker implements Checker
      */
     public function analyse(TestCase $testCase): array
     {
+        $analysisFiles = [...$testCase->supportPaths, $testCase->path];
+        $arguments = array_map(static fn (string $path): string => escapeshellarg($path), $analysisFiles);
         $command = sprintf(
             '%s check --output-json --full-analysis-files %s %s 2>&1',
             escapeshellarg($this->binaryPath),
-            escapeshellarg($testCase->path),
+            implode(' ', $arguments),
             escapeshellarg($testCase->path),
         );
 

@@ -25,6 +25,7 @@ final class TestCaseDiscovery
         }
 
         $testCases = [];
+        $supportFiles = [];
 
         foreach ($entries as $entry) {
             if ($entry === '.' || $entry === '..') {
@@ -36,6 +37,7 @@ final class TestCaseDiscovery
             }
 
             if (str_starts_with($entry, '_')) {
+                $supportFiles[] = $entry;
                 continue;
             }
 
@@ -45,11 +47,13 @@ final class TestCaseDiscovery
             }
 
             $path = $testsDir . DIRECTORY_SEPARATOR . $entry;
+            $name = pathinfo($entry, PATHINFO_FILENAME);
             $testCases[] = new TestCase(
                 path: $path,
                 fileName: $entry,
-                name: pathinfo($entry, PATHINFO_FILENAME),
+                name: $name,
                 groupKey: $groupKey,
+                supportPaths: $this->resolveSupportPaths($testsDir, $name, $supportFiles),
             );
         }
 
@@ -59,6 +63,29 @@ final class TestCaseDiscovery
         );
 
         return $testCases;
+    }
+
+    /**
+     * @param list<string> $supportFiles
+     * @return list<string>
+     */
+    private function resolveSupportPaths(string $testsDir, string $testName, array $supportFiles): array
+    {
+        $paths = [];
+        $prefix = '_' . $testName;
+
+        foreach ($supportFiles as $supportFile) {
+            $supportName = pathinfo($supportFile, PATHINFO_FILENAME);
+            if (!str_starts_with($supportName, $prefix)) {
+                continue;
+            }
+
+            $paths[] = $testsDir . DIRECTORY_SEPARATOR . $supportFile;
+        }
+
+        sort($paths);
+
+        return $paths;
     }
 
     /**

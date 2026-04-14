@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+directives_deprecated_usage.php:15: The function conformance\\tests\\directivesdeprecatedusage\\oldmessage has been marked as deprecated [DeprecatedFunction]
+directives_deprecated_usage.php:16: Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter is marked deprecated [DeprecatedClass]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

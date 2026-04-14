@@ -37,12 +37,15 @@ final class MagoChecker implements Checker
      */
     public function analyse(TestCase $testCase): array
     {
-        $relativePath = $this->toWorkspaceRelativePath($testCase->path);
+        $relativePaths = array_map(
+            fn (string $path): string => escapeshellarg($this->toWorkspaceRelativePath($path)),
+            [...$testCase->supportPaths, $testCase->path],
+        );
         $command = sprintf(
             '%s --workspace %s --colors never analyze --reporting-format json %s 2>&1',
             escapeshellarg($this->binaryPath),
             escapeshellarg($this->workspacePath),
-            escapeshellarg($relativePath),
+            implode(' ', $relativePaths),
         );
 
         exec($command, $output, $exitCode);

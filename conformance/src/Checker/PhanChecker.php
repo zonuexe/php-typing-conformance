@@ -42,11 +42,15 @@ final class PhanChecker implements Checker
      */
     public function analyse(TestCase $testCase): array
     {
+        $paths = array_map(
+            static fn (string $path): string => escapeshellarg($path),
+            [...$testCase->supportPaths, $testCase->path],
+        );
         $command = sprintf(
             '%s --allow-polyfill-parser --output-mode text --directory %s %s 2>&1',
             escapeshellarg($this->binaryPath),
             escapeshellarg($this->testsDir),
-            escapeshellarg($testCase->path),
+            implode(' ', $paths),
         );
 
         exec($command, $output, $exitCode);

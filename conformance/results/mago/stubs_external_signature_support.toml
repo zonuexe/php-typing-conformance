@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "stubs_external_signature_support.php:37: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\StubsExternalSignatureSupport\\takesClock`: expected `Conformance\\Tests\\StubsExternalSignatureSupport\\ExternalClock`, but possibly received `Conformance\\Tests\\StubsExternalSignatureSupport\\InvalidClock`. [possibly-invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

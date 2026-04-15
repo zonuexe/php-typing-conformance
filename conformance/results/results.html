@@ -9,9 +9,12 @@ body { font-family: system-ui, sans-serif; margin: 24px; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
 small a { color: inherit; }
-details { margin-top: 4px; }
-details summary { cursor: pointer; font-size: 0.875em; }
-details p { margin: 6px 0 0; font-size: 0.875em; }
+.hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }
+.hover-card__trigger { cursor: help; }
+.hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }
+.hover-card:hover .hover-card__popup, .hover-card:focus-within .hover-card__popup { visibility: visible; opacity: 1; transform: translateY(0); }
+.hover-card__popup a { color: #9fd0ff; }
+.hover-card__notes-label { border-bottom: 1px dotted currentColor; font-size: 0.875em; }
 .group { background: #f3f3f3; font-weight: 700; }
 .pass { background: #dff7df; }
 .fail { background: #f9d6d6; }
@@ -23,12 +26,12 @@ details p { margin: 6px 0 0; font-size: 0.875em; }
 <h1>PHP Typing Conformance Results</h1>
 <table>
 <thead><tr><th>Test</th>
-<th>phpstan<br><small><a href="https://github.com/phpstan/phpstan/releases/tag/2.1.47" title="PHPStan - PHP Static Analysis Tool 2.1.47">2.1.47</a></small></th>
-<th>phpstan-strict<br><small><a href="https://github.com/phpstan/phpstan/releases/tag/2.1.47" title="PHPStan - PHP Static Analysis Tool 2.1.47">2.1.47</a></small></th>
-<th>psalm<br><small><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" title="Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">6.16.1</a></small></th>
-<th>mago<br><small><a href="https://github.com/carthage-software/mago/releases/tag/1.19.0" title="mago 1.19.0">1.19.0</a></small></th>
-<th>phan<br><small><a href="https://github.com/phan/phan/releases/tag/6.0.5" title="Phan 6.0.5 PHP version used to run Phan: 8.5.4">6.0.5</a></small></th>
-<th>noverify<br><small><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" title="NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529">0.5.5</a></small></th>
+<th>phpstan<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.1.47" class="hover-card__trigger" target="_blank">2.1.47</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.1.47</span></span></small></th>
+<th>phpstan-strict<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.1.47" class="hover-card__trigger" target="_blank">2.1.47</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.1.47</span></span></small></th>
+<th>psalm<br><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></th>
+<th>mago<br><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.19.0" class="hover-card__trigger" target="_blank">1.19.0</a><span class="hover-card__popup">mago 1.19.0</span></span></small></th>
+<th>phan<br><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.5" class="hover-card__trigger" target="_blank">6.0.5</a><span class="hover-card__popup">Phan 6.0.5 PHP version used to run Phan: 8.5.4</span></span></small></th>
+<th>noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
 </tr></thead><tbody>
 <tr class="group"><td colspan="7">Native types</td></tr>
 <tr><td>native_types_resource_argument</td>
@@ -244,10 +247,10 @@ details p { margin: 6px 0 0; font-size: 0.875em; }
 <td class="pass">Pass</td>
 </tr>
 <tr><td>phpdoc_advanced_param_typehint_array_nullable_mismatch</td>
-<td class="by-design">By design<details><summary>Notes</summary><p>Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572</p></details></td>
-<td class="by-design">By design<details><summary>Notes</summary><p>Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572</p></details></td>
-<td class="by-design">By design<details><summary>Notes</summary><p>Intentionally not reported in Psalm by design. See https://github.com/vimeo/psalm/issues/3785</p></details></td>
-<td class="by-design">By design<details><summary>Notes</summary><p>Intentionally not reported by design.</p></details></td>
+<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank">https://github.com/phpstan/phpstan/issues/7572</a></span></span></td>
+<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank">https://github.com/phpstan/phpstan/issues/7572</a></span></span></td>
+<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported in Psalm by design. See <a href="https://github.com/vimeo/psalm/issues/3785" target="_blank">https://github.com/vimeo/psalm/issues/3785</a></span></span></td>
+<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported by design.</span></span></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 </tr>
@@ -276,10 +279,10 @@ details p { margin: 6px 0 0; font-size: 0.875em; }
 <td class="pass">Pass</td>
 </tr>
 <tr><td>phpdoc_advanced_param_typehint_nullable_mismatch</td>
-<td class="by-design">By design<details><summary>Notes</summary><p>Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572</p></details></td>
-<td class="by-design">By design<details><summary>Notes</summary><p>Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572</p></details></td>
-<td class="by-design">By design<details><summary>Notes</summary><p>Intentionally not reported in Psalm by design. See https://github.com/vimeo/psalm/issues/3785</p></details></td>
-<td class="by-design">By design<details><summary>Notes</summary><p>Intentionally not reported by design.</p></details></td>
+<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank">https://github.com/phpstan/phpstan/issues/7572</a></span></span></td>
+<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank">https://github.com/phpstan/phpstan/issues/7572</a></span></span></td>
+<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported in Psalm by design. See <a href="https://github.com/vimeo/psalm/issues/3785" target="_blank">https://github.com/vimeo/psalm/issues/3785</a></span></span></td>
+<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported by design.</span></span></td>
 <td class="pass">Pass</td>
 <td class="pass">Pass</td>
 </tr>

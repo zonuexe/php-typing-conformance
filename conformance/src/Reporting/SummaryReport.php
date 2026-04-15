@@ -10,6 +10,7 @@ use Internal\Toml\Toml;
 use RuntimeException;
 use function htmlspecialchars;
 use function preg_match;
+use function preg_replace_callback;
 use function sprintf;
 use function trim;
 
@@ -39,9 +40,12 @@ final class SummaryReport
         $html[] = 'table { width: 100%; border-collapse: collapse; }';
         $html[] = 'th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }';
         $html[] = 'small a { color: inherit; }';
-        $html[] = 'details { margin-top: 4px; }';
-        $html[] = 'details summary { cursor: pointer; font-size: 0.875em; }';
-        $html[] = 'details p { margin: 6px 0 0; font-size: 0.875em; }';
+        $html[] = '.hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }';
+        $html[] = '.hover-card__trigger { cursor: help; }';
+        $html[] = '.hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }';
+        $html[] = '.hover-card:hover .hover-card__popup, .hover-card:focus-within .hover-card__popup { visibility: visible; opacity: 1; transform: translateY(0); }';
+        $html[] = '.hover-card__popup a { color: #9fd0ff; }';
+        $html[] = '.hover-card__notes-label { border-bottom: 1px dotted currentColor; font-size: 0.875em; }';
         $html[] = '.group { background: #f3f3f3; font-weight: 700; }';
         $html[] = '.pass { background: #dff7df; }';
         $html[] = '.fail { background: #f9d6d6; }';
@@ -58,23 +62,27 @@ final class SummaryReport
             $fullVersion = $this->loadVersion($resultsRoot, $tool);
             $shortVersion = $this->shortVersion($tool, $fullVersion);
             $releaseUrl = $this->releaseUrl($tool, $shortVersion);
-            $title = htmlspecialchars(str_replace("\n", ' ', $fullVersion));
             $versionHtml = htmlspecialchars($shortVersion);
+            $popupHtml = htmlspecialchars(str_replace("\n", ' ', $fullVersion));
 
             if ($releaseUrl !== null) {
                 $versionHtml = sprintf(
-                    '<a href="%s" title="%s">%s</a>',
+                    '<a href="%s" class="hover-card__trigger" target="_blank">%s</a>',
                     htmlspecialchars($releaseUrl),
-                    $title,
                     $versionHtml,
                 );
             } else {
                 $versionHtml = sprintf(
-                    '<span title="%s">%s</span>',
-                    $title,
+                    '<span class="hover-card__trigger">%s</span>',
                     $versionHtml,
                 );
             }
+
+            $versionHtml = sprintf(
+                '<span class="hover-card">%s<span class="hover-card__popup">%s</span></span>',
+                $versionHtml,
+                $popupHtml,
+            );
 
             $html[] = sprintf(
                 '<th>%s<br><small>%s</small></th>',
@@ -128,8 +136,8 @@ final class SummaryReport
                     $notes = trim((string) ($result['notes'] ?? ''));
                     if ($notes !== '') {
                         $cell .= sprintf(
-                            '<details><summary>Notes</summary><p>%s</p></details>',
-                            htmlspecialchars($notes),
+                            ' <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">%s</span></span>',
+                            $this->renderLinkedText($notes),
                         );
                     }
 
@@ -208,6 +216,22 @@ final class SummaryReport
         }
 
         return $version;
+    }
+
+    private function renderLinkedText(string $text): string
+    {
+        $escaped = htmlspecialchars($text);
+
+        $linked = preg_replace_callback(
+            '/https?:\/\/[^\s<]+/i',
+            static fn (array $matches): string => sprintf(
+                '<a href="%1$s" target="_blank">%1$s</a>',
+                htmlspecialchars($matches[0]),
+            ),
+            $escaped,
+        );
+
+        return $linked ?? $escaped;
     }
 
     /**

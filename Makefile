@@ -1,4 +1,14 @@
-.PHONY: init-submodules render-report-html
+.PHONY: init-submodules pull-submodules render-report-html
+
+REFERENCE_SUBMODULES := \
+	references/python-typing \
+	references/fig-standards \
+	references/mago \
+	references/phpstan \
+	references/psalm \
+	references/phpDocumentor \
+	references/noverify \
+	references/phan.wiki
 
 init-submodules:
 	git submodule update --init --filter=blob:none references/python-typing
@@ -30,6 +40,9 @@ init-submodules:
 	git -C references/phan.wiki sparse-checkout init --cone
 	git -C references/phan.wiki sparse-checkout set scripts
 	git -C references/phan.wiki checkout
+
+pull-submodules: init-submodules
+	git submodule update --remote --merge $(REFERENCE_SUBMODULES)
 
 render-report-html:
 	php conformance/src/render-report-html.php

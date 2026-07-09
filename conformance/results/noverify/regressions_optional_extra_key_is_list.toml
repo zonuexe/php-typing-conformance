@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = "regressions_optional_extra_key_is_list.php:22: param $b miss matched with phpdoc type <<array{0: int, a?: string}>> [funcParamTypeMissMatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

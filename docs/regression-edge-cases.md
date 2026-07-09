@@ -134,10 +134,10 @@ above. The string-narrowing case is the first promotion from that track.
 Candidate edge cases to extract next. Each should become one focused `regressions_*.php`
 file following the method above.
 
-- [ ] **Optional *extra* key + list** — `array{0: int, a?: string}` under `array_is_list()`.
-  The list-compatible required key `0` plus an optional non-list key; `[0 => 1]` is a valid
-  list value. Same family as above, second reproduction in
-  [phpstan#14938](https://github.com/phpstan/phpstan/issues/14938).
+- [x] **Optional *extra* key + list** — `array{0: int, a?: string}` under `array_is_list()`.
+  Done: [`regressions_optional_extra_key_is_list.php`](../conformance/tests/regressions_optional_extra_key_is_list.php).
+  Same verdict as the base case (PHPStan/Psalm/Mago wrong, Phan correct);
+  second reproduction from [phpstan#14938](https://github.com/phpstan/phpstan/issues/14938).
 - [ ] **Explicit-key sealed shape list-ness** — `array{0: string, 1: string}` vs.
   `array{string, string}`. Per the [survey matrix](https://github.com/phpstan/phpstan/discussions/14939),
   Psalm answers "not a list" for the explicit-key form while PHPStan/Mago answer "list";

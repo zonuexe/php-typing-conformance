@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+regressions_optional_extra_key_is_list.php:24: Impossible type assertion: `$b` of type `array{0: int, 'a'?: string}` can never be `list<int|string>`. [impossible-type-comparison]
+regressions_optional_extra_key_is_list.php:24: This condition (type `false`) will always evaluate to false. [impossible-condition]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

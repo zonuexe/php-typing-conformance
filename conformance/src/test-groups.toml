@@ -155,3 +155,14 @@ references = [
   "references/phpDocumentor/docs/references/phpdoc",
   "references/phan.wiki/Annotating-Your-Source-Code.md",
 ]
+
+[regressions]
+name = "Cross-analyzer regressions"
+source_category = "regression"
+description = "Edge cases distilled from analyzer issue trackers. Each case tests the hypothesis that a defect surfaced in one analyzer is latent in the others, and records every tool's current verdict."
+references = [
+  "https://github.com/phpstan/phpstan/discussions/14939",
+  "https://github.com/phpstan/phpstan/issues/14938",
+  "https://github.com/vimeo/psalm/issues/11905",
+  "https://github.com/carthage-software/mago/issues/2073",
+]

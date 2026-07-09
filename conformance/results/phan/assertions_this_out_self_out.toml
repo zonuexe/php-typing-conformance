@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 16
+output = """
+assertions_this_out_self_out.php:33: Template type U not used in return value of function/method replace() [PhanTemplateTypeNotUsedInFunctionReturn]
+assertions_this_out_self_out.php:53: Argument 1 ($box) is $box of type \\Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox|\\Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<1> but \\Conformance\\Tests\\AssertionsThisOutSelfOut\\takesStringBox() takes \\Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string> (real type \\Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_this_out_self_out.php:44 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+assertions_this_out_self_out.php:57: Argument 1 ($box) is $box of type \\Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox|\\Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<1> but \\Conformance\\Tests\\AssertionsThisOutSelfOut\\takesStringBox() takes \\Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string> (real type \\Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_this_out_self_out.php:44 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 16
+output = """
+assertions_this_out_self_out.php:53: Invalid argument type for argument #1 of `Conformance\\Tests\\AssertionsThisOutSelfOut\\takesStringBox`: expected `Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string>`, but found `Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int(1)>`. [invalid-argument]
+assertions_this_out_self_out.php:57: Invalid argument type for argument #1 of `Conformance\\Tests\\AssertionsThisOutSelfOut\\takesStringBox`: expected `Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string>`, but found `Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int(1)>`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

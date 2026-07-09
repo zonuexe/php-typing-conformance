@@ -27,7 +27,7 @@ final class ExpectationParser
         foreach ($lines as $index => $line) {
             $lineNumber = $index + 1;
 
-            if (!preg_match_all('/\/\/\s*E(\?)?(?:<([^>]+)>)?(?:\[([^\]]+)\])?(?::\s*(.*))?$/', $line, $matches, PREG_SET_ORDER)) {
+            if (!preg_match_all('/\/\/\s*E(\?)?(?:<([^>]+)>)?(?:\[([^\]]+)\])?(?::\s*(.*?))?(?=(?:\s*\/\/\s*E|$))/', $line, $matches, PREG_SET_ORDER)) {
                 continue;
             }
 

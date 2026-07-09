@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "regressions_array_element_null_subtraction.php:35: Parameter #1 $arr of function Conformance\\Tests\\RegressionsArrayElementNullSubtraction\\takesStringList expects array{string}, array{string|null} given. [identifier=argument.type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

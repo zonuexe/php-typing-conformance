@@ -81,6 +81,27 @@ should narrow its argument in the guarded branch, so a following call requiring
 Discovered by the corpus sweep (see `conformance/corpus/`) from Mago's
 `reconcile_non_empty_string` case; distilled here into a minimal, self-authored repro.
 
+### Array element narrowing by null subtraction
+
+Test: [`regressions_array_element_null_subtraction.php`](../conformance/tests/regressions_array_element_null_subtraction.php)
+
+`$arr = [$val]` (with `$val: string|null`) has type `list{string|null}`. After
+`if ($arr === [null]) { return; }`, the else path has excluded the only null-element value,
+so `$arr` narrows to `list{string}`. Tools diverge on whether they subtract the null case
+from the array shape through the equality check.
+
+| Tool | Verdict | Diagnostic |
+|------|---------|-----------|
+| PHPStan / PHPStan-strict | ✗ does not subtract | `argument.type` |
+| Psalm | ✗ does not subtract | `ArgumentTypeCoercion` |
+| Mago | ✓ narrows to `list{string}` | — |
+| Phan | ✓ narrows | — |
+| NoVerify | n/a — cannot evaluate `list{string}` | flags the signature |
+
+Discovered by the corpus sweep from Mago's `array_reconcile` case
+(`test_null_string_subtraction`); distilled into a minimal, self-authored repro. Same
+PHPStan+Psalm vs. Mago+Phan split as the `@assert-if-true` case above.
+
 ## Corpus-sourced discovery
 
 Beyond hand-picked tracker issues, `conformance/corpus/` replays an analyzer's own test

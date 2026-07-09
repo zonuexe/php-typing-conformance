@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = """
+regressions_list_destructure_string_key.php:28: Offset 0 does not exist on array<string, int>. [identifier=offsetAccess.notFound] [detected-from-level=3]
+regressions_list_destructure_string_key.php:28: Offset 1 does not exist on array<string, int>. [identifier=offsetAccess.notFound] [detected-from-level=3]
+regressions_list_destructure_string_key.php:30: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [detected-from-level=3]
+regressions_list_destructure_string_key.php:31: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [detected-from-level=3]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+first_detected_level = 3

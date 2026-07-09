@@ -102,6 +102,26 @@ Discovered by the corpus sweep from Mago's `array_reconcile` case
 (`test_null_string_subtraction`); distilled into a minimal, self-authored repro. Same
 PHPStan+Psalm vs. Mago+Phan split as the `@assert-if-true` case above.
 
+### Positional destructuring of a string-keyed array
+
+Test: [`regressions_list_destructure_string_key.php`](../conformance/tests/regressions_list_destructure_string_key.php)
+
+`[$a, $b] = $stringKeyed` reads positional integer keys 0 and 1 from an
+`array<string, int>`, which has no integer keys — the destructured variables are always
+undefined at runtime. This is the **inverse** direction from the narrowing cases: here the
+tools that were lenient are strict, and one lenient tool misses the defect.
+
+| Tool | Verdict | Diagnostic |
+|------|---------|-----------|
+| PHPStan / PHPStan-strict | ✓ detects | `offsetAccess.notFound` (+ `echo.nonString` downstream) |
+| Mago | ✓ detects | `mismatched-array-index` |
+| Phan | ✓ detects | `PhanTypeMismatchArrayDestructuringKey` |
+| Psalm | ✗ misses | — |
+| NoVerify | ✗ misses | — |
+
+Discovered by the corpus sweep from Mago's `list_destructure_string_key_simple` case.
+Notably the split differs from the narrowing cases: **Psalm** is the tool that misses here.
+
 ## Corpus-sourced discovery
 
 Beyond hand-picked tracker issues, `conformance/corpus/` replays an analyzer's own test

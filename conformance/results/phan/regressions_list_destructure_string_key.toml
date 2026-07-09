@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = "regressions_list_destructure_string_key.php:28: Attempting an array destructing assignment with a key of type int but the only key types of the right-hand side are of type string [PhanTypeMismatchArrayDestructuringKey]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = """
+regressions_list_destructure_string_key.php:28: Invalid array key type: `int(0)` is not a valid key for this array. [mismatched-array-index]
+regressions_list_destructure_string_key.php:28: Invalid array key type: `int(1)` is not a valid key for this array. [mismatched-array-index]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -138,10 +138,12 @@ file following the method above.
   Done: [`regressions_optional_extra_key_is_list.php`](../conformance/tests/regressions_optional_extra_key_is_list.php).
   Same verdict as the base case (PHPStan/Psalm/Mago wrong, Phan correct);
   second reproduction from [phpstan#14938](https://github.com/phpstan/phpstan/issues/14938).
-- [ ] **Explicit-key sealed shape list-ness** — `array{0: string, 1: string}` vs.
-  `array{string, string}`. Per the [survey matrix](https://github.com/phpstan/phpstan/discussions/14939),
-  Psalm answers "not a list" for the explicit-key form while PHPStan/Mago answer "list";
-  the keyless form agrees. Probe whether each tool treats the two spellings identically.
+- [x] **Explicit-key sealed shape list-ness** — `array{0: string, 1: string}` vs.
+  `array{string, string}`. Done:
+  [`regressions_explicit_key_shape_is_list.php`](../conformance/tests/regressions_explicit_key_shape_is_list.php).
+  Confirmed: Psalm alone rejects the explicit-key spelling as a `list<string>`
+  (`ArgumentTypeCoercion`) while accepting the keyless spelling; PHPStan/Mago/Phan accept
+  both. Survey matrix [#14939](https://github.com/phpstan/phpstan/discussions/14939).
 - [ ] **Reversed literal at a `list{}` parameter** — passing `[1 => 'x', 0 => 'y']`
   (provably not a list at runtime) to a `list{string, string}` parameter. Phan rejects it;
   PHPStan/Psalm/Mago accept it (survey matrix, #14939). Tests soundness of list-shape

@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_explicit_key_shape_is_list.php:19: param $list miss matched with phpdoc type <<list<string>>> [funcParamTypeMissMatch]
+regressions_explicit_key_shape_is_list.php:25: param $shape miss matched with phpdoc type <<array{0: string, 1: string}>> [funcParamTypeMissMatch]
+regressions_explicit_key_shape_is_list.php:31: param $shape miss matched with phpdoc type <<array{string, string}>> [funcParamTypeMissMatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

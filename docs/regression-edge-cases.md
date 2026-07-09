@@ -62,6 +62,32 @@ as required and collapsed the check to impossible/always-false.
 When PHPStan 2.x picks up phpstan-src#6025, and when Mago is upgraded past 1.43, their
 columns will flip and the markers need refreshing.
 
+### `@assert-if-true` narrowing to a string subtype
+
+Test: [`regressions_string_narrowing_assert_if_true.php`](../conformance/tests/regressions_string_narrowing_assert_if_true.php)
+
+A user-defined predicate carrying a non-vendor-prefixed `@assert-if-true non-empty-string $s`
+should narrow its argument in the guarded branch, so a following call requiring
+`non-empty-string` type-checks. Tools diverge on whether they honor the bare annotation.
+
+| Tool | Verdict | Diagnostic |
+|------|---------|-----------|
+| PHPStan / PHPStan-strict | ✗ does not narrow | `argument.type` |
+| Psalm | ✗ does not narrow | `ArgumentTypeCoercion` |
+| Mago | ✓ narrows, accepts | — |
+| Phan | ✓ narrows, accepts | — |
+| NoVerify | n/a — cannot evaluate `non-empty-string` | flags the signature |
+
+Discovered by the corpus sweep (see `conformance/corpus/`) from Mago's
+`reconcile_non_empty_string` case; distilled here into a minimal, self-authored repro.
+
+## Corpus-sourced discovery
+
+Beyond hand-picked tracker issues, `conformance/corpus/` replays an analyzer's own test
+corpus across every tool to surface divergences at scale (Mago `@mago-expect` cases as the
+first baseline). Confirmed soundness divergences are promoted into the `regressions_*` tests
+above. The string-narrowing case is the first promotion from that track.
+
 ## Backlog
 
 Candidate edge cases to extract next. Each should become one focused `regressions_*.php`

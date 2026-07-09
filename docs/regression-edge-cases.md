@@ -150,8 +150,11 @@ file following the method above.
   Result refines the survey: **both Phan and Psalm** reject it (`PhanTypeMismatchArgument`
   / `ArgumentTypeCoercion`); PHPStan and Mago accept it. (The survey #14939 listed only
   Phan as rejecting — Psalm's version here also flags it.)
-- [ ] **`array_is_list()` on the keyless tuple shape** — `array{int, string}` narrowing,
-  to confirm the "list?" verdict is consistent with the explicit-key case above.
+- [x] **`array_is_list()` on the keyless tuple shape** — `array{int, string}`. Done:
+  [`regressions_keyless_tuple_is_list.php`](../conformance/tests/regressions_keyless_tuple_is_list.php).
+  Confirmed the healthy counterpart: PHPStan, Psalm, and Mago all correctly report the
+  check as **always-true** (redundant) — a keyless tuple is always a list — in direct
+  contrast with the always-false optional-key bug. Phan emits no redundancy note.
 
 ### Sourcing leads
 

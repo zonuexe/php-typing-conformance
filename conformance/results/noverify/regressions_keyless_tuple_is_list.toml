@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = "regressions_keyless_tuple_is_list.php:20: param $t miss matched with phpdoc type <<array{int, string}>> [funcParamTypeMissMatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -144,10 +144,12 @@ file following the method above.
   Confirmed: Psalm alone rejects the explicit-key spelling as a `list<string>`
   (`ArgumentTypeCoercion`) while accepting the keyless spelling; PHPStan/Mago/Phan accept
   both. Survey matrix [#14939](https://github.com/phpstan/phpstan/discussions/14939).
-- [ ] **Reversed literal at a `list{}` parameter** — passing `[1 => 'x', 0 => 'y']`
-  (provably not a list at runtime) to a `list{string, string}` parameter. Phan rejects it;
-  PHPStan/Psalm/Mago accept it (survey matrix, #14939). Tests soundness of list-shape
-  parameter acceptance.
+- [x] **Reversed literal at a `list{}` parameter** — passing `[1 => 'x', 0 => 'y']`
+  (provably not a list at runtime) to a `list{string, string}` parameter. Done:
+  [`regressions_reversed_literal_list_param.php`](../conformance/tests/regressions_reversed_literal_list_param.php).
+  Result refines the survey: **both Phan and Psalm** reject it (`PhanTypeMismatchArgument`
+  / `ArgumentTypeCoercion`); PHPStan and Mago accept it. (The survey #14939 listed only
+  Phan as rejecting — Psalm's version here also flags it.)
 - [ ] **`array_is_list()` on the keyless tuple shape** — `array{int, string}` narrowing,
   to confirm the "list?" verdict is consistent with the explicit-key case above.
 

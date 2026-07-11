@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = "regressions_backed_enum_value_narrowing.php:33: Match expression does not handle remaining value: Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit::Hearts [identifier=match.unhandled] [detected-from-level=4]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+first_detected_level = 4

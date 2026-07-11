@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "regressions_class_string_negative_narrowing.php:30: Function Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\fromClassString() should return Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B but returns Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\A|Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B. [identifier=return.type] [detected-from-level=7]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+first_detected_level = 7

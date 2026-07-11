@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+regressions_backed_enum_value_narrowing.php:27: Class or interface named \\Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit does not exist [undefinedClass]
+regressions_backed_enum_value_narrowing.php:29: Property {\\Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit}->value does not exist [undefinedProperty]
+regressions_backed_enum_value_narrowing.php:34: Class constant \\Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit::Spades does not exist [undefinedConstant]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -122,6 +122,45 @@ tools that were lenient are strict, and one lenient tool misses the defect.
 Discovered by the corpus sweep from Mago's `list_destructure_string_key_simple` case.
 Notably the split differs from the narrowing cases: **Psalm** is the tool that misses here.
 
+### Negative-branch narrowing via class-string identity
+
+Test: [`regressions_class_string_negative_narrowing.php`](../conformance/tests/regressions_class_string_negative_narrowing.php)
+
+After `if ($x::class === A::class) { throw; }`, the fall-through has excluded the `final`
+class `A`, so `$x` is `B`. Tools diverge on whether they narrow the *negative* branch of a
+`::class` identity comparison. (Verified separately: PHPStan narrows both directions for
+`instanceof`, `is_a()`, and `gettype()` — only class-string identity lacks negative
+narrowing, in every spelling: `::class ===`/`!==`, `get_class()`, `$x::class === $y::class`.)
+
+| Tool | Verdict | Diagnostic |
+|------|---------|-----------|
+| PHPStan / PHPStan-strict | ✗ keeps `A\|B` | `return.type` |
+| Psalm | ✗ keeps `A\|B` | `InvalidReturnType` / `InvalidReturnStatement` |
+| Mago | ✓ narrows to `B` | — |
+| Phan | ✓ narrows | — |
+
+Not an array-shape case — control-flow narrowing on class-string identity. This is a
+*main-table* behaviour, not just an edge case.
+
+### Narrowing a backed enum by its `->value`
+
+Test: [`regressions_backed_enum_value_narrowing.php`](../conformance/tests/regressions_backed_enum_value_narrowing.php)
+
+A backed enum's case↔value map is a bijection, so `$s->value === 'H'` selects `Suit::Hearts`
+and the fall-through is `Suit::Spades` — making the trailing single-arm `match ($s)`
+exhaustive. Tools diverge on whether a `->value` comparison narrows the enum case.
+
+| Tool | Verdict | Diagnostic |
+|------|---------|-----------|
+| PHPStan / PHPStan-strict | ✗ no narrowing | `match.unhandled` |
+| Psalm | ✗ no narrowing | `UnhandledMatchCondition` |
+| Mago | ✗ no narrowing | `match-not-exhaustive` |
+| Phan | ✓ exhaustive | — |
+| NoVerify | n/a — no enum support | flags Suit / `->value` / `Suit::Spades` |
+
+Companion to the class-string case: all three of PHPStan, Psalm, and Mago narrow enum
+*case identity* (`$s === Suit::Hearts`) but not the `->value` form; only Phan accepts it.
+
 ## Corpus-sourced discovery
 
 Beyond hand-picked tracker issues, `conformance/corpus/` replays an analyzer's own test

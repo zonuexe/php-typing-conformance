@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_class_string_negative_narrowing.php:24: The declared return type 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B' for Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\fromClassString is incorrect, got 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\A|Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B' [InvalidReturnType]
+regressions_class_string_negative_narrowing.php:30: The inferred type 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\A|Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B' does not match the declared return type 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B' for Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\fromClassString [InvalidReturnStatement]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

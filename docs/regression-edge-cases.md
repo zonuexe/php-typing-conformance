@@ -181,6 +181,27 @@ array-shape equivalent `$a['tag'] === true` to each shape, but not the object fo
 Same PHPStan+Psalm vs. Mago+Phan split as the class-string case; discovered from Mago's
 `issue_1093` via the PHPStan-focused corpus sweep.
 
+### Conflicting property types composed from two traits
+
+Test: [`regressions_trait_property_type_conflict.php`](../conformance/tests/regressions_trait_property_type_conflict.php)
+
+`LeftTrait::$prop` is `string` and `RightTrait::$prop` is `int`; composing both into one
+class is a **compile-time fatal error in PHP**. Tools diverge on whether they report it
+statically.
+
+| Tool | Verdict | Diagnostic |
+|------|---------|-----------|
+| Mago | ✓ detects the conflict | `incompatible-property-type` |
+| Phan | ✓ detects the conflict | `PhanIncompatibleRealPropertyType` |
+| Psalm | ~ misses the conflict | only `MissingConstructor` (unrelated) |
+| PHPStan / PHPStan-strict | ✗ fully silent | — |
+| NoVerify | ✗ silent | — |
+
+PHPStan misses a defect that stops the program from even loading. From Mago's
+`trait_property_type_conflicts` via the sweep — the one genuine MISS-direction PHPStan gap
+after correcting for `(in context of class …)` diagnostics (trait-method LSP violations, by
+contrast, *are* reported by PHPStan in the using class's context).
+
 ## Corpus-sourced discovery
 
 Beyond hand-picked tracker issues, `conformance/corpus/` replays an analyzer's own test

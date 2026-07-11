@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "regressions_object_property_discriminant_narrowing.php:35: Function Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\pick() should return Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox but returns Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox. [identifier=return.type] [detected-from-level=7]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+first_detected_level = 7

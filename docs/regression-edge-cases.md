@@ -161,6 +161,26 @@ exhaustive. Tools diverge on whether a `->value` comparison narrows the enum cas
 Companion to the class-string case: all three of PHPStan, Psalm, and Mago narrow enum
 *case identity* (`$s === Suit::Hearts`) but not the `->value` form; only Phan accepts it.
 
+### Narrowing an object union by a discriminating property
+
+Test: [`regressions_object_property_discriminant_narrowing.php`](../conformance/tests/regressions_object_property_discriminant_narrowing.php)
+
+`StrBox::$v` is `string` and `IntBox::$v` is `int`, so `is_string($b->v)` holds only for
+`StrBox`; in that branch `$b` is `StrBox`. Tools diverge on whether they narrow the *object*
+union from a check on a discriminating property. (Verified separately: PHPStan narrows the
+array-shape equivalent `$a['tag'] === true` to each shape, but not the object form
+`is_string($b->v)` / `$b->tag === true` — array vs. object asymmetry.)
+
+| Tool | Verdict | Diagnostic |
+|------|---------|-----------|
+| PHPStan / PHPStan-strict | ✗ keeps `StrBox\|IntBox` | `return.type` |
+| Psalm | ✗ keeps the union | `InvalidReturnType` / `InvalidReturnStatement` |
+| Mago | ✓ narrows to `StrBox` | — |
+| Phan | ✓ narrows | — |
+
+Same PHPStan+Psalm vs. Mago+Phan split as the class-string case; discovered from Mago's
+`issue_1093` via the PHPStan-focused corpus sweep.
+
 ## Corpus-sourced discovery
 
 Beyond hand-picked tracker issues, `conformance/corpus/` replays an analyzer's own test

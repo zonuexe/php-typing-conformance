@@ -5,10 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP Typing Conformance Results</title>
   <style>
-body { font-family: system-ui, sans-serif; margin: 24px; }
+body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
+body.detail { max-width: 960px; }
+a { color: #0b62c4; }
+h1 { margin-bottom: 0.2em; }
+p.lead { color: #555; margin-top: 0; }
+p.crumb { margin: 0 0 12px; }
+p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
 small a { color: inherit; }
+.test-cell { min-width: 260px; }
+.test-link { font-weight: 600; text-decoration: none; }
+.test-link:hover { text-decoration: underline; }
+.slug { color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78em; }
+.cell-link { display: block; color: inherit; text-decoration: none; }
 .hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }
 .hover-card__trigger { cursor: help; }
 .hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }
@@ -20,550 +31,561 @@ small a { color: inherit; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
 .unknown { background: #f0f0f0; }
-</style>
+.doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
+.doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+.detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.status-cell { white-space: nowrap; font-weight: 600; }
+.diag-cell { width: 100%; }
+pre.diag { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 0.85em; }
+pre.source { background: #1e1e1e; color: #eaeaea; padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+.none { color: #888; margin: 0; font-style: italic; }
+.note-line { font-size: 0.85em; margin: 6px 0 0; }
+details summary { cursor: pointer; font-size: 0.85em; color: #555; }
+  </style>
 </head>
-<body>
+<body class="index">
 <h1>PHP Typing Conformance Results</h1>
+<p class="lead">Each row links to a per-test detail page with the source, expectations, and every analyzer&rsquo;s raw output.</p>
 <table>
 <thead><tr><th>Test</th>
-<th>phpstan<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
-<th>phpstan-strict<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
-<th>psalm<br><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></th>
-<th>mago<br><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></th>
-<th>mir<br><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></th>
-<th>phan<br><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></th>
-<th>noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
+<th>phpstan<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
+<th>phpstan-strict<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
+<th>psalm<br><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></th>
+<th>mago<br><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></th>
+<th>mir<br><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></th>
+<th>phan<br><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></th>
+<th>noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
 </tr></thead><tbody>
 <tr class="group"><td colspan="8">Native types</td></tr>
-<tr><td>native_types_resource_argument</td>
-<td class="pass">Pass <small>(Lv 0+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/native_types_resource_argument.html"><code>resource</code> should not be accepted as a native type declaration, and resource values should be rejected by native scalar parameters.</a><br><small class="slug">native_types_resource_argument</small></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass <small>(Lv 0+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/native_types_resource_argument.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/native_types_resource_argument.html">Fail</a></td>
 </tr>
-<tr><td>native_types_scalar_params</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/native_types_scalar_params.html">Basic scalar parameter compatibility checks.</a><br><small class="slug">native_types_scalar_params</small></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_scalar_params.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_scalar_params.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_scalar_params.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_scalar_params.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_scalar_params.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_scalar_params.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/native_types_scalar_params.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Union types</td></tr>
-<tr><td>unions_object_member_rejection</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/unions_object_member_rejection.html">Union member rejection for object types.</a><br><small class="slug">unions_object_member_rejection</small></td>
+<td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/unions_object_member_rejection.html">Fail</a></td>
 </tr>
-<tr><td>unions_scalar_members</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/unions_scalar_members.html">Basic union member compatibility checks.</a><br><small class="slug">unions_scalar_members</small></td>
+<td class="pass"><a class="cell-link" href="tests/unions_scalar_members.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_scalar_members.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_scalar_members.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_scalar_members.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_scalar_members.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_scalar_members.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/unions_scalar_members.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Intersection types</td></tr>
-<tr><td>intersections_interface_merge</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/intersections_interface_merge.html">Basic intersection compatibility, analogous to Python protocol composition.</a><br><small class="slug">intersections_interface_merge</small></td>
+<td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/intersections_interface_merge.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Callables</td></tr>
-<tr><td>callables_docblock_signature</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/callables_docblock_signature.html">Basic callable signature compatibility checks expressed in PHPDoc.</a><br><small class="slug">callables_docblock_signature</small></td>
+<td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/callables_docblock_signature.html">Fail</a></td>
 </tr>
-<tr><td>callables_return_type_mismatch</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/callables_return_type_mismatch.html">Callable return type compatibility checks.</a><br><small class="slug">callables_return_type_mismatch</small></td>
+<td class="pass"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">PHPDoc generics</td></tr>
-<tr><td>generics_template_bound</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/generics_template_bound.html">Template upper bounds, analogous to Python bounded TypeVar tests.</a><br><small class="slug">generics_template_bound</small></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/generics_template_bound.html">Fail</a></td>
 </tr>
-<tr><td>generics_template_box</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/generics_template_box.html">Basic PHPDoc template propagation checks.</a><br><small class="slug">generics_template_box</small></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/generics_template_box.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Arrays and shapes</td></tr>
-<tr><td>arrays_list_element_type</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/arrays_list_element_type.html">List element type compatibility checks.</a><br><small class="slug">arrays_list_element_type</small></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/arrays_list_element_type.html">Fail</a></td>
 </tr>
-<tr><td>arrays_list_shape_destructuring</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/arrays_list_shape_destructuring.html">List shape support for positional destructuring and indexed access.</a><br><small class="slug">arrays_list_shape_destructuring</small></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
 </tr>
-<tr><td>arrays_non_empty_list</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/arrays_non_empty_list.html">Non-empty list constraints, analogous to Python tuple/list usage tests.</a><br><small class="slug">arrays_non_empty_list</small></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_non_empty_list.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_non_empty_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_non_empty_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_non_empty_list.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/arrays_non_empty_list.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_non_empty_list.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/arrays_non_empty_list.html">Fail</a></td>
 </tr>
-<tr><td>arrays_open_shapes</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/arrays_open_shapes.html">Open array and list shape support.</a><br><small class="slug">arrays_open_shapes</small></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
 </tr>
-<tr><td>arrays_shape_required_keys</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/arrays_shape_required_keys.html">Basic array shape required-key checks.</a><br><small class="slug">arrays_shape_required_keys</small></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Object compatibility</td></tr>
-<tr><td>objects_interface_compat</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/objects_interface_compat.html">Basic interface compatibility checks.</a><br><small class="slug">objects_interface_compat</small></td>
+<td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/objects_interface_compat.html">Fail</a></td>
 </tr>
-<tr><td>objects_static_return_mismatch</td>
-<td class="pass">Pass <small>(Lv 3+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/objects_static_return_mismatch.html">Static return compatibility, analogous to Python class compatibility tests.</a><br><small class="slug">objects_static_return_mismatch</small></td>
+<td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass <small>(Lv 3+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Properties</td></tr>
-<tr><td>properties_promoted_param_mismatch</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/properties_promoted_param_mismatch.html">Promoted property constructor parameter compatibility checks.</a><br><small class="slug">properties_promoted_param_mismatch</small></td>
+<td class="pass"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Fail</a></td>
 </tr>
-<tr><td>properties_readonly_assignment</td>
-<td class="pass">Pass <small>(Lv 2+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/properties_readonly_assignment.html">Basic readonly property write checks.</a><br><small class="slug">properties_readonly_assignment</small></td>
+<td class="pass"><a class="cell-link" href="tests/properties_readonly_assignment.html">Pass <small>(Lv 2+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_readonly_assignment.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_readonly_assignment.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_readonly_assignment.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_readonly_assignment.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_readonly_assignment.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/properties_readonly_assignment.html">Fail</a></td>
 </tr>
-<tr><td>properties_uninitialized_read</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/properties_uninitialized_read.html">Typed property reads before initialization.</a><br><small class="slug">properties_uninitialized_read</small></td>
+<td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
 </tr>
 <tr class="group"><td colspan="8">Constants</td></tr>
-<tr><td>constants_class_constant_type</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/constants_class_constant_type.html">Basic class constant value compatibility checks.</a><br><small class="slug">constants_class_constant_type</small></td>
+<td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/constants_class_constant_type.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Enums</td></tr>
-<tr><td>enums_backed_cases</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/enums_backed_cases.html">Basic backed enum compatibility checks.</a><br><small class="slug">enums_backed_cases</small></td>
+<td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/enums_backed_cases.html">Fail</a></td>
 </tr>
-<tr><td>enums_case_object_vs_backing_scalar</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/enums_case_object_vs_backing_scalar.html">Enum cases are objects, not backing scalar values.</a><br><small class="slug">enums_case_object_vs_backing_scalar</small></td>
+<td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
 </tr>
 <tr class="group"><td colspan="8">Exceptions</td></tr>
-<tr><td>exceptions_throws_docblock</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/exceptions_throws_docblock.html">Basic @throws compatibility checks.</a><br><small class="slug">exceptions_throws_docblock</small></td>
+<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
 </tr>
 <tr class="group"><td colspan="8">PHPDoc basics</td></tr>
-<tr><td>phpdoc_basics_param_types</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_basics_param_types.html">Basic PHPDoc-only parameter type checks.</a><br><small class="slug">phpdoc_basics_param_types</small></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Advanced PHPDoc types</td></tr>
-<tr><td>phpdoc_advanced_param_typehint_alias_compatible</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Imported aliases should remain compatible with canonical PHPDoc names.</a><br><small class="slug">phpdoc_advanced_param_typehint_alias_compatible</small></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
 </tr>
-<tr><td>phpdoc_advanced_param_typehint_array_nullable_mismatch</td>
-<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank">https://github.com/phpstan/phpstan/issues/7572</a></span></span></td>
-<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank">https://github.com/phpstan/phpstan/issues/7572</a></span></span></td>
-<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported in Psalm by design. See <a href="https://github.com/vimeo/psalm/issues/3785" target="_blank">https://github.com/vimeo/psalm/issues/3785</a></span></span></td>
-<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported by design.</span></span></td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">PHPDoc/native array mismatch for nullable array parameters.</a><br><small class="slug">phpdoc_advanced_param_typehint_array_nullable_mismatch</small></td>
+<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank" rel="noopener">https://github.com/phpstan/phpstan/issues/7572</a></span></span></a></td>
+<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank" rel="noopener">https://github.com/phpstan/phpstan/issues/7572</a></span></span></a></td>
+<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported in Psalm by design. See <a href="https://github.com/vimeo/psalm/issues/3785" target="_blank" rel="noopener">https://github.com/vimeo/psalm/issues/3785</a></span></span></a></td>
+<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported by design.</span></span></a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Pass</a></td>
 </tr>
-<tr><td>phpdoc_advanced_param_typehint_boolean_synonym</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">boolean/bool should be treated as equivalent for compatibility checks.</a><br><small class="slug">phpdoc_advanced_param_typehint_boolean_synonym</small></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
 </tr>
-<tr><td>phpdoc_advanced_param_typehint_byref_compatible</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">By-reference parameters should match even if PHPDoc omits the reference marker.</a><br><small class="slug">phpdoc_advanced_param_typehint_byref_compatible</small></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Fail</a></td>
 </tr>
-<tr><td>phpdoc_advanced_param_typehint_callable_compatible</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Callable PHPDoc signatures should be compatible with callable typehints.</a><br><small class="slug">phpdoc_advanced_param_typehint_callable_compatible</small></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
 </tr>
-<tr><td>phpdoc_advanced_param_typehint_nullable_mismatch</td>
-<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank">https://github.com/phpstan/phpstan/issues/7572</a></span></span></td>
-<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank">https://github.com/phpstan/phpstan/issues/7572</a></span></span></td>
-<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported in Psalm by design. See <a href="https://github.com/vimeo/psalm/issues/3785" target="_blank">https://github.com/vimeo/psalm/issues/3785</a></span></span></td>
-<td class="by-design">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported by design.</span></span></td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">PHPDoc/native type mismatch for nullable parameters.</a><br><small class="slug">phpdoc_advanced_param_typehint_nullable_mismatch</small></td>
+<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank" rel="noopener">https://github.com/phpstan/phpstan/issues/7572</a></span></span></a></td>
+<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank" rel="noopener">https://github.com/phpstan/phpstan/issues/7572</a></span></span></a></td>
+<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported in Psalm by design. See <a href="https://github.com/vimeo/psalm/issues/3785" target="_blank" rel="noopener">https://github.com/vimeo/psalm/issues/3785</a></span></span></a></td>
+<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally not reported by design.</span></span></a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Pass</a></td>
 </tr>
-<tr><td>phpdoc_advanced_vendor_prefixed_param_phan</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Cross-tool handling of @phan-param.</a><br><small class="slug">phpdoc_advanced_vendor_prefixed_param_phan</small></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Fail</a></td>
 </tr>
-<tr><td>phpdoc_advanced_vendor_prefixed_param_phpstan</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Cross-tool handling of @phpstan-param.</a><br><small class="slug">phpdoc_advanced_vendor_prefixed_param_phpstan</small></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Fail</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Fail</a></td>
 </tr>
-<tr><td>phpdoc_advanced_vendor_prefixed_param_psalm</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Cross-tool handling of @psalm-param.</a><br><small class="slug">phpdoc_advanced_vendor_prefixed_param_psalm</small></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Assertions and narrowing</td></tr>
-<tr><td>assertions_assert_non_empty_list</td>
-<td class="pass">Pass <small>(Lv 3+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/assertions_assert_non_empty_list.html">Assertion-driven narrowing to non-empty list.</a><br><small class="slug">assertions_assert_non_empty_list</small></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Pass <small>(Lv 3+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Fail</a></td>
 </tr>
-<tr><td>assertions_instanceof_narrowing</td>
-<td class="pass">Pass <small>(Lv 2+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/assertions_instanceof_narrowing.html">Basic instanceof-based narrowing checks.</a><br><small class="slug">assertions_instanceof_narrowing</small></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Pass <small>(Lv 2+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Fail</a></td>
 </tr>
-<tr><td>assertions_non_empty_string_false_guard</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/assertions_non_empty_string_false_guard.html"><code>!== false</code> narrowing with non-empty-string|false.</a><br><small class="slug">assertions_non_empty_string_false_guard</small></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
 </tr>
-<tr><td>assertions_non_falsy_string_false_guard</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/assertions_non_falsy_string_false_guard.html"><code>!== false</code> narrowing with non-falsy-string|false.</a><br><small class="slug">assertions_non_falsy_string_false_guard</small></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
 </tr>
-<tr><td>assertions_null_guard</td>
-<td class="pass">Pass <small>(Lv 2+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/assertions_null_guard.html">Null-check narrowing, analogous to Python narrowing tests.</a><br><small class="slug">assertions_null_guard</small></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass <small>(Lv 2+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/assertions_null_guard.html">Fail</a></td>
 </tr>
-<tr><td>assertions_this_out_self_out</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/assertions_this_out_self_out.html">Post-call narrowing for mutable generic objects via analyzer-specific self-out annotations.</a><br><small class="slug">assertions_this_out_self_out</small></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
 </tr>
 <tr class="group"><td colspan="8">Analyzer directives</td></tr>
-<tr><td>directives_deprecated_usage</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/directives_deprecated_usage.html">Deprecated symbol usage through companion support files.</a><br><small class="slug">directives_deprecated_usage</small></td>
+<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
 </tr>
-<tr><td>directives_phpstan_strict_bool_condition</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/directives_phpstan_strict_bool_condition.html">PHPStan strict-rules opt-in detection for boolean conditions.</a><br><small class="slug">directives_phpstan_strict_bool_condition</small></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
 </tr>
-<tr><td>directives_phpstan_strict_empty</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/directives_phpstan_strict_empty.html">PHPStan strict-rules opt-in detection for empty().</a><br><small class="slug">directives_phpstan_strict_empty</small></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Stubs and external signatures</td></tr>
-<tr><td>stubs_external_signature_support</td>
-<td class="pass">Pass <small>(Lv 5+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/stubs_external_signature_support.html">External signature support through companion helper files.</a><br><small class="slug">stubs_external_signature_support</small></td>
+<td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/stubs_external_signature_support.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Historical and legacy behavior</td></tr>
-<tr><td>historical_implicit_nullable_parameter</td>
-<td class="pass">Pass <small>(Lv 0+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/historical_implicit_nullable_parameter.html">Historical implicit-nullable parameter syntax.</a><br><small class="slug">historical_implicit_nullable_parameter</small></td>
+<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass <small>(Lv 0+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
 </tr>
-<tr><td>historical_nullable_array_default_null</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/historical_nullable_array_default_null.html">Historical compatibility for legacy nullable-via-default patterns.</a><br><small class="slug">historical_nullable_array_default_null</small></td>
+<td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Cross-analyzer regressions</td></tr>
-<tr><td>regressions_array_element_null_subtraction</td>
-<td class="pass">Pass <small>(Lv 8+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_array_element_null_subtraction.html">Element-type narrowing of a single-element list by subtracting the null case.</a><br><small class="slug">regressions_array_element_null_subtraction</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass <small>(Lv 8+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
 </tr>
-<tr><td>regressions_backed_enum_value_narrowing</td>
-<td class="pass">Pass <small>(Lv 4+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_backed_enum_value_narrowing.html">Narrowing a backed enum by its <code>-&gt;value</code> comparison.</a><br><small class="slug">regressions_backed_enum_value_narrowing</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass <small>(Lv 4+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass</a></td>
 </tr>
-<tr><td>regressions_class_string_negative_narrowing</td>
-<td class="pass">Pass <small>(Lv 7+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_class_string_negative_narrowing.html">Negative-branch narrowing via a class-string identity comparison.</a><br><small class="slug">regressions_class_string_negative_narrowing</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass <small>(Lv 7+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
 </tr>
-<tr><td>regressions_explicit_key_shape_is_list</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_explicit_key_shape_is_list.html">Explicit-integer-key sealed shape vs. keyless sealed shape as a <code>list</code>.</a><br><small class="slug">regressions_explicit_key_shape_is_list</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
 </tr>
-<tr><td>regressions_keyless_tuple_is_list</td>
-<td class="pass">Pass <small>(Lv 4+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_keyless_tuple_is_list.html"><code>array_is_list()</code> on a keyless tuple shape.</a><br><small class="slug">regressions_keyless_tuple_is_list</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass <small>(Lv 4+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
 </tr>
-<tr><td>regressions_list_destructure_string_key</td>
-<td class="pass">Pass <small>(Lv 3+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_list_destructure_string_key.html">Positional list destructuring of a string-keyed array.</a><br><small class="slug">regressions_list_destructure_string_key</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass <small>(Lv 3+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
 </tr>
-<tr><td>regressions_object_property_discriminant_narrowing</td>
-<td class="pass">Pass <small>(Lv 7+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_object_property_discriminant_narrowing.html">Narrowing an object union by a discriminating property.</a><br><small class="slug">regressions_object_property_discriminant_narrowing</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass <small>(Lv 7+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
 </tr>
-<tr><td>regressions_optional_extra_key_is_list</td>
-<td class="pass">Pass <small>(Lv 4+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_optional_extra_key_is_list.html">A required list-compatible key plus an optional non-list key stays list-compatible.</a><br><small class="slug">regressions_optional_extra_key_is_list</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass <small>(Lv 4+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
 </tr>
-<tr><td>regressions_optional_key_shape_is_list</td>
-<td class="pass">Pass <small>(Lv 4+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="fail">Fail</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_optional_key_shape_is_list.html">Optional-key array shapes stay list-compatible because they admit the empty array.</a><br><small class="slug">regressions_optional_key_shape_is_list</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass <small>(Lv 4+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
 </tr>
-<tr><td>regressions_reversed_literal_list_param</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_reversed_literal_list_param.html">A reversed-key array literal passed to a <code>list{...}</code> parameter.</a><br><small class="slug">regressions_reversed_literal_list_param</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
 </tr>
-<tr><td>regressions_string_narrowing_assert_if_true</td>
-<td class="pass">Pass <small>(Lv 7+)</small></td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_string_narrowing_assert_if_true.html">Custom @assert-if-true predicate narrowing a string to a string subtype.</a><br><small class="slug">regressions_string_narrowing_assert_if_true</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass <small>(Lv 7+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
 </tr>
-<tr><td>regressions_trait_property_type_conflict</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
-<td class="pass">Pass</td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_trait_property_type_conflict.html">Conflicting property types composed from two traits.</a><br><small class="slug">regressions_trait_property_type_conflict</small></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
 </tr>
 </tbody></table>
 </body></html>

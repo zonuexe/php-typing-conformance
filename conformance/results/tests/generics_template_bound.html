@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template upper bounds, analogous to Python bounded TypeVar tests. — Conformance</title>
+  <style>
+body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
+body.detail { max-width: 960px; }
+a { color: #0b62c4; }
+h1 { margin-bottom: 0.2em; }
+p.lead { color: #555; margin-top: 0; }
+p.crumb { margin: 0 0 12px; }
+p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+small a { color: inherit; }
+.test-cell { min-width: 260px; }
+.test-link { font-weight: 600; text-decoration: none; }
+.test-link:hover { text-decoration: underline; }
+.slug { color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78em; }
+.cell-link { display: block; color: inherit; text-decoration: none; }
+.hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }
+.hover-card__trigger { cursor: help; }
+.hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }
+.hover-card:hover .hover-card__popup, .hover-card:focus-within .hover-card__popup { visibility: visible; opacity: 1; transform: translateY(0); }
+.hover-card__popup a { color: #9fd0ff; }
+.hover-card__notes-label { border-bottom: 1px dotted currentColor; font-size: 0.875em; }
+.group { background: #f3f3f3; font-weight: 700; }
+.pass { background: #dff7df; }
+.fail { background: #f9d6d6; }
+.by-design { background: #f6e7c8; }
+.unknown { background: #f0f0f0; }
+.doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
+.doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+.detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.status-cell { white-space: nowrap; font-weight: 600; }
+.diag-cell { width: 100%; }
+pre.diag { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 0.85em; }
+pre.source { background: #1e1e1e; color: #eaeaea; padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+.none { color: #888; margin: 0; font-style: italic; }
+.note-line { font-size: 0.85em; margin: 6px 0 0; }
+details summary { cursor: pointer; font-size: 0.85em; color: #555; }
+  </style>
+</head>
+<body class="detail">
+<p class="crumb"><a href="../results.html">&larr; All results</a></p>
+<h1>Template upper bounds, analogous to Python bounded TypeVar tests.</h1>
+<p class="meta">Group: PHPDoc generics &middot; Category: phpdoc &middot; File: generics_template_bound.php</p>
+<div class="doc">References:
+- PHPStan template bounds
+- Psalm template bounds
+- python-typing generics upper bounds inspiration</div>
+<h2>Analyzer results</h2>
+<table class="detail-results">
+<thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">generics_template_bound.php:56: Parameter #1 $box of function Conformance\Tests\GenericsTemplateBound\takesNamedBox expects Conformance\Tests\GenericsTemplateBound\NamedBox&lt;Conformance\Tests\GenericsTemplateBound\User&gt;, Conformance\Tests\GenericsTemplateBound\NamedBox&lt;Conformance\Tests\GenericsTemplateBound\HasName&gt; given. [identifier=argument.type] [detected-from-level=5]
+generics_template_bound.php:56: Parameter #1 $value of class Conformance\Tests\GenericsTemplateBound\NamedBox constructor expects T of Conformance\Tests\GenericsTemplateBound\HasName, Conformance\Tests\GenericsTemplateBound\AnonymousUser given. [identifier=argument.type] [detected-from-level=5]</pre></td></tr>
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">generics_template_bound.php:56: Parameter #1 $box of function Conformance\Tests\GenericsTemplateBound\takesNamedBox expects Conformance\Tests\GenericsTemplateBound\NamedBox&lt;Conformance\Tests\GenericsTemplateBound\User&gt;, Conformance\Tests\GenericsTemplateBound\NamedBox&lt;Conformance\Tests\GenericsTemplateBound\HasName&gt; given. [identifier=argument.type]
+generics_template_bound.php:56: Parameter #1 $value of class Conformance\Tests\GenericsTemplateBound\NamedBox constructor expects T of Conformance\Tests\GenericsTemplateBound\HasName, Conformance\Tests\GenericsTemplateBound\AnonymousUser given. [identifier=argument.type]</pre></td></tr>
+<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">generics_template_bound.php:56: Argument 1 of Conformance\Tests\GenericsTemplateBound\takesNamedBox expects Conformance\Tests\GenericsTemplateBound\NamedBox&lt;Conformance\Tests\GenericsTemplateBound\User&gt;, but parent type Conformance\Tests\GenericsTemplateBound\NamedBox&lt;Conformance\Tests\GenericsTemplateBound\HasName&gt; provided [ArgumentTypeCoercion]
+generics_template_bound.php:56: Argument 1 of Conformance\Tests\GenericsTemplateBound\NamedBox::__construct expects Conformance\Tests\GenericsTemplateBound\HasName, but Conformance\Tests\GenericsTemplateBound\AnonymousUser provided [InvalidArgument]</pre></td></tr>
+<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">generics_template_bound.php:56: Argument type mismatch for template `T`. [template-constraint-violation]
+generics_template_bound.php:56: Possible argument type mismatch for argument #1 of `Conformance\Tests\GenericsTemplateBound\NamedBox::__construct`: expected `(&#039;T.conformance\tests\genericstemplatebound\namedbox extends Conformance\Tests\GenericsTemplateBound\HasName)`, but possibly received `Conformance\Tests\GenericsTemplateBound\AnonymousUser`. [possibly-invalid-argument]</pre></td></tr>
+<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">generics_template_bound.php:56: InvalidTemplateParam: Template type &#039;T&#039; inferred as &#039;Conformance\Tests\GenericsTemplateBound\AnonymousUser&#039; does not satisfy bound &#039;Conformance\Tests\GenericsTemplateBound\HasName&#039; [MIR0900]
+generics_template_bound.php:56: InvalidArgument: Argument $box of takesNamedBox() expects &#039;Conformance\Tests\GenericsTemplateBound\NamedBox&lt;Conformance\Tests\GenericsTemplateBound\User&gt;&#039;, got &#039;Conformance\Tests\GenericsTemplateBound\NamedBox&lt;Conformance\Tests\GenericsTemplateBound\AnonymousUser&gt;&#039; [MIR0201]</pre></td></tr>
+<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">generics_template_bound.php:56: Template type T of \Conformance\Tests\GenericsTemplateBound\NamedBox::__construct() must be compatible with \Conformance\Tests\GenericsTemplateBound\HasName, but \Conformance\Tests\GenericsTemplateBound\AnonymousUser was provided in call to \Conformance\Tests\GenericsTemplateBound\NamedBox::__construct() [PhanTemplateTypeConstraintViolation]
+generics_template_bound.php:56: Argument 1 ($box) is new NamedBox(new AnonymousUser()) of type \Conformance\Tests\GenericsTemplateBound\NamedBox|\Conformance\Tests\GenericsTemplateBound\NamedBox&lt;\Conformance\Tests\GenericsTemplateBound\AnonymousUser&gt; but \Conformance\Tests\GenericsTemplateBound\takesNamedBox() takes \Conformance\Tests\GenericsTemplateBound\NamedBox&lt;\Conformance\Tests\GenericsTemplateBound\User&gt; (real type \Conformance\Tests\GenericsTemplateBound\NamedBox) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_template_bound.php:51 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]</pre></td></tr>
+<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">generics_template_bound.php:43: param $value miss matched with phpdoc type &lt;&lt;T&gt;&gt; [funcParamTypeMissMatch]
+generics_template_bound.php:51: param $box miss matched with phpdoc type &lt;&lt;NamedBox&lt;User&gt;&gt;&gt; [funcParamTypeMissMatch]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 56: Expected 1 error(s)
+Line 43: Unexpected errors [&quot;param $value miss matched with phpdoc type &lt;&lt;T&gt;&gt; [funcParamTypeMissMatch]&quot;]
+Line 51: Unexpected errors [&quot;param $box miss matched with phpdoc type &lt;&lt;NamedBox&lt;User&gt;&gt;&gt; [funcParamTypeMissMatch]&quot;]</pre></details></td></tr>
+</tbody></table>
+<h2>Source</h2>
+<pre class="source"><code>&lt;?php
+
+declare(strict_types=1);
+
+namespace Conformance\Tests\GenericsTemplateBound;
+
+/**
+ * Template upper bounds, analogous to Python bounded TypeVar tests.
+ *
+ * References:
+ * - PHPStan template bounds
+ * - Psalm template bounds
+ * - python-typing generics upper bounds inspiration
+ */
+
+interface HasName
+{
+    public function name(): string;
+}
+
+final class User implements HasName
+{
+    #[\Override]
+    public function name(): string
+    {
+        return &#039;user&#039;;
+    }
+}
+
+final class AnonymousUser
+{
+}
+
+/**
+ * @template T of HasName
+ */
+final class NamedBox
+{
+    /**
+     * @param T $value
+     */
+    public function __construct(
+        public object $value,
+    ) {
+    }
+}
+
+/**
+ * @param NamedBox&lt;User&gt; $box
+ */
+function takesNamedBox(NamedBox $box): void
+{
+}
+
+takesNamedBox(new NamedBox(new User()));
+takesNamedBox(new NamedBox(new AnonymousUser())); // E: template bound requires HasName-compatible values
+</code></pre>
+</body></html>

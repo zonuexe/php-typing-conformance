@@ -24,7 +24,7 @@ $discovery = new TestCaseDiscovery();
 $testCases = $discovery->discover($testsDir, $testGroups);
 $summaryReport = new SummaryReport();
 $summaryPath = $resultsDir . '/results.html';
-$tools = ['phpstan', 'phpstan-strict', 'psalm', 'mago', 'phan', 'noverify'];
+$tools = ['phpstan', 'phpstan-strict', 'psalm', 'mago', 'mir', 'phan', 'noverify'];
 
 $summaryReport->generate(
     resultsRoot: $resultsDir,

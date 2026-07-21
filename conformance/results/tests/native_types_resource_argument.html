@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>`resource` should not be accepted as a native type declaration, and resource values should be rejected by native scalar parameters. — Conformance</title>
+  <style>
+body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
+body.detail { max-width: 960px; }
+a { color: #0b62c4; }
+h1 { margin-bottom: 0.2em; }
+p.lead { color: #555; margin-top: 0; }
+p.crumb { margin: 0 0 12px; }
+p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+small a { color: inherit; }
+.test-cell { min-width: 260px; }
+.test-link { font-weight: 600; text-decoration: none; }
+.test-link:hover { text-decoration: underline; }
+.slug { color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78em; }
+.cell-link { display: block; color: inherit; text-decoration: none; }
+.hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }
+.hover-card__trigger { cursor: help; }
+.hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }
+.hover-card:hover .hover-card__popup, .hover-card:focus-within .hover-card__popup { visibility: visible; opacity: 1; transform: translateY(0); }
+.hover-card__popup a { color: #9fd0ff; }
+.hover-card__notes-label { border-bottom: 1px dotted currentColor; font-size: 0.875em; }
+.group { background: #f3f3f3; font-weight: 700; }
+.pass { background: #dff7df; }
+.fail { background: #f9d6d6; }
+.by-design { background: #f6e7c8; }
+.unknown { background: #f0f0f0; }
+.doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
+.doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+.detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.status-cell { white-space: nowrap; font-weight: 600; }
+.diag-cell { width: 100%; }
+pre.diag { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 0.85em; }
+pre.source { background: #1e1e1e; color: #eaeaea; padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+.none { color: #888; margin: 0; font-style: italic; }
+.note-line { font-size: 0.85em; margin: 6px 0 0; }
+details summary { cursor: pointer; font-size: 0.85em; color: #555; }
+  </style>
+</head>
+<body class="detail">
+<p class="crumb"><a href="../results.html">&larr; All results</a></p>
+<h1><code>resource</code> should not be accepted as a native type declaration, and resource values should be rejected by native scalar parameters.</h1>
+<p class="meta">Group: Native types &middot; Category: language &middot; File: native_types_resource_argument.php</p>
+<div class="doc">References:
+- PHP native type declarations
+- PHP native scalar parameter types
+- legacy PHP resource values</div>
+<h2>Analyzer results</h2>
+<table class="detail-results">
+<thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 0+)</small></td><td class="diag-cell"><pre class="diag">native_types_resource_argument.php:17: Parameter $value of function Conformance\Tests\NativeTypesResourceArgument\takesResource() has invalid type Conformance\Tests\NativeTypesResourceArgument\resource. [identifier=class.notFound] [detected-from-level=0]
+native_types_resource_argument.php:38: Parameter #1 $value of function Conformance\Tests\NativeTypesResourceArgument\takesResource expects Conformance\Tests\NativeTypesResourceArgument\resource, resource given. [identifier=argument.type] [detected-from-level=0]
+native_types_resource_argument.php:39: Parameter #1 $value of function Conformance\Tests\NativeTypesResourceArgument\takesString expects string, resource given. [identifier=argument.type] [detected-from-level=0]
+native_types_resource_argument.php:40: Parameter #1 $value of function Conformance\Tests\NativeTypesResourceArgument\takesInt expects int, resource given. [identifier=argument.type] [detected-from-level=0]
+native_types_resource_argument.php:41: Parameter #1 $value of function Conformance\Tests\NativeTypesResourceArgument\takesBool expects bool, resource given. [identifier=argument.type] [detected-from-level=0]</pre></td></tr>
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">native_types_resource_argument.php:17: Parameter $value of function Conformance\Tests\NativeTypesResourceArgument\takesResource() has invalid type Conformance\Tests\NativeTypesResourceArgument\resource. [identifier=class.notFound]
+native_types_resource_argument.php:38: Parameter #1 $value of function Conformance\Tests\NativeTypesResourceArgument\takesResource expects Conformance\Tests\NativeTypesResourceArgument\resource, resource given. [identifier=argument.type]
+native_types_resource_argument.php:39: Parameter #1 $value of function Conformance\Tests\NativeTypesResourceArgument\takesString expects string, resource given. [identifier=argument.type]
+native_types_resource_argument.php:40: Parameter #1 $value of function Conformance\Tests\NativeTypesResourceArgument\takesInt expects int, resource given. [identifier=argument.type]
+native_types_resource_argument.php:41: Parameter #1 $value of function Conformance\Tests\NativeTypesResourceArgument\takesBool expects bool, resource given. [identifier=argument.type]</pre></td></tr>
+<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">native_types_resource_argument.php:17: Class, interface or enum named Conformance\Tests\NativeTypesResourceArgument\resource does not exist [UndefinedClass]
+native_types_resource_argument.php:38: Argument 1 of Conformance\Tests\NativeTypesResourceArgument\takesResource expects Conformance\Tests\NativeTypesResourceArgument\resource, but resource provided [InvalidArgument]
+native_types_resource_argument.php:39: Argument 1 of Conformance\Tests\NativeTypesResourceArgument\takesString expects string, but resource provided [InvalidArgument]
+native_types_resource_argument.php:40: Argument 1 of Conformance\Tests\NativeTypesResourceArgument\takesInt expects int, but resource provided [InvalidArgument]
+native_types_resource_argument.php:41: Argument 1 of Conformance\Tests\NativeTypesResourceArgument\takesBool expects bool, but resource provided [InvalidArgument]</pre></td></tr>
+<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">native_types_resource_argument.php:17: Cannot find class, interface, enum, or type alias `Conformance\Tests\NativeTypesResourceArgument\resource`. [non-existent-class-like]
+native_types_resource_argument.php:38: Invalid argument type for argument #1 of `Conformance\Tests\NativeTypesResourceArgument\takesResource`: expected `unknown-ref(Conformance\Tests\NativeTypesResourceArgument\resource)`, but found `open-resource`. [invalid-argument]
+native_types_resource_argument.php:39: Invalid argument type for argument #1 of `Conformance\Tests\NativeTypesResourceArgument\takesString`: expected `string`, but found `open-resource`. [invalid-argument]
+native_types_resource_argument.php:40: Invalid argument type for argument #1 of `Conformance\Tests\NativeTypesResourceArgument\takesInt`: expected `int`, but found `open-resource`. [invalid-argument]
+native_types_resource_argument.php:41: Invalid argument type for argument #1 of `Conformance\Tests\NativeTypesResourceArgument\takesBool`: expected `bool`, but found `open-resource`. [invalid-argument]</pre></td></tr>
+<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">native_types_resource_argument.php:17: UndefinedClass: Class Conformance\Tests\NativeTypesResourceArgument\resource does not exist [MIR0005]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 39: Expected 1 error(s)
+Line 40: Expected 1 error(s)
+Line 41: Expected 1 error(s)</pre></details></td></tr>
+<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">native_types_resource_argument.php:17: Parameter $value has undeclared type \Conformance\Tests\NativeTypesResourceArgument\resource [PhanUndeclaredTypeParameter]
+native_types_resource_argument.php:38: Argument 1 ($value) is $handle of type resource but \Conformance\Tests\NativeTypesResourceArgument\takesResource() takes \Conformance\Tests\NativeTypesResourceArgument\resource defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:17 [PhanTypeMismatchArgument]
+native_types_resource_argument.php:39: Argument 1 ($value) is $handle of type resource but \Conformance\Tests\NativeTypesResourceArgument\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:21 [PhanTypeMismatchArgument]
+native_types_resource_argument.php:40: Argument 1 ($value) is $handle of type resource but \Conformance\Tests\NativeTypesResourceArgument\takesInt() takes int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:25 [PhanTypeMismatchArgument]
+native_types_resource_argument.php:41: Argument 1 ($value) is $handle of type resource but \Conformance\Tests\NativeTypesResourceArgument\takesBool() takes bool defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:29 [PhanTypeMismatchArgument]</pre></td></tr>
+<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">native_types_resource_argument.php:38: potentially not safe call in function Conformance\Tests\NativeTypesResourceArgument\takesResource signature of param value [notSafeCall]
+native_types_resource_argument.php:39: potentially not safe call in function Conformance\Tests\NativeTypesResourceArgument\takesString signature of param value [notSafeCall]
+native_types_resource_argument.php:40: potentially not safe call in function Conformance\Tests\NativeTypesResourceArgument\takesInt signature of param value [notSafeCall]
+native_types_resource_argument.php:41: potentially not safe call in function Conformance\Tests\NativeTypesResourceArgument\takesBool signature of param value [notSafeCall]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 17: Expected 1 error(s)</pre></details></td></tr>
+</tbody></table>
+<h2>Source</h2>
+<pre class="source"><code>&lt;?php
+
+declare(strict_types=1);
+
+namespace Conformance\Tests\NativeTypesResourceArgument;
+
+/**
+ * `resource` should not be accepted as a native type declaration,
+ * and resource values should be rejected by native scalar parameters.
+ *
+ * References:
+ * - PHP native type declarations
+ * - PHP native scalar parameter types
+ * - legacy PHP resource values
+ */
+
+function takesResource(resource $value): void // E: resource is not a supported native parameter type
+{
+}
+
+function takesString(string $value): void
+{
+}
+
+function takesInt(int $value): void
+{
+}
+
+function takesBool(bool $value): void
+{
+}
+
+$handle = fopen(&#039;php://memory&#039;, &#039;r&#039;);
+if ($handle === false) {
+    throw new \RuntimeException(&#039;failed to open memory stream&#039;);
+}
+
+takesResource($handle); // E?: resource-typed parameters should also be rejected at call sites
+takesString($handle); // E: resource is not accepted by string parameter
+takesInt($handle); // E: resource is not accepted by int parameter
+takesBool($handle); // E: resource is not accepted by bool parameter
+</code></pre>
+</body></html>

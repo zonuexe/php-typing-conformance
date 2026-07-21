@@ -23,8 +23,12 @@ jobs:
 
       - name: Prepare site root
         run: |
-          mkdir -p site
+          mkdir -p site/tests
+          # index.html is the entry point; results.html is kept too so the
+          # "All results" back-link from each detail page resolves.
           cp conformance/results/results.html site/index.html
+          cp conformance/results/results.html site/results.html
+          cp conformance/results/tests/*.html site/tests/
           touch site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3

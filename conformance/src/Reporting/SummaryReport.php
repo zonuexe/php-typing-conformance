@@ -499,10 +499,29 @@ CSS;
     {
         $linked = preg_replace_callback(
             '/https?:\/\/[^\s<]+/i',
-            static fn (array $matches): string => sprintf(
-                '<a href="%1$s" target="_blank" rel="noopener">%1$s</a>',
-                $matches[0],
-            ),
+            static function (array $matches): string {
+                $url = $matches[0];
+
+                // Keep trailing sentence punctuation out of the link target.
+                $trailing = '';
+                while ($url !== '' && str_contains('.,;:)]}', substr($url, -1))) {
+                    $trailing = substr($url, -1) . $trailing;
+                    $url = substr($url, 0, -1);
+                }
+
+                // Shorten GitHub issue/PR links to `<repo>#<number>`.
+                $label = $url;
+                if (preg_match('~^https?://github\.com/[^/\s]+/([^/\s]+)/(?:issues|pull)/(\d+)(?:[/#?][^\s<]*)?$~i', $url, $ref) === 1) {
+                    $label = htmlspecialchars($ref[1] . '#' . $ref[2]);
+                }
+
+                return sprintf(
+                    '<a href="%s" target="_blank" rel="noopener">%s</a>%s',
+                    $url,
+                    $label,
+                    $trailing,
+                );
+            },
             $escaped,
         );
 

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>`noreturn` PHPDoc synonym is compatible with native `never` — Conformance</title>
+  <style>
+body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
+body.detail { max-width: 960px; }
+a { color: #0b62c4; }
+h1 { margin-bottom: 0.2em; }
+p.lead { color: #555; margin-top: 0; }
+h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
+p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
+p.crumb { margin: 0 0 12px; }
+p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+small a { color: inherit; }
+.test-cell { min-width: 260px; }
+.test-link { font-weight: 600; text-decoration: none; }
+.test-link:hover { text-decoration: underline; }
+tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
+.cell-link { display: block; color: inherit; text-decoration: none; }
+.hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }
+.hover-card__trigger { cursor: help; }
+.hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }
+.hover-card:hover .hover-card__popup, .hover-card:focus-within .hover-card__popup { visibility: visible; opacity: 1; transform: translateY(0); }
+.hover-card__popup a { color: #9fd0ff; }
+.hover-card__notes-label { border-bottom: 1px dotted currentColor; font-size: 0.875em; }
+.group { background: #f3f3f3; font-weight: 700; }
+.pass { background: #dff7df; }
+.fail { background: #f9d6d6; }
+.by-design { background: #f6e7c8; }
+.unknown { background: #f0f0f0; }
+.reported { background: #dbe7fb; }
+.muted { background: #f6f6f6; color: #999; }
+.doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
+.doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+.detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.status-cell { white-space: nowrap; font-weight: 600; }
+.diag-cell { width: 100%; }
+pre.diag { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 0.85em; }
+pre.source, pre.shiki { padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+pre.source { background: #1e1e1e; color: #eaeaea; }
+.none { color: #888; margin: 0; font-style: italic; }
+.note-line { font-size: 0.85em; margin: 6px 0 0; }
+details summary { cursor: pointer; font-size: 0.85em; color: #555; }
+  </style>
+</head>
+<body class="detail">
+<p class="crumb"><a href="../results.html">&larr; All results</a></p>
+<h1><code>noreturn</code> PHPDoc synonym is compatible with native <code>never</code></h1>
+<p class="meta">Group: Advanced PHPDoc types &middot; Category: ecosystem &middot; File: phpdoc_advanced_return_noreturn_synonym.php</p>
+<div class="doc"><code>noreturn</code> is PHPStan&#039;s spelling of the <code>never</code> bottom type. An analyzer that
+recognizes the synonym accepts a <code>@return noreturn</code> function that always
+terminates; one that does not treats <code>noreturn</code> as a class name and reports
+it as an unknown type.
+
+References:
+- PHPStan TypeNodeResolver <code>noreturn</code> case resolves like <code>never</code></div>
+<h2>Analyzer results</h2>
+<table class="detail-results">
+<thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_return_noreturn_synonym.php:20: Docblock-defined class, interface or enum named Conformance\Tests\PhpdocAdvancedReturnNoreturnSynonym\noreturn does not exist [UndefinedDocblockClass]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 20: Unexpected errors [&quot;Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn does not exist [UndefinedDocblockClass]&quot;]</pre></details><p class="note-line"><strong>Notes:</strong> Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type.</p></td></tr>
+<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_return_noreturn_synonym.php:20: Cannot find class, interface, enum, or type alias `Conformance\Tests\PhpdocAdvancedReturnNoreturnSynonym\noreturn`. [non-existent-class-like]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 20: Unexpected errors [&quot;Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn`. [non-existent-class-like]&quot;]</pre></details><p class="note-line"><strong>Notes:</strong> Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type.</p></td></tr>
+<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_return_noreturn_synonym.php:22: Return type of alwaysThrows() is undeclared type \Conformance\Tests\PhpdocAdvancedReturnNoreturnSynonym\noreturn [PhanUndeclaredTypeReturnType]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 22: Unexpected errors [&quot;Return type of alwaysThrows() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn [PhanUndeclaredTypeReturnType]&quot;]</pre></details><p class="note-line"><strong>Notes:</strong> Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type.</p></td></tr>
+<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_return_noreturn_synonym.php:12: Class or interface named \Conformance\Tests\PhpdocAdvancedReturnNoreturnSynonym\noreturn does not exist [undefinedClass]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 12: Unexpected errors [&quot;Class or interface named \\Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn does not exist [undefinedClass]&quot;]</pre></details><p class="note-line"><strong>Notes:</strong> Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type.</p></td></tr>
+</tbody></table>
+<h2>Source</h2>
+<pre class="source"><code>&lt;?php
+
+declare(strict_types=1);
+
+namespace Conformance\Tests\PhpdocAdvancedReturnNoreturnSynonym;
+
+/**
+ * `noreturn` PHPDoc synonym is compatible with native `never`.
+ *
+ * `noreturn` is PHPStan&#039;s spelling of the `never` bottom type. An analyzer that
+ * recognizes the synonym accepts a `@return noreturn` function that always
+ * terminates; one that does not treats `noreturn` as a class name and reports
+ * it as an unknown type.
+ *
+ * References:
+ * - PHPStan TypeNodeResolver `noreturn` case resolves like `never`
+ */
+
+/**
+ * @return noreturn
+ */
+function alwaysThrows()
+{
+    throw new \RuntimeException(&#039;boom&#039;);
+}
+</code></pre>
+<script type="module">
+  import { codeToHtml } from 'https://esm.sh/shiki@4.3.1';
+
+  for (const code of document.querySelectorAll('pre.source > code')) {
+    const pre = code.closest('pre.source');
+    try {
+      pre.outerHTML = await codeToHtml(code.textContent, { lang: 'php', theme: 'github-dark' });
+    } catch (error) {
+      console.error('shiki highlight failed', error);
+    }
+  }
+</script>
+</body></html>

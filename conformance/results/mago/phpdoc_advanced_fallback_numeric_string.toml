@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_fallback_numeric_string.php:46: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNumericString\\acceptsNumericString`: expected `numeric-string`, but possibly received `string('not numeric')`. [possibly-invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

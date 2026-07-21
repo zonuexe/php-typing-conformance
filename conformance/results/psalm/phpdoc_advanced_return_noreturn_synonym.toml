@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 0
+output = "phpdoc_advanced_return_noreturn_synonym.php:20: Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn does not exist [UndefinedDocblockClass]"
+errors_diff = "Line 20: Unexpected errors [\"Docblock-defined class, interface or enum named Conformance\\\\Tests\\\\PhpdocAdvancedReturnNoreturnSynonym\\\\noreturn does not exist [UndefinedDocblockClass]\"]"
+notes = "Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type."
+ignore_errors = []

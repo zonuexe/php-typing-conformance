@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_pseudotype_class_precedence.php:35: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPseudotypeClassPrecedence\\acceptsIntegerClass`: expected `Conformance\\Tests\\PhpdocAdvancedPseudotypeClassPrecedence\\Integer`, but found `int(5)`. [invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_fallback_positive_int.php:46: InvalidArgument: Argument $value of acceptsPositiveInt() expects 'positive-int', got '-1' [MIR0201]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

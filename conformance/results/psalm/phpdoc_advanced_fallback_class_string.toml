@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_class_string.php:46: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackClassString\\acceptsClassString expects class-string, but parent type 'not a class name' provided [ArgumentTypeCoercion]
+phpdoc_advanced_fallback_class_string.php:46: Class, interface or enum named not a class name does not exist [UndefinedClass]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

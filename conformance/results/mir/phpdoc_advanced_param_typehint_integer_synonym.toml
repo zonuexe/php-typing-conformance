@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_param_typehint_integer_synonym.php:44: InvalidArgument: Argument $value of acceptsOnlyInteger() expects 'int', got '\"not an int\"' [MIR0201]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

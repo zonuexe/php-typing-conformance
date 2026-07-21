@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_class_string.php:46: Possible use of a classlike '\\not a class name' with an invalid FQSEN. [PhanInvalidFQSENInClasslike]
+phpdoc_advanced_fallback_class_string.php:46: Argument 1 ($value) is 'not a class name' of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackClassString\\acceptsClassString() takes class-string (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_class_string.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

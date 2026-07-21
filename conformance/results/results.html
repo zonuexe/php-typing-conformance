@@ -282,6 +282,33 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Advanced PHPDoc types</td></tr>
+<tr id="phpdoc_advanced_fallback_class_string"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_class_string.html"><code>class-string</code> falls back to <code>string</code> for cross-boundary compatibility</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Pass</a></td>
+</tr>
+<tr id="phpdoc_advanced_fallback_numeric_string"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_numeric_string.html"><code>numeric-string</code> falls back to <code>string</code> for cross-boundary compatibility</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Phan cannot parse the hyphenated `numeric-string` pseudo-type and reports an annotation-extraction error instead of checking the argument.</span></span></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass</a></td>
+</tr>
+<tr id="phpdoc_advanced_fallback_positive_int"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_positive_int.html"><code>positive-int</code> falls back to <code>int</code> for cross-boundary compatibility</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Pass <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify does not model the integer range and falls back to `int`, so it accepts the out-of-range `-1`. The other analyzers enforce `positive-int` and reject it.</span></span></a></td>
+</tr>
 <tr id="phpdoc_advanced_param_typehint_alias_compatible"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Imported aliases should remain compatible with canonical PHPDoc names</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
@@ -327,6 +354,24 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
 </tr>
+<tr id="phpdoc_advanced_param_typehint_double_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html"><code>double</code> PHPDoc synonym is compatible with native <code>float</code></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify flags `double` as an invalid docblock type (suggests `float`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `double` as `float` and reject the string argument.</span></span></a></td>
+</tr>
+<tr id="phpdoc_advanced_param_typehint_integer_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html"><code>integer</code> PHPDoc synonym is compatible with native <code>int</code></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify flags `integer` as an invalid docblock type (suggests `int`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `integer` as `int` and reject the string argument.</span></span></a></td>
+</tr>
 <tr id="phpdoc_advanced_param_typehint_nullable_mismatch"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">PHPDoc/native type mismatch for nullable parameters</a></td>
 <td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank" rel="noopener">phpstan#7572</a></span></span></a></td>
 <td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank" rel="noopener">phpstan#7572</a></span></span></a></td>
@@ -335,6 +380,24 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Pass</a></td>
+</tr>
+<tr id="phpdoc_advanced_pseudotype_class_precedence"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">A same-named class takes precedence over the <code>integer</code> pseudo-type keyword</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Resolves `@param Integer` as the `int` keyword rather than the same-named `Integer` class, so it rejects the class instance instead of the plain int. PHPStan, Psalm, and Mago resolve the class.</span></span></a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Resolves `@param Integer` as the `int` keyword rather than the same-named `Integer` class, so it rejects the class instance instead of the plain int. PHPStan, Psalm, and Mago resolve the class.</span></span></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
+</tr>
+<tr id="phpdoc_advanced_return_noreturn_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html"><code>noreturn</code> PHPDoc synonym is compatible with native <code>never</code></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type.</span></span></a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type.</span></span></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type.</span></span></a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type.</span></span></a></td>
 </tr>
 <tr id="phpdoc_advanced_vendor_prefixed_param_phan"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Cross-tool handling of @phan-param</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Pass <small>(Lv 5+)</small></a></td>

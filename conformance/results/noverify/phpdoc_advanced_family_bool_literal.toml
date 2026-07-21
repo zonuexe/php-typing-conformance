@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_bool_literal.php:29: potentially not safe access in parameter value of function Conformance\\Tests\\PhpdocAdvancedFamilyBoolLiteral\\acceptsTrue [notSafeCall]
+phpdoc_advanced_family_bool_literal.php:32: potentially not safe access in parameter value of function Conformance\\Tests\\PhpdocAdvancedFamilyBoolLiteral\\acceptsFalse [notSafeCall]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

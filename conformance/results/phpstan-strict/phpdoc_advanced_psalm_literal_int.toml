@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_literal_int.php:22: Function Conformance\\Tests\\PhpdocAdvancedPsalmLiteralInt\\acceptsLiteralInt() has parameter $value with no type specified. [identifier=missingType.parameter]
+phpdoc_advanced_psalm_literal_int.php:22: PHPDoc tag @param for parameter $value contains unresolvable type. [identifier=parameter.unresolvableType]"""
+errors_diff = "Line 22: Unexpected errors [\"Function Conformance\\\\Tests\\\\PhpdocAdvancedPsalmLiteralInt\\\\acceptsLiteralInt() has parameter $value with no type specified. [identifier=missingType.parameter]\",\"PHPDoc tag @param for parameter $value contains unresolvable type. [identifier=parameter.unresolvableType]\"]"
+notes = ""
+ignore_errors = []

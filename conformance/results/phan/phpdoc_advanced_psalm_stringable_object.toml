@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_stringable_object.php:31: Saw possibly unextractable annotation for a fragment of comment '* @param stringable-object $obj': after stringable, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_psalm_stringable_object.php:31: Saw a token Phan may have failed to parse after '* @param stringable-object $obj': after stringable, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_psalm_stringable_object.php:33: Parameter $obj has undeclared type \\Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\stringable (Did you mean interface \\Stringable) [PhanUndeclaredTypeParameter]
+phpdoc_advanced_psalm_stringable_object.php:38: Argument 1 ($obj) is new WithToString() of type \\Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\WithToString|\\Stringable but \\Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\acceptsStringable() takes \\Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\stringable defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_stringable_object.php:33 [PhanTypeMismatchArgument]
+phpdoc_advanced_psalm_stringable_object.php:41: Argument 1 ($obj) is new WithoutToString() of type \\Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\WithoutToString but \\Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\acceptsStringable() takes \\Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\stringable defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_stringable_object.php:33 [PhanTypeMismatchArgument]"""
+errors_diff = """
+Line 31: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '* @param stringable-object $obj': after stringable, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '* @param stringable-object $obj': after stringable, saw '-' [PhanUnextractableAnnotationSuffix]"]
+Line 33: Unexpected errors ["Parameter $obj has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\stringable (Did you mean interface \\\\Stringable) [PhanUndeclaredTypeParameter]"]
+Line 38: Unexpected errors ["Argument 1 ($obj) is new WithToString() of type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\WithToString|\\\\Stringable but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\acceptsStringable() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\stringable defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_stringable_object.php:33 [PhanTypeMismatchArgument]"]"""
+notes = ""
+ignore_errors = []

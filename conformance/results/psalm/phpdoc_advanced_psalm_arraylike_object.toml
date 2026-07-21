@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_arraylike_object.php:19: Unrecognized type arraylike-object in docblock for Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike [InvalidDocblock]
+phpdoc_advanced_psalm_arraylike_object.php:21: Parameter $obj has no provided type [MissingParamType]"""
+errors_diff = """
+Line 19: Unexpected errors ["Unrecognized type arraylike-object in docblock for Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike [InvalidDocblock]"]
+Line 21: Unexpected errors ["Parameter $obj has no provided type [MissingParamType]"]"""
+notes = ""
+ignore_errors = []

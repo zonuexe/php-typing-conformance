@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_int_string.php:19: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string`. [non-existent-class-like]
+phpdoc_advanced_family_int_string.php:34: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string)`, but found `string('123')`. [invalid-argument]
+phpdoc_advanced_family_int_string.php:35: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string)`, but found `string('abc')`. [invalid-argument]
+phpdoc_advanced_family_int_string.php:41: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsLiteralString`: expected `literal-string`, but possibly received `string`. [possibly-invalid-argument]
+phpdoc_advanced_family_int_string.php:45: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsNonEmptyLiteralString`: expected `non-empty-literal-string`, but found `string('')`. [invalid-argument]"""
+errors_diff = """
+Line 19: Unexpected errors ["Cannot find class, interface, enum, or type alias `Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\decimal-int-string`. [non-existent-class-like]"]
+Line 34: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\decimal-int-string)`, but found `string('123')`. [invalid-argument]"]"""
+notes = ""
+ignore_errors = []

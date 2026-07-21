@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phan_non_empty_associative_array.php:21: Function Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc() has parameter $map with no value type specified in iterable type array. [identifier=missingType.iterableValue]
+phpdoc_advanced_phan_non_empty_associative_array.php:21: PHPDoc tag @param for parameter $map contains unresolvable type. [identifier=parameter.unresolvableType]"""
+errors_diff = "Line 21: Unexpected errors [\"Function Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\acceptsNonEmptyAssoc() has parameter $map with no value type specified in iterable type array. [identifier=missingType.iterableValue]\",\"PHPDoc tag @param for parameter $map contains unresolvable type. [identifier=parameter.unresolvableType]\"]"
+notes = ""
+ignore_errors = []

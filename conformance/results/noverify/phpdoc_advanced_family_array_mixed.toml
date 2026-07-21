@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_array_mixed.php:20: param $value miss matched with phpdoc type <<non-empty-array<mixed>>> [funcParamTypeMissMatch]
+phpdoc_advanced_family_array_mixed.php:24: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFamilyArrayMixed\\non-empty-mixed does not exist [undefinedClass]"""
+errors_diff = """
+Line 20: Unexpected errors ["param $value miss matched with phpdoc type <<non-empty-array<mixed>>> [funcParamTypeMissMatch]"]
+Line 24: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyArrayMixed\\\\non-empty-mixed does not exist [undefinedClass]"]"""
+notes = ""
+ignore_errors = []

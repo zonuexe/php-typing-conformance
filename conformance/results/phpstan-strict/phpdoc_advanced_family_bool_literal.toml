@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_bool_literal.php:29: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyBoolLiteral\\acceptsTrue expects true, false given. [identifier=argument.type]
+phpdoc_advanced_family_bool_literal.php:32: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyBoolLiteral\\acceptsFalse expects false, true given. [identifier=argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

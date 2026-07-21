@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_int_string.php:35: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsDecimalIntString expects decimal-int-string, 'abc' given. [identifier=argument.type] [detected-from-level=5]
+phpdoc_advanced_family_int_string.php:41: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsLiteralString expects literal-string, string given. [identifier=argument.type] [detected-from-level=5]
+phpdoc_advanced_family_int_string.php:45: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsNonEmptyLiteralString expects literal-string&non-empty-string, '' given. [identifier=argument.type] [detected-from-level=5]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+first_detected_level = 5

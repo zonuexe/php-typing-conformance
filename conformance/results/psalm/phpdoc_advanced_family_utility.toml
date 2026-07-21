@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_utility.php:29: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyUtility\\acceptsShapeKey expects 'age'|'name', but 'missing' provided [InvalidArgument]
+phpdoc_advanced_family_utility.php:32: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyUtility\\acceptsShapeValue expects int, but 'x' provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

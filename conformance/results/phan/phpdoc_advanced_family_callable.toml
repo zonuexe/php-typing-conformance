@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_callable.php:40: Call to undeclared function definitely_not_a_function in callable [PhanUndeclaredFunctionInCallable]
+phpdoc_advanced_family_callable.php:43: Argument 1 ($value) is new NotInvokable() of type \\Conformance\\Tests\\PhpdocAdvancedFamilyCallable\\NotInvokable but \\Conformance\\Tests\\PhpdocAdvancedFamilyCallable\\acceptsCallableObject() takes callable-object defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_callable.php:35 [PhanTypeMismatchArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

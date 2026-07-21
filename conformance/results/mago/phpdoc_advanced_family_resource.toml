@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_resource.php:31: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource`: expected `resource`, but found `int(123)`. [invalid-argument]
+phpdoc_advanced_family_resource.php:34: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource`: expected `open-resource`, but found `string('not a resource')`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

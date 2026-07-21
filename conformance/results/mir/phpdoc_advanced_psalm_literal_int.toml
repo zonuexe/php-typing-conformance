@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_literal_int.php:29: InvalidArgument: Argument $value of acceptsLiteralInt() expects 'Conformance\\Tests\\PhpdocAdvancedPsalmLiteralInt\\literal-int', got 'int' [MIR0201]
+phpdoc_advanced_psalm_literal_int.php:33: InvalidArgument: Argument $value of acceptsLiteralInt() expects 'Conformance\\Tests\\PhpdocAdvancedPsalmLiteralInt\\literal-int', got '42' [MIR0201]"""
+errors_diff = "Line 33: Unexpected errors [\"InvalidArgument: Argument $value of acceptsLiteralInt() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedPsalmLiteralInt\\\\literal-int', got '42' [MIR0201]\"]"
+notes = ""
+ignore_errors = []

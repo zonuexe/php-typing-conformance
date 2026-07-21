@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_array_mixed.php:35: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyArrayMixed\\acceptsNonEmptyArray`: expected `non-empty-array<array-key, mixed>`, but possibly received `array{}`. [possibly-invalid-argument]
+phpdoc_advanced_family_array_mixed.php:42: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyArrayMixed\\acceptsArrayKey`: expected `array-key`, but found `float(1.5)`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

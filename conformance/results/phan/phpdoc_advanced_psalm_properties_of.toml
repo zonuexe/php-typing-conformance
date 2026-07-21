@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_properties_of.php:26: Saw possibly unextractable annotation for a fragment of comment '* @param properties-of<User> $data': after properties, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_psalm_properties_of.php:26: Saw a token Phan may have failed to parse after '* @param properties-of<User> $data': after properties, saw '-' [PhanUnextractableAnnotationSuffix]"""
+errors_diff = "Line 26: Unexpected errors [\"Saw possibly unextractable annotation for a fragment of comment '* @param properties-of<User> $data': after properties, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]\",\"Saw a token Phan may have failed to parse after '* @param properties-of<User> $data': after properties, saw '-' [PhanUnextractableAnnotationSuffix]\"]"
+notes = ""
+ignore_errors = []

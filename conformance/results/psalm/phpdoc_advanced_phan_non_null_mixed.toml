@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phan_non_null_mixed.php:19: Unrecognized type Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed in docblock for Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull [InvalidDocblock]
+phpdoc_advanced_phan_non_null_mixed.php:21: Parameter $value has no provided type [MissingParamType]"""
+errors_diff = """
+Line 19: Unexpected errors ["Unrecognized type Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\non-null-mixed in docblock for Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\acceptsNonNull [InvalidDocblock]"]
+Line 21: Unexpected errors ["Parameter $value has no provided type [MissingParamType]"]"""
+notes = ""
+ignore_errors = []

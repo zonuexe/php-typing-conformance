@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_arraylike_object.php:21: Function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike() has parameter $obj with no type specified. [identifier=missingType.parameter]
+phpdoc_advanced_psalm_arraylike_object.php:21: PHPDoc tag @param for parameter $obj contains unresolvable type. [identifier=parameter.unresolvableType]"""
+errors_diff = "Line 21: Unexpected errors [\"Function Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike() has parameter $obj with no type specified. [identifier=missingType.parameter]\",\"PHPDoc tag @param for parameter $obj contains unresolvable type. [identifier=parameter.unresolvableType]\"]"
+notes = ""
+ignore_errors = []

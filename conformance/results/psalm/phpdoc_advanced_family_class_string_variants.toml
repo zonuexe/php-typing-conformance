@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_class_string_variants.php:54: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\acceptsTraitString expects trait-string, but Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\SomeTrait::class provided [InvalidArgument]
+phpdoc_advanced_family_class_string_variants.php:55: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\acceptsTraitString expects trait-string, but Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\SomeClass::class provided [InvalidArgument]"""
+errors_diff = "Line 54: Unexpected errors [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\acceptsTraitString expects trait-string, but Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\SomeTrait::class provided [InvalidArgument]\"]"
+notes = ""
+ignore_errors = []

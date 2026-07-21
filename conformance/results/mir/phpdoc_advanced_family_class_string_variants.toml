@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_class_string_variants.php:52: InvalidArgument: Argument $value of acceptsInterfaceString() expects 'interface-string', got 'class-string<Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\SomeClass>' [MIR0201]
+phpdoc_advanced_family_class_string_variants.php:54: InvalidArgument: Argument $value of acceptsTraitString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\trait-string', got 'class-string<Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\SomeTrait>' [MIR0201]
+phpdoc_advanced_family_class_string_variants.php:55: InvalidArgument: Argument $value of acceptsTraitString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\trait-string', got 'class-string<Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\SomeClass>' [MIR0201]
+phpdoc_advanced_family_class_string_variants.php:57: InvalidArgument: Argument $value of acceptsEnumString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\enum-string', got 'class-string<Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\SomeEnum>' [MIR0201]
+phpdoc_advanced_family_class_string_variants.php:58: InvalidArgument: Argument $value of acceptsEnumString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\enum-string', got 'class-string<Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\SomeClass>' [MIR0201]"""
+errors_diff = """
+Line 54: Unexpected errors ["InvalidArgument: Argument $value of acceptsTraitString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\trait-string', got 'class-string<Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\SomeTrait>' [MIR0201]"]
+Line 57: Unexpected errors ["InvalidArgument: Argument $value of acceptsEnumString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\enum-string', got 'class-string<Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\SomeEnum>' [MIR0201]"]"""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,12 @@
+status = "By design"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_int_range_keyword.php:19: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range`. [non-existent-class-like]
+phpdoc_advanced_int_range_keyword.php:26: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range)`, but found `int(200)`. [invalid-argument]
+phpdoc_advanced_int_range_keyword.php:30: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range)`, but found `int(256)`. [invalid-argument]"""
+errors_diff = """
+Line 19: Unexpected errors ["Cannot find class, interface, enum, or type alias `Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range`. [non-existent-class-like]"]
+Line 26: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\acceptsByte`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range)`, but found `int(200)`. [invalid-argument]"]"""
+notes = "`int-range<min,max>` is Phan's spelling; PHPStan, Psalm and Mago write the same range as `int<min,max>`. Not recognizing the other tool's spelling is expected, not a defect. Only Phan models `int-range`."
+ignore_errors = []

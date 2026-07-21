@@ -1,0 +1,12 @@
+status = "By design"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_int_range_keyword.php:19: Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range does not exist [UndefinedDocblockClass]
+phpdoc_advanced_int_range_keyword.php:26: Argument 1 of Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte expects Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range<0, 255>, but 200 provided [InvalidArgument]
+phpdoc_advanced_int_range_keyword.php:30: Argument 1 of Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte expects Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range<0, 255>, but 256 provided [InvalidArgument]"""
+errors_diff = """
+Line 19: Unexpected errors ["Docblock-defined class, interface or enum named Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range does not exist [UndefinedDocblockClass]"]
+Line 26: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\acceptsByte expects Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range<0, 255>, but 200 provided [InvalidArgument]"]"""
+notes = "`int-range<min,max>` is Phan's spelling; PHPStan, Psalm and Mago write the same range as `int<min,max>`. Not recognizing the other tool's spelling is expected, not a defect. Only Phan models `int-range`."
+ignore_errors = []

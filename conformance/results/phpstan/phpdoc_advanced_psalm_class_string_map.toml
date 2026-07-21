@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_class_string_map.php:19: PHPDoc tag @param has invalid value (class-string-map<T of \\Throwable, T> $map): Unexpected token "of", expected '>' at offset 33 on line 2 [identifier=phpDoc.parseError] [detected-from-level=2]
+phpdoc_advanced_psalm_class_string_map.php:21: Function Conformance\\Tests\\PhpdocAdvancedPsalmClassStringMap\\acceptsThrowableMap() has parameter $map with no value type specified in iterable type array. [identifier=missingType.iterableValue] [detected-from-level=2]"""
+errors_diff = """
+Line 19: Unexpected errors ["PHPDoc tag @param has invalid value (class-string-map<T of \\\\Throwable, T> $map): Unexpected token \\"of\\", expected '>' at offset 33 on line 2 [identifier=phpDoc.parseError] [detected-from-level=2]"]
+Line 21: Unexpected errors ["Function Conformance\\\\Tests\\\\PhpdocAdvancedPsalmClassStringMap\\\\acceptsThrowableMap() has parameter $map with no value type specified in iterable type array. [identifier=missingType.iterableValue] [detected-from-level=2]"]"""
+notes = ""
+ignore_errors = []
+first_detected_level = 2

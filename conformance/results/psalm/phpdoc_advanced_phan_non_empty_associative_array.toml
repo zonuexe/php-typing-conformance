@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phan_non_empty_associative_array.php:19: Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array does not exist [UndefinedDocblockClass]
+phpdoc_advanced_phan_non_empty_associative_array.php:19: Parameter $map has wrong type 'Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array<string, int>', should be 'array<array-key, mixed>' [MismatchingDocblockParamType]
+phpdoc_advanced_phan_non_empty_associative_array.php:26: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc expects Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array<string, int>, but array{a: 1} provided [InvalidArgument]
+phpdoc_advanced_phan_non_empty_associative_array.php:29: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc expects Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array<string, int>, but array<never, never> provided [InvalidArgument]
+phpdoc_advanced_phan_non_empty_associative_array.php:32: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc expects Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array<string, int>, but list{1, 2, 3} provided [InvalidArgument]"""
+errors_diff = """
+Line 19: Unexpected errors ["Docblock-defined class, interface or enum named Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array does not exist [UndefinedDocblockClass]","Parameter $map has wrong type 'Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array<string, int>', should be 'array<array-key, mixed>' [MismatchingDocblockParamType]"]
+Line 26: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\acceptsNonEmptyAssoc expects Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array<string, int>, but array{a: 1} provided [InvalidArgument]"]"""
+notes = ""
+ignore_errors = []

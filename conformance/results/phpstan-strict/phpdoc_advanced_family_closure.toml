@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_closure.php:30: Parameter #1 $fn of function Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\acceptsPureClosure expects pure-Closure, 'strlen' given. [identifier=argument.type]
+phpdoc_advanced_family_closure.php:33: Parameter #1 $fn of function Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\acceptsStaticClosure expects static-Closure, 'strlen' given. [identifier=argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

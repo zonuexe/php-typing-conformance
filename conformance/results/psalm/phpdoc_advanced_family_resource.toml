@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_resource.php:23: Unrecognized type open-resource in docblock for Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource [InvalidDocblock]
+phpdoc_advanced_family_resource.php:24: Parameter $value has no provided type [MissingParamType]
+phpdoc_advanced_family_resource.php:30: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource cannot be false, possibly resource value expected [PossiblyFalseArgument]
+phpdoc_advanced_family_resource.php:31: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource expects resource, but 123 provided [InvalidArgument]"""
+errors_diff = """
+Line 23: Unexpected errors ["Unrecognized type open-resource in docblock for Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsOpenResource [InvalidDocblock]"]
+Line 24: Unexpected errors ["Parameter $value has no provided type [MissingParamType]"]
+Line 30: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsResource cannot be false, possibly resource value expected [PossiblyFalseArgument]"]"""
+notes = ""
+ignore_errors = []

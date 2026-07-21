@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>`non-empty-associative-array` is a Phan-only array refinement — Conformance</title>
+  <style>
+body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
+body.detail { max-width: 960px; }
+a { color: #0b62c4; }
+h1 { margin-bottom: 0.2em; }
+p.lead { color: #555; margin-top: 0; }
+h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
+p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
+p.crumb { margin: 0 0 12px; }
+p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+small a { color: inherit; }
+.test-cell { min-width: 260px; }
+.test-link { font-weight: 600; text-decoration: none; }
+.test-link:hover { text-decoration: underline; }
+tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
+.cell-link { display: block; color: inherit; text-decoration: none; }
+.hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }
+.hover-card__trigger { cursor: help; }
+.hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }
+.hover-card:hover .hover-card__popup, .hover-card:focus-within .hover-card__popup { visibility: visible; opacity: 1; transform: translateY(0); }
+.hover-card__popup a { color: #9fd0ff; }
+.hover-card__notes-label { border-bottom: 1px dotted currentColor; font-size: 0.875em; }
+.group { background: #f3f3f3; font-weight: 700; }
+.pass { background: #dff7df; }
+.fail { background: #f9d6d6; }
+.by-design { background: #f6e7c8; }
+.unknown { background: #f0f0f0; }
+.reported { background: #dbe7fb; }
+.muted { background: #f6f6f6; color: #999; }
+.doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
+.doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+.detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.status-cell { white-space: nowrap; font-weight: 600; }
+.diag-cell { width: 100%; }
+pre.diag { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 0.85em; }
+pre.source, pre.shiki { padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+pre.source { background: #1e1e1e; color: #eaeaea; }
+.none { color: #888; margin: 0; font-style: italic; }
+.note-line { font-size: 0.85em; margin: 6px 0 0; }
+details summary { cursor: pointer; font-size: 0.85em; color: #555; }
+  </style>
+</head>
+<body class="detail">
+<p class="crumb"><a href="../results.html">&larr; All results</a></p>
+<h1><code>non-empty-associative-array</code> is a Phan-only array refinement</h1>
+<p class="meta">Group: Advanced PHPDoc types &middot; Category: ecosystem &middot; File: phpdoc_advanced_phan_non_empty_associative_array.php</p>
+<div class="doc">It combines two Phan refinements: the array must be non-empty and must not be
+a list. Phan models both; other analyzers do not recognize the keyword and
+fall back to plain <code>array</code>, accepting an empty array or a list.
+
+References:
+- Phan Type/NonEmptyAssociativeArrayType.php</div>
+<h2>Analyzer results</h2>
+<table class="detail-results">
+<thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="fail status-cell">Fail <small>(Lv 2+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_phan_non_empty_associative_array.php:21: Function Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\acceptsNonEmptyAssoc() has parameter $map with no value type specified in iterable type array. [identifier=missingType.iterableValue] [detected-from-level=2]
+phpdoc_advanced_phan_non_empty_associative_array.php:21: PHPDoc tag @param for parameter $map contains unresolvable type. [identifier=parameter.unresolvableType] [detected-from-level=2]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 21: Unexpected errors [&quot;Function Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc() has parameter $map with no value type specified in iterable type array. [identifier=missingType.iterableValue] [detected-from-level=2]&quot;,&quot;PHPDoc tag @param for parameter $map contains unresolvable type. [identifier=parameter.unresolvableType] [detected-from-level=2]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_phan_non_empty_associative_array.php:21: Function Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\acceptsNonEmptyAssoc() has parameter $map with no value type specified in iterable type array. [identifier=missingType.iterableValue]
+phpdoc_advanced_phan_non_empty_associative_array.php:21: PHPDoc tag @param for parameter $map contains unresolvable type. [identifier=parameter.unresolvableType]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 21: Unexpected errors [&quot;Function Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc() has parameter $map with no value type specified in iterable type array. [identifier=missingType.iterableValue]&quot;,&quot;PHPDoc tag @param for parameter $map contains unresolvable type. [identifier=parameter.unresolvableType]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_phan_non_empty_associative_array.php:19: Docblock-defined class, interface or enum named Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array does not exist [UndefinedDocblockClass]
+phpdoc_advanced_phan_non_empty_associative_array.php:19: Parameter $map has wrong type &#039;Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array&lt;string, int&gt;&#039;, should be &#039;array&lt;array-key, mixed&gt;&#039; [MismatchingDocblockParamType]
+phpdoc_advanced_phan_non_empty_associative_array.php:26: Argument 1 of Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\acceptsNonEmptyAssoc expects Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array&lt;string, int&gt;, but array{a: 1} provided [InvalidArgument]
+phpdoc_advanced_phan_non_empty_associative_array.php:29: Argument 1 of Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\acceptsNonEmptyAssoc expects Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array&lt;string, int&gt;, but array&lt;never, never&gt; provided [InvalidArgument]
+phpdoc_advanced_phan_non_empty_associative_array.php:32: Argument 1 of Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\acceptsNonEmptyAssoc expects Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array&lt;string, int&gt;, but list{1, 2, 3} provided [InvalidArgument]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 19: Unexpected errors [&quot;Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array does not exist [UndefinedDocblockClass]&quot;,&quot;Parameter $map has wrong type &#039;Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array&lt;string, int&gt;&#039;, should be &#039;array&lt;array-key, mixed&gt;&#039; [MismatchingDocblockParamType]&quot;]
+Line 26: Unexpected errors [&quot;Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc expects Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array&lt;string, int&gt;, but array{a: 1} provided [InvalidArgument]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_phan_non_empty_associative_array.php:19: Cannot find class, interface, enum, or type alias `Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array`. [non-existent-class-like]
+phpdoc_advanced_phan_non_empty_associative_array.php:21: Docblock type `unknown-ref(Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array)` for parameter `$map` is incompatible with native type `array&lt;array-key, mixed&gt;`. [docblock-type-mismatch]
+phpdoc_advanced_phan_non_empty_associative_array.php:26: Invalid argument type for argument #1 of `Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array)`, but found `array{&#039;a&#039;: int(1)}`. [invalid-argument]
+phpdoc_advanced_phan_non_empty_associative_array.php:29: Invalid argument type for argument #1 of `Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array)`, but found `array{}`. [invalid-argument]
+phpdoc_advanced_phan_non_empty_associative_array.php:32: Invalid argument type for argument #1 of `Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array)`, but found `list{int(1), int(2), int(3)}`. [invalid-argument]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 19: Unexpected errors [&quot;Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array`. [non-existent-class-like]&quot;]
+Line 21: Unexpected errors [&quot;Docblock type `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array)` for parameter `$map` is incompatible with native type `array&lt;array-key, mixed&gt;`. [docblock-type-mismatch]&quot;]
+Line 26: Unexpected errors [&quot;Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array)`, but found `array{&#039;a&#039;: int(1)}`. [invalid-argument]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_phan_non_empty_associative_array.php:26: InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects &#039;Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array&lt;string, int&gt;&#039;, got &#039;array{&#039;a&#039;: 1}&#039; [MIR0201]
+phpdoc_advanced_phan_non_empty_associative_array.php:29: InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects &#039;Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array&lt;string, int&gt;&#039;, got &#039;array{}&#039; [MIR0201]
+phpdoc_advanced_phan_non_empty_associative_array.php:32: InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects &#039;Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\non-empty-associative-array&lt;string, int&gt;&#039;, got &#039;array{0: 1, 1: 2, 2: 3}&#039; [MIR0201]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 26: Unexpected errors [&quot;InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects &#039;Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array&lt;string, int&gt;&#039;, got &#039;array{&#039;a&#039;: 1}&#039; [MIR0201]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_phan_non_empty_associative_array.php:32: Argument 1 ($map) is [1,2,3] of type array{0:1,1:2,2:3} but \Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray\acceptsNonEmptyAssoc() takes array&lt;string,int&gt; defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phan_non_empty_associative_array.php:21 [PhanTypeMismatchArgument]</pre></td></tr>
+<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_phan_non_empty_associative_array.php:21: param $map miss matched with phpdoc type &lt;&lt;non-empty-associative-array&lt;string, int&gt;&gt;&gt; [funcParamTypeMissMatch]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 21: Unexpected errors [&quot;param $map miss matched with phpdoc type &lt;&lt;non-empty-associative-array&lt;string, int&gt;&gt;&gt; [funcParamTypeMissMatch]&quot;]</pre></details></td></tr>
+</tbody></table>
+<h2>Source</h2>
+<pre class="source"><code>&lt;?php
+
+declare(strict_types=1);
+
+namespace Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray;
+
+/**
+ * `non-empty-associative-array` is a Phan-only array refinement.
+ *
+ * It combines two Phan refinements: the array must be non-empty and must not be
+ * a list. Phan models both; other analyzers do not recognize the keyword and
+ * fall back to plain `array`, accepting an empty array or a list.
+ *
+ * References:
+ * - Phan Type/NonEmptyAssociativeArrayType.php
+ */
+
+/**
+ * @param non-empty-associative-array&lt;string, int&gt; $map
+ */
+function acceptsNonEmptyAssoc(array $map): void
+{
+}
+
+// A non-empty string-keyed array satisfies the parameter.
+acceptsNonEmptyAssoc([&#039;a&#039; =&gt; 1]);
+
+// An empty array violates the non-empty part.
+acceptsNonEmptyAssoc([]); // E?: an empty array is not a non-empty-associative-array
+
+// A list violates the associative part.
+acceptsNonEmptyAssoc([1, 2, 3]); // E?: a list is not an associative array
+</code></pre>
+<script type="module">
+  import { codeToHtml } from 'https://esm.sh/shiki@4.3.1';
+
+  for (const code of document.querySelectorAll('pre.source > code')) {
+    const pre = code.closest('pre.source');
+    try {
+      pre.outerHTML = await codeToHtml(code.textContent, { lang: 'php', theme: 'github-dark' });
+    } catch (error) {
+      console.error('shiki highlight failed', error);
+    }
+  }
+</script>
+</body></html>

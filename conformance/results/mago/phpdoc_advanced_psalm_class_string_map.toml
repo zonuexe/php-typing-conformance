@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_class_string_map.php:19: Unexpected token in PHPDoc type [invalid-docblock]
+phpdoc_advanced_psalm_class_string_map.php:19: Failed to parse function-like docblock comment. [malformed-docblock-comment]"""
+errors_diff = "Line 19: Unexpected errors [\"Unexpected token in PHPDoc type [invalid-docblock]\",\"Failed to parse function-like docblock comment. [malformed-docblock-comment]\"]"
+notes = ""
+ignore_errors = []

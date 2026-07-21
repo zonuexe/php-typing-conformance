@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_scalar.php:23: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\number`. [non-existent-class-like]
+phpdoc_advanced_family_scalar.php:35: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\acceptsScalar`: expected `scalar`, but found `list{int(1), int(2)}`. [invalid-argument]
+phpdoc_advanced_family_scalar.php:37: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\acceptsNumber`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\number)`, but found `int(1)`. [invalid-argument]
+phpdoc_advanced_family_scalar.php:38: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\acceptsNumber`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\number)`, but found `float(1.5)`. [invalid-argument]
+phpdoc_advanced_family_scalar.php:39: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\acceptsNumber`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\number)`, but found `string('1')`. [invalid-argument]
+phpdoc_advanced_family_scalar.php:43: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\acceptsNumeric`: expected `numeric`, but possibly received `string('abc')`. [possibly-invalid-argument]"""
+errors_diff = """
+Line 23: Unexpected errors ["Cannot find class, interface, enum, or type alias `Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\number`. [non-existent-class-like]"]
+Line 37: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\acceptsNumber`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\number)`, but found `int(1)`. [invalid-argument]"]
+Line 38: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\acceptsNumber`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\number)`, but found `float(1.5)`. [invalid-argument]"]"""
+notes = ""
+ignore_errors = []

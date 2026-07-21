@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integer-string and literal-string refinements fall back to `string` — Conformance</title>
+  <style>
+body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
+body.detail { max-width: 960px; }
+a { color: #0b62c4; }
+h1 { margin-bottom: 0.2em; }
+p.lead { color: #555; margin-top: 0; }
+h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
+p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
+p.crumb { margin: 0 0 12px; }
+p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+small a { color: inherit; }
+.test-cell { min-width: 260px; }
+.test-link { font-weight: 600; text-decoration: none; }
+.test-link:hover { text-decoration: underline; }
+tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
+.cell-link { display: block; color: inherit; text-decoration: none; }
+.hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }
+.hover-card__trigger { cursor: help; }
+.hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }
+.hover-card:hover .hover-card__popup, .hover-card:focus-within .hover-card__popup { visibility: visible; opacity: 1; transform: translateY(0); }
+.hover-card__popup a { color: #9fd0ff; }
+.hover-card__notes-label { border-bottom: 1px dotted currentColor; font-size: 0.875em; }
+.group { background: #f3f3f3; font-weight: 700; }
+.pass { background: #dff7df; }
+.fail { background: #f9d6d6; }
+.by-design { background: #f6e7c8; }
+.unknown { background: #f0f0f0; }
+.reported { background: #dbe7fb; }
+.muted { background: #f6f6f6; color: #999; }
+.doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
+.doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+.detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.status-cell { white-space: nowrap; font-weight: 600; }
+.diag-cell { width: 100%; }
+pre.diag { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 0.85em; }
+pre.source, pre.shiki { padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+pre.source { background: #1e1e1e; color: #eaeaea; }
+.none { color: #888; margin: 0; font-style: italic; }
+.note-line { font-size: 0.85em; margin: 6px 0 0; }
+details summary { cursor: pointer; font-size: 0.85em; color: #555; }
+  </style>
+</head>
+<body class="detail">
+<p class="crumb"><a href="../results.html">&larr; All results</a></p>
+<h1>Integer-string and literal-string refinements fall back to <code>string</code></h1>
+<p class="meta">Group: Advanced PHPDoc types &middot; Category: ecosystem &middot; File: phpdoc_advanced_family_int_string.php</p>
+<div class="doc"><code>decimal-int-string</code>, <code>non-decimal-int-string</code>, <code>literal-string</code> and
+<code>non-empty-literal-string</code> are refinements of <code>string</code>. Analyzers that model
+them reject a literal that does not match; others fall back to plain
+<code>string</code> and accept it.
+
+References:
+- PHPStan TypeNodeResolver decimal-int-string / non-decimal-int-string / literal-string / non-empty-literal-string</div>
+<h2>Analyzer results</h2>
+<table class="detail-results">
+<thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:35: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString expects decimal-int-string, &#039;abc&#039; given. [identifier=argument.type] [detected-from-level=5]
+phpdoc_advanced_family_int_string.php:41: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsLiteralString expects literal-string, string given. [identifier=argument.type] [detected-from-level=5]
+phpdoc_advanced_family_int_string.php:45: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsNonEmptyLiteralString expects literal-string&amp;non-empty-string, &#039;&#039; given. [identifier=argument.type] [detected-from-level=5]</pre></td></tr>
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:35: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString expects decimal-int-string, &#039;abc&#039; given. [identifier=argument.type]
+phpdoc_advanced_family_int_string.php:41: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsLiteralString expects literal-string, string given. [identifier=argument.type]
+phpdoc_advanced_family_int_string.php:45: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsNonEmptyLiteralString expects literal-string&amp;non-empty-string, &#039;&#039; given. [identifier=argument.type]</pre></td></tr>
+<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:19: Unrecognized type Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal-int-string in docblock for Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString [InvalidDocblock]
+phpdoc_advanced_family_int_string.php:20: Parameter $value has no provided type [MissingParamType]
+phpdoc_advanced_family_int_string.php:41: Argument 1 of Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsLiteralString expects literal-string, but parent type string provided [ArgumentTypeCoercion]
+phpdoc_advanced_family_int_string.php:45: Argument 1 of Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsNonEmptyLiteralString expects non-empty-literal-string, but &#039;&#039; provided [InvalidArgument]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 19: Unexpected errors [&quot;Unrecognized type Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string in docblock for Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsDecimalIntString [InvalidDocblock]&quot;]
+Line 20: Unexpected errors [&quot;Parameter $value has no provided type [MissingParamType]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:19: Cannot find class, interface, enum, or type alias `Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal-int-string`. [non-existent-class-like]
+phpdoc_advanced_family_int_string.php:34: Invalid argument type for argument #1 of `Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString`: expected `unknown-ref(Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal-int-string)`, but found `string(&#039;123&#039;)`. [invalid-argument]
+phpdoc_advanced_family_int_string.php:35: Invalid argument type for argument #1 of `Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString`: expected `unknown-ref(Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal-int-string)`, but found `string(&#039;abc&#039;)`. [invalid-argument]
+phpdoc_advanced_family_int_string.php:41: Possible argument type mismatch for argument #1 of `Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsLiteralString`: expected `literal-string`, but possibly received `string`. [possibly-invalid-argument]
+phpdoc_advanced_family_int_string.php:45: Invalid argument type for argument #1 of `Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsNonEmptyLiteralString`: expected `non-empty-literal-string`, but found `string(&#039;&#039;)`. [invalid-argument]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 19: Unexpected errors [&quot;Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string`. [non-existent-class-like]&quot;]
+Line 34: Unexpected errors [&quot;Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string)`, but found `string(&#039;123&#039;)`. [invalid-argument]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:34: InvalidArgument: Argument $value of acceptsDecimalIntString() expects &#039;Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal-int-string&#039;, got &#039;&quot;123&quot;&#039; [MIR0201]
+phpdoc_advanced_family_int_string.php:35: InvalidArgument: Argument $value of acceptsDecimalIntString() expects &#039;Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal-int-string&#039;, got &#039;&quot;abc&quot;&#039; [MIR0201]
+phpdoc_advanced_family_int_string.php:37: InvalidArgument: Argument $value of acceptsLiteralString() expects &#039;Conformance\Tests\PhpdocAdvancedFamilyIntString\literal-string&#039;, got &#039;&quot;a literal&quot;&#039; [MIR0201]
+phpdoc_advanced_family_int_string.php:41: InvalidArgument: Argument $value of acceptsLiteralString() expects &#039;Conformance\Tests\PhpdocAdvancedFamilyIntString\literal-string&#039;, got &#039;string&#039; [MIR0201]
+phpdoc_advanced_family_int_string.php:44: InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects &#039;Conformance\Tests\PhpdocAdvancedFamilyIntString\non-empty-literal-string&#039;, got &#039;&quot;x&quot;&#039; [MIR0201]
+phpdoc_advanced_family_int_string.php:45: InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects &#039;Conformance\Tests\PhpdocAdvancedFamilyIntString\non-empty-literal-string&#039;, got &#039;&quot;&quot;&#039; [MIR0201]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 34: Unexpected errors [&quot;InvalidArgument: Argument $value of acceptsDecimalIntString() expects &#039;Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string&#039;, got &#039;\&quot;123\&quot;&#039; [MIR0201]&quot;]
+Line 37: Unexpected errors [&quot;InvalidArgument: Argument $value of acceptsLiteralString() expects &#039;Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\literal-string&#039;, got &#039;\&quot;a literal\&quot;&#039; [MIR0201]&quot;]
+Line 44: Unexpected errors [&quot;InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects &#039;Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\non-empty-literal-string&#039;, got &#039;\&quot;x\&quot;&#039; [MIR0201]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:19: Saw possibly unextractable annotation for a fragment of comment &#039;/** @param decimal-int-string $value */&#039;: after decimal, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_family_int_string.php:19: Saw a token Phan may have failed to parse after &#039;/** @param decimal-int-string $value */&#039;: after decimal, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_family_int_string.php:20: Parameter $value has undeclared type \Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal [PhanUndeclaredTypeParameter]
+phpdoc_advanced_family_int_string.php:24: Saw possibly unextractable annotation for a fragment of comment &#039;/** @param literal-string $value */&#039;: after literal, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_family_int_string.php:24: Saw a token Phan may have failed to parse after &#039;/** @param literal-string $value */&#039;: after literal, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_family_int_string.php:25: Parameter $value has undeclared type \Conformance\Tests\PhpdocAdvancedFamilyIntString\literal [PhanUndeclaredTypeParameter]
+phpdoc_advanced_family_int_string.php:29: Saw possibly unextractable annotation for a fragment of comment &#039;/** @param non-empty-literal-string $value */&#039;: after non, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_family_int_string.php:29: Saw a token Phan may have failed to parse after &#039;/** @param non-empty-literal-string $value */&#039;: after non, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_family_int_string.php:30: Parameter $value has undeclared type \Conformance\Tests\PhpdocAdvancedFamilyIntString\non [PhanUndeclaredTypeParameter]
+phpdoc_advanced_family_int_string.php:34: Argument 1 ($value) is &#039;123&#039; of type string but \Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString() takes \Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:20 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_family_int_string.php:35: Argument 1 ($value) is &#039;abc&#039; of type string but \Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString() takes \Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:20 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_family_int_string.php:37: Argument 1 ($value) is &#039;a literal&#039; of type string but \Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsLiteralString() takes \Conformance\Tests\PhpdocAdvancedFamilyIntString\literal (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:25 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_family_int_string.php:41: Argument 1 ($value) is $value of type string but \Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsLiteralString() takes \Conformance\Tests\PhpdocAdvancedFamilyIntString\literal (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:25 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_family_int_string.php:44: Argument 1 ($value) is &#039;x&#039; of type string but \Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsNonEmptyLiteralString() takes \Conformance\Tests\PhpdocAdvancedFamilyIntString\non (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:30 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_family_int_string.php:45: Argument 1 ($value) is &#039;&#039; of type string but \Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsNonEmptyLiteralString() takes \Conformance\Tests\PhpdocAdvancedFamilyIntString\non (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:30 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 19: Unexpected errors [&quot;Saw possibly unextractable annotation for a fragment of comment &#039;/** @param decimal-int-string $value */&#039;: after decimal, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]&quot;,&quot;Saw a token Phan may have failed to parse after &#039;/** @param decimal-int-string $value */&#039;: after decimal, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]&quot;]
+Line 20: Unexpected errors [&quot;Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal [PhanUndeclaredTypeParameter]&quot;]
+Line 24: Unexpected errors [&quot;Saw possibly unextractable annotation for a fragment of comment &#039;/** @param literal-string $value */&#039;: after literal, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]&quot;,&quot;Saw a token Phan may have failed to parse after &#039;/** @param literal-string $value */&#039;: after literal, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]&quot;]
+Line 25: Unexpected errors [&quot;Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\literal [PhanUndeclaredTypeParameter]&quot;]
+Line 29: Unexpected errors [&quot;Saw possibly unextractable annotation for a fragment of comment &#039;/** @param non-empty-literal-string $value */&#039;: after non, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]&quot;,&quot;Saw a token Phan may have failed to parse after &#039;/** @param non-empty-literal-string $value */&#039;: after non, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]&quot;]
+Line 30: Unexpected errors [&quot;Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\non [PhanUndeclaredTypeParameter]&quot;]
+Line 34: Unexpected errors [&quot;Argument 1 ($value) is &#039;123&#039; of type string but \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsDecimalIntString() takes \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:20 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]&quot;]
+Line 37: Unexpected errors [&quot;Argument 1 ($value) is &#039;a literal&#039; of type string but \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsLiteralString() takes \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\literal (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:25 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]&quot;]
+Line 44: Unexpected errors [&quot;Argument 1 ($value) is &#039;x&#039; of type string but \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsNonEmptyLiteralString() takes \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\non (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:30 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:9: Class or interface named \Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal-int-string does not exist [undefinedClass]
+phpdoc_advanced_family_int_string.php:29: Class or interface named \Conformance\Tests\PhpdocAdvancedFamilyIntString\non-empty-literal-string does not exist [undefinedClass]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 9: Unexpected errors [&quot;Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string does not exist [undefinedClass]&quot;]
+Line 29: Unexpected errors [&quot;Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\non-empty-literal-string does not exist [undefinedClass]&quot;]</pre></details></td></tr>
+</tbody></table>
+<h2>Source</h2>
+<pre class="source"><code>&lt;?php
+
+declare(strict_types=1);
+
+namespace Conformance\Tests\PhpdocAdvancedFamilyIntString;
+
+/**
+ * Integer-string and literal-string refinements fall back to `string`.
+ *
+ * `decimal-int-string`, `non-decimal-int-string`, `literal-string` and
+ * `non-empty-literal-string` are refinements of `string`. Analyzers that model
+ * them reject a literal that does not match; others fall back to plain
+ * `string` and accept it.
+ *
+ * References:
+ * - PHPStan TypeNodeResolver decimal-int-string / non-decimal-int-string / literal-string / non-empty-literal-string
+ */
+
+/** @param decimal-int-string $value */
+function acceptsDecimalIntString($value): void
+{
+}
+
+/** @param literal-string $value */
+function acceptsLiteralString($value): void
+{
+}
+
+/** @param non-empty-literal-string $value */
+function acceptsNonEmptyLiteralString($value): void
+{
+}
+
+acceptsDecimalIntString(&#039;123&#039;);
+acceptsDecimalIntString(&#039;abc&#039;); // E?: &#039;abc&#039; is not a decimal-int-string
+
+acceptsLiteralString(&#039;a literal&#039;);
+
+function forwardsRuntimeString(string $value): void
+{
+    acceptsLiteralString($value); // E?: an arbitrary runtime string is not a literal-string
+}
+
+acceptsNonEmptyLiteralString(&#039;x&#039;);
+acceptsNonEmptyLiteralString(&#039;&#039;); // E?: &#039;&#039; is not a non-empty-literal-string
+</code></pre>
+<script type="module">
+  import { codeToHtml } from 'https://esm.sh/shiki@4.3.1';
+
+  for (const code of document.querySelectorAll('pre.source > code')) {
+    const pre = code.closest('pre.source');
+    try {
+      pre.outerHTML = await codeToHtml(code.textContent, { lang: 'php', theme: 'github-dark' });
+    } catch (error) {
+      console.error('shiki highlight failed', error);
+    }
+  }
+</script>
+</body></html>

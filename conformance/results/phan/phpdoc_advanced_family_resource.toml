@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_resource.php:23: Saw possibly unextractable annotation for a fragment of comment '/** @param open-resource $value */': after open, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_family_resource.php:23: Saw a token Phan may have failed to parse after '/** @param open-resource $value */': after open, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_family_resource.php:24: Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFamilyResource\\open [PhanUndeclaredTypeParameter]
+phpdoc_advanced_family_resource.php:31: Argument 1 ($value) is 123 of type int (value: 123) but \\Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource() takes resource (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_resource.php:19 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_family_resource.php:33: Argument 1 ($value) is $handle of type false|resource but \\Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource() takes \\Conformance\\Tests\\PhpdocAdvancedFamilyResource\\open defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_resource.php:24 [PhanTypeMismatchArgument]
+phpdoc_advanced_family_resource.php:34: Argument 1 ($value) is 'not a resource' of type string but \\Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource() takes \\Conformance\\Tests\\PhpdocAdvancedFamilyResource\\open (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_resource.php:24 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = """
+Line 23: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '/** @param open-resource $value */': after open, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '/** @param open-resource $value */': after open, saw '-' [PhanUnextractableAnnotationSuffix]"]
+Line 24: Unexpected errors ["Parameter $value has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\open [PhanUndeclaredTypeParameter]"]
+Line 33: Unexpected errors ["Argument 1 ($value) is $handle of type false|resource but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsOpenResource() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\open defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_resource.php:24 [PhanTypeMismatchArgument]"]"""
+notes = ""
+ignore_errors = []

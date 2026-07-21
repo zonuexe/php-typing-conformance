@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phan_non_null_mixed.php:19: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed`. [non-existent-class-like]
+phpdoc_advanced_phan_non_null_mixed.php:26: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed)`, but found `int(5)`. [invalid-argument]
+phpdoc_advanced_phan_non_null_mixed.php:29: Argument #1 of function `Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull` is `null`, but parameter type `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed)` does not accept it. [null-argument]"""
+errors_diff = """
+Line 19: Unexpected errors ["Cannot find class, interface, enum, or type alias `Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\non-null-mixed`. [non-existent-class-like]"]
+Line 26: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\acceptsNonNull`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\non-null-mixed)`, but found `int(5)`. [invalid-argument]"]"""
+notes = ""
+ignore_errors = []

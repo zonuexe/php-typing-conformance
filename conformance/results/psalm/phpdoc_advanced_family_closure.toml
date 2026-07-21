@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_closure.php:19: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\pure-closure in docblock for Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\acceptsPureClosure [InvalidDocblock]
+phpdoc_advanced_family_closure.php:20: Parameter $fn has no provided type [MissingParamType]
+phpdoc_advanced_family_closure.php:24: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\static-closure in docblock for Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\acceptsStaticClosure [InvalidDocblock]
+phpdoc_advanced_family_closure.php:25: Parameter $fn has no provided type [MissingParamType]"""
+errors_diff = """
+Line 19: Unexpected errors ["Unrecognized type Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\pure-closure in docblock for Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\acceptsPureClosure [InvalidDocblock]"]
+Line 20: Unexpected errors ["Parameter $fn has no provided type [MissingParamType]"]
+Line 24: Unexpected errors ["Unrecognized type Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\static-closure in docblock for Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\acceptsStaticClosure [InvalidDocblock]"]
+Line 25: Unexpected errors ["Parameter $fn has no provided type [MissingParamType]"]"""
+notes = ""
+ignore_errors = []

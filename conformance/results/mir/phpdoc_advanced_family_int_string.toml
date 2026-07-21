@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_int_string.php:34: InvalidArgument: Argument $value of acceptsDecimalIntString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string', got '"123"' [MIR0201]
+phpdoc_advanced_family_int_string.php:35: InvalidArgument: Argument $value of acceptsDecimalIntString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\decimal-int-string', got '"abc"' [MIR0201]
+phpdoc_advanced_family_int_string.php:37: InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\literal-string', got '"a literal"' [MIR0201]
+phpdoc_advanced_family_int_string.php:41: InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\literal-string', got 'string' [MIR0201]
+phpdoc_advanced_family_int_string.php:44: InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\non-empty-literal-string', got '"x"' [MIR0201]
+phpdoc_advanced_family_int_string.php:45: InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\non-empty-literal-string', got '""' [MIR0201]"""
+errors_diff = """
+Line 34: Unexpected errors ["InvalidArgument: Argument $value of acceptsDecimalIntString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\decimal-int-string', got '\\"123\\"' [MIR0201]"]
+Line 37: Unexpected errors ["InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\literal-string', got '\\"a literal\\"' [MIR0201]"]
+Line 44: Unexpected errors ["InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\non-empty-literal-string', got '\\"x\\"' [MIR0201]"]"""
+notes = ""
+ignore_errors = []

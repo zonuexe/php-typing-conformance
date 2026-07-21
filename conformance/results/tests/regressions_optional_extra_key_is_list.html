@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Optional extra non-list key stays list-compatible. — Conformance</title>
+  <title>Optional extra non-list key stays list-compatible — Conformance</title>
   <style>
 body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
 body.detail { max-width: 960px; }
@@ -46,7 +46,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 </head>
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>
-<h1>Optional extra non-list key stays list-compatible.</h1>
+<h1>Optional extra non-list key stays list-compatible</h1>
 <p class="meta">Group: Cross-analyzer regressions &middot; Category: regression &middot; File: regressions_optional_extra_key_is_list.php</p>
 <div class="doc"><code>array{0: int, a?: string}</code> admits the value <code>[0 =&gt; 1]</code> (the optional string key <code>a</code> is
 absent), and <code>array_is_list([0 =&gt; 1]) === true</code>. So <code>array_is_list($b)</code> is maybe-true,

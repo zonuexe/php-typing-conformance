@@ -347,6 +347,12 @@ CSS;
             $titleText = $this->humanize($testCase->name);
         }
 
+        // Headings read better without the sentence-ending period (but keep an
+        // ellipsis intact).
+        if (str_ends_with($titleText, '.') && !str_ends_with($titleText, '..')) {
+            $titleText = substr($titleText, 0, -1);
+        }
+
         return [$titleText, rtrim(implode("\n", $rest))];
     }
 

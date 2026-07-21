@@ -37,7 +37,8 @@ small a { color: inherit; }
 .status-cell { white-space: nowrap; font-weight: 600; }
 .diag-cell { width: 100%; }
 pre.diag { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 0.85em; }
-pre.source { background: #1e1e1e; color: #eaeaea; padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+pre.source, pre.shiki { padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+pre.source { background: #1e1e1e; color: #eaeaea; }
 .none { color: #888; margin: 0; font-style: italic; }
 .note-line { font-size: 0.85em; margin: 6px 0 0; }
 details summary { cursor: pointer; font-size: 0.85em; color: #555; }
@@ -129,4 +130,16 @@ function takesNamedBox(NamedBox $box): void
 takesNamedBox(new NamedBox(new User()));
 takesNamedBox(new NamedBox(new AnonymousUser())); // E: template bound requires HasName-compatible values
 </code></pre>
+<script type="module">
+  import { codeToHtml } from 'https://esm.sh/shiki@4.3.1';
+
+  for (const code of document.querySelectorAll('pre.source > code')) {
+    const pre = code.closest('pre.source');
+    try {
+      pre.outerHTML = await codeToHtml(code.textContent, { lang: 'php', theme: 'github-dark' });
+    } catch (error) {
+      console.error('shiki highlight failed', error);
+    }
+  }
+</script>
 </body></html>

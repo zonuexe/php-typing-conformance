@@ -2,11 +2,11 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-native_types_resource_argument.php:17: Parameter $value has undeclared type \\Conformance\\Tests\\NativeTypesResourceArgument\\resource [PhanUndeclaredTypeParameter]
-native_types_resource_argument.php:38: Argument 1 ($value) is $handle of type resource but \\Conformance\\Tests\\NativeTypesResourceArgument\\takesResource() takes \\Conformance\\Tests\\NativeTypesResourceArgument\\resource defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:17 [PhanTypeMismatchArgument]
-native_types_resource_argument.php:39: Argument 1 ($value) is $handle of type resource but \\Conformance\\Tests\\NativeTypesResourceArgument\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:21 [PhanTypeMismatchArgument]
-native_types_resource_argument.php:40: Argument 1 ($value) is $handle of type resource but \\Conformance\\Tests\\NativeTypesResourceArgument\\takesInt() takes int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:25 [PhanTypeMismatchArgument]
-native_types_resource_argument.php:41: Argument 1 ($value) is $handle of type resource but \\Conformance\\Tests\\NativeTypesResourceArgument\\takesBool() takes bool defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:29 [PhanTypeMismatchArgument]"""
+native_types_resource_argument.php:16: Parameter $value has undeclared type \\Conformance\\Tests\\NativeTypesResourceArgument\\resource [PhanUndeclaredTypeParameter]
+native_types_resource_argument.php:37: Argument 1 ($value) is $handle of type resource but \\Conformance\\Tests\\NativeTypesResourceArgument\\takesResource() takes \\Conformance\\Tests\\NativeTypesResourceArgument\\resource defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:16 [PhanTypeMismatchArgument]
+native_types_resource_argument.php:38: Argument 1 ($value) is $handle of type resource but \\Conformance\\Tests\\NativeTypesResourceArgument\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:20 [PhanTypeMismatchArgument]
+native_types_resource_argument.php:39: Argument 1 ($value) is $handle of type resource but \\Conformance\\Tests\\NativeTypesResourceArgument\\takesInt() takes int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:24 [PhanTypeMismatchArgument]
+native_types_resource_argument.php:40: Argument 1 ($value) is $handle of type resource but \\Conformance\\Tests\\NativeTypesResourceArgument\\takesBool() takes bool defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:28 [PhanTypeMismatchArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

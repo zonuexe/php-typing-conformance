@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>boolean/bool should be treated as equivalent for compatibility checks — Conformance</title>
+  <title>`boolean` PHPDoc synonym is compatible with native `bool` — Conformance</title>
   <style>
 body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
 body.detail { max-width: 960px; }
@@ -50,20 +50,28 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 </head>
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>
-<h1>boolean/bool should be treated as equivalent for compatibility checks</h1>
-<p class="meta">Group: Advanced PHPDoc types &middot; Category: ecosystem &middot; File: phpdoc_advanced_param_typehint_boolean_synonym.php &middot; Kind: <strong>Style / opinionated</strong> (no runtime-safety impact)</p>
-<div class="doc">References:
+<h1><code>boolean</code> PHPDoc synonym is compatible with native <code>bool</code></h1>
+<p class="meta">Group: Advanced PHPDoc types &middot; Category: ecosystem &middot; File: phpdoc_advanced_param_typehint_boolean_synonym.php</p>
+<div class="doc"><code>boolean</code> (PHPDoc) and native <code>bool</code> name the same type, so values should
+flow freely across a boundary that spells it either way — the library
+compatibility case where one side documents <code>@return boolean</code> and the other
+declares a native <code>bool</code> parameter. Analyzers should treat the synonym as
+compatible while still enforcing it as a real boolean type.
+
+References:
 - NoVerify funcParamTypeMissMatch patch series (April 2025)</div>
 <h2>Analyzer results</h2>
 <table class="detail-results">
 <thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
-<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_param_typehint_boolean_synonym.php:12: Use bool type instead of boolean [invalidDocblockType]</pre></td></tr>
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_param_typehint_boolean_synonym.php:46: Parameter #1 $flag of function Conformance\Tests\PhpdocAdvancedParamTypehintBooleanSynonym\acceptsOnlyBoolean expects bool, string given. [identifier=argument.type] [detected-from-level=5]</pre></td></tr>
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_param_typehint_boolean_synonym.php:46: Parameter #1 $flag of function Conformance\Tests\PhpdocAdvancedParamTypehintBooleanSynonym\acceptsOnlyBoolean expects bool, string given. [identifier=argument.type]</pre></td></tr>
+<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_param_typehint_boolean_synonym.php:46: Argument 1 of Conformance\Tests\PhpdocAdvancedParamTypehintBooleanSynonym\acceptsOnlyBoolean expects bool, but &#039;not a bool&#039; provided [InvalidArgument]</pre></td></tr>
+<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_param_typehint_boolean_synonym.php:46: Invalid argument type for argument #1 of `Conformance\Tests\PhpdocAdvancedParamTypehintBooleanSynonym\acceptsOnlyBoolean`: expected `bool`, but found `string(&#039;not a bool&#039;)`. [invalid-argument]</pre></td></tr>
+<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_param_typehint_boolean_synonym.php:46: InvalidArgument: Argument $flag of acceptsOnlyBoolean() expects &#039;bool&#039;, got &#039;&quot;not a bool&quot;&#039; [MIR0201]</pre></td></tr>
+<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_param_typehint_boolean_synonym.php:46: Argument 1 ($flag) is &#039;not a bool&#039; of type string but \Conformance\Tests\PhpdocAdvancedParamTypehintBooleanSynonym\acceptsOnlyBoolean() takes bool (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_param_typehint_boolean_synonym.php:35 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]</pre></td></tr>
+<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_param_typehint_boolean_synonym.php:12: Use bool type instead of boolean [invalidDocblockType]
+phpdoc_advanced_param_typehint_boolean_synonym.php:33: Use bool type instead of boolean [invalidDocblockType]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 12: Unexpected errors [&quot;Use bool type instead of boolean [invalidDocblockType]&quot;]
+Line 33: Unexpected errors [&quot;Use bool type instead of boolean [invalidDocblockType]&quot;]</pre></details><p class="note-line"><strong>Notes:</strong> NoVerify rejects the `boolean` PHPDoc spelling as an invalid docblock type (suggests `bool`) rather than treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `boolean` as `bool` and reject the string argument.</p></td></tr>
 </tbody></table>
 <h2>Source</h2>
 <pre class="source"><code>&lt;?php
@@ -73,20 +81,45 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedParamTypehintBooleanSynonym;
 
 /**
- * boolean/bool should be treated as equivalent for compatibility checks.
+ * `boolean` PHPDoc synonym is compatible with native `bool`.
+ *
+ * `boolean` (PHPDoc) and native `bool` name the same type, so values should
+ * flow freely across a boundary that spells it either way — the library
+ * compatibility case where one side documents `@return boolean` and the other
+ * declares a native `bool` parameter. Analyzers should treat the synonym as
+ * compatible while still enforcing it as a real boolean type.
  *
  * References:
  * - NoVerify funcParamTypeMissMatch patch series (April 2025)
- *
- * @conformance-kind style
- */ // E?: some tools may report a docblock spelling preference
+ */
+
+/**
+ * @return boolean
+ */
+function returnsBoolean()
+{
+    return true;
+}
+
+function acceptsOnlyBool(bool $flag): void
+{
+}
 
 /**
  * @param boolean $flag
  */
-function takesFlag(bool $flag): void
+function acceptsOnlyBoolean($flag): void
 {
 }
+
+// A `boolean`-documented value should satisfy a native `bool` parameter.
+acceptsOnlyBool(returnsBoolean());
+
+// A native `bool` should satisfy a `boolean`-documented parameter.
+acceptsOnlyBoolean(true);
+
+// `boolean` must still be enforced as a real boolean, not silently ignored.
+acceptsOnlyBoolean(&#039;not a bool&#039;); // E?: string should be rejected where @param boolean is required
 </code></pre>
 <script type="module">
   import { codeToHtml } from 'https://esm.sh/shiki@4.3.1';

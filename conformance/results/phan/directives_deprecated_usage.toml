@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-directives_deprecated_usage.php:15: Call to deprecated function \\Conformance\\Tests\\DirectivesDeprecatedUsage\\oldMessage() defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/_directives_deprecated_usage_library.php:10 (Deprecated because: Use newMessage() instead.) [PhanDeprecatedFunction]
-directives_deprecated_usage.php:16: Using a deprecated class \\Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/_directives_deprecated_usage_library.php:18 (Deprecated because: Use ModernFormatter instead.) [PhanDeprecatedClass]"""
+directives_deprecated_usage.php:17: Call to deprecated function \\Conformance\\Tests\\DirectivesDeprecatedUsage\\oldMessage() defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/_directives_deprecated_usage_library.php:10 (Deprecated because: Use newMessage() instead.) [PhanDeprecatedFunction]
+directives_deprecated_usage.php:18: Using a deprecated class \\Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/_directives_deprecated_usage_library.php:18 (Deprecated because: Use ModernFormatter instead.) [PhanDeprecatedClass]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

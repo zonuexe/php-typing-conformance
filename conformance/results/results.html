@@ -300,6 +300,15 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Pass</a></td>
 </tr>
+<tr id="phpdoc_advanced_param_typehint_boolean_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html"><code>boolean</code> PHPDoc synonym is compatible with native <code>bool</code></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify rejects the `boolean` PHPDoc spelling as an invalid docblock type (suggests `bool`) rather than treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `boolean` as `bool` and reject the string argument.</span></span></a></td>
+</tr>
 <tr id="phpdoc_advanced_param_typehint_byref_compatible"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">By-reference parameters should match even if PHPDoc omits the reference marker</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
@@ -569,16 +578,6 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
-</tr>
-<tr class="group"><td colspan="8">Advanced PHPDoc types</td></tr>
-<tr id="phpdoc_advanced_param_typehint_boolean_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">boolean/bool should be treated as equivalent for compatibility checks</a></td>
-<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
-<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
-<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
-<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
-<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
-<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
-<td class="reported"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Reported</a></td>
 </tr>
 <tr class="group"><td colspan="8">Analyzer directives</td></tr>
 <tr id="directives_deprecated_usage"><td class="test-cell"><a class="test-link" href="tests/directives_deprecated_usage.html">Deprecated symbol usage through companion support files</a></td>

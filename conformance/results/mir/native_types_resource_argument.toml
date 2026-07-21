@@ -1,10 +1,10 @@
 status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 5
-output = "native_types_resource_argument.php:17: UndefinedClass: Class Conformance\\Tests\\NativeTypesResourceArgument\\resource does not exist [MIR0005]"
+output = "native_types_resource_argument.php:16: UndefinedClass: Class Conformance\\Tests\\NativeTypesResourceArgument\\resource does not exist [MIR0005]"
 errors_diff = """
+Line 38: Expected 1 error(s)
 Line 39: Expected 1 error(s)
-Line 40: Expected 1 error(s)
-Line 41: Expected 1 error(s)"""
+Line 40: Expected 1 error(s)"""
 notes = ""
 ignore_errors = []

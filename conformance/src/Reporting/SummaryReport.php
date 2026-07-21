@@ -86,7 +86,65 @@ final class SummaryReport
             $body = array_merge($body, $this->renderMatrix($resultsRoot, $testGroups, $styleCases, $tools, true));
         }
 
+        $body = array_merge($body, $this->renderAnalyzerTable());
+
         return $this->renderPage('PHP Typing Conformance Results', $body, false);
+    }
+
+    /**
+     * A reference table of the analyzers compared above.
+     *
+     * @return list<string>
+     */
+    private function renderAnalyzerTable(): array
+    {
+        // Ordered by initial release (oldest first).
+        // [name, homepage, kind, language, founder(raw HTML), maintainer,
+        //  license, initial, latest, ast, announceUrl, announceLabel]
+        $rows = [
+            ['Phan', 'https://github.com/phan/phan', 'Static analyzer', 'PHP', 'Rasmus Lerdorf &amp; Andrew Morrison (Etsy)', 'Tyson Andre', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
+            ['Psalm', 'https://psalm.dev', 'Static analyzer', 'PHP', 'Matt Brown (Vimeo)', 'Daniil Gentili', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
+            ['PHPStan', 'https://phpstan.org', 'Static analyzer', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
+            ['Intelephense', 'https://intelephense.com', 'Language server', 'TypeScript', 'Ben Mewburn', 'Ben Mewburn', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
+            ['NoVerify', 'https://github.com/VKCOM/noverify', 'Linter', 'Go', 'VK (VKCOM)', 'VKCOM', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
+            ['Mago', 'https://mago.carthage.software', 'Toolchain', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
+            ['mir', 'https://github.com/jorgsowa/mir', 'Static analyzer', 'Rust', 'Jorg Sowa', 'Jorg Sowa', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
+        ];
+
+        $headers = ['Analyzer', 'Kind', 'Language', 'Founder', 'Current maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
+
+        $lines = [];
+        $lines[] = '<h2 class="section">Analyzers</h2>';
+        $lines[] = '<p class="section-note">Reference metadata for each analyzer compared above. Versions are those pinned by this suite.</p>';
+        $lines[] = '<div class="table-scroll"><table class="analyzer-meta">';
+        $lines[] = '<thead><tr>';
+        foreach ($headers as $header) {
+            $lines[] = '<th>' . htmlspecialchars($header) . '</th>';
+        }
+        $lines[] = '</tr></thead><tbody>';
+
+        foreach ($rows as [$name, $url, $kind, $language, $founder, $maintainer, $license, $initial, $latest, $ast, $announceUrl, $announceLabel]) {
+            $announcement = $announceUrl !== ''
+                ? sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($announceUrl), htmlspecialchars($announceLabel))
+                : '<span class="none">—</span>';
+
+            $lines[] = '<tr>'
+                . sprintf('<th class="tool-name"><a href="%s" target="_blank" rel="noopener">%s</a></th>', htmlspecialchars($url), htmlspecialchars($name))
+                . '<td>' . htmlspecialchars($kind) . '</td>'
+                . '<td>' . htmlspecialchars($language) . '</td>'
+                . '<td>' . $founder . '</td>'
+                . '<td>' . htmlspecialchars($maintainer) . '</td>'
+                . '<td>' . htmlspecialchars($license) . '</td>'
+                . '<td>' . htmlspecialchars($initial) . '</td>'
+                . '<td>' . htmlspecialchars($latest) . '</td>'
+                . '<td>' . htmlspecialchars($ast) . '</td>'
+                . '<td>' . $announcement . '</td>'
+                . '</tr>';
+        }
+
+        $lines[] = '</tbody></table></div>';
+
+        return $lines;
     }
 
     /**
@@ -334,6 +392,9 @@ h1 { margin-bottom: 0.2em; }
 p.lead { color: #555; margin-top: 0; }
 h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
 p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
+.table-scroll { overflow-x: auto; }
+table.analyzer-meta { font-size: 0.9em; }
+table.analyzer-meta a { text-decoration: none; font-weight: 600; }
 p.crumb { margin: 0 0 12px; }
 p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
 table { width: 100%; border-collapse: collapse; }

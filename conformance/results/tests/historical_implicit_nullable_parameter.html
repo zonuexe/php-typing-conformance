@@ -51,7 +51,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>
 <h1>Historical implicit-nullable parameter syntax</h1>
-<p class="meta">Group: Historical and legacy behavior &middot; Category: historical &middot; File: historical_implicit_nullable_parameter.php &middot; Kind: <strong>Style / opinionated</strong> (no runtime-safety impact)</p>
+<p class="meta">Group: Historical and legacy behavior &middot; Category: historical &middot; File: historical_implicit_nullable_parameter.php</p>
 <div class="doc">References:
 - python-typing historical group inspiration
 - legacy PHP signatures that relied on a null default before explicit nullable hints</div>
@@ -81,8 +81,6 @@ namespace Conformance\Tests\HistoricalImplicitNullableParameter;
  * References:
  * - python-typing historical group inspiration
  * - legacy PHP signatures that relied on a null default before explicit nullable hints
- *
- * @conformance-kind style
  */
 function legacyImplicitNullable(array $values = null): void // E?: implicit nullable parameter
 {

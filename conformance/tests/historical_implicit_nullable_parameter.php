@@ -10,8 +10,6 @@ namespace Conformance\Tests\HistoricalImplicitNullableParameter;
  * References:
  * - python-typing historical group inspiration
  * - legacy PHP signatures that relied on a null default before explicit nullable hints
- *
- * @conformance-kind style
  */
 function legacyImplicitNullable(array $values = null): void // E?: implicit nullable parameter
 {

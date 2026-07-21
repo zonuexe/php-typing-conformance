@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFallbackNumericString;
 
 /**
- * `numeric-string` falls back to `string` for cross-boundary compatibility.
+ * `numeric-string`
  *
  * `numeric-string` is a refinement of `string`, so a `@return numeric-string`
  * value always satisfies a native `string` parameter — analyzers that do not

@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Full support"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_psalm_stringable_object.php:41: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\acceptsStringable expects object{__tostring()}, but Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\WithoutToString provided [InvalidArgument]"

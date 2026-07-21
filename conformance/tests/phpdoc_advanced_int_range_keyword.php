@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedIntRangeKeyword;
 
 /**
- * `int-range<0, 255>` is Phan's spelling of the `int<0, 255>` range.
+ * `int-range<0, 255>` (Phan spelling)
  *
  * Phan writes integer ranges as `int-range<min, max>`, while PHPStan, Psalm and
  * Mago use `int<min, max>`. Each side enforces its own spelling and does not

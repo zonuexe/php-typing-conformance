@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyClosure;
 
 /**
- * `pure-closure` and `static-closure` refinements fall back to `Closure`.
+ * `pure-closure` / `static-closure` refinements
  *
  * `pure-closure`, `static-closure` and `static-pure-closure` refine `Closure`
  * with purity/staticness. Analyzers that model them still accept any Closure at

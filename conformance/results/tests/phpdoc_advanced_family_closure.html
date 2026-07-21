@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>`pure-closure` and `static-closure` refinements fall back to `Closure` — Conformance</title>
+  <title>`pure-closure` / `static-closure` refinements — Conformance</title>
   <style>
 body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
 body.detail { max-width: 960px; }
@@ -33,6 +33,7 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
 .not-supported { background: #f4f4f5; color: #9a9a9a; font-style: italic; }
+.falls-back { background: #e4eefb; color: #2f5c9e; }
 .unknown { background: #f0f0f0; }
 .reported { background: #dbe7fb; }
 .muted { background: #f6f6f6; color: #999; }
@@ -51,7 +52,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 </head>
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>
-<h1><code>pure-closure</code> and <code>static-closure</code> refinements fall back to <code>Closure</code></h1>
+<h1><code>pure-closure</code> / <code>static-closure</code> refinements</h1>
 <p class="meta">Group: Advanced PHPDoc types &middot; Category: ecosystem &middot; File: phpdoc_advanced_family_closure.php</p>
 <div class="doc"><code>pure-closure</code>, <code>static-closure</code> and <code>static-pure-closure</code> refine <code>Closure</code>
 with purity/staticness. Analyzers that model them still accept any Closure at
@@ -63,9 +64,9 @@ References:
 <h2>Analyzer results</h2>
 <table class="detail-results">
 <thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
-<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_closure.php:30: Parameter #1 $fn of function Conformance\Tests\PhpdocAdvancedFamilyClosure\acceptsPureClosure expects pure-Closure, &#039;strlen&#039; given. [identifier=argument.type] [detected-from-level=5]
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Full support <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_closure.php:30: Parameter #1 $fn of function Conformance\Tests\PhpdocAdvancedFamilyClosure\acceptsPureClosure expects pure-Closure, &#039;strlen&#039; given. [identifier=argument.type] [detected-from-level=5]
 phpdoc_advanced_family_closure.php:33: Parameter #1 $fn of function Conformance\Tests\PhpdocAdvancedFamilyClosure\acceptsStaticClosure expects static-Closure, &#039;strlen&#039; given. [identifier=argument.type] [detected-from-level=5]</pre></td></tr>
-<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_closure.php:30: Parameter #1 $fn of function Conformance\Tests\PhpdocAdvancedFamilyClosure\acceptsPureClosure expects pure-Closure, &#039;strlen&#039; given. [identifier=argument.type]
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Full support</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_closure.php:30: Parameter #1 $fn of function Conformance\Tests\PhpdocAdvancedFamilyClosure\acceptsPureClosure expects pure-Closure, &#039;strlen&#039; given. [identifier=argument.type]
 phpdoc_advanced_family_closure.php:33: Parameter #1 $fn of function Conformance\Tests\PhpdocAdvancedFamilyClosure\acceptsStaticClosure expects static-Closure, &#039;strlen&#039; given. [identifier=argument.type]</pre></td></tr>
 <tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="not-supported status-cell">Not supported</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_closure.php:19: Unrecognized type Conformance\Tests\PhpdocAdvancedFamilyClosure\pure-closure in docblock for Conformance\Tests\PhpdocAdvancedFamilyClosure\acceptsPureClosure [InvalidDocblock]
 phpdoc_advanced_family_closure.php:20: Parameter $fn has no provided type [MissingParamType]
@@ -113,7 +114,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyClosure;
 
 /**
- * `pure-closure` and `static-closure` refinements fall back to `Closure`.
+ * `pure-closure` / `static-closure` refinements
  *
  * `pure-closure`, `static-closure` and `static-pure-closure` refine `Closure`
  * with purity/staticness. Analyzers that model them still accept any Closure at

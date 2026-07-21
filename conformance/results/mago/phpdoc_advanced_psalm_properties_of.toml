@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Full support"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_psalm_properties_of.php:36: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmPropertiesOf\\acceptsUserProps`: expected `array{'age': int, 'name': string}`, but possibly received `array{'age': string('old'), 'name': string('Ada')}`. [possibly-invalid-argument]"

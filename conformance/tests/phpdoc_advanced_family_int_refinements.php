@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyIntRefinements;
 
 /**
- * Integer sign refinements fall back to `int`.
+ * Integer sign refinements (`negative-int`, `non-zero-int`, …)
  *
  * `negative-int`, `non-positive-int`, `non-negative-int` and `non-zero-int` are
  * sign-bounded refinements of `int`. Analyzers that model them reject an

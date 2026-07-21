@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Full support"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_fallback_positive_int.php:46: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackPositiveInt\\acceptsPositiveInt`: expected `positive-int`, but found `int(-1)`. [invalid-argument]"

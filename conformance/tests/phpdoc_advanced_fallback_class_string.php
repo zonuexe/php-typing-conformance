@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFallbackClassString;
 
 /**
- * `class-string` falls back to `string` for cross-boundary compatibility.
+ * `class-string`
  *
  * `class-string` is a refinement of `string`, so a `@return class-string`
  * value always satisfies a native `string` parameter — analyzers that do not

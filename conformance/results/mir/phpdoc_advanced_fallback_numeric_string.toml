@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Full support"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_fallback_numeric_string.php:46: InvalidArgument: Argument $value of acceptsNumericString() expects 'numeric-string', got '\"not numeric\"' [MIR0201]"

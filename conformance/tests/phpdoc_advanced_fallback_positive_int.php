@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFallbackPositiveInt;
 
 /**
- * `positive-int` falls back to `int` for cross-boundary compatibility.
+ * `positive-int`
  *
  * `positive-int` is a refinement of `int`, so a `@return positive-int` value
  * always satisfies a native `int` parameter — analyzers that do not model the

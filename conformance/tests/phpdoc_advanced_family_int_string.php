@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyIntString;
 
 /**
- * Integer-string and literal-string refinements fall back to `string`.
+ * Integer-string and literal-string refinements
  *
  * `decimal-int-string`, `non-decimal-int-string`, `literal-string` and
  * `non-empty-literal-string` are refinements of `string`. Analyzers that model

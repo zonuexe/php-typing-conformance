@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Full support"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """

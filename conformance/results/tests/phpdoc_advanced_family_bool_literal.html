@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>`true` and `false` literal types fall back to `bool` — Conformance</title>
+  <title>`true` / `false` literal types — Conformance</title>
   <style>
 body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
 body.detail { max-width: 960px; }
@@ -33,6 +33,7 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
 .not-supported { background: #f4f4f5; color: #9a9a9a; font-style: italic; }
+.falls-back { background: #e4eefb; color: #2f5c9e; }
 .unknown { background: #f0f0f0; }
 .reported { background: #dbe7fb; }
 .muted { background: #f6f6f6; color: #999; }
@@ -51,7 +52,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 </head>
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>
-<h1><code>true</code> and <code>false</code> literal types fall back to <code>bool</code></h1>
+<h1><code>true</code> / <code>false</code> literal types</h1>
 <p class="meta">Group: Advanced PHPDoc types &middot; Category: ecosystem &middot; File: phpdoc_advanced_family_bool_literal.php</p>
 <div class="doc">As standalone PHPDoc types, <code>true</code> and <code>false</code> are the two constant boolean
 types. Analyzers that model them reject the opposite literal; others fall
@@ -62,19 +63,19 @@ References:
 <h2>Analyzer results</h2>
 <table class="detail-results">
 <thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
-<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue expects true, false given. [identifier=argument.type] [detected-from-level=5]
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Full support <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue expects true, false given. [identifier=argument.type] [detected-from-level=5]
 phpdoc_advanced_family_bool_literal.php:32: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsFalse expects false, true given. [identifier=argument.type] [detected-from-level=5]</pre></td></tr>
-<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue expects true, false given. [identifier=argument.type]
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Full support</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue expects true, false given. [identifier=argument.type]
 phpdoc_advanced_family_bool_literal.php:32: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsFalse expects false, true given. [identifier=argument.type]</pre></td></tr>
-<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Argument 1 of Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue expects true, but false provided [InvalidArgument]
+<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Full support</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Argument 1 of Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue expects true, but false provided [InvalidArgument]
 phpdoc_advanced_family_bool_literal.php:32: Argument 1 of Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsFalse expects false, but true provided [InvalidArgument]</pre></td></tr>
-<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Argument #1 of function `Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue` is `false`, but parameter type `true` does not accept it. [false-argument]
+<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="pass status-cell">Full support</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Argument #1 of function `Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue` is `false`, but parameter type `true` does not accept it. [false-argument]
 phpdoc_advanced_family_bool_literal.php:32: Invalid argument type for argument #1 of `Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsFalse`: expected `false`, but found `true`. [invalid-argument]</pre></td></tr>
-<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: InvalidArgument: Argument $value of acceptsTrue() expects &#039;true&#039;, got &#039;false&#039; [MIR0201]
+<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="pass status-cell">Full support</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: InvalidArgument: Argument $value of acceptsTrue() expects &#039;true&#039;, got &#039;false&#039; [MIR0201]
 phpdoc_advanced_family_bool_literal.php:32: InvalidArgument: Argument $value of acceptsFalse() expects &#039;false&#039;, got &#039;true&#039; [MIR0201]</pre></td></tr>
-<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Argument 1 ($value) is false of type false but \Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue() takes true defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_bool_literal.php:19 [PhanTypeMismatchArgument]
+<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Full support</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: Argument 1 ($value) is false of type false but \Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue() takes true defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_bool_literal.php:19 [PhanTypeMismatchArgument]
 phpdoc_advanced_family_bool_literal.php:32: Argument 1 ($value) is true of type true but \Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsFalse() takes false defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_bool_literal.php:24 [PhanTypeMismatchArgument]</pre></td></tr>
-<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: potentially not safe access in parameter value of function Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue [notSafeCall]
+<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="pass status-cell">Full support</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_bool_literal.php:29: potentially not safe access in parameter value of function Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsTrue [notSafeCall]
 phpdoc_advanced_family_bool_literal.php:32: potentially not safe access in parameter value of function Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral\acceptsFalse [notSafeCall]</pre></td></tr>
 </tbody></table>
 <h2>Source</h2>
@@ -85,7 +86,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral;
 
 /**
- * `true` and `false` literal types fall back to `bool`.
+ * `true` / `false` literal types
  *
  * As standalone PHPDoc types, `true` and `false` are the two constant boolean
  * types. Analyzers that model them reject the opposite literal; others fall

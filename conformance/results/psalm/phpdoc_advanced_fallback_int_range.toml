@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Full support"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_fallback_int_range.php:46: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackIntRange\\acceptsByte expects int<0, 255>, but 256 provided [InvalidArgument]"

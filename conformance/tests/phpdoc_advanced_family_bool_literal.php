@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral;
 
 /**
- * `true` and `false` literal types fall back to `bool`.
+ * `true` / `false` literal types
  *
  * As standalone PHPDoc types, `true` and `false` are the two constant boolean
  * types. Analyzers that model them reject the opposite literal; others fall

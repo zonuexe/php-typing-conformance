@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyCallable;
 
 /**
- * Callable refinements fall back to `callable`/`string`/`array`.
+ * Callable refinements (`callable-string`, `callable-object`)
  *
  * `callable-string`, `callable-array` and `callable-object` refine a string,
  * array or object to one that is callable. Analyzers that model them reject a

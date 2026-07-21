@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyClassStringVariants;
 
 /**
- * `class-string` variants fall back to `class-string`/`string`.
+ * `class-string` variants (`interface-string`, `trait-string`, `enum-string`)
  *
  * `interface-string`, `trait-string` and `enum-string` constrain a
  * `class-string` to an interface, trait or enum respectively. Analyzers that

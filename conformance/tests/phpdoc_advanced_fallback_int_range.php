@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFallbackIntRange;
 
 /**
- * `int<0, 255>` range falls back to `int` for cross-boundary compatibility.
+ * `int<0, 255>`
  *
  * `int<min, max>` is a bounded refinement of `int`, so a `@return int<0, 255>`
  * value always satisfies a native `int` parameter — analyzers that do not model

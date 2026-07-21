@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyStringCase;
 
 /**
- * String case refinements fall back to `string`.
+ * String case refinements (`lowercase-string`, `uppercase-string`, …)
  *
  * `lowercase-string`, `uppercase-string` and their non-empty variants are
  * case-constrained refinements of `string`. Analyzers that model them reject a

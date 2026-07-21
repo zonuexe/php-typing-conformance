@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFallbackIntMaskOf;
 
 /**
- * `int-mask-of<Class::*>` falls back to `int` for cross-boundary compatibility.
+ * `int-mask-of<Class::*>`
  *
  * `int-mask-of<Permissions::*>` describes every bitwise-or combination of the
  * matching class constants, a refinement of `int`, so a `@return int-mask-of`

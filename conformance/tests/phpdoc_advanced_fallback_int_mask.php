@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFallbackIntMask;
 
 /**
- * `int-mask<1, 2, 4>` falls back to `int` for cross-boundary compatibility.
+ * `int-mask<1, 2, 4>`
  *
  * `int-mask<1, 2, 4>` describes every bitwise-or combination of the flags
  * (0..7), a refinement of `int`, so a `@return int-mask<...>` value always

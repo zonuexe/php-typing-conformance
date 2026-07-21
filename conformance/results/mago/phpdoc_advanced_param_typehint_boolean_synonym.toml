@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Full support"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_param_typehint_boolean_synonym.php:46: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedParamTypehintBooleanSynonym\\acceptsOnlyBoolean`: expected `bool`, but found `string('not a bool')`. [invalid-argument]"

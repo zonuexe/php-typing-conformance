@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Integer-string and literal-string refinements fall back to `string` — Conformance</title>
+  <title>Integer-string and literal-string refinements — Conformance</title>
   <style>
 body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
 body.detail { max-width: 960px; }
@@ -33,6 +33,7 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
 .not-supported { background: #f4f4f5; color: #9a9a9a; font-style: italic; }
+.falls-back { background: #e4eefb; color: #2f5c9e; }
 .unknown { background: #f0f0f0; }
 .reported { background: #dbe7fb; }
 .muted { background: #f6f6f6; color: #999; }
@@ -51,7 +52,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 </head>
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>
-<h1>Integer-string and literal-string refinements fall back to <code>string</code></h1>
+<h1>Integer-string and literal-string refinements</h1>
 <p class="meta">Group: Advanced PHPDoc types &middot; Category: ecosystem &middot; File: phpdoc_advanced_family_int_string.php</p>
 <div class="doc"><code>decimal-int-string</code>, <code>non-decimal-int-string</code>, <code>literal-string</code> and
 <code>non-empty-literal-string</code> are refinements of <code>string</code>. Analyzers that model
@@ -63,10 +64,10 @@ References:
 <h2>Analyzer results</h2>
 <table class="detail-results">
 <thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
-<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:35: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString expects decimal-int-string, &#039;abc&#039; given. [identifier=argument.type] [detected-from-level=5]
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Full support <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:35: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString expects decimal-int-string, &#039;abc&#039; given. [identifier=argument.type] [detected-from-level=5]
 phpdoc_advanced_family_int_string.php:41: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsLiteralString expects literal-string, string given. [identifier=argument.type] [detected-from-level=5]
 phpdoc_advanced_family_int_string.php:45: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsNonEmptyLiteralString expects literal-string&amp;non-empty-string, &#039;&#039; given. [identifier=argument.type] [detected-from-level=5]</pre></td></tr>
-<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:35: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString expects decimal-int-string, &#039;abc&#039; given. [identifier=argument.type]
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Full support</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:35: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString expects decimal-int-string, &#039;abc&#039; given. [identifier=argument.type]
 phpdoc_advanced_family_int_string.php:41: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsLiteralString expects literal-string, string given. [identifier=argument.type]
 phpdoc_advanced_family_int_string.php:45: Parameter #1 $value of function Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsNonEmptyLiteralString expects literal-string&amp;non-empty-string, &#039;&#039; given. [identifier=argument.type]</pre></td></tr>
 <tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="not-supported status-cell">Not supported</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_string.php:19: Unrecognized type Conformance\Tests\PhpdocAdvancedFamilyIntString\decimal-int-string in docblock for Conformance\Tests\PhpdocAdvancedFamilyIntString\acceptsDecimalIntString [InvalidDocblock]
@@ -123,7 +124,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFamilyIntString;
 
 /**
- * Integer-string and literal-string refinements fall back to `string`.
+ * Integer-string and literal-string refinements
  *
  * `decimal-int-string`, `non-decimal-int-string`, `literal-string` and
  * `non-empty-literal-string` are refinements of `string`. Analyzers that model

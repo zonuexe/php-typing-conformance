@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Full support"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_param_typehint_double_synonym.php:44: Argument 1 of Conformance\\Tests\\PhpdocAdvancedParamTypehintDoubleSynonym\\acceptsOnlyDouble expects float, but 'not a float' provided [InvalidArgument]"

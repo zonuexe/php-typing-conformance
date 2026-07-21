@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedAssociativeArray;
 
 /**
- * `associative-array` means a non-list array in Phan, an alias elsewhere.
+ * `associative-array`
  *
  * Phan treats `associative-array<K, V>` as an array that is specifically not a
  * list, so a plain list argument is rejected. PHPStan and Psalm accept

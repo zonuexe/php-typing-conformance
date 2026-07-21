@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Full support"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_psalm_properties_of.php:36: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmPropertiesOf\\acceptsUserProps expects array{age: int, name: string}, but array{age: 'old', name: 'Ada'} provided [InvalidScalarArgument]"

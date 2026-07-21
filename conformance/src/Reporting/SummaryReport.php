@@ -337,6 +337,7 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
 .not-supported { background: #f4f4f5; color: #9a9a9a; font-style: italic; }
+.falls-back { background: #e4eefb; color: #2f5c9e; }
 .unknown { background: #f0f0f0; }
 .reported { background: #dbe7fb; }
 .muted { background: #f6f6f6; color: #999; }
@@ -444,8 +445,13 @@ CSS;
         $status = (string) ($result['status'] ?? 'Unknown');
         $display = $status !== 'Unknown' ? $status : $automated;
 
+        // "Falls back to <base>" carries the base type name, so match by prefix.
+        if (str_starts_with($display, 'Falls back')) {
+            return [$display, 'falls-back'];
+        }
+
         $class = match ($display) {
-            'Pass' => 'pass',
+            'Pass', 'Full support' => 'pass',
             'Fail' => 'fail',
             'By design' => 'by-design',
             'Not supported' => 'not-supported',

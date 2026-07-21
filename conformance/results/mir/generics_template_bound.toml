@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+generics_template_bound.php:56: InvalidTemplateParam: Template type 'T' inferred as 'Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser' does not satisfy bound 'Conformance\\Tests\\GenericsTemplateBound\\HasName' [MIR0900]
+generics_template_bound.php:56: InvalidArgument: Argument $box of takesNamedBox() expects 'Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\User>', got 'Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser>' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

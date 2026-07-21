@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "intersections_interface_merge.php:54: InvalidArgument: Argument $value of takesIdentifiedNamed() expects 'Conformance\\Tests\\IntersectionsInterfaceMerge\\HasId&Conformance\\Tests\\IntersectionsInterfaceMerge\\HasName', got 'Conformance\\Tests\\IntersectionsInterfaceMerge\\AnonymousUser' [MIR0201]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

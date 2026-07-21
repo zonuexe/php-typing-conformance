@@ -24,3 +24,6 @@
 [submodule "references/mago"]
 	path = references/mago
 	url = https://github.com/carthage-software/mago.git
+[submodule "references/mir"]
+	path = references/mir
+	url = https://github.com/jorgsowa/mir.git

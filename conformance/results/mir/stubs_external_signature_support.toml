@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "stubs_external_signature_support.php:37: InvalidArgument: Argument $clock of takesClock() expects 'Conformance\\Tests\\StubsExternalSignatureSupport\\ExternalClock', got 'Conformance\\Tests\\StubsExternalSignatureSupport\\InvalidClock' [MIR0201]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,10 @@
+{
+    "require-dev": {
+        "miropen/mir-php": "^0.60.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "miropen/mir-php": true
+        }
+    }
+}

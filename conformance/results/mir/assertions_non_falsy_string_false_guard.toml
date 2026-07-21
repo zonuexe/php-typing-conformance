@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 11
+output = """
+assertions_non_falsy_string_false_guard.php:41: InvalidArgument: Argument $value of takesNonFalsyString() expects 'non-empty-string', got 'false' [MIR0201]
+assertions_non_falsy_string_false_guard.php:42: InvalidArgument: Argument $value of takesNonEmptyString() expects 'non-empty-string', got 'false' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

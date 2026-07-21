@@ -1,0 +1,71 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "e547fcd197ee0affb968ec01fc2fe841",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "miropen/mir-php",
+            "version": "v0.60.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jorgsowa/mir.git",
+                "reference": "7fc174178dde3658e25ee156514c8f792c799b98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jorgsowa/mir/zipball/7fc174178dde3658e25ee156514c8f792c799b98",
+                "reference": "7fc174178dde3658e25ee156514c8f792c799b98",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "composer/composer": "^2.0"
+            },
+            "bin": [
+                "composer/bin/mir"
+            ],
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Mir\\Composer\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mir\\Composer\\": "composer/src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Fast static analyzer for PHP",
+            "homepage": "https://github.com/jorgsowa/mir",
+            "keywords": [
+                "PHPStan",
+                "analyzer",
+                "php",
+                "psalm",
+                "static-analysis"
+            ],
+            "support": {
+                "issues": "https://github.com/jorgsowa/mir/issues",
+                "source": "https://github.com/jorgsowa/mir"
+            },
+            "time": "2026-07-18T23:13:10+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
+}

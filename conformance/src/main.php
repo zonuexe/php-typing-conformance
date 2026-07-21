@@ -7,6 +7,7 @@ use Conformance\Checker\PhanChecker;
 use Conformance\Checker\PhpStanChecker;
 use Conformance\Checker\PsalmChecker;
 use Conformance\Checker\MagoChecker;
+use Conformance\Checker\MirChecker;
 use Conformance\Checker\NoVerifyChecker;
 use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Expectation\ExpectationEvaluator;
@@ -18,6 +19,7 @@ use Conformance\Reporting\SummaryReport;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/Checker/Checker.php';
 require_once __DIR__ . '/Checker/MagoChecker.php';
+require_once __DIR__ . '/Checker/MirChecker.php';
 require_once __DIR__ . '/Checker/NoVerifyChecker.php';
 require_once __DIR__ . '/Checker/PhanChecker.php';
 require_once __DIR__ . '/Checker/PhpStanChecker.php';
@@ -67,6 +69,9 @@ $magoChecker = new MagoChecker(
     binaryPath: $projectRoot . '/vendor-bin/mago/vendor/bin/mago',
     workspacePath: $rootDir,
 );
+$mirChecker = new MirChecker(
+    binaryPath: $projectRoot . '/vendor-bin/mir/vendor/bin/mir',
+);
 $noVerifyChecker = new NoVerifyChecker(
     binaryPath: $projectRoot . '/vendor/bin/noverify',
 );
@@ -79,7 +84,7 @@ $psalmChecker = new PsalmChecker(
     binaryPath: $projectRoot . '/vendor-bin/psalm/vendor/bin/psalm',
     configPath: $psalmConfigPath,
 );
-$checkers = [$phpStanChecker, $phpStanStrictChecker, $psalmChecker, $magoChecker, $phanChecker, $noVerifyChecker];
+$checkers = [$phpStanChecker, $phpStanStrictChecker, $psalmChecker, $magoChecker, $mirChecker, $phanChecker, $noVerifyChecker];
 
 printf("Loaded %d test groups\n", count($testGroups));
 

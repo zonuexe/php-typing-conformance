@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+properties_promoted_param_mismatch.php:23: UnusedVariable: Variable $bad is never read [MIR0500]
+properties_promoted_param_mismatch.php:23: InvalidArgument: Argument $id of Conformance\\Tests\\PropertiesPromotedParamMismatch\\IdBox::__construct() expects 'int', got '"x"' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

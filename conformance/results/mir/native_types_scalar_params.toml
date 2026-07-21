@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+native_types_scalar_params.php:25: InvalidArgument: Argument $value of takesInt() expects 'int', got '"x"' [MIR0201]
+native_types_scalar_params.php:26: InvalidArgument: Argument $value of takesString() expects 'string', got '1' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

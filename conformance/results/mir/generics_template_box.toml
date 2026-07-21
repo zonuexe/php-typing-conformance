@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "generics_template_box.php:38: InvalidArgument: Argument $box of takesIntBox() expects 'Conformance\\Tests\\GenericsTemplateBox\\Box<int>', got 'Conformance\\Tests\\GenericsTemplateBox\\Box<string>' [MIR0201]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+unions_scalar_members.php:27: InvalidArgument: Argument $value of takesIntOrString() expects 'int|string', got '1.5' [MIR0201]
+unions_scalar_members.php:28: InvalidArgument: Argument $value of takesNullableInt() expects 'int|null', got '"x"' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -4,6 +4,7 @@ REFERENCE_SUBMODULES := \
 	references/python-typing \
 	references/fig-standards \
 	references/mago \
+	references/mir \
 	references/phpstan \
 	references/psalm \
 	references/phpDocumentor \
@@ -20,6 +21,7 @@ init-submodules:
 	git -C references/mago sparse-checkout init --cone
 	git -C references/mago sparse-checkout set docs
 	git -C references/mago checkout
+	git submodule update --init --filter=blob:none references/mir
 	git submodule update --init --filter=blob:none --no-checkout references/phpstan
 	git -C references/phpstan sparse-checkout init --cone
 	git -C references/phpstan sparse-checkout set website/src

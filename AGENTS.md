@@ -27,6 +27,7 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
 ├── references/
 │   ├── fig-standards/
 │   ├── mago/
+│   ├── mir/
 │   ├── noverify/
 │   ├── phan.wiki/
 │   ├── phpDocumentor/
@@ -38,6 +39,7 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
 │   └── bamarni/composer-bin-plugin
 └── vendor-bin/
     ├── mago/
+    ├── mir/
     ├── noverify/
     ├── phan/
     ├── phpstan/
@@ -69,6 +71,7 @@ Concrete paths currently used:
 - `vendor-bin/psalm/vendor/bin/psalm`
 - `vendor-bin/phan/vendor/bin/phan`
 - `vendor-bin/mago/vendor/bin/mago`
+- `vendor-bin/mir/vendor/bin/mir`
 
 ## NoVerify Exception
 
@@ -99,6 +102,7 @@ Current external reference checkouts:
 - `references/python-typing/`: upstream inspiration for grouped conformance tests and reporting
 - `references/fig-standards/`: FIG and PSR reference material
 - `references/mago/`: Mago source and docs
+- `references/mir/`: mir (Rust-based, Psalm-inspired PHP analyzer) source; the analyzer binary itself is installed via Composer (`miropen/mir-php`) into `vendor-bin/mir/`
 - `references/phpDocumentor/`: PHPDoc semantics and conventions
 - `references/phpstan/`: PHPStan source and website docs
 - `references/psalm/`: Psalm source and docs
@@ -125,6 +129,7 @@ Current checker columns in the report:
 - `phpstan-strict`
 - `psalm`
 - `mago`
+- `mir`
 - `phan`
 - `noverify`
 

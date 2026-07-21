@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "callables_docblock_signature.php:27: InvalidArgument: Argument $callback of takesIntToStringCallable() expects 'callable whose parameter #1 accepts int', got 'callable whose parameter #1 only accepts string' [MIR0201]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

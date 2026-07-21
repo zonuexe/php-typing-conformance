@@ -8,6 +8,7 @@ use Conformance\Checker\PhpStanChecker;
 use Conformance\Checker\PsalmChecker;
 use Conformance\Checker\MagoChecker;
 use Conformance\Checker\MirChecker;
+use Conformance\Checker\IntelephenseChecker;
 use Conformance\Checker\NoVerifyChecker;
 use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Expectation\ExpectationEvaluator;
@@ -20,6 +21,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/Checker/Checker.php';
 require_once __DIR__ . '/Checker/MagoChecker.php';
 require_once __DIR__ . '/Checker/MirChecker.php';
+require_once __DIR__ . '/Checker/IntelephenseChecker.php';
 require_once __DIR__ . '/Checker/NoVerifyChecker.php';
 require_once __DIR__ . '/Checker/PhanChecker.php';
 require_once __DIR__ . '/Checker/PhpStanChecker.php';
@@ -84,7 +86,13 @@ $psalmChecker = new PsalmChecker(
     binaryPath: $projectRoot . '/vendor-bin/psalm/vendor/bin/psalm',
     configPath: $psalmConfigPath,
 );
-$checkers = [$phpStanChecker, $phpStanStrictChecker, $psalmChecker, $magoChecker, $mirChecker, $phanChecker, $noVerifyChecker];
+$intelephenseChecker = new IntelephenseChecker(
+    nodeBinary: 'node',
+    serverPath: $projectRoot . '/vendor-bin/intelephense/node_modules/intelephense/lib/intelephense.js',
+    clientPath: __DIR__ . '/Checker/intelephense-client.mjs',
+    packageJsonPath: $projectRoot . '/vendor-bin/intelephense/node_modules/intelephense/package.json',
+);
+$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker];
 
 printf("Loaded %d test groups\n", count($testGroups));
 
@@ -176,12 +184,18 @@ foreach ($checkers as $checker) {
 }
 
 $summaryPath = $resultsDir . '/results.html';
+// phpstan-strict is still run above for its data, but the report merges it into
+// the phpstan column, so it is not listed as its own display column.
+$reportTools = array_values(array_filter(
+    array_map(static fn ($checker): string => $checker->name(), $checkers),
+    static fn (string $name): bool => $name !== 'phpstan-strict',
+));
 $summaryReport->generate(
     resultsRoot: $resultsDir,
     outputPath: $summaryPath,
     testGroups: $testGroups,
     testCases: $testCases,
-    tools: array_map(static fn ($checker): string => $checker->name(), $checkers),
+    tools: $reportTools,
 );
 
 printf("Generated summary report at %s\n", $summaryPath);

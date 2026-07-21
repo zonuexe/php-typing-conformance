@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "objects_interface_compat.php:41: Expected type 'Conformance\\Tests\\ObjectsInterfaceCompat\\HasName'. Found 'Conformance\\Tests\\ObjectsInterfaceCompat\\AnonymousUser'. [P1006]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

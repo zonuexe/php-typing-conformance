@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+unions_scalar_members.php:27: Expected type 'int|string'. Found 'float'. [P1006]
+unions_scalar_members.php:28: Expected type 'null|int'. Found ''x''. [P1006]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

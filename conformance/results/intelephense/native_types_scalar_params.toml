@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+native_types_scalar_params.php:25: Expected type 'int'. Found ''x''. [P1006]
+native_types_scalar_params.php:26: Expected type 'string'. Found '1'. [P1006]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

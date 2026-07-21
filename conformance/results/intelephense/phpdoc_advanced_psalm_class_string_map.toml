@@ -1,0 +1,10 @@
+status = "Not supported"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_class_string_map.php:19: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPsalmClassStringMap\\T'. [P1133]
+phpdoc_advanced_psalm_class_string_map.php:19: PHPDoc parse error. Unexpected token. [P1129]
+phpdoc_advanced_psalm_class_string_map.php:19: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPsalmClassStringMap\\of'. [P1133]"""
+errors_diff = "Line 19: Unexpected errors [\"PHPDoc undefined type 'Conformance\\\\Tests\\\\PhpdocAdvancedPsalmClassStringMap\\\\T'. [P1133]\",\"PHPDoc parse error. Unexpected token. [P1129]\",\"PHPDoc undefined type 'Conformance\\\\Tests\\\\PhpdocAdvancedPsalmClassStringMap\\\\of'. [P1133]\"]"
+notes = ""
+ignore_errors = []

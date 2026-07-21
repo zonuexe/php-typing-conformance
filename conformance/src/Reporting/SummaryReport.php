@@ -150,7 +150,12 @@ final class SummaryReport
                     [$display, $class] = $style ? $this->styleStatusOf($result) : $this->statusOf($result);
 
                     $cell = htmlspecialchars($display);
-                    if (!$style) {
+                    if ($tool === 'phpstan') {
+                        // Merge the phpstan-strict column: mark diagnostics that
+                        // only the strict-rules config catches.
+                        [$display, $class, $suffix] = $this->phpstanMerged($resultsRoot, $testCase->name, $result, $style);
+                        $cell = htmlspecialchars($display) . $suffix;
+                    } elseif (!$style) {
                         $cell .= $this->levelSuffix($result);
                     }
 
@@ -217,12 +222,25 @@ final class SummaryReport
             $errorsDiff = trim((string) ($result['errors_diff'] ?? ''));
             $notes = trim((string) ($result['notes'] ?? ''));
 
+            // The phpstan row also carries strict-rules-only diagnostics.
+            $strictExtra = '';
+            if ($tool === 'phpstan') {
+                [, , $suffix] = $this->phpstanMerged($resultsRoot, $testCase->name, $result, false);
+                $status = htmlspecialchars($display) . ($output !== '' ? $this->levelSuffix($result) : $suffix);
+                $strictOutput = trim((string) ($this->loadResult($resultsRoot, 'phpstan-strict', $testCase->name)['output'] ?? ''));
+                if ($strictOutput !== '' && $strictOutput !== $output) {
+                    $strictExtra = '<details' . ($output === '' ? ' open' : '') . '><summary>With strict-rules</summary><pre class="diag">'
+                        . htmlspecialchars($strictOutput) . '</pre></details>';
+                }
+            }
+
             $diagnostics = '';
             if ($output !== '') {
                 $diagnostics .= '<pre class="diag">' . htmlspecialchars($output) . '</pre>';
-            } else {
+            } elseif ($strictExtra === '') {
                 $diagnostics .= '<p class="none">No diagnostics reported.</p>';
             }
+            $diagnostics .= $strictExtra;
             if ($errorsDiff !== '') {
                 $diagnostics .= '<details><summary>Expectation diff</summary><pre class="diag">' . htmlspecialchars($errorsDiff) . '</pre></details>';
             }
@@ -492,6 +510,42 @@ CSS;
         return ' <small>' . htmlspecialchars($levelLabel) . '</small>';
     }
 
+    /**
+     * Merge the phpstan and phpstan-strict columns into one. The standard
+     * config drives the status and level; when a diagnostic is only caught by
+     * the strict-rules config, the cell is tagged "(strict)".
+     *
+     * @param array<string, mixed> $result phpstan (non-strict) result
+     * @return array{0: string, 1: string, 2: string} [display, cssClass, suffix]
+     */
+    private function phpstanMerged(string $resultsRoot, string $testName, array $result, bool $style): array
+    {
+        $strict = $this->loadResult($resultsRoot, 'phpstan-strict', $testName);
+        $stdOutput = trim((string) ($result['output'] ?? ''));
+        $strictOutput = trim((string) ($strict['output'] ?? ''));
+        $strictOnly = $strictOutput !== '' && $stdOutput === '';
+        $strictTag = ' <small>(strict)</small>';
+
+        if ($style) {
+            $reported = $stdOutput !== '' || $strictOutput !== '';
+            [$display, $class] = $reported ? ['Reported', 'reported'] : ['—', 'muted'];
+
+            return [$display, $class, $strictOnly ? $strictTag : ''];
+        }
+
+        [$display, $class] = $this->statusOf($result);
+
+        if ($stdOutput !== '') {
+            return [$display, $class, $this->levelSuffix($result)];
+        }
+
+        if ($strictOnly) {
+            return [$display, $class, $strictTag];
+        }
+
+        return [$display, $class, ''];
+    }
+
     private function versionCell(string $resultsRoot, string $tool): string
     {
         $fullVersion = $this->loadVersion($resultsRoot, $tool);
@@ -556,6 +610,7 @@ CSS;
             'psalm' => $this->extractVersion($version, '/Psalm\s+(\d+\.\d+\.\d+)/'),
             'mago' => $this->extractVersion($version, '/mago\s+(\d+\.\d+\.\d+)/i'),
             'mir' => $this->extractVersion($version, '/mir\s+(\d+\.\d+\.\d+)/i'),
+            'intelephense' => $this->extractVersion($version, '/intelephense\s+(\d+\.\d+\.\d+)/i'),
             'phan' => $this->extractVersion($version, '/Phan\s+(\d+\.\d+\.\d+)/'),
             'noverify' => $this->extractVersion($version, '/version\s+(\d+\.\d+\.\d+)/i'),
             default => $version,
@@ -574,6 +629,7 @@ CSS;
             'psalm' => sprintf('https://github.com/vimeo/psalm/releases/tag/%s', $shortVersion),
             'mago' => sprintf('https://github.com/carthage-software/mago/releases/tag/%s', $shortVersion),
             'mir' => sprintf('https://github.com/jorgsowa/mir/releases/tag/v%s', $shortVersion),
+            'intelephense' => sprintf('https://www.npmjs.com/package/intelephense/v/%s', $shortVersion),
             'phan' => sprintf('https://github.com/phan/phan/releases/tag/%s', $shortVersion),
             'noverify' => sprintf('https://github.com/VKCOM/noverify/releases/tag/v%s', $shortVersion),
             default => null,

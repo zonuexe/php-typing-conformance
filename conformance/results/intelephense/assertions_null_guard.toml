@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "assertions_null_guard.php:38: Expected type 'object'. Found 'null'. [P1006]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

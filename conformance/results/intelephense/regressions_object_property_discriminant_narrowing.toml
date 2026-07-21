@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = "regressions_object_property_discriminant_narrowing.php:35: Expected type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox'. Found 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox'. [P1006]"
+errors_diff = "Line 35: Unexpected errors [\"Expected type 'Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\StrBox'. Found 'Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\StrBox|Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\IntBox'. [P1006]\"]"
+notes = ""
+ignore_errors = []

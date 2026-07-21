@@ -24,7 +24,9 @@ $discovery = new TestCaseDiscovery();
 $testCases = $discovery->discover($testsDir, $testGroups);
 $summaryReport = new SummaryReport();
 $summaryPath = $resultsDir . '/results.html';
-$tools = ['phpstan', 'phpstan-strict', 'psalm', 'mago', 'mir', 'phan', 'noverify'];
+// phpstan-strict is merged into the phpstan column by the report, so it is not
+// listed as its own display column here.
+$tools = ['phan', 'phpstan', 'psalm', 'mago', 'mir', 'noverify', 'intelephense'];
 
 $summaryReport->generate(
     resultsRoot: $resultsDir,

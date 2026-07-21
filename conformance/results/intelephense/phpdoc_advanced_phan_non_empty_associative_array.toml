@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_phan_non_empty_associative_array.php:19: Documented type is not compatible with the declared type. [P1131]"
+errors_diff = "Line 19: Unexpected errors [\"Documented type is not compatible with the declared type. [P1131]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,7 @@
+status = "Falls back to bool"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = ""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,10 +1,11 @@
-.PHONY: init-submodules pull-submodules render-report-html
+.PHONY: init-submodules pull-submodules render-report-html install-intelephense
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
 	references/fig-standards \
 	references/mago \
 	references/mir \
+	references/intelephense.wiki \
 	references/phpstan \
 	references/psalm \
 	references/phpDocumentor \
@@ -22,6 +23,7 @@ init-submodules:
 	git -C references/mago sparse-checkout set docs
 	git -C references/mago checkout
 	git submodule update --init --filter=blob:none references/mir
+	git submodule update --init --filter=blob:none references/intelephense.wiki
 	git submodule update --init --filter=blob:none --no-checkout references/phpstan
 	git -C references/phpstan sparse-checkout init --cone
 	git -C references/phpstan sparse-checkout set website/src
@@ -45,6 +47,9 @@ init-submodules:
 
 pull-submodules: init-submodules
 	git submodule update --remote --merge $(REFERENCE_SUBMODULES)
+
+install-intelephense:
+	cd vendor-bin/intelephense && npm install
 
 render-report-html:
 	php conformance/src/render-report-html.php

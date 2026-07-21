@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+arrays_list_shape_destructuring.php:48: Expected type 'int'. Found 'bool'. [P1006]
+arrays_list_shape_destructuring.php:49: Expected type 'string'. Found 'bool'. [P1006]
+arrays_list_shape_destructuring.php:50: Expected type 'bool'. Found 'int'. [P1006]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

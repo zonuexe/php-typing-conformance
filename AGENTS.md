@@ -28,6 +28,7 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
 │   ├── fig-standards/
 │   ├── mago/
 │   ├── mir/
+│   ├── intelephense.wiki/
 │   ├── noverify/
 │   ├── phan.wiki/
 │   ├── phpDocumentor/
@@ -40,6 +41,7 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
 └── vendor-bin/
     ├── mago/
     ├── mir/
+    ├── intelephense/
     ├── noverify/
     ├── phan/
     ├── phpstan/
@@ -73,6 +75,8 @@ Concrete paths currently used:
 - `vendor-bin/mago/vendor/bin/mago`
 - `vendor-bin/mir/vendor/bin/mir`
 
+Intelephense is a Node LSP server (not a CLI). Install it with `make install-intelephense` (npm), and it is driven through the LSP client at `conformance/src/Checker/intelephense-client.mjs`. Binary: `vendor-bin/intelephense/node_modules/.bin/intelephense`.
+
 ## NoVerify Exception
 
 NoVerify is bootstrapped differently.
@@ -103,6 +107,7 @@ Current external reference checkouts:
 - `references/fig-standards/`: FIG and PSR reference material
 - `references/mago/`: Mago source and docs
 - `references/mir/`: mir (Rust-based, Psalm-inspired PHP analyzer) source; the analyzer binary itself is installed via Composer (`miropen/mir-php`) into `vendor-bin/mir/`
+- `references/intelephense.wiki/`: Intelephense docs (type system, config); the server is installed via npm into `vendor-bin/intelephense/`
 - `references/phpDocumentor/`: PHPDoc semantics and conventions
 - `references/phpstan/`: PHPStan source and website docs
 - `references/psalm/`: Psalm source and docs
@@ -130,6 +135,7 @@ Current checker columns in the report:
 - `psalm`
 - `mago`
 - `mir`
+- `intelephense`
 - `phan`
 - `noverify`
 

@@ -1,3 +1,4 @@
 vendor/*
 conformance/vendor/*
 vendor-bin/*/vendor/*
+vendor-bin/*/node_modules/

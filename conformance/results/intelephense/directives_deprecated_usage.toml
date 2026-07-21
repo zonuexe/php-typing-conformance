@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+directives_deprecated_usage.php:17: 'Conformance\\Tests\\DirectivesDeprecatedUsage\\oldMessage' is deprecated. [P1007]
+directives_deprecated_usage.php:18: 'Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter' is deprecated. [P1007]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Not supported"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phan_object_shape.php:19: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\stdClass'. [P1133]
+phpdoc_advanced_phan_object_shape.php:19: PHPDoc parse error. Unexpected token. [P1129]"""
+errors_diff = "Line 19: Unexpected errors [\"PHPDoc undefined type 'Conformance\\\\Tests\\\\PhpdocAdvancedPhanObjectShape\\\\stdClass'. [P1133]\",\"PHPDoc parse error. Unexpected token. [P1129]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,8 @@
+{
+    "name": "php-typing-conformance-intelephense",
+    "description": "Isolated Intelephense language server for the conformance runner.",
+    "private": true,
+    "dependencies": {
+        "intelephense": "^1.14.4"
+    }
+}

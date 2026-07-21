@@ -26,6 +26,7 @@ function acceptsOpenResource($value): void
 }
 
 $handle = fopen('php://memory', 'r');
+assert($handle !== false);
 
 acceptsResource($handle);
 acceptsResource(123); // E?: an int is not a resource

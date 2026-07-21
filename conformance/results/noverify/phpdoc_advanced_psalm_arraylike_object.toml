@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Not supported"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_psalm_arraylike_object.php:12: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object does not exist [undefinedClass]"

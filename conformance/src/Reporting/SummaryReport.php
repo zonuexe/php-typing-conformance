@@ -336,6 +336,7 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .pass { background: #dff7df; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
+.not-supported { background: #f4f4f5; color: #9a9a9a; font-style: italic; }
 .unknown { background: #f0f0f0; }
 .reported { background: #dbe7fb; }
 .muted { background: #f6f6f6; color: #999; }
@@ -447,6 +448,7 @@ CSS;
             'Pass' => 'pass',
             'Fail' => 'fail',
             'By design' => 'by-design',
+            'Not supported' => 'not-supported',
             default => 'unknown',
         };
 

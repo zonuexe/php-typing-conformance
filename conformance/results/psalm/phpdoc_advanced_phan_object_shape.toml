@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Not supported"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_phan_object_shape.php:19: Unexpected brace character in docblock for Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\acceptsObjectShape [InvalidDocblock]"

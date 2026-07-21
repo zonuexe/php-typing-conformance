@@ -1,13 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_family_resource.php:30: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource expects resource, resource|false given. [identifier=argument.type]
-phpdoc_advanced_family_resource.php:31: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource expects resource, int given. [identifier=argument.type]
-phpdoc_advanced_family_resource.php:33: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource expects resource, resource|false given. [identifier=argument.type]
-phpdoc_advanced_family_resource.php:34: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource expects resource, string given. [identifier=argument.type]"""
-errors_diff = """
-Line 30: Unexpected errors ["Parameter #1 $value of function Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsResource expects resource, resource|false given. [identifier=argument.type]"]
-Line 33: Unexpected errors ["Parameter #1 $value of function Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsOpenResource expects resource, resource|false given. [identifier=argument.type]"]"""
+phpdoc_advanced_family_resource.php:32: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource expects resource, int given. [identifier=argument.type]
+phpdoc_advanced_family_resource.php:35: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource expects resource, string given. [identifier=argument.type]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

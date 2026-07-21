@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_family_resource.php:34: InvalidArgument: Argument $value of acceptsOpenResource() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyResource\\open-resource', got '\"not a resource\"' [MIR0201]"
+output = "phpdoc_advanced_family_resource.php:35: InvalidArgument: Argument $value of acceptsOpenResource() expects 'Conformance\\Tests\\PhpdocAdvancedFamilyResource\\open-resource', got '\"not a resource\"' [MIR0201]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

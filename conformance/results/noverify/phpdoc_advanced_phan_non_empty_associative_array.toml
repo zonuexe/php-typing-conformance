@@ -1,4 +1,4 @@
-status = "Unknown"
+status = "Not supported"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = "phpdoc_advanced_phan_non_empty_associative_array.php:21: param $map miss matched with phpdoc type <<non-empty-associative-array<string, int>>> [funcParamTypeMissMatch]"

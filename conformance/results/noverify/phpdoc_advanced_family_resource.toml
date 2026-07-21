@@ -1,13 +1,13 @@
-status = "Unknown"
+status = "Not supported"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_family_resource.php:23: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFamilyResource\\open-resource does not exist [undefinedClass]
-phpdoc_advanced_family_resource.php:30: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource signature of param value [notSafeCall]
-phpdoc_advanced_family_resource.php:33: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource signature of param value [notSafeCall]"""
+phpdoc_advanced_family_resource.php:31: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource signature of param value [notSafeCall]
+phpdoc_advanced_family_resource.php:34: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource signature of param value [notSafeCall]"""
 errors_diff = """
 Line 23: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\open-resource does not exist [undefinedClass]"]
-Line 30: Unexpected errors ["potentially not safe call in function Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsResource signature of param value [notSafeCall]"]
-Line 33: Unexpected errors ["potentially not safe call in function Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsOpenResource signature of param value [notSafeCall]"]"""
+Line 31: Unexpected errors ["potentially not safe call in function Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsResource signature of param value [notSafeCall]"]
+Line 34: Unexpected errors ["potentially not safe call in function Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsOpenResource signature of param value [notSafeCall]"]"""
 notes = ""
 ignore_errors = []

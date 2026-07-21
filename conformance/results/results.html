@@ -32,6 +32,7 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .pass { background: #dff7df; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
+.not-supported { background: #f4f4f5; color: #9a9a9a; font-style: italic; }
 .unknown { background: #f0f0f0; }
 .reported { background: #dbe7fb; }
 .muted { background: #f6f6f6; color: #999; }
@@ -287,9 +288,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_fallback_class_string"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_class_string.html"><code>class-string</code> falls back to <code>string</code> for cross-boundary compatibility</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Pass <small>(Lv 5+)</small></a></td>
@@ -306,8 +307,8 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Phan cannot parse the `int-mask` pseudo-type (the hyphen breaks its annotation tokenizer), so it does not check the mask.</span></span></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify treats `int-mask` as an undefined class rather than a flag-mask type.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Phan cannot parse the `int-mask` pseudo-type (the hyphen breaks its annotation tokenizer), so it does not check the mask.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify treats `int-mask` as an undefined class rather than a flag-mask type.</span></span></a></td>
 </tr>
 <tr id="phpdoc_advanced_fallback_int_mask_of"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html"><code>int-mask-of&lt;Class::*&gt;</code> falls back to <code>int</code> for cross-boundary compatibility</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Pass <small>(Lv 5+)</small></a></td>
@@ -315,7 +316,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Pass <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Does not model `int-mask-of` and falls back to `int`, so it accepts the out-of-range value.</span></span></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Phan cannot parse the `int-mask-of` pseudo-type (the hyphen breaks its annotation tokenizer), so it does not check the mask.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Phan cannot parse the `int-mask-of` pseudo-type (the hyphen breaks its annotation tokenizer), so it does not check the mask.</span></span></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Pass <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Does not model `int-mask-of` and falls back to `int`, so it accepts the out-of-range value.</span></span></a></td>
 </tr>
 <tr id="phpdoc_advanced_fallback_int_range"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_int_range.html"><code>int&lt;0, 255&gt;</code> range falls back to <code>int</code> for cross-boundary compatibility</a></td>
@@ -333,7 +334,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Phan cannot parse the hyphenated `numeric-string` pseudo-type and reports an annotation-extraction error instead of checking the argument.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Phan cannot parse the hyphenated `numeric-string` pseudo-type and reports an annotation-extraction error instead of checking the argument.</span></span></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Pass</a></td>
 </tr>
 <tr id="phpdoc_advanced_fallback_positive_int"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_positive_int.html"><code>positive-int</code> falls back to <code>int</code> for cross-boundary compatibility</a></td>
@@ -348,11 +349,11 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <tr id="phpdoc_advanced_family_array_mixed"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_array_mixed.html"><code>non-empty-array</code>, <code>non-empty-mixed</code> and <code>array-key</code> refinements</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_bool_literal"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_bool_literal.html"><code>true</code> and <code>false</code> literal types fall back to <code>bool</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_bool_literal.html">Pass <small>(Lv 5+)</small></a></td>
@@ -367,73 +368,73 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_class_string_variants"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_class_string_variants.html"><code>class-string</code> variants fall back to <code>class-string</code>/<code>string</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_closure"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_closure.html"><code>pure-closure</code> and <code>static-closure</code> refinements fall back to <code>Closure</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_int_refinements"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_int_refinements.html">Integer sign refinements fall back to <code>int</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_int_string"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_int_string.html">Integer-string and literal-string refinements fall back to <code>string</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_resource"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_resource.html"><code>resource</code>, <code>open-resource</code> and <code>closed-resource</code> PHPDoc types</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Fail <small>(Lv 5+)</small></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Pass <small>(Lv 5+)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Pass</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_scalar"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_scalar.html"><code>scalar</code> / <code>number</code> / <code>numeric</code> broad types</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_string_case"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_string_case.html">String case refinements fall back to <code>string</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_utility"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_utility.html"><code>key-of&lt;T&gt;</code> and <code>value-of&lt;T&gt;</code> utility types</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Pass <small>(Lv 5+)</small></a></td>
@@ -445,11 +446,11 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Pass</a></td>
 </tr>
 <tr id="phpdoc_advanced_int_range_keyword"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_int_range_keyword.html"><code>int-range&lt;0, 255&gt;</code> is Phan&#039;s spelling of the <code>int&lt;0, 255&gt;</code> range</a></td>
-<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">By design <small>(Lv 2+)</small> <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`int-range&lt;min,max&gt;` is Phan&#039;s spelling; PHPStan, Psalm and Mago write the same range as `int&lt;min,max&gt;`. Not recognizing the other tool&#039;s spelling is expected, not a defect. Only Phan models `int-range`.</span></span></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Fail</a></td>
-<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`int-range&lt;min,max&gt;` is Phan&#039;s spelling; PHPStan, Psalm and Mago write the same range as `int&lt;min,max&gt;`. Not recognizing the other tool&#039;s spelling is expected, not a defect. Only Phan models `int-range`.</span></span></a></td>
-<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`int-range&lt;min,max&gt;` is Phan&#039;s spelling; PHPStan, Psalm and Mago write the same range as `int&lt;min,max&gt;`. Not recognizing the other tool&#039;s spelling is expected, not a defect. Only Phan models `int-range`.</span></span></a></td>
-<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`int-range&lt;min,max&gt;` is Phan&#039;s spelling; PHPStan, Psalm and Mago write the same range as `int&lt;min,max&gt;`. Not recognizing the other tool&#039;s spelling is expected, not a defect. Only Phan models `int-range`.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Not supported <small>(Lv 2+)</small> <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`int-range&lt;min,max&gt;` is Phan&#039;s spelling; PHPStan, Psalm and Mago write the same range as `int&lt;min,max&gt;`. Not recognizing the other tool&#039;s spelling is expected, not a defect. Only Phan models `int-range`.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`int-range&lt;min,max&gt;` is Phan&#039;s spelling; PHPStan, Psalm and Mago write the same range as `int&lt;min,max&gt;`. Not recognizing the other tool&#039;s spelling is expected, not a defect. Only Phan models `int-range`.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`int-range&lt;min,max&gt;` is Phan&#039;s spelling; PHPStan, Psalm and Mago write the same range as `int&lt;min,max&gt;`. Not recognizing the other tool&#039;s spelling is expected, not a defect. Only Phan models `int-range`.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`int-range&lt;min,max&gt;` is Phan&#039;s spelling; PHPStan, Psalm and Mago write the same range as `int&lt;min,max&gt;`. Not recognizing the other tool&#039;s spelling is expected, not a defect. Only Phan models `int-range`.</span></span></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Pass</a></td>
 </tr>
@@ -478,7 +479,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify rejects the `boolean` PHPDoc spelling as an invalid docblock type (suggests `bool`) rather than treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `boolean` as `bool` and reject the string argument.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify rejects the `boolean` PHPDoc spelling as an invalid docblock type (suggests `bool`) rather than treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `boolean` as `bool` and reject the string argument.</span></span></a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_byref_compatible"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">By-reference parameters should match even if PHPDoc omits the reference marker</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
@@ -505,7 +506,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify flags `double` as an invalid docblock type (suggests `float`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `double` as `float` and reject the string argument.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify flags `double` as an invalid docblock type (suggests `float`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `double` as `float` and reject the string argument.</span></span></a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_integer_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html"><code>integer</code> PHPDoc synonym is compatible with native <code>int</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass <small>(Lv 5+)</small></a></td>
@@ -514,7 +515,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify flags `integer` as an invalid docblock type (suggests `int`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `integer` as `int` and reject the string argument.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify flags `integer` as an invalid docblock type (suggests `int`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `integer` as `int` and reject the string argument.</span></span></a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_nullable_mismatch"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">PHPDoc/native type mismatch for nullable parameters</a></td>
 <td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Intentionally unsupported in PHPStan. See <a href="https://github.com/phpstan/phpstan/issues/7572" target="_blank" rel="noopener">phpstan#7572</a></span></span></a></td>
@@ -526,76 +527,76 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Pass</a></td>
 </tr>
 <tr id="phpdoc_advanced_phan_non_empty_associative_array"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html"><code>non-empty-associative-array</code> is a Phan-only array refinement</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Fail <small>(Lv 2+)</small></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Not supported <small>(Lv 2+)</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_phan_non_null_mixed"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html"><code>non-null-mixed</code> is a Phan-only refinement of <code>mixed</code></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Fail <small>(Lv 2+)</small></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Not supported <small>(Lv 2+)</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_phan_object_shape"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_phan_object_shape.html"><code>stdClass{field: T}</code> object shapes are a Phan-only notation</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Fail <small>(Lv 2+)</small></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Not supported <small>(Lv 2+)</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_psalm_arraylike_object"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html"><code>arraylike-object</code> is a Psalm-only object refinement</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Fail <small>(Lv 2+)</small></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not supported <small>(Lv 2+)</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_psalm_class_string_map"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_psalm_class_string_map.html"><code>class-string-map&lt;T of X, T&gt;</code> is a Psalm-only dependent generic</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Fail <small>(Lv 2+)</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Not supported <small>(Lv 2+)</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Not supported</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Not supported</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_psalm_literal_int"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_psalm_literal_int.html"><code>literal-int</code> is a Psalm-only literal-ness marker</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Fail <small>(Lv 2+)</small></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Not supported <small>(Lv 2+)</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_psalm_properties_of"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_psalm_properties_of.html"><code>properties-of&lt;T&gt;</code> is a Psalm-only utility type</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Fail <small>(Lv 2+)</small></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Not supported <small>(Lv 2+)</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_psalm_stringable_object"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_psalm_stringable_object.html"><code>stringable-object</code> is a Psalm-only object refinement</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Fail <small>(Lv 2+)</small></a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Not supported <small>(Lv 2+)</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Not supported</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Fail</a></td>
-<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Fail</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Not supported</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Not supported</a></td>
 </tr>
 <tr id="phpdoc_advanced_pseudotype_class_precedence"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">A same-named class takes precedence over the <code>integer</code> pseudo-type keyword</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass <small>(Lv 5+)</small></a></td>
@@ -609,11 +610,11 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <tr id="phpdoc_advanced_return_noreturn_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html"><code>noreturn</code> is a non-standard alias for <code>never</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Pass</a></td>
-<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`.</span></span></a></td>
-<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`.</span></span></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Pass</a></td>
-<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`.</span></span></a></td>
-<td class="by-design"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">By design <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`.</span></span></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Not supported <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`.</span></span></a></td>
 </tr>
 <tr id="phpdoc_advanced_vendor_prefixed_param_phan"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Cross-tool handling of @phan-param</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Pass <small>(Lv 5+)</small></a></td>

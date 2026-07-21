@@ -1,4 +1,4 @@
-status = "By design"
+status = "Not supported"
 conformance_automated = "Fail"
 expected_diagnostic_count = 0
 output = "phpdoc_advanced_return_noreturn_synonym.php:22: Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn does not exist [UndefinedDocblockClass]"

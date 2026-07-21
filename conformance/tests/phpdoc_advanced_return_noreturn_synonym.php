@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedReturnNoreturnSynonym;
 
 /**
- * `noreturn` PHPDoc synonym is compatible with native `never`.
+ * `noreturn` is a non-standard alias for `never`.
  *
- * `noreturn` is PHPStan's spelling of the `never` bottom type. An analyzer that
- * recognizes the synonym accepts a `@return noreturn` function that always
- * terminates; one that does not treats `noreturn` as a class name and reports
- * it as an unknown type.
+ * `noreturn` was one of the rejected name candidates for the bottom type; PHP
+ * adopted `never` instead. Recognizing `noreturn` is therefore not a
+ * compatibility requirement — this case only records that PHPStan and mir keep
+ * it as a legacy alias, while other analyzers treat the unknown name as an
+ * undefined type. Neither behavior is a defect.
  *
  * References:
+ * - never RFC (name candidates incl. `noreturn`): https://wiki.php.net/rfc/noreturn_type
  * - PHPStan TypeNodeResolver `noreturn` case resolves like `never`
  */
 

@@ -1,7 +1,7 @@
-status = "Unknown"
+status = "By design"
 conformance_automated = "Fail"
 expected_diagnostic_count = 0
-output = "phpdoc_advanced_return_noreturn_synonym.php:20: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn`. [non-existent-class-like]"
-errors_diff = "Line 20: Unexpected errors [\"Cannot find class, interface, enum, or type alias `Conformance\\\\Tests\\\\PhpdocAdvancedReturnNoreturnSynonym\\\\noreturn`. [non-existent-class-like]\"]"
-notes = "Does not recognize the `noreturn` synonym and treats it as an undefined class. PHPStan and mir resolve `noreturn` as the `never` bottom type."
+output = "phpdoc_advanced_return_noreturn_synonym.php:22: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn`. [non-existent-class-like]"
+errors_diff = "Line 22: Unexpected errors [\"Cannot find class, interface, enum, or type alias `Conformance\\\\Tests\\\\PhpdocAdvancedReturnNoreturnSynonym\\\\noreturn`. [non-existent-class-like]\"]"
+notes = "`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`."
 ignore_errors = []

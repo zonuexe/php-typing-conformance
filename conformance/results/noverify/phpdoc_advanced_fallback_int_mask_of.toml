@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = ""
+errors_diff = ""
+notes = "Does not model `int-mask-of` and falls back to `int`, so it accepts the out-of-range value."
+ignore_errors = []

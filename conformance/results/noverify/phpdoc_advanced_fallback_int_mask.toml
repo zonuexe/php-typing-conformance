@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_int_mask.php:12: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackIntMask\\int-mask does not exist [undefinedClass]
+phpdoc_advanced_fallback_int_mask.php:32: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackIntMask\\int-mask does not exist [undefinedClass]"""
+errors_diff = """
+Line 12: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackIntMask\\\\int-mask does not exist [undefinedClass]"]
+Line 32: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackIntMask\\\\int-mask does not exist [undefinedClass]"]"""
+notes = "NoVerify treats `int-mask` as an undefined class rather than a flag-mask type."
+ignore_errors = []

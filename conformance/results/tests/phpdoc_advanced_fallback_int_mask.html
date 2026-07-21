@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>`int-mask&lt;1, 2, 4&gt;` falls back to `int` for cross-boundary compatibility — Conformance</title>
+  <style>
+body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
+body.detail { max-width: 960px; }
+a { color: #0b62c4; }
+h1 { margin-bottom: 0.2em; }
+p.lead { color: #555; margin-top: 0; }
+h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
+p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
+p.crumb { margin: 0 0 12px; }
+p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+small a { color: inherit; }
+.test-cell { min-width: 260px; }
+.test-link { font-weight: 600; text-decoration: none; }
+.test-link:hover { text-decoration: underline; }
+tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
+.cell-link { display: block; color: inherit; text-decoration: none; }
+.hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }
+.hover-card__trigger { cursor: help; }
+.hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }
+.hover-card:hover .hover-card__popup, .hover-card:focus-within .hover-card__popup { visibility: visible; opacity: 1; transform: translateY(0); }
+.hover-card__popup a { color: #9fd0ff; }
+.hover-card__notes-label { border-bottom: 1px dotted currentColor; font-size: 0.875em; }
+.group { background: #f3f3f3; font-weight: 700; }
+.pass { background: #dff7df; }
+.fail { background: #f9d6d6; }
+.by-design { background: #f6e7c8; }
+.unknown { background: #f0f0f0; }
+.reported { background: #dbe7fb; }
+.muted { background: #f6f6f6; color: #999; }
+.doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
+.doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+.detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.status-cell { white-space: nowrap; font-weight: 600; }
+.diag-cell { width: 100%; }
+pre.diag { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 0.85em; }
+pre.source, pre.shiki { padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+pre.source { background: #1e1e1e; color: #eaeaea; }
+.none { color: #888; margin: 0; font-style: italic; }
+.note-line { font-size: 0.85em; margin: 6px 0 0; }
+details summary { cursor: pointer; font-size: 0.85em; color: #555; }
+  </style>
+</head>
+<body class="detail">
+<p class="crumb"><a href="../results.html">&larr; All results</a></p>
+<h1><code>int-mask&lt;1, 2, 4&gt;</code> falls back to <code>int</code> for cross-boundary compatibility</h1>
+<p class="meta">Group: Advanced PHPDoc types &middot; Category: ecosystem &middot; File: phpdoc_advanced_fallback_int_mask.php</p>
+<div class="doc"><code>int-mask&lt;1, 2, 4&gt;</code> describes every bitwise-or combination of the flags
+(0..7), a refinement of <code>int</code>, so a <code>@return int-mask&lt;...&gt;</code> value always
+satisfies a native <code>int</code> parameter. Analyzers that model the mask reject a
+value that is not a valid combination; others fall back to <code>int</code>.
+
+References:
+- PHPStan TypeNodeResolver <code>int-mask</code> expands to the union of flag combinations</div>
+<h2>Analyzer results</h2>
+<table class="detail-results">
+<thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">phpdoc_advanced_fallback_int_mask.php:46: Parameter #1 $flags of function Conformance\Tests\PhpdocAdvancedFallbackIntMask\acceptsFlags expects int&lt;0, 7&gt;, 8 given. [identifier=argument.type] [detected-from-level=5]</pre></td></tr>
+<tr><th class="tool-name">phpstan-strict</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_fallback_int_mask.php:46: Parameter #1 $flags of function Conformance\Tests\PhpdocAdvancedFallbackIntMask\acceptsFlags expects int&lt;0, 7&gt;, 8 given. [identifier=argument.type]</pre></td></tr>
+<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_fallback_int_mask.php:46: Argument 1 of Conformance\Tests\PhpdocAdvancedFallbackIntMask\acceptsFlags expects 0|1|2|3|4|5|6|7, but 8 provided [InvalidArgument]</pre></td></tr>
+<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_fallback_int_mask.php:46: Invalid argument type for argument #1 of `Conformance\Tests\PhpdocAdvancedFallbackIntMask\acceptsFlags`: expected `int(0)|int(1)|int(2)|int(3)|int(4)|int(5)|int(6)|int(7)`, but found `int(8)`. [invalid-argument]</pre></td></tr>
+<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_fallback_int_mask.php:46: InvalidArgument: Argument $flags of acceptsFlags() expects &#039;0|1|2|3|4|5|6|7&#039;, got &#039;8&#039; [MIR0201]</pre></td></tr>
+<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_fallback_int_mask.php:20: Saw a token Phan may have failed to parse after &#039;* @return int-mask&lt;1, 2, 4&gt;&#039;: after int, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_int_mask.php:32: Saw possibly unextractable annotation for a fragment of comment &#039;* @param int-mask&lt;1, 2, 4&gt; $flags&#039;: after int, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_fallback_int_mask.php:32: Saw a token Phan may have failed to parse after &#039;* @param int-mask&lt;1, 2, 4&gt; $flags&#039;: after int, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 20: Unexpected errors [&quot;Saw a token Phan may have failed to parse after &#039;* @return int-mask&lt;1, 2, 4&gt;&#039;: after int, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]&quot;]
+Line 32: Unexpected errors [&quot;Saw possibly unextractable annotation for a fragment of comment &#039;* @param int-mask&lt;1, 2, 4&gt; $flags&#039;: after int, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]&quot;,&quot;Saw a token Phan may have failed to parse after &#039;* @param int-mask&lt;1, 2, 4&gt; $flags&#039;: after int, saw &#039;-&#039; [PhanUnextractableAnnotationSuffix]&quot;]</pre></details><p class="note-line"><strong>Notes:</strong> Phan cannot parse the `int-mask` pseudo-type (the hyphen breaks its annotation tokenizer), so it does not check the mask.</p></td></tr>
+<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_fallback_int_mask.php:12: Class or interface named \Conformance\Tests\PhpdocAdvancedFallbackIntMask\int-mask does not exist [undefinedClass]
+phpdoc_advanced_fallback_int_mask.php:32: Class or interface named \Conformance\Tests\PhpdocAdvancedFallbackIntMask\int-mask does not exist [undefinedClass]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 12: Unexpected errors [&quot;Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackIntMask\\int-mask does not exist [undefinedClass]&quot;]
+Line 32: Unexpected errors [&quot;Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackIntMask\\int-mask does not exist [undefinedClass]&quot;]</pre></details><p class="note-line"><strong>Notes:</strong> NoVerify treats `int-mask` as an undefined class rather than a flag-mask type.</p></td></tr>
+</tbody></table>
+<h2>Source</h2>
+<pre class="source"><code>&lt;?php
+
+declare(strict_types=1);
+
+namespace Conformance\Tests\PhpdocAdvancedFallbackIntMask;
+
+/**
+ * `int-mask&lt;1, 2, 4&gt;` falls back to `int` for cross-boundary compatibility.
+ *
+ * `int-mask&lt;1, 2, 4&gt;` describes every bitwise-or combination of the flags
+ * (0..7), a refinement of `int`, so a `@return int-mask&lt;...&gt;` value always
+ * satisfies a native `int` parameter. Analyzers that model the mask reject a
+ * value that is not a valid combination; others fall back to `int`.
+ *
+ * References:
+ * - PHPStan TypeNodeResolver `int-mask` expands to the union of flag combinations
+ */
+
+/**
+ * @return int-mask&lt;1, 2, 4&gt;
+ */
+function returnsFlags()
+{
+    return 1 | 4;
+}
+
+function acceptsInt(int $value): void
+{
+}
+
+/**
+ * @param int-mask&lt;1, 2, 4&gt; $flags
+ */
+function acceptsFlags($flags): void
+{
+}
+
+// An `int-mask` value always satisfies a native `int` parameter.
+acceptsInt(returnsFlags());
+
+// A valid combination (1 | 4 = 5) satisfies the refined parameter.
+acceptsFlags(1 | 4);
+
+// A value outside the mask combinations: mask-aware analyzers reject it, others
+// fall back to `int` and accept it.
+acceptsFlags(8); // E?: 8 is not a combination of the int-mask&lt;1, 2, 4&gt; flags
+</code></pre>
+<script type="module">
+  import { codeToHtml } from 'https://esm.sh/shiki@4.3.1';
+
+  for (const code of document.querySelectorAll('pre.source > code')) {
+    const pre = code.closest('pre.source');
+    try {
+      pre.outerHTML = await codeToHtml(code.textContent, { lang: 'php', theme: 'github-dark' });
+    } catch (error) {
+      console.error('shiki highlight failed', error);
+    }
+  }
+</script>
+</body></html>

@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_fallback_int_range.php:46: InvalidArgument: Argument $value of acceptsByte() expects 'int<0, 255>', got '256' [MIR0201]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_fallback_int_mask.php:46: Parameter #1 $flags of function Conformance\\Tests\\PhpdocAdvancedFallbackIntMask\\acceptsFlags expects int<0, 7>, 8 given. [identifier=argument.type] [detected-from-level=5]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+first_detected_level = 5

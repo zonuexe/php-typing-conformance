@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\ObjectsStaticReturnMismatch;
 
 /**
- * Static return compatibility, analogous to Python class compatibility tests.
+ * Static return type compatibility.
  *
  * References:
  * - PHP static return type

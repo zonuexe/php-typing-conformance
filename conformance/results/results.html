@@ -58,7 +58,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <th>noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
 </tr></thead><tbody>
 <tr class="group"><td colspan="8">Native types</td></tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/native_types_resource_argument.html"><code>resource</code> should not be accepted as a native type declaration, and resource values should be rejected by native scalar parameters.</a><br><small class="slug">native_types_resource_argument</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/native_types_resource_argument.html"><code>resource</code> is not a valid native type declaration.</a><br><small class="slug">native_types_resource_argument</small></td>
 <td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass <small>(Lv 0+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass</a></td>
@@ -96,7 +96,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/unions_scalar_members.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Intersection types</td></tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/intersections_interface_merge.html">Basic intersection compatibility, analogous to Python protocol composition.</a><br><small class="slug">intersections_interface_merge</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/intersections_interface_merge.html">Basic intersection compatibility.</a><br><small class="slug">intersections_interface_merge</small></td>
 <td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
@@ -106,7 +106,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/intersections_interface_merge.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Callables</td></tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/callables_docblock_signature.html">Basic callable signature compatibility checks expressed in PHPDoc.</a><br><small class="slug">callables_docblock_signature</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/callables_docblock_signature.html">Callable signature compatibility in PHPDoc.</a><br><small class="slug">callables_docblock_signature</small></td>
 <td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
@@ -125,7 +125,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">PHPDoc generics</td></tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/generics_template_bound.html">Template upper bounds, analogous to Python bounded TypeVar tests.</a><br><small class="slug">generics_template_bound</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/generics_template_bound.html">Template upper bounds.</a><br><small class="slug">generics_template_bound</small></td>
 <td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass</a></td>
@@ -162,7 +162,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
 </tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/arrays_non_empty_list.html">Non-empty list constraints, analogous to Python tuple/list usage tests.</a><br><small class="slug">arrays_non_empty_list</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/arrays_non_empty_list.html">Non-empty list constraints.</a><br><small class="slug">arrays_non_empty_list</small></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_non_empty_list.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_non_empty_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_non_empty_list.html">Pass</a></td>
@@ -199,7 +199,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/objects_interface_compat.html">Fail</a></td>
 </tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/objects_static_return_mismatch.html">Static return compatibility, analogous to Python class compatibility tests.</a><br><small class="slug">objects_static_return_mismatch</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/objects_static_return_mismatch.html">Static return type compatibility.</a><br><small class="slug">objects_static_return_mismatch</small></td>
 <td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass <small>(Lv 3+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
@@ -404,7 +404,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
 </tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/assertions_null_guard.html">Null-check narrowing, analogous to Python narrowing tests.</a><br><small class="slug">assertions_null_guard</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/assertions_null_guard.html">Null-check narrowing.</a><br><small class="slug">assertions_null_guard</small></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass <small>(Lv 2+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
@@ -413,7 +413,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/assertions_null_guard.html">Fail</a></td>
 </tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/assertions_this_out_self_out.html">Post-call narrowing for mutable generic objects via analyzer-specific self-out annotations.</a><br><small class="slug">assertions_this_out_self_out</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/assertions_this_out_self_out.html">Post-call narrowing via self-out annotations.</a><br><small class="slug">assertions_this_out_self_out</small></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass <small>(Lv 5+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
@@ -480,7 +480,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Cross-analyzer regressions</td></tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/regressions_array_element_null_subtraction.html">Element-type narrowing of a single-element list by subtracting the null case.</a><br><small class="slug">regressions_array_element_null_subtraction</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_array_element_null_subtraction.html">Element-type narrowing by subtracting the null case.</a><br><small class="slug">regressions_array_element_null_subtraction</small></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass <small>(Lv 8+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
@@ -507,7 +507,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
 </tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/regressions_explicit_key_shape_is_list.html">Explicit-integer-key sealed shape vs. keyless sealed shape as a <code>list</code>.</a><br><small class="slug">regressions_explicit_key_shape_is_list</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_explicit_key_shape_is_list.html">Explicit-integer-key sealed shape as a <code>list</code>.</a><br><small class="slug">regressions_explicit_key_shape_is_list</small></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
@@ -543,7 +543,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
 </tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/regressions_optional_extra_key_is_list.html">A required list-compatible key plus an optional non-list key stays list-compatible.</a><br><small class="slug">regressions_optional_extra_key_is_list</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_optional_extra_key_is_list.html">Optional extra non-list key stays list-compatible.</a><br><small class="slug">regressions_optional_extra_key_is_list</small></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass <small>(Lv 4+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
@@ -552,7 +552,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
 </tr>
-<tr><td class="test-cell"><a class="test-link" href="tests/regressions_optional_key_shape_is_list.html">Optional-key array shapes stay list-compatible because they admit the empty array.</a><br><small class="slug">regressions_optional_key_shape_is_list</small></td>
+<tr><td class="test-cell"><a class="test-link" href="tests/regressions_optional_key_shape_is_list.html">Optional-key shapes stay list-compatible.</a><br><small class="slug">regressions_optional_key_shape_is_list</small></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass <small>(Lv 4+)</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>

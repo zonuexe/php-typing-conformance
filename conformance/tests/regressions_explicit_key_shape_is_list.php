@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\RegressionsExplicitKeyShapeIsList;
 
 /**
- * Explicit-integer-key sealed shape vs. keyless sealed shape as a `list`.
+ * Explicit-integer-key sealed shape as a `list`.
  *
  * `array{0: string, 1: string}` and `array{string, string}` describe the same values — a
  * two-element list of strings — and both should satisfy a `list<string>` parameter.

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\RegressionsArrayElementNullSubtraction;
 
 /**
- * Element-type narrowing of a single-element list by subtracting the null case.
+ * Element-type narrowing by subtracting the null case.
  *
  * `$arr = [$val]` has type `list{string|null}`. After `if ($arr === [null])`, the else
  * branch has excluded the only value where the element is null, so `$arr` narrows to

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\AssertionsThisOutSelfOut;
 
 /**
- * Post-call narrowing for mutable generic objects via analyzer-specific self-out annotations.
+ * Post-call narrowing via self-out annotations.
  *
  * References:
  * - Psalm `@psalm-this-out`

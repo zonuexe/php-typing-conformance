@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\AssertionsNullGuard;
 
 /**
- * Null-check narrowing, analogous to Python narrowing tests.
+ * Null-check narrowing.
  *
  * References:
  * - common analyzer narrowing on null checks

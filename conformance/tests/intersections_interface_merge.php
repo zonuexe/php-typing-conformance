@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\IntersectionsInterfaceMerge;
 
 /**
- * Basic intersection compatibility, analogous to Python protocol composition.
+ * Basic intersection compatibility.
  *
  * References:
  * - PHP intersection types

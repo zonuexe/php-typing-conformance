@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\NativeTypesResourceArgument;
 
 /**
- * `resource` should not be accepted as a native type declaration,
- * and resource values should be rejected by native scalar parameters.
+ * `resource` is not a valid native type declaration.
  *
  * References:
  * - PHP native type declarations

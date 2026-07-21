@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\RegressionsOptionalExtraKeyIsList;
 
 /**
- * A required list-compatible key plus an optional non-list key stays list-compatible.
+ * Optional extra non-list key stays list-compatible.
  *
  * `array{0: int, a?: string}` admits the value `[0 => 1]` (the optional string key `a` is
  * absent), and `array_is_list([0 => 1]) === true`. So `array_is_list($b)` is maybe-true,

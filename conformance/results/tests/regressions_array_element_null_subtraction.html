@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Element-type narrowing of a single-element list by subtracting the null case. — Conformance</title>
+  <title>Element-type narrowing by subtracting the null case. — Conformance</title>
   <style>
 body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
 body.detail { max-width: 960px; }
@@ -46,7 +46,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 </head>
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>
-<h1>Element-type narrowing of a single-element list by subtracting the null case.</h1>
+<h1>Element-type narrowing by subtracting the null case.</h1>
 <p class="meta">Group: Cross-analyzer regressions &middot; Category: regression &middot; File: regressions_array_element_null_subtraction.php</p>
 <div class="doc"><code>$arr = [$val]</code> has type <code>list{string|null}</code>. After <code>if ($arr === [null])</code>, the else
 branch has excluded the only value where the element is null, so <code>$arr</code> narrows to
@@ -75,7 +75,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\RegressionsArrayElementNullSubtraction;
 
 /**
- * Element-type narrowing of a single-element list by subtracting the null case.
+ * Element-type narrowing by subtracting the null case.
  *
  * `$arr = [$val]` has type `list{string|null}`. After `if ($arr === [null])`, the else
  * branch has excluded the only value where the element is null, so `$arr` narrows to

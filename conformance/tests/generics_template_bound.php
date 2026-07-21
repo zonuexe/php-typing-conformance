@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\GenericsTemplateBound;
 
 /**
- * Template upper bounds, analogous to Python bounded TypeVar tests.
+ * Template upper bounds.
  *
  * References:
  * - PHPStan template bounds

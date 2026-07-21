@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\ArraysNonEmptyList;
 
 /**
- * Non-empty list constraints, analogous to Python tuple/list usage tests.
+ * Non-empty list constraints.
  *
  * References:
  * - PHPStan non-empty-list

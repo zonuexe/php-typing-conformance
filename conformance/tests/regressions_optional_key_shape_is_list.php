@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\RegressionsOptionalKeyShapeIsList;
 
 /**
- * Optional-key array shapes stay list-compatible because they admit the empty array.
+ * Optional-key shapes stay list-compatible.
  *
  * A shape whose only keys are optional (for example `array{a?: string}`) includes `[]`
  * as a valid value, and `array_is_list([]) === true`. So `array_is_list($a)` is

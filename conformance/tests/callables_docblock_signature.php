@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\CallablesDocblockSignature;
 
 /**
- * Basic callable signature compatibility checks expressed in PHPDoc.
+ * Callable signature compatibility in PHPDoc.
  *
  * References:
  * - PHPStan callable type syntax

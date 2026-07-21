@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Optional-key array shapes stay list-compatible because they admit the empty array. — Conformance</title>
+  <title>Optional-key shapes stay list-compatible. — Conformance</title>
   <style>
 body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
 body.detail { max-width: 960px; }
@@ -46,7 +46,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 </head>
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>
-<h1>Optional-key array shapes stay list-compatible because they admit the empty array.</h1>
+<h1>Optional-key shapes stay list-compatible.</h1>
 <p class="meta">Group: Cross-analyzer regressions &middot; Category: regression &middot; File: regressions_optional_key_shape_is_list.php</p>
 <div class="doc">A shape whose only keys are optional (for example <code>array{a?: string}</code>) includes <code>[]</code>
 as a valid value, and <code>array_is_list([]) === true</code>. So <code>array_is_list($a)</code> is
@@ -87,7 +87,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\RegressionsOptionalKeyShapeIsList;
 
 /**
- * Optional-key array shapes stay list-compatible because they admit the empty array.
+ * Optional-key shapes stay list-compatible.
  *
  * A shape whose only keys are optional (for example `array{a?: string}`) includes `[]`
  * as a valid value, and `array_is_list([]) === true`. So `array_is_list($a)` is

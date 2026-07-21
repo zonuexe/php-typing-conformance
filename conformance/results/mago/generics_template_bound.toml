@@ -3,7 +3,7 @@ conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
 generics_template_bound.php:56: Argument type mismatch for template `T`. [template-constraint-violation]
-generics_template_bound.php:56: Possible argument type mismatch for argument #1 of `conformance\\tests\\genericstemplatebound\\namedbox::__construct`: expected `('T.conformance\\tests\\genericstemplatebound\\namedbox extends Conformance\\Tests\\GenericsTemplateBound\\HasName)`, but possibly received `Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser`. [possibly-invalid-argument]"""
+generics_template_bound.php:56: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\GenericsTemplateBound\\NamedBox::__construct`: expected `('T.conformance\\tests\\genericstemplatebound\\namedbox extends Conformance\\Tests\\GenericsTemplateBound\\HasName)`, but possibly received `Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser`. [possibly-invalid-argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

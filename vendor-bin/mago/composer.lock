@@ -9,16 +9,16 @@
     "packages-dev": [
         {
             "name": "carthage-software/mago",
-            "version": "1.19.0",
+            "version": "1.44.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/carthage-software/mago.git",
-                "reference": "2282d0b8daeca5eb82e1d01d26f445f8d8a52aed"
+                "reference": "f303d492ebf79bd691009cc5dd0c6907a5ae3bc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/carthage-software/mago/zipball/2282d0b8daeca5eb82e1d01d26f445f8d8a52aed",
-                "reference": "2282d0b8daeca5eb82e1d01d26f445f8d8a52aed",
+                "url": "https://api.github.com/repos/carthage-software/mago/zipball/f303d492ebf79bd691009cc5dd0c6907a5ae3bc3",
+                "reference": "f303d492ebf79bd691009cc5dd0c6907a5ae3bc3",
                 "shasum": ""
             },
             "require": {
@@ -33,9 +33,12 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "composer/functions.php",
-                    "composer/internal.php"
-                ]
+                    "composer/src/functions.php",
+                    "composer/src/internal.php"
+                ],
+                "psr-4": {
+                    "Mago\\": "composer/src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -53,7 +56,7 @@
             ],
             "support": {
                 "issues": "https://github.com/carthage-software/mago/issues",
-                "source": "https://github.com/carthage-software/mago/tree/1.19.0"
+                "source": "https://github.com/carthage-software/mago/tree/1.44.0"
             },
             "funding": [
                 {
@@ -61,7 +64,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-08T02:49:52+00:00"
+            "time": "2026-07-18T22:50:18+00:00"
         }
     ],
     "aliases": [],

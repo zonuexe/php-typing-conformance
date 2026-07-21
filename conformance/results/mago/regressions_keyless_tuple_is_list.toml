@@ -2,7 +2,7 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-regressions_keyless_tuple_is_list.php:22: Redundant type assertion: `$t` of type `array{0: int, 1: string}` is always not `list<int|string>`. [redundant-type-comparison]
+regressions_keyless_tuple_is_list.php:22: Redundant type assertion: `$t` is already `array{0: int, 1: string}`. [redundant-type-comparison]
 regressions_keyless_tuple_is_list.php:22: This condition (type `true`) will always evaluate to true. [redundant-condition]"""
 errors_diff = ""
 notes = ""

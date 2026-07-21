@@ -1,10 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 10
-output = """
-regressions_optional_key_shape_is_list.php:28: Impossible type assertion: `$a` of type `array{'a'?: string}` can never be `list<string>`. [impossible-type-comparison]
-regressions_optional_key_shape_is_list.php:28: This condition (type `false`) will always evaluate to false. [impossible-condition]
-regressions_optional_key_shape_is_list.php:36: Impossible type assertion: `$a` of type `array{'a'?: string}` can never be `list<string>`. [impossible-type-comparison]"""
-errors_diff = ""
+output = ""
+errors_diff = """
+Line 28: Expected 1 error(s)
+Line 36: Expected 1 error(s)"""
 notes = ""
 ignore_errors = []

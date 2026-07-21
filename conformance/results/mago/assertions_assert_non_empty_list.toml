@@ -3,7 +3,7 @@ conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
 assertions_assert_non_empty_list.php:32: Cannot access elements of an empty list `list<never>`. [impossible-array-access]
-assertions_assert_non_empty_list.php:32: Invalid return type for function `conformance\\tests\\assertionsassertnonemptylist\\rejectsemptybranch`: expected `int`, but found `null`. [invalid-return-statement]"""
+assertions_assert_non_empty_list.php:32: Invalid return type for function `Conformance\\Tests\\AssertionsAssertNonEmptyList\\rejectsEmptyBranch`: expected `int`, but found `null`. [invalid-return-statement]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

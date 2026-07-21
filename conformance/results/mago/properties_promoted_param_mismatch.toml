@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "properties_promoted_param_mismatch.php:23: Invalid argument type for argument #1 of `conformance\\tests\\propertiespromotedparammismatch\\idbox::__construct`: expected `int`, but found `string('x')`. [invalid-argument]"
+output = "properties_promoted_param_mismatch.php:23: Invalid argument type for argument #1 of `Conformance\\Tests\\PropertiesPromotedParamMismatch\\IdBox::__construct`: expected `int`, but found `string('x')`. [invalid-argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

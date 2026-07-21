@@ -10,6 +10,8 @@ body.detail { max-width: 960px; }
 a { color: #0b62c4; }
 h1 { margin-bottom: 0.2em; }
 p.lead { color: #555; margin-top: 0; }
+h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
+p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
 p.crumb { margin: 0 0 12px; }
 p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
 table { width: 100%; border-collapse: collapse; }
@@ -31,6 +33,8 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
 .unknown { background: #f0f0f0; }
+.reported { background: #dbe7fb; }
+.muted { background: #f6f6f6; color: #999; }
 .doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
 .doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
 .detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -47,7 +51,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>
 <h1>PHPStan strict-rules opt-in detection for boolean conditions</h1>
-<p class="meta">Group: Analyzer directives &middot; Category: extension &middot; File: directives_phpstan_strict_bool_condition.php</p>
+<p class="meta">Group: Analyzer directives &middot; Category: extension &middot; File: directives_phpstan_strict_bool_condition.php &middot; Kind: <strong>Style / opinionated</strong> (no runtime-safety impact)</p>
 <div class="doc">References:
 - PHPStan strict-rules boolean conditions</div>
 <h2>Analyzer results</h2>
@@ -73,6 +77,8 @@ namespace Conformance\Tests\DirectivesPhpstanStrictBoolCondition;
  *
  * References:
  * - PHPStan strict-rules boolean conditions
+ *
+ * @conformance-kind style
  */
 function isPositive(int $value): bool
 {

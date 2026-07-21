@@ -9,6 +9,8 @@ namespace Conformance\Tests\ExceptionsThrowsDocblock;
  *
  * References:
  * - phpDocumentor @throws
+ *
+ * @conformance-kind style
  */
 
 final class CustomException extends \RuntimeException

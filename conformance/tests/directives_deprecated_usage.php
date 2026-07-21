@@ -10,6 +10,8 @@ namespace Conformance\Tests\DirectivesDeprecatedUsage;
  * References:
  * - python-typing directives_deprecated inspiration
  * - PHP analyzer support for @deprecated on functions and classes
+ *
+ * @conformance-kind style
  */
 
 $message = oldMessage(); // E?: deprecated function usage

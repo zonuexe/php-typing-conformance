@@ -9,6 +9,8 @@ namespace Conformance\Tests\PhpdocAdvancedParamTypehintBooleanSynonym;
  *
  * References:
  * - NoVerify funcParamTypeMissMatch patch series (April 2025)
+ *
+ * @conformance-kind style
  */ // E?: some tools may report a docblock spelling preference
 
 /**

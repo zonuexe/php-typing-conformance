@@ -10,6 +10,8 @@ body.detail { max-width: 960px; }
 a { color: #0b62c4; }
 h1 { margin-bottom: 0.2em; }
 p.lead { color: #555; margin-top: 0; }
+h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
+p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
 p.crumb { margin: 0 0 12px; }
 p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
 table { width: 100%; border-collapse: collapse; }
@@ -31,6 +33,8 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
 .unknown { background: #f0f0f0; }
+.reported { background: #dbe7fb; }
+.muted { background: #f6f6f6; color: #999; }
 .doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
 .doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
 .detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -47,6 +51,8 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <body class="index">
 <h1>PHP Typing Conformance Results</h1>
 <p class="lead">Each row links to a per-test detail page with the source, expectations, and every analyzer&rsquo;s raw output.</p>
+<h2 class="section">Soundness &mdash; potential runtime type errors</h2>
+<p class="section-note">Positives here flag code that can actually fail at runtime &mdash; type mismatches, null access, invalid arguments, uninitialized reads. <strong>Pass</strong> means the analyzer agrees with the expected diagnostic.</p>
 <table>
 <thead><tr><th>Test</th>
 <th>phpstan<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
@@ -265,16 +271,6 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="8">Exceptions</td></tr>
-<tr id="exceptions_throws_docblock"><td class="test-cell"><a class="test-link" href="tests/exceptions_throws_docblock.html">Basic @throws compatibility checks</a></td>
-<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/exceptions_throws_docblock.html">Pass</a></td>
-</tr>
 <tr class="group"><td colspan="8">PHPDoc basics</td></tr>
 <tr id="phpdoc_basics_param_types"><td class="test-cell"><a class="test-link" href="tests/phpdoc_basics_param_types.html">Basic PHPDoc-only parameter type checks</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass <small>(Lv 5+)</small></a></td>
@@ -303,15 +299,6 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Pass</a></td>
-</tr>
-<tr id="phpdoc_advanced_param_typehint_boolean_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">boolean/bool should be treated as equivalent for compatibility checks</a></td>
-<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Pass</a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_byref_compatible"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">By-reference parameters should match even if PHPDoc omits the reference marker</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
@@ -422,34 +409,6 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="8">Analyzer directives</td></tr>
-<tr id="directives_deprecated_usage"><td class="test-cell"><a class="test-link" href="tests/directives_deprecated_usage.html">Deprecated symbol usage through companion support files</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_deprecated_usage.html">Pass</a></td>
-</tr>
-<tr id="directives_phpstan_strict_bool_condition"><td class="test-cell"><a class="test-link" href="tests/directives_phpstan_strict_bool_condition.html">PHPStan strict-rules opt-in detection for boolean conditions</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Pass</a></td>
-</tr>
-<tr id="directives_phpstan_strict_empty"><td class="test-cell"><a class="test-link" href="tests/directives_phpstan_strict_empty.html">PHPStan strict-rules opt-in detection for empty()</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Pass</a></td>
-<td class="fail"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Fail</a></td>
-</tr>
 <tr class="group"><td colspan="8">Stubs and external signatures</td></tr>
 <tr id="stubs_external_signature_support"><td class="test-cell"><a class="test-link" href="tests/stubs_external_signature_support.html">External signature support through companion helper files</a></td>
 <td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass <small>(Lv 5+)</small></a></td>
@@ -461,15 +420,6 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/stubs_external_signature_support.html">Fail</a></td>
 </tr>
 <tr class="group"><td colspan="8">Historical and legacy behavior</td></tr>
-<tr id="historical_implicit_nullable_parameter"><td class="test-cell"><a class="test-link" href="tests/historical_implicit_nullable_parameter.html">Historical implicit-nullable parameter syntax</a></td>
-<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass <small>(Lv 0+)</small></a></td>
-<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
-<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
-</tr>
 <tr id="historical_nullable_array_default_null"><td class="test-cell"><a class="test-link" href="tests/historical_nullable_array_default_null.html">Historical compatibility for legacy nullable-via-default patterns</a></td>
 <td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
@@ -587,6 +537,77 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
+</tr>
+</tbody></table>
+<h2 class="section">Style &amp; opinionated rules &mdash; no runtime-safety impact</h2>
+<p class="section-note">Lint-style opinions and advisories (PHPStan strict-rules, deprecations, doc conventions) that do not change whether the code runs. Cells show whether each analyzer <em>opts into</em> reporting the rule &mdash; not a pass/fail verdict.</p>
+<table>
+<thead><tr><th>Test</th>
+<th>phpstan<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
+<th>phpstan-strict<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
+<th>psalm<br><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></th>
+<th>mago<br><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></th>
+<th>mir<br><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></th>
+<th>phan<br><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></th>
+<th>noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
+</tr></thead><tbody>
+<tr class="group"><td colspan="8">Exceptions</td></tr>
+<tr id="exceptions_throws_docblock"><td class="test-cell"><a class="test-link" href="tests/exceptions_throws_docblock.html">Basic @throws compatibility checks</a></td>
+<td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
+</tr>
+<tr class="group"><td colspan="8">Advanced PHPDoc types</td></tr>
+<tr id="phpdoc_advanced_param_typehint_boolean_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">boolean/bool should be treated as equivalent for compatibility checks</a></td>
+<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">—</a></td>
+<td class="reported"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Reported</a></td>
+</tr>
+<tr class="group"><td colspan="8">Analyzer directives</td></tr>
+<tr id="directives_deprecated_usage"><td class="test-cell"><a class="test-link" href="tests/directives_deprecated_usage.html">Deprecated symbol usage through companion support files</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_deprecated_usage.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_deprecated_usage.html">—</a></td>
+<td class="reported"><a class="cell-link" href="tests/directives_deprecated_usage.html">Reported</a></td>
+<td class="reported"><a class="cell-link" href="tests/directives_deprecated_usage.html">Reported</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_deprecated_usage.html">—</a></td>
+<td class="reported"><a class="cell-link" href="tests/directives_deprecated_usage.html">Reported</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_deprecated_usage.html">—</a></td>
+</tr>
+<tr id="directives_phpstan_strict_bool_condition"><td class="test-cell"><a class="test-link" href="tests/directives_phpstan_strict_bool_condition.html">PHPStan strict-rules opt-in detection for boolean conditions</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
+<td class="reported"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Reported</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
+</tr>
+<tr id="directives_phpstan_strict_empty"><td class="test-cell"><a class="test-link" href="tests/directives_phpstan_strict_empty.html">PHPStan strict-rules opt-in detection for empty()</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
+<td class="reported"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Reported</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
+<td class="reported"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Reported</a></td>
+</tr>
+<tr class="group"><td colspan="8">Historical and legacy behavior</td></tr>
+<tr id="historical_implicit_nullable_parameter"><td class="test-cell"><a class="test-link" href="tests/historical_implicit_nullable_parameter.html">Historical implicit-nullable parameter syntax</a></td>
+<td class="reported"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Reported</a></td>
+<td class="reported"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Reported</a></td>
+<td class="muted"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">—</a></td>
+<td class="reported"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Reported</a></td>
+<td class="reported"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Reported</a></td>
 </tr>
 </tbody></table>
 </body></html>

@@ -10,6 +10,8 @@ namespace Conformance\Tests\DirectivesPhpstanStrictEmpty;
  * References:
  * - PHPStan strict-rules disallowed empty
  * - python-typing directives inspiration
+ *
+ * @conformance-kind style
  */
 
 /**

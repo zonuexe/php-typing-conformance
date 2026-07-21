@@ -146,6 +146,7 @@ PHPStan handling is intentionally split:
 - Use inline expectation markers rather than external expectation files.
 - Prefer required expectations (`// E`) for stable checker behavior and optional expectations (`// E?`) when a diagnostic is tool- or version-sensitive.
 - Use tool-specific expectations when only one analyzer should report a diagnostic, for example `// E<psalm>`.
+- Tag opinionated/advisory tests (PHPStan strict-rules, deprecations, doc conventions — anything with no runtime-safety impact) with a `@conformance-kind style` line in the leading docblock. Untagged tests default to `soundness`. The HTML report splits these into two tables: a soundness matrix (Pass/Fail) and a style matrix that only shows whether each analyzer opts into reporting the rule.
 
 ## Python-To-PHP Porting Notes
 

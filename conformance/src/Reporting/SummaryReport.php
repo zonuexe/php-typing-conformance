@@ -63,25 +63,64 @@ final class SummaryReport
         array $testCases,
         array $tools,
     ): string {
+        $soundnessCases = array_values(array_filter(
+            $testCases,
+            fn (TestCase $testCase): bool => $this->testKind($testCase) !== 'style',
+        ));
+        $styleCases = array_values(array_filter(
+            $testCases,
+            fn (TestCase $testCase): bool => $this->testKind($testCase) === 'style',
+        ));
+
         $body = [];
         $body[] = '<h1>PHP Typing Conformance Results</h1>';
         $body[] = '<p class="lead">Each row links to a per-test detail page with the source, expectations, and every analyzer&rsquo;s raw output.</p>';
-        $body[] = '<table>';
-        $body[] = '<thead><tr><th>Test</th>';
+
+        $body[] = '<h2 class="section">Soundness &mdash; potential runtime type errors</h2>';
+        $body[] = '<p class="section-note">Positives here flag code that can actually fail at runtime &mdash; type mismatches, null access, invalid arguments, uninitialized reads. <strong>Pass</strong> means the analyzer agrees with the expected diagnostic.</p>';
+        $body = array_merge($body, $this->renderMatrix($resultsRoot, $testGroups, $soundnessCases, $tools, false));
+
+        if ($styleCases !== []) {
+            $body[] = '<h2 class="section">Style &amp; opinionated rules &mdash; no runtime-safety impact</h2>';
+            $body[] = '<p class="section-note">Lint-style opinions and advisories (PHPStan strict-rules, deprecations, doc conventions) that do not change whether the code runs. Cells show whether each analyzer <em>opts into</em> reporting the rule &mdash; not a pass/fail verdict.</p>';
+            $body = array_merge($body, $this->renderMatrix($resultsRoot, $testGroups, $styleCases, $tools, true));
+        }
+
+        return $this->renderPage('PHP Typing Conformance Results', $body, false);
+    }
+
+    /**
+     * Render one results matrix for a subset of cases.
+     *
+     * @param array<string, TestGroup> $testGroups
+     * @param list<TestCase> $cases
+     * @param list<string> $tools
+     * @return list<string>
+     */
+    private function renderMatrix(
+        string $resultsRoot,
+        array $testGroups,
+        array $cases,
+        array $tools,
+        bool $style,
+    ): array {
+        $lines = [];
+        $lines[] = '<table>';
+        $lines[] = '<thead><tr><th>Test</th>';
 
         foreach ($tools as $tool) {
-            $body[] = sprintf(
+            $lines[] = sprintf(
                 '<th>%s<br><small>%s</small></th>',
                 htmlspecialchars($tool),
                 $this->versionCell($resultsRoot, $tool),
             );
         }
 
-        $body[] = '</tr></thead><tbody>';
+        $lines[] = '</tr></thead><tbody>';
 
         foreach ($testGroups as $groupKey => $group) {
             $groupCases = array_values(array_filter(
-                $testCases,
+                $cases,
                 static fn (TestCase $testCase): bool => $testCase->groupKey === $groupKey,
             ));
 
@@ -89,7 +128,7 @@ final class SummaryReport
                 continue;
             }
 
-            $body[] = sprintf(
+            $lines[] = sprintf(
                 '<tr class="group"><td colspan="%d">%s</td></tr>',
                 count($tools) + 1,
                 htmlspecialchars($group->name),
@@ -99,7 +138,7 @@ final class SummaryReport
                 [$title] = $this->docblock($testCase);
                 $href = self::DETAILS_DIR . '/' . rawurlencode($testCase->name) . '.html';
 
-                $body[] = sprintf(
+                $lines[] = sprintf(
                     '<tr id="%s"><td class="test-cell"><a class="test-link" href="%s">%s</a></td>',
                     htmlspecialchars($testCase->name),
                     htmlspecialchars($href),
@@ -108,10 +147,12 @@ final class SummaryReport
 
                 foreach ($tools as $tool) {
                     $result = $this->loadResult($resultsRoot, $tool, $testCase->name);
-                    [$display, $class] = $this->statusOf($result);
+                    [$display, $class] = $style ? $this->styleStatusOf($result) : $this->statusOf($result);
 
                     $cell = htmlspecialchars($display);
-                    $cell .= $this->levelSuffix($result);
+                    if (!$style) {
+                        $cell .= $this->levelSuffix($result);
+                    }
 
                     $notes = trim((string) ($result['notes'] ?? ''));
                     if ($notes !== '') {
@@ -121,16 +162,16 @@ final class SummaryReport
                         );
                     }
 
-                    $body[] = sprintf('<td class="%s"><a class="cell-link" href="%s">%s</a></td>', $class, htmlspecialchars($href), $cell);
+                    $lines[] = sprintf('<td class="%s"><a class="cell-link" href="%s">%s</a></td>', $class, htmlspecialchars($href), $cell);
                 }
 
-                $body[] = '</tr>';
+                $lines[] = '</tr>';
             }
         }
 
-        $body[] = '</tbody></table>';
+        $lines[] = '</tbody></table>';
 
-        return $this->renderPage('PHP Typing Conformance Results', $body, false);
+        return $lines;
     }
 
     /**
@@ -154,6 +195,9 @@ final class SummaryReport
             $meta[] = 'Category: ' . htmlspecialchars($group->sourceCategory);
         }
         $meta[] = 'File: ' . htmlspecialchars($testCase->fileName);
+        if ($this->testKind($testCase) === 'style') {
+            $meta[] = 'Kind: <strong>Style / opinionated</strong> (no runtime-safety impact)';
+        }
         $body[] = '<p class="meta">' . implode(' &middot; ', $meta) . '</p>';
 
         if ($description !== '') {
@@ -270,6 +314,8 @@ body.detail { max-width: 960px; }
 a { color: #0b62c4; }
 h1 { margin-bottom: 0.2em; }
 p.lead { color: #555; margin-top: 0; }
+h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
+p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
 p.crumb { margin: 0 0 12px; }
 p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
 table { width: 100%; border-collapse: collapse; }
@@ -291,6 +337,8 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
 .unknown { background: #f0f0f0; }
+.reported { background: #dbe7fb; }
+.muted { background: #f6f6f6; color: #999; }
 .doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
 .doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
 .detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -329,6 +377,10 @@ CSS;
         $inTitle = true;
         foreach ($lines as $line) {
             $trimmed = trim($line);
+            // Metadata tags are not part of the human-facing description.
+            if (str_starts_with($trimmed, '@conformance-kind')) {
+                continue;
+            }
             if ($inTitle) {
                 if ($trimmed === '') {
                     if ($title !== []) {
@@ -369,6 +421,19 @@ CSS;
     }
 
     /**
+     * Classify a test as a soundness check (runtime-safety) or a style check
+     * (opinionated/advisory), via the optional `@conformance-kind` docblock tag.
+     */
+    private function testKind(TestCase $testCase): string
+    {
+        if (preg_match('/@conformance-kind:?\s+([\w-]+)/', $this->readSource($testCase->path), $matches) === 1) {
+            return strtolower($matches[1]);
+        }
+
+        return 'soundness';
+    }
+
+    /**
      * @param array<string, mixed> $result
      * @return array{0: string, 1: string} [display, cssClass]
      */
@@ -386,6 +451,20 @@ CSS;
         };
 
         return [$display, $class];
+    }
+
+    /**
+     * For style/opinionated checks a pass/fail verdict is not meaningful, so
+     * report only whether each analyzer opts into flagging the rule.
+     *
+     * @param array<string, mixed> $result
+     * @return array{0: string, 1: string} [display, cssClass]
+     */
+    private function styleStatusOf(array $result): array
+    {
+        $output = trim((string) ($result['output'] ?? ''));
+
+        return $output !== '' ? ['Reported', 'reported'] : ['—', 'muted'];
     }
 
     /**

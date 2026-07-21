@@ -9,6 +9,8 @@ namespace Conformance\Tests\DirectivesPhpstanStrictBoolCondition;
  *
  * References:
  * - PHPStan strict-rules boolean conditions
+ *
+ * @conformance-kind style
  */
 function isPositive(int $value): bool
 {

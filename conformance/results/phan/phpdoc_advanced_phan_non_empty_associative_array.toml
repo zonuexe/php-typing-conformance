@@ -1,7 +1,12 @@
-status = "Full support"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = "phpdoc_advanced_phan_non_empty_associative_array.php:32: Argument 1 ($map) is [1,2,3] of type array{0:1,1:2,2:3} but \\Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc() takes array<string,int> defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phan_non_empty_associative_array.php:21 [PhanTypeMismatchArgument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

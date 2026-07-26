@@ -16,6 +16,7 @@ use Conformance\Checker\SteinsChecker;
 use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Expectation\ExpectationEvaluator;
 use Conformance\Expectation\ExpectationParser;
+use Conformance\Expectation\ExpectedDiagnostic;
 use Conformance\Result\ResultRecord;
 use Conformance\Result\ResultRepository;
 use Conformance\Reporting\SummaryReport;
@@ -37,11 +38,43 @@ require_once __DIR__ . '/Expectation/ExpectedDiagnostic.php';
 require_once __DIR__ . '/Expectation/ExpectationEvaluation.php';
 require_once __DIR__ . '/Expectation/ExpectationEvaluator.php';
 require_once __DIR__ . '/Expectation/ExpectationParser.php';
+require_once __DIR__ . '/Expectation/TypeHandling.php';
+require_once __DIR__ . '/Expectation/TypeMarker.php';
 require_once __DIR__ . '/Result/ResultRecord.php';
 require_once __DIR__ . '/Result/ResultRepository.php';
 require_once __DIR__ . '/Reporting/SummaryReport.php';
 require_once __DIR__ . '/TestGroup/TestGroup.php';
 require_once __DIR__ . '/TestGroup/TestGroupLoader.php';
+
+/**
+ * Lowest PHPStan level whose rules report one of the diagnostics this test
+ * expects.
+ *
+ * Deliberately restricted to the expected lines: PHPStan levels turn rule sets
+ * on, they do not change type inference, so the only level worth reporting is
+ * the one that gates the rule the test is about. Unexpected noise elsewhere in
+ * the file (a `missingType.*` complaint at level 6, say) says nothing about the
+ * behaviour under test.
+ *
+ * @param list<ExpectedDiagnostic> $expectedDiagnostics
+ */
+function expectedDiagnosticLevel(PhpStanChecker $checker, array $expectedDiagnostics): ?int
+{
+    $lineLevels = $checker->lineLevels();
+    $levels = [];
+
+    foreach ($expectedDiagnostics as $diagnostic) {
+        if ($diagnostic->tool !== null && $diagnostic->tool !== $checker->name()) {
+            continue;
+        }
+
+        if (isset($lineLevels[$diagnostic->line])) {
+            $levels[] = $lineLevels[$diagnostic->line];
+        }
+    }
+
+    return $levels === [] ? null : min($levels);
+}
 
 $rootDir = dirname(__DIR__);
 $testGroupsFile = $rootDir . '/src/test-groups.toml';
@@ -64,13 +97,13 @@ $phpStanChecker = new PhpStanChecker(
     toolName: 'phpstan',
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
     configPath: $phpStanNoStrictConfigPath,
-    stopAtFirstDetectedLevel: true,
+    resolveDiagnosticLevels: true,
 );
 $phpStanStrictChecker = new PhpStanChecker(
     toolName: 'phpstan-strict',
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
     configPath: $phpStanConfigPath,
-    stopAtFirstDetectedLevel: false,
+    resolveDiagnosticLevels: false,
 );
 $magoChecker = new MagoChecker(
     binaryPath: $projectRoot . '/vendor-bin/mago/vendor/bin/mago',
@@ -151,12 +184,14 @@ printf("\nDiscovered %d test case(s)\n", count($testCases));
 
 foreach ($testCases as $testCase) {
     $expectedDiagnostics = $expectationParser->parseFile($testCase->path);
+    $typeMarkers = $expectationParser->parseTypeMarkers($testCase->path);
 
     printf(
-        "- %s (%s): %d expectation(s)\n",
+        "- %s (%s): %d expectation(s), %d type marker(s)\n",
         $testCase->fileName,
         $testCase->groupKey,
         count($expectedDiagnostics),
+        count($typeMarkers),
     );
 
     foreach ($expectedDiagnostics as $diagnostic) {
@@ -176,24 +211,27 @@ foreach ($testCases as $testCase) {
     }
 
     foreach ($checkers as $checker) {
-        if ($checker instanceof PhpStanChecker) {
-            $checker->setKnownFirstDetectedLevel(null);
-
-            if ($checker->name() === 'phpstan') {
-                $existingResult = $resultRepository->loadResult($checker->name(), $testCase->name);
-                $existingLevel = $existingResult['first_detected_level'] ?? null;
-
-                if (is_int($existingLevel)) {
-                    $checker->setKnownFirstDetectedLevel($existingLevel);
-                }
-            }
-        }
-
         $diagnostics = $checker->analyse($testCase);
         printf("  %s: %d diagnostic line(s)\n", $checker->name(), count($diagnostics));
 
-        $evaluation = $expectationEvaluator->evaluate($expectedDiagnostics, $diagnostics, $checker->name());
+        $evaluation = $expectationEvaluator->evaluate(
+            $expectedDiagnostics,
+            $diagnostics,
+            $checker->name(),
+            $typeMarkers,
+        );
         printf("  %s automated: %s\n", $checker->name(), $evaluation->conformanceAutomated);
+
+        if ($evaluation->typeHandling !== null) {
+            printf(
+                "  %s handling: %s / %s (%d of %d expected lines enforced)\n",
+                $checker->name(),
+                $evaluation->typeHandling->recognition,
+                $evaluation->typeHandling->enforcement,
+                $evaluation->typeHandling->enforcedLineCount,
+                $evaluation->typeHandling->expectedLineCount,
+            );
+        }
 
         $outputLines = [];
         foreach ($diagnostics as $lineNumber => $messages) {
@@ -207,12 +245,15 @@ foreach ($testCases as $testCase) {
             testName: $testCase->name,
             status: 'Unknown',
             conformanceAutomated: $evaluation->conformanceAutomated,
-            firstDetectedLevel: $checker instanceof PhpStanChecker ? $checker->firstDetectedLevel() : null,
+            expectedDiagnosticLevel: $checker instanceof PhpStanChecker
+                ? expectedDiagnosticLevel($checker, $expectedDiagnostics)
+                : null,
             output: implode("\n", $outputLines),
             errorsDiff: $evaluation->errorsDiff,
             notes: '',
             ignoreErrors: [],
             expectedDiagnosticCount: count($expectedDiagnostics),
+            typeHandling: $evaluation->typeHandling,
         );
 
         $resultPath = $resultRepository->save($record);

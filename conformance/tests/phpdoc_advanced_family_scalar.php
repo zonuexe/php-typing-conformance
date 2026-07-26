@@ -16,17 +16,17 @@ namespace Conformance\Tests\PhpdocAdvancedFamilyScalar;
  */
 
 /** @param scalar $value */
-function acceptsScalar($value): void
+function acceptsScalar($value): void // T: scalar
 {
 }
 
 /** @param number $value */
-function acceptsNumber($value): void
+function acceptsNumber($value): void // T: number
 {
 }
 
 /** @param numeric $value */
-function acceptsNumeric($value): void
+function acceptsNumeric($value): void // T: numeric
 {
 }
 

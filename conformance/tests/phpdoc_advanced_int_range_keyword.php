@@ -18,7 +18,7 @@ namespace Conformance\Tests\PhpdocAdvancedIntRangeKeyword;
 /**
  * @param int-range<0, 255> $value
  */
-function acceptsByte($value): void
+function acceptsByte($value): void // T: int-range<0, 255>
 {
 }
 

@@ -7,3 +7,8 @@ phpdoc_advanced_family_resource.php:35: Argument 1 of acceptsOpenResource expect
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

@@ -7,3 +7,8 @@ phpdoc_advanced_family_bool_literal.php:32: Argument 1 of acceptsFalse expects f
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

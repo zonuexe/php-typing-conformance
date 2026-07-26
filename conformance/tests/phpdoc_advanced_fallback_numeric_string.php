@@ -19,7 +19,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNumericString;
 /**
  * @return numeric-string
  */
-function returnsNumericString()
+function returnsNumericString() // T: numeric-string
 {
     return '123';
 }
@@ -31,7 +31,7 @@ function acceptsString(string $value): void
 /**
  * @param numeric-string $value
  */
-function acceptsNumericString($value): void
+function acceptsNumericString($value): void // T: numeric-string
 {
 }
 

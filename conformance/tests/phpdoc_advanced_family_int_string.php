@@ -17,17 +17,17 @@ namespace Conformance\Tests\PhpdocAdvancedFamilyIntString;
  */
 
 /** @param decimal-int-string $value */
-function acceptsDecimalIntString($value): void
+function acceptsDecimalIntString($value): void // T: decimal-int-string
 {
 }
 
 /** @param literal-string $value */
-function acceptsLiteralString($value): void
+function acceptsLiteralString($value): void // T: literal-string
 {
 }
 
 /** @param non-empty-literal-string $value */
-function acceptsNonEmptyLiteralString($value): void
+function acceptsNonEmptyLiteralString($value): void // T: non-empty-literal-string
 {
 }
 

@@ -41,6 +41,18 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .unknown { background: #f0f0f0; }
 .reported { background: #dbe7fb; }
 .muted { background: #f6f6f6; color: #999; }
+.level-tag { color: #666; font-weight: 400; cursor: help; }
+.fp-tag { display: block; color: #a33; font-weight: 600; cursor: help; }
+.partial { background: #fdf0cf; }
+.facets { margin: 8px 0 0; padding-left: 18px; font-size: 0.85em; color: #555; }
+.legend-facets { margin: 4px 0 10px; padding-left: 20px; font-size: 0.9em; }
+.legend { margin: 16px 0 24px; border: 1px solid #ddd; border-radius: 6px; padding: 10px 14px; background: #fbfbfb; }
+.legend > summary { cursor: pointer; font-weight: 600; }
+.legend-intro { margin: 14px 0 6px; font-size: 0.9em; }
+.legend-list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 0.9em; }
+.legend-list dt, .legend-list dd { margin: 0; }
+.legend-swatch { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.legend-swatch.plain { background: none; padding: 2px 0; font-weight: 400; }
 .doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
 .doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
 .detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -68,8 +80,8 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 arrays_open_shapes.php:24: Saw a token Phan may have failed to parse after &#039;* @param array{name: string, ...} $options // E?: some tools cannot parse open array shape PHPDoc syntax&#039;: after array, saw &#039;{&#039; [PhanUnextractableAnnotationSuffix]
 arrays_open_shapes.php:36: Saw possibly unextractable annotation for a fragment of comment &#039;* @param list{string, int, ...} $values // E?: some tools cannot parse open list shape PHPDoc syntax&#039;: after list, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
 arrays_open_shapes.php:36: Saw a token Phan may have failed to parse after &#039;* @param list{string, int, ...} $values // E?: some tools cannot parse open list shape PHPDoc syntax&#039;: after list, saw &#039;{&#039; [PhanUnextractableAnnotationSuffix]</pre></td></tr>
-<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 5+)</small></td><td class="diag-cell"><pre class="diag">arrays_open_shapes.php:33: Parameter #1 $options of function Conformance\Tests\ArraysOpenShapes\inspectOpenArrayShape expects array{name: string, ...}, array{extra: 123} given. [identifier=argument.type] [detected-from-level=5]
-arrays_open_shapes.php:51: Parameter #1 $values of function Conformance\Tests\ArraysOpenShapes\inspectOpenListShape expects array{string, int, ...}, array{1, &#039;demo&#039;, true} given. [identifier=argument.type] [detected-from-level=5]</pre><details><summary>With strict-rules</summary><pre class="diag">arrays_open_shapes.php:33: Parameter #1 $options of function Conformance\Tests\ArraysOpenShapes\inspectOpenArrayShape expects array{name: string, ...}, array{extra: 123} given. [identifier=argument.type]
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small class="level-tag" title="PHPStan levels enable rule sets; type inference itself is level-independent.">reported from level 5</small></td><td class="diag-cell"><pre class="diag">arrays_open_shapes.php:33: Parameter #1 $options of function Conformance\Tests\ArraysOpenShapes\inspectOpenArrayShape expects array{name: string, ...}, array{extra: 123} given. [identifier=argument.type] [reported-from-level=5]
+arrays_open_shapes.php:51: Parameter #1 $values of function Conformance\Tests\ArraysOpenShapes\inspectOpenListShape expects array{string, int, ...}, array{1, &#039;demo&#039;, true} given. [identifier=argument.type] [reported-from-level=5]</pre><details><summary>With strict-rules</summary><pre class="diag">arrays_open_shapes.php:33: Parameter #1 $options of function Conformance\Tests\ArraysOpenShapes\inspectOpenArrayShape expects array{name: string, ...}, array{extra: 123} given. [identifier=argument.type]
 arrays_open_shapes.php:51: Parameter #1 $values of function Conformance\Tests\ArraysOpenShapes\inspectOpenListShape expects array{string, int, ...}, array{1, &#039;demo&#039;, true} given. [identifier=argument.type]</pre></details></td></tr>
 <tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">arrays_open_shapes.php:33: Argument 1 of Conformance\Tests\ArraysOpenShapes\inspectOpenArrayShape expects array{name: string, ...&lt;array-key, mixed&gt;}, but array{extra: 123} provided [InvalidArgument]
 arrays_open_shapes.php:51: Argument 1 of Conformance\Tests\ArraysOpenShapes\inspectOpenListShape expects list{string, int, ...&lt;mixed&gt;}, but list{1, &#039;demo&#039;, true} provided [InvalidArgument]</pre></td></tr>

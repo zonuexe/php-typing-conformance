@@ -1,4 +1,4 @@
-status = "Full support"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
@@ -7,3 +7,8 @@ phpdoc_advanced_family_callable.php:43: Argument 1 ($value) is new NotInvokable(
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
@@ -7,9 +7,11 @@ phpdoc_advanced_psalm_arraylike_object.php:19: Saw a token Phan may have failed 
 phpdoc_advanced_psalm_arraylike_object.php:21: Parameter $obj has undeclared type \\Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike [PhanUndeclaredTypeParameter]
 phpdoc_advanced_psalm_arraylike_object.php:26: Argument 1 ($obj) is new \\ArrayObject([1,2,3]) of type \\ArrayAccess|\\ArrayObject|\\Countable|\\IteratorAggregate|\\Serializable|\\Traversable|iterable but \\Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike() takes \\Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_arraylike_object.php:21 [PhanTypeMismatchArgument]
 phpdoc_advanced_psalm_arraylike_object.php:29: Argument 1 ($obj) is new \\stdClass() of type \\stdClass but \\Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike() takes \\Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_arraylike_object.php:21 [PhanTypeMismatchArgument]"""
-errors_diff = """
-Line 19: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '* @param arraylike-object $obj': after arraylike, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '* @param arraylike-object $obj': after arraylike, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 21: Unexpected errors ["Parameter $obj has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike [PhanUndeclaredTypeParameter]"]
-Line 26: Unexpected errors ["Argument 1 ($obj) is new \\\\ArrayObject([1,2,3]) of type \\\\ArrayAccess|\\\\ArrayObject|\\\\Countable|\\\\IteratorAggregate|\\\\Serializable|\\\\Traversable|iterable but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_arraylike_object.php:21 [PhanTypeMismatchArgument]"]"""
+errors_diff = "Line 26: Unexpected errors [\"Argument 1 ($obj) is new \\\\ArrayObject([1,2,3]) of type \\\\ArrayAccess|\\\\ArrayObject|\\\\Countable|\\\\IteratorAggregate|\\\\Serializable|\\\\Traversable|iterable but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_arraylike_object.php:21 [PhanTypeMismatchArgument]\"]"
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [19, 21]
+false_positive_lines = [26]

@@ -18,7 +18,7 @@ namespace Conformance\Tests\PhpdocAdvancedPhanObjectShape;
 /**
  * @param stdClass{name: string} $obj
  */
-function acceptsObjectShape(\stdClass $obj): void
+function acceptsObjectShape(\stdClass $obj): void // T: stdClass{name: string}
 {
 }
 

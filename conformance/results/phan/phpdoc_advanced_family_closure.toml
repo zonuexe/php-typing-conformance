@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
@@ -13,11 +13,12 @@ phpdoc_advanced_family_closure.php:30: Argument 1 ($fn) is 'strlen' of type stri
 phpdoc_advanced_family_closure.php:32: Argument 1 ($fn) is (fn) of type Closure():int but \\Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\acceptsStaticClosure() takes static (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_closure.php:25 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
 phpdoc_advanced_family_closure.php:33: Argument 1 ($fn) is 'strlen' of type string but \\Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\acceptsStaticClosure() takes static (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_closure.php:25 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
 errors_diff = """
-Line 19: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '/** @param pure-closure $fn */': after pure, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '/** @param pure-closure $fn */': after pure, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 20: Unexpected errors ["Parameter $fn has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\pure [PhanUndeclaredTypeParameter]"]
-Line 24: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '/** @param static-closure $fn */': after static, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '/** @param static-closure $fn */': after static, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 25: Unexpected errors ["Parameter $fn has undeclared type static [PhanUndeclaredTypeParameter]"]
 Line 29: Unexpected errors ["Argument 1 ($fn) is (fn) of type Closure():int but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\acceptsPureClosure() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\pure (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_closure.php:20 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]
 Line 32: Unexpected errors ["Argument 1 ($fn) is (fn) of type Closure():int but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\acceptsStaticClosure() takes static (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_closure.php:25 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]"""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [19, 20, 24, 25]
+false_positive_lines = [29, 32]

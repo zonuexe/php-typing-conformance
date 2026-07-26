@@ -1,8 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_pseudotype_class_precedence.php:35: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPseudotypeClassPrecedence\\acceptsIntegerClass expects Conformance\\Tests\\PhpdocAdvancedPseudotypeClassPrecedence\\Integer, int given. [identifier=argument.type] [detected-from-level=5]"
+output = "phpdoc_advanced_pseudotype_class_precedence.php:35: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPseudotypeClassPrecedence\\acceptsIntegerClass expects Conformance\\Tests\\PhpdocAdvancedPseudotypeClassPrecedence\\Integer, int given. [identifier=argument.type] [reported-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 5
+expected_diagnostic_level = 5

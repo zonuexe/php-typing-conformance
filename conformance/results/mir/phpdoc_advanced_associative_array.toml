@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
@@ -7,3 +7,8 @@ phpdoc_advanced_associative_array.php:32: InvalidArgument: Argument $map of acce
 errors_diff = "Line 28: Unexpected errors [\"InvalidArgument: Argument $map of acceptsAssoc() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedAssociativeArray\\\\associative-array<int, string>', got 'array{5: \\\"a\\\", 9: \\\"b\\\"}' [MIR0201]\"]"
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = [28]

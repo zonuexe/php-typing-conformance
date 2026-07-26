@@ -41,6 +41,18 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .unknown { background: #f0f0f0; }
 .reported { background: #dbe7fb; }
 .muted { background: #f6f6f6; color: #999; }
+.level-tag { color: #666; font-weight: 400; cursor: help; }
+.fp-tag { display: block; color: #a33; font-weight: 600; cursor: help; }
+.partial { background: #fdf0cf; }
+.facets { margin: 8px 0 0; padding-left: 18px; font-size: 0.85em; color: #555; }
+.legend-facets { margin: 4px 0 10px; padding-left: 20px; font-size: 0.9em; }
+.legend { margin: 16px 0 24px; border: 1px solid #ddd; border-radius: 6px; padding: 10px 14px; background: #fbfbfb; }
+.legend > summary { cursor: pointer; font-weight: 600; }
+.legend-intro { margin: 14px 0 6px; font-size: 0.9em; }
+.legend-list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 0.9em; }
+.legend-list dt, .legend-list dd { margin: 0; }
+.legend-swatch { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.legend-swatch.plain { background: none; padding: 2px 0; font-weight: 400; }
 .doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
 .doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
 .detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -74,13 +86,13 @@ References:
 <thead><tr><th scope="col">Analyzer</th><th scope="col">Version</th><th scope="col">Result</th><th scope="col">Diagnostics</th></tr></thead><tbody>
 <tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">psr_phpdoc_param_return.php:44: Argument 1 ($message) is 42 of type int (value: 42) but \Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() takes string (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/psr_phpdoc_param_return.php:27 (the inferred real argument type has nothing in common with the parameter&#039;s phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
 psr_phpdoc_param_return.php:47: Argument 1 ($message) is encodeMessage(&#039;x&#039;) of type int but \Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/psr_phpdoc_param_return.php:27 [PhanTypeMismatchArgument]</pre></td></tr>
-<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 4+)</small></td><td class="diag-cell"><pre class="diag">psr_phpdoc_param_return.php:44: Call to function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() on a separate line has no effect. [detected-from-level=4]
-psr_phpdoc_param_return.php:44: Parameter #1 $message of function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, int given. [detected-from-level=4]
-psr_phpdoc_param_return.php:47: Call to function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() on a separate line has no effect. [detected-from-level=4]
-psr_phpdoc_param_return.php:47: Parameter #1 $message of function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, int given. [detected-from-level=4]</pre><details><summary>With strict-rules</summary><pre class="diag">psr_phpdoc_param_return.php:44: Call to function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() on a separate line has no effect.
-psr_phpdoc_param_return.php:44: Parameter #1 $message of function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, int given.
-psr_phpdoc_param_return.php:47: Call to function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() on a separate line has no effect.
-psr_phpdoc_param_return.php:47: Parameter #1 $message of function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, int given.</pre></details></td></tr>
+<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small class="level-tag" title="PHPStan levels enable rule sets; type inference itself is level-independent.">reported from level 4</small></td><td class="diag-cell"><pre class="diag">psr_phpdoc_param_return.php:44: Call to function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() on a separate line has no effect. [identifier=function.resultUnused] [reported-from-level=4]
+psr_phpdoc_param_return.php:44: Parameter #1 $message of function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, int given. [identifier=argument.type] [reported-from-level=5]
+psr_phpdoc_param_return.php:47: Call to function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() on a separate line has no effect. [identifier=function.resultUnused] [reported-from-level=4]
+psr_phpdoc_param_return.php:47: Parameter #1 $message of function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, int given. [identifier=argument.type] [reported-from-level=5]</pre><details><summary>With strict-rules</summary><pre class="diag">psr_phpdoc_param_return.php:44: Call to function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() on a separate line has no effect. [identifier=function.resultUnused]
+psr_phpdoc_param_return.php:44: Parameter #1 $message of function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, int given. [identifier=argument.type]
+psr_phpdoc_param_return.php:47: Call to function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage() on a separate line has no effect. [identifier=function.resultUnused]
+psr_phpdoc_param_return.php:47: Parameter #1 $message of function Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, int given. [identifier=argument.type]</pre></details></td></tr>
 <tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">psr_phpdoc_param_return.php:44: Argument 1 of Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, but 42 provided [InvalidArgument]
 psr_phpdoc_param_return.php:47: Argument 1 of Conformance\Tests\PsrPhpdocParamReturn\encodeMessage expects string, but int provided [InvalidArgument]</pre></td></tr>
 <tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">psr_phpdoc_param_return.php:44: Invalid argument type for argument #1 of `Conformance\Tests\PsrPhpdocParamReturn\encodeMessage`: expected `string`, but found `int(42)`. [invalid-argument]

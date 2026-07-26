@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
@@ -8,8 +8,12 @@ phpdoc_advanced_family_closure.php:30: Invalid argument type for argument #1 of 
 phpdoc_advanced_family_closure.php:32: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\acceptsStaticClosure`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\static-closure)`, but found `(closure(): int(1))`. [invalid-argument]
 phpdoc_advanced_family_closure.php:33: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\acceptsStaticClosure`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\static-closure)`, but found `string('strlen')`. [invalid-argument]"""
 errors_diff = """
-Line 24: Unexpected errors ["Cannot find class, interface, enum, or type alias `Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\static-closure`. [non-existent-class-like]"]
 Line 29: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\acceptsPureClosure`: expected `(pure-closure(...mixed): mixed)`, but found `(closure(): int(1))`. [invalid-argument]"]
 Line 32: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\acceptsStaticClosure`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\static-closure)`, but found `(closure(): int(1))`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [24]
+false_positive_lines = [29, 32]

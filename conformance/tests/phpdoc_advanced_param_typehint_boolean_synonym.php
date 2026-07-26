@@ -20,7 +20,7 @@ namespace Conformance\Tests\PhpdocAdvancedParamTypehintBooleanSynonym;
 /**
  * @return boolean
  */
-function returnsBoolean()
+function returnsBoolean() // T: boolean
 {
     return true;
 }
@@ -32,7 +32,7 @@ function acceptsOnlyBool(bool $flag): void
 /**
  * @param boolean $flag
  */
-function acceptsOnlyBoolean($flag): void
+function acceptsOnlyBoolean($flag): void // T: boolean
 {
 }
 

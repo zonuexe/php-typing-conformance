@@ -17,12 +17,12 @@ namespace Conformance\Tests\PhpdocAdvancedFamilyClosure;
  */
 
 /** @param pure-closure $fn */
-function acceptsPureClosure($fn): void
+function acceptsPureClosure($fn): void // T: pure-closure
 {
 }
 
 /** @param static-closure $fn */
-function acceptsStaticClosure($fn): void
+function acceptsStaticClosure($fn): void // T: static-closure
 {
 }
 

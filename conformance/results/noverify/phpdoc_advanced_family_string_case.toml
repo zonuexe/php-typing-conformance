@@ -1,11 +1,14 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
 phpdoc_advanced_family_string_case.php:23: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFamilyStringCase\\uppercase-string does not exist [undefinedClass]
 phpdoc_advanced_family_string_case.php:33: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFamilyStringCase\\non-empty-uppercase-string does not exist [undefinedClass]"""
-errors_diff = """
-Line 23: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyStringCase\\\\uppercase-string does not exist [undefinedClass]"]
-Line 33: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyStringCase\\\\non-empty-uppercase-string does not exist [undefinedClass]"]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/4"
+unrecognized_lines = [23, 33]
+false_positive_lines = []

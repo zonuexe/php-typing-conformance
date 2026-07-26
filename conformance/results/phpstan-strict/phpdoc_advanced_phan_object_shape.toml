@@ -1,7 +1,12 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_phan_object_shape.php:19: PHPDoc tag @param has invalid value (stdClass{name: string} $obj): Unexpected token \"{\", expected variable at offset 22 on line 2 [identifier=phpDoc.parseError]"
-errors_diff = "Line 19: Unexpected errors [\"PHPDoc tag @param has invalid value (stdClass{name: string} $obj): Unexpected token \\\"{\\\", expected variable at offset 22 on line 2 [identifier=phpDoc.parseError]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [19]
+false_positive_lines = []

@@ -1,8 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 6
-output = "properties_asymmetric_visibility.php:29: Assign to private(set) property Conformance\\Tests\\PropertiesAsymmetricVisibility\\Counter::$value. [detected-from-level=2]"
+output = "properties_asymmetric_visibility.php:29: Assign to private(set) property Conformance\\Tests\\PropertiesAsymmetricVisibility\\Counter::$value. [identifier=assign.propertyPrivateSet] [reported-from-level=2]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 2
+expected_diagnostic_level = 2

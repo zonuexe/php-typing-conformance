@@ -17,17 +17,17 @@ namespace Conformance\Tests\PhpdocAdvancedFamilyArrayMixed;
  */
 
 /** @param non-empty-array<mixed> $value */
-function acceptsNonEmptyArray(array $value): void
+function acceptsNonEmptyArray(array $value): void // T: non-empty-array<mixed>
 {
 }
 
 /** @param non-empty-mixed $value */
-function acceptsNonEmptyMixed($value): void
+function acceptsNonEmptyMixed($value): void // T: non-empty-mixed
 {
 }
 
 /** @param array-key $value */
-function acceptsArrayKey($value): void
+function acceptsArrayKey($value): void // T: array-key
 {
 }
 

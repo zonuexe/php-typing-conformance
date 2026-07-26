@@ -1,8 +1,13 @@
-status = "Full support"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_param_typehint_boolean_synonym.php:46: Parameter #1 $flag of function Conformance\\Tests\\PhpdocAdvancedParamTypehintBooleanSynonym\\acceptsOnlyBoolean expects bool, string given. [identifier=argument.type] [detected-from-level=5]"
+output = "phpdoc_advanced_param_typehint_boolean_synonym.php:46: Parameter #1 $flag of function Conformance\\Tests\\PhpdocAdvancedParamTypehintBooleanSynonym\\acceptsOnlyBoolean expects bool, string given. [identifier=argument.type] [reported-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 5
+expected_diagnostic_level = 5
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

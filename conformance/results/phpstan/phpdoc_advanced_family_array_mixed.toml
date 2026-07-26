@@ -1,10 +1,15 @@
-status = "Full support"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_family_array_mixed.php:35: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyArrayMixed\\acceptsNonEmptyArray expects non-empty-array<mixed>, array{} given. [identifier=argument.type] [detected-from-level=5]
-phpdoc_advanced_family_array_mixed.php:42: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyArrayMixed\\acceptsArrayKey expects (int|string), float given. [identifier=argument.type] [detected-from-level=5]"""
+phpdoc_advanced_family_array_mixed.php:35: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyArrayMixed\\acceptsNonEmptyArray expects non-empty-array<mixed>, array{} given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_family_array_mixed.php:42: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFamilyArrayMixed\\acceptsArrayKey expects (int|string), float given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 5
+expected_diagnostic_level = 5
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []

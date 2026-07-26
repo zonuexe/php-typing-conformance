@@ -18,7 +18,7 @@ namespace Conformance\Tests\PhpdocAdvancedParamTypehintDoubleSynonym;
 /**
  * @return double
  */
-function returnsDouble()
+function returnsDouble() // T: double
 {
     return 1.5;
 }
@@ -30,7 +30,7 @@ function acceptsOnlyFloat(float $value): void
 /**
  * @param double $value
  */
-function acceptsOnlyDouble($value): void
+function acceptsOnlyDouble($value): void // T: double
 {
 }
 

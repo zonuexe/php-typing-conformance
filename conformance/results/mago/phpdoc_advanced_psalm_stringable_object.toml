@@ -1,7 +1,12 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_psalm_stringable_object.php:31: Could not resolve the type for the @param tag. [invalid-param-tag]"
-errors_diff = "Line 31: Unexpected errors [\"Could not resolve the type for the @param tag. [invalid-param-tag]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [31]
+false_positive_lines = []

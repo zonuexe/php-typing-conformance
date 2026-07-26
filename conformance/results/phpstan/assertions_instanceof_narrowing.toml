@@ -1,8 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "assertions_instanceof_narrowing.php:46: Call to an undefined method Conformance\\Tests\\AssertionsInstanceofNarrowing\\Guest::name(). [identifier=method.notFound] [detected-from-level=2]"
+output = "assertions_instanceof_narrowing.php:46: Call to an undefined method Conformance\\Tests\\AssertionsInstanceofNarrowing\\Guest::name(). [identifier=method.notFound] [reported-from-level=2]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 2
+expected_diagnostic_level = 2

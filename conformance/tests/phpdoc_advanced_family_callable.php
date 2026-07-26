@@ -27,12 +27,12 @@ final class NotInvokable
 }
 
 /** @param callable-string $value */
-function acceptsCallableString($value): void
+function acceptsCallableString($value): void // T: callable-string
 {
 }
 
 /** @param callable-object $value */
-function acceptsCallableObject($value): void
+function acceptsCallableObject($value): void // T: callable-object
 {
 }
 

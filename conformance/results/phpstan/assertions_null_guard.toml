@@ -1,8 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "assertions_null_guard.php:38: Cannot call method name() on null. [identifier=method.nonObject] [detected-from-level=2]"
+output = "assertions_null_guard.php:38: Cannot call method name() on null. [identifier=method.nonObject] [reported-from-level=2]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 2
+expected_diagnostic_level = 2

@@ -76,8 +76,10 @@ final class SummaryReport
         $body[] = '<h1>PHP Typing Conformance Results</h1>';
         $body[] = '<p class="lead">Each row links to a per-test detail page with the source, expectations, and every analyzer&rsquo;s raw output.</p>';
 
+        $body = array_merge($body, $this->renderLegend());
+
         $body[] = '<h2 class="section">Soundness &mdash; potential runtime type errors</h2>';
-        $body[] = '<p class="section-note">Positives here flag code that can actually fail at runtime &mdash; type mismatches, null access, invalid arguments, uninitialized reads. <strong>Pass</strong> means the analyzer agrees with the expected diagnostic.</p>';
+        $body[] = '<p class="section-note">Positives here flag code that can actually fail at runtime &mdash; type mismatches, null access, invalid arguments, uninitialized reads. <strong>Pass</strong> means the analyzer agrees with the expected diagnostic; rows whose test marks a declaration with <code>// T</code> instead report recognition and enforcement of the type spelling. See the legend above.</p>';
         $body = array_merge($body, $this->renderMatrix($resultsRoot, $testGroups, $soundnessCases, $tools, false));
 
         if ($styleCases !== []) {
@@ -89,6 +91,76 @@ final class SummaryReport
         $body = array_merge($body, $this->renderAnalyzerTable());
 
         return $this->renderPage('PHP Typing Conformance Results', $body, false);
+    }
+
+    /**
+     * What each cell value means.
+     *
+     * Two vocabularies share the matrix. Most rows ask "does the analyzer catch
+     * this unsafe code?" and answer Pass/Fail. The `// T`-marked rows ask "how
+     * does the analyzer treat this type spelling?" and answer on two axes.
+     * Without this legend the two read as one scale, which they are not.
+     *
+     * @return list<string>
+     */
+    private function renderLegend(): array
+    {
+        $verdicts = [
+            ['pass', 'Pass', 'The analyzer&rsquo;s diagnostics match what the test expects.'],
+            ['fail', 'Fail', 'They do not: an expected diagnostic is missing, or something unexpected is reported.'],
+            ['by-design', 'Not reported (by design)', 'The analyzer declines to report the diagnostic and has said so upstream; the issue is linked in the cell notes. Hand-curated &mdash; the harness cannot tell this apart from a plain miss.'],
+        ];
+
+        $handling = [
+            ['not-supported', 'Unrecognized', 'The spelling is not resolved at all: the analyzer reports an unresolvable type, an undeclared type, or a docblock parse error on the declaration. Expected whenever a test uses another analyzer&rsquo;s dialect &mdash; not a defect.'],
+            ['pass', 'Enforced', 'The spelling is resolved <em>and</em> every value the type excludes is rejected.'],
+            ['partial', 'Partly enforced (<em>n</em>/<em>m</em>)', 'Resolved, and some but not all of the excluded values are rejected. Common in files that probe several related spellings at once.'],
+            ['falls-back', 'Widened to <em>X</em>', 'Resolved, but widened to <em>X</em>, so nothing is rejected. Not an error &mdash; just a coarser type. The base type is hand-curated.'],
+            ['falls-back', 'Not enforced', 'Resolved, nothing rejected, and the base type it widened to has not been pinned down yet.'],
+            ['by-design', 'Not enforced (by design)', 'Resolved and reportable, but the analyzer deliberately declines; the upstream issue is in the cell notes.'],
+        ];
+
+        $lines = [];
+        $lines[] = '<details class="legend"><summary>Legend &mdash; what the cell values mean</summary>';
+
+        $lines[] = '<p class="legend-intro"><strong>Verdict.</strong> Most rows ask whether the analyzer catches unsafe code.</p>';
+        $lines[] = '<dl class="legend-list">';
+        foreach ($verdicts as [$class, $label, $description]) {
+            $lines[] = sprintf('<dt><span class="legend-swatch %s">%s</span></dt><dd>%s</dd>', $class, $label, $description);
+        }
+        $lines[] = '</dl>';
+
+        $lines[] = '<p class="legend-intro"><strong>PHPDoc type handling.</strong> Tests that mark a declaration with <code>// T</code> ask a different question: not &ldquo;is the code unsafe?&rdquo; but &ldquo;how is this type spelling treated?&rdquo; That splits into two independent facets, and a single word cannot carry both:</p>';
+        $lines[] = '<ul class="legend-facets">'
+            . '<li><strong>Recognition</strong> &mdash; does the analyzer resolve the spelling? Read off the <code>// T</code> declaration lines. Level-independent.</li>'
+            . '<li><strong>Enforcement</strong> &mdash; does it then reject the values the spelling excludes? Read off the <code>// E</code> call sites. For PHPStan this is gated by the level; recognition never is.</li>'
+            . '</ul>';
+        $lines[] = '<p class="legend-intro">The combinations:</p>';
+        $lines[] = '<dl class="legend-list">';
+        foreach ($handling as [$class, $label, $description]) {
+            $lines[] = sprintf('<dt><span class="legend-swatch %s">%s</span></dt><dd>%s</dd>', $class, $label, $description);
+        }
+        $lines[] = '</dl>';
+
+        $lines[] = '<p class="legend-intro"><strong>Tags.</strong></p>';
+        $lines[] = '<dl class="legend-list">';
+        $lines[] = '<dt><span class="legend-swatch plain"><small>reported from level 5</small></span></dt>'
+            . '<dd>PHPStan only. The lowest level whose <em>rules</em> report the diagnostic this test expects. '
+            . 'PHPStan levels switch rule sets on and off &mdash; type inference is identical at every level &mdash; so this is a '
+            . 'configuration threshold, not a type-support tier. Level 5 turns on argument-type checks, level 6 missing typehints, '
+            . 'level 8 nullables, level 9 explicit <code>mixed</code>. Each diagnostic on the detail page carries its own '
+            . '<code>[reported-from-level=N]</code>; this tag shows the lowest one on an expected line.</dd>';
+        $lines[] = '<dt><span class="legend-swatch plain"><small>&#9888; 3 false positives</small></span></dt>'
+            . '<dd>Diagnostics on lines the test neither expects nor marks with <code>// T</code>. On a type-handling test these are the analyzer&rsquo;s own false positives &mdash; Phan resolving <code>number</code> as a class name and then rejecting <code>1</code> for it, say. Hover for the line numbers.</dd>';
+        $lines[] = '<dt><span class="legend-swatch plain"><small>(strict)</small></span></dt>'
+            . '<dd>PHPStan only. Nothing is reported with the standard config; only <code>phpstan-strict-rules</code> catches it.</dd>';
+        $lines[] = '<dt><span class="legend-swatch plain"><small>(pzoom&ne;)</small></span></dt>'
+            . '<dd>Psalm only. pzoom, the Rust port of Psalm, flags a different set of lines than Psalm itself.</dd>';
+        $lines[] = '</dl>';
+
+        $lines[] = '</details>';
+
+        return $lines;
     }
 
     /**
@@ -223,6 +295,10 @@ final class SummaryReport
                         $cell .= $this->levelSuffix($result);
                     }
 
+                    if (!$style) {
+                        $cell .= $this->falsePositiveSuffix($result);
+                    }
+
                     $notes = trim((string) ($result['notes'] ?? ''));
                     if ($notes !== '') {
                         $cell .= sprintf(
@@ -280,7 +356,7 @@ final class SummaryReport
         foreach ($tools as $tool) {
             $result = $this->loadResult($resultsRoot, $tool, $testCase->name);
             [$display, $class] = $this->statusOf($result);
-            $status = htmlspecialchars($display) . $this->levelSuffix($result);
+            $status = htmlspecialchars($display) . $this->levelSuffix($result) . $this->falsePositiveSuffix($result);
 
             $output = trim((string) ($result['output'] ?? ''));
             $errorsDiff = trim((string) ($result['errors_diff'] ?? ''));
@@ -315,6 +391,7 @@ final class SummaryReport
                 $diagnostics .= '<p class="none">No diagnostics reported.</p>';
             }
             $diagnostics .= $mergeExtra;
+            $diagnostics .= $this->typeHandlingBreakdown($result);
             if ($errorsDiff !== '') {
                 $diagnostics .= '<details><summary>Expectation diff</summary><pre class="diag">' . htmlspecialchars($errorsDiff) . '</pre></details>';
             }
@@ -437,6 +514,18 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .unknown { background: #f0f0f0; }
 .reported { background: #dbe7fb; }
 .muted { background: #f6f6f6; color: #999; }
+.level-tag { color: #666; font-weight: 400; cursor: help; }
+.fp-tag { display: block; color: #a33; font-weight: 600; cursor: help; }
+.partial { background: #fdf0cf; }
+.facets { margin: 8px 0 0; padding-left: 18px; font-size: 0.85em; color: #555; }
+.legend-facets { margin: 4px 0 10px; padding-left: 20px; font-size: 0.9em; }
+.legend { margin: 16px 0 24px; border: 1px solid #ddd; border-radius: 6px; padding: 10px 14px; background: #fbfbfb; }
+.legend > summary { cursor: pointer; font-weight: 600; }
+.legend-intro { margin: 14px 0 6px; font-size: 0.9em; }
+.legend-list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 0.9em; }
+.legend-list dt, .legend-list dd { margin: 0; }
+.legend-swatch { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.legend-swatch.plain { background: none; padding: 2px 0; font-weight: 400; }
 .doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
 .doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
 .detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -537,24 +626,143 @@ CSS;
      */
     private function statusOf(array $result): array
     {
-        $automated = (string) ($result['conformance_automated'] ?? 'Unknown');
-        $status = (string) ($result['status'] ?? 'Unknown');
-        $display = $status !== 'Unknown' ? $status : $automated;
-
-        // "Falls back to <base>" carries the base type name, so match by prefix.
-        if (str_starts_with($display, 'Falls back')) {
-            return [$display, 'falls-back'];
+        // `// T`-marked tests answer a different question than Pass/Fail, and
+        // answer it on two axes. See typeHandlingOf().
+        if (isset($result['recognition'])) {
+            return $this->typeHandlingOf($result);
         }
 
+        // Some analyzers decline to report a diagnostic the test expects and
+        // have said so upstream. That is a curated fact, not something the
+        // harness can derive, so it still overrides the verdict word.
+        if ((string) ($result['status'] ?? 'Unknown') === 'By design') {
+            return ['Not reported (by design)', 'by-design'];
+        }
+
+        $display = (string) ($result['conformance_automated'] ?? 'Unknown');
+
         $class = match ($display) {
-            'Pass', 'Full support' => 'pass',
+            'Pass' => 'pass',
             'Fail' => 'fail',
-            'By design' => 'by-design',
-            'Not supported' => 'not-supported',
             default => 'unknown',
         };
 
         return [$display, $class];
+    }
+
+    /**
+     * Cell text for a type-handling test.
+     *
+     * Recognition ("does the analyzer resolve this spelling?") and enforcement
+     * ("does it then reject the excluded values?") are derived separately, so
+     * the cell can no longer blur the two the way a single "Full support" did.
+     * Only the reason a recognized type is *not* enforced stays hand-curated:
+     * the base type it widened to, or an upstream decision not to report.
+     *
+     * @param array<string, mixed> $result
+     * @return array{0: string, 1: string} [display, cssClass]
+     */
+    private function typeHandlingOf(array $result): array
+    {
+        if ((string) $result['recognition'] === 'unrecognized') {
+            return ['Unrecognized', 'not-supported'];
+        }
+
+        $enforcement = (string) ($result['enforcement'] ?? '');
+
+        if ($enforcement === 'enforced') {
+            return ['Enforced', 'pass'];
+        }
+
+        if ($enforcement === 'partial') {
+            return [
+                sprintf('Partly enforced (%s)', (string) ($result['enforced_lines'] ?? '')),
+                'partial',
+            ];
+        }
+
+        $status = (string) ($result['status'] ?? 'Unknown');
+
+        // "Falls back to <base>" carries the base type name, so match by prefix.
+        if (str_starts_with($status, 'Falls back to ')) {
+            return ['Widened to ' . substr($status, strlen('Falls back to ')), 'falls-back'];
+        }
+
+        if ($status === 'By design') {
+            return ['Not enforced (by design)', 'by-design'];
+        }
+
+        return ['Not enforced', 'falls-back'];
+    }
+
+    /**
+     * Spell out the two facets line by line on the detail page, so a `Partly
+     * enforced` or `Unrecognized` cell can be traced back to the exact
+     * declarations and call sites behind it.
+     *
+     * @param array<string, mixed> $result
+     */
+    private function typeHandlingBreakdown(array $result): string
+    {
+        if (!isset($result['recognition'])) {
+            return '';
+        }
+
+        $unrecognized = $result['unrecognized_lines'] ?? [];
+        $falsePositives = $result['false_positive_lines'] ?? [];
+
+        $items = [];
+        $items[] = sprintf(
+            '<li><strong>Recognition:</strong> %s</li>',
+            is_array($unrecognized) && $unrecognized !== []
+                ? htmlspecialchars(sprintf(
+                    'spelling not resolved — reported on declaration line(s) %s',
+                    implode(', ', $unrecognized),
+                ))
+                : 'spelling resolved',
+        );
+        $items[] = sprintf(
+            '<li><strong>Enforcement:</strong> %s of the expected violations reported%s</li>',
+            htmlspecialchars((string) ($result['enforced_lines'] ?? '')),
+            // An unresolved spelling often rejects every value, valid ones
+            // included, so hits on the violating lines are not enforcement.
+            is_array($unrecognized) && $unrecognized !== []
+                ? ' &mdash; incidental, since the spelling was not resolved'
+                : '',
+        );
+
+        if (is_array($falsePositives) && $falsePositives !== []) {
+            $items[] = sprintf(
+                '<li><strong>False positives:</strong> %s</li>',
+                htmlspecialchars(sprintf('line(s) %s', implode(', ', $falsePositives))),
+            );
+        }
+
+        return '<ul class="facets">' . implode('', $items) . '</ul>';
+    }
+
+    /**
+     * Diagnostics on lines the test neither expects nor marks as a type
+     * declaration. On a type-handling test these are the analyzer's own false
+     * positives - Phan resolving `number` as a class name and then rejecting
+     * `1` for it, say - and the two-axis label alone would hide them, so they
+     * get their own tag.
+     *
+     * @param array<string, mixed> $result
+     */
+    private function falsePositiveSuffix(array $result): string
+    {
+        $lines = $result['false_positive_lines'] ?? null;
+        if (!is_array($lines) || $lines === []) {
+            return '';
+        }
+
+        return sprintf(
+            ' <small class="fp-tag" title="%s">&#9888; %d false positive%s</small>',
+            htmlspecialchars(sprintf('Unexpected diagnostics on line(s) %s', implode(', ', $lines))),
+            count($lines),
+            count($lines) === 1 ? '' : 's',
+        );
     }
 
     /**
@@ -572,20 +780,31 @@ CSS;
     }
 
     /**
+     * The lowest PHPStan level whose rules report the diagnostic under test.
+     *
+     * This is a *rule* threshold, not a support tier: PHPStan resolves types
+     * identically at every level, so the number says which rule set has to be
+     * switched on before the analyzer speaks up — never how well a type is
+     * modelled.
+     *
      * @param array<string, mixed> $result
      */
     private function levelSuffix(array $result): string
     {
-        $firstDetectedLevel = $result['first_detected_level'] ?? null;
-        if (!is_int($firstDetectedLevel)) {
+        $level = $result['expected_diagnostic_level'] ?? null;
+        if (!is_int($level)) {
             return '';
         }
 
-        $levelLabel = $firstDetectedLevel === 10
-            ? '(Lv max)'
-            : sprintf('(Lv %d+)', $firstDetectedLevel);
+        $levelLabel = $level === 10
+            ? 'reported at level max'
+            : sprintf('reported from level %d', $level);
 
-        return ' <small>' . htmlspecialchars($levelLabel) . '</small>';
+        return sprintf(
+            ' <small class="level-tag" title="%s">%s</small>',
+            htmlspecialchars('PHPStan levels enable rule sets; type inference itself is level-independent.'),
+            htmlspecialchars($levelLabel),
+        );
     }
 
     /**

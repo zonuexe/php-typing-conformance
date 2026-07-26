@@ -18,7 +18,7 @@ namespace Conformance\Tests\PhpdocAdvancedPsalmClassStringMap;
 /**
  * @param class-string-map<T of \Throwable, T> $map
  */
-function acceptsThrowableMap(array $map): void
+function acceptsThrowableMap(array $map): void // T: class-string-map<T of \Throwable, T>
 {
 }
 

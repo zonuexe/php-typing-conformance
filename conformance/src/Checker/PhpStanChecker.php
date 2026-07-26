@@ -7,18 +7,30 @@ namespace Conformance\Checker;
 use Conformance\Discovery\TestCase;
 use RuntimeException;
 
+/**
+ * PHPStan levels enable rule sets, they do not switch type inference on or off
+ * (see `conf/config.level*.neon` in phpstan-src: every level only flips
+ * reporting parameters such as `checkFunctionArgumentTypes` or
+ * `checkMissingTypehints`). So "this file starts producing output at level N"
+ * says nothing about how well a type is modelled — it only says which rule
+ * happens to report it. To keep that distinction honest, this checker resolves
+ * the reporting level of *each individual diagnostic* rather than stamping one
+ * file-wide number onto every message.
+ */
 final class PhpStanChecker implements Checker
 {
+    private const MAX_LEVEL = 10;
+
     public function __construct(
         private readonly string $toolName,
         private readonly string $binaryPath,
         private readonly string $configPath,
-        private readonly bool $stopAtFirstDetectedLevel,
+        private readonly bool $resolveDiagnosticLevels,
     ) {
     }
 
-    private ?int $firstDetectedLevel = null;
-    private ?int $knownFirstDetectedLevel = null;
+    /** @var array<int, int> line number => lowest level reporting that line */
+    private array $lineLevels = [];
 
     public function name(): string
     {
@@ -42,23 +54,126 @@ final class PhpStanChecker implements Checker
      */
     public function analyse(TestCase $testCase): array
     {
-        $this->firstDetectedLevel = null;
+        $this->lineLevels = [];
 
-        if ($this->stopAtFirstDetectedLevel) {
-            return $this->runUntilFirstDetectedLevel($testCase);
+        $maxDiagnostics = $this->runAnalysis($testCase, 'max');
+
+        if (!$this->resolveDiagnosticLevels || $maxDiagnostics === []) {
+            return $maxDiagnostics;
         }
 
-        return $this->runAnalysis($testCase, $this->configPath, 'max');
+        $levels = $this->resolveMessageLevels($testCase, $maxDiagnostics);
+        $this->lineLevels = $this->lowestLevelPerLine($maxDiagnostics, $levels);
+
+        return $this->annotateLevels($maxDiagnostics, $levels);
     }
 
-    public function firstDetectedLevel(): ?int
+    /**
+     * Lowest PHPStan level that reports each line, for the lines that are
+     * reported at all. Empty when level resolution is disabled.
+     *
+     * @return array<int, int>
+     */
+    public function lineLevels(): array
     {
-        return $this->firstDetectedLevel;
+        return $this->lineLevels;
     }
 
-    public function setKnownFirstDetectedLevel(?int $level): void
+    /**
+     * Walk the levels upwards and record where each message shows up first.
+     * Level configs are cumulative (`config.levelN.neon` includes level N-1),
+     * so a message that appears at level N also appears at every level above
+     * it; the walk can stop as soon as every max-level message is accounted
+     * for.
+     *
+     * @param array<int, list<string>> $maxDiagnostics
+     * @return array<string, int> message key => first level reporting it
+     */
+    private function resolveMessageLevels(TestCase $testCase, array $maxDiagnostics): array
     {
-        $this->knownFirstDetectedLevel = $level;
+        $pending = [];
+        foreach ($maxDiagnostics as $lineNumber => $messages) {
+            foreach ($messages as $message) {
+                $pending[$this->messageKey($lineNumber, $message)] = true;
+            }
+        }
+
+        $levels = [];
+
+        for ($level = 0; $level < self::MAX_LEVEL && $pending !== []; $level++) {
+            $diagnostics = $this->runAnalysis($testCase, (string) $level);
+
+            foreach ($diagnostics as $lineNumber => $messages) {
+                foreach ($messages as $message) {
+                    $key = $this->messageKey($lineNumber, $message);
+                    if (!isset($pending[$key])) {
+                        continue;
+                    }
+
+                    $levels[$key] = $level;
+                    unset($pending[$key]);
+                }
+            }
+        }
+
+        // Whatever is still pending is only reported by the top level.
+        foreach ($pending as $key => $_) {
+            $levels[$key] = self::MAX_LEVEL;
+        }
+
+        return $levels;
+    }
+
+    /**
+     * @param array<int, list<string>> $diagnostics
+     * @param array<string, int> $levels
+     * @return array<int, int>
+     */
+    private function lowestLevelPerLine(array $diagnostics, array $levels): array
+    {
+        $lineLevels = [];
+
+        foreach ($diagnostics as $lineNumber => $messages) {
+            foreach ($messages as $message) {
+                $level = $levels[$this->messageKey($lineNumber, $message)] ?? null;
+                if ($level === null) {
+                    continue;
+                }
+
+                $lineLevels[$lineNumber] = min($lineLevels[$lineNumber] ?? $level, $level);
+            }
+        }
+
+        ksort($lineLevels);
+
+        return $lineLevels;
+    }
+
+    /**
+     * @param array<int, list<string>> $diagnostics
+     * @param array<string, int> $levels
+     * @return array<int, list<string>>
+     */
+    private function annotateLevels(array $diagnostics, array $levels): array
+    {
+        $annotated = [];
+
+        foreach ($diagnostics as $lineNumber => $messages) {
+            $annotated[$lineNumber] = [];
+            foreach ($messages as $message) {
+                $level = $levels[$this->messageKey($lineNumber, $message)] ?? null;
+                $annotated[$lineNumber][] = $level === null
+                    ? $message
+                    : sprintf('%s [reported-from-level=%d]', $message, $level);
+            }
+        }
+
+        return $annotated;
+    }
+
+    private function messageKey(int $lineNumber, string $message): string
+    {
+        return $lineNumber . "\t" . $message;
     }
 
     /**
@@ -103,7 +218,7 @@ final class PhpStanChecker implements Checker
     /**
      * @return array<int, list<string>>
      */
-    private function runAnalysis(TestCase $testCase, string $configPath, string $level): array
+    private function runAnalysis(TestCase $testCase, string $level): array
     {
         $paths = array_map(
             static fn (string $path): string => escapeshellarg($path),
@@ -113,7 +228,7 @@ final class PhpStanChecker implements Checker
         $command = sprintf(
             '%s analyse -c %s --level=%s --no-progress --error-format=raw %s 2>&1',
             escapeshellarg($this->binaryPath),
-            escapeshellarg($configPath),
+            escapeshellarg($this->configPath),
             escapeshellarg($level),
             implode(' ', $paths),
         );
@@ -125,108 +240,5 @@ final class PhpStanChecker implements Checker
         }
 
         return $this->parseOutput($testCase, $output);
-    }
-
-    /**
-     * @return array<int, list<string>>
-     */
-    private function runUntilFirstDetectedLevel(TestCase $testCase): array
-    {
-        if ($this->knownFirstDetectedLevel !== null) {
-            $knownDiagnostics = $this->runKnownLevelCheck($testCase, $this->knownFirstDetectedLevel);
-            if ($knownDiagnostics !== null) {
-                return $knownDiagnostics;
-            }
-        }
-
-        for ($level = 0; $level <= 10; $level++) {
-            $diagnostics = $this->runAnalysis(
-                $testCase,
-                $this->configPath,
-                $level === 10 ? 'max' : (string) $level,
-            );
-
-            if ($diagnostics === []) {
-                continue;
-            }
-
-            $this->firstDetectedLevel = $level;
-
-            if ($level === 10) {
-                return $this->annotateDetectionLevel($diagnostics, $level);
-            }
-
-            $maxDiagnostics = $this->runAnalysis($testCase, $this->configPath, 'max');
-
-            return $this->annotateDetectionLevel(
-                $maxDiagnostics === [] ? $diagnostics : $maxDiagnostics,
-                $level,
-            );
-        }
-
-        return [];
-    }
-
-    /**
-     * @return array<int, list<string>>|null
-     */
-    private function runKnownLevelCheck(TestCase $testCase, int $knownLevel): ?array
-    {
-        $knownDiagnostics = $this->runAnalysis(
-            $testCase,
-            $this->configPath,
-            $knownLevel === 10 ? 'max' : (string) $knownLevel,
-        );
-
-        if ($knownDiagnostics === []) {
-            return null;
-        }
-
-        if ($knownLevel > 0) {
-            $previousDiagnostics = $this->runAnalysis(
-                $testCase,
-                $this->configPath,
-                (string) ($knownLevel - 1),
-            );
-
-            if ($previousDiagnostics !== []) {
-                return null;
-            }
-        }
-
-        $this->firstDetectedLevel = $knownLevel;
-
-        if ($knownLevel === 10) {
-            return $this->annotateDetectionLevel($knownDiagnostics, $knownLevel);
-        }
-
-        $maxDiagnostics = $this->runAnalysis($testCase, $this->configPath, 'max');
-
-        return $this->annotateDetectionLevel(
-            $maxDiagnostics === [] ? $knownDiagnostics : $maxDiagnostics,
-            $knownLevel,
-        );
-    }
-
-    /**
-     * @param array<int, list<string>> $diagnostics
-     * @return array<int, list<string>>
-     */
-    private function annotateDetectionLevel(array $diagnostics, int $level): array
-    {
-        $annotatedDiagnostics = [];
-
-        foreach ($diagnostics as $lineNumber => $messages) {
-            $annotatedDiagnostics[$lineNumber] = [];
-            foreach ($messages as $message) {
-                $annotatedDiagnostics[$lineNumber][] = sprintf(
-                    '%s [detected-from-level=%d]',
-                    $message,
-                    $level,
-                );
-            }
-        }
-
-        return $annotatedDiagnostics;
     }
 }

@@ -18,7 +18,7 @@ namespace Conformance\Tests\PhpdocAdvancedParamTypehintIntegerSynonym;
 /**
  * @return integer
  */
-function returnsInteger()
+function returnsInteger() // T: integer
 {
     return 1;
 }
@@ -30,7 +30,7 @@ function acceptsOnlyInt(int $value): void
 /**
  * @param integer $value
  */
-function acceptsOnlyInteger($value): void
+function acceptsOnlyInteger($value): void // T: integer
 {
 }
 

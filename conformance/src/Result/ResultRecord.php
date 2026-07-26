@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Conformance\Result;
 
+use Conformance\Expectation\TypeHandling;
+
 final readonly class ResultRecord
 {
     /**
@@ -14,12 +16,19 @@ final readonly class ResultRecord
         public string $testName,
         public string $status,
         public string $conformanceAutomated,
-        public ?int $firstDetectedLevel,
+        /**
+         * Lowest PHPStan level whose rules report the diagnostic this test
+         * expects. Null when the tool has no level concept, or when nothing on
+         * an expected line is reported at all.
+         */
+        public ?int $expectedDiagnosticLevel,
         public string $output,
         public string $errorsDiff,
         public string $notes,
         public array $ignoreErrors,
         public int $expectedDiagnosticCount,
+        /** Set only for `// T`-marked type-handling tests. */
+        public ?TypeHandling $typeHandling = null,
     ) {
     }
 
@@ -38,8 +47,20 @@ final readonly class ResultRecord
             'ignore_errors' => $this->ignoreErrors,
         ];
 
-        if ($this->firstDetectedLevel !== null) {
-            $payload['first_detected_level'] = $this->firstDetectedLevel;
+        if ($this->expectedDiagnosticLevel !== null) {
+            $payload['expected_diagnostic_level'] = $this->expectedDiagnosticLevel;
+        }
+
+        if ($this->typeHandling !== null) {
+            $payload['recognition'] = $this->typeHandling->recognition;
+            $payload['enforcement'] = $this->typeHandling->enforcement;
+            $payload['enforced_lines'] = sprintf(
+                '%d/%d',
+                $this->typeHandling->enforcedLineCount,
+                $this->typeHandling->expectedLineCount,
+            );
+            $payload['unrecognized_lines'] = $this->typeHandling->unrecognizedLines;
+            $payload['false_positive_lines'] = $this->typeHandling->falsePositiveLines;
         }
 
         return $payload;

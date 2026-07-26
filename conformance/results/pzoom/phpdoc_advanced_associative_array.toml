@@ -6,8 +6,11 @@ phpdoc_advanced_associative_array.php:23: Parameter $map has wrong type 'Conform
 phpdoc_advanced_associative_array.php:23: Docblock class Conformance\\Tests\\PhpdocAdvancedAssociativeArray\\associative-array does not exist [UndefinedDocblockClass]
 phpdoc_advanced_associative_array.php:28: Argument 1 of acceptsAssoc expects Conformance\\Tests\\PhpdocAdvancedAssociativeArray\\associative-array<int, string>, but array{5: 'a', 9: 'b'} provided [InvalidArgument]
 phpdoc_advanced_associative_array.php:32: Argument 1 of acceptsAssoc expects Conformance\\Tests\\PhpdocAdvancedAssociativeArray\\associative-array<int, string>, but list{'a', 'b', 'c'} provided [InvalidArgument]"""
-errors_diff = """
-Line 23: Unexpected errors ["Parameter $map has wrong type 'Conformance\\\\Tests\\\\PhpdocAdvancedAssociativeArray\\\\associative-array<int, string>', should be 'array<array-key, mixed>' [MismatchingDocblockParamType]","Docblock class Conformance\\\\Tests\\\\PhpdocAdvancedAssociativeArray\\\\associative-array does not exist [UndefinedDocblockClass]"]
-Line 28: Unexpected errors ["Argument 1 of acceptsAssoc expects Conformance\\\\Tests\\\\PhpdocAdvancedAssociativeArray\\\\associative-array<int, string>, but array{5: 'a', 9: 'b'} provided [InvalidArgument]"]"""
+errors_diff = "Line 28: Unexpected errors [\"Argument 1 of acceptsAssoc expects Conformance\\\\Tests\\\\PhpdocAdvancedAssociativeArray\\\\associative-array<int, string>, but array{5: 'a', 9: 'b'} provided [InvalidArgument]\"]"
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [23]
+false_positive_lines = [28]

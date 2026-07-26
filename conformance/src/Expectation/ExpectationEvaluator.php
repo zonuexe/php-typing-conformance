@@ -9,9 +9,21 @@ final class ExpectationEvaluator
     /**
      * @param list<ExpectedDiagnostic> $expectedDiagnostics
      * @param array<int, list<string>> $actualDiagnostics
+     * @param list<TypeMarker> $typeMarkers lines whose PHPDoc spelling is under
+     *        test; a diagnostic there means the spelling was not recognized, so
+     *        it is legitimate output rather than an unexpected error
      */
-    public function evaluate(array $expectedDiagnostics, array $actualDiagnostics, string $toolName): ExpectationEvaluation
-    {
+    public function evaluate(
+        array $expectedDiagnostics,
+        array $actualDiagnostics,
+        string $toolName,
+        array $typeMarkers = [],
+    ): ExpectationEvaluation {
+        $markedLines = [];
+        foreach ($typeMarkers as $marker) {
+            $markedLines[$marker->line] = true;
+        }
+
         $requiredByLine = [];
         $optionalByLine = [];
         $groups = [];
@@ -72,11 +84,18 @@ final class ExpectationEvaluator
             }
         }
 
+        $falsePositiveLines = [];
+
         foreach ($actualDiagnostics as $line => $messages) {
             if (isset($requiredByLine[$line]) || isset($optionalByLine[$line]) || isset($groupLines[$line])) {
                 continue;
             }
 
+            if (isset($markedLines[$line])) {
+                continue;
+            }
+
+            $falsePositiveLines[] = $line;
             $differences[] = sprintf(
                 'Line %d: Unexpected errors %s',
                 $line,
@@ -85,10 +104,58 @@ final class ExpectationEvaluator
         }
 
         $errorsDiff = implode("\n", $differences);
+        $expectedLines = array_keys($requiredByLine + $optionalByLine + $groupLines);
 
         return new ExpectationEvaluation(
             errorsDiff: $errorsDiff,
             conformanceAutomated: $errorsDiff === '' ? 'Pass' : 'Fail',
+            typeHandling: $typeMarkers === []
+                ? null
+                : $this->typeHandling($markedLines, $expectedLines, $actualDiagnostics, $falsePositiveLines),
+        );
+    }
+
+    /**
+     * @param array<int, true> $markedLines
+     * @param list<int> $expectedLines
+     * @param array<int, list<string>> $actualDiagnostics
+     * @param list<int> $falsePositiveLines
+     */
+    private function typeHandling(
+        array $markedLines,
+        array $expectedLines,
+        array $actualDiagnostics,
+        array $falsePositiveLines,
+    ): TypeHandling {
+        $unrecognizedLines = [];
+        foreach (array_keys($markedLines) as $line) {
+            if (isset($actualDiagnostics[$line])) {
+                $unrecognizedLines[] = $line;
+            }
+        }
+        sort($unrecognizedLines);
+
+        $enforcedLineCount = 0;
+        foreach ($expectedLines as $line) {
+            if (isset($actualDiagnostics[$line])) {
+                $enforcedLineCount++;
+            }
+        }
+
+        $expectedLineCount = count($expectedLines);
+        $enforcement = match (true) {
+            $expectedLineCount === 0 || $enforcedLineCount === 0 => TypeHandling::NONE,
+            $enforcedLineCount === $expectedLineCount => TypeHandling::ENFORCED,
+            default => TypeHandling::PARTIAL,
+        };
+
+        return new TypeHandling(
+            recognition: $unrecognizedLines === [] ? TypeHandling::RECOGNIZED : TypeHandling::UNRECOGNIZED,
+            enforcement: $enforcement,
+            unrecognizedLines: $unrecognizedLines,
+            falsePositiveLines: $falsePositiveLines,
+            expectedLineCount: $expectedLineCount,
+            enforcedLineCount: $enforcedLineCount,
         );
     }
 }

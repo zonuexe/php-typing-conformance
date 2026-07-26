@@ -1,7 +1,12 @@
-status = "Full support"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_fallback_int_mask.php:46: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackIntMask\\acceptsFlags`: expected `int(0)|int(1)|int(2)|int(3)|int(4)|int(5)|int(6)|int(7)`, but found `int(8)`. [invalid-argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

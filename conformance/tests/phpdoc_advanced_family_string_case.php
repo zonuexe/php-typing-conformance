@@ -16,22 +16,22 @@ namespace Conformance\Tests\PhpdocAdvancedFamilyStringCase;
  */
 
 /** @param lowercase-string $value */
-function acceptsLowercase($value): void
+function acceptsLowercase($value): void // T: lowercase-string
 {
 }
 
 /** @param uppercase-string $value */
-function acceptsUppercase($value): void
+function acceptsUppercase($value): void // T: uppercase-string
 {
 }
 
 /** @param non-empty-lowercase-string $value */
-function acceptsNonEmptyLowercase($value): void
+function acceptsNonEmptyLowercase($value): void // T: non-empty-lowercase-string
 {
 }
 
 /** @param non-empty-uppercase-string $value */
-function acceptsNonEmptyUppercase($value): void
+function acceptsNonEmptyUppercase($value): void // T: non-empty-uppercase-string
 {
 }
 

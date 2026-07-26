@@ -1,7 +1,12 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = "phpdoc_advanced_family_class_string_variants.php:46: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\enum-string does not exist [undefinedClass]"
-errors_diff = "Line 46: Unexpected errors [\"Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\enum-string does not exist [undefinedClass]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/3"
+unrecognized_lines = [46]
+false_positive_lines = []

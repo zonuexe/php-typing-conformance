@@ -16,12 +16,12 @@ namespace Conformance\Tests\PhpdocAdvancedFamilyUtility;
  */
 
 /** @param key-of<array{name: string, age: int}> $key */
-function acceptsShapeKey($key): void
+function acceptsShapeKey($key): void // T: key-of<array{name: string, age: int}>
 {
 }
 
 /** @param value-of<array{a: int, b: int}> $value */
-function acceptsShapeValue($value): void
+function acceptsShapeValue($value): void // T: value-of<array{a: int, b: int}>
 {
 }
 

@@ -7,3 +7,8 @@ phpdoc_advanced_family_int_refinements.php:45: argument -5 to acceptsNonNegative
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = []
+false_positive_lines = []

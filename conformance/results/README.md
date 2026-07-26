@@ -1,3 +1,37 @@
 # Results
 
-Per-checker result files and generated reports will be stored in this directory.
+One TOML file per `<tool>/<test>.toml`, plus the generated `results.html` and
+the per-test pages under `tests/`.
+
+Most keys are regenerated on every run. Two are hand-curated and preserved
+across runs by `ResultRepository::save()`: `status` and `notes` (plus
+`ignore_errors`). Everything else is derived, so editing it by hand is pointless.
+
+| Key | Written by | Meaning |
+| --- | --- | --- |
+| `conformance_automated` | derived | `Pass` / `Fail` against the inline expectations |
+| `expected_diagnostic_count` | derived | number of `// E` markers |
+| `output` | derived | the analyzer's diagnostics, one per line |
+| `errors_diff` | derived | how the output differs from the expectations |
+| `expected_diagnostic_level` | derived, PHPStan only | lowest level whose *rules* report an expected diagnostic |
+| `recognition` | derived, `// T` tests | `recognized` / `unrecognized` |
+| `enforcement` | derived, `// T` tests | `enforced` / `partial` / `none` |
+| `enforced_lines` | derived, `// T` tests | `n/m` expected violation lines reported |
+| `unrecognized_lines` | derived, `// T` tests | `// T` lines the analyzer complained about |
+| `false_positive_lines` | derived, `// T` tests | reported lines that are neither expected nor marked |
+| `status` | curated | `Falls back to X` or `By design` — see below |
+| `notes` | curated | free text, rendered as a hover card; links are linkified |
+
+## `status`
+
+Only two values are still meaningful, both explaining something the harness
+cannot derive:
+
+- `Falls back to X` — the analyzer resolved the spelling but widened it to `X`.
+  Renders as `Widened to X`.
+- `By design` — the analyzer could report and deliberately does not. Put the
+  upstream issue link in `notes`.
+
+`Full support` and `Not supported` were retired: recognition and enforcement are
+now derived from `// T` and `// E` markers, and a single word could not say
+which of the two it meant. See AGENTS.md for the full rationale.

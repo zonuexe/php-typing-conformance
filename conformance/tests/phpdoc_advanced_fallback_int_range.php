@@ -19,7 +19,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackIntRange;
 /**
  * @return int<0, 255>
  */
-function returnsByte()
+function returnsByte() // T: int<0, 255>
 {
     return 200;
 }
@@ -31,7 +31,7 @@ function acceptsInt(int $value): void
 /**
  * @param int<0, 255> $value
  */
-function acceptsByte($value): void
+function acceptsByte($value): void // T: int<0, 255>
 {
 }
 

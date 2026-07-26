@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedReturnNoreturnSynonym;
 /**
  * @return noreturn
  */
-function alwaysThrows()
+function alwaysThrows() // T: noreturn
 {
     throw new \RuntimeException('boom');
 }

@@ -25,7 +25,7 @@ final class User
 /**
  * @param properties-of<User> $data
  */
-function acceptsUserProps(array $data): void
+function acceptsUserProps(array $data): void // T: properties-of<User>
 {
 }
 

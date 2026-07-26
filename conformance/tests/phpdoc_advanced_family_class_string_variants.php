@@ -34,17 +34,17 @@ final class SomeClass
 }
 
 /** @param interface-string $value */
-function acceptsInterfaceString($value): void
+function acceptsInterfaceString($value): void // T: interface-string
 {
 }
 
 /** @param trait-string $value */
-function acceptsTraitString($value): void
+function acceptsTraitString($value): void // T: trait-string
 {
 }
 
 /** @param enum-string $value */
-function acceptsEnumString($value): void
+function acceptsEnumString($value): void // T: enum-string
 {
 }
 

@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
@@ -18,14 +18,13 @@ phpdoc_advanced_family_class_string_variants.php:55: Argument 1 ($value) is Some
 phpdoc_advanced_family_class_string_variants.php:57: Argument 1 ($value) is SomeEnum::class of type string but \\Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\acceptsEnumString() takes \\Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\enum (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_class_string_variants.php:47 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
 phpdoc_advanced_family_class_string_variants.php:58: Argument 1 ($value) is SomeClass::class of type string but \\Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\acceptsEnumString() takes \\Conformance\\Tests\\PhpdocAdvancedFamilyClassStringVariants\\enum (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_class_string_variants.php:47 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
 errors_diff = """
-Line 36: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '/** @param interface-string $value */': after interface, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '/** @param interface-string $value */': after interface, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 37: Unexpected errors ["Parameter $value has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\interface [PhanUndeclaredTypeParameter]"]
-Line 41: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '/** @param trait-string $value */': after trait, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '/** @param trait-string $value */': after trait, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 42: Unexpected errors ["Parameter $value has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\trait [PhanUndeclaredTypeParameter]"]
-Line 46: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '/** @param enum-string $value */': after enum, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '/** @param enum-string $value */': after enum, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 47: Unexpected errors ["Parameter $value has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\enum [PhanUndeclaredTypeParameter]"]
 Line 51: Unexpected errors ["Argument 1 ($value) is SomeInterface::class of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\acceptsInterfaceString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\interface (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_class_string_variants.php:37 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]
 Line 54: Unexpected errors ["Argument 1 ($value) is SomeTrait::class of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\acceptsTraitString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\trait (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_class_string_variants.php:42 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]
 Line 57: Unexpected errors ["Argument 1 ($value) is SomeEnum::class of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\acceptsEnumString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClassStringVariants\\\\enum (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_class_string_variants.php:47 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]"""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = [36, 37, 41, 42, 46, 47]
+false_positive_lines = [51, 54, 57]

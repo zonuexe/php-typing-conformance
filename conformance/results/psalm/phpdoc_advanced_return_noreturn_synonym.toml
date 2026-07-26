@@ -1,7 +1,12 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 0
 output = "phpdoc_advanced_return_noreturn_synonym.php:22: Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn does not exist [UndefinedDocblockClass]"
-errors_diff = "Line 22: Unexpected errors [\"Docblock-defined class, interface or enum named Conformance\\\\Tests\\\\PhpdocAdvancedReturnNoreturnSynonym\\\\noreturn does not exist [UndefinedDocblockClass]\"]"
+errors_diff = ""
 notes = "`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`."
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/0"
+unrecognized_lines = [22]
+false_positive_lines = []

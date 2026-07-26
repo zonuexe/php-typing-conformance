@@ -141,8 +141,83 @@ Current checker columns in the report:
 
 PHPStan handling is intentionally split:
 
-- `phpstan`: non-strict config, records the first level where diagnostics appear, displays `Lv N+`, and persists max-level output
+- `phpstan`: non-strict config, persists max-level output, and resolves the reporting level of each individual diagnostic
 - `phpstan-strict`: strict-rules config at max only
+
+### PHPStan Levels Are Rule Sets, Not Type-Support Tiers
+
+`conf/config.level*.neon` in phpstan-src only toggles reporting parameters
+(`checkFunctionArgumentTypes` at 5, `checkMissingTypehints` at 6, `checkNullables`
+at 8, `checkExplicitMixed` at 9, …). Type resolution is the same at every level.
+So a level number never answers "how well does PHPStan model this type" — only
+"which rule has to be enabled before PHPStan says anything".
+
+The report reflects that:
+
+- Each diagnostic is tagged with its own `[reported-from-level=N]`, resolved by
+  re-running the file per level and recording where that exact message first
+  appears. Do not stamp one file-wide number onto every message: a file can mix
+  a level-2 `parameter.unresolvableType` with a level-6 `missingType.parameter`.
+- `expected_diagnostic_level` in the result TOML is the lowest level on a line
+  the test actually expects a diagnostic on. Unexpected noise elsewhere in the
+  file does not set it, so `Fail` rows generally carry no level at all.
+- The cell tag reads `reported from level N`, and the report legend states that
+  levels gate rules rather than inference.
+
+### Cell Vocabularies
+
+The matrix carries two vocabularies, documented in the report legend:
+
+- **Verdict** (`Pass` / `Fail`) — computed from inline expectations. Used by
+  every row without `// T` markers.
+- **PHPDoc type handling** — used by rows whose test carries `// T` markers.
+  Derived, not curated. See below.
+
+### Recognition And Enforcement Are Separate Questions
+
+A test that probes a PHPDoc type spelling is really asking two things, and one
+word cannot carry both:
+
+- **Recognition** — does the analyzer resolve the spelling at all? Answered on
+  the `// T` lines: an analyzer that does not know the dialect reports an
+  unresolvable type, an undeclared type, or a docblock parse error right there.
+  Level-independent for every analyzer.
+- **Enforcement** — does it then reject the values the spelling excludes?
+  Answered on the `// E` lines. Level-gated for PHPStan.
+
+The old single `Full support` / `Not supported` label blurred the two: it could
+be read as "accepts the type name" or as "warns when a value is out of range",
+and `Full support (Lv 5+)` made the ambiguity worse by attaching a level to a
+word that might mean either. It also could not describe a file that probes
+several spellings at once — Phan resolves `scalar` but not `number`/`numeric`,
+so one label had to summarize three different answers.
+
+Both facets are now derived by `ExpectationEvaluator` and stored per result:
+
+| TOML key | Meaning |
+| --- | --- |
+| `recognition` | `recognized` / `unrecognized` |
+| `enforcement` | `enforced` / `partial` / `none` |
+| `enforced_lines` | `n/m` — expected violation lines actually reported |
+| `unrecognized_lines` | `// T` lines the analyzer complained about |
+| `false_positive_lines` | reported lines that are neither expected nor marked |
+
+Only the reason a *recognized* type goes unenforced stays hand-curated in
+`status`, because the harness cannot derive it:
+
+- `Falls back to X` — renders as `Widened to X`
+- `By design` — renders as `Not enforced (by design)`; link the upstream issue
+  in `notes`
+
+Do not reintroduce `Full support` or `Not supported` as `status` values.
+
+### Reading An Unexpected Combination
+
+`unrecognized` together with `enforced` is not a contradiction and not a bug in
+the harness. An analyzer that resolves `int-range<0, 255>` as a nonexistent
+class rejects *every* argument, valid ones included — so it hits the violating
+line for the wrong reason. The detail page labels that enforcement
+"incidental", and the valid call shows up under `false_positive_lines`.
 
 ## Test Authoring Conventions
 
@@ -152,6 +227,8 @@ PHPStan handling is intentionally split:
 - Use inline expectation markers rather than external expectation files.
 - Prefer required expectations (`// E`) for stable checker behavior and optional expectations (`// E?`) when a diagnostic is tool- or version-sensitive.
 - Use tool-specific expectations when only one analyzer should report a diagnostic, for example `// E<psalm>`.
+- Mark the declaration of any PHPDoc type spelling under test with `// T: <spelling>`, for example `function acceptsByte($value): void // T: int-range<0, 255>`. The marker turns the row into a recognition/enforcement row and stops "your dialect is unknown to me" diagnostics from counting as unexpected errors. It also covers the docblock directly above the declaration, since analyzers disagree about which of the two lines to blame.
+- Do not add `// T` to a test that is about *reporting* behaviour rather than spelling recognition — `phpdoc_advanced_param_typehint_nullable_mismatch` uses ordinary types and stays a Pass/Fail row.
 - Tag opinionated/advisory tests (PHPStan strict-rules, deprecations, doc conventions — anything with no runtime-safety impact) with a `@conformance-kind style` line in the leading docblock. Untagged tests default to `soundness`. The HTML report splits these into two tables: a soundness matrix (Pass/Fail) and a style matrix that only shows whether each analyzer opts into reporting the rule.
 
 ## Python-To-PHP Porting Notes

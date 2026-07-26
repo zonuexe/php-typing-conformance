@@ -126,12 +126,11 @@ p { margin: 0 0 0.8em; }
 p,
 li { text-wrap: pretty; }
 
-/* Everything that is a sentence rather than a cell: one measure, so the
-   section note and the axis list under it wrap at the same column. */
+/* Everything that is a sentence rather than a cell: one measure, so a section
+   note and the list under it wrap at the same column. */
 p.lead,
 p.section-note,
 p.legend-intro,
-.axis-list,
 .legend-facets,
 .facets,
 .legend-list dd { max-width: var(--measure); }
@@ -158,13 +157,11 @@ p.meta {
   margin-top: 0;
 }
 
-.axis-list,
 .legend-facets {
   margin: 0.4em 0 1.1em;
   padding-left: 1.3em;
 }
 
-.axis-list > li,
 .legend-facets > li { margin-bottom: 0.35em; }
 
 /* --------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = "Line 24: Expected 1 error(s)"
+output = "arrays_shape_required_keys.php:24: InvalidArgument: Argument $config of takesConfig() expects 'array{'host': string, 'port': int}', got 'array{'host': \"localhost\"}' [MIR0201]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

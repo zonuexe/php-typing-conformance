@@ -1,7 +1,11 @@
 status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 16
-output = "assertions_this_out_self_out.php:53: InvalidArgument: Argument $box of takesStringBox() expects 'Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string>', got 'Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int>' [MIR0201]"
-errors_diff = "Line 53: Unexpected errors [\"InvalidArgument: Argument $box of takesStringBox() expects 'Conformance\\\\Tests\\\\AssertionsThisOutSelfOut\\\\MutableBox<string>', got 'Conformance\\\\Tests\\\\AssertionsThisOutSelfOut\\\\MutableBox<int>' [MIR0201]\"]"
+output = """
+assertions_this_out_self_out.php:53: InvalidArgument: Argument $box of takesStringBox() expects 'Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string>', got 'Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int>' [MIR0201]
+assertions_this_out_self_out.php:58: InvalidArgument: Argument $box of takesIntBox() expects 'Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int>', got 'Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string>' [MIR0201]"""
+errors_diff = """
+Line 53: Unexpected errors ["InvalidArgument: Argument $box of takesStringBox() expects 'Conformance\\\\Tests\\\\AssertionsThisOutSelfOut\\\\MutableBox<string>', got 'Conformance\\\\Tests\\\\AssertionsThisOutSelfOut\\\\MutableBox<int>' [MIR0201]"]
+Line 58: Unexpected errors ["InvalidArgument: Argument $box of takesIntBox() expects 'Conformance\\\\Tests\\\\AssertionsThisOutSelfOut\\\\MutableBox<int>', got 'Conformance\\\\Tests\\\\AssertionsThisOutSelfOut\\\\MutableBox<string>' [MIR0201]"]"""
 notes = ""
 ignore_errors = []

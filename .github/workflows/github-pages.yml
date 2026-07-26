@@ -21,6 +21,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # The report is built here rather than committed: it derives in full from
+      # the results/<tool>/*.toml files, the test sources and the templates,
+      # all of which are in the repository. Rendering runs no analyzer -- it
+      # needs only the runner's own dependencies.
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+
+      - name: Install the runner's dependencies
+        run: composer install --no-interaction --no-progress --working-dir=conformance
+
+      - name: Render the report
+        run: make render-report-html
+
       - name: Prepare site root
         run: |
           mkdir -p site/tests

@@ -3,6 +3,7 @@
     "description": "Conformance runner for PHP static analyzer compatibility tests.",
     "type": "project",
     "require": {
+        "php": ">=8.2",
         "internal/toml": "^1.1"
     },
     "autoload": {

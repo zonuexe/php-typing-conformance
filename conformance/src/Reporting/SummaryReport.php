@@ -198,26 +198,33 @@ final class SummaryReport
         //   Often the founder's own company or GitHub org (PHPStan s.r.o.,
         //   Carthage Software, rigortype) rather than an outside backer —
         //   verified via each org's GitHub page, not assumed from the name.
-        //   "—" for projects with no organisational entity at all.
+        //   Phan and Psalm have no company at all, just a multi-contributor
+        //   GitHub home with no single commercial owner, rendered as a
+        //   "Community (org)" link rather than a bare "—" so that distinction
+        //   ("no backer" vs. "collectively run, here") is visible rather than
+        //   collapsed into the same dash as, say, mir's true one-person "—".
         // - Lead maintainer: the individual currently driving day-to-day
-        //   development. Usually the founder; `leadNote` is set only for the
-        //   two rows where it verifiably is not (Phan: Tyson Andre; Psalm:
-        //   Daniil Gentili, per Psalm's own maintainer page) and renders as a
-        //   hover note rather than silently repeating the founder's name.
+        //   development. Usually the founder; `leadNote` is set only for rows
+        //   where it verifiably is not, and renders as a hover note rather
+        //   than silently repeating the founder's name. Phan's is Rasmus
+        //   Lerdorf, not Tyson Andre: every one of the last 10 GitHub releases
+        //   (5.5.2 through 6.0.7) was cut by rlerdorf, and Andre has no recent
+        //   commits or releases despite being widely cited as "the" current
+        //   maintainer.
         //
         // [name, expansion, homepage, analysis, interface, bundled, language,
-        //  founder(raw HTML), backing, lead, leadNote, license, initial,
-        //  latest, ast, announceUrl, announceLabel]
+        //  founder(raw HTML), backing, backingUrl, lead, leadNote, license,
+        //  initial, latest, ast, announceUrl, announceLabel]
         $rows = [
-            ['Phan', '', 'https://github.com/phan/phan', 'Type checker', 'CLI, LSP', 'Fixer (narrow)', 'PHP', 'Rasmus Lerdorf &amp; Andrew Morrison (Etsy)', '—', 'Tyson Andre', 'Took over primary maintenance from the founders.', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
-            ['Psalm', 'Also referred to as a “PHP Static Analysis Linting Machine”', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', 'Matt Brown (Vimeo)', '—', 'Daniil Gentili', 'Sole active maintainer since Vimeo stepped back; the repository still lives under the vimeo/psalm GitHub org.', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
-            ['PHPStan', 'PHP Static Analysis Tool', 'https://phpstan.org', 'Type checker', 'CLI', '—', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', 'Ondřej Mirtes', '', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
-            ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', '—', 'Ben Mewburn', '', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
-            ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', 'VK (VKCOM)', 'VKCOM', '—', '', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
-            ['Mago', '', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'Saif Eddin Gmati', '', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
-            ['mir', '', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', 'Jorg Sowa', '—', 'Jorg Sowa', '', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
-            ['Pzoom', '', 'https://github.com/muglug/pzoom', 'Type checker', 'CLI', '—', 'Rust', 'Matt Brown (muglug)', '—', 'Matt Brown', '', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
-            ['PHP;STEINS', '', 'https://github.com/rigortype/steins', 'Type checker', 'CLI', 'Annotator, transforms', 'Rust', 'USAMI Kenta (rigortype)', 'rigortype', 'USAMI Kenta', '', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
+            ['Phan', '', 'https://github.com/phan/phan', 'Type checker', 'CLI, LSP', 'Fixer (narrow)', 'PHP', 'Rasmus Lerdorf &amp; Andrew Morrison (Etsy)', 'Community (phan)', 'https://github.com/phan', 'Rasmus Lerdorf', 'Every one of the last 10 GitHub releases (5.5.2 through 6.0.7) was cut by rlerdorf; Tyson Andre has no recent commits or releases despite being widely cited elsewhere as the current maintainer.', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
+            ['Psalm', 'Also referred to as a “PHP Static Analysis Linting Machine”', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', 'Matt Brown (Vimeo)', 'Community (vimeo/psalm)', 'https://github.com/vimeo/psalm', 'Daniil Gentili', 'Sole active maintainer since Vimeo stepped back; the repository still lives under the vimeo/psalm GitHub org.', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
+            ['PHPStan', 'PHP Static Analysis Tool', 'https://phpstan.org', 'Type checker', 'CLI', '—', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', '', 'Ondřej Mirtes', '', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
+            ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', '—', '', 'Ben Mewburn', '', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
+            ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', 'VK (VKCOM)', 'VKCOM', '', '—', '', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
+            ['Mago', '', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', '', 'Saif Eddin Gmati', '', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
+            ['mir', '', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', 'Jorg Sowa', '—', '', 'Jorg Sowa', '', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
+            ['Pzoom', '', 'https://github.com/muglug/pzoom', 'Type checker', 'CLI', '—', 'Rust', 'Matt Brown (muglug)', '—', '', 'Matt Brown', '', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
+            ['PHP;STEINS', '', 'https://github.com/rigortype/steins', 'Type checker', 'CLI', 'Annotator, transforms', 'Rust', 'USAMI Kenta (rigortype)', 'rigortype', '', 'USAMI Kenta', '', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
         ];
 
         $headers = ['Analyzer', 'Analysis', 'Interface', 'Bundled with it', 'Language', 'Founder', 'Backing', 'Lead maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
@@ -233,7 +240,7 @@ final class SummaryReport
             . '<li><strong>Interface</strong> &mdash; how you talk to it. CLI, the Language Server Protocol, or both. Independent of the analysis: Phan and Psalm ship the same engine behind either.</li>'
             . '<li><strong>Bundled with it</strong> &mdash; what else lives in the same distribution. A formatter or a fixer next to the checker says nothing about how the checker reasons; Mago calls itself a toolchain, but its <code>analyze</code> command is a type checker like the rest.</li>'
             . '</ul>';
-        $lines[] = '<p class="section-note">Founder / Backing / Lead maintainer are three more independent questions, kept apart for the same reason: <strong>Founder</strong> is who started it. <strong>Backing</strong> is the organisation currently behind it, if any &mdash; often the founder&rsquo;s own company or GitHub org rather than an outside adopter, and &ldquo;&mdash;&rdquo; where there is none. <strong>Lead maintainer</strong> is the individual currently driving day-to-day development; usually the founder, but a hover note marks the two rows &mdash; Phan, Psalm &mdash; where it verifiably is not.</p>';
+        $lines[] = '<p class="section-note">Founder / Backing / Lead maintainer are three more independent questions, kept apart for the same reason: <strong>Founder</strong> is who started it. <strong>Backing</strong> is the organisation currently behind it, if any &mdash; often the founder&rsquo;s own company or GitHub org rather than an outside adopter; a linked <em>Community (org)</em> marks a project with no company at all, just a shared GitHub home, distinct from the plain &ldquo;&mdash;&rdquo; of a true one-person project. <strong>Lead maintainer</strong> is the individual currently driving day-to-day development; usually the founder, but a hover note marks the rows where it verifiably is not.</p>';
         $lines[] = '<div class="table-scroll"><table class="analyzer-meta">';
         $lines[] = '<thead><tr>';
         foreach ($headers as $header) {
@@ -241,7 +248,7 @@ final class SummaryReport
         }
         $lines[] = '</tr></thead><tbody>';
 
-        foreach ($rows as [$name, $expansion, $url, $analysis, $interface, $bundled, $language, $founder, $backing, $lead, $leadNote, $license, $initial, $latest, $ast, $announceUrl, $announceLabel]) {
+        foreach ($rows as [$name, $expansion, $url, $analysis, $interface, $bundled, $language, $founder, $backing, $backingUrl, $lead, $leadNote, $license, $initial, $latest, $ast, $announceUrl, $announceLabel]) {
             $announcement = $announceUrl !== ''
                 ? sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($announceUrl), htmlspecialchars($announceLabel))
                 : '<span class="none">—</span>';
@@ -249,6 +256,10 @@ final class SummaryReport
             $label = $expansion === ''
                 ? htmlspecialchars($name)
                 : sprintf('<abbr title="%s">%s</abbr>', htmlspecialchars($expansion), htmlspecialchars($name));
+
+            $backingCell = $backingUrl === ''
+                ? htmlspecialchars($backing)
+                : sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($backingUrl), htmlspecialchars($backing));
 
             $leadCell = $leadNote === ''
                 ? htmlspecialchars($lead)
@@ -265,7 +276,7 @@ final class SummaryReport
                 . '<td>' . htmlspecialchars($bundled) . '</td>'
                 . '<td>' . htmlspecialchars($language) . '</td>'
                 . '<td>' . $founder . '</td>'
-                . '<td>' . htmlspecialchars($backing) . '</td>'
+                . '<td>' . $backingCell . '</td>'
                 . '<td>' . $leadCell . '</td>'
                 . '<td>' . htmlspecialchars($license) . '</td>'
                 . '<td>' . $this->timeYear($initial) . '</td>'

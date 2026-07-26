@@ -19,7 +19,7 @@ namespace Conformance\Tests\PhpdocAdvancedPsalmLiteralInt;
 /**
  * @param literal-int $value
  */
-function acceptsLiteralInt($value): void
+function acceptsLiteralInt($value): void // T: literal-int
 {
 }
 

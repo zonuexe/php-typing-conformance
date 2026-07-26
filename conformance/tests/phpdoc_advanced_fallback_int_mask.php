@@ -19,7 +19,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackIntMask;
 /**
  * @return int-mask<1, 2, 4>
  */
-function returnsFlags()
+function returnsFlags() // T: int-mask<1, 2, 4>
 {
     return 1 | 4;
 }
@@ -31,7 +31,7 @@ function acceptsInt(int $value): void
 /**
  * @param int-mask<1, 2, 4> $flags
  */
-function acceptsFlags($flags): void
+function acceptsFlags($flags): void // T: int-mask<1, 2, 4>
 {
 }
 

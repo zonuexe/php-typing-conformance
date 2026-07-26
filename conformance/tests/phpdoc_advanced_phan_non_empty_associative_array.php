@@ -18,7 +18,7 @@ namespace Conformance\Tests\PhpdocAdvancedPhanNonEmptyAssociativeArray;
 /**
  * @param non-empty-associative-array<string, int> $map
  */
-function acceptsNonEmptyAssoc(array $map): void
+function acceptsNonEmptyAssoc(array $map): void // T: non-empty-associative-array<string, int>
 {
 }
 

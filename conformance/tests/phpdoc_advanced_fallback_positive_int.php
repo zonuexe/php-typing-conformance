@@ -19,7 +19,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackPositiveInt;
 /**
  * @return positive-int
  */
-function returnsPositiveInt()
+function returnsPositiveInt() // T: positive-int
 {
     return 5;
 }
@@ -31,7 +31,7 @@ function acceptsInt(int $value): void
 /**
  * @param positive-int $value
  */
-function acceptsPositiveInt($value): void
+function acceptsPositiveInt($value): void // T: positive-int
 {
 }
 

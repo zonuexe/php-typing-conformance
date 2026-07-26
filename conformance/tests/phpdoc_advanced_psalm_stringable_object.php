@@ -30,7 +30,7 @@ final class WithoutToString
 /**
  * @param stringable-object $obj
  */
-function acceptsStringable($obj): void
+function acceptsStringable($obj): void // T: stringable-object
 {
 }
 

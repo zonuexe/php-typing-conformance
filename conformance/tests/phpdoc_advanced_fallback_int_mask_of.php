@@ -27,7 +27,7 @@ final class Permissions
 /**
  * @return int-mask-of<Permissions::*>
  */
-function returnsPermissionMask()
+function returnsPermissionMask() // T: int-mask-of<Permissions::*>
 {
     return Permissions::READ | Permissions::EXECUTE;
 }
@@ -39,7 +39,7 @@ function acceptsInt(int $value): void
 /**
  * @param int-mask-of<Permissions::*> $flags
  */
-function acceptsPermissionMask($flags): void
+function acceptsPermissionMask($flags): void // T: int-mask-of<Permissions::*>
 {
 }
 

@@ -18,7 +18,7 @@ namespace Conformance\Tests\PhpdocAdvancedPhanNonNullMixed;
 /**
  * @param non-null-mixed $value
  */
-function acceptsNonNull($value): void
+function acceptsNonNull($value): void // T: non-null-mixed
 {
 }
 

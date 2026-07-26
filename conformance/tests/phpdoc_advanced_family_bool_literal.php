@@ -16,12 +16,12 @@ namespace Conformance\Tests\PhpdocAdvancedFamilyBoolLiteral;
  */
 
 /** @param true $value */
-function acceptsTrue($value): void
+function acceptsTrue($value): void // T: true
 {
 }
 
 /** @param false $value */
-function acceptsFalse($value): void
+function acceptsFalse($value): void // T: false
 {
 }
 

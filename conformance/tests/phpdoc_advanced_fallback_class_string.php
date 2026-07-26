@@ -19,7 +19,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackClassString;
 /**
  * @return class-string
  */
-function returnsClassString()
+function returnsClassString() // T: class-string
 {
     return \stdClass::class;
 }
@@ -31,7 +31,7 @@ function acceptsString(string $value): void
 /**
  * @param class-string $value
  */
-function acceptsClassString($value): void
+function acceptsClassString($value): void // T: class-string
 {
 }
 

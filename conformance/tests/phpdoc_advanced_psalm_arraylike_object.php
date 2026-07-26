@@ -18,7 +18,7 @@ namespace Conformance\Tests\PhpdocAdvancedPsalmArraylikeObject;
 /**
  * @param arraylike-object $obj
  */
-function acceptsArrayLike($obj): void
+function acceptsArrayLike($obj): void // T: arraylike-object
 {
 }
 

@@ -16,22 +16,22 @@ namespace Conformance\Tests\PhpdocAdvancedFamilyIntRefinements;
  */
 
 /** @param negative-int $value */
-function acceptsNegativeInt($value): void
+function acceptsNegativeInt($value): void // T: negative-int
 {
 }
 
 /** @param non-positive-int $value */
-function acceptsNonPositiveInt($value): void
+function acceptsNonPositiveInt($value): void // T: non-positive-int
 {
 }
 
 /** @param non-negative-int $value */
-function acceptsNonNegativeInt($value): void
+function acceptsNonNegativeInt($value): void // T: non-negative-int
 {
 }
 
 /** @param non-zero-int $value */
-function acceptsNonZeroInt($value): void
+function acceptsNonZeroInt($value): void // T: non-zero-int
 {
 }
 

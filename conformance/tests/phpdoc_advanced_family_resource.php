@@ -16,12 +16,12 @@ namespace Conformance\Tests\PhpdocAdvancedFamilyResource;
  */
 
 /** @param resource $value */
-function acceptsResource($value): void
+function acceptsResource($value): void // T: resource
 {
 }
 
 /** @param open-resource $value */
-function acceptsOpenResource($value): void
+function acceptsOpenResource($value): void // T: open-resource
 {
 }
 

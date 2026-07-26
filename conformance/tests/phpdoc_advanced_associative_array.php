@@ -20,7 +20,7 @@ namespace Conformance\Tests\PhpdocAdvancedAssociativeArray;
 /**
  * @param associative-array<int, string> $map
  */
-function acceptsAssoc(array $map): void
+function acceptsAssoc(array $map): void // T: associative-array<int, string>
 {
 }
 

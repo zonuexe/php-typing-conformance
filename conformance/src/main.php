@@ -119,7 +119,9 @@ $intelephenseChecker = new IntelephenseChecker(
     clientPath: __DIR__ . '/Checker/intelephense-client.mjs',
     packageJsonPath: $projectRoot . '/vendor-bin/intelephense/node_modules/intelephense/package.json',
 );
-$steinsChecker = new SteinsChecker();
+$steinsChecker = new SteinsChecker(
+    binaryPath: $projectRoot . '/vendor-bin/steins/vendor/bin/steins',
+);
 $pzoomChecker = new PzoomChecker(
     configPath: $psalmConfigPath,
 );

@@ -28,29 +28,26 @@ use RuntimeException;
  * are passed alongside the primary file so cross-file symbols resolve;
  * diagnostics are then filtered down to the primary test file.
  *
+ * Installed as a Composer package (typedduck/steins) like the other analyzers
+ * this suite pins. Its `vendor/bin/steins` is a PHP launcher that downloads
+ * the platform binary on first use and caches it per version and target, so
+ * the first invocation of a new release prints progress — to stderr, which is
+ * dropped everywhere here so it can never reach the parsed output.
+ *
  * Binary path resolution: the `STEINS_BIN` environment variable overrides the
  * constructor default when set and non-empty.
  */
 final class SteinsChecker implements Checker
 {
-    public const DEFAULT_BINARY_PATH = '/Users/megurine/local/bin/steins';
-
-    /**
-     * Pinned release version. Steins v0.1.0 ships no `--version` subcommand;
-     * a queryable version (and Composer distribution) arrives in v0.1.1.
-     */
-    public const RELEASE_VERSION = '0.1.0';
-
     private readonly string $binaryPath;
 
-    public function __construct(?string $binaryPath = null)
+    public function __construct(string $binaryPath)
     {
+        // STEINS_BIN points the suite at a local build instead of the pinned
+        // Composer release.
         $override = getenv('STEINS_BIN');
-        if (is_string($override) && $override !== '') {
-            $this->binaryPath = $override;
-        } else {
-            $this->binaryPath = $binaryPath ?? self::DEFAULT_BINARY_PATH;
-        }
+
+        $this->binaryPath = is_string($override) && $override !== '' ? $override : $binaryPath;
     }
 
     public function name(): string
@@ -60,10 +57,26 @@ final class SteinsChecker implements Checker
 
     public function version(): string
     {
-        // Steins v0.1.0 ships no `--version` subcommand, so the released
-        // version is pinned here. Switch to querying the binary once v0.1.1
-        // adds a version command.
-        return 'steins ' . self::RELEASE_VERSION;
+        // `steins version`, not `--version`: the CLI takes subcommands only.
+        // Its banner runs to four lines, of which only the first carries
+        // version information -- the rest is a copyright notice and a pointer
+        // to `steins license`. stderr is dropped so a first-run download
+        // never lands in the recorded version.
+        $command = escapeshellarg($this->binaryPath) . ' version 2>/dev/null';
+        exec($command, $output, $exitCode);
+
+        if ($exitCode !== 0) {
+            throw new RuntimeException('Failed to determine Steins version.');
+        }
+
+        foreach ($output as $line) {
+            $line = trim($line);
+            if (str_starts_with($line, 'steins ')) {
+                return $line;
+            }
+        }
+
+        throw new RuntimeException('Steins reported no version line.');
     }
 
     /**

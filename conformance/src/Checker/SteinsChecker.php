@@ -72,7 +72,9 @@ final class SteinsChecker implements Checker
         foreach ($output as $line) {
             $line = trim($line);
             if (str_starts_with($line, 'steins ')) {
-                return $line;
+                // The trailing " - <project url>" is a link, not version
+                // information, and the report shows this string as-is.
+                return preg_replace('/\s+-\s+https?:\/\/\S+$/', '', $line) ?? $line;
             }
         }
 

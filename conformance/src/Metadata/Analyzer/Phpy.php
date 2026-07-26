@@ -96,6 +96,15 @@ final class Phpy extends AnalyzerMetadata
         return 'own (C#/.NET compiled to WASM)';
     }
 
+    /**
+     * The CLI wrapper's own numbering, which is not the PHP Tools version the
+     * Latest release column carries — phpy 0.2.0 wraps engine 1.0.18519.
+     */
+    protected function versionPattern(): ?string
+    {
+        return '/phpy\s+(\d+\.\d+\.\d+)/i';
+    }
+
     public function announcement(): ?Announcement
     {
         return new Announcement(

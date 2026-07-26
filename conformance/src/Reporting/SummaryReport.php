@@ -5,21 +5,38 @@ declare(strict_types=1);
 namespace Conformance\Reporting;
 
 use Conformance\Discovery\TestCase;
+use Conformance\Metadata\AnalyzerMetadata;
 use Conformance\TestGroup\TestGroup;
 use Internal\Toml\Toml;
 use RuntimeException;
 use function htmlspecialchars;
 use function preg_match;
-use function preg_replace_callback;
 use function sprintf;
 use function trim;
 
+/**
+ * Generate the HTML report: one index page plus a detail page per test.
+ *
+ * This class decides *what* each page says — which verdict vocabulary a cell
+ * uses, which columns are merged, which curated metadata the reference tables
+ * carry. The markup itself lives in templates/*.phtml, which receive plain
+ * data and nothing else; they escape it with the h*() helpers in
+ * src/functions.php.
+ */
 final class SummaryReport
 {
     private const DETAILS_DIR = 'tests';
     private const INDEX_FILE = 'results.html';
     private const STYLESHEET_FILE = 'report.css';
-    private const STYLESHEET_SOURCE = __DIR__ . '/../../templates/report.css';
+
+    /**
+     * @param list<AnalyzerMetadata> $analyzers ordered as the analyzer table shows them
+     */
+    public function __construct(
+        private readonly TemplateRenderer $renderer,
+        private readonly array $analyzers,
+    ) {
+    }
 
     /**
      * @param array<string, TestGroup> $testGroups
@@ -75,282 +92,21 @@ final class SummaryReport
             fn (TestCase $testCase): bool => $this->testKind($testCase) === 'style',
         ));
 
-        $body = [];
-        $body[] = '<h1>PHP Typing Conformance Results</h1>';
-        $body[] = '<p class="lead">Each row links to a per-test detail page with the source, expectations, and every analyzer&rsquo;s raw output.</p>';
-
-        $body = array_merge($body, $this->renderLegend());
-
-        $body[] = '<h2 class="section">Soundness &mdash; potential runtime type errors</h2>';
-        $body[] = '<p class="section-note">Positives here flag code that can actually fail at runtime &mdash; type mismatches, null access, invalid arguments, uninitialized reads. <strong>Pass</strong> means the analyzer agrees with the expected diagnostic; rows whose test marks a declaration with <code>// T</code> instead report recognition and enforcement of the type spelling. See the legend above.</p>';
-        $body = array_merge($body, $this->renderMatrix($resultsRoot, $testGroups, $soundnessCases, $tools, false));
-
-        if ($styleCases !== []) {
-            $body[] = '<h2 class="section">Style &amp; opinionated rules &mdash; no runtime-safety impact</h2>';
-            $body[] = '<p class="section-note">Lint-style opinions and advisories (PHPStan strict-rules, deprecations, doc conventions) that do not change whether the code runs. Cells show whether each analyzer <em>opts into</em> reporting the rule &mdash; not a pass/fail verdict.</p>';
-            $body = array_merge($body, $this->renderMatrix($resultsRoot, $testGroups, $styleCases, $tools, true));
-        }
-
-        $body = array_merge($body, $this->renderAnalyzerTable());
-        $body = array_merge($body, $this->renderLanguageServerTable());
+        $body = $this->render('index.phtml', [
+            'legend' => $this->render('legend.phtml'),
+            'soundnessMatrix' => $this->renderMatrix($resultsRoot, $testGroups, $soundnessCases, $tools, false),
+            'styleMatrix' => $styleCases === []
+                ? ''
+                : $this->renderMatrix($resultsRoot, $testGroups, $styleCases, $tools, true),
+            'analyzers' => $this->render('analyzers.phtml', ['analyzers' => $this->analyzers]),
+            'languageServers' => $this->render('language-servers.phtml', ['rows' => $this->languageServerRows()]),
+        ]);
 
         return $this->renderPage('PHP Typing Conformance Results', $body, false);
     }
 
     /**
-     * What each cell value means.
-     *
-     * Two vocabularies share the matrix. Most rows ask "does the analyzer catch
-     * this unsafe code?" and answer Pass/Fail. The `// T`-marked rows ask "how
-     * does the analyzer treat this type spelling?" and answer on two axes.
-     * Without this legend the two read as one scale, which they are not.
-     *
-     * @return list<string>
-     */
-    private function renderLegend(): array
-    {
-        $verdicts = [
-            ['pass', 'Pass', 'The analyzer&rsquo;s diagnostics match what the test expects.'],
-            ['fail', 'Fail', 'They do not: an expected diagnostic is missing, or something unexpected is reported.'],
-            ['by-design', 'Not reported (by design)', 'The analyzer declines to report the diagnostic and has said so upstream; the issue is linked in the cell notes. Hand-curated &mdash; the harness cannot tell this apart from a plain miss.'],
-        ];
-
-        $handling = [
-            ['not-supported', 'Unrecognized', 'The spelling is not resolved at all: the analyzer reports an unresolvable type, an undeclared type, or a docblock parse error on the declaration. Expected whenever a test uses another analyzer&rsquo;s dialect &mdash; not a defect.'],
-            ['pass', 'Enforced', 'The spelling is resolved <em>and</em> every value the type excludes is rejected.'],
-            ['partial', 'Partly enforced (<em>n</em>/<em>m</em>)', 'Resolved, and some but not all of the excluded values are rejected. Common in files that probe several related spellings at once.'],
-            ['falls-back', 'Widened to <em>X</em>', 'Resolved, but widened to <em>X</em>, so nothing is rejected. Not an error &mdash; just a coarser type. The base type is hand-curated.'],
-            ['falls-back', 'Not enforced', 'Resolved, nothing rejected, and the base type it widened to has not been pinned down yet.'],
-            ['by-design', 'Not enforced (by design)', 'Resolved and reportable, but the analyzer deliberately declines; the upstream issue is in the cell notes.'],
-        ];
-
-        $lines = [];
-        $lines[] = '<details class="legend"><summary>Legend &mdash; what the cell values mean</summary>';
-
-        $lines[] = '<p class="legend-intro"><strong>Verdict.</strong> Most rows ask whether the analyzer catches unsafe code.</p>';
-        $lines[] = '<dl class="legend-list">';
-        foreach ($verdicts as [$class, $label, $description]) {
-            $lines[] = sprintf('<dt><span class="legend-swatch %s">%s</span></dt><dd>%s</dd>', $class, $label, $description);
-        }
-        $lines[] = '</dl>';
-
-        $lines[] = '<p class="legend-intro"><strong>PHPDoc type handling.</strong> Tests that mark a declaration with <code>// T</code> ask a different question: not &ldquo;is the code unsafe?&rdquo; but &ldquo;how is this type spelling treated?&rdquo; That splits into two independent facets, and a single word cannot carry both:</p>';
-        $lines[] = '<ul class="legend-facets">'
-            . '<li><strong>Recognition</strong> &mdash; does the analyzer resolve the spelling? Read off the <code>// T</code> declaration lines. Level-independent.</li>'
-            . '<li><strong>Enforcement</strong> &mdash; does it then reject the values the spelling excludes? Read off the <code>// E</code> call sites. For PHPStan this is gated by the level; recognition never is.</li>'
-            . '</ul>';
-        $lines[] = '<p class="legend-intro">The combinations:</p>';
-        $lines[] = '<dl class="legend-list">';
-        foreach ($handling as [$class, $label, $description]) {
-            $lines[] = sprintf('<dt><span class="legend-swatch %s">%s</span></dt><dd>%s</dd>', $class, $label, $description);
-        }
-        $lines[] = '</dl>';
-
-        $lines[] = '<p class="legend-intro"><strong>Tags.</strong></p>';
-        $lines[] = '<dl class="legend-list">';
-        $lines[] = '<dt><span class="legend-swatch plain"><small>reported Lv.5+</small></span></dt>'
-            . '<dd>PHPStan only. The lowest level whose <em>rules</em> report the diagnostic this test expects. '
-            . 'PHPStan levels switch rule sets on and off &mdash; type inference is identical at every level &mdash; so this is a '
-            . 'configuration threshold, not a type-support tier. Level 5 turns on argument-type checks, level 6 missing typehints, '
-            . 'level 8 nullables, level 9 explicit <code>mixed</code>. Each diagnostic on the detail page carries its own '
-            . '<code>[reported-from-level=N]</code>; this tag shows the lowest one on an expected line.</dd>';
-        $lines[] = '<dt><span class="legend-swatch plain"><small>&#9888; 3 false positives</small></span></dt>'
-            . '<dd>Diagnostics on lines the test neither expects nor marks with <code>// T</code>. On a type-handling test these are the analyzer&rsquo;s own false positives &mdash; Phan resolving <code>number</code> as a class name and then rejecting <code>1</code> for it, say. Hover for the line numbers.</dd>';
-        $lines[] = '<dt><span class="legend-swatch plain"><small>(strict)</small></span></dt>'
-            . '<dd>PHPStan only. Nothing is reported with the standard config; only <code>phpstan-strict-rules</code> catches it.</dd>';
-        $lines[] = '<dt><span class="legend-swatch plain"><small>(pzoom&ne;)</small></span></dt>'
-            . '<dd>Psalm only. pzoom, the Rust port of Psalm, flags a different set of lines than Psalm itself.</dd>';
-        $lines[] = '</dl>';
-
-        $lines[] = '</details>';
-
-        return $lines;
-    }
-
-    /**
-     * A reference table of the analyzers compared above.
-     *
-     * @return list<string>
-     */
-    private function renderAnalyzerTable(): array
-    {
-        // Ordered by initial release (oldest first).
-        //
-        // Every tool here is a static analyzer, so "static analyzer" is not a
-        // classification — it is the entry criterion. What actually
-        // distinguishes them are three independent axes, and the old single
-        // "Kind" column picked a different one for each row (Intelephense by
-        // interface, NoVerify by analysis, Mago by packaging), which made the
-        // values look mutually exclusive when they are not.
-        //
-        // `expansion` renders the name as <abbr title="...">. Not a strict
-        // "the name is short for this" claim for every row — Psalm's is
-        // phrased as "also referred to as", since its creator's own framing
-        // ("or, if you prefer, the PHP Static Analysis Linting Machine",
-        // Vimeo Engineering Blog, 2018) makes it an optional backronym, not
-        // the name's origin, unlike PHPStan's README and composer.json, which
-        // read "PHPStan - PHP Static Analysis Tool" outright.
-        //
-        // The old single "Current maintainer" column mixed two different
-        // questions and picked whichever answer happened to exist: an org
-        // name for PHPStan/NoVerify/Mago/PHP;STEINS, but a person's name for
-        // Phan and Psalm — where maintenance actually passed from the founder
-        // to someone else. Split into two columns that each answer one
-        // question for every row:
-        //
-        // - Organization: the entity currently behind the project, if any,
-        //   linked to that org's own page. Every row states this positively —
-        //   no bare "—", since a dash reads as "not checked" once other rows
-        //   carry real values, which would undo the point of separating this
-        //   from Lead maintainer in the first place. Three kinds of answer:
-        //   - A company or the founder's own formalized entity (PHPStan
-        //     s.r.o., Carthage Software, TypedDuck/rigortype, VK.COM/VKCOM,
-        //     and Intelephense itself — its footer carries an Australian
-        //     Business Number, so "Intelephense" is a registered business,
-        //     not just a product name). Verified via each org's own page, not
-        //     assumed from the name; the display text is that page's own
-        //     name, not the URL slug (VKCOM's is "VK.COM", rigortype's is
-        //     "TypedDuck").
-        //   - "Community (org)" for Phan and Psalm, which have no company at
-        //     all, just a multi-contributor GitHub home with no single
-        //     commercial owner: github.com/phan for Phan, github.com/psalm
-        //     (a separate community-packages org, not vimeo/psalm itself) for
-        //     Psalm.
-        //   - "Personal" for mir and Pzoom, genuinely one person's project
-        //     with no separate entity, formal or informal — the same
-        //     information Lead maintainer already carries, restated here so
-        //     the column never falls back to an ambiguous dash.
-        // - Lead maintainer: the individual currently driving day-to-day
-        //   development. Usually the founder, in which case it stays plain
-        //   text with no link -- Founder already links that person, and a
-        //   second link to the same profile would just be noise. `leadUrl`
-        //   and `leadNote` are set only for the rows where the lead
-        //   verifiably differs from the founder, and render as a link with a
-        //   hover note rather than silently repeating the founder's name.
-        //   Phan's is Rasmus Lerdorf, not Tyson Andre: every one of the last
-        //   10 GitHub releases (5.5.2 through 6.0.7) was cut by rlerdorf, and
-        //   Andre has no recent commits or releases despite being widely
-        //   cited as "the" current maintainer. NoVerify is left blank rather
-        //   than guessed: recent releases (v0.5.4, v0.5.5) were cut by a
-        //   different person than the founder, but that alone doesn't
-        //   establish who currently drives the project, unlike Phan's
-        //   unambiguous single-author release history.
-        //
-        // Founder links each named individual to their own GitHub profile,
-        // verified rather than guessed (rlerdorf, morria, muglug,
-        // ondrejmirtes, bmewburn, azjezz, jorgsowa, zonuexe, and
-        // YuriyNasretdinov all checked directly). Parentheticals that just
-        // name the linked GitHub handle/org and add nothing the link itself
-        // doesn't already show -- "(Carthage Software)", "(rigortype)",
-        // "(muglug)" -- are dropped here; "(Etsy)" and "(Vimeo)" stay because
-        // they name an employer, not a handle.
-        //
-        // phpy's row names the tool "phpy / PHPTools" outright, in the name
-        // field itself like every other row -- no <abbr> tooltip, since
-        // unlike every other row the thing being compared here is not the
-        // whole product: phpy (github.com/DEVSENSE/phpy) is a thin CLI
-        // wrapper DEVSENSE published 2025-05 (v0.1.0) around the same
-        // closed-source analysis engine that has shipped inside PHP Tools
-        // for Visual Studio since 2012 -- DEVSENSE's own blog post
-        // introduces it as "a proof of concept" for a standalone language
-        // server, not a ground-up product. Initial release is phpy's own
-        // 2025 start, not PHP Tools' 2012 origin: every other row tracks the
-        // specific artifact being compared, not whatever earlier tooling its
-        // maintainer previously built (NoVerify's row doesn't inherit VK's
-        // earlier internal tooling either). License is "Proprietary
-        // (freemium)" like Intelephense, verified against DEVSENSE's own
-        // Community License page: free for OSI-licensed open-source
-        // projects, education, and businesses under 250 seats/$1M revenue;
-        // above that it requires a paid license. Organization links
-        // DEVSENSE's own homepage, the same standard applied to
-        // Intelephense's own site. Founder and Lead maintainer are both
-        // Jakub Míšek -- DEVSENSE's founder and the sole author on phpy's
-        // GitHub releases.
-        //
-        // [name, expansion, homepage, analysis, interface, bundled, language,
-        //  founder(raw HTML), backing, backingUrl, lead, leadUrl, leadNote,
-        //  license, initial, latest, ast, announceUrl, announceLabel]
-        $rows = [
-            ['Phan', '', 'https://github.com/phan/phan', 'Type checker', 'CLI, LSP', 'Fixer (narrow)', 'PHP', '<a href="https://github.com/rlerdorf" target="_blank" rel="noopener">Rasmus Lerdorf</a> &amp; <a href="https://github.com/morria" target="_blank" rel="noopener">Andrew Morrison</a> (Etsy)', 'Community (phan)', 'https://github.com/phan', 'Rasmus Lerdorf', 'https://github.com/rlerdorf', 'Every one of the last 10 GitHub releases (5.5.2 through 6.0.7) was cut by rlerdorf; Tyson Andre has no recent commits or releases despite being widely cited elsewhere as the current maintainer.', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
-            ['Psalm', 'Also referred to as a “PHP Static Analysis Linting Machine”', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', '<a href="https://github.com/muglug" target="_blank" rel="noopener">Matt Brown</a> (Vimeo)', 'Community (psalm)', 'https://github.com/psalm', 'Daniil Gentili', 'https://github.com/danog', 'Sole active maintainer since Vimeo stepped back; the repository still lives under the vimeo/psalm GitHub org.', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
-            ['PHPStan', 'PHP Static Analysis Tool', 'https://phpstan.org', 'Type checker', 'CLI', '—', 'PHP', '<a href="https://github.com/ondrejmirtes" target="_blank" rel="noopener">Ondřej Mirtes</a>', 'PHPStan s.r.o.', 'https://github.com/phpstan', 'Ondřej Mirtes', '', '', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
-            ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', '<a href="https://github.com/bmewburn" target="_blank" rel="noopener">Ben Mewburn</a>', 'Intelephense', 'https://intelephense.com', 'Ben Mewburn', '', '', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
-            ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', '<a href="https://github.com/YuriyNasretdinov" target="_blank" rel="noopener">Yuriy Nasretdinov</a> (VK)', 'VK.COM', 'https://github.com/VKCOM', '—', '', '', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
-            ['Mago', '', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', '<a href="https://github.com/azjezz" target="_blank" rel="noopener">Saif Eddin Gmati</a>', 'Carthage Software', 'https://github.com/carthage-software', 'Saif Eddin Gmati', '', '', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
-            ['phpy / PHPTools', '', 'https://github.com/DEVSENSE/phpy', 'Code intelligence', 'CLI, LSP', 'Formatter', 'C#, TypeScript', '<a href="https://github.com/jakubmisek" target="_blank" rel="noopener">Jakub Míšek</a>', 'DEVSENSE', 'https://www.devsense.com', 'Jakub Míšek', '', '', 'Proprietary (freemium)', '2025', '1.0.18519 (2026-02-19)', 'own (C#/.NET compiled to WASM)', 'https://blog.devsense.com/2025/update-1-58-benchmarks/', 'phpy: a proof-of-concept CLI'],
-            ['mir', '', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', '<a href="https://github.com/jorgsowa" target="_blank" rel="noopener">Jorg Sowa</a>', 'Personal', '', 'Jorg Sowa', '', '', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
-            ['Pzoom', '', 'https://pzoom.dev', 'Type checker', 'CLI', '—', 'Rust', '<a href="https://github.com/muglug" target="_blank" rel="noopener">Matt Brown</a>', 'Personal', '', 'Matt Brown', '', '', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
-            ['PHP;STEINS', '', 'https://github.com/rigortype/steins', 'Type checker', 'CLI', 'Annotator, transforms', 'Rust', '<a href="https://github.com/zonuexe" target="_blank" rel="noopener">USAMI Kenta</a>', 'TypedDuck', 'https://github.com/rigortype', 'USAMI Kenta', '', '', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
-        ];
-
-        $headers = ['Analyzer', 'Analysis', 'Interface', 'Bundled with it', 'Language', 'Founder', 'Organization', 'Lead maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
-
-        $lines = [];
-        $lines[] = '<h2 class="section">Analyzers</h2>';
-        $lines[] = '<p class="section-note">Reference metadata for each analyzer compared above; versions are those pinned by this suite. <strong>Analysis</strong> is the one column whose values are coined here rather than read off the project: a <em>type checker</em> aims at type correctness, a <em>type-aware linter</em> at a rule catalogue that inference sharpens, and <em>code intelligence</em> infers types mainly to drive completion and navigation, with diagnostics one feature among many.</p>';
-        $lines[] = '<div class="table-scroll"><table class="analyzer-meta">';
-        $lines[] = '<thead><tr>';
-        foreach ($headers as $header) {
-            $lines[] = '<th scope="col">' . htmlspecialchars($header) . '</th>';
-        }
-        $lines[] = '</tr></thead><tbody>';
-
-        foreach ($rows as [$name, $expansion, $url, $analysis, $interface, $bundled, $language, $founder, $backing, $backingUrl, $lead, $leadUrl, $leadNote, $license, $initial, $latest, $ast, $announceUrl, $announceLabel]) {
-            $announcement = $announceUrl !== ''
-                ? sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($announceUrl), htmlspecialchars($announceLabel))
-                : '<span class="none">—</span>';
-
-            $label = $expansion === ''
-                ? htmlspecialchars($name)
-                : sprintf('<abbr title="%s">%s</abbr>', htmlspecialchars($expansion), htmlspecialchars($name));
-
-            $backingCell = $backingUrl === ''
-                ? htmlspecialchars($backing)
-                : sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($backingUrl), htmlspecialchars($backing));
-
-            // Linked only when the lead differs from the founder: the
-            // founder's own link already covers the "same person" case, so a
-            // second link there would just point back at itself.
-            $leadCell = htmlspecialchars($lead);
-            if ($leadUrl !== '') {
-                $leadCell = sprintf(
-                    '<a href="%s" target="_blank" rel="noopener"%s>%s</a>',
-                    htmlspecialchars($leadUrl),
-                    $leadNote === '' ? '' : sprintf(' title="%s"', htmlspecialchars($leadNote)),
-                    htmlspecialchars($lead),
-                );
-            } elseif ($leadNote !== '') {
-                $leadCell = sprintf(
-                    '<span class="succession" title="%s">%s</span>',
-                    htmlspecialchars($leadNote),
-                    htmlspecialchars($lead),
-                );
-            }
-
-            $lines[] = '<tr>'
-                . sprintf('<th class="tool-name"><a href="%s" target="_blank" rel="noopener">%s</a></th>', htmlspecialchars($url), $label)
-                . '<td>' . htmlspecialchars($analysis) . '</td>'
-                . '<td>' . htmlspecialchars($interface) . '</td>'
-                . '<td>' . htmlspecialchars($bundled) . '</td>'
-                . '<td>' . htmlspecialchars($language) . '</td>'
-                . '<td>' . $founder . '</td>'
-                . '<td>' . $backingCell . '</td>'
-                . '<td>' . $leadCell . '</td>'
-                . '<td>' . htmlspecialchars($license) . '</td>'
-                . '<td>' . $this->timeYear($initial) . '</td>'
-                . '<td>' . $this->timeLatestRelease($latest) . '</td>'
-                . '<td>' . htmlspecialchars($ast) . '</td>'
-                . '<td>' . $announcement . '</td>'
-                . '</tr>';
-        }
-
-        $lines[] = '</tbody></table></div>';
-
-        return $lines;
-    }
-
-    /**
-     * A reference table of PHP language servers.
+     * The PHP language servers, oldest first by initial release.
      *
      * Deliberately a separate table from the analyzers above, not extra rows
      * in it. The analyzer table's entry criterion is "this tool is a static
@@ -439,16 +195,16 @@ final class SummaryReport
      * launch post, which is the closest first-party equivalent the project
      * has, the same latitude Phan's row already takes with a conference talk.
      *
-     * @return list<string>
+     * `note` keys attach a hover explanation to the preceding cell and
+     * are used only where the short value would otherwise overstate the
+     * claim -- "Own engine + adapter" needs to say which half is which,
+     * "Not stated" needs to say what *is* known instead. Unused ones are
+     * filled in as '' below, so the template never has to ask.
+     *
+     * @return list<array<string, string>>
      */
-    private function renderLanguageServerTable(): array
+    private function languageServerRows(): array
     {
-        // Ordered by initial release (oldest first), like the analyzers.
-        //
-        // `note` keys attach a hover explanation to the preceding cell and
-        // are used only where the short value would otherwise overstate the
-        // claim -- "Own engine + adapter" needs to say which half is which,
-        // "Not stated" needs to say what *is* known instead.
         $rows = [
             [
                 'name' => 'Intelephense',
@@ -468,7 +224,8 @@ final class SummaryReport
                 'license' => 'Proprietary (freemium)',
                 'licenseNote' => 'Its own words: “Intelephense is released to end users under a freemium model.” Free covers completion, signature help, go-to-definition, find references, symbol search, hover, PSR-12 formatting and the diagnostics themselves. A one-off key (US$35 personal, US$75/user business) unlocks rename, code actions, code lens, inlay hints, type hierarchy, find implementations, go-to-type-definition, code folding and @mixin support. So the diagnostics this table is about are entirely in the free tier.',
                 'initial' => '2017',
-                'latest' => '1.18.5 (2026-06-21)',
+                'latestVersion' => '1.18.5',
+                'latestDate' => '2026-06-21',
                 'ast' => 'own parser',
                 'astNote' => 'Never described as “own parser” in so many words — the developer’s own phrase is “error tolerant parser”. Read as in-house because early versions depended on php7parser, which Ben Mewburn also wrote; the current server bundles its parser closed-source, so the dependency is no longer visible.',
                 'announceUrl' => '',
@@ -492,7 +249,8 @@ final class SummaryReport
                 'license' => 'MIT',
                 'licenseNote' => '',
                 'initial' => '2018',
-                'latest' => '2026.07.22.0 (2026-07-22)',
+                'latestVersion' => '2026.07.22.0',
+                'latestDate' => '2026-07-22',
                 'ast' => 'tolerant-php-parser (fork)',
                 'astNote' => 'A fork of Microsoft’s tolerant-php-parser maintained under the Phpactor org; the founder’s blog says nikic/PHP-Parser was tried first and dropped because the tolerant parser “was designed exactly for Phpactor’s use case”.',
                 'announceUrl' => 'https://www.dantleech.com/blog/2018/08/19/three-years-of-phpactor/',
@@ -518,7 +276,8 @@ final class SummaryReport
                 'licenseNote' => '',
                 'initial' => '2018',
                 'initialNote' => 'The server binary landed quietly in 2.0.15 (2018-10-19), a commit titled “Add server mode support with error reporting only”; the psalm-language-server bin was in composer.json by that tag. It only got a public announcement two months later, with Psalm 3.',
-                'latest' => '6.16.1 (2026-03-19)',
+                'latestVersion' => '6.16.1',
+                'latestDate' => '2026-03-19',
                 'ast' => 'nikic/PHP-Parser',
                 'astNote' => 'Same parser as the CLI. The LSP wire types are not in-tree either — they come from felixfbecker/language-server-protocol and danog/advanced-json-rpc.',
                 'announceUrl' => 'https://psalm.dev/articles/announcing-psalm-v3',
@@ -543,7 +302,8 @@ final class SummaryReport
                 'license' => 'Proprietary (freemium)',
                 'licenseNote' => 'package.json declares ISC, which covers the npm wrapper only: the README states the functionality itself is “provided to end-users under a freemium model”, activated with a license key. DEVSENSE’s Community License is free for OSI-licensed open source, education, and any entity under 250 seats and US$1M revenue.',
                 'initial' => '2025',
-                'latest' => '1.0.19075 (2026-07-16)',
+                'latestVersion' => '1.0.19075',
+                'latestDate' => '2026-07-16',
                 'ast' => 'Not stated',
                 'astNote' => 'No DEVSENSE page names the parser or AST behind the engine.',
                 'announceUrl' => 'https://blog.devsense.com/2025/update-1-58-benchmarks/',
@@ -567,7 +327,8 @@ final class SummaryReport
                 'license' => 'MIT',
                 'licenseNote' => '',
                 'initial' => '2026',
-                'latest' => '0.9.0 (2026-07-19)',
+                'latestVersion' => '0.9.0',
+                'latestDate' => '2026-07-19',
                 'ast' => 'Mago parser (mago-syntax)',
                 'astNote' => 'The README credits “Mago: the PHP parser that powers all of PHPantom’s AST analysis”; Cargo.toml exact-pins mago-syntax and a half-dozen sibling mago-* crates.',
                 'announceUrl' => '',
@@ -591,7 +352,8 @@ final class SummaryReport
                 'license' => 'MIT',
                 'licenseNote' => '',
                 'initial' => '2026',
-                'latest' => '0.20.0 (2026-07-19)',
+                'latestVersion' => '0.20.0',
+                'latestDate' => '2026-07-19',
                 'ast' => 'own (php-rs-parser)',
                 'astNote' => 'Dedicated php-rs-parser and php-ast crates, published separately by the same author.',
                 'announceUrl' => '',
@@ -599,131 +361,19 @@ final class SummaryReport
             ],
         ];
 
-        $headers = ['Language server', 'Diagnostics', 'Analyzers driven', 'Bundled with it', 'Language', 'Founder', 'Organization', 'Lead maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
+        $optional = [
+            'diagnosticsNote' => '',
+            'analyzersNote' => '',
+            'bundledNote' => '',
+            'languageNote' => '',
+            'licenseNote' => '',
+            'initialNote' => '',
+            'astNote' => '',
+        ];
 
-        $lines = [];
-        $lines[] = '<h2 class="section">Language servers</h2>';
-        $lines[] = '<p class="section-note"><strong>Only Intelephense and Psalm have been run against the conformance suite; the other four have not.</strong> Their scores live in the matrix above, not here. Every cell in this table records what the project claims about itself &mdash; from its README, docs, changelog, release notes, package metadata, or its maintainer&rsquo;s own blog &mdash; and no claim here has been verified by executing the tool, those two included. Cells read <em>Not stated</em> where the project simply does not say.</p>';
-        $lines[] = '<p class="section-note">Four rows also appear in the analyzer table above. <strong>Intelephense</strong> and <strong>Psalm</strong> are in both as the same tool &mdash; Psalm&rsquo;s server runs the analyzer its CLI does, reached over the protocol instead of the command line. The other two are pairs: <strong>php-lsp</strong> drives <em>mir</em>, and <em>phpy</em> is the CLI frontend of <strong>devsense-php-ls</strong>. Each pair is versioned separately, so each artifact keeps its own row and its own dates. <a href="https://github.com/phan/phan" target="_blank" rel="noopener">Phan</a> ships a language server too and belongs here; it has simply not been researched yet.</p>';
-        $lines[] = '<div class="table-scroll"><table class="analyzer-meta">';
-        $lines[] = '<thead><tr>';
-        foreach ($headers as $header) {
-            $lines[] = '<th scope="col">' . htmlspecialchars($header) . '</th>';
-        }
-        $lines[] = '</tr></thead><tbody>';
-
-        foreach ($rows as $row) {
-            $announcement = $row['announceUrl'] !== ''
-                ? sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($row['announceUrl']), htmlspecialchars($row['announceLabel']))
-                : '<span class="none">—</span>';
-
-            $orgCell = $row['orgUrl'] === ''
-                ? htmlspecialchars($row['org'])
-                : sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($row['orgUrl']), htmlspecialchars($row['org']));
-
-            // Same rule as the analyzer table: linked only when the lead
-            // differs from the founder, since Founder already links that
-            // person and a second link would point back at itself.
-            $leadCell = htmlspecialchars($row['lead']);
-            if ($row['leadUrl'] !== '') {
-                $leadCell = sprintf(
-                    '<a href="%s" target="_blank" rel="noopener"%s>%s</a>',
-                    htmlspecialchars($row['leadUrl']),
-                    $row['leadNote'] === '' ? '' : sprintf(' title="%s"', htmlspecialchars($row['leadNote'])),
-                    htmlspecialchars($row['lead']),
-                );
-            } elseif ($row['leadNote'] !== '') {
-                $leadCell = sprintf(
-                    '<span class="succession" title="%s">%s</span>',
-                    htmlspecialchars($row['leadNote']),
-                    htmlspecialchars($row['lead']),
-                );
-            }
-
-            // The year cell already carries markup, so it takes the note as a
-            // wrapper rather than through noted(), which escapes its input.
-            // Psalm needs one: its server shipped in a release two months
-            // before the release that announced it.
-            $initialCell = $this->timeYear($row['initial']);
-            if (($row['initialNote'] ?? '') !== '') {
-                $initialCell = sprintf(
-                    '<span class="noted" title="%s">%s</span>',
-                    htmlspecialchars($row['initialNote']),
-                    $initialCell,
-                );
-            }
-
-            $lines[] = '<tr>'
-                . sprintf('<th class="tool-name"><a href="%s" target="_blank" rel="noopener">%s</a></th>', htmlspecialchars($row['url']), htmlspecialchars($row['name']))
-                . '<td>' . $this->noted($row['diagnostics'], $row['diagnosticsNote'] ?? '') . '</td>'
-                . '<td>' . $this->noted($row['analyzers'], $row['analyzersNote'] ?? '') . '</td>'
-                . '<td>' . $this->noted($row['bundled'], $row['bundledNote'] ?? '') . '</td>'
-                . '<td>' . $this->noted($row['language'], $row['languageNote'] ?? '') . '</td>'
-                . '<td>' . $row['founder'] . '</td>'
-                . '<td>' . $orgCell . '</td>'
-                . '<td>' . $leadCell . '</td>'
-                . '<td>' . $this->noted($row['license'], $row['licenseNote'] ?? '') . '</td>'
-                . '<td>' . $initialCell . '</td>'
-                . '<td>' . $this->timeLatestRelease($row['latest']) . '</td>'
-                . '<td>' . $this->noted($row['ast'], $row['astNote'] ?? '') . '</td>'
-                . '<td>' . $announcement . '</td>'
-                . '</tr>';
-        }
-
-        $lines[] = '</tbody></table></div>';
-
-        return $lines;
-    }
-
-    /**
-     * A cell value, optionally carrying a hover note.
-     *
-     * Without a note this is plain escaped text, so a cell never picks up the
-     * dotted "there is more here" underline unless there really is more.
-     */
-    private function noted(string $text, string $note): string
-    {
-        if ($note === '') {
-            return htmlspecialchars($text);
-        }
-
-        return sprintf(
-            '<span class="noted" title="%s">%s</span>',
-            htmlspecialchars($note),
-            htmlspecialchars($text),
-        );
-    }
-
-    /**
-     * Wrap a calendar year for machine-readable markup.
-     *
-     * HTML has no &lt;date&gt;; years and dates use &lt;time datetime&gt;.
-     */
-    private function timeYear(string $year): string
-    {
-        return sprintf(
-            '<time datetime="%s">%s</time>',
-            htmlspecialchars($year),
-            htmlspecialchars($year),
-        );
-    }
-
-    /**
-     * Render "version (YYYY-MM-DD)" with the date as &lt;time datetime&gt;.
-     *
-     * Falls back to plain escaped text when the trailing date is missing.
-     */
-    private function timeLatestRelease(string $latest): string
-    {
-        if (preg_match('/^(.+?)\s+\((\d{4}-\d{2}-\d{2})\)$/', $latest, $matches) !== 1) {
-            return htmlspecialchars($latest);
-        }
-
-        return sprintf(
-            '%s (<time datetime="%s">%s</time>)',
-            htmlspecialchars($matches[1]),
-            htmlspecialchars($matches[2]),
-            htmlspecialchars($matches[2]),
+        return array_map(
+            static fn (array $row): array => $row + $optional,
+            $rows,
         );
     }
 
@@ -733,7 +383,6 @@ final class SummaryReport
      * @param array<string, TestGroup> $testGroups
      * @param list<TestCase> $cases
      * @param list<string> $tools
-     * @return list<string>
      */
     private function renderMatrix(
         string $resultsRoot,
@@ -741,20 +390,16 @@ final class SummaryReport
         array $cases,
         array $tools,
         bool $style,
-    ): array {
-        $lines = [];
-        $lines[] = '<table>';
-        $lines[] = '<thead><tr><th scope="col">Test</th>';
-
+    ): string {
+        $toolColumns = [];
         foreach ($tools as $tool) {
-            $lines[] = sprintf(
-                '<th scope="col">%s<br><small>%s</small></th>',
-                htmlspecialchars($tool),
-                $this->versionCell($resultsRoot, $tool),
-            );
+            $toolColumns[] = [
+                'name' => $tool,
+                'versionHtml' => $this->versionCell($resultsRoot, $tool),
+            ];
         }
 
-        $lines[] = '</tr></thead><tbody>';
+        $groups = [];
 
         foreach ($testGroups as $groupKey => $group) {
             $groupCases = array_values(array_filter(
@@ -766,22 +411,12 @@ final class SummaryReport
                 continue;
             }
 
-            $lines[] = sprintf(
-                '<tr class="group"><td colspan="%d">%s</td></tr>',
-                count($tools) + 1,
-                htmlspecialchars($group->name),
-            );
+            $rows = [];
 
             foreach ($groupCases as $testCase) {
                 [$title] = $this->docblock($testCase);
-                $href = self::DETAILS_DIR . '/' . rawurlencode($testCase->name) . '.html';
 
-                $lines[] = sprintf(
-                    '<tr id="%s"><td class="test-cell"><a class="test-link" href="%s">%s</a></td>',
-                    htmlspecialchars($testCase->name),
-                    htmlspecialchars($href),
-                    $this->renderInline($title),
-                );
+                $cells = [];
 
                 foreach ($tools as $tool) {
                     $result = $this->loadResult($resultsRoot, $tool, $testCase->name);
@@ -805,24 +440,28 @@ final class SummaryReport
                         $cell .= $this->falsePositiveSuffix($result);
                     }
 
-                    $notes = trim((string) ($result['notes'] ?? ''));
-                    if ($notes !== '') {
-                        $cell .= sprintf(
-                            ' <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">%s</span></span>',
-                            $this->renderLinkedText($notes),
-                        );
-                    }
-
-                    $lines[] = sprintf('<td class="%s"><a class="cell-link" href="%s">%s</a></td>', $class, htmlspecialchars($href), $cell);
+                    $cells[] = [
+                        'class' => $class,
+                        'html' => $cell,
+                        'notes' => trim((string) ($result['notes'] ?? '')),
+                    ];
                 }
 
-                $lines[] = '</tr>';
+                $rows[] = [
+                    'id' => $testCase->name,
+                    'href' => self::DETAILS_DIR . '/' . rawurlencode($testCase->name) . '.html',
+                    'titleHtml' => h_inline($title),
+                    'cells' => $cells,
+                ];
             }
+
+            $groups[] = ['name' => $group->name, 'rows' => $rows];
         }
 
-        $lines[] = '</tbody></table>';
-
-        return $lines;
+        return $this->render('matrix.phtml', [
+            'tools' => $toolColumns,
+            'groups' => $groups,
+        ]);
     }
 
     /**
@@ -836,28 +475,7 @@ final class SummaryReport
     ): string {
         [$title, $description] = $this->docblock($testCase);
 
-        $body = [];
-        $body[] = sprintf('<p class="crumb"><a href="../%s">&larr; All results</a></p>', self::INDEX_FILE);
-        $body[] = sprintf('<h1>%s</h1>', $this->renderInline($title));
-
-        $meta = [];
-        if ($group !== null) {
-            $meta[] = 'Group: ' . htmlspecialchars($group->name);
-            $meta[] = 'Category: ' . htmlspecialchars($group->sourceCategory);
-        }
-        $meta[] = 'File: ' . htmlspecialchars($testCase->fileName);
-        if ($this->testKind($testCase) === 'style') {
-            $meta[] = 'Kind: <strong>Style / opinionated</strong> (no runtime-safety impact)';
-        }
-        $body[] = '<p class="meta">' . implode(' &middot; ', $meta) . '</p>';
-
-        if ($description !== '') {
-            $body[] = '<div class="doc">' . $this->renderMultiline($description) . '</div>';
-        }
-
-        $body[] = '<h2>Analyzer results</h2>';
-        $body[] = '<table class="detail-results">';
-        $body[] = '<thead><tr><th scope="col">Analyzer</th><th scope="col">Version</th><th scope="col">Result</th><th scope="col">Diagnostics</th></tr></thead><tbody>';
+        $rows = [];
 
         foreach ($tools as $tool) {
             $result = $this->loadResult($resultsRoot, $tool, $testCase->name);
@@ -865,123 +483,92 @@ final class SummaryReport
             $status = htmlspecialchars($display) . $this->levelSuffix($result) . $this->falsePositiveSuffix($result);
 
             $output = trim((string) ($result['output'] ?? ''));
-            $errorsDiff = trim((string) ($result['errors_diff'] ?? ''));
-            $notes = trim((string) ($result['notes'] ?? ''));
 
             // The phpstan row also carries strict-rules-only diagnostics; the
             // psalm row carries pzoom's (Psalm port) diagnostics where they differ.
-            $mergeExtra = '';
+            $extra = null;
             if ($tool === 'phpstan') {
                 [, , $suffix] = $this->phpstanMerged($resultsRoot, $testCase->name, $result, false);
                 $status = htmlspecialchars($display) . ($output !== '' ? $this->levelSuffix($result) : $suffix);
                 $strictOutput = trim((string) ($this->loadResult($resultsRoot, 'phpstan-strict', $testCase->name)['output'] ?? ''));
                 if ($strictOutput !== '' && $strictOutput !== $output) {
-                    $mergeExtra = '<details' . ($output === '' ? ' open' : '') . '><summary>With strict-rules</summary><pre class="diag">'
-                        . htmlspecialchars($strictOutput) . '</pre></details>';
+                    $extra = [
+                        'summary' => 'With strict-rules',
+                        'output' => $strictOutput,
+                        'emptyMessage' => '',
+                    ];
                 }
             } elseif ($tool === 'psalm') {
                 [, , $suffix] = $this->psalmMerged($resultsRoot, $testCase->name, $result, false);
                 $status = htmlspecialchars($display) . $suffix;
                 if ($suffix !== '') {
-                    $pzoomOutput = trim((string) ($this->loadResult($resultsRoot, 'pzoom', $testCase->name)['output'] ?? ''));
-                    $mergeExtra = '<details' . ($output === '' ? ' open' : '') . '><summary>pzoom (Psalm port)</summary>'
-                        . ($pzoomOutput !== '' ? '<pre class="diag">' . htmlspecialchars($pzoomOutput) . '</pre>' : '<p class="none">No diagnostics from pzoom.</p>')
-                        . '</details>';
+                    $extra = [
+                        'summary' => 'pzoom (Psalm port)',
+                        'output' => trim((string) ($this->loadResult($resultsRoot, 'pzoom', $testCase->name)['output'] ?? '')),
+                        'emptyMessage' => 'No diagnostics from pzoom.',
+                    ];
                 }
             }
 
-            $diagnostics = '';
-            if ($output !== '') {
-                $diagnostics .= '<pre class="diag">' . htmlspecialchars($output) . '</pre>';
-            } elseif ($mergeExtra === '') {
-                $diagnostics .= '<p class="none">No diagnostics reported.</p>';
-            }
-            $diagnostics .= $mergeExtra;
-            $diagnostics .= $this->typeHandlingBreakdown($result);
-            if ($errorsDiff !== '') {
-                $diagnostics .= '<details><summary>Expectation diff</summary><pre class="diag">' . htmlspecialchars($errorsDiff) . '</pre></details>';
-            }
-            if ($notes !== '') {
-                $diagnostics .= '<p class="note-line"><strong>Notes:</strong> ' . $this->renderLinkedText($notes) . '</p>';
-            }
-
-            $body[] = sprintf(
-                '<tr><th class="tool-name">%s</th><td><small>%s</small></td><td class="%s status-cell">%s</td><td class="diag-cell">%s</td></tr>',
-                htmlspecialchars($tool),
-                $this->versionCell($resultsRoot, $tool),
-                $class,
-                $status,
-                $diagnostics,
-            );
+            $rows[] = [
+                'tool' => $tool,
+                'versionHtml' => $this->versionCell($resultsRoot, $tool),
+                'statusClass' => $class,
+                'statusHtml' => $status,
+                'output' => $output,
+                'extra' => $extra,
+                'facets' => $this->typeHandlingFacets($result),
+                'errorsDiff' => trim((string) ($result['errors_diff'] ?? '')),
+                'notes' => trim((string) ($result['notes'] ?? '')),
+            ];
         }
 
-        $body[] = '</tbody></table>';
-
-        $body[] = '<h2>Source</h2>';
-        $body[] = '<pre class="source"><code>' . htmlspecialchars($this->readSource($testCase->path)) . '</code></pre>';
-
+        $supports = [];
         foreach ($testCase->supportPaths as $supportPath) {
-            $body[] = sprintf('<h2>Support: <code>%s</code></h2>', htmlspecialchars(basename($supportPath)));
-            $body[] = '<pre class="source"><code>' . htmlspecialchars($this->readSource($supportPath)) . '</code></pre>';
+            $supports[] = [
+                'name' => basename($supportPath),
+                'code' => $this->readSource($supportPath),
+            ];
         }
+
+        $body = $this->render('detail.phtml', [
+            'indexHref' => '../' . self::INDEX_FILE,
+            'titleHtml' => h_inline($title),
+            'group' => $group === null
+                ? null
+                : ['name' => $group->name, 'category' => $group->sourceCategory],
+            'file' => $testCase->fileName,
+            'isStyle' => $this->testKind($testCase) === 'style',
+            'description' => $description,
+            'rows' => $rows,
+            'source' => $this->readSource($testCase->path),
+            'supports' => $supports,
+        ]);
 
         return $this->renderPage($title . ' — Conformance', $body, true);
     }
 
     /**
-     * Wrap body lines in the shared page skeleton.
-     *
-     * @param list<string> $body
+     * Wrap a rendered body in the shared page skeleton.
      */
-    private function renderPage(string $title, array $body, bool $isDetail): string
+    private function renderPage(string $title, string $body, bool $isDetail): string
     {
-        $html = [];
-        $html[] = '<!DOCTYPE html>';
-        $html[] = '<html lang="en">';
-        $html[] = '<head>';
-        $html[] = '  <meta charset="UTF-8">';
-        $html[] = '  <meta name="viewport" content="width=device-width, initial-scale=1.0">';
-        $html[] = sprintf('  <title>%s</title>', htmlspecialchars($title));
-        // Detail pages sit one directory deeper than the index.
-        $html[] = sprintf(
-            '  <link rel="stylesheet" href="%s%s">',
-            $isDetail ? '../' : '',
-            self::STYLESHEET_FILE,
-        );
-        $html[] = '</head>';
-        $html[] = '<body class="' . ($isDetail ? 'detail' : 'index') . '">';
-        foreach ($body as $line) {
-            $html[] = $line;
-        }
-        if ($isDetail) {
-            $html[] = $this->highlightScript();
-        }
-        $html[] = '</body></html>';
-
-        return implode("\n", $html);
+        return $this->render('page.phtml', [
+            'title' => $title,
+            'bodyClass' => $isDetail ? 'detail' : 'index',
+            // Detail pages sit one directory deeper than the index.
+            'stylesheet' => ($isDetail ? '../' : '') . self::STYLESHEET_FILE,
+            'body' => $body,
+            'script' => $isDetail ? $this->render('highlight.phtml') : '',
+        ]);
     }
 
     /**
-     * Client-side syntax highlighting for the source blocks via Shiki (CDN).
-     *
-     * @see https://shiki.style/guide/install#cdn-usage
+     * @param array<string, mixed> $vars
      */
-    private function highlightScript(): string
+    private function render(string $template, array $vars = []): string
     {
-        return <<<'HTML'
-<script type="module">
-  import { codeToHtml } from 'https://esm.sh/shiki@4.3.1';
-
-  for (const code of document.querySelectorAll('pre.source > code')) {
-    const pre = code.closest('pre.source');
-    try {
-      pre.outerHTML = await codeToHtml(code.textContent, { lang: 'php', theme: 'github-dark' });
-    } catch (error) {
-      console.error('shiki highlight failed', error);
-    }
-  }
-</script>
-HTML;
+        return $this->renderer->render($template, $vars);
     }
 
     /**
@@ -989,13 +576,15 @@ HTML;
      *
      * The report is a directory of ~100 detail pages plus an index; a linked
      * stylesheet keeps one copy of it instead of inlining the same block into
-     * every page, and keeps the CSS editable as CSS.
+     * every page, and keeps the CSS editable as CSS. It sits with the
+     * templates, so the renderer is asked where that is rather than this class
+     * keeping a second path to the same directory.
      */
     private function copyStylesheet(string $resultsRoot): void
     {
         $destination = $resultsRoot . DIRECTORY_SEPARATOR . self::STYLESHEET_FILE;
 
-        if (!copy(self::STYLESHEET_SOURCE, $destination)) {
+        if (!copy($this->renderer->path(self::STYLESHEET_FILE), $destination)) {
             throw new RuntimeException(sprintf('Failed to write stylesheet: %s', $destination));
         }
     }
@@ -1156,49 +745,32 @@ HTML;
     }
 
     /**
-     * Spell out the two facets line by line on the detail page, so a `Partly
-     * enforced` or `Unrecognized` cell can be traced back to the exact
-     * declarations and call sites behind it.
+     * The two facets behind a type-handling verdict, for the detail page to
+     * spell out line by line: null for a test that is not type-handling.
      *
      * @param array<string, mixed> $result
+     * @return array{recognition: string, enforced: string, incidental: bool, falsePositives: string}|null
      */
-    private function typeHandlingBreakdown(array $result): string
+    private function typeHandlingFacets(array $result): ?array
     {
         if (!isset($result['recognition'])) {
-            return '';
+            return null;
         }
 
         $unrecognized = $result['unrecognized_lines'] ?? [];
         $falsePositives = $result['false_positive_lines'] ?? [];
+        $unresolved = is_array($unrecognized) && $unrecognized !== [];
 
-        $items = [];
-        $items[] = sprintf(
-            '<li><strong>Recognition:</strong> %s</li>',
-            is_array($unrecognized) && $unrecognized !== []
-                ? htmlspecialchars(sprintf(
-                    'spelling not resolved — reported on declaration line(s) %s',
-                    implode(', ', $unrecognized),
-                ))
+        return [
+            'recognition' => $unresolved
+                ? sprintf('spelling not resolved — reported on declaration line(s) %s', implode(', ', $unrecognized))
                 : 'spelling resolved',
-        );
-        $items[] = sprintf(
-            '<li><strong>Enforcement:</strong> %s of the expected violations reported%s</li>',
-            htmlspecialchars((string) ($result['enforced_lines'] ?? '')),
-            // An unresolved spelling often rejects every value, valid ones
-            // included, so hits on the violating lines are not enforcement.
-            is_array($unrecognized) && $unrecognized !== []
-                ? ' &mdash; incidental, since the spelling was not resolved'
+            'enforced' => (string) ($result['enforced_lines'] ?? ''),
+            'incidental' => $unresolved,
+            'falsePositives' => is_array($falsePositives) && $falsePositives !== []
+                ? sprintf('line(s) %s', implode(', ', $falsePositives))
                 : '',
-        );
-
-        if (is_array($falsePositives) && $falsePositives !== []) {
-            $items[] = sprintf(
-                '<li><strong>False positives:</strong> %s</li>',
-                htmlspecialchars(sprintf('line(s) %s', implode(', ', $falsePositives))),
-            );
-        }
-
-        return '<ul class="facets">' . implode('', $items) . '</ul>';
+        ];
     }
 
     /**
@@ -1448,65 +1020,6 @@ HTML;
         }
 
         return $version;
-    }
-
-    /**
-     * Escape text, then turn `code` spans into <code> and linkify bare URLs.
-     */
-    private function renderInline(string $text): string
-    {
-        $escaped = htmlspecialchars($text);
-
-        $escaped = preg_replace_callback(
-            '/`([^`]+)`/',
-            static fn (array $matches): string => '<code>' . $matches[1] . '</code>',
-            $escaped,
-        ) ?? $escaped;
-
-        return $this->linkify($escaped);
-    }
-
-    private function renderMultiline(string $text): string
-    {
-        return $this->renderInline($text);
-    }
-
-    private function renderLinkedText(string $text): string
-    {
-        return $this->linkify(htmlspecialchars($text));
-    }
-
-    private function linkify(string $escaped): string
-    {
-        $linked = preg_replace_callback(
-            '/https?:\/\/[^\s<]+/i',
-            static function (array $matches): string {
-                $url = $matches[0];
-
-                // Keep trailing sentence punctuation out of the link target.
-                $trailing = '';
-                while ($url !== '' && str_contains('.,;:)]}', substr($url, -1))) {
-                    $trailing = substr($url, -1) . $trailing;
-                    $url = substr($url, 0, -1);
-                }
-
-                // Shorten GitHub issue/PR links to `<repo>#<number>`.
-                $label = $url;
-                if (preg_match('~^https?://github\.com/[^/\s]+/([^/\s]+)/(?:issues|pull)/(\d+)(?:[/#?][^\s<]*)?$~i', $url, $ref) === 1) {
-                    $label = htmlspecialchars($ref[1] . '#' . $ref[2]);
-                }
-
-                return sprintf(
-                    '<a href="%s" target="_blank" rel="noopener">%s</a>%s',
-                    $url,
-                    $label,
-                    $trailing,
-                );
-            },
-            $escaped,
-        );
-
-        return $linked ?? $escaped;
     }
 
     /**

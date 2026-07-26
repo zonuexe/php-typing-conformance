@@ -1,0 +1,94 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * A per-test detail page: what the test asks, what every analyzer answered,
+ * and the source it answered about.
+ *
+ * @var string $indexHref
+ * @var string $titleHtml
+ * @var array{name: string, category: string}|null $group
+ * @var string $file
+ * @var bool $isStyle
+ * @var string $description
+ * @var list<array{tool: string, versionHtml: string, statusClass: string, statusHtml: string, output: string, extra: array{summary: string, output: string, emptyMessage: string}|null, facets: array{recognition: string, enforced: string, incidental: bool, falsePositives: string}|null, errorsDiff: string, notes: string}> $rows
+ * @var string $source
+ * @var list<array{name: string, code: string}> $supports
+ */
+
+$meta = [];
+if ($group !== null) {
+    $meta[] = 'Group: ' . h($group['name']);
+    $meta[] = 'Category: ' . h($group['category']);
+}
+$meta[] = 'File: ' . h($file);
+if ($isStyle) {
+    $meta[] = 'Kind: <strong>Style / opinionated</strong> (no runtime-safety impact)';
+}
+
+?>
+<p class="crumb"><a href="<?= h($indexHref) ?>">&larr; All results</a></p>
+<h1><?= $titleHtml ?></h1>
+<p class="meta"><?= implode(' &middot; ', $meta) ?></p>
+<?php if ($description !== ''): ?>
+<div class="doc"><?= h_inline($description) ?></div>
+<?php endif; ?>
+<h2>Analyzer results</h2>
+<table class="detail-results">
+<thead><tr><th scope="col">Analyzer</th><th scope="col">Version</th><th scope="col">Result</th><th scope="col">Diagnostics</th></tr></thead><tbody>
+<?php foreach ($rows as $row): ?>
+<tr><th class="tool-name"><?= h($row['tool']) ?></th>
+<td><small><?= $row['versionHtml'] ?></small></td>
+<td class="<?= $row['statusClass'] ?> status-cell"><?= $row['statusHtml'] ?></td>
+<td class="diag-cell"><?php
+    if ($row['output'] !== ''):
+        ?><pre class="diag"><?= h($row['output']) ?></pre><?php
+    elseif ($row['extra'] === null):
+        ?><p class="none">No diagnostics reported.</p><?php
+    endif;
+
+    // The phpstan row also carries strict-rules-only diagnostics; the psalm
+    // row carries pzoom's (Psalm port) diagnostics where they differ. Opened
+    // by default when it is the only thing in the cell.
+    if ($row['extra'] !== null):
+        ?><details<?= $row['output'] === '' ? ' open' : '' ?>><summary><?= h($row['extra']['summary']) ?></summary><?php
+        if ($row['extra']['output'] !== ''):
+            ?><pre class="diag"><?= h($row['extra']['output']) ?></pre><?php
+        else:
+            ?><p class="none"><?= h($row['extra']['emptyMessage']) ?></p><?php
+        endif;
+        ?></details><?php
+    endif;
+
+    // Spell out the two facets of a type-handling test line by line, so a
+    // `Partly enforced` or `Unrecognized` cell can be traced back to the exact
+    // declarations and call sites behind it.
+    if ($row['facets'] !== null):
+        ?><ul class="facets"><li><strong>Recognition:</strong> <?= h($row['facets']['recognition']) ?></li><li><strong>Enforcement:</strong> <?= h($row['facets']['enforced']) ?> of the expected violations reported<?php
+        // An unresolved spelling often rejects every value, valid ones
+        // included, so hits on the violating lines are not enforcement.
+        echo $row['facets']['incidental'] ? ' &mdash; incidental, since the spelling was not resolved' : '';
+        ?></li><?php
+        if ($row['facets']['falsePositives'] !== ''):
+            ?><li><strong>False positives:</strong> <?= h($row['facets']['falsePositives']) ?></li><?php
+        endif;
+        ?></ul><?php
+    endif;
+
+    if ($row['errorsDiff'] !== ''):
+        ?><details><summary>Expectation diff</summary><pre class="diag"><?= h($row['errorsDiff']) ?></pre></details><?php
+    endif;
+
+    if ($row['notes'] !== ''):
+        ?><p class="note-line"><strong>Notes:</strong> <?= h_linked($row['notes']) ?></p><?php
+    endif;
+?></td></tr>
+<?php endforeach; ?>
+</tbody></table>
+<h2>Source</h2>
+<pre class="source"><code><?= h($source) ?></code></pre>
+<?php foreach ($supports as $support): ?>
+<h2>Support: <code><?= h($support['name']) ?></code></h2>
+<pre class="source"><code><?= h($support['code']) ?></code></pre>
+<?php endforeach; ?>

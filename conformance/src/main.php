@@ -20,33 +20,12 @@ use Conformance\Expectation\ExpectationParser;
 use Conformance\Expectation\ExpectedDiagnostic;
 use Conformance\Result\ResultRecord;
 use Conformance\Result\ResultRepository;
+use Conformance\Metadata\AnalyzerCatalog;
+use Conformance\Metadata\ReleaseTable;
 use Conformance\Reporting\SummaryReport;
+use Conformance\Reporting\TemplateRenderer;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/Checker/Checker.php';
-require_once __DIR__ . '/Checker/MagoChecker.php';
-require_once __DIR__ . '/Checker/MirChecker.php';
-require_once __DIR__ . '/Checker/IntelephenseChecker.php';
-require_once __DIR__ . '/Checker/NoVerifyChecker.php';
-require_once __DIR__ . '/Checker/PhanChecker.php';
-require_once __DIR__ . '/Checker/PhpyChecker.php';
-require_once __DIR__ . '/Checker/PhpStanChecker.php';
-require_once __DIR__ . '/Checker/PsalmChecker.php';
-require_once __DIR__ . '/Checker/PzoomChecker.php';
-require_once __DIR__ . '/Checker/SteinsChecker.php';
-require_once __DIR__ . '/Discovery/TestCase.php';
-require_once __DIR__ . '/Discovery/TestCaseDiscovery.php';
-require_once __DIR__ . '/Expectation/ExpectedDiagnostic.php';
-require_once __DIR__ . '/Expectation/ExpectationEvaluation.php';
-require_once __DIR__ . '/Expectation/ExpectationEvaluator.php';
-require_once __DIR__ . '/Expectation/ExpectationParser.php';
-require_once __DIR__ . '/Expectation/TypeHandling.php';
-require_once __DIR__ . '/Expectation/TypeMarker.php';
-require_once __DIR__ . '/Result/ResultRecord.php';
-require_once __DIR__ . '/Result/ResultRepository.php';
-require_once __DIR__ . '/Reporting/SummaryReport.php';
-require_once __DIR__ . '/TestGroup/TestGroup.php';
-require_once __DIR__ . '/TestGroup/TestGroupLoader.php';
 
 /**
  * Lowest PHPStan level whose rules report one of the diagnostics this test
@@ -82,6 +61,8 @@ $rootDir = dirname(__DIR__);
 $testGroupsFile = $rootDir . '/src/test-groups.toml';
 $testsDir = $rootDir . '/tests';
 $resultsDir = $rootDir . '/results';
+$templatesDir = $rootDir . '/templates';
+$analyzerReleasesFile = $rootDir . '/data/analyzer-releases.toml';
 $projectRoot = dirname($rootDir);
 $phpStanConfigPath = $rootDir . '/phpstan.dist.neon';
 $phpStanNoStrictConfigPath = $rootDir . '/phpstan-no-strict.neon';
@@ -94,7 +75,10 @@ $testCases = $discovery->discover($testsDir, $testGroups);
 $expectationEvaluator = new ExpectationEvaluator();
 $expectationParser = new ExpectationParser();
 $resultRepository = new ResultRepository($resultsDir);
-$summaryReport = new SummaryReport();
+$summaryReport = new SummaryReport(
+    new TemplateRenderer($templatesDir),
+    AnalyzerCatalog::build(ReleaseTable::fromTomlFile($analyzerReleasesFile)),
+);
 $phpStanChecker = new PhpStanChecker(
     toolName: 'phpstan',
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',

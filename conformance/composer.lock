@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6db2a77bf9fb8827093d5717bdb9d64a",
+    "content-hash": "fc71cb9ffd86130a78474a1bb4da80c1",
     "packages": [
         {
             "name": "internal/toml",

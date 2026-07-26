@@ -1,0 +1,64 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * The reference table of PHP language servers.
+ *
+ * Most cells carry a hover note explaining what the short value does and does
+ * not claim; `founder` is curated markup and goes out as written. See
+ * SummaryReport::languageServerRows() for the sourcing rules this table
+ * follows.
+ *
+ * @var list<array<string, string>> $rows every note key is present, '' when unused
+ */
+
+$headers = ['Language server', 'Diagnostics', 'Analyzers driven', 'Bundled with it', 'Language', 'Founder', 'Organization', 'Lead maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
+
+?>
+<h2 class="section">Language servers</h2>
+<p class="section-note"><strong>Only Intelephense and Psalm have been run against the conformance suite; the other four have not.</strong> Their scores live in the matrix above, not here. Every cell in this table records what the project claims about itself &mdash; from its README, docs, changelog, release notes, package metadata, or its maintainer&rsquo;s own blog &mdash; and no claim here has been verified by executing the tool, those two included. Cells read <em>Not stated</em> where the project simply does not say.</p>
+<p class="section-note">Four rows also appear in the analyzer table above. <strong>Intelephense</strong> and <strong>Psalm</strong> are in both as the same tool &mdash; Psalm&rsquo;s server runs the analyzer its CLI does, reached over the protocol instead of the command line. The other two are pairs: <strong>php-lsp</strong> drives <em>mir</em>, and <em>phpy</em> is the CLI frontend of <strong>devsense-php-ls</strong>. Each pair is versioned separately, so each artifact keeps its own row and its own dates. <a href="https://github.com/phan/phan" target="_blank" rel="noopener">Phan</a> ships a language server too and belongs here; it has simply not been researched yet.</p>
+<div class="table-scroll"><table class="analyzer-meta">
+<thead><tr>
+<?php foreach ($headers as $header): ?>
+<th scope="col"><?= h($header) ?></th>
+<?php endforeach; ?>
+</tr></thead><tbody>
+<?php foreach ($rows as $row): ?>
+<tr><th class="tool-name"><a href="<?= h($row['url']) ?>" target="_blank" rel="noopener"><?= h($row['name']) ?></a></th><td><?= h_noted($row['diagnostics'], $row['diagnosticsNote']) ?></td><td><?= h_noted($row['analyzers'], $row['analyzersNote']) ?></td><td><?= h_noted($row['bundled'], $row['bundledNote']) ?></td><td><?= h_noted($row['language'], $row['languageNote']) ?></td><td><?= $row['founder'] ?></td><td><?php
+    if ($row['orgUrl'] === ''):
+        echo h($row['org']);
+    else:
+        ?><a href="<?= h($row['orgUrl']) ?>" target="_blank" rel="noopener"><?= h($row['org']) ?></a><?php
+    endif;
+?></td><td><?php
+    // Same rule as the analyzer table: linked only when the lead differs from
+    // the founder, since Founder already links that person and a second link
+    // would point back at itself.
+    if ($row['leadUrl'] !== ''):
+        ?><a href="<?= h($row['leadUrl']) ?>" target="_blank" rel="noopener"<?= $row['leadNote'] === '' ? '' : ' title="' . h($row['leadNote']) . '"' ?>><?= h($row['lead']) ?></a><?php
+    elseif ($row['leadNote'] !== ''):
+        ?><span class="succession" title="<?= h($row['leadNote']) ?>"><?= h($row['lead']) ?></span><?php
+    else:
+        echo h($row['lead']);
+    endif;
+?></td><td><?= h_noted($row['license'], $row['licenseNote']) ?></td><td><?php
+    // The year cell already carries markup, so it takes the note as a wrapper
+    // rather than through noted(), which escapes its input. Psalm needs one:
+    // its server shipped in a release two months before the release that
+    // announced it.
+    if ($row['initialNote'] === ''):
+        echo h_year($row['initial']);
+    else:
+        ?><span class="noted" title="<?= h($row['initialNote']) ?>"><?= h_year($row['initial']) ?></span><?php
+    endif;
+?></td><td><?= h_release($row['latestVersion'], $row['latestDate']) ?></td><td><?= h_noted($row['ast'], $row['astNote']) ?></td><td><?php
+    if ($row['announceUrl'] === ''):
+        ?><span class="none">—</span><?php
+    else:
+        ?><a href="<?= h($row['announceUrl']) ?>" target="_blank" rel="noopener"><?= h($row['announceLabel']) ?></a><?php
+    endif;
+?></td></tr>
+<?php endforeach; ?>
+</tbody></table></div>

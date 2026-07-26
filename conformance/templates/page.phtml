@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * The shared page skeleton for both the index and the detail pages.
+ *
+ * @var string $title
+ * @var string $bodyClass  `index` or `detail`
+ * @var string $stylesheet href of the stylesheet, relative to this page
+ * @var string $body       already-rendered page body
+ * @var string $script     already-rendered trailing <script>, or ''
+ */
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?= h($title) ?></title>
+  <link rel="stylesheet" href="<?= h($stylesheet) ?>">
+</head>
+<body class="<?= h($bodyClass) ?>">
+<?= $body ?>
+<?php if ($script !== ''): ?>
+<?= $script ?>
+<?php endif; ?>
+</body></html>

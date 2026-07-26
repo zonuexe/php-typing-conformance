@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+directives_deprecated_usage.php:17: Function 'Conformance\\Tests\\DirectivesDeprecatedUsage\\oldMessage' has been deprecated. Use newMessage() instead.
+directives_deprecated_usage.php:18: Type 'Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter' has been deprecated. Use ModernFormatter instead."""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_resource.php:23: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFamilyResource\\open-resource'
+phpdoc_advanced_family_resource.php:32: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsResource() is expected to be of type resource, int given
+phpdoc_advanced_family_resource.php:34: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFamilyResource\\open-resource, bool|resource given
+phpdoc_advanced_family_resource.php:35: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFamilyResource\\acceptsOpenResource() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFamilyResource\\open-resource, string given"""
+errors_diff = "Line 34: Unexpected errors [\"Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\acceptsOpenResource() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFamilyResource\\\\open-resource, bool|resource given\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [23]
+false_positive_lines = [34]

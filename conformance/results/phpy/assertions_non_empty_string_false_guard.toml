@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+assertions_non_empty_string_false_guard.php:41: Argument '1' passed to Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonEmptyString() is expected to be of type string, bool given
+assertions_non_empty_string_false_guard.php:42: Argument '1' passed to Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString() is expected to be of type string, bool given"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

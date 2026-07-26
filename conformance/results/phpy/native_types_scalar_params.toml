@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+native_types_scalar_params.php:25: Argument '1' passed to Conformance\\Tests\\NativeTypesScalarParams\\takesInt() is expected to be of type int, string given
+native_types_scalar_params.php:26: Argument '1' passed to Conformance\\Tests\\NativeTypesScalarParams\\takesString() is expected to be of type string, int given"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

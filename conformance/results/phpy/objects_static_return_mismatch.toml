@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "objects_static_return_mismatch.php:23: Return value of rebuild() is expected to be of type Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder, Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder returned"
+errors_diff = ""
+notes = ""
+ignore_errors = []

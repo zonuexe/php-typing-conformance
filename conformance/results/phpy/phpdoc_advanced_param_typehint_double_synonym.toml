@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_param_typehint_double_synonym.php:44: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedParamTypehintDoubleSynonym\\acceptsOnlyDouble() is expected to be of type float, string given"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

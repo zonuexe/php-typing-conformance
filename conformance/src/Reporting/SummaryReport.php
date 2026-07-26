@@ -195,14 +195,18 @@ final class SummaryReport
         // question for every row:
         //
         // - Backing: the organisation currently behind the project, if any,
-        //   linked to that org's GitHub page where one exists. Often the
-        //   founder's own company or GitHub org (PHPStan s.r.o., Carthage
-        //   Software, TypedDuck/rigortype, VK.COM/VKCOM) rather than an
-        //   outside backer — verified via each org's GitHub page, not assumed
-        //   from the name; the display text is that page's own org name, not
-        //   the URL slug (VKCOM's is "VK.COM", rigortype's is "TypedDuck").
-        //   Phan and Psalm have no company at all, just a multi-contributor
-        //   GitHub home with no single commercial owner — github.com/phan for
+        //   linked to that org's own page. Often the founder's own company or
+        //   GitHub org (PHPStan s.r.o., Carthage Software, TypedDuck/
+        //   rigortype, VK.COM/VKCOM, and Intelephense itself — its footer
+        //   carries an Australian Business Number, so "Intelephense" is a
+        //   registered business, not just a product name, the same
+        //   solo-founder-formalized-as-an-entity pattern as the others)
+        //   rather than an outside backer — verified via each org's own page,
+        //   not assumed from the name; the display text is that page's own
+        //   name, not the URL slug (VKCOM's is "VK.COM", rigortype's is
+        //   "TypedDuck"). Phan and Psalm have no company at all, just a
+        //   multi-contributor GitHub home with no single commercial owner —
+        //   github.com/phan for
         //   Phan, and github.com/psalm (a separate community-packages org,
         //   not vimeo/psalm itself) for Psalm — rendered as a "Community
         //   (org)" link rather than a bare "—" so that distinction ("no
@@ -224,7 +228,7 @@ final class SummaryReport
             ['Phan', '', 'https://github.com/phan/phan', 'Type checker', 'CLI, LSP', 'Fixer (narrow)', 'PHP', 'Rasmus Lerdorf &amp; Andrew Morrison (Etsy)', 'Community (phan)', 'https://github.com/phan', 'Rasmus Lerdorf', 'Every one of the last 10 GitHub releases (5.5.2 through 6.0.7) was cut by rlerdorf; Tyson Andre has no recent commits or releases despite being widely cited elsewhere as the current maintainer.', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
             ['Psalm', 'Also referred to as a “PHP Static Analysis Linting Machine”', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', 'Matt Brown (Vimeo)', 'Community (psalm)', 'https://github.com/psalm', 'Daniil Gentili', 'Sole active maintainer since Vimeo stepped back; the repository still lives under the vimeo/psalm GitHub org.', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
             ['PHPStan', 'PHP Static Analysis Tool', 'https://phpstan.org', 'Type checker', 'CLI', '—', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', 'https://github.com/phpstan', 'Ondřej Mirtes', '', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
-            ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', '—', '', 'Ben Mewburn', '', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
+            ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', 'Intelephense', 'https://intelephense.com', 'Ben Mewburn', '', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
             ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', 'VK (VKCOM)', 'VK.COM', 'https://github.com/VKCOM', '—', '', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
             ['Mago', '', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'https://github.com/carthage-software', 'Saif Eddin Gmati', '', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
             ['mir', '', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', 'Jorg Sowa', '—', '', 'Jorg Sowa', '', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],

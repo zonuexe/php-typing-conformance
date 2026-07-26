@@ -240,8 +240,8 @@ final class SummaryReport
                 . '<td>' . $founder . '</td>'
                 . '<td>' . htmlspecialchars($maintainer) . '</td>'
                 . '<td>' . htmlspecialchars($license) . '</td>'
-                . '<td>' . htmlspecialchars($initial) . '</td>'
-                . '<td>' . htmlspecialchars($latest) . '</td>'
+                . '<td>' . $this->timeYear($initial) . '</td>'
+                . '<td>' . $this->timeLatestRelease($latest) . '</td>'
                 . '<td>' . htmlspecialchars($ast) . '</td>'
                 . '<td>' . $announcement . '</td>'
                 . '</tr>';
@@ -250,6 +250,39 @@ final class SummaryReport
         $lines[] = '</tbody></table></div>';
 
         return $lines;
+    }
+
+    /**
+     * Wrap a calendar year for machine-readable markup.
+     *
+     * HTML has no &lt;date&gt;; years and dates use &lt;time datetime&gt;.
+     */
+    private function timeYear(string $year): string
+    {
+        return sprintf(
+            '<time datetime="%s">%s</time>',
+            htmlspecialchars($year),
+            htmlspecialchars($year),
+        );
+    }
+
+    /**
+     * Render "version (YYYY-MM-DD)" with the date as &lt;time datetime&gt;.
+     *
+     * Falls back to plain escaped text when the trailing date is missing.
+     */
+    private function timeLatestRelease(string $latest): string
+    {
+        if (preg_match('/^(.+?)\s+\((\d{4}-\d{2}-\d{2})\)$/', $latest, $matches) !== 1) {
+            return htmlspecialchars($latest);
+        }
+
+        return sprintf(
+            '%s (<time datetime="%s">%s</time>)',
+            htmlspecialchars($matches[1]),
+            htmlspecialchars($matches[2]),
+            htmlspecialchars($matches[2]),
+        );
     }
 
     /**

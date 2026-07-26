@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Reporting;
 
 use Conformance\Discovery\TestCase;
-use Conformance\Metadata\AnalyzerMetadata;
+use Conformance\Metadata\AnalyzerCatalog;
 use Conformance\TestGroup\TestGroup;
 use Internal\Toml\Toml;
 use RuntimeException;
@@ -29,12 +29,12 @@ final class SummaryReport
     private const INDEX_FILE = 'results.html';
     private const STYLESHEET_FILE = 'report.css';
 
-    /**
-     * @param list<AnalyzerMetadata> $analyzers ordered as the analyzer table shows them
-     */
+    /** What loadVersion() reports when a tool has not recorded one. */
+    private const UNKNOWN_VERSION = 'unknown';
+
     public function __construct(
         private readonly TemplateRenderer $renderer,
-        private readonly array $analyzers,
+        private readonly AnalyzerCatalog $analyzers,
     ) {
     }
 
@@ -98,7 +98,7 @@ final class SummaryReport
             'styleMatrix' => $styleCases === []
                 ? ''
                 : $this->renderMatrix($resultsRoot, $testGroups, $styleCases, $tools, true),
-            'analyzers' => $this->render('analyzers.phtml', ['analyzers' => $this->analyzers]),
+            'analyzers' => $this->render('analyzers.phtml', ['analyzers' => $this->analyzers->all()]),
             'languageServers' => $this->render('language-servers.phtml', ['rows' => $this->languageServerRows()]),
         ]);
 
@@ -923,9 +923,12 @@ final class SummaryReport
 
     private function versionCell(string $resultsRoot, string $tool): string
     {
+        $analyzer = $this->analyzers->find($tool);
         $fullVersion = $this->loadVersion($resultsRoot, $tool);
-        $shortVersion = $this->shortVersion($tool, $fullVersion);
-        $releaseUrl = $this->releaseUrl($tool, $shortVersion);
+        $shortVersion = $analyzer?->shortVersion($fullVersion) ?? trim($fullVersion);
+        $releaseUrl = $shortVersion === self::UNKNOWN_VERSION
+            ? null
+            : $analyzer?->releaseUrl($shortVersion);
         $versionHtml = htmlspecialchars($shortVersion);
         $popupHtml = htmlspecialchars(str_replace("\n", ' ', $fullVersion));
 
@@ -962,64 +965,17 @@ final class SummaryReport
     {
         $path = $resultsRoot . DIRECTORY_SEPARATOR . $tool . DIRECTORY_SEPARATOR . 'version.toml';
         if (!is_file($path)) {
-            return 'unknown';
+            return self::UNKNOWN_VERSION;
         }
 
         $contents = file_get_contents($path);
         if ($contents === false) {
-            return 'unknown';
+            return self::UNKNOWN_VERSION;
         }
 
         $data = Toml::parseToArray($contents);
 
-        return (string) ($data['version'] ?? 'unknown');
-    }
-
-    private function shortVersion(string $tool, string $fullVersion): string
-    {
-        $version = trim($fullVersion);
-
-        return match ($tool) {
-            'phpstan' => $this->extractVersion($version, '/(\d+\.\d+\.\d+)$/'),
-            'phpstan-strict' => $this->extractVersion($version, '/(\d+\.\d+\.\d+)$/'),
-            'psalm' => $this->extractVersion($version, '/Psalm\s+(\d+\.\d+\.\d+)/'),
-            'mago' => $this->extractVersion($version, '/mago\s+(\d+\.\d+\.\d+)/i'),
-            'mir' => $this->extractVersion($version, '/mir\s+(\d+\.\d+\.\d+)/i'),
-            'intelephense' => $this->extractVersion($version, '/intelephense\s+(\d+\.\d+\.\d+)/i'),
-            'steins' => $this->extractVersion($version, '/steins\s+(\d+\.\d+\.\d+)/i'),
-            'phan' => $this->extractVersion($version, '/Phan\s+(\d+\.\d+\.\d+)/'),
-            'noverify' => $this->extractVersion($version, '/version\s+(\d+\.\d+\.\d+)/i'),
-            default => $version,
-        };
-    }
-
-    private function releaseUrl(string $tool, string $shortVersion): ?string
-    {
-        if ($shortVersion === 'unknown') {
-            return null;
-        }
-
-        return match ($tool) {
-            'phpstan' => sprintf('https://github.com/phpstan/phpstan/releases/tag/%s', $shortVersion),
-            'phpstan-strict' => sprintf('https://github.com/phpstan/phpstan/releases/tag/%s', $shortVersion),
-            'psalm' => sprintf('https://github.com/vimeo/psalm/releases/tag/%s', $shortVersion),
-            'mago' => sprintf('https://github.com/carthage-software/mago/releases/tag/%s', $shortVersion),
-            'mir' => sprintf('https://github.com/jorgsowa/mir/releases/tag/v%s', $shortVersion),
-            'intelephense' => sprintf('https://www.npmjs.com/package/intelephense/v/%s', $shortVersion),
-            'steins' => sprintf('https://github.com/rigortype/steins/releases/tag/v%s', $shortVersion),
-            'phan' => sprintf('https://github.com/phan/phan/releases/tag/%s', $shortVersion),
-            'noverify' => sprintf('https://github.com/VKCOM/noverify/releases/tag/v%s', $shortVersion),
-            default => null,
-        };
-    }
-
-    private function extractVersion(string $version, string $pattern): string
-    {
-        if (preg_match($pattern, $version, $matches) === 1) {
-            return $matches[1];
-        }
-
-        return $version;
+        return (string) ($data['version'] ?? self::UNKNOWN_VERSION);
     }
 
     /**

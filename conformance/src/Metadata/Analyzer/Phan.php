@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use function sprintf;
 
 final class Phan extends AnalyzerMetadata
 {
@@ -94,5 +95,15 @@ final class Phan extends AnalyzerMetadata
     public function announcement(): ?Announcement
     {
         return new Announcement('https://talks.php.net/ph16', 'Deploying PHP 7 (talk)');
+    }
+
+    protected function versionPattern(): ?string
+    {
+        return '/Phan\s+(\d+\.\d+\.\d+)/';
+    }
+
+    public function releaseUrl(string $version): ?string
+    {
+        return sprintf('https://github.com/phan/phan/releases/tag/%s', $version);
     }
 }

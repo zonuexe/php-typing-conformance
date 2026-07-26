@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use function sprintf;
 
 final class PhpStan extends AnalyzerMetadata
 {
@@ -86,5 +87,19 @@ final class PhpStan extends AnalyzerMetadata
             'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests',
             'Find Bugs Without Tests',
         );
+    }
+
+    protected function versionPattern(): ?string
+    {
+        return '/(\d+\.\d+\.\d+)$/';
+    }
+
+    /**
+     * The banner ends with the number -- "PHPStan - PHP Static Analysis Tool
+     * 2.2.5" -- so the pattern anchors to the end rather than to a name.
+     */
+    public function releaseUrl(string $version): ?string
+    {
+        return sprintf('https://github.com/phpstan/phpstan/releases/tag/%s', $version);
     }
 }

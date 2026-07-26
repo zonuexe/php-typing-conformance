@@ -10,6 +10,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use function sprintf;
 
 final class Steins extends AnalyzerMetadata
 {
@@ -72,5 +73,15 @@ final class Steins extends AnalyzerMetadata
     public function parser(): string
     {
         return 'Mago parser (fork)';
+    }
+
+    protected function versionPattern(): ?string
+    {
+        return '/steins\s+(\d+\.\d+\.\d+)/i';
+    }
+
+    public function releaseUrl(string $version): ?string
+    {
+        return sprintf('https://github.com/rigortype/steins/releases/tag/v%s', $version);
     }
 }

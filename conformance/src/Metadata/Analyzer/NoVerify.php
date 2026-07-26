@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use function sprintf;
 
 final class NoVerify extends AnalyzerMetadata
 {
@@ -92,5 +93,15 @@ final class NoVerify extends AnalyzerMetadata
             'https://habr.com/ru/companies/vk/articles/442284/',
             'VK open-sources it (Habr)',
         );
+    }
+
+    protected function versionPattern(): ?string
+    {
+        return '/version\s+(\d+\.\d+\.\d+)/i';
+    }
+
+    public function releaseUrl(string $version): ?string
+    {
+        return sprintf('https://github.com/VKCOM/noverify/releases/tag/v%s', $version);
     }
 }

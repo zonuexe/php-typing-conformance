@@ -10,6 +10,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use function sprintf;
 
 final class Intelephense extends AnalyzerMetadata
 {
@@ -75,5 +76,18 @@ final class Intelephense extends AnalyzerMetadata
     public function parser(): string
     {
         return 'own parser';
+    }
+
+    protected function versionPattern(): ?string
+    {
+        return '/intelephense\s+(\d+\.\d+\.\d+)/i';
+    }
+
+    /**
+     * Closed source, so npm is where a release is published at all.
+     */
+    public function releaseUrl(string $version): ?string
+    {
+        return sprintf('https://www.npmjs.com/package/intelephense/v/%s', $version);
     }
 }

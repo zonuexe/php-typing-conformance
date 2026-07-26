@@ -10,6 +10,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use function sprintf;
 
 final class Mir extends AnalyzerMetadata
 {
@@ -72,5 +73,15 @@ final class Mir extends AnalyzerMetadata
     public function parser(): string
     {
         return 'own (php-rs-parser)';
+    }
+
+    protected function versionPattern(): ?string
+    {
+        return '/mir\s+(\d+\.\d+\.\d+)/i';
+    }
+
+    public function releaseUrl(string $version): ?string
+    {
+        return sprintf('https://github.com/jorgsowa/mir/releases/tag/v%s', $version);
     }
 }

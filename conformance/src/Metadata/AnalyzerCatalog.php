@@ -18,15 +18,15 @@ use RuntimeException;
 use function sprintf;
 
 /**
- * Every analyzer the report knows about, in the order the table shows them.
- *
- * The keys are the tool names the runner already uses for its result
- * directories, so one vocabulary covers both halves of the report.
+ * Every analyzer the report knows about, in the order the table shows them,
+ * and reachable by the tool name the rest of the runner uses.
  */
 final class AnalyzerCatalog
 {
     /**
-     * Ordered by initial release, oldest first.
+     * Ordered by initial release, oldest first. The keys are the tool names
+     * the runner already uses for its result directories, so one vocabulary
+     * covers both halves of the report.
      *
      * @var array<string, class-string<AnalyzerMetadata>>
      */
@@ -44,12 +44,39 @@ final class AnalyzerCatalog
     ];
 
     /**
+     * Result directories that are one analyzer under another configuration,
+     * not an analyzer of their own: the same binary, so the same version
+     * banner and the same releases.
+     *
+     * @var array<string, string>
+     */
+    private const CONFIGURATIONS = [
+        'phpstan-strict' => 'phpstan',
+    ];
+
+    /** @var array<string, AnalyzerMetadata> */
+    private readonly array $byTool;
+
+    /**
+     * @param list<AnalyzerMetadata> $analyzers
+     */
+    public function __construct(private readonly array $analyzers)
+    {
+        $byTool = [];
+
+        foreach ($analyzers as $analyzer) {
+            $byTool[$analyzer->tool] = $analyzer;
+        }
+
+        $this->byTool = $byTool;
+    }
+
+    /**
      * Pair each analyzer's curated facts with its current release.
      *
      * @param array<string, Release> $releases keyed by tool name; see [[ReleaseTable]]
-     * @return list<AnalyzerMetadata>
      */
-    public static function build(array $releases): array
+    public static function build(array $releases): self
     {
         $analyzers = [];
 
@@ -58,9 +85,29 @@ final class AnalyzerCatalog
                 sprintf('No release recorded for analyzer: %s', $tool),
             );
 
-            $analyzers[] = new $class($release);
+            $analyzers[] = new $class($tool, $release);
         }
 
-        return $analyzers;
+        return new self($analyzers);
+    }
+
+    /**
+     * @return list<AnalyzerMetadata> in table order
+     */
+    public function all(): array
+    {
+        return $this->analyzers;
+    }
+
+    /**
+     * Null for a tool with no record — nothing in the report depends on one
+     * existing, so an unknown column degrades to an unlinked version string
+     * rather than failing the whole run.
+     */
+    public function find(string $tool): ?AnalyzerMetadata
+    {
+        $tool = self::CONFIGURATIONS[$tool] ?? $tool;
+
+        return $this->byTool[$tool] ?? null;
     }
 }

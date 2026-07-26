@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use function sprintf;
 
 final class Mago extends AnalyzerMetadata
 {
@@ -80,5 +81,15 @@ final class Mago extends AnalyzerMetadata
             'https://github.com/carthage-software/mago/releases/tag/1.0.0',
             'Mago 1.0.0',
         );
+    }
+
+    protected function versionPattern(): ?string
+    {
+        return '/mago\s+(\d+\.\d+\.\d+)/i';
+    }
+
+    public function releaseUrl(string $version): ?string
+    {
+        return sprintf('https://github.com/carthage-software/mago/releases/tag/%s', $version);
     }
 }

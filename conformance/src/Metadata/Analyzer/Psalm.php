@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use function sprintf;
 
 final class Psalm extends AnalyzerMetadata
 {
@@ -106,5 +107,19 @@ final class Psalm extends AnalyzerMetadata
             'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420',
             'Automated type inference',
         );
+    }
+
+    protected function versionPattern(): ?string
+    {
+        return '/Psalm\s+(\d+\.\d+\.\d+)/';
+    }
+
+    /**
+     * Cut under vimeo/psalm, not under the github.com/psalm org the
+     * Organization column links to.
+     */
+    public function releaseUrl(string $version): ?string
+    {
+        return sprintf('https://github.com/vimeo/psalm/releases/tag/%s', $version);
     }
 }

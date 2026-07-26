@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Conformance\Metadata;
 
+use function preg_match;
+use function trim;
+
 /**
  * What one analyzer *is* — as opposed to how it scores, which the results
  * matrix answers.
@@ -51,9 +54,57 @@ namespace Conformance\Metadata;
  */
 abstract class AnalyzerMetadata
 {
+    /**
+     * @param string $tool the runner's name for it, and its results directory
+     */
     public function __construct(
+        public readonly string $tool,
         public readonly Release $latestRelease,
     ) {
+    }
+
+    /**
+     * Reduce the tool's own version banner to the version number alone.
+     *
+     * Every analyzer answers `--version` in its own format — "Phan 6.0.7",
+     * "PHPStan - PHP Static Analysis Tool 2.2.5", a bare number — so reading
+     * one is per-tool knowledge and belongs with the tool.
+     *
+     * This is about the version *this suite ran*, recorded in
+     * results/<tool>/version.toml, which is a different question from
+     * latestRelease: the point of the report is often that they differ.
+     */
+    final public function shortVersion(string $reportedVersion): string
+    {
+        $version = trim($reportedVersion);
+        $pattern = $this->versionPattern();
+
+        if ($pattern === null || preg_match($pattern, $version, $matches) !== 1) {
+            return $version;
+        }
+
+        return $matches[1];
+    }
+
+    /**
+     * Pattern whose first capture group is the version number in this tool's
+     * own banner. Null where the banner is the number and nothing else.
+     */
+    protected function versionPattern(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * Where upstream publishes the notes for one release.
+     *
+     * Not derivable from the other columns: Psalm's home is psalm.dev and its
+     * org is github.com/psalm, but its releases are cut under vimeo/psalm.
+     * Null where the project publishes no per-release page at all.
+     */
+    public function releaseUrl(string $version): ?string
+    {
+        return null;
     }
 
     /** The project's own name for itself. */

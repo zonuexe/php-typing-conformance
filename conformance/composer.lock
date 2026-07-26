@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc71cb9ffd86130a78474a1bb4da80c1",
+    "content-hash": "3d44c924df2d472563395f724479a2b0",
     "packages": [
         {
             "name": "internal/toml",
@@ -70,7 +70,9 @@
     "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
+    "platform": {
+        "php": ">=8.2"
+    },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"
 }

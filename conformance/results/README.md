@@ -1,7 +1,12 @@
 # Results
 
-One TOML file per `<tool>/<test>.toml`, plus the generated `results.html` and
-the per-test pages under `tests/`.
+One TOML file per `<tool>/<test>.toml`. These are the report's source data and
+are committed; the HTML around them is not.
+
+`results.html`, `report.css` and the per-test pages under `tests/` are built
+from these files by `make render-report-html`, and rebuilt by GitHub Actions on
+every push to master before the site is published, so nothing generated is kept
+under version control.
 
 Most keys are regenerated on every run. Two are hand-curated and preserved
 across runs by `ResultRepository::save()`: `status` and `notes` (plus

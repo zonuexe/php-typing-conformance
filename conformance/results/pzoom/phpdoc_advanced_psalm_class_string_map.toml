@@ -7,3 +7,8 @@ phpdoc_advanced_psalm_class_string_map.php:29: Argument 1 of acceptsThrowableMap
 errors_diff = "Line 26: Unexpected errors [\"Argument 1 of acceptsThrowableMap expects class-string-map<T as Throwable, T:class-string-map as Throwable>, but non-empty-array<RuntimeException::class, RuntimeException> provided [InvalidArgument]\"]"
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = [26]

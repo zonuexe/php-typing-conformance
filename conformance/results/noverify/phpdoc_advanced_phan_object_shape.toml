@@ -1,11 +1,14 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
 phpdoc_advanced_phan_object_shape.php:12: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\stdClass does not exist [undefinedClass]
 phpdoc_advanced_phan_object_shape.php:21: param $obj miss matched with phpdoc type <<stdClass{name: string}>> [funcParamTypeMissMatch]"""
-errors_diff = """
-Line 12: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPhanObjectShape\\\\stdClass does not exist [undefinedClass]"]
-Line 21: Unexpected errors ["param $obj miss matched with phpdoc type <<stdClass{name: string}>> [funcParamTypeMissMatch]"]"""
+errors_diff = "Line 12: Unexpected errors [\"Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPhanObjectShape\\\\stdClass does not exist [undefinedClass]\"]"
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [21]
+false_positive_lines = [12]

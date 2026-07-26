@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
@@ -7,9 +7,11 @@ phpdoc_advanced_phan_non_empty_associative_array.php:21: Docblock type `unknown-
 phpdoc_advanced_phan_non_empty_associative_array.php:26: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array)`, but found `array{'a': int(1)}`. [invalid-argument]
 phpdoc_advanced_phan_non_empty_associative_array.php:29: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array)`, but found `array{}`. [invalid-argument]
 phpdoc_advanced_phan_non_empty_associative_array.php:32: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array)`, but found `list{int(1), int(2), int(3)}`. [invalid-argument]"""
-errors_diff = """
-Line 19: Unexpected errors ["Cannot find class, interface, enum, or type alias `Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array`. [non-existent-class-like]"]
-Line 21: Unexpected errors ["Docblock type `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array)` for parameter `$map` is incompatible with native type `array<array-key, mixed>`. [docblock-type-mismatch]"]
-Line 26: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array)`, but found `array{'a': int(1)}`. [invalid-argument]"]"""
+errors_diff = "Line 26: Unexpected errors [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array)`, but found `array{'a': int(1)}`. [invalid-argument]\"]"
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [19, 21]
+false_positive_lines = [26]

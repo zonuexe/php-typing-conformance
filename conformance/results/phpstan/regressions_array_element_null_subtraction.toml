@@ -1,8 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = "regressions_array_element_null_subtraction.php:35: Parameter #1 $arr of function Conformance\\Tests\\RegressionsArrayElementNullSubtraction\\takesStringList expects array{string}, array{string|null} given. [identifier=argument.type] [detected-from-level=8]"
+output = "regressions_array_element_null_subtraction.php:35: Parameter #1 $arr of function Conformance\\Tests\\RegressionsArrayElementNullSubtraction\\takesStringList expects array{string}, array{string|null} given. [identifier=argument.type] [reported-from-level=8]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 8
+expected_diagnostic_level = 8

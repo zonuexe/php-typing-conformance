@@ -1,7 +1,12 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 0
 output = "phpdoc_advanced_return_noreturn_synonym.php:22: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn'. [P1133]"
-errors_diff = "Line 22: Unexpected errors [\"PHPDoc undefined type 'Conformance\\\\Tests\\\\PhpdocAdvancedReturnNoreturnSynonym\\\\noreturn'. [P1133]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/0"
+unrecognized_lines = [22]
+false_positive_lines = []

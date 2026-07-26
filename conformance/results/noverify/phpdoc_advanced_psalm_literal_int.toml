@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
@@ -7,3 +7,8 @@ phpdoc_advanced_psalm_literal_int.php:29: potentially not safe call in function 
 errors_diff = "Line 12: Unexpected errors [\"Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmLiteralInt\\\\literal-int does not exist [undefinedClass]\"]"
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = [12]

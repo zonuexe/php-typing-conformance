@@ -1,12 +1,15 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
 phpdoc_advanced_fallback_int_mask.php:20: Saw a token Phan may have failed to parse after '* @return int-mask<1, 2, 4>': after int, saw '-' [PhanUnextractableAnnotationSuffix]
 phpdoc_advanced_fallback_int_mask.php:32: Saw possibly unextractable annotation for a fragment of comment '* @param int-mask<1, 2, 4> $flags': after int, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
 phpdoc_advanced_fallback_int_mask.php:32: Saw a token Phan may have failed to parse after '* @param int-mask<1, 2, 4> $flags': after int, saw '-' [PhanUnextractableAnnotationSuffix]"""
-errors_diff = """
-Line 20: Unexpected errors ["Saw a token Phan may have failed to parse after '* @return int-mask<1, 2, 4>': after int, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 32: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '* @param int-mask<1, 2, 4> $flags': after int, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '* @param int-mask<1, 2, 4> $flags': after int, saw '-' [PhanUnextractableAnnotationSuffix]"]"""
+errors_diff = ""
 notes = "Phan cannot parse the `int-mask` pseudo-type (the hyphen breaks its annotation tokenizer), so it does not check the mask."
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [20, 32]
+false_positive_lines = []

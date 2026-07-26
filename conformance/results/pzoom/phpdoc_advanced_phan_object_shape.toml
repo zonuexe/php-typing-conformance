@@ -5,8 +5,11 @@ output = """
 phpdoc_advanced_phan_object_shape.php:21: Parameter $obj has wrong type 'array{name: string}', should be 'stdClass' [MismatchingDocblockParamType]
 phpdoc_advanced_phan_object_shape.php:28: Argument 1 of acceptsObjectShape expects array{name: string}, but stdClass provided [InvalidArgument]
 phpdoc_advanced_phan_object_shape.php:33: Argument 1 of acceptsObjectShape expects array{name: string}, but stdClass provided [InvalidArgument]"""
-errors_diff = """
-Line 21: Unexpected errors ["Parameter $obj has wrong type 'array{name: string}', should be 'stdClass' [MismatchingDocblockParamType]"]
-Line 28: Unexpected errors ["Argument 1 of acceptsObjectShape expects array{name: string}, but stdClass provided [InvalidArgument]"]"""
+errors_diff = "Line 28: Unexpected errors [\"Argument 1 of acceptsObjectShape expects array{name: string}, but stdClass provided [InvalidArgument]\"]"
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [21]
+false_positive_lines = [28]

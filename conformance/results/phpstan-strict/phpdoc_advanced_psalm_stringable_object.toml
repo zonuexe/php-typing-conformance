@@ -1,9 +1,14 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
 phpdoc_advanced_psalm_stringable_object.php:33: Function Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\acceptsStringable() has parameter $obj with no type specified. [identifier=missingType.parameter]
 phpdoc_advanced_psalm_stringable_object.php:33: PHPDoc tag @param for parameter $obj contains unresolvable type. [identifier=parameter.unresolvableType]"""
-errors_diff = "Line 33: Unexpected errors [\"Function Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\acceptsStringable() has parameter $obj with no type specified. [identifier=missingType.parameter]\",\"PHPDoc tag @param for parameter $obj contains unresolvable type. [identifier=parameter.unresolvableType]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [33]
+false_positive_lines = []

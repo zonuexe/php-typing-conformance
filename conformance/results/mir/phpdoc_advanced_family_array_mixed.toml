@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
@@ -8,3 +8,8 @@ phpdoc_advanced_family_array_mixed.php:42: InvalidArgument: Argument $value of a
 errors_diff = "Line 37: Unexpected errors [\"InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFamilyArrayMixed\\\\non-empty-mixed', got '1' [MIR0201]\"]"
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = [37]

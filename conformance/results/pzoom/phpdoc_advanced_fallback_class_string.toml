@@ -7,3 +7,8 @@ phpdoc_advanced_fallback_class_string.php:46: Class not a class name does not ex
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

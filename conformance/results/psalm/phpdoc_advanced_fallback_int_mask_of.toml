@@ -1,7 +1,12 @@
-status = "Full support"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_fallback_int_mask_of.php:54: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackIntMaskOf\\acceptsPermissionMask expects 0|1|2|3|4|5|6|7, but 8 provided [InvalidArgument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

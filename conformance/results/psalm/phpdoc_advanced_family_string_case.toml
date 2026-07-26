@@ -1,5 +1,5 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
 phpdoc_advanced_family_string_case.php:23: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFamilyStringCase\\uppercase-string in docblock for Conformance\\Tests\\PhpdocAdvancedFamilyStringCase\\acceptsUppercase [InvalidDocblock]
@@ -8,10 +8,11 @@ phpdoc_advanced_family_string_case.php:33: Unrecognized type Conformance\\Tests\
 phpdoc_advanced_family_string_case.php:34: Parameter $value has no provided type [MissingParamType]
 phpdoc_advanced_family_string_case.php:39: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyStringCase\\acceptsLowercase expects lowercase-string, but 'ABC' provided [InvalidArgument]
 phpdoc_advanced_family_string_case.php:45: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyStringCase\\acceptsNonEmptyLowercase expects non-empty-lowercase-string, but '' provided [InvalidArgument]"""
-errors_diff = """
-Line 23: Unexpected errors ["Unrecognized type Conformance\\\\Tests\\\\PhpdocAdvancedFamilyStringCase\\\\uppercase-string in docblock for Conformance\\\\Tests\\\\PhpdocAdvancedFamilyStringCase\\\\acceptsUppercase [InvalidDocblock]"]
-Line 24: Unexpected errors ["Parameter $value has no provided type [MissingParamType]"]
-Line 33: Unexpected errors ["Unrecognized type Conformance\\\\Tests\\\\PhpdocAdvancedFamilyStringCase\\\\non-empty-uppercase-string in docblock for Conformance\\\\Tests\\\\PhpdocAdvancedFamilyStringCase\\\\acceptsNonEmptyUppercase [InvalidDocblock]"]
-Line 34: Unexpected errors ["Parameter $value has no provided type [MissingParamType]"]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = [23, 24, 33, 34]
+false_positive_lines = []

@@ -1,10 +1,14 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_psalm_properties_of.php:28: Function Conformance\\Tests\\PhpdocAdvancedPsalmPropertiesOf\\acceptsUserProps() has parameter $data with no value type specified in iterable type array. [identifier=missingType.iterableValue] [detected-from-level=2]
-phpdoc_advanced_psalm_properties_of.php:28: PHPDoc tag @param for parameter $data contains unresolvable type. [identifier=parameter.unresolvableType] [detected-from-level=2]"""
-errors_diff = "Line 28: Unexpected errors [\"Function Conformance\\\\Tests\\\\PhpdocAdvancedPsalmPropertiesOf\\\\acceptsUserProps() has parameter $data with no value type specified in iterable type array. [identifier=missingType.iterableValue] [detected-from-level=2]\",\"PHPDoc tag @param for parameter $data contains unresolvable type. [identifier=parameter.unresolvableType] [detected-from-level=2]\"]"
+phpdoc_advanced_psalm_properties_of.php:28: Function Conformance\\Tests\\PhpdocAdvancedPsalmPropertiesOf\\acceptsUserProps() has parameter $data with no value type specified in iterable type array. [identifier=missingType.iterableValue] [reported-from-level=6]
+phpdoc_advanced_psalm_properties_of.php:28: PHPDoc tag @param for parameter $data contains unresolvable type. [identifier=parameter.unresolvableType] [reported-from-level=2]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 2
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [28]
+false_positive_lines = []

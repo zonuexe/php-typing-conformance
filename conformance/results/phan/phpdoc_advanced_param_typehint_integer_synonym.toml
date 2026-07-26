@@ -1,7 +1,12 @@
-status = "Full support"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_param_typehint_integer_synonym.php:44: Argument 1 ($value) is 'not an int' of type string but \\Conformance\\Tests\\PhpdocAdvancedParamTypehintIntegerSynonym\\acceptsOnlyInteger() takes int (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_param_typehint_integer_synonym.php:33 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

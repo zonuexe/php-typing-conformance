@@ -1,7 +1,12 @@
-status = "Full support"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_fallback_positive_int.php:46: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPositiveInt\\acceptsPositiveInt expects int<1, max>, but -1 provided [InvalidArgument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

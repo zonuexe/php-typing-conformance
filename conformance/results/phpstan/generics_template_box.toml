@@ -1,8 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "generics_template_box.php:38: Parameter #1 $box of function Conformance\\Tests\\GenericsTemplateBox\\takesIntBox expects Conformance\\Tests\\GenericsTemplateBox\\Box<int>, Conformance\\Tests\\GenericsTemplateBox\\Box<string> given. [identifier=argument.type] [detected-from-level=5]"
+output = "generics_template_box.php:38: Parameter #1 $box of function Conformance\\Tests\\GenericsTemplateBox\\takesIntBox expects Conformance\\Tests\\GenericsTemplateBox\\Box<int>, Conformance\\Tests\\GenericsTemplateBox\\Box<string> given. [identifier=argument.type] [reported-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 5
+expected_diagnostic_level = 5

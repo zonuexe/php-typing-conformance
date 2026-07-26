@@ -1,5 +1,5 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
 phpdoc_advanced_family_int_refinements.php:33: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFamilyIntRefinements\\non-zero-int in docblock for Conformance\\Tests\\PhpdocAdvancedFamilyIntRefinements\\acceptsNonZeroInt [InvalidDocblock]
@@ -7,8 +7,11 @@ phpdoc_advanced_family_int_refinements.php:34: Parameter $value has no provided 
 phpdoc_advanced_family_int_refinements.php:39: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyIntRefinements\\acceptsNegativeInt expects int<min, -1>, but 5 provided [InvalidArgument]
 phpdoc_advanced_family_int_refinements.php:42: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyIntRefinements\\acceptsNonPositiveInt expects int<min, 0>, but 5 provided [InvalidArgument]
 phpdoc_advanced_family_int_refinements.php:45: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyIntRefinements\\acceptsNonNegativeInt expects int<0, max>, but -5 provided [InvalidArgument]"""
-errors_diff = """
-Line 33: Unexpected errors ["Unrecognized type Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntRefinements\\\\non-zero-int in docblock for Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntRefinements\\\\acceptsNonZeroInt [InvalidDocblock]"]
-Line 34: Unexpected errors ["Parameter $value has no provided type [MissingParamType]"]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "3/4"
+unrecognized_lines = [33, 34]
+false_positive_lines = []

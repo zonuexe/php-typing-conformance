@@ -1,10 +1,14 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_int_range_keyword.php:21: Function Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte() has parameter $value with no type specified. [identifier=missingType.parameter] [detected-from-level=2]
-phpdoc_advanced_int_range_keyword.php:21: PHPDoc tag @param for parameter $value contains unresolvable type. [identifier=parameter.unresolvableType] [detected-from-level=2]"""
-errors_diff = "Line 21: Unexpected errors [\"Function Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\acceptsByte() has parameter $value with no type specified. [identifier=missingType.parameter] [detected-from-level=2]\",\"PHPDoc tag @param for parameter $value contains unresolvable type. [identifier=parameter.unresolvableType] [detected-from-level=2]\"]"
+phpdoc_advanced_int_range_keyword.php:21: Function Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte() has parameter $value with no type specified. [identifier=missingType.parameter] [reported-from-level=6]
+phpdoc_advanced_int_range_keyword.php:21: PHPDoc tag @param for parameter $value contains unresolvable type. [identifier=parameter.unresolvableType] [reported-from-level=2]"""
+errors_diff = ""
 notes = "`int-range<min,max>` is Phan's spelling; PHPStan, Psalm and Mago write the same range as `int<min,max>`. Not recognizing the other tool's spelling is expected, not a defect. Only Phan models `int-range`."
 ignore_errors = []
-first_detected_level = 2
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [21]
+false_positive_lines = []

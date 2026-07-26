@@ -2,11 +2,11 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 9
 output = """
-psr_phpdoc_param_return.php:44: Call to function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() on a separate line has no effect. [detected-from-level=4]
-psr_phpdoc_param_return.php:44: Parameter #1 $message of function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage expects string, int given. [detected-from-level=4]
-psr_phpdoc_param_return.php:47: Call to function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() on a separate line has no effect. [detected-from-level=4]
-psr_phpdoc_param_return.php:47: Parameter #1 $message of function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage expects string, int given. [detected-from-level=4]"""
+psr_phpdoc_param_return.php:44: Call to function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() on a separate line has no effect. [identifier=function.resultUnused] [reported-from-level=4]
+psr_phpdoc_param_return.php:44: Parameter #1 $message of function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage expects string, int given. [identifier=argument.type] [reported-from-level=5]
+psr_phpdoc_param_return.php:47: Call to function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() on a separate line has no effect. [identifier=function.resultUnused] [reported-from-level=4]
+psr_phpdoc_param_return.php:47: Parameter #1 $message of function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage expects string, int given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 4
+expected_diagnostic_level = 4

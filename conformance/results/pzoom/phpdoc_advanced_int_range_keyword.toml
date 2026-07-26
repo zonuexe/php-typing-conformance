@@ -1,9 +1,14 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
 phpdoc_advanced_int_range_keyword.php:21: Invalid docblock type [InvalidDocblock]
 phpdoc_advanced_int_range_keyword.php:21: Argument $value of Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte does not have a type [MissingParamType]"""
-errors_diff = "Line 21: Unexpected errors [\"Invalid docblock type [InvalidDocblock]\",\"Argument $value of Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\acceptsByte does not have a type [MissingParamType]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [21]
+false_positive_lines = []

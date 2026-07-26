@@ -1,8 +1,8 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = "aliases_import_type.php:48: Parameter #1 $point of method Conformance\\Tests\\AliasesImportType\\Map::pin() expects array{lat: float, lng: float}, array{lat: 'north', lng: 139.0} given. [detected-from-level=5]"
+output = "aliases_import_type.php:48: Parameter #1 $point of method Conformance\\Tests\\AliasesImportType\\Map::pin() expects array{lat: float, lng: float}, array{lat: 'north', lng: 139.0} given. [identifier=argument.type] [reported-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
-first_detected_level = 5
+expected_diagnostic_level = 5

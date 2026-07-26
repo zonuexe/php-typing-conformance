@@ -1,7 +1,12 @@
-status = "Not supported"
-conformance_automated = "Fail"
+status = "Unknown"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_psalm_stringable_object.php:31: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\stringable-object does not exist [undefinedClass]"
-errors_diff = "Line 31: Unexpected errors [\"Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\stringable-object does not exist [undefinedClass]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [31]
+false_positive_lines = []

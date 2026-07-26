@@ -7,3 +7,8 @@ phpdoc_advanced_family_array_mixed.php:42: argument 1.5 to acceptsArrayKey() vio
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []

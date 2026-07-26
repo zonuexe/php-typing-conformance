@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
@@ -18,14 +18,13 @@ phpdoc_advanced_family_int_string.php:41: Argument 1 ($value) is $value of type 
 phpdoc_advanced_family_int_string.php:44: Argument 1 ($value) is 'x' of type string but \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsNonEmptyLiteralString() takes \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\non (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:30 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
 phpdoc_advanced_family_int_string.php:45: Argument 1 ($value) is '' of type string but \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsNonEmptyLiteralString() takes \\Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\non (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:30 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
 errors_diff = """
-Line 19: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '/** @param decimal-int-string $value */': after decimal, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '/** @param decimal-int-string $value */': after decimal, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 20: Unexpected errors ["Parameter $value has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\decimal [PhanUndeclaredTypeParameter]"]
-Line 24: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '/** @param literal-string $value */': after literal, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '/** @param literal-string $value */': after literal, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 25: Unexpected errors ["Parameter $value has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\literal [PhanUndeclaredTypeParameter]"]
-Line 29: Unexpected errors ["Saw possibly unextractable annotation for a fragment of comment '/** @param non-empty-literal-string $value */': after non, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]","Saw a token Phan may have failed to parse after '/** @param non-empty-literal-string $value */': after non, saw '-' [PhanUnextractableAnnotationSuffix]"]
-Line 30: Unexpected errors ["Parameter $value has undeclared type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\non [PhanUndeclaredTypeParameter]"]
 Line 34: Unexpected errors ["Argument 1 ($value) is '123' of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\acceptsDecimalIntString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\decimal (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:20 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]
 Line 37: Unexpected errors ["Argument 1 ($value) is 'a literal' of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\acceptsLiteralString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\literal (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:25 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]
 Line 44: Unexpected errors ["Argument 1 ($value) is 'x' of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\acceptsNonEmptyLiteralString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\non (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_family_int_string.php:30 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]"""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = [19, 20, 24, 25, 29, 30]
+false_positive_lines = [34, 37, 44]

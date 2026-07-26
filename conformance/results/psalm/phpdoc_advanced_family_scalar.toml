@@ -1,4 +1,4 @@
-status = "Not supported"
+status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
@@ -9,8 +9,12 @@ phpdoc_advanced_family_scalar.php:38: Argument 1 of Conformance\\Tests\\PhpdocAd
 phpdoc_advanced_family_scalar.php:39: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\acceptsNumber expects Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\number, but '1' provided [InvalidArgument]
 phpdoc_advanced_family_scalar.php:43: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFamilyScalar\\acceptsNumeric expects numeric, but 'abc' provided [InvalidArgument]"""
 errors_diff = """
-Line 23: Unexpected errors ["Docblock-defined class, interface or enum named Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\number does not exist [UndefinedDocblockClass]"]
 Line 37: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\number, but 1 provided [InvalidArgument]"]
 Line 38: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFamilyScalar\\\\number, but float(1.5) provided [InvalidArgument]"]"""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = [23]
+false_positive_lines = [37, 38]

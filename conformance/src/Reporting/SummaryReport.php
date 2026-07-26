@@ -179,19 +179,20 @@ final class SummaryReport
         // interface, NoVerify by analysis, Mago by packaging), which made the
         // values look mutually exclusive when they are not.
         //
-        // `expansion` renders the name as <abbr>. Only fill it in when the
-        // project itself spells the name out: an <abbr title> asserts that the
-        // name *is* an abbreviation for that phrase. Psalm is widely repeated
-        // as "PHP Static Analysis Linting Machine", but neither psalm.dev nor
-        // the vimeo/psalm README says so, and Phan, Mago, mir and Pzoom are
-        // names rather than acronyms.
+        // `expansion` renders the name as <abbr title="...">. Not a strict
+        // "the name is short for this" claim for every row — Psalm's is
+        // phrased as "also referred to as", since its creator's own framing
+        // ("or, if you prefer, the PHP Static Analysis Linting Machine",
+        // Vimeo Engineering Blog, 2018) makes it an optional backronym, not
+        // the name's origin, unlike PHPStan's README and composer.json, which
+        // read "PHPStan - PHP Static Analysis Tool" outright.
         //
         // [name, expansion, homepage, analysis, interface, bundled, language,
         //  founder(raw HTML), maintainer, license, initial, latest, ast,
         //  announceUrl, announceLabel]
         $rows = [
             ['Phan', '', 'https://github.com/phan/phan', 'Type checker', 'CLI, LSP', 'Fixer (narrow)', 'PHP', 'Rasmus Lerdorf &amp; Andrew Morrison (Etsy)', 'Tyson Andre', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
-            ['Psalm', '', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', 'Matt Brown (Vimeo)', 'Daniil Gentili', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
+            ['Psalm', 'Also referred to as a “PHP Static Analysis Linting Machine”', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', 'Matt Brown (Vimeo)', 'Daniil Gentili', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
             ['PHPStan', 'PHP Static Analysis Tool', 'https://phpstan.org', 'Type checker', 'CLI', '—', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
             ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', 'Ben Mewburn', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
             ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', 'VK (VKCOM)', 'VKCOM', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],

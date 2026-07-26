@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = "aliases_import_type.php:48: Argument 1 of Conformance\\Tests\\AliasesImportType\\Map::pin expects array{lat: float, lng: float}, but array{lat: 'north', lng: 139} provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_array_mixed.php:35: Argument 1 of acceptsNonEmptyArray expects non-empty-array<array-key, mixed>, but array<never, never> provided [InvalidArgument]
+phpdoc_advanced_family_array_mixed.php:42: Argument 1 of acceptsArrayKey expects array-key, but 1.5 provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

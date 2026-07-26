@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_psalm_literal_int.php:29: Argument 1 of acceptsLiteralInt expects literal-int, but parent type int provided [ArgumentTypeCoercion]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

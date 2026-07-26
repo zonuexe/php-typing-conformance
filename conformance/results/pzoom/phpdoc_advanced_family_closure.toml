@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_family_closure.php:25: Invalid docblock type [InvalidDocblock]
+phpdoc_advanced_family_closure.php:25: Argument $fn of Conformance\\Tests\\PhpdocAdvancedFamilyClosure\\acceptsStaticClosure does not have a type [MissingParamType]
+phpdoc_advanced_family_closure.php:30: Argument 1 of acceptsPureClosure expects Closure, but pure-callable(string):($string is '' ? 0 : ($string is non-empty-string ? int<1, max> : 0|int<1, max>)) provided [ArgumentTypeCoercion]"""
+errors_diff = "Line 25: Unexpected errors [\"Invalid docblock type [InvalidDocblock]\",\"Argument $fn of Conformance\\\\Tests\\\\PhpdocAdvancedFamilyClosure\\\\acceptsStaticClosure does not have a type [MissingParamType]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+assertions_assert_non_empty_list.php:32: Cannot access value on empty array variable $values [EmptyArrayAccess]
+assertions_assert_non_empty_list.php:32: Could not infer a return type [MixedReturnStatement]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

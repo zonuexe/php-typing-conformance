@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_family_string_case.php:24: Invalid docblock type [InvalidDocblock]
+phpdoc_advanced_family_string_case.php:24: Argument $value of Conformance\\Tests\\PhpdocAdvancedFamilyStringCase\\acceptsUppercase does not have a type [MissingParamType]
+phpdoc_advanced_family_string_case.php:34: Invalid docblock type [InvalidDocblock]
+phpdoc_advanced_family_string_case.php:34: Argument $value of Conformance\\Tests\\PhpdocAdvancedFamilyStringCase\\acceptsNonEmptyUppercase does not have a type [MissingParamType]
+phpdoc_advanced_family_string_case.php:39: Argument 1 of acceptsLowercase expects lowercase-string, but 'ABC' provided [InvalidArgument]
+phpdoc_advanced_family_string_case.php:45: Argument 1 of acceptsNonEmptyLowercase expects non-empty-lowercase-string, but '' provided [InvalidArgument]"""
+errors_diff = """
+Line 24: Unexpected errors ["Invalid docblock type [InvalidDocblock]","Argument $value of Conformance\\\\Tests\\\\PhpdocAdvancedFamilyStringCase\\\\acceptsUppercase does not have a type [MissingParamType]"]
+Line 34: Unexpected errors ["Invalid docblock type [InvalidDocblock]","Argument $value of Conformance\\\\Tests\\\\PhpdocAdvancedFamilyStringCase\\\\acceptsNonEmptyUppercase does not have a type [MissingParamType]"]"""
+notes = ""
+ignore_errors = []

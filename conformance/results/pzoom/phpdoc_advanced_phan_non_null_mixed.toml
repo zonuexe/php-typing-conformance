@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phan_non_null_mixed.php:21: Invalid docblock type [InvalidDocblock]
+phpdoc_advanced_phan_non_null_mixed.php:21: Argument $value of Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull does not have a type [MissingParamType]"""
+errors_diff = "Line 21: Unexpected errors [\"Invalid docblock type [InvalidDocblock]\",\"Argument $value of Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\acceptsNonNull does not have a type [MissingParamType]\"]"
+notes = ""
+ignore_errors = []

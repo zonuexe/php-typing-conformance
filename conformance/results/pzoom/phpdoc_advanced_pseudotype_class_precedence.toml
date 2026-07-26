@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_pseudotype_class_precedence.php:35: Argument 1 of acceptsIntegerClass expects Conformance\\Tests\\PhpdocAdvancedPseudotypeClassPrecedence\\Integer, but 5 provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

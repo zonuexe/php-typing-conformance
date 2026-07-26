@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_family_int_refinements.php:34: Invalid docblock type [InvalidDocblock]
+phpdoc_advanced_family_int_refinements.php:34: Argument $value of Conformance\\Tests\\PhpdocAdvancedFamilyIntRefinements\\acceptsNonZeroInt does not have a type [MissingParamType]
+phpdoc_advanced_family_int_refinements.php:39: Argument 1 of acceptsNegativeInt expects int<min, -1>, but 5 provided [InvalidArgument]
+phpdoc_advanced_family_int_refinements.php:42: Argument 1 of acceptsNonPositiveInt expects int<min, 0>, but 5 provided [InvalidArgument]
+phpdoc_advanced_family_int_refinements.php:45: Argument 1 of acceptsNonNegativeInt expects int<0, max>, but -5 provided [InvalidArgument]"""
+errors_diff = "Line 34: Unexpected errors [\"Invalid docblock type [InvalidDocblock]\",\"Argument $value of Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntRefinements\\\\acceptsNonZeroInt does not have a type [MissingParamType]\"]"
+notes = ""
+ignore_errors = []

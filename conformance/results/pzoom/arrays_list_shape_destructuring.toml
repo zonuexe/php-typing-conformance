@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+arrays_list_shape_destructuring.php:48: Argument 1 of takesInt expects int, but bool provided [InvalidArgument]
+arrays_list_shape_destructuring.php:49: Argument 1 of takesString expects string, but bool provided [InvalidArgument]
+arrays_list_shape_destructuring.php:50: Argument 1 of takesBool expects bool, but int provided [InvalidArgument]
+arrays_list_shape_destructuring.php:54: Argument 1 of inspectListShape expects list{bool, float, string, int}, but list{true, 1.5, 2, 'x'} provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

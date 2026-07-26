@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "generics_template_box.php:38: Type 'x' should be a subtype of int [IncompatibleTypeParameters]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

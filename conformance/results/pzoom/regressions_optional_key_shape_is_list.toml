@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 10
+output = """
+regressions_optional_key_shape_is_list.php:28: Type array{a?: string} for $a is never list<V:array_is_list as mixed> [TypeDoesNotContainType]
+regressions_optional_key_shape_is_list.php:36: Type array{a?: string} for $a is never list<V:array_is_list as mixed> [TypeDoesNotContainType]"""
+errors_diff = """
+Line 28: Unexpected errors ["Type array{a?: string} for $a is never list<V:array_is_list as mixed> [TypeDoesNotContainType]"]
+Line 36: Unexpected errors ["Type array{a?: string} for $a is never list<V:array_is_list as mixed> [TypeDoesNotContainType]"]"""
+notes = ""
+ignore_errors = []

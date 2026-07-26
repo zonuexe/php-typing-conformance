@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+psr_phpdoc_param_return.php:44: Argument 1 of encodeMessage expects string, but 42 provided [InvalidArgument]
+psr_phpdoc_param_return.php:47: Argument 1 of encodeMessage expects string, but int provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

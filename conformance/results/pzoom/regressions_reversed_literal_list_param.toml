@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = "regressions_reversed_literal_list_param.php:26: Argument 1 of takesTwoList expects list{string, string}, but parent type array{0: 'y', 1: 'x'} provided [ArgumentTypeCoercion]"
+errors_diff = "Line 26: Unexpected errors [\"Argument 1 of takesTwoList expects list{string, string}, but parent type array{0: 'y', 1: 'x'} provided [ArgumentTypeCoercion]\"]"
+notes = ""
+ignore_errors = []

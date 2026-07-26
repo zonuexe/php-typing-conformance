@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_class_string_map.php:26: Argument 1 of acceptsThrowableMap expects class-string-map<T as Throwable, T:class-string-map as Throwable>, but non-empty-array<RuntimeException::class, RuntimeException> provided [InvalidArgument]
+phpdoc_advanced_psalm_class_string_map.php:29: Argument 1 of acceptsThrowableMap expects class-string-map<T as Throwable, T:class-string-map as Throwable>, but non-empty-array<RuntimeException::class, LogicException> provided [InvalidArgument]"""
+errors_diff = "Line 26: Unexpected errors [\"Argument 1 of acceptsThrowableMap expects class-string-map<T as Throwable, T:class-string-map as Throwable>, but non-empty-array<RuntimeException::class, RuntimeException> provided [InvalidArgument]\"]"
+notes = ""
+ignore_errors = []

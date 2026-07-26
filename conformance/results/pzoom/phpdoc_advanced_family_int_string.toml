@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_family_int_string.php:20: Invalid docblock type [InvalidDocblock]
+phpdoc_advanced_family_int_string.php:20: Argument $value of Conformance\\Tests\\PhpdocAdvancedFamilyIntString\\acceptsDecimalIntString does not have a type [MissingParamType]
+phpdoc_advanced_family_int_string.php:41: Argument 1 of acceptsLiteralString expects literal-string, but parent type string provided [ArgumentTypeCoercion]"""
+errors_diff = "Line 20: Unexpected errors [\"Invalid docblock type [InvalidDocblock]\",\"Argument $value of Conformance\\\\Tests\\\\PhpdocAdvancedFamilyIntString\\\\acceptsDecimalIntString does not have a type [MissingParamType]\"]"
+notes = ""
+ignore_errors = []

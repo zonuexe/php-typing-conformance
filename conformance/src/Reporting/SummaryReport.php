@@ -109,6 +109,7 @@ final class SummaryReport
             ['NoVerify', 'https://github.com/VKCOM/noverify', 'Linter', 'Go', 'VK (VKCOM)', 'VKCOM', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
             ['Mago', 'https://mago.carthage.software', 'Toolchain', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
             ['mir', 'https://github.com/jorgsowa/mir', 'Static analyzer', 'Rust', 'Jorg Sowa', 'Jorg Sowa', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
+            ['pzoom', 'https://github.com/muglug/pzoom', 'Static analyzer', 'Rust', 'Matt Brown (muglug)', 'Matt Brown', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
             ['Steins', 'https://github.com/rigortype/steins', 'Static analyzer', 'Rust', 'USAMI Kenta (rigortype)', 'rigortype', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
         ];
 
@@ -214,6 +215,10 @@ final class SummaryReport
                         // only the strict-rules config catches.
                         [$display, $class, $suffix] = $this->phpstanMerged($resultsRoot, $testCase->name, $result, $style);
                         $cell = htmlspecialchars($display) . $suffix;
+                    } elseif ($tool === 'psalm') {
+                        // Merge the pzoom column: mark where the Psalm port differs.
+                        [$display, $class, $suffix] = $this->psalmMerged($resultsRoot, $testCase->name, $result, $style);
+                        $cell = htmlspecialchars($display) . $suffix;
                     } elseif (!$style) {
                         $cell .= $this->levelSuffix($result);
                     }
@@ -281,25 +286,35 @@ final class SummaryReport
             $errorsDiff = trim((string) ($result['errors_diff'] ?? ''));
             $notes = trim((string) ($result['notes'] ?? ''));
 
-            // The phpstan row also carries strict-rules-only diagnostics.
-            $strictExtra = '';
+            // The phpstan row also carries strict-rules-only diagnostics; the
+            // psalm row carries pzoom's (Psalm port) diagnostics where they differ.
+            $mergeExtra = '';
             if ($tool === 'phpstan') {
                 [, , $suffix] = $this->phpstanMerged($resultsRoot, $testCase->name, $result, false);
                 $status = htmlspecialchars($display) . ($output !== '' ? $this->levelSuffix($result) : $suffix);
                 $strictOutput = trim((string) ($this->loadResult($resultsRoot, 'phpstan-strict', $testCase->name)['output'] ?? ''));
                 if ($strictOutput !== '' && $strictOutput !== $output) {
-                    $strictExtra = '<details' . ($output === '' ? ' open' : '') . '><summary>With strict-rules</summary><pre class="diag">'
+                    $mergeExtra = '<details' . ($output === '' ? ' open' : '') . '><summary>With strict-rules</summary><pre class="diag">'
                         . htmlspecialchars($strictOutput) . '</pre></details>';
+                }
+            } elseif ($tool === 'psalm') {
+                [, , $suffix] = $this->psalmMerged($resultsRoot, $testCase->name, $result, false);
+                $status = htmlspecialchars($display) . $suffix;
+                if ($suffix !== '') {
+                    $pzoomOutput = trim((string) ($this->loadResult($resultsRoot, 'pzoom', $testCase->name)['output'] ?? ''));
+                    $mergeExtra = '<details' . ($output === '' ? ' open' : '') . '><summary>pzoom (Psalm port)</summary>'
+                        . ($pzoomOutput !== '' ? '<pre class="diag">' . htmlspecialchars($pzoomOutput) . '</pre>' : '<p class="none">No diagnostics from pzoom.</p>')
+                        . '</details>';
                 }
             }
 
             $diagnostics = '';
             if ($output !== '') {
                 $diagnostics .= '<pre class="diag">' . htmlspecialchars($output) . '</pre>';
-            } elseif ($strictExtra === '') {
+            } elseif ($mergeExtra === '') {
                 $diagnostics .= '<p class="none">No diagnostics reported.</p>';
             }
-            $diagnostics .= $strictExtra;
+            $diagnostics .= $mergeExtra;
             if ($errorsDiff !== '') {
                 $diagnostics .= '<details><summary>Expectation diff</summary><pre class="diag">' . htmlspecialchars($errorsDiff) . '</pre></details>';
             }
@@ -607,6 +622,46 @@ CSS;
         }
 
         return [$display, $class, ''];
+    }
+
+    /**
+     * Fold the pzoom column into psalm. pzoom is a Psalm port, so its status
+     * drives nothing; the psalm cell is only tagged "(pzoom≠)" where pzoom flags
+     * a different set of lines than Psalm.
+     *
+     * @param array<string, mixed> $result psalm result
+     * @return array{0: string, 1: string, 2: string} [display, cssClass, suffix]
+     */
+    private function psalmMerged(string $resultsRoot, string $testName, array $result, bool $style): array
+    {
+        $pzoom = $this->loadResult($resultsRoot, 'pzoom', $testName);
+        [$display, $class] = $style ? $this->styleStatusOf($result) : $this->statusOf($result);
+
+        // Only compare when pzoom actually ran for this test.
+        $differs = $pzoom !== []
+            && $this->diagnosticLineSet($result) !== $this->diagnosticLineSet($pzoom);
+
+        return [$display, $class, $differs ? ' <small>(pzoom&ne;)</small>' : ''];
+    }
+
+    /**
+     * The set of source lines a result flagged, as a stable comma-joined key.
+     *
+     * @param array<string, mixed> $result
+     */
+    private function diagnosticLineSet(array $result): string
+    {
+        $lines = [];
+        foreach (explode("\n", (string) ($result['output'] ?? '')) as $line) {
+            if (preg_match('/^[^:]+:(\d+):/', $line, $matches) === 1) {
+                $lines[(int) $matches[1]] = true;
+            }
+        }
+
+        $keys = array_keys($lines);
+        sort($keys);
+
+        return implode(',', $keys);
     }
 
     private function versionCell(string $resultsRoot, string $tool): string

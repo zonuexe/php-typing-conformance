@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+native_types_resource_argument.php:16: Class, interface or enum named Conformance\\Tests\\NativeTypesResourceArgument\\resource does not exist [UndefinedClass]
+native_types_resource_argument.php:37: Argument 1 of takesResource expects Conformance\\Tests\\NativeTypesResourceArgument\\resource, but resource provided [InvalidArgument]
+native_types_resource_argument.php:38: Argument 1 of takesString expects string, but resource provided [InvalidArgument]
+native_types_resource_argument.php:39: Argument 1 of takesInt expects int, but resource provided [InvalidArgument]
+native_types_resource_argument.php:40: Argument 1 of takesBool expects bool, but resource provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

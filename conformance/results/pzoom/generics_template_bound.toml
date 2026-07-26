@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+generics_template_bound.php:56: Type Conformance\\Tests\\GenericsTemplateBound\\HasName should be a subtype of Conformance\\Tests\\GenericsTemplateBound\\User [IncompatibleTypeParameters]
+generics_template_bound.php:56: Argument 1 of Conformance\\Tests\\GenericsTemplateBound\\NamedBox::__construct expects Conformance\\Tests\\GenericsTemplateBound\\HasName, but Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -11,6 +11,7 @@ use Conformance\Checker\MagoChecker;
 use Conformance\Checker\MirChecker;
 use Conformance\Checker\IntelephenseChecker;
 use Conformance\Checker\NoVerifyChecker;
+use Conformance\Checker\PzoomChecker;
 use Conformance\Checker\SteinsChecker;
 use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Expectation\ExpectationEvaluator;
@@ -28,6 +29,7 @@ require_once __DIR__ . '/Checker/NoVerifyChecker.php';
 require_once __DIR__ . '/Checker/PhanChecker.php';
 require_once __DIR__ . '/Checker/PhpStanChecker.php';
 require_once __DIR__ . '/Checker/PsalmChecker.php';
+require_once __DIR__ . '/Checker/PzoomChecker.php';
 require_once __DIR__ . '/Checker/SteinsChecker.php';
 require_once __DIR__ . '/Discovery/TestCase.php';
 require_once __DIR__ . '/Discovery/TestCaseDiscovery.php';
@@ -96,7 +98,10 @@ $intelephenseChecker = new IntelephenseChecker(
     packageJsonPath: $projectRoot . '/vendor-bin/intelephense/node_modules/intelephense/package.json',
 );
 $steinsChecker = new SteinsChecker();
-$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $steinsChecker];
+$pzoomChecker = new PzoomChecker(
+    configPath: $psalmConfigPath,
+);
+$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $pzoomChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $steinsChecker];
 
 // Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
 // selected checker(s), leaving every other tool's results untouched. Accepts a
@@ -230,7 +235,7 @@ $summaryPath = $resultsDir . '/results.html';
 // the phpstan column, so it is not listed as its own display column.
 $reportTools = array_values(array_filter(
     array_map(static fn ($checker): string => $checker->name(), $checkers),
-    static fn (string $name): bool => $name !== 'phpstan-strict',
+    static fn (string $name): bool => $name !== 'phpstan-strict' && $name !== 'pzoom',
 ));
 $summaryReport->generate(
     resultsRoot: $resultsDir,

@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "conditionals_template_return.php:52: Argument 1 of takesItem expects Conformance\\Tests\\ConditionalsTemplateReturn\\Item, but list<Conformance\\Tests\\ConditionalsTemplateReturn\\Item> provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

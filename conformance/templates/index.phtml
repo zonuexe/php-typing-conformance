@@ -6,6 +6,7 @@ declare(strict_types=1);
  * The index page body: the legend, one matrix per test kind, and the two
  * reference tables.
  *
+ * @var string|null $updatedAt ISO 8601 stamp of when the results data last changed
  * @var string $legend
  * @var string $soundnessMatrix
  * @var string $styleMatrix     '' when the suite has no style tests
@@ -16,6 +17,9 @@ declare(strict_types=1);
 ?>
 <h1>PHP Typing Conformance Results</h1>
 <p class="lead">Each row links to a per-test detail page with the source, expectations, and every analyzer&rsquo;s raw output.</p>
+<?php if ($updatedAt !== null): ?>
+<p class="updated" title="When the analyzer results in this repository last changed. The pages themselves are rebuilt on every publish.">Results last updated: <time datetime="<?= h($updatedAt) ?>"><?= h($updatedAt) ?></time></p>
+<?php endif; ?>
 <?= $legend ?>
 <h2 class="section">Soundness &mdash; potential runtime type errors</h2>
 <p class="section-note">Positives here flag code that can actually fail at runtime &mdash; type mismatches, null access, invalid arguments, uninitialized reads. <strong>Pass</strong> means the analyzer agrees with the expected diagnostic; rows whose test marks a declaration with <code>// T</code> instead report recognition and enforcement of the type spelling. See the legend above.</p>

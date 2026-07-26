@@ -7,6 +7,7 @@ namespace Conformance\Reporting;
 use Conformance\Discovery\TestCase;
 use Conformance\Metadata\AnalyzerCatalog;
 use Conformance\Metadata\LanguageServerCatalog;
+use Conformance\Result\ResultsUpdate;
 use Conformance\TestGroup\TestGroup;
 use Internal\Toml\Toml;
 use RuntimeException;
@@ -37,6 +38,7 @@ final class SummaryReport
         private readonly TemplateRenderer $renderer,
         private readonly AnalyzerCatalog $analyzers,
         private readonly LanguageServerCatalog $languageServers,
+        private readonly ResultsUpdate $resultsUpdate,
     ) {
     }
 
@@ -101,7 +103,10 @@ final class SummaryReport
             fn (TestCase $testCase): bool => $this->testKind($testCase) === 'style',
         ));
 
+        $updatedAt = $this->resultsUpdate->recorded();
+
         $body = $this->render('index.phtml', [
+            'updatedAt' => $updatedAt,
             'legend' => $this->render('legend.phtml'),
             'soundnessMatrix' => $this->renderMatrix($resultsRoot, $testGroups, $soundnessCases, $tools, false),
             'styleMatrix' => $styleCases === []

@@ -20,6 +20,7 @@ use Conformance\Expectation\ExpectationParser;
 use Conformance\Expectation\ExpectedDiagnostic;
 use Conformance\Result\ResultRecord;
 use Conformance\Result\ResultRepository;
+use Conformance\Result\ResultsUpdate;
 use Conformance\Reporting\Report;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -248,6 +249,19 @@ foreach ($checkers as $checker) {
     $versionPath = $resultRepository->saveVersion($checker->name(), $checker->version());
     printf("Saved %s version to %s\n", $checker->name(), $versionPath);
 }
+
+// Stamp the data, unless this run re-derived exactly what was already there:
+// the report says when the results last changed, not when the suite last ran.
+$resultsUpdate = new ResultsUpdate($resultsDir, $testsDir);
+$previousUpdate = $resultsUpdate->recorded();
+$currentUpdate = $resultsUpdate->record();
+
+printf(
+    $currentUpdate === $previousUpdate
+        ? "Nothing changed; the update stamp stays at %s\n"
+        : "Recorded the update at %s\n",
+    $currentUpdate,
+);
 
 if ($reportFilterActive) {
     printf("Tool filter active: skipping HTML summary report regeneration to preserve other tools' columns.\n");

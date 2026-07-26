@@ -9,6 +9,7 @@ use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Metadata\AnalyzerCatalog;
 use Conformance\Metadata\LanguageServerCatalog;
 use Conformance\Metadata\ReleaseTable;
+use Conformance\Result\ResultsUpdate;
 use Conformance\TestGroup\TestGroupLoader;
 
 /**
@@ -64,6 +65,7 @@ final class Report
                 new TemplateRenderer($rootDir . '/templates'),
                 AnalyzerCatalog::build($releases),
                 LanguageServerCatalog::build($releases),
+                new ResultsUpdate($rootDir . '/results', $rootDir . '/tests'),
             ),
             $rootDir . '/results',
             $testGroups,

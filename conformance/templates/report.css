@@ -146,6 +146,12 @@ p.section-note {
   margin-top: 0.5em;
 }
 
+p.updated {
+  color: var(--ink-muted);
+  font-size: var(--text-ui);
+  margin: -0.4em 0 1.2em;
+}
+
 p.crumb {
   margin: 0 0 0.75rem;
   font-size: var(--text-ui);

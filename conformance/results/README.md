@@ -1,7 +1,18 @@
 # Results
 
-One TOML file per `<tool>/<test>.toml`. These are the report's source data and
-are committed; the HTML around them is not.
+One TOML file per `<tool>/<test>.toml`, plus `updated.toml`. These are the
+report's source data and are committed; the HTML around them is not.
+
+`updated.toml` records when the results last changed: `updated_at`, an ISO 8601
+stamp the report prints verbatim, and `data_digest`, a hash over the test set,
+the tool versions and every result. Nothing else can tell how fresh the
+comparison is -- a clone resets file timestamps, and the pages are rebuilt on
+every publish.
+
+The runner rewrites the stamp only when that digest moves. A run that
+re-derives the same results for the same tests at the same versions leaves it
+alone, so re-running the suite neither dirties the working tree nor claims the
+comparison is fresher than it is.
 
 `index.html`, `report.css` and the per-test pages under `tests/` are built
 from these files by `make render-report-html`, and rebuilt by GitHub Actions on

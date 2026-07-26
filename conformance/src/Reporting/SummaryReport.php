@@ -223,7 +223,17 @@ final class SummaryReport
         //   Lerdorf, not Tyson Andre: every one of the last 10 GitHub releases
         //   (5.5.2 through 6.0.7) was cut by rlerdorf, and Andre has no recent
         //   commits or releases despite being widely cited as "the" current
-        //   maintainer.
+        //   maintainer. NoVerify is left blank rather than guessed: recent
+        //   releases (v0.5.4, v0.5.5) were cut by a different person than
+        //   the founder, but that alone doesn't establish who currently
+        //   drives the project, unlike Phan's unambiguous single-author
+        //   release history.
+        //
+        // Founder is normally plain text, but NoVerify's links the name --
+        // Yuriy Nasretdinov, who wrote the Habr announcement and authored
+        // noverify's initial 2019 commits -- to his GitHub profile, since
+        // unlike the other founders here he has no company page of his own
+        // to link from a different column.
         //
         // [name, expansion, homepage, analysis, interface, bundled, language,
         //  founder(raw HTML), backing, backingUrl, lead, leadNote, license,
@@ -233,7 +243,7 @@ final class SummaryReport
             ['Psalm', 'Also referred to as a “PHP Static Analysis Linting Machine”', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', 'Matt Brown (Vimeo)', 'Community (psalm)', 'https://github.com/psalm', 'Daniil Gentili', 'Sole active maintainer since Vimeo stepped back; the repository still lives under the vimeo/psalm GitHub org.', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
             ['PHPStan', 'PHP Static Analysis Tool', 'https://phpstan.org', 'Type checker', 'CLI', '—', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', 'https://github.com/phpstan', 'Ondřej Mirtes', '', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
             ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', 'Intelephense', 'https://intelephense.com', 'Ben Mewburn', '', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
-            ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', 'VK (VKCOM)', 'VK.COM', 'https://github.com/VKCOM', '—', '', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
+            ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', '<a href="https://github.com/YuriyNasretdinov" target="_blank" rel="noopener">Yuriy Nasretdinov</a> (VK)', 'VK.COM', 'https://github.com/VKCOM', '—', '', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
             ['Mago', '', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'https://github.com/carthage-software', 'Saif Eddin Gmati', '', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
             ['mir', '', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', 'Jorg Sowa', 'Personal', '', 'Jorg Sowa', '', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
             ['Pzoom', '', 'https://pzoom.dev', 'Type checker', 'CLI', '—', 'Rust', 'Matt Brown (muglug)', 'Personal', '', 'Matt Brown', '', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],

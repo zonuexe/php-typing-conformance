@@ -1,6 +1,6 @@
 {
     "require-dev": {
-        "miropen/mir-php": "^0.60.0"
+        "miropen/mir-php": "^0.62.0"
     },
     "config": {
         "allow-plugins": {

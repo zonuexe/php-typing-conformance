@@ -45,16 +45,16 @@ version = "0.5.5"
 date = "2025-04-22"
 
 [mago]
-version = "1.44.0"
-date = "2026-07-18"
+version = "1.45.0"
+date = "2026-07-24"
 
 [phpy]
 version = "1.0.18519"
 date = "2026-02-19"
 
 [mir]
-version = "0.60.0"
-date = "2026-07-18"
+version = "0.62.0"
+date = "2026-07-26"
 
 [pzoom]
 version = "unversioned"

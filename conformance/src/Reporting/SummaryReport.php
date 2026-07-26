@@ -179,19 +179,26 @@ final class SummaryReport
         // interface, NoVerify by analysis, Mago by packaging), which made the
         // values look mutually exclusive when they are not.
         //
-        // [name, homepage, analysis, interface, bundled, language,
+        // `expansion` renders the name as <abbr>. Only fill it in when the
+        // project itself spells the name out: an <abbr title> asserts that the
+        // name *is* an abbreviation for that phrase. Psalm is widely repeated
+        // as "PHP Static Analysis Linting Machine", but neither psalm.dev nor
+        // the vimeo/psalm README says so, and Phan, Mago, mir and Pzoom are
+        // names rather than acronyms.
+        //
+        // [name, expansion, homepage, analysis, interface, bundled, language,
         //  founder(raw HTML), maintainer, license, initial, latest, ast,
         //  announceUrl, announceLabel]
         $rows = [
-            ['Phan', 'https://github.com/phan/phan', 'Type checker', 'CLI, LSP', 'Fixer (narrow)', 'PHP', 'Rasmus Lerdorf &amp; Andrew Morrison (Etsy)', 'Tyson Andre', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
-            ['Psalm', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', 'Matt Brown (Vimeo)', 'Daniil Gentili', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
-            ['PHPStan', 'https://phpstan.org', 'Type checker', 'CLI', '—', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
-            ['Intelephense', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', 'Ben Mewburn', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
-            ['NoVerify', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', 'VK (VKCOM)', 'VKCOM', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
-            ['Mago', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
-            ['mir', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', 'Jorg Sowa', 'Jorg Sowa', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
-            ['pzoom', 'https://github.com/muglug/pzoom', 'Type checker', 'CLI', '—', 'Rust', 'Matt Brown (muglug)', 'Matt Brown', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
-            ['Steins', 'https://github.com/rigortype/steins', 'Type checker', 'CLI', 'Annotator, transforms', 'Rust', 'USAMI Kenta (rigortype)', 'rigortype', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
+            ['Phan', '', 'https://github.com/phan/phan', 'Type checker', 'CLI, LSP', 'Fixer (narrow)', 'PHP', 'Rasmus Lerdorf &amp; Andrew Morrison (Etsy)', 'Tyson Andre', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
+            ['Psalm', '', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', 'Matt Brown (Vimeo)', 'Daniil Gentili', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
+            ['PHPStan', 'PHP Static Analysis Tool', 'https://phpstan.org', 'Type checker', 'CLI', '—', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
+            ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', 'Ben Mewburn', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
+            ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', 'VK (VKCOM)', 'VKCOM', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
+            ['Mago', '', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
+            ['mir', '', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', 'Jorg Sowa', 'Jorg Sowa', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
+            ['Pzoom', '', 'https://github.com/muglug/pzoom', 'Type checker', 'CLI', '—', 'Rust', 'Matt Brown (muglug)', 'Matt Brown', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
+            ['PHP;STEINS', '', 'https://github.com/rigortype/steins', 'Type checker', 'CLI', 'Annotator, transforms', 'Rust', 'USAMI Kenta (rigortype)', 'rigortype', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
         ];
 
         $headers = ['Analyzer', 'Analysis', 'Interface', 'Bundled with it', 'Language', 'Founder', 'Current maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
@@ -214,13 +221,17 @@ final class SummaryReport
         }
         $lines[] = '</tr></thead><tbody>';
 
-        foreach ($rows as [$name, $url, $analysis, $interface, $bundled, $language, $founder, $maintainer, $license, $initial, $latest, $ast, $announceUrl, $announceLabel]) {
+        foreach ($rows as [$name, $expansion, $url, $analysis, $interface, $bundled, $language, $founder, $maintainer, $license, $initial, $latest, $ast, $announceUrl, $announceLabel]) {
             $announcement = $announceUrl !== ''
                 ? sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($announceUrl), htmlspecialchars($announceLabel))
                 : '<span class="none">—</span>';
 
+            $label = $expansion === ''
+                ? htmlspecialchars($name)
+                : sprintf('<abbr title="%s">%s</abbr>', htmlspecialchars($expansion), htmlspecialchars($name));
+
             $lines[] = '<tr>'
-                . sprintf('<th class="tool-name"><a href="%s" target="_blank" rel="noopener">%s</a></th>', htmlspecialchars($url), htmlspecialchars($name))
+                . sprintf('<th class="tool-name"><a href="%s" target="_blank" rel="noopener">%s</a></th>', htmlspecialchars($url), $label)
                 . '<td>' . htmlspecialchars($analysis) . '</td>'
                 . '<td>' . htmlspecialchars($interface) . '</td>'
                 . '<td>' . htmlspecialchars($bundled) . '</td>'
@@ -539,6 +550,7 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .facets { margin: 8px 0 0; padding-left: 18px; font-size: 0.85em; color: #555; }
 .legend-facets { margin: 4px 0 10px; padding-left: 20px; font-size: 0.9em; }
 .axis-list { margin: 4px 0 14px; padding-left: 20px; font-size: 0.9em; line-height: 1.5; max-width: 70em; }
+.analyzer-meta abbr[title] { text-decoration: underline dotted; text-underline-offset: 2px; cursor: help; }
 .legend { margin: 16px 0 24px; border: 1px solid #ddd; border-radius: 6px; padding: 10px 14px; background: #fbfbfb; }
 .legend > summary { cursor: pointer; font-weight: 600; }
 .legend-intro { margin: 14px 0 6px; font-size: 0.9em; }

@@ -144,7 +144,7 @@ final class SummaryReport
 
         $lines[] = '<p class="legend-intro"><strong>Tags.</strong></p>';
         $lines[] = '<dl class="legend-list">';
-        $lines[] = '<dt><span class="legend-swatch plain"><small>reported from level 5</small></span></dt>'
+        $lines[] = '<dt><span class="legend-swatch plain"><small>reported Lv.5+</small></span></dt>'
             . '<dd>PHPStan only. The lowest level whose <em>rules</em> report the diagnostic this test expects. '
             . 'PHPStan levels switch rule sets on and off &mdash; type inference is identical at every level &mdash; so this is a '
             . 'configuration threshold, not a type-support tier. Level 5 turns on argument-type checks, level 6 missing typehints, '
@@ -171,25 +171,42 @@ final class SummaryReport
     private function renderAnalyzerTable(): array
     {
         // Ordered by initial release (oldest first).
-        // [name, homepage, kind, language, founder(raw HTML), maintainer,
-        //  license, initial, latest, ast, announceUrl, announceLabel]
+        //
+        // Every tool here is a static analyzer, so "static analyzer" is not a
+        // classification — it is the entry criterion. What actually
+        // distinguishes them are three independent axes, and the old single
+        // "Kind" column picked a different one for each row (Intelephense by
+        // interface, NoVerify by analysis, Mago by packaging), which made the
+        // values look mutually exclusive when they are not.
+        //
+        // [name, homepage, analysis, interface, bundled, language,
+        //  founder(raw HTML), maintainer, license, initial, latest, ast,
+        //  announceUrl, announceLabel]
         $rows = [
-            ['Phan', 'https://github.com/phan/phan', 'Static analyzer', 'PHP', 'Rasmus Lerdorf &amp; Andrew Morrison (Etsy)', 'Tyson Andre', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
-            ['Psalm', 'https://psalm.dev', 'Static analyzer', 'PHP', 'Matt Brown (Vimeo)', 'Daniil Gentili', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
-            ['PHPStan', 'https://phpstan.org', 'Static analyzer', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
-            ['Intelephense', 'https://intelephense.com', 'Language server', 'TypeScript', 'Ben Mewburn', 'Ben Mewburn', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
-            ['NoVerify', 'https://github.com/VKCOM/noverify', 'Linter', 'Go', 'VK (VKCOM)', 'VKCOM', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
-            ['Mago', 'https://mago.carthage.software', 'Toolchain', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
-            ['mir', 'https://github.com/jorgsowa/mir', 'Static analyzer', 'Rust', 'Jorg Sowa', 'Jorg Sowa', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
-            ['pzoom', 'https://github.com/muglug/pzoom', 'Static analyzer', 'Rust', 'Matt Brown (muglug)', 'Matt Brown', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
-            ['Steins', 'https://github.com/rigortype/steins', 'Static analyzer', 'Rust', 'USAMI Kenta (rigortype)', 'rigortype', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
+            ['Phan', 'https://github.com/phan/phan', 'Type checker', 'CLI, LSP', 'Fixer (narrow)', 'PHP', 'Rasmus Lerdorf &amp; Andrew Morrison (Etsy)', 'Tyson Andre', 'MIT', '2015', '6.0.7 (2026-06-22)', 'ext-ast / tolerant-php-parser', 'https://talks.php.net/ph16', 'Deploying PHP 7 (talk)'],
+            ['Psalm', 'https://psalm.dev', 'Type checker', 'CLI, LSP', 'Fixer, refactorer', 'PHP', 'Matt Brown (Vimeo)', 'Daniil Gentili', 'MIT', '2016', '6.16.1 (2026-03-19)', 'nikic/PHP-Parser', 'https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420', 'Automated type inference'],
+            ['PHPStan', 'https://phpstan.org', 'Type checker', 'CLI', '—', 'PHP', 'Ondřej Mirtes', 'PHPStan s.r.o.', 'MIT', '2016', '2.2.5 (2026-07-05)', 'nikic/PHP-Parser', 'https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests', 'Find Bugs Without Tests'],
+            ['Intelephense', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', 'Ben Mewburn', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
+            ['NoVerify', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', 'VK (VKCOM)', 'VKCOM', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
+            ['Mago', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
+            ['mir', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', 'Jorg Sowa', 'Jorg Sowa', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
+            ['pzoom', 'https://github.com/muglug/pzoom', 'Type checker', 'CLI', '—', 'Rust', 'Matt Brown (muglug)', 'Matt Brown', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
+            ['Steins', 'https://github.com/rigortype/steins', 'Type checker', 'CLI', 'Annotator, transforms', 'Rust', 'USAMI Kenta (rigortype)', 'rigortype', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
         ];
 
-        $headers = ['Analyzer', 'Kind', 'Language', 'Founder', 'Current maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
+        $headers = ['Analyzer', 'Analysis', 'Interface', 'Bundled with it', 'Language', 'Founder', 'Current maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
 
         $lines = [];
         $lines[] = '<h2 class="section">Analyzers</h2>';
-        $lines[] = '<p class="section-note">Reference metadata for each analyzer compared above. Versions are those pinned by this suite.</p>';
+        $lines[] = '<p class="section-note">Reference metadata for each analyzer compared above. Versions are those pinned by this suite. Every tool here is a static analyzer &mdash; that is what qualifies it for the matrix, not what tells it apart. Three independent axes do:</p>';
+        $lines[] = '<ul class="axis-list">'
+            . '<li><strong>Analysis</strong> &mdash; what the tool is trying to establish. '
+            . 'A <em>type checker</em> aims at type correctness: whole-program inference, generics, narrowing, and diagnostics that follow from the type system. '
+            . 'A <em>type-aware linter</em> aims at a rule catalogue and carries inference to make those rules sharper. '
+            . '<em>Code intelligence</em> infers types mainly to drive completion, hover and navigation; diagnostics are one feature among many.</li>'
+            . '<li><strong>Interface</strong> &mdash; how you talk to it. CLI, the Language Server Protocol, or both. Independent of the analysis: Phan and Psalm ship the same engine behind either.</li>'
+            . '<li><strong>Bundled with it</strong> &mdash; what else lives in the same distribution. A formatter or a fixer next to the checker says nothing about how the checker reasons; Mago calls itself a toolchain, but its <code>analyze</code> command is a type checker like the rest.</li>'
+            . '</ul>';
         $lines[] = '<div class="table-scroll"><table class="analyzer-meta">';
         $lines[] = '<thead><tr>';
         foreach ($headers as $header) {
@@ -197,14 +214,16 @@ final class SummaryReport
         }
         $lines[] = '</tr></thead><tbody>';
 
-        foreach ($rows as [$name, $url, $kind, $language, $founder, $maintainer, $license, $initial, $latest, $ast, $announceUrl, $announceLabel]) {
+        foreach ($rows as [$name, $url, $analysis, $interface, $bundled, $language, $founder, $maintainer, $license, $initial, $latest, $ast, $announceUrl, $announceLabel]) {
             $announcement = $announceUrl !== ''
                 ? sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($announceUrl), htmlspecialchars($announceLabel))
                 : '<span class="none">—</span>';
 
             $lines[] = '<tr>'
                 . sprintf('<th class="tool-name"><a href="%s" target="_blank" rel="noopener">%s</a></th>', htmlspecialchars($url), htmlspecialchars($name))
-                . '<td>' . htmlspecialchars($kind) . '</td>'
+                . '<td>' . htmlspecialchars($analysis) . '</td>'
+                . '<td>' . htmlspecialchars($interface) . '</td>'
+                . '<td>' . htmlspecialchars($bundled) . '</td>'
                 . '<td>' . htmlspecialchars($language) . '</td>'
                 . '<td>' . $founder . '</td>'
                 . '<td>' . htmlspecialchars($maintainer) . '</td>'
@@ -519,6 +538,7 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .partial { background: #fdf0cf; }
 .facets { margin: 8px 0 0; padding-left: 18px; font-size: 0.85em; color: #555; }
 .legend-facets { margin: 4px 0 10px; padding-left: 20px; font-size: 0.9em; }
+.axis-list { margin: 4px 0 14px; padding-left: 20px; font-size: 0.9em; line-height: 1.5; max-width: 70em; }
 .legend { margin: 16px 0 24px; border: 1px solid #ddd; border-radius: 6px; padding: 10px 14px; background: #fbfbfb; }
 .legend > summary { cursor: pointer; font-weight: 600; }
 .legend-intro { margin: 14px 0 6px; font-size: 0.9em; }
@@ -797,12 +817,18 @@ CSS;
         }
 
         $levelLabel = $level === 10
-            ? 'reported at level max'
-            : sprintf('reported from level %d', $level);
+            ? 'reported Lv.max'
+            : sprintf('reported Lv.%d+', $level);
 
+        // The verb carries the meaning the bare "(Lv 5+)" used to lose: the
+        // level is where the diagnostic starts being *reported*, not where
+        // support for the type starts.
         return sprintf(
             ' <small class="level-tag" title="%s">%s</small>',
-            htmlspecialchars('PHPStan levels enable rule sets; type inference itself is level-independent.'),
+            htmlspecialchars(sprintf(
+                'Reported from PHPStan level %s upwards. Levels enable rule sets; type inference itself is level-independent.',
+                $level === 10 ? 'max' : (string) $level,
+            )),
             htmlspecialchars($levelLabel),
         );
     }

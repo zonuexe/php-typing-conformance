@@ -16,15 +16,42 @@
 <h2>Analyzer results</h2>
 <table class="detail-results">
 <thead><tr><th scope="col">Analyzer</th><th scope="col">Version</th><th scope="col">Result</th><th scope="col">Diagnostics</th></tr></thead><tbody>
-<tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">psalm</th><td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">mago</th><td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">mir</th><td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">noverify</th><td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td><td class="fail status-cell">Fail</td><td class="diag-cell"><pre class="diag">historical_nullable_array_default_null.php:18: param $values miss matched with phpdoc type &lt;&lt;array&lt;int&gt;|null&gt;&gt; [funcParamTypeMissMatch]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 18: Unexpected errors [&quot;param $values miss matched with phpdoc type &lt;&lt;array&lt;int&gt;|null&gt;&gt; [funcParamTypeMissMatch]&quot;]</pre></details></td></tr>
-<tr><th class="tool-name">intelephense</th><td><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">phpy</th><td><small><span class="hover-card"><span class="hover-card__trigger">phpy 0.2.0</span><span class="hover-card__popup">phpy 0.2.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
-<tr><th class="tool-name">steins</th><td><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">phan</th>
+<td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td>
+<td class="pass status-cell">Pass</td>
+<td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">phpstan</th>
+<td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td>
+<td class="pass status-cell">Pass</td>
+<td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">psalm</th>
+<td><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></td>
+<td class="pass status-cell">Pass</td>
+<td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">mago</th>
+<td><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></td>
+<td class="pass status-cell">Pass</td>
+<td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">mir</th>
+<td><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></td>
+<td class="pass status-cell">Pass</td>
+<td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">noverify</th>
+<td><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></td>
+<td class="fail status-cell">Fail</td>
+<td class="diag-cell"><pre class="diag">historical_nullable_array_default_null.php:18: param $values miss matched with phpdoc type &lt;&lt;array&lt;int&gt;|null&gt;&gt; [funcParamTypeMissMatch]</pre><details><summary>Expectation diff</summary><pre class="diag">Line 18: Unexpected errors [&quot;param $values miss matched with phpdoc type &lt;&lt;array&lt;int&gt;|null&gt;&gt; [funcParamTypeMissMatch]&quot;]</pre></details></td></tr>
+<tr><th class="tool-name">intelephense</th>
+<td><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></td>
+<td class="pass status-cell">Pass</td>
+<td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">phpy</th>
+<td><small><span class="hover-card"><span class="hover-card__trigger">phpy 0.2.0</span><span class="hover-card__popup">phpy 0.2.0</span></span></small></td>
+<td class="pass status-cell">Pass</td>
+<td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">steins</th>
+<td><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.1" class="hover-card__trigger" target="_blank" rel="noopener">0.1.1</a><span class="hover-card__popup">steins 0.1.1 (2026-07-26 revision 67a757e) - https://github.com/rigortype/steins</span></span></small></td>
+<td class="pass status-cell">Pass</td>
+<td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
 </tbody></table>
 <h2>Source</h2>
 <pre class="source"><code>&lt;?php

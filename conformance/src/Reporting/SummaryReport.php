@@ -121,7 +121,7 @@ final class SummaryReport
         $lines[] = '<div class="table-scroll"><table class="analyzer-meta">';
         $lines[] = '<thead><tr>';
         foreach ($headers as $header) {
-            $lines[] = '<th>' . htmlspecialchars($header) . '</th>';
+            $lines[] = '<th scope="col">' . htmlspecialchars($header) . '</th>';
         }
         $lines[] = '</tr></thead><tbody>';
 
@@ -166,11 +166,11 @@ final class SummaryReport
     ): array {
         $lines = [];
         $lines[] = '<table>';
-        $lines[] = '<thead><tr><th>Test</th>';
+        $lines[] = '<thead><tr><th scope="col">Test</th>';
 
         foreach ($tools as $tool) {
             $lines[] = sprintf(
-                '<th>%s<br><small>%s</small></th>',
+                '<th scope="col">%s<br><small>%s</small></th>',
                 htmlspecialchars($tool),
                 $this->versionCell($resultsRoot, $tool),
             );
@@ -275,7 +275,7 @@ final class SummaryReport
 
         $body[] = '<h2>Analyzer results</h2>';
         $body[] = '<table class="detail-results">';
-        $body[] = '<thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>';
+        $body[] = '<thead><tr><th scope="col">Analyzer</th><th scope="col">Version</th><th scope="col">Result</th><th scope="col">Diagnostics</th></tr></thead><tbody>';
 
         foreach ($tools as $tool) {
             $result = $this->loadResult($resultsRoot, $tool, $testCase->name);
@@ -409,12 +409,12 @@ p.lead { color: #555; margin-top: 0; }
 h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
 p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
 .table-scroll { overflow-x: auto; }
-table.analyzer-meta { font-size: 0.9em; }
 table.analyzer-meta a { text-decoration: none; font-weight: 600; }
 p.crumb { margin: 0 0 12px; }
 p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+th[scope="col"], td { font-size: 0.9em; }
 thead th { position: sticky; top: 0; background-color: white; z-index: 1; }
 small a { color: inherit; }
 .test-cell { min-width: 260px; }

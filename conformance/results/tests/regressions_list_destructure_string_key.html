@@ -13,12 +13,12 @@ p.lead { color: #555; margin-top: 0; }
 h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
 p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
 .table-scroll { overflow-x: auto; }
-table.analyzer-meta { font-size: 0.9em; }
 table.analyzer-meta a { text-decoration: none; font-weight: 600; }
 p.crumb { margin: 0 0 12px; }
 p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+th[scope="col"], td { font-size: 0.9em; }
 thead th { position: sticky; top: 0; background-color: white; z-index: 1; }
 small a { color: inherit; }
 .test-cell { min-width: 260px; }
@@ -68,7 +68,7 @@ Source lead: Mago analyzer test <code>list_destructure_string_key_simple</code>
 here Mago is the strict tool and the others miss the defect.</div>
 <h2>Analyzer results</h2>
 <table class="detail-results">
-<thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
+<thead><tr><th scope="col">Analyzer</th><th scope="col">Version</th><th scope="col">Result</th><th scope="col">Diagnostics</th></tr></thead><tbody>
 <tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">regressions_list_destructure_string_key.php:28: Attempting an array destructing assignment with a key of type int but the only key types of the right-hand side are of type string [PhanTypeMismatchArrayDestructuringKey]</pre></td></tr>
 <tr><th class="tool-name">phpstan</th><td><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></td><td class="pass status-cell">Pass <small>(Lv 3+)</small></td><td class="diag-cell"><pre class="diag">regressions_list_destructure_string_key.php:28: Offset 0 does not exist on array&lt;string, int&gt;. [identifier=offsetAccess.notFound] [detected-from-level=3]
 regressions_list_destructure_string_key.php:28: Offset 1 does not exist on array&lt;string, int&gt;. [identifier=offsetAccess.notFound] [detected-from-level=3]

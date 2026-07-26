@@ -13,12 +13,12 @@ p.lead { color: #555; margin-top: 0; }
 h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
 p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
 .table-scroll { overflow-x: auto; }
-table.analyzer-meta { font-size: 0.9em; }
 table.analyzer-meta a { text-decoration: none; font-weight: 600; }
 p.crumb { margin: 0 0 12px; }
 p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+th[scope="col"], td { font-size: 0.9em; }
 thead th { position: sticky; top: 0; background-color: white; z-index: 1; }
 small a { color: inherit; }
 .test-cell { min-width: 260px; }
@@ -60,15 +60,15 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <h2 class="section">Soundness &mdash; potential runtime type errors</h2>
 <p class="section-note">Positives here flag code that can actually fail at runtime &mdash; type mismatches, null access, invalid arguments, uninitialized reads. <strong>Pass</strong> means the analyzer agrees with the expected diagnostic.</p>
 <table>
-<thead><tr><th>Test</th>
-<th>phan<br><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></th>
-<th>phpstan<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
-<th>psalm<br><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></th>
-<th>mago<br><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></th>
-<th>mir<br><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></th>
-<th>noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
-<th>intelephense<br><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></th>
-<th>steins<br><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></th>
+<thead><tr><th scope="col">Test</th>
+<th scope="col">phan<br><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></th>
+<th scope="col">phpstan<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
+<th scope="col">psalm<br><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></th>
+<th scope="col">mago<br><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></th>
+<th scope="col">mir<br><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></th>
+<th scope="col">noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
+<th scope="col">intelephense<br><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></th>
+<th scope="col">steins<br><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></th>
 </tr></thead><tbody>
 <tr class="group"><td colspan="9">Native types</td></tr>
 <tr id="native_types_resource_argument"><td class="test-cell"><a class="test-link" href="tests/native_types_resource_argument.html"><code>resource</code> is not a valid native type declaration</a></td>
@@ -1033,15 +1033,15 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <h2 class="section">Style &amp; opinionated rules &mdash; no runtime-safety impact</h2>
 <p class="section-note">Lint-style opinions and advisories (PHPStan strict-rules, deprecations, doc conventions) that do not change whether the code runs. Cells show whether each analyzer <em>opts into</em> reporting the rule &mdash; not a pass/fail verdict.</p>
 <table>
-<thead><tr><th>Test</th>
-<th>phan<br><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></th>
-<th>phpstan<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
-<th>psalm<br><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></th>
-<th>mago<br><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></th>
-<th>mir<br><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></th>
-<th>noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
-<th>intelephense<br><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></th>
-<th>steins<br><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></th>
+<thead><tr><th scope="col">Test</th>
+<th scope="col">phan<br><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></th>
+<th scope="col">phpstan<br><small><span class="hover-card"><a href="https://github.com/phpstan/phpstan/releases/tag/2.2.5" class="hover-card__trigger" target="_blank" rel="noopener">2.2.5</a><span class="hover-card__popup">PHPStan - PHP Static Analysis Tool 2.2.5</span></span></small></th>
+<th scope="col">psalm<br><small><span class="hover-card"><a href="https://github.com/vimeo/psalm/releases/tag/6.16.1" class="hover-card__trigger" target="_blank" rel="noopener">6.16.1</a><span class="hover-card__popup">Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac</span></span></small></th>
+<th scope="col">mago<br><small><span class="hover-card"><a href="https://github.com/carthage-software/mago/releases/tag/1.44.0" class="hover-card__trigger" target="_blank" rel="noopener">1.44.0</a><span class="hover-card__popup">mago 1.44.0</span></span></small></th>
+<th scope="col">mir<br><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></th>
+<th scope="col">noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
+<th scope="col">intelephense<br><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></th>
+<th scope="col">steins<br><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></th>
 </tr></thead><tbody>
 <tr class="group"><td colspan="9">Exceptions</td></tr>
 <tr id="exceptions_throws_docblock"><td class="test-cell"><a class="test-link" href="tests/exceptions_throws_docblock.html">Basic @throws compatibility checks</a></td>
@@ -1090,16 +1090,16 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <p class="section-note">Reference metadata for each analyzer compared above. Versions are those pinned by this suite.</p>
 <div class="table-scroll"><table class="analyzer-meta">
 <thead><tr>
-<th>Analyzer</th>
-<th>Kind</th>
-<th>Language</th>
-<th>Founder</th>
-<th>Current maintainer</th>
-<th>License</th>
-<th>Initial release</th>
-<th>Latest release</th>
-<th>AST / parser</th>
-<th>Release announcement</th>
+<th scope="col">Analyzer</th>
+<th scope="col">Kind</th>
+<th scope="col">Language</th>
+<th scope="col">Founder</th>
+<th scope="col">Current maintainer</th>
+<th scope="col">License</th>
+<th scope="col">Initial release</th>
+<th scope="col">Latest release</th>
+<th scope="col">AST / parser</th>
+<th scope="col">Release announcement</th>
 </tr></thead><tbody>
 <tr><th class="tool-name"><a href="https://github.com/phan/phan" target="_blank" rel="noopener">Phan</a></th><td>Static analyzer</td><td>PHP</td><td>Rasmus Lerdorf &amp; Andrew Morrison (Etsy)</td><td>Tyson Andre</td><td>MIT</td><td>2015</td><td>6.0.7 (2026-06-22)</td><td>ext-ast / tolerant-php-parser</td><td><a href="https://talks.php.net/ph16" target="_blank" rel="noopener">Deploying PHP 7 (talk)</a></td></tr>
 <tr><th class="tool-name"><a href="https://psalm.dev" target="_blank" rel="noopener">Psalm</a></th><td>Static analyzer</td><td>PHP</td><td>Matt Brown (Vimeo)</td><td>Daniil Gentili</td><td>MIT</td><td>2016</td><td>6.16.1 (2026-03-19)</td><td>nikic/PHP-Parser</td><td><a href="https://medium.com/vimeo-engineering-blog/automated-type-inference-for-dynamically-typed-programs-6e79197e5420" target="_blank" rel="noopener">Automated type inference</a></td></tr>

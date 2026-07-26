@@ -13,12 +13,12 @@ p.lead { color: #555; margin-top: 0; }
 h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
 p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
 .table-scroll { overflow-x: auto; }
-table.analyzer-meta { font-size: 0.9em; }
 table.analyzer-meta a { text-decoration: none; font-weight: 600; }
 p.crumb { margin: 0 0 12px; }
 p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
+th[scope="col"], td { font-size: 0.9em; }
 thead th { position: sticky; top: 0; background-color: white; z-index: 1; }
 small a { color: inherit; }
 .test-cell { min-width: 260px; }
@@ -64,7 +64,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 - legacy PHP resource values</div>
 <h2>Analyzer results</h2>
 <table class="detail-results">
-<thead><tr><th>Analyzer</th><th>Version</th><th>Result</th><th>Diagnostics</th></tr></thead><tbody>
+<thead><tr><th scope="col">Analyzer</th><th scope="col">Version</th><th scope="col">Result</th><th scope="col">Diagnostics</th></tr></thead><tbody>
 <tr><th class="tool-name">phan</th><td><small><span class="hover-card"><a href="https://github.com/phan/phan/releases/tag/6.0.7" class="hover-card__trigger" target="_blank" rel="noopener">6.0.7</a><span class="hover-card__popup">Phan 6.0.7 php-ast version 1.1.3 PHP version used to run Phan: 8.5.8</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">native_types_resource_argument.php:16: Parameter $value has undeclared type \Conformance\Tests\NativeTypesResourceArgument\resource [PhanUndeclaredTypeParameter]
 native_types_resource_argument.php:37: Argument 1 ($value) is $handle of type resource but \Conformance\Tests\NativeTypesResourceArgument\takesResource() takes \Conformance\Tests\NativeTypesResourceArgument\resource defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:16 [PhanTypeMismatchArgument]
 native_types_resource_argument.php:38: Argument 1 ($value) is $handle of type resource but \Conformance\Tests\NativeTypesResourceArgument\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/native_types_resource_argument.php:20 [PhanTypeMismatchArgument]

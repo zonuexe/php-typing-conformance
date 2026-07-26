@@ -4,5 +4,13 @@
     "type": "project",
     "require": {
         "internal/toml": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Conformance\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
     }
 }

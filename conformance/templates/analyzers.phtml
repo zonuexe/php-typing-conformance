@@ -1,0 +1,88 @@
+<?php
+
+declare(strict_types=1);
+
+use Conformance\Metadata\AnalyzerMetadata;
+use Conformance\Metadata\InterfaceKind;
+
+/**
+ * The reference table of the analyzers compared in the matrix above.
+ *
+ * The records carry neutral data — names, URLs, enums — so every bit of markup
+ * is decided here: which name becomes an <abbr>, which person becomes a link,
+ * how a list of interfaces becomes one cell. See
+ * Conformance\Metadata\AnalyzerMetadata for what each column may claim.
+ *
+ * @var list<AnalyzerMetadata> $analyzers
+ */
+
+$headers = ['Analyzer', 'Analysis', 'Interface', 'Bundled with it', 'Language', 'Founder', 'Organization', 'Lead maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
+
+?>
+<h2 class="section">Analyzers</h2>
+<p class="section-note">Reference metadata for each analyzer compared above; versions are those pinned by this suite. <strong>Analysis</strong> is the one column whose values are coined here rather than read off the project: a <em>type checker</em> aims at type correctness, a <em>type-aware linter</em> at a rule catalogue that inference sharpens, and <em>code intelligence</em> infers types mainly to drive completion and navigation, with diagnostics one feature among many.</p>
+<div class="table-scroll"><table class="analyzer-meta">
+<thead><tr>
+<?php foreach ($headers as $header): ?>
+<th scope="col"><?= h($header) ?></th>
+<?php endforeach; ?>
+</tr></thead><tbody>
+<?php foreach ($analyzers as $analyzer): ?>
+<?php
+    $interfaces = implode(', ', array_map(
+        static fn (InterfaceKind $interface): string => $interface->label(),
+        $analyzer->interfaces(),
+    ));
+    // An analyzer that is only an analyzer says so with a dash, like any other
+    // cell with nothing in it.
+    $bundled = $analyzer->bundled() === [] ? '—' : implode(', ', $analyzer->bundled());
+    $organization = $analyzer->organization();
+    $lead = $analyzer->lead();
+    $release = $analyzer->latestRelease;
+    $announcement = $analyzer->announcement();
+?>
+<tr><th class="tool-name"><a href="<?= h($analyzer->homepage()) ?>" target="_blank" rel="noopener"><?php
+    if ($analyzer->expansion() === null):
+        echo h($analyzer->name());
+    else:
+        ?><abbr title="<?= h($analyzer->expansion()) ?>"><?= h($analyzer->name()) ?></abbr><?php
+    endif;
+?></a></th><td><?= h($analyzer->analysis()->label()) ?></td><td><?= h($interfaces) ?></td><td><?= h($bundled) ?></td><td><?= h(implode(', ', $analyzer->languages())) ?></td><td><?php
+    // Founders are listed in the order they started it; the employer, where
+    // one is worth naming, belongs to the founding rather than to a person.
+    $names = [];
+    foreach ($analyzer->founders() as $founder) {
+        $names[] = $founder->profileUrl === null
+            ? h($founder->name)
+            : sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', h($founder->profileUrl), h($founder->name));
+    }
+    echo implode(' &amp; ', $names);
+    echo $analyzer->founderEmployer() === null ? '' : ' (' . h($analyzer->founderEmployer()) . ')';
+?></td><td><?php
+    if ($organization->url === null):
+        echo h($organization->label());
+    else:
+        ?><a href="<?= h($organization->url) ?>" target="_blank" rel="noopener"><?= h($organization->label()) ?></a><?php
+    endif;
+?></td><td><?php
+    // Linked only when the lead differs from the founder: the founder's own
+    // link already covers the "same person" case, so a second link there would
+    // just point back at itself. A row with nobody nameable gets a dash.
+    if ($lead === null):
+        echo '—';
+    elseif ($lead->profileUrl !== null):
+        ?><a href="<?= h($lead->profileUrl) ?>" target="_blank" rel="noopener"<?= $lead->note === null ? '' : ' title="' . h($lead->note) . '"' ?>><?= h($lead->name) ?></a><?php
+    elseif ($lead->note !== null):
+        ?><span class="succession" title="<?= h($lead->note) ?>"><?= h($lead->name) ?></span><?php
+    else:
+        echo h($lead->name);
+    endif;
+?></td><td><?= h($analyzer->license()) ?></td><td><?= h_year((string) $analyzer->initialReleaseYear()) ?></td><td><?= h_release($release->version, $release->date) ?></td><td><?= h($analyzer->parser()) ?></td><td><?php
+    if ($announcement === null):
+        ?><span class="none">—</span><?php
+    else:
+        ?><a href="<?= h($announcement->url) ?>" target="_blank" rel="noopener"><?= h($announcement->label) ?></a><?php
+    endif;
+?></td></tr>
+<?php endforeach; ?>
+</tbody></table></div>

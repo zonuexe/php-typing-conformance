@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * One results matrix: tests down the side, analyzers across the top.
+ *
+ * Cell text and its CSS class are decided by the report, since which verdict
+ * vocabulary applies depends on the test and on merged columns; this template
+ * only lays them out.
+ *
+ * @var list<array{name: string, versionHtml: string}> $tools
+ * @var list<array{name: string, rows: list<array{id: string, href: string, titleHtml: string, cells: list<array{class: string, html: string, notes: string}>}>}> $groups
+ */
+
+?>
+<table>
+<thead><tr><th scope="col">Test</th>
+<?php foreach ($tools as $tool): ?>
+<th scope="col"><?= h($tool['name']) ?><br><small><?= $tool['versionHtml'] ?></small></th>
+<?php endforeach; ?>
+</tr></thead><tbody>
+<?php foreach ($groups as $group): ?>
+<tr class="group"><td colspan="<?= count($tools) + 1 ?>"><?= h($group['name']) ?></td></tr>
+<?php foreach ($group['rows'] as $row): ?>
+<tr id="<?= h($row['id']) ?>"><td class="test-cell"><a class="test-link" href="<?= h($row['href']) ?>"><?= $row['titleHtml'] ?></a></td>
+<?php foreach ($row['cells'] as $cell): ?>
+<td class="<?= $cell['class'] ?>"><a class="cell-link" href="<?= h($row['href']) ?>"><?= $cell['html'] ?><?php
+    if ($cell['notes'] !== ''):
+        ?> <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup"><?= h_linked($cell['notes']) ?></span></span><?php
+    endif;
+?></a></td>
+<?php endforeach; ?>
+</tr>
+<?php endforeach; ?>
+<?php endforeach; ?>
+</tbody></table>

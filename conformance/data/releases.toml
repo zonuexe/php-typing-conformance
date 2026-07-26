@@ -1,0 +1,83 @@
+# Latest upstream release of every artifact the report describes, as shown in
+# the "Latest release" column of both reference tables.
+#
+# This is the injected half of the metadata: everything else about a tool --
+# who founded it, what entity is behind it, what it parses with -- is a curated
+# judgement hardcoded in src/Metadata/Analyzer/<Tool>.php or
+# src/Metadata/LanguageServer/<Tool>.php, and only changes when the project
+# itself does. These two fields go stale on their own, so they live here where
+# a script can rewrite the file wholesale from upstream release feeds without
+# touching any curation.
+#
+# Intelephense and Psalm have one entry apiece, read by both tables: each is
+# the same artifact reached two ways, so a single release date is the honest
+# answer. devsense-php-ls and phpy are the opposite case -- one engine, two
+# separately versioned artifacts -- and so get an entry each.
+#
+# Not to be confused with results/<tool>/version.toml, which records the
+# version this suite actually ran. This file records what upstream has shipped
+# most recently, which may be newer.
+#
+# Keys are the runner's tool names. `version` is whatever upstream calls the
+# release -- "unversioned" where a project ships without version numbers --
+# and `date` is an ISO 8601 calendar date.
+
+# Analyzers.
+
+[phan]
+version = "6.0.7"
+date = "2026-06-22"
+
+[psalm]
+version = "6.16.1"
+date = "2026-03-19"
+
+[phpstan]
+version = "2.2.5"
+date = "2026-07-05"
+
+[intelephense]
+version = "1.18.5"
+date = "2026-06-21"
+
+[noverify]
+version = "0.5.5"
+date = "2025-04-22"
+
+[mago]
+version = "1.44.0"
+date = "2026-07-18"
+
+[phpy]
+version = "1.0.18519"
+date = "2026-02-19"
+
+[mir]
+version = "0.60.0"
+date = "2026-07-18"
+
+[pzoom]
+version = "unversioned"
+date = "2026-06-24"
+
+[steins]
+version = "0.1.0"
+date = "2026-07-24"
+
+# Language servers.
+
+[phpactor]
+version = "2026.07.22.0"
+date = "2026-07-22"
+
+[devsense-php-ls]
+version = "1.0.19075"
+date = "2026-07-16"
+
+[phpantom]
+version = "0.9.0"
+date = "2026-07-19"
+
+[php-lsp]
+version = "0.20.0"
+date = "2026-07-19"

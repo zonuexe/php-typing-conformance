@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "intersections_interface_merge.php:54: argument new AnonymousUser() to takesIdentifiedNamed() cannot become Conformance\\Tests\\IntersectionsInterfaceMerge\\HasId&Conformance\\Tests\\IntersectionsInterfaceMerge\\HasName $value — proven TypeError (strict mode) [type.argument-mismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

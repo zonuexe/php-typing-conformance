@@ -1,0 +1,151 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Conformance\Checker;
+
+use Conformance\Discovery\TestCase;
+use RuntimeException;
+
+/**
+ * Adapter for Steins (https://github.com/rigortype/steins), a Rust PHP
+ * static analyzer.
+ *
+ * Steins is a zero-false-positive proof-layer tool: it reports only provable
+ * runtime breakage (TypeErrors on live paths) and effect-envelope violations,
+ * so it legitimately stays silent on many `// E` expectations that
+ * declared-type worst-case analyzers (PHPStan-class tools) report. Silence is
+ * an honest verdict, not a miss.
+ *
+ * CLI contract:
+ *   steins check <paths...> --format json
+ *     -> stdout JSON: {"findings":[{"id","path","line","column","message"}...],
+ *                      "suppressed":N,"baselined":N,"vendor_suppressed":N}
+ *     -> exit 0 = clean, exit 1 = findings.
+ *
+ * Steins analyses the given paths as ONE project (PHP >= 8.1 semantics,
+ * `declare(strict_types=1)` respected per file). Support files (`_`-prefixed)
+ * are passed alongside the primary file so cross-file symbols resolve;
+ * diagnostics are then filtered down to the primary test file.
+ *
+ * Binary path resolution: the `STEINS_BIN` environment variable overrides the
+ * constructor default when set and non-empty.
+ */
+final class SteinsChecker implements Checker
+{
+    public const DEFAULT_BINARY_PATH = '/Users/megurine/local/bin/steins';
+
+    /**
+     * Pinned release version. Steins v0.1.0 ships no `--version` subcommand;
+     * a queryable version (and Composer distribution) arrives in v0.1.1.
+     */
+    public const RELEASE_VERSION = '0.1.0';
+
+    private readonly string $binaryPath;
+
+    public function __construct(?string $binaryPath = null)
+    {
+        $override = getenv('STEINS_BIN');
+        if (is_string($override) && $override !== '') {
+            $this->binaryPath = $override;
+        } else {
+            $this->binaryPath = $binaryPath ?? self::DEFAULT_BINARY_PATH;
+        }
+    }
+
+    public function name(): string
+    {
+        return 'steins';
+    }
+
+    public function version(): string
+    {
+        // Steins v0.1.0 ships no `--version` subcommand, so the released
+        // version is pinned here. Switch to querying the binary once v0.1.1
+        // adds a version command.
+        return 'steins ' . self::RELEASE_VERSION;
+    }
+
+    /**
+     * @return array<int, list<string>>
+     */
+    public function analyse(TestCase $testCase): array
+    {
+        // Absolute paths so the returned `path` fields match $testCase->path
+        // exactly when filtering. Support files ride along as one project.
+        $paths = array_map(
+            static fn (string $path): string => escapeshellarg($path),
+            [...$testCase->supportPaths, $testCase->path],
+        );
+
+        // `--profile contracts`: conformance measures the checker's full
+        // capability surface. Steins' default profile is deliberately
+        // proof-layer-only (quiet default; ADR-0050), which would hide the
+        // contract-layer findings (`phpdoc.*` etc.) many cases assert on.
+        $command = sprintf(
+            '%s check --profile contracts --format json %s',
+            escapeshellarg($this->binaryPath),
+            implode(' ', $paths),
+        );
+
+        exec($command . ' 2>/dev/null', $output, $exitCode);
+
+        // 0 = clean, 1 = findings. Anything else is a real invocation failure.
+        if ($exitCode !== 0 && $exitCode !== 1) {
+            throw new RuntimeException(sprintf('Steins invocation failed for %s (exit %d)', $testCase->fileName, $exitCode));
+        }
+
+        return $this->parseOutput($testCase, implode("\n", $output));
+    }
+
+    /**
+     * @return array<int, list<string>>
+     */
+    private function parseOutput(TestCase $testCase, string $output): array
+    {
+        $start = strpos($output, '{');
+        if ($start === false) {
+            throw new RuntimeException(sprintf('Steins output did not contain JSON payload for %s', $testCase->fileName));
+        }
+
+        /** @var array<string, mixed>|null $data */
+        $data = json_decode(substr($output, $start), true);
+        if (!is_array($data)) {
+            throw new RuntimeException(sprintf('Failed to parse Steins output for %s', $testCase->fileName));
+        }
+
+        $findings = $data['findings'] ?? [];
+        if (!is_array($findings)) {
+            return [];
+        }
+
+        $diagnostics = [];
+
+        foreach ($findings as $finding) {
+            if (!is_array($finding)) {
+                continue;
+            }
+
+            $path = (string) ($finding['path'] ?? '');
+            if ($path !== $testCase->path) {
+                continue;
+            }
+
+            $lineNumber = (int) ($finding['line'] ?? -1);
+            $message = trim((string) ($finding['message'] ?? ''));
+            $id = trim((string) ($finding['id'] ?? ''));
+
+            if ($lineNumber <= 0 || $message === '') {
+                continue;
+            }
+
+            $formatted = $id !== '' ? sprintf('%s [%s]', $message, $id) : $message;
+            $diagnostics[$lineNumber] ??= [];
+            $diagnostics[$lineNumber][] = $formatted;
+        }
+
+        ksort($diagnostics);
+
+        return $diagnostics;
+    }
+}

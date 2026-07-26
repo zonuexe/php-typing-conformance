@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+psr_phpdoc_param_return.php:44: InvalidArgument: Argument $message of encodeMessage() expects 'string', got '42' [MIR0201]
+psr_phpdoc_param_return.php:47: InvalidArgument: Argument $message of encodeMessage() expects 'string', got 'int' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

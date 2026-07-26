@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+psr_phpdoc_param_return.php:44: Expression evaluated but not used [discardExpr]
+psr_phpdoc_param_return.php:47: Expression evaluated but not used [discardExpr]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -82,6 +82,8 @@ arrays_open_shapes.php:38: param $values miss matched with phpdoc type &lt;&lt;l
 arrays_open_shapes.php:45: potential null array access in parameter value of function Conformance\Tests\ArraysOpenShapes\takesString [notNullSafetyFunctionArgumentArrayDimFetch]
 arrays_open_shapes.php:46: potential null array access in parameter value of function Conformance\Tests\ArraysOpenShapes\takesInt [notNullSafetyFunctionArgumentArrayDimFetch]</pre></td></tr>
 <tr><th class="tool-name">intelephense</th><td><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">steins</th><td><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">arrays_open_shapes.php:33: argument [&#039;extra&#039; =&gt; 123] to inspectOpenArrayShape() violates declared @param array{name: string, ...} $options — declared contract violation [phpdoc.param-mismatch]
+arrays_open_shapes.php:51: argument [1, &#039;demo&#039;, true] to inspectOpenListShape() violates declared @param list{string, int, ...} $values — declared contract violation [phpdoc.param-mismatch]</pre></td></tr>
 </tbody></table>
 <h2>Source</h2>
 <pre class="source"><code>&lt;?php

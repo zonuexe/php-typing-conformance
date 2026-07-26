@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = "psr_phpdoc_param_return.php:44: argument 42 to encodeMessage() violates declared @param string $message — declared contract violation [phpdoc.param-mismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

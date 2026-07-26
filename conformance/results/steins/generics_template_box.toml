@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "generics_template_box.php:38: argument new Box() to takesIntBox() violates declared @param Box<int> $box — declared contract violation [phpdoc.param-mismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

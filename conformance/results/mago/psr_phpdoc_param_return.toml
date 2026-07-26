@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+psr_phpdoc_param_return.php:44: Invalid argument type for argument #1 of `Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage`: expected `string`, but found `int(42)`. [invalid-argument]
+psr_phpdoc_param_return.php:47: Invalid argument type for argument #1 of `Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage`: expected `string`, but found `int`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

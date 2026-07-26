@@ -78,6 +78,8 @@ native_types_scalar_params.php:26: InvalidArgument: Argument $value of takesStri
 Line 26: Expected 1 error(s)</pre></details></td></tr>
 <tr><th class="tool-name">intelephense</th><td><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">native_types_scalar_params.php:25: Expected type &#039;int&#039;. Found &#039;&#039;x&#039;&#039;. [P1006]
 native_types_scalar_params.php:26: Expected type &#039;string&#039;. Found &#039;1&#039;. [P1006]</pre></td></tr>
+<tr><th class="tool-name">steins</th><td><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">native_types_scalar_params.php:25: argument &quot;x&quot; to takesInt() cannot become int $value — proven TypeError (strict mode) [type.argument-mismatch]
+native_types_scalar_params.php:26: argument 1 to takesString() cannot become string $value — proven TypeError (strict mode) [type.argument-mismatch]</pre></td></tr>
 </tbody></table>
 <h2>Source</h2>
 <pre class="source"><code>&lt;?php

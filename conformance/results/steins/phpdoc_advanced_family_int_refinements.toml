@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_family_int_refinements.php:39: argument 5 to acceptsNegativeInt() violates declared @param negative-int $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_family_int_refinements.php:45: argument -5 to acceptsNonNegativeInt() violates declared @param non-negative-int $value — declared contract violation [phpdoc.param-mismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

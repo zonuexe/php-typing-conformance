@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "conditionals_param_return.php:21: Saw unextractable annotation for comment '* @return ($value is string ? string : int) // E<phan>: Phan cannot extract conditional return annotations' [PhanUnextractableAnnotation]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

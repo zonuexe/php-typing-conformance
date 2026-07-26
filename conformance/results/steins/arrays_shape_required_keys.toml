@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "arrays_shape_required_keys.php:24: argument ['host' => 'localhost'] to takesConfig() violates declared @param array{host: string, port: int} $config — declared contract violation [phpdoc.param-mismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -294,8 +294,10 @@ The following group set is a reasonable PHP translation of the `python-typing` s
 - `enums`: backed enums, pure enums, enum case usage, enum method typing.
 - `exceptions`: throwable contracts, `@throws`, exception flow assumptions where tools model them.
 - `phpdoc_basics`: `@param`, `@return`, `@var`, `@throws`, inline `@var`, docblock/native consistency.
-- `phpdoc_advanced`: conditional types, utility types, integer ranges, literal strings, key-of / value-of.
-- `assertions`: `assert`, tool-specific assertion tags, narrowing via guard methods or helper functions.
+- `phpdoc_advanced`: utility types, integer ranges, literal strings, key-of / value-of, vendor-prefixed extensions.
+- `conditionals`: conditional return types and template-dependent if-else type forms.
+- `aliases`: local and imported PHPDoc type aliases (`@phpstan-type`, `@psalm-type`, import-type).
+- `assertions`: `assert`, tool-specific assertion tags, `@param-out`, narrowing via guard methods or helper functions.
 - `directives`: suppressions, ignore comments, baseline interactions, analyzer directives that affect diagnostics.
 - `stubs`: behavior when external stubs or vendor signatures override source information.
 - `psr`: compatibility expectations derived from FIG or PSR documents.

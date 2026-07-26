@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+generics_extends_implements.php:28: param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]
+generics_extends_implements.php:47: param $box miss matched with phpdoc type <<Box<int>>> [funcParamTypeMissMatch]
+generics_extends_implements.php:54: param $box miss matched with phpdoc type <<Box<string>>> [funcParamTypeMissMatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

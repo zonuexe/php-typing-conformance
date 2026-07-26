@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+conditionals_template_return.php:31: Saw unextractable annotation for comment '* @return (T is int ? Item : list<Item>) // E<phan>: Phan cannot extract template-conditional return annotations' [PhanUnextractableAnnotation]
+conditionals_template_return.php:33: Template type T not used in return value of function/method fetch() [PhanTemplateTypeNotUsedInFunctionReturn]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

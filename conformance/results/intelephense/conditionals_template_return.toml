@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "conditionals_template_return.php:52: Expected type 'Conformance\\Tests\\ConditionalsTemplateReturn\\Item'. Found 'array<int, Conformance\\Tests\\ConditionalsTemplateReturn\\Item>'. [P1006]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

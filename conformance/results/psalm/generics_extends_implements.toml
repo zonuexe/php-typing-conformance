@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = "generics_extends_implements.php:61: Argument 1 of Conformance\\Tests\\GenericsExtendsImplements\\takesStringBox expects Conformance\\Tests\\GenericsExtendsImplements\\Box<string>, but Conformance\\Tests\\GenericsExtendsImplements\\IntBox provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

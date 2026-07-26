@@ -26,7 +26,7 @@ $summaryReport = new SummaryReport();
 $summaryPath = $resultsDir . '/results.html';
 // phpstan-strict is merged into the phpstan column by the report, so it is not
 // listed as its own display column here.
-$tools = ['phan', 'phpstan', 'psalm', 'mago', 'mir', 'noverify', 'intelephense'];
+$tools = ['phan', 'phpstan', 'psalm', 'mago', 'mir', 'noverify', 'intelephense', 'steins'];
 
 $summaryReport->generate(
     resultsRoot: $resultsDir,

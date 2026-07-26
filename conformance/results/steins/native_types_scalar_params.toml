@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+native_types_scalar_params.php:25: argument "x" to takesInt() cannot become int $value — proven TypeError (strict mode) [type.argument-mismatch]
+native_types_scalar_params.php:26: argument 1 to takesString() cannot become string $value — proven TypeError (strict mode) [type.argument-mismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

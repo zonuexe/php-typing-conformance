@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "enums_backed_cases.php:25: argument \"active\" to takesStatus() cannot become Conformance\\Tests\\EnumsBackedCases\\Status $status — proven TypeError (strict mode) [type.argument-mismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+unions_scalar_members.php:27: argument 1.5 to takesIntOrString() cannot become int|string $value — proven TypeError (strict mode) [type.argument-mismatch]
+unions_scalar_members.php:28: argument "x" to takesNullableInt() cannot become ?int $value — proven TypeError (strict mode) [type.argument-mismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

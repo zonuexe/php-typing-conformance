@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "callables_return_type_mismatch.php:28: callable argument to takesStringCallback() violates declared @param callable(int): string $callback — return type is incompatible (callable return covariance) [phpdoc.param-mismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

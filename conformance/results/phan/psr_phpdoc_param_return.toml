@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+psr_phpdoc_param_return.php:44: Argument 1 ($message) is 42 of type int (value: 42) but \\Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() takes string (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/psr_phpdoc_param_return.php:27 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+psr_phpdoc_param_return.php:47: Argument 1 ($message) is encodeMessage('x') of type int but \\Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/psr_phpdoc_param_return.php:27 [PhanTypeMismatchArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

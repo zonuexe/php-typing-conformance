@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = "properties_property_hooks.php:29: InvalidPropertyAssignment: Property $name expects 'string', cannot assign '1' [MIR0206]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

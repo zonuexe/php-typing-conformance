@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = "aliases_local_type.php:40: Argument 1 of Conformance\\Tests\\AliasesLocalType\\User::setAddress expects array{city: string, street: string, zip: string}, but array{city: 'Town', street: '1 Main St'} provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

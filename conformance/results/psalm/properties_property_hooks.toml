@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = "properties_property_hooks.php:29: $object->name with declared type 'string' cannot be assigned type '1' [InvalidPropertyAssignmentValue]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

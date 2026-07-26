@@ -106,6 +106,25 @@ references = [
   "references/phan.wiki/Advanced-Type-System-V6.md",
 ]
 
+[conditionals]
+name = "Conditional types"
+source_category = "ecosystem"
+description = "Conditional return types and template-dependent if-else type forms."
+references = [
+  "references/phpstan/website/src/writing-php-code/phpdoc-types.md",
+  "references/psalm/docs/annotating_code/type_syntax/conditional_types.md",
+  "references/intelephense.wiki/Type-System.md",
+]
+
+[aliases]
+name = "Type aliases"
+source_category = "ecosystem"
+description = "Local and imported PHPDoc type aliases (@phpstan-type, @psalm-type, import-type)."
+references = [
+  "references/phpstan/website/src/writing-php-code/phpdoc-types.md",
+  "references/psalm/docs/annotating_code/type_syntax/utility_types.md",
+]
+
 [assertions]
 name = "Assertions and narrowing"
 source_category = "ecosystem"

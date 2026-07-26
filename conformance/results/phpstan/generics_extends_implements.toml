@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = "generics_extends_implements.php:61: Parameter #1 $box of function Conformance\\Tests\\GenericsExtendsImplements\\takesStringBox expects Conformance\\Tests\\GenericsExtendsImplements\\Box<string>, Conformance\\Tests\\GenericsExtendsImplements\\IntBox given. [detected-from-level=5]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+first_detected_level = 5

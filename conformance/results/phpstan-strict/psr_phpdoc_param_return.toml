@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+psr_phpdoc_param_return.php:44: Call to function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() on a separate line has no effect.
+psr_phpdoc_param_return.php:44: Parameter #1 $message of function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage expects string, int given.
+psr_phpdoc_param_return.php:47: Call to function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() on a separate line has no effect.
+psr_phpdoc_param_return.php:47: Parameter #1 $message of function Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage expects string, int given."""
+errors_diff = ""
+notes = ""
+ignore_errors = []

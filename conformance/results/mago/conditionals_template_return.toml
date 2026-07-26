@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "conditionals_template_return.php:52: Invalid argument type for argument #1 of `Conformance\\Tests\\ConditionalsTemplateReturn\\takesItem`: expected `Conformance\\Tests\\ConditionalsTemplateReturn\\Item`, but found `list<Conformance\\Tests\\ConditionalsTemplateReturn\\Item>`. [invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

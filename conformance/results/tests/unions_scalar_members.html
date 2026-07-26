@@ -78,6 +78,8 @@ unions_scalar_members.php:28: InvalidArgument: Argument $value of takesNullableI
 Line 28: Expected 1 error(s)</pre></details></td></tr>
 <tr><th class="tool-name">intelephense</th><td><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">unions_scalar_members.php:27: Expected type &#039;int|string&#039;. Found &#039;float&#039;. [P1006]
 unions_scalar_members.php:28: Expected type &#039;null|int&#039;. Found &#039;&#039;x&#039;&#039;. [P1006]</pre></td></tr>
+<tr><th class="tool-name">steins</th><td><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">unions_scalar_members.php:27: argument 1.5 to takesIntOrString() cannot become int|string $value — proven TypeError (strict mode) [type.argument-mismatch]
+unions_scalar_members.php:28: argument &quot;x&quot; to takesNullableInt() cannot become ?int $value — proven TypeError (strict mode) [type.argument-mismatch]</pre></td></tr>
 </tbody></table>
 <h2>Source</h2>
 <pre class="source"><code>&lt;?php

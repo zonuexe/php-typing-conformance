@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "callables_docblock_signature.php:27: callable argument to takesIntToStringCallable() violates declared @param callable(int): string $callback — parameter #1 type is incompatible (callable parameter contravariance) [phpdoc.param-mismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = "properties_asymmetric_visibility.php:29: Assign to private(set) property Conformance\\Tests\\PropertiesAsymmetricVisibility\\Counter::$value."
+errors_diff = ""
+notes = ""
+ignore_errors = []

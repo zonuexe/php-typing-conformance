@@ -109,6 +109,7 @@ final class SummaryReport
             ['NoVerify', 'https://github.com/VKCOM/noverify', 'Linter', 'Go', 'VK (VKCOM)', 'VKCOM', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
             ['Mago', 'https://mago.carthage.software', 'Toolchain', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
             ['mir', 'https://github.com/jorgsowa/mir', 'Static analyzer', 'Rust', 'Jorg Sowa', 'Jorg Sowa', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
+            ['Steins', 'https://github.com/rigortype/steins', 'Static analyzer', 'Rust', 'USAMI Kenta (rigortype)', 'rigortype', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
         ];
 
         $headers = ['Analyzer', 'Kind', 'Language', 'Founder', 'Current maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
@@ -673,6 +674,7 @@ CSS;
             'mago' => $this->extractVersion($version, '/mago\s+(\d+\.\d+\.\d+)/i'),
             'mir' => $this->extractVersion($version, '/mir\s+(\d+\.\d+\.\d+)/i'),
             'intelephense' => $this->extractVersion($version, '/intelephense\s+(\d+\.\d+\.\d+)/i'),
+            'steins' => $this->extractVersion($version, '/steins\s+(\d+\.\d+\.\d+)/i'),
             'phan' => $this->extractVersion($version, '/Phan\s+(\d+\.\d+\.\d+)/'),
             'noverify' => $this->extractVersion($version, '/version\s+(\d+\.\d+\.\d+)/i'),
             default => $version,
@@ -692,6 +694,7 @@ CSS;
             'mago' => sprintf('https://github.com/carthage-software/mago/releases/tag/%s', $shortVersion),
             'mir' => sprintf('https://github.com/jorgsowa/mir/releases/tag/v%s', $shortVersion),
             'intelephense' => sprintf('https://www.npmjs.com/package/intelephense/v/%s', $shortVersion),
+            'steins' => sprintf('https://github.com/rigortype/steins/releases/tag/v%s', $shortVersion),
             'phan' => sprintf('https://github.com/phan/phan/releases/tag/%s', $shortVersion),
             'noverify' => sprintf('https://github.com/VKCOM/noverify/releases/tag/v%s', $shortVersion),
             default => null,

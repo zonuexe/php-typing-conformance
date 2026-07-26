@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = "aliases_local_type.php:40: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AliasesLocalType\\User::setAddress`: expected `array{'city': string, 'street': string, 'zip': string}`, but possibly received `array{'city': string('Town'), 'street': string('1 Main St')}`. [possibly-invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

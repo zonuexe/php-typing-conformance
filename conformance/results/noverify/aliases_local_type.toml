@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = "aliases_local_type.php:26: Class or interface named \\Conformance\\Tests\\AliasesLocalType\\UserAddress does not exist [undefinedClass]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

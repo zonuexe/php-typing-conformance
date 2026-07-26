@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Conformance\TestGroup\TestGroupLoader;
+use Conformance\Checker\Checker;
 use Conformance\Checker\PhanChecker;
 use Conformance\Checker\PhpStanChecker;
 use Conformance\Checker\PsalmChecker;
@@ -10,6 +11,7 @@ use Conformance\Checker\MagoChecker;
 use Conformance\Checker\MirChecker;
 use Conformance\Checker\IntelephenseChecker;
 use Conformance\Checker\NoVerifyChecker;
+use Conformance\Checker\SteinsChecker;
 use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Expectation\ExpectationEvaluator;
 use Conformance\Expectation\ExpectationParser;
@@ -26,6 +28,7 @@ require_once __DIR__ . '/Checker/NoVerifyChecker.php';
 require_once __DIR__ . '/Checker/PhanChecker.php';
 require_once __DIR__ . '/Checker/PhpStanChecker.php';
 require_once __DIR__ . '/Checker/PsalmChecker.php';
+require_once __DIR__ . '/Checker/SteinsChecker.php';
 require_once __DIR__ . '/Discovery/TestCase.php';
 require_once __DIR__ . '/Discovery/TestCaseDiscovery.php';
 require_once __DIR__ . '/Expectation/ExpectedDiagnostic.php';
@@ -92,7 +95,41 @@ $intelephenseChecker = new IntelephenseChecker(
     clientPath: __DIR__ . '/Checker/intelephense-client.mjs',
     packageJsonPath: $projectRoot . '/vendor-bin/intelephense/node_modules/intelephense/package.json',
 );
-$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker];
+$steinsChecker = new SteinsChecker();
+$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $steinsChecker];
+
+// Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
+// selected checker(s), leaving every other tool's results untouched. Accepts a
+// comma-separated list. When a filter is active the HTML summary report is left
+// alone (regenerating it with a partial tool set would drop the other columns).
+$toolFilter = null;
+$argvValues = $argv ?? [];
+for ($i = 1, $argc = count($argvValues); $i < $argc; $i++) {
+    $arg = $argvValues[$i];
+    if ($arg === '--tool' && isset($argvValues[$i + 1])) {
+        $toolFilter = $argvValues[$i + 1];
+        $i++;
+    } elseif (str_starts_with($arg, '--tool=')) {
+        $toolFilter = substr($arg, strlen('--tool='));
+    }
+}
+
+$reportFilterActive = false;
+if ($toolFilter !== null) {
+    $selected = array_values(array_filter(array_map('trim', explode(',', $toolFilter)), static fn (string $n): bool => $n !== ''));
+    $checkers = array_values(array_filter(
+        $checkers,
+        static fn (Checker $checker): bool => in_array($checker->name(), $selected, true),
+    ));
+
+    if ($checkers === []) {
+        fwrite(STDERR, sprintf("No checker matched --tool filter '%s'\n", $toolFilter));
+        exit(1);
+    }
+
+    $reportFilterActive = true;
+    printf("Tool filter active: running only [%s]\n", implode(', ', array_map(static fn (Checker $c): string => $c->name(), $checkers)));
+}
 
 printf("Loaded %d test groups\n", count($testGroups));
 
@@ -181,6 +218,11 @@ foreach ($testCases as $testCase) {
 foreach ($checkers as $checker) {
     $versionPath = $resultRepository->saveVersion($checker->name(), $checker->version());
     printf("Saved %s version to %s\n", $checker->name(), $versionPath);
+}
+
+if ($reportFilterActive) {
+    printf("Tool filter active: skipping HTML summary report regeneration to preserve other tools' columns.\n");
+    return;
 }
 
 $summaryPath = $resultsDir . '/results.html';

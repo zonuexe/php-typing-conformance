@@ -116,6 +116,8 @@ Line 23: Unexpected errors [&quot;Class or interface named \\Conformance\\Tests\
 Line 28: Unexpected errors [&quot;Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFamilyIntRefinements\\non-negative-int does not exist [undefinedClass]&quot;]
 Line 33: Unexpected errors [&quot;Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFamilyIntRefinements\\non-zero-int does not exist [undefinedClass]&quot;]</pre></details></td></tr>
 <tr><th class="tool-name">intelephense</th><td><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></td><td class="falls-back status-cell">Falls back to int</td><td class="diag-cell"><p class="none">No diagnostics reported.</p></td></tr>
+<tr><th class="tool-name">steins</th><td><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></td><td class="pass status-cell">Pass</td><td class="diag-cell"><pre class="diag">phpdoc_advanced_family_int_refinements.php:39: argument 5 to acceptsNegativeInt() violates declared @param negative-int $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_family_int_refinements.php:45: argument -5 to acceptsNonNegativeInt() violates declared @param non-negative-int $value — declared contract violation [phpdoc.param-mismatch]</pre></td></tr>
 </tbody></table>
 <h2>Source</h2>
 <pre class="source"><code>&lt;?php

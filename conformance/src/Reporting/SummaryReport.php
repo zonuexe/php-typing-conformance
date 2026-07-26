@@ -89,6 +89,7 @@ final class SummaryReport
         }
 
         $body = array_merge($body, $this->renderAnalyzerTable());
+        $body = array_merge($body, $this->renderLanguageServerTable());
 
         return $this->renderPage('PHP Typing Conformance Results', $body, false);
     }
@@ -352,6 +353,358 @@ final class SummaryReport
         $lines[] = '</tbody></table></div>';
 
         return $lines;
+    }
+
+    /**
+     * A reference table of PHP language servers.
+     *
+     * Deliberately a separate table from the analyzers above, not extra rows
+     * in it. The analyzer table's entry criterion is "this tool is a static
+     * analyzer we run against the conformance suite"; four of these six have
+     * not been run at all, and two of them are not analyzers in the first
+     * place -- they only drive somebody else's. Merging them would put unrun
+     * tools in a table whose whole point is the matrix above it.
+     *
+     * Intelephense and Psalm appear in both tables, as the same artifact in
+     * each -- unlike the php-lsp/mir and devsense-php-ls/phpy pairs below,
+     * which are two artifacts apiece. That is not duplication to be cleaned
+     * up: both genuinely satisfy both entry criteria, and dropping either
+     * from either table would misrepresent it. The analyzer table records how
+     * they score; this one records what they are. Psalm makes the case
+     * plainly -- the LSP server is the same ProjectAnalyzer the CLI runs, so
+     * its matrix row and its row here describe one engine reached two ways.
+     *
+     * Phan advertises "CLI, LSP" in the analyzer table too, so it qualifies
+     * here on the same grounds and is simply not researched yet.
+     *
+     * Deferred: which LSP capabilities each server actually advertises is not
+     * a column yet. The material for it exists -- Psalm's server declares
+     * documentSymbolProvider, workspaceSymbolProvider, referencesProvider and
+     * documentHighlightProvider false outright and has no rename or
+     * formatting provider, while Intelephense gates rename and inlay hints
+     * behind a paid key -- but capability names are a fixed protocol
+     * vocabulary and deserve their own compatibility matrix rather than more
+     * prose in "Bundled with it", which is where that detail currently sits
+     * as hover notes.
+     *
+     * IMPORTANT: every cell here records what the project itself claims, from
+     * its README, docs, changelog, release notes, package metadata, or its
+     * maintainer's own blog. Except for Intelephense's and Psalm's results in
+     * the matrix above, nothing in this section has been verified by running
+     * the tool -- including those two projects' own claims here, which are
+     * recorded on the same terms as everyone else's. Where a project does not state
+     * something, the cell says "Not stated" rather than carrying a guess --
+     * see the DEVSENSE row, whose implementation language and parser are
+     * inferable from the vendor's history but nowhere actually claimed for
+     * this artifact.
+     *
+     * The axis that separates these rows is where diagnostics come from,
+     * which is exactly the axis the analyzer table cannot express:
+     *
+     * - "Adapter" -- the server shells out to third-party analyzers and
+     *   republishes their diagnostics over LSP.
+     * - "Own engine" -- the server infers and diagnoses by itself.
+     * - "Own engine + adapter" -- both, which is what Phpactor and PHPantom
+     *   each claim. Neither is honestly one or the other: Phpactor ships its
+     *   own Worse Reflection inference plus eleven built-in diagnostic
+     *   providers *and* opt-in extension packages that run PHPStan or Psalm;
+     *   PHPantom ships its own type engine *and* auto-detects vendor/bin
+     *   PHPStan, PHPCS and Mago to fold their output in. Collapsing either to
+     *   a single value would misreport the project's own description.
+     *
+     * php-lsp is "Own engine" even though the engine (mir) is a separate
+     * repository and crate family: its own architecture doc frames mir as its
+     * static-analysis engine rather than as a third-party tool it adapts, the
+     * two share an author, and the CHANGELOG records mir being extracted from
+     * a sibling path dependency rather than adopted from outside. mir already
+     * has a row in the analyzer table above; the "Analyzers driven" cell
+     * marks that with "(in-house)" so the relationship is visible without
+     * implying php-lsp integrates a foreign analyzer.
+     *
+     * devsense-php-ls is the counterpart case: phpy, which the analyzer table
+     * above does have a row for, is the CLI frontend of *this* package rather
+     * than a separate product -- phpy's package.json depends on
+     * devsense-php-ls outright, and DEVSENSE's own announcement calls phpy "a
+     * proof of concept for our new standalone language server". The two are
+     * versioned independently and have drifted (the server is on 1.0.19075,
+     * phpy still on 1.0.18519), which is why each gets its own row and its
+     * own release date rather than one shared entry.
+     *
+     * Founder / Organization / Lead maintainer follow the analyzer table's
+     * rules exactly, including the "Community (org)" vs "Personal" split.
+     * PHPantom-dev and phpactor are both GitHub orgs with no company behind
+     * them, so both read "Community (org)"; jorgsowa is a user account, so
+     * php-lsp reads "Personal". Lead stays plain text wherever it is the
+     * founder, since Founder already links that person.
+     *
+     * One sourcing caveat worth keeping: Dan Leech's GitHub profile sets its
+     * name field to the handle "dantleech" rather than to a name, so the
+     * "Dan Leech" spelling comes from the personal blog that profile links
+     * to, not from the profile itself. Phpactor's announcement cell points at
+     * that blog's "Three Years of Phpactor" -- a retrospective rather than a
+     * launch post, which is the closest first-party equivalent the project
+     * has, the same latitude Phan's row already takes with a conference talk.
+     *
+     * @return list<string>
+     */
+    private function renderLanguageServerTable(): array
+    {
+        // Ordered by initial release (oldest first), like the analyzers.
+        //
+        // `note` keys attach a hover explanation to the preceding cell and
+        // are used only where the short value would otherwise overstate the
+        // claim -- "Own engine + adapter" needs to say which half is which,
+        // "Not stated" needs to say what *is* known instead.
+        $rows = [
+            [
+                'name' => 'Intelephense',
+                'url' => 'https://intelephense.com',
+                'diagnostics' => 'Own engine',
+                'diagnosticsNote' => 'Closed source. Its own wording is “multiple diagnostics for open files via an error tolerant parser and powerful static analysis engine”. Its settings contract reaches past undefined-symbol checks into real type diagnostics: intelephense.diagnostics.typeErrors covers “type compatibility for assignments and returns”, alongside argumentCount, implementationErrors, memberAccess and strictTypes.',
+                'analyzers' => '—',
+                'analyzersNote' => 'None claimed: no Intelephense source mentions running PHPStan, Psalm, Phan or PHP_CodeSniffer. It instead claims to read their PHPDoc dialects itself — “advanced PHPDoc type system supporting templates and callable signatures”, @psalm-assert, class-string<T>, conditional and DNF types — plus PHPStorm metadata files.',
+                'bundled' => 'Formatter, rename, code actions, inlay hints',
+                'language' => 'TypeScript',
+                'founder' => '<a href="https://github.com/bmewburn" target="_blank" rel="noopener">Ben Mewburn</a>',
+                'org' => 'Intelephense',
+                'orgUrl' => 'https://intelephense.com',
+                'lead' => 'Ben Mewburn',
+                'leadUrl' => '',
+                'leadNote' => '',
+                'license' => 'Proprietary (freemium)',
+                'licenseNote' => 'Its own words: “Intelephense is released to end users under a freemium model.” Free covers completion, signature help, go-to-definition, find references, symbol search, hover, PSR-12 formatting and the diagnostics themselves. A one-off key (US$35 personal, US$75/user business) unlocks rename, code actions, code lens, inlay hints, type hierarchy, find implementations, go-to-type-definition, code folding and @mixin support. So the diagnostics this table is about are entirely in the free tier.',
+                'initial' => '2017',
+                'latest' => '1.18.5 (2026-06-21)',
+                'ast' => 'own parser',
+                'astNote' => 'Never described as “own parser” in so many words — the developer’s own phrase is “error tolerant parser”. Read as in-house because early versions depended on php7parser, which Ben Mewburn also wrote; the current server bundles its parser closed-source, so the dependency is no longer visible.',
+                'announceUrl' => '',
+                'announceLabel' => '',
+            ],
+            [
+                'name' => 'Phpactor',
+                'url' => 'https://phpactor.readthedocs.io/en/master/',
+                'diagnostics' => 'Own engine + adapter',
+                'diagnosticsNote' => 'Ships its own Worse Reflection inference and eleven built-in diagnostic providers; the LSP support matrix additionally advertises “support for integrating with phpstan, Psalm and php-cs-fixer”.',
+                'analyzers' => 'PHPStan, Psalm',
+                'analyzersNote' => 'Opt-in extension packages, not core: phpactor/language-server-phpstan-extension and phpactor/language-server-psalm-extension. php-cs-fixer and PHP_CodeSniffer integrate the same way, for formatting rather than type diagnostics.',
+                'bundled' => 'Refactorings, code generation, VIM plugin',
+                'language' => 'PHP',
+                'founder' => '<a href="https://github.com/dantleech" target="_blank" rel="noopener">Dan Leech</a>',
+                'org' => 'Community (phpactor)',
+                'orgUrl' => 'https://github.com/phpactor',
+                'lead' => 'Dan Leech',
+                'leadUrl' => '',
+                'leadNote' => '',
+                'license' => 'MIT',
+                'licenseNote' => '',
+                'initial' => '2018',
+                'latest' => '2026.07.22.0 (2026-07-22)',
+                'ast' => 'tolerant-php-parser (fork)',
+                'astNote' => 'A fork of Microsoft’s tolerant-php-parser maintained under the Phpactor org; the founder’s blog says nikic/PHP-Parser was tried first and dropped because the tolerant parser “was designed exactly for Phpactor’s use case”.',
+                'announceUrl' => 'https://www.dantleech.com/blog/2018/08/19/three-years-of-phpactor/',
+                'announceLabel' => 'Three Years of Phpactor',
+            ],
+            [
+                'name' => 'Psalm',
+                'url' => 'https://psalm.dev/docs/running_psalm/language_server/',
+                'diagnostics' => 'Own engine',
+                'diagnosticsNote' => 'Literally the same engine as the CLI: the server builds a ProjectAnalyzer and Codebase, calls analyzeFiles(), and maps Psalm’s own IssueData onto LSP Diagnostic objects. The v3 announcement describes what the editor shows as Psalm’s “regular error reports”.',
+                'analyzers' => '—',
+                'analyzersNote' => 'None claimed. Neither the docs nor the server source mentions running PHPStan, PHP_CodeSniffer or php-cs-fixer.',
+                'bundled' => 'Psalm CLI, Psalter fixer — one package',
+                'bundledNote' => 'The server is the psalm-language-server bin inside vimeo/psalm, never a separate package. Its own docs scope it tightly: “diagnostics …, go-to-definition and hover, with limited support for autocompletion (PRs are welcome!)”, and the server declares documentSymbolProvider, workspaceSymbolProvider, referencesProvider and documentHighlightProvider as false outright, with no rename or formatting provider at all. Completion is opt-in; code actions require the client to advertise publishDiagnostics.dataSupport.',
+                'language' => 'PHP',
+                'founder' => '<a href="https://github.com/muglug" target="_blank" rel="noopener">Matt Brown</a> (Vimeo)',
+                'org' => 'Community (psalm)',
+                'orgUrl' => 'https://github.com/psalm',
+                'lead' => 'Daniil Gentili',
+                'leadUrl' => 'https://github.com/danog',
+                'leadNote' => 'The README names him “the only active maintainer of Psalm”, and he is also the most active author on the LanguageServer directory itself. The VS Code client is the exception: it lives in its own repo, psalm/psalm-vscode-plugin, where Andrew Nagy does most of the committing and merging.',
+                'license' => 'MIT',
+                'licenseNote' => '',
+                'initial' => '2018',
+                'initialNote' => 'The server binary landed quietly in 2.0.15 (2018-10-19), a commit titled “Add server mode support with error reporting only”; the psalm-language-server bin was in composer.json by that tag. It only got a public announcement two months later, with Psalm 3.',
+                'latest' => '6.16.1 (2026-03-19)',
+                'ast' => 'nikic/PHP-Parser',
+                'astNote' => 'Same parser as the CLI. The LSP wire types are not in-tree either — they come from felixfbecker/language-server-protocol and danog/advanced-json-rpc.',
+                'announceUrl' => 'https://psalm.dev/articles/announcing-psalm-v3',
+                'announceLabel' => 'Announcing Psalm v3',
+            ],
+            [
+                'name' => 'devsense-php-ls',
+                'url' => 'https://www.npmjs.com/package/devsense-php-ls',
+                'diagnostics' => 'Own engine',
+                'diagnosticsNote' => 'Closed source, shipped as per-OS/CPU native binaries under node_modules. The same engine that phpy wraps and that PHP Tools for Visual Studio and VS Code embed.',
+                'analyzers' => '—',
+                'analyzersNote' => 'DEVSENSE claims “support for PHPStan, Psalm, PHPDoc Generics, Laravel Idea, and other annotations” — reading those annotation dialects, not running those tools. No DEVSENSE source describes invoking a third-party analyzer.',
+                'bundled' => 'Formatter, phpy CLI frontend',
+                'language' => 'Not stated',
+                'languageNote' => 'DEVSENSE does not state the engine’s implementation language for this package. It ships as native per-OS binaries (devsense-php-ls-darwin-arm64 and siblings), and the company’s Phalanger heritage is C#/.NET, but neither is claimed for this artifact.',
+                'founder' => '<a href="https://github.com/jakubmisek" target="_blank" rel="noopener">Jakub Míšek</a>',
+                'org' => 'DEVSENSE',
+                'orgUrl' => 'https://www.devsense.com',
+                'lead' => 'Jakub Míšek',
+                'leadUrl' => '',
+                'leadNote' => '',
+                'license' => 'Proprietary (freemium)',
+                'licenseNote' => 'package.json declares ISC, which covers the npm wrapper only: the README states the functionality itself is “provided to end-users under a freemium model”, activated with a license key. DEVSENSE’s Community License is free for OSI-licensed open source, education, and any entity under 250 seats and US$1M revenue.',
+                'initial' => '2025',
+                'latest' => '1.0.19075 (2026-07-16)',
+                'ast' => 'Not stated',
+                'astNote' => 'No DEVSENSE page names the parser or AST behind the engine.',
+                'announceUrl' => 'https://blog.devsense.com/2025/update-1-58-benchmarks/',
+                'announceLabel' => 'A standalone language server',
+            ],
+            [
+                'name' => 'PHPantom',
+                'url' => 'https://phpantom-dev.github.io/phpantom_lsp/',
+                'diagnostics' => 'Own engine + adapter',
+                'diagnosticsNote' => 'Its own type engine produces the diagnostics; the docs additionally advertise “PHPStan, PHPCS, and Mago integration. Run external tools on save and surface their diagnostics in the editor.”',
+                'analyzers' => 'PHPStan, PHPCS, Mago',
+                'analyzersNote' => 'Bundled in the single binary rather than plugins, invoked as subprocesses and auto-detected from vendor/bin then $PATH; Mago only when a mago.toml exists at the workspace root. Note Mago plays two roles here — optional external analyzer, and the parser the server itself is built on.',
+                'bundled' => 'Formatter, refactorings, CLI (analyze, fix)',
+                'language' => 'Rust',
+                'founder' => '<a href="https://github.com/AJenbo" target="_blank" rel="noopener">Anders Jenbo</a>',
+                'org' => 'Community (PHPantom-dev)',
+                'orgUrl' => 'https://github.com/PHPantom-dev',
+                'lead' => 'Anders Jenbo',
+                'leadUrl' => '',
+                'leadNote' => '',
+                'license' => 'MIT',
+                'licenseNote' => '',
+                'initial' => '2026',
+                'latest' => '0.9.0 (2026-07-19)',
+                'ast' => 'Mago parser (mago-syntax)',
+                'astNote' => 'The README credits “Mago: the PHP parser that powers all of PHPantom’s AST analysis”; Cargo.toml exact-pins mago-syntax and a half-dozen sibling mago-* crates.',
+                'announceUrl' => '',
+                'announceLabel' => '',
+            ],
+            [
+                'name' => 'php-lsp',
+                'url' => 'https://github.com/jorgsowa/php-lsp',
+                'diagnostics' => 'Own engine',
+                'diagnosticsNote' => 'Its architecture doc names the mir-php crates — mir-analyzer, mir-codebase, mir-issues, mir-types — as its static analysis, and the CHANGELOG records the older in-tree TypeMap inference being deleted once “mir is now the sole source of truth for all type inference”.',
+                'analyzers' => 'mir (in-house)',
+                'analyzersNote' => 'mir has its own row in the analyzer table above. It is a separate repository and crate family, but by the same author, and the CHANGELOG shows it was extracted from a sibling path dependency rather than adopted from outside — so it is an in-house engine, not a third-party analyzer being adapted.',
+                'bundled' => 'Refactorings, code actions; formatting via php-cs-fixer or phpcbf',
+                'language' => 'Rust',
+                'founder' => '<a href="https://github.com/jorgsowa" target="_blank" rel="noopener">Jorg Sowa</a>',
+                'org' => 'Personal',
+                'orgUrl' => '',
+                'lead' => 'Jorg Sowa',
+                'leadUrl' => '',
+                'leadNote' => '',
+                'license' => 'MIT',
+                'licenseNote' => '',
+                'initial' => '2026',
+                'latest' => '0.20.0 (2026-07-19)',
+                'ast' => 'own (php-rs-parser)',
+                'astNote' => 'Dedicated php-rs-parser and php-ast crates, published separately by the same author.',
+                'announceUrl' => '',
+                'announceLabel' => '',
+            ],
+        ];
+
+        $headers = ['Language server', 'Diagnostics', 'Analyzers driven', 'Bundled with it', 'Language', 'Founder', 'Organization', 'Lead maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
+
+        $lines = [];
+        $lines[] = '<h2 class="section">Language servers</h2>';
+        $lines[] = '<p class="section-note"><strong>Only Intelephense and Psalm have been run against the conformance suite; the other four have not.</strong> Either way, every cell in this table records what the project claims about itself &mdash; from its README, docs, changelog, release notes, package metadata, or its maintainer&rsquo;s own blog &mdash; and no claim here has been verified by executing the tool, those two projects&rsquo; claims included. Their scores live in the matrix above, not in this table. Cells read <em>Not stated</em> where the project simply does not say, rather than carrying a plausible guess.</p>';
+        $lines[] = '<p class="section-note">What each server advertises over the protocol &mdash; which LSP <em>capabilities</em> it declares, and which it declines &mdash; is not a column here yet; it is worth a compatibility matrix of its own rather than more prose. For now that detail sits in the hover notes on <em>Bundled with it</em>. <a href="https://github.com/phan/phan" target="_blank" rel="noopener">Phan</a> also ships a language server and belongs in this table; it has simply not been researched yet.</p>';
+        $lines[] = '<p class="section-note">A language server is not a rival kind of tool to the analyzers above; it is a different place to put one. What separates these rows is where the diagnostics come from:</p>';
+        $lines[] = '<ul class="axis-list">'
+            . '<li><strong>Adapter</strong> &mdash; the server runs third-party analyzers and republishes their diagnostics over LSP. It contributes editor plumbing, not judgements about types.</li>'
+            . '<li><strong>Own engine</strong> &mdash; the server infers and diagnoses by itself, so its verdicts are its own and would be directly comparable with the matrix above if it were run against the suite.</li>'
+            . '<li><strong>Own engine + adapter</strong> &mdash; both, which is what Phpactor and PHPantom each describe: an in-house inference engine, plus opt-in integration that folds an external analyzer&rsquo;s output into the same diagnostics stream. Hover the cell for which half is which.</li>'
+            . '</ul>';
+        $lines[] = '<p class="section-note">Four rows also touch the analyzer table above, in two different ways. <strong>Intelephense</strong> and <strong>Psalm</strong> are simply in both, as the same tool: each is a language server that is also an analyzer we run, so the matrix scores it and this table describes it. Psalm shows why that is one tool and not two &mdash; its server runs the same analyzer the CLI does, reached over the protocol instead of the command line. The other two rows are pairs of genuinely distinct artifacts. <strong>php-lsp</strong> drives <em>mir</em>, listed above as an analyzer in its own right &mdash; a separate repository, but the same author&rsquo;s, extracted from this server rather than adopted from outside, so it is marked <em>(in-house)</em> rather than as third-party integration. <strong>devsense-php-ls</strong> is the other way round: <em>phpy</em>, listed above, is the CLI frontend of this package &mdash; phpy depends on it outright, and DEVSENSE&rsquo;s own announcement calls phpy &ldquo;a proof of concept for our new standalone language server&rdquo;. The two are versioned separately and have drifted apart, so each keeps its own release dates.</p>';
+        $lines[] = '<div class="table-scroll"><table class="analyzer-meta">';
+        $lines[] = '<thead><tr>';
+        foreach ($headers as $header) {
+            $lines[] = '<th scope="col">' . htmlspecialchars($header) . '</th>';
+        }
+        $lines[] = '</tr></thead><tbody>';
+
+        foreach ($rows as $row) {
+            $announcement = $row['announceUrl'] !== ''
+                ? sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($row['announceUrl']), htmlspecialchars($row['announceLabel']))
+                : '<span class="none">—</span>';
+
+            $orgCell = $row['orgUrl'] === ''
+                ? htmlspecialchars($row['org'])
+                : sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', htmlspecialchars($row['orgUrl']), htmlspecialchars($row['org']));
+
+            // Same rule as the analyzer table: linked only when the lead
+            // differs from the founder, since Founder already links that
+            // person and a second link would point back at itself.
+            $leadCell = htmlspecialchars($row['lead']);
+            if ($row['leadUrl'] !== '') {
+                $leadCell = sprintf(
+                    '<a href="%s" target="_blank" rel="noopener"%s>%s</a>',
+                    htmlspecialchars($row['leadUrl']),
+                    $row['leadNote'] === '' ? '' : sprintf(' title="%s"', htmlspecialchars($row['leadNote'])),
+                    htmlspecialchars($row['lead']),
+                );
+            } elseif ($row['leadNote'] !== '') {
+                $leadCell = sprintf(
+                    '<span class="succession" title="%s">%s</span>',
+                    htmlspecialchars($row['leadNote']),
+                    htmlspecialchars($row['lead']),
+                );
+            }
+
+            // The year cell already carries markup, so it takes the note as a
+            // wrapper rather than through noted(), which escapes its input.
+            // Psalm needs one: its server shipped in a release two months
+            // before the release that announced it.
+            $initialCell = $this->timeYear($row['initial']);
+            if (($row['initialNote'] ?? '') !== '') {
+                $initialCell = sprintf(
+                    '<span class="noted" title="%s">%s</span>',
+                    htmlspecialchars($row['initialNote']),
+                    $initialCell,
+                );
+            }
+
+            $lines[] = '<tr>'
+                . sprintf('<th class="tool-name"><a href="%s" target="_blank" rel="noopener">%s</a></th>', htmlspecialchars($row['url']), htmlspecialchars($row['name']))
+                . '<td>' . $this->noted($row['diagnostics'], $row['diagnosticsNote'] ?? '') . '</td>'
+                . '<td>' . $this->noted($row['analyzers'], $row['analyzersNote'] ?? '') . '</td>'
+                . '<td>' . $this->noted($row['bundled'], $row['bundledNote'] ?? '') . '</td>'
+                . '<td>' . $this->noted($row['language'], $row['languageNote'] ?? '') . '</td>'
+                . '<td>' . $row['founder'] . '</td>'
+                . '<td>' . $orgCell . '</td>'
+                . '<td>' . $leadCell . '</td>'
+                . '<td>' . $this->noted($row['license'], $row['licenseNote'] ?? '') . '</td>'
+                . '<td>' . $initialCell . '</td>'
+                . '<td>' . $this->timeLatestRelease($row['latest']) . '</td>'
+                . '<td>' . $this->noted($row['ast'], $row['astNote'] ?? '') . '</td>'
+                . '<td>' . $announcement . '</td>'
+                . '</tr>';
+        }
+
+        $lines[] = '</tbody></table></div>';
+
+        return $lines;
+    }
+
+    /**
+     * A cell value, optionally carrying a hover note.
+     *
+     * Without a note this is plain escaped text, so a cell never picks up the
+     * dotted "there is more here" underline unless there really is more.
+     */
+    private function noted(string $text, string $note): string
+    {
+        if ($note === '') {
+            return htmlspecialchars($text);
+        }
+
+        return sprintf(
+            '<span class="noted" title="%s">%s</span>',
+            htmlspecialchars($note),
+            htmlspecialchars($text),
+        );
     }
 
     /**
@@ -686,7 +1039,7 @@ tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
 .facets { margin: 8px 0 0; padding-left: 18px; font-size: 0.85em; color: #555; }
 .legend-facets { margin: 4px 0 10px; padding-left: 20px; font-size: 0.9em; }
 .axis-list { margin: 4px 0 14px; padding-left: 20px; font-size: 0.9em; line-height: 1.5; max-width: 70em; }
-.analyzer-meta abbr[title], .analyzer-meta .succession[title], .analyzer-meta td a[title] { text-decoration: underline dotted; text-underline-offset: 2px; cursor: help; }
+.analyzer-meta abbr[title], .analyzer-meta .succession[title], .analyzer-meta .noted[title], .analyzer-meta td a[title] { text-decoration: underline dotted; text-underline-offset: 2px; cursor: help; }
 .legend { margin: 16px 0 24px; border: 1px solid #ddd; border-radius: 6px; padding: 10px 14px; background: #fbfbfb; }
 .legend > summary { cursor: pointer; font-weight: 600; }
 .legend-intro { margin: 14px 0 6px; font-size: 0.9em; }

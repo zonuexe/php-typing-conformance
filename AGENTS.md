@@ -53,7 +53,7 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
 - `conformance/tests/`: one PHP test case per file, with inline expectations.
 - `conformance/fixtures/`: support files loaded together with a primary test case.
 - `conformance/src/`: discovery, expectation parsing, checker adapters, result persistence, and report generation.
-- `conformance/results/`: generated per-tool TOML results, `version.toml`, and `results.html`.
+- `conformance/results/`: generated per-tool TOML results, `version.toml`, `results.html`, and the copied `report.css`.
 - `docs/`: design and architecture documents.
 - `references/`: upstream specs, docs, and source trees used for behavior research and citations.
 - `vendor-bin/`: one isolated Composer environment per analyzer.
@@ -127,6 +127,7 @@ That target uses sparse checkout for the documentation-oriented repositories. `r
 - Full run: `php conformance/src/main.php`
 - HTML-only regeneration from existing TOML results: `make render-report-html`
 - Main report output: `conformance/results/results.html`
+- Report stylesheet: authored in `conformance/templates/report.css`, copied to `conformance/results/report.css` on every render and linked from the index and the detail pages
 
 Current checker columns in the report:
 

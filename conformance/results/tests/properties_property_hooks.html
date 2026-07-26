@@ -4,69 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP 8.4+ property hooks: typed set side — Conformance</title>
-  <style>
-body { font-family: system-ui, sans-serif; margin: 24px; color: #1b1b1b; background: #ffffff; }
-body.detail { max-width: 960px; }
-a { color: #0b62c4; }
-h1 { margin-bottom: 0.2em; }
-p.lead { color: #555; margin-top: 0; }
-h2.section { margin-top: 2em; border-bottom: 2px solid #e5e7eb; padding-bottom: 4px; }
-p.section-note { color: #555; font-size: 0.9em; margin-top: 0.4em; max-width: 70ch; }
-.table-scroll { overflow-x: auto; }
-table.analyzer-meta th a { text-decoration: none; font-weight: 600; }
-p.crumb { margin: 0 0 12px; }
-p.meta { color: #555; font-size: 0.9em; margin-top: 0; }
-table { width: 100%; border-collapse: collapse; }
-th, td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; vertical-align: top; }
-th[scope="col"], td { font-size: 0.9em; }
-thead th { position: sticky; top: 0; background-color: white; z-index: 1; }
-small a { color: inherit; }
-.test-cell { min-width: 260px; }
-.test-link { font-weight: 600; text-decoration: none; }
-.test-link:hover { text-decoration: underline; }
-tr[id]:target { outline: 2px solid #0b62c4; outline-offset: -2px; }
-.cell-link { display: block; color: inherit; text-decoration: none; }
-.hover-card { position: relative; display: inline-flex; align-items: center; gap: 0.35rem; }
-.hover-card__trigger { cursor: help; }
-.hover-card__popup { position: absolute; left: 0; top: calc(100% + 6px); z-index: 10; min-width: 220px; max-width: 360px; padding: 8px 10px; border-radius: 8px; background: rgba(20, 20, 20, 0.96); color: #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); font-size: 0.875em; line-height: 1.4; visibility: hidden; opacity: 0; transform: translateY(-2px); transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease; }
-.hover-card:hover .hover-card__popup, .hover-card:focus-within .hover-card__popup { visibility: visible; opacity: 1; transform: translateY(0); }
-.hover-card__popup a { color: #9fd0ff; }
-.hover-card__notes-label { border-bottom: 1px dotted currentColor; font-size: 0.875em; }
-.group { background: #f3f3f3; font-weight: 700; }
-.pass { background: #dff7df; }
-.fail { background: #f9d6d6; }
-.by-design { background: #f6e7c8; }
-.not-supported { background: #f4f4f5; color: #9a9a9a; font-style: italic; }
-.falls-back { background: #e4eefb; color: #2f5c9e; }
-.unknown { background: #f0f0f0; }
-.reported { background: #dbe7fb; }
-.muted { background: #f6f6f6; color: #999; }
-.level-tag { color: #666; font-weight: 400; cursor: help; }
-.fp-tag { display: block; color: #a33; font-weight: 600; cursor: help; }
-.partial { background: #fdf0cf; }
-.facets { margin: 8px 0 0; padding-left: 18px; font-size: 0.85em; color: #555; }
-.legend-facets { margin: 4px 0 10px; padding-left: 20px; font-size: 0.9em; }
-.axis-list { margin: 4px 0 14px; padding-left: 20px; font-size: 0.9em; line-height: 1.5; max-width: 70em; }
-.analyzer-meta abbr[title], .analyzer-meta .succession[title], .analyzer-meta .noted[title], .analyzer-meta td a[title] { text-decoration: underline dotted; text-underline-offset: 2px; cursor: help; }
-.legend { margin: 16px 0 24px; border: 1px solid #ddd; border-radius: 6px; padding: 10px 14px; background: #fbfbfb; }
-.legend > summary { cursor: pointer; font-weight: 600; }
-.legend-intro { margin: 14px 0 6px; font-size: 0.9em; }
-.legend-list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 0.9em; }
-.legend-list dt, .legend-list dd { margin: 0; }
-.legend-swatch { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
-.legend-swatch.plain { background: none; padding: 2px 0; font-weight: 400; }
-.doc { white-space: pre-wrap; background: #fafafa; border: 1px solid #eee; border-left: 3px solid #0b62c4; border-radius: 4px; padding: 10px 14px; margin: 12px 0 20px; line-height: 1.5; }
-.doc code, .status-cell code, h1 code { background: #eef1f4; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
-.detail-results th.tool-name { width: 110px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-.status-cell { white-space: nowrap; font-weight: 600; }
-.diag-cell { width: 100%; }
-pre.diag { white-space: pre-wrap; word-break: break-word; margin: 0; font-size: 0.85em; }
-pre.source, pre.shiki { padding: 14px 16px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
-pre.source { background: #1e1e1e; color: #eaeaea; }
-.none { color: #888; margin: 0; font-style: italic; }
-.note-line { font-size: 0.85em; margin: 6px 0 0; }
-details summary { cursor: pointer; font-size: 0.85em; color: #555; }
-  </style>
+  <link rel="stylesheet" href="../report.css">
 </head>
 <body class="detail">
 <p class="crumb"><a href="../results.html">&larr; All results</a></p>

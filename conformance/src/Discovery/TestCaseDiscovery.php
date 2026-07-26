@@ -46,7 +46,7 @@ final class TestCaseDiscovery
                 continue;
             }
 
-            $path = $testsDir . DIRECTORY_SEPARATOR . $entry;
+            $path = $testsDir . '/' . $entry;
             $name = pathinfo($entry, PATHINFO_FILENAME);
             $testCases[] = new TestCase(
                 path: $path,
@@ -80,7 +80,7 @@ final class TestCaseDiscovery
                 continue;
             }
 
-            $paths[] = $testsDir . DIRECTORY_SEPARATOR . $supportFile;
+            $paths[] = $testsDir . '/' . $supportFile;
         }
 
         sort($paths);

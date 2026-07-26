@@ -1,0 +1,15 @@
+{
+    "version": "0.0.1",
+    "configurations": [
+        {
+            "name": "report",
+            "runtimeExecutable": "php",
+            "runtimeArgs": [
+                "-S",
+                "localhost:8080",
+                "conformance/src/router.php"
+            ],
+            "port": 8080
+        }
+    ]
+}

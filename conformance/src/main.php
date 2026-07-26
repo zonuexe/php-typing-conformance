@@ -20,11 +20,7 @@ use Conformance\Expectation\ExpectationParser;
 use Conformance\Expectation\ExpectedDiagnostic;
 use Conformance\Result\ResultRecord;
 use Conformance\Result\ResultRepository;
-use Conformance\Metadata\AnalyzerCatalog;
-use Conformance\Metadata\LanguageServerCatalog;
-use Conformance\Metadata\ReleaseTable;
-use Conformance\Reporting\SummaryReport;
-use Conformance\Reporting\TemplateRenderer;
+use Conformance\Reporting\Report;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -62,8 +58,6 @@ $rootDir = dirname(__DIR__);
 $testGroupsFile = $rootDir . '/src/test-groups.toml';
 $testsDir = $rootDir . '/tests';
 $resultsDir = $rootDir . '/results';
-$templatesDir = $rootDir . '/templates';
-$releasesFile = $rootDir . '/data/releases.toml';
 $projectRoot = dirname($rootDir);
 $phpStanConfigPath = $rootDir . '/phpstan.dist.neon';
 $phpStanNoStrictConfigPath = $rootDir . '/phpstan-no-strict.neon';
@@ -76,12 +70,6 @@ $testCases = $discovery->discover($testsDir, $testGroups);
 $expectationEvaluator = new ExpectationEvaluator();
 $expectationParser = new ExpectationParser();
 $resultRepository = new ResultRepository($resultsDir);
-$releases = ReleaseTable::fromTomlFile($releasesFile);
-$summaryReport = new SummaryReport(
-    new TemplateRenderer($templatesDir),
-    AnalyzerCatalog::build($releases),
-    LanguageServerCatalog::build($releases),
-);
 $phpStanChecker = new PhpStanChecker(
     toolName: 'phpstan',
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
@@ -266,19 +254,11 @@ if ($reportFilterActive) {
     return;
 }
 
-$summaryPath = $resultsDir . '/results.html';
-// phpstan-strict is still run above for its data, but the report merges it into
-// the phpstan column, so it is not listed as its own display column.
+// The columns are the tools that just ran, minus the two the report merges
+// into another column: phpstan-strict into phpstan, pzoom into psalm.
 $reportTools = array_values(array_filter(
     array_map(static fn ($checker): string => $checker->name(), $checkers),
     static fn (string $name): bool => $name !== 'phpstan-strict' && $name !== 'pzoom',
 ));
-$summaryReport->generate(
-    resultsRoot: $resultsDir,
-    outputPath: $summaryPath,
-    testGroups: $testGroups,
-    testCases: $testCases,
-    tools: $reportTools,
-);
 
-printf("Generated summary report at %s\n", $summaryPath);
+printf("Generated summary report at %s\n", Report::fromRootDir($rootDir, $reportTools)->write());

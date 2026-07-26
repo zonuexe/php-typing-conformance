@@ -1,4 +1,4 @@
-.PHONY: init-submodules pull-submodules render-report-html install-intelephense install-phpy
+.PHONY: init-submodules pull-submodules render-report-html serve install-intelephense install-phpy
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
@@ -57,3 +57,8 @@ install-phpy:
 
 render-report-html:
 	php conformance/src/render-report-html.php
+
+# Read the report locally the way it is published. Every page is rendered per
+# request from the committed results, so this needs no build first.
+serve:
+	php -S localhost:8080 conformance/src/router.php

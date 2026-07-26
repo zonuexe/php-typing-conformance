@@ -34,7 +34,7 @@ final class TemplateRenderer
      */
     public function path(string $file): string
     {
-        return $this->templateDir . DIRECTORY_SEPARATOR . $file;
+        return $this->templateDir . '/' . $file;
     }
 
     /**

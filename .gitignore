@@ -5,6 +5,6 @@ vendor-bin/*/node_modules/
 
 # The report is generated -- from the committed results/<tool>/*.toml -- by
 # `make render-report-html`, and rebuilt in CI on every push to master.
-conformance/results/results.html
+conformance/results/index.html
 conformance/results/report.css
 conformance/results/tests/

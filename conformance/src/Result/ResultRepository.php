@@ -17,12 +17,12 @@ final class ResultRepository
 
     public function save(ResultRecord $record): string
     {
-        $toolDir = $this->resultsRoot . DIRECTORY_SEPARATOR . $record->tool;
+        $toolDir = $this->resultsRoot . '/' . $record->tool;
         if (!is_dir($toolDir) && !mkdir($toolDir, 0777, true) && !is_dir($toolDir)) {
             throw new RuntimeException(sprintf('Failed to create results directory: %s', $toolDir));
         }
 
-        $path = $toolDir . DIRECTORY_SEPARATOR . $record->testName . '.toml';
+        $path = "{$toolDir}/{$record->testName}.toml";
         $existing = $this->load($path);
         $payload = $record->toArray();
 
@@ -51,12 +51,12 @@ final class ResultRepository
 
     public function saveVersion(string $tool, string $version): string
     {
-        $toolDir = $this->resultsRoot . DIRECTORY_SEPARATOR . $tool;
+        $toolDir = $this->resultsRoot . '/' . $tool;
         if (!is_dir($toolDir) && !mkdir($toolDir, 0777, true) && !is_dir($toolDir)) {
             throw new RuntimeException(sprintf('Failed to create results directory: %s', $toolDir));
         }
 
-        $path = $toolDir . DIRECTORY_SEPARATOR . 'version.toml';
+        $path = $toolDir . '/version.toml';
         $toml = (string) Toml::encode(['version' => $version]);
 
         if (file_put_contents($path, $toml) === false) {
@@ -71,7 +71,7 @@ final class ResultRepository
      */
     public function loadResult(string $tool, string $testName): array
     {
-        $path = $this->resultsRoot . DIRECTORY_SEPARATOR . $tool . DIRECTORY_SEPARATOR . $testName . '.toml';
+        $path = "{$this->resultsRoot}/{$tool}/{$testName}.toml";
 
         return $this->load($path);
     }

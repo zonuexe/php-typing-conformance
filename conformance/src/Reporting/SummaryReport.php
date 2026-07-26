@@ -27,7 +27,7 @@ use function trim;
 final class SummaryReport
 {
     private const DETAILS_DIR = 'tests';
-    private const INDEX_FILE = 'results.html';
+    private const INDEX_FILE = 'index.html';
     private const STYLESHEET_FILE = 'report.css';
 
     /** What loadVersion() reports when a tool has not recorded one. */
@@ -41,37 +41,44 @@ final class SummaryReport
     }
 
     /**
+     * Write the whole report out as static files.
+     *
+     * The same pages renderIndex() and renderDetail() return; this is the form
+     * the site is published from.
+     *
      * @param array<string, TestGroup> $testGroups
      * @param list<TestCase> $testCases
      * @param list<string> $tools
+     * @return string path of the index page
      */
     public function generate(
         string $resultsRoot,
-        string $outputPath,
         array $testGroups,
         array $testCases,
         array $tools,
-    ): void {
-        $detailsDir = $resultsRoot . DIRECTORY_SEPARATOR . self::DETAILS_DIR;
+    ): string {
+        $detailsDir = $resultsRoot . '/' . self::DETAILS_DIR;
         $this->prepareDetailsDir($detailsDir);
-        $this->copyStylesheet($resultsRoot);
+        $this->writeStylesheet($resultsRoot);
 
         // Detail pages first so the index can link to known files.
         foreach ($testCases as $testCase) {
             $group = $testGroups[$testCase->groupKey] ?? null;
-            $detailHtml = $this->renderDetailPage($resultsRoot, $testCase, $group, $tools);
-            $detailPath = $detailsDir . DIRECTORY_SEPARATOR . $testCase->name . '.html';
+            $detailHtml = $this->renderDetail($resultsRoot, $testCase, $group, $tools);
+            $detailPath = "{$detailsDir}/{$testCase->name}.html";
 
             if (file_put_contents($detailPath, $detailHtml) === false) {
                 throw new RuntimeException(sprintf('Failed to write detail page: %s', $detailPath));
             }
         }
 
-        $indexHtml = $this->renderIndexPage($resultsRoot, $testGroups, $testCases, $tools);
+        $indexPath = $resultsRoot . '/' . self::INDEX_FILE;
 
-        if (file_put_contents($outputPath, $indexHtml) === false) {
-            throw new RuntimeException(sprintf('Failed to write summary report: %s', $outputPath));
+        if (file_put_contents($indexPath, $this->renderIndex($resultsRoot, $testGroups, $testCases, $tools)) === false) {
+            throw new RuntimeException(sprintf('Failed to write summary report: %s', $indexPath));
         }
+
+        return $indexPath;
     }
 
     /**
@@ -79,7 +86,7 @@ final class SummaryReport
      * @param list<TestCase> $testCases
      * @param list<string> $tools
      */
-    private function renderIndexPage(
+    public function renderIndex(
         string $resultsRoot,
         array $testGroups,
         array $testCases,
@@ -197,7 +204,7 @@ final class SummaryReport
     /**
      * @param list<string> $tools
      */
-    private function renderDetailPage(
+    public function renderDetail(
         string $resultsRoot,
         TestCase $testCase,
         ?TestGroup $group,
@@ -302,19 +309,34 @@ final class SummaryReport
     }
 
     /**
-     * Copy the stylesheet next to the generated pages.
+     * The stylesheet every page links to.
      *
-     * The report is a directory of ~100 detail pages plus an index; a linked
-     * stylesheet keeps one copy of it instead of inlining the same block into
-     * every page, and keeps the CSS editable as CSS. It sits with the
-     * templates, so the renderer is asked where that is rather than this class
-     * keeping a second path to the same directory.
+     * The report is ~100 detail pages plus an index; one linked stylesheet
+     * beats inlining the same block into each of them, and keeps the CSS
+     * editable as CSS. It sits with the templates, so the renderer is asked
+     * where that is rather than this class keeping a second path to the same
+     * directory.
      */
-    private function copyStylesheet(string $resultsRoot): void
+    public function stylesheet(): string
     {
-        $destination = $resultsRoot . DIRECTORY_SEPARATOR . self::STYLESHEET_FILE;
+        $path = $this->renderer->path(self::STYLESHEET_FILE);
+        $css = file_get_contents($path);
 
-        if (!copy($this->renderer->path(self::STYLESHEET_FILE), $destination)) {
+        if ($css === false) {
+            throw new RuntimeException(sprintf('Failed to read stylesheet: %s', $path));
+        }
+
+        return $css;
+    }
+
+    /**
+     * Put it next to the generated pages, for the static build.
+     */
+    private function writeStylesheet(string $resultsRoot): void
+    {
+        $destination = $resultsRoot . '/' . self::STYLESHEET_FILE;
+
+        if (file_put_contents($destination, $this->stylesheet()) === false) {
             throw new RuntimeException(sprintf('Failed to write stylesheet: %s', $destination));
         }
     }
@@ -686,14 +708,14 @@ final class SummaryReport
         }
 
         // Drop stale detail pages so removed tests do not linger.
-        foreach (glob($detailsDir . DIRECTORY_SEPARATOR . '*.html') ?: [] as $stale) {
+        foreach (glob($detailsDir . '/*.html') ?: [] as $stale) {
             @unlink($stale);
         }
     }
 
     private function loadVersion(string $resultsRoot, string $tool): string
     {
-        $path = $resultsRoot . DIRECTORY_SEPARATOR . $tool . DIRECTORY_SEPARATOR . 'version.toml';
+        $path = "{$resultsRoot}/{$tool}/version.toml";
         if (!is_file($path)) {
             return self::UNKNOWN_VERSION;
         }
@@ -713,7 +735,7 @@ final class SummaryReport
      */
     private function loadResult(string $resultsRoot, string $tool, string $testName): array
     {
-        $path = $resultsRoot . DIRECTORY_SEPARATOR . $tool . DIRECTORY_SEPARATOR . $testName . '.toml';
+        $path = "{$resultsRoot}/{$tool}/{$testName}.toml";
         if (!is_file($path)) {
             return [];
         }

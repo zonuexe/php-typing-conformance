@@ -3,7 +3,7 @@
 One TOML file per `<tool>/<test>.toml`. These are the report's source data and
 are committed; the HTML around them is not.
 
-`results.html`, `report.css` and the per-test pages under `tests/` are built
+`index.html`, `report.css` and the per-test pages under `tests/` are built
 from these files by `make render-report-html`, and rebuilt by GitHub Actions on
 every push to master before the site is published, so nothing generated is kept
 under version control.

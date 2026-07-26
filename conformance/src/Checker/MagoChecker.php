@@ -152,7 +152,7 @@ final class MagoChecker implements Checker
 
     private function toWorkspaceRelativePath(string $path): string
     {
-        $prefix = rtrim($this->workspacePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        $prefix = rtrim($this->workspacePath, '/') . '/';
         if (!str_starts_with($path, $prefix)) {
             throw new RuntimeException(sprintf('Path %s is outside workspace %s', $path, $this->workspacePath));
         }

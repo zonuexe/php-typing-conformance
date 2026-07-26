@@ -39,10 +39,7 @@ jobs:
       - name: Prepare site root
         run: |
           mkdir -p site/tests
-          # index.html is the entry point; results.html is kept too so the
-          # "All results" back-link from each detail page resolves.
-          cp conformance/results/results.html site/index.html
-          cp conformance/results/results.html site/results.html
+          cp conformance/results/index.html site/index.html
           cp conformance/results/report.css site/report.css
           cp conformance/results/tests/*.html site/tests/
           touch site/.nojekyll

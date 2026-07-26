@@ -1,4 +1,4 @@
-.PHONY: init-submodules pull-submodules render-report-html install-intelephense
+.PHONY: init-submodules pull-submodules render-report-html install-intelephense install-phpy
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
@@ -50,6 +50,10 @@ pull-submodules: init-submodules
 
 install-intelephense:
 	cd vendor-bin/intelephense && npm install
+
+install-phpy:
+	cd vendor-bin/phpy && npm install
+	find vendor-bin/phpy/node_modules -name 'devsense.php.ls' -exec chmod +x {} \;
 
 render-report-html:
 	php conformance/src/render-report-html.php

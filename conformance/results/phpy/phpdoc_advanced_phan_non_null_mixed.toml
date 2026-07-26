@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phan_non_null_mixed.php:19: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed'
+phpdoc_advanced_phan_non_null_mixed.php:26: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed, int given
+phpdoc_advanced_phan_non_null_mixed.php:29: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed, null given"""
+errors_diff = "Line 26: Unexpected errors [\"Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\acceptsNonNull() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\non-null-mixed, int given\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [19]
+false_positive_lines = [26]

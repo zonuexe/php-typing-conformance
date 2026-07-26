@@ -108,9 +108,10 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <th scope="col">mir<br><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></th>
 <th scope="col">noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
 <th scope="col">intelephense<br><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></th>
+<th scope="col">phpy<br><small><span class="hover-card"><span class="hover-card__trigger">phpy 0.2.0</span><span class="hover-card__popup">phpy 0.2.0</span></span></small></th>
 <th scope="col">steins<br><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></th>
 </tr></thead><tbody>
-<tr class="group"><td colspan="9">Native types</td></tr>
+<tr class="group"><td colspan="10">Native types</td></tr>
 <tr id="native_types_resource_argument"><td class="test-cell"><a class="test-link" href="tests/native_types_resource_argument.html"><code>resource</code> is not a valid native type declaration</a></td>
 <td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass <small class="level-tag" title="Reported from PHPStan level 0 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.0+</small></a></td>
@@ -119,6 +120,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/native_types_resource_argument.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/native_types_resource_argument.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/native_types_resource_argument.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/native_types_resource_argument.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/native_types_resource_argument.html">Fail</a></td>
 </tr>
 <tr id="native_types_scalar_params"><td class="test-cell"><a class="test-link" href="tests/native_types_scalar_params.html">Basic scalar parameter compatibility checks</a></td>
@@ -130,8 +132,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/native_types_scalar_params.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/native_types_scalar_params.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/native_types_scalar_params.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/native_types_scalar_params.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Union types</td></tr>
+<tr class="group"><td colspan="10">Union types</td></tr>
 <tr id="unions_object_member_rejection"><td class="test-cell"><a class="test-link" href="tests/unions_object_member_rejection.html">Union member rejection for object types</a></td>
 <td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
@@ -139,6 +142,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/unions_object_member_rejection.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/unions_object_member_rejection.html">Pass</a></td>
 </tr>
@@ -151,8 +155,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/unions_scalar_members.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/unions_scalar_members.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/unions_scalar_members.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/unions_scalar_members.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Intersection types</td></tr>
+<tr class="group"><td colspan="10">Intersection types</td></tr>
 <tr id="intersections_interface_merge"><td class="test-cell"><a class="test-link" href="tests/intersections_interface_merge.html">Basic intersection compatibility</a></td>
 <td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
@@ -161,15 +166,17 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/intersections_interface_merge.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/intersections_interface_merge.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/intersections_interface_merge.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Callables</td></tr>
+<tr class="group"><td colspan="10">Callables</td></tr>
 <tr id="callables_docblock_signature"><td class="test-cell"><a class="test-link" href="tests/callables_docblock_signature.html">Callable signature compatibility in PHPDoc</a></td>
 <td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/callables_docblock_signature.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/callables_docblock_signature.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/callables_docblock_signature.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/callables_docblock_signature.html">Pass</a></td>
@@ -182,12 +189,14 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Fail</a></td>
+<td class="fail"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/callables_return_type_mismatch.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">PHPDoc generics</td></tr>
+<tr class="group"><td colspan="10">PHPDoc generics</td></tr>
 <tr id="generics_extends_implements"><td class="test-cell"><a class="test-link" href="tests/generics_extends_implements.html">Generic inheritance via <code>@extends</code> / <code>@implements</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_extends_implements.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_extends_implements.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_extends_implements.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_extends_implements.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_extends_implements.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_extends_implements.html">Pass</a></td>
@@ -203,6 +212,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/generics_template_bound.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/generics_template_bound.html">Fail</a></td>
+<td class="fail"><a class="cell-link" href="tests/generics_template_bound.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_template_bound.html">Pass</a></td>
 </tr>
 <tr id="generics_template_box"><td class="test-cell"><a class="test-link" href="tests/generics_template_box.html">Basic PHPDoc template propagation checks</a></td>
@@ -211,6 +221,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/generics_template_box.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/generics_template_box.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/generics_template_box.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_template_box.html">Pass</a></td>
@@ -224,8 +235,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/generics_template_covariant.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_template_covariant.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/generics_template_covariant.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/generics_template_covariant.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Arrays and shapes</td></tr>
+<tr class="group"><td colspan="10">Arrays and shapes</td></tr>
 <tr id="arrays_list_element_type"><td class="test-cell"><a class="test-link" href="tests/arrays_list_element_type.html">List element type compatibility checks</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
@@ -234,11 +246,13 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/arrays_list_element_type.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/arrays_list_element_type.html">Fail</a></td>
+<td class="fail"><a class="cell-link" href="tests/arrays_list_element_type.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_list_element_type.html">Pass</a></td>
 </tr>
 <tr id="arrays_list_shape_destructuring"><td class="test-cell"><a class="test-link" href="tests/arrays_list_shape_destructuring.html">List shape support for positional destructuring and indexed access</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_list_shape_destructuring.html">Pass</a></td>
@@ -254,11 +268,13 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/arrays_non_empty_list.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/arrays_non_empty_list.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/arrays_non_empty_list.html">Fail</a></td>
+<td class="fail"><a class="cell-link" href="tests/arrays_non_empty_list.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_non_empty_list.html">Pass</a></td>
 </tr>
 <tr id="arrays_open_shapes"><td class="test-cell"><a class="test-link" href="tests/arrays_open_shapes.html">Open array and list shape support</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_open_shapes.html">Pass</a></td>
@@ -274,9 +290,10 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Fail</a></td>
+<td class="fail"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/arrays_shape_required_keys.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Object compatibility</td></tr>
+<tr class="group"><td colspan="10">Object compatibility</td></tr>
 <tr id="objects_interface_compat"><td class="test-cell"><a class="test-link" href="tests/objects_interface_compat.html">Basic interface compatibility checks</a></td>
 <td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
@@ -284,6 +301,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/objects_interface_compat.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/objects_interface_compat.html">Pass</a></td>
 </tr>
@@ -296,11 +314,13 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/objects_static_return_mismatch.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Properties</td></tr>
+<tr class="group"><td colspan="10">Properties</td></tr>
 <tr id="properties_asymmetric_visibility"><td class="test-cell"><a class="test-link" href="tests/properties_asymmetric_visibility.html">PHP 8.4+ asymmetric property visibility</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_asymmetric_visibility.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_asymmetric_visibility.html">Pass <small class="level-tag" title="Reported from PHPStan level 2 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.2+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_asymmetric_visibility.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_asymmetric_visibility.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_asymmetric_visibility.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_asymmetric_visibility.html">Pass</a></td>
@@ -317,10 +337,12 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_promoted_param_mismatch.html">Pass</a></td>
 </tr>
 <tr id="properties_property_hooks"><td class="test-cell"><a class="test-link" href="tests/properties_property_hooks.html">PHP 8.4+ property hooks: typed set side</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_property_hooks.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_property_hooks.html">Pass <small class="level-tag" title="Reported from PHPStan level 3 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.3+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_property_hooks.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_property_hooks.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_property_hooks.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_property_hooks.html">Pass</a></td>
@@ -337,6 +359,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/properties_readonly_assignment.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_readonly_assignment.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_readonly_assignment.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_readonly_assignment.html">Pass</a></td>
 </tr>
 <tr id="properties_uninitialized_read"><td class="test-cell"><a class="test-link" href="tests/properties_uninitialized_read.html">Typed property reads before initialization</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
@@ -347,8 +370,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/properties_uninitialized_read.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Constants</td></tr>
+<tr class="group"><td colspan="10">Constants</td></tr>
 <tr id="constants_class_constant_type"><td class="test-cell"><a class="test-link" href="tests/constants_class_constant_type.html">Basic class constant value compatibility checks</a></td>
 <td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
@@ -358,8 +382,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/constants_class_constant_type.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/constants_class_constant_type.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Enums</td></tr>
+<tr class="group"><td colspan="10">Enums</td></tr>
 <tr id="enums_backed_cases"><td class="test-cell"><a class="test-link" href="tests/enums_backed_cases.html">Basic backed enum compatibility checks</a></td>
 <td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
@@ -367,6 +392,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/enums_backed_cases.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/enums_backed_cases.html">Pass</a></td>
 </tr>
@@ -379,8 +405,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/enums_case_object_vs_backing_scalar.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">PHPDoc basics</td></tr>
+<tr class="group"><td colspan="10">PHPDoc basics</td></tr>
 <tr id="phpdoc_basics_param_types"><td class="test-cell"><a class="test-link" href="tests/phpdoc_basics_param_types.html">Basic PHPDoc-only parameter type checks</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
@@ -390,14 +417,16 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_basics_param_types.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Advanced PHPDoc types</td></tr>
+<tr class="group"><td colspan="10">Advanced PHPDoc types</td></tr>
 <tr id="phpdoc_advanced_associative_array"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_associative_array.html"><code>associative-array</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Widened to array</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Widened to array <small>(pzoom&ne;)</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Widened to array</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 28">&#9888; 1 false positive</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Unrecognized</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Unrecognized</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_associative_array.html">Not enforced</a></td>
@@ -411,6 +440,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Widened to string</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Widened to string</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Not enforced</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_class_string.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_fallback_int_mask"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_int_mask.html"><code>int-mask&lt;1, 2, 4&gt;</code></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Unrecognized <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Phan cannot parse the `int-mask` pseudo-type (the hyphen breaks its annotation tokenizer), so it does not check the mask.</span></span></a></td>
@@ -420,6 +450,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Enforced</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small> <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify treats `int-mask` as an undefined class rather than a flag-mask type.</span></span></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Widened to int</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Not enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_fallback_int_mask_of"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html"><code>int-mask-of&lt;Class::*&gt;</code></a></td>
@@ -431,6 +462,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Widened to int <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Does not model `int-mask-of` and falls back to `int`, so it accepts the out-of-range value.</span></span></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Widened to int</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Not enforced</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_mask_of.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_fallback_int_range"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_int_range.html"><code>int&lt;0, 255&gt;</code></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_range.html">Widened to int <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Does not model the integer range and falls back to `int`, so it accepts the out-of-range value. The range-aware analyzers reject it.</span></span></a></td>
@@ -440,6 +472,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_range.html">Enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_range.html">Widened to int <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Does not model the integer range and falls back to `int`, so it accepts the out-of-range value. The range-aware analyzers reject it.</span></span></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_range.html">Widened to int</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_range.html">Not enforced</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_int_range.html">Enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_fallback_numeric_string"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_numeric_string.html"><code>numeric-string</code></a></td>
@@ -450,6 +483,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Widened to string</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Widened to string</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Not enforced</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_numeric_string.html">Enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_fallback_positive_int"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_fallback_positive_int.html"><code>positive-int</code></a></td>
@@ -460,6 +494,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Widened to int <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify does not model the integer range and falls back to `int`, so it accepts the out-of-range `-1`. The other analyzers enforce `positive-int` and reject it.</span></span></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Widened to int</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Not enforced</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_fallback_positive_int.html">Enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_array_mixed"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_array_mixed.html"><code>non-empty-array</code>, <code>non-empty-mixed</code> and <code>array-key</code> refinements</a></td>
@@ -470,6 +505,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="partial"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Partly enforced (2/3) <small class="fp-tag" title="Unexpected diagnostics on line(s) 37">&#9888; 1 false positive</small></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Not enforced</a></td>
+<td class="partial"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Partly enforced (1/3)</a></td>
 <td class="partial"><a class="cell-link" href="tests/phpdoc_advanced_family_array_mixed.html">Partly enforced (2/3)</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_bool_literal"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_bool_literal.html"><code>true</code> / <code>false</code> literal types</a></td>
@@ -480,6 +516,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_bool_literal.html">Enforced</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_bool_literal.html">Enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_bool_literal.html">Widened to bool</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_bool_literal.html">Not enforced</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_bool_literal.html">Enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_callable"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_callable.html">Callable refinements (<code>callable-string</code>, <code>callable-object</code>)</a></td>
@@ -490,6 +527,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="partial"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Partly enforced (1/2)</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Not enforced</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 42">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_callable.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_class_string_variants"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_class_string_variants.html"><code>class-string</code> variants (<code>interface-string</code>, <code>trait-string</code>, <code>enum-string</code>)</a></td>
@@ -501,6 +539,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Widened to class-string</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Not enforced</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_class_string_variants.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_closure"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_closure.html"><code>pure-closure</code> / <code>static-closure</code> refinements</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 29, 32">&#9888; 2 false positives</small></a></td>
@@ -510,6 +549,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 29, 32">&#9888; 2 false positives</small></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 9">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Widened to Closure</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 29, 32">&#9888; 2 false positives</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_closure.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_int_refinements"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_int_refinements.html">Integer sign refinements (<code>negative-int</code>, <code>non-zero-int</code>, …)</a></td>
@@ -520,6 +560,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 41, 47">&#9888; 2 false positives</small></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 9">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Widened to int</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 41, 47">&#9888; 2 false positives</small></a></td>
 <td class="partial"><a class="cell-link" href="tests/phpdoc_advanced_family_int_refinements.html">Partly enforced (2/4)</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_int_string"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_int_string.html">Integer-string and literal-string refinements</a></td>
@@ -531,6 +572,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 9">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Widened to string</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Not enforced</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_int_string.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_resource"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_resource.html"><code>resource</code>, <code>open-resource</code> and <code>closed-resource</code> PHPDoc types</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 34">&#9888; 1 false positive</small></a></td>
@@ -540,6 +582,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="partial"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Partly enforced (1/2)</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 31, 34">&#9888; 2 false positives</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Not enforced</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 34">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_resource.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_scalar"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_scalar.html"><code>scalar</code> / <code>number</code> / <code>numeric</code> broad types</a></td>
@@ -550,6 +593,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 37, 38, 42">&#9888; 3 false positives</small></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 9">&#9888; 1 false positive</small></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Unrecognized</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 42">&#9888; 1 false positive</small></a></td>
 <td class="partial"><a class="cell-link" href="tests/phpdoc_advanced_family_scalar.html">Partly enforced (1/3)</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_string_case"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_string_case.html">String case refinements (<code>lowercase-string</code>, <code>uppercase-string</code>, …)</a></td>
@@ -561,6 +605,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Widened to string</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Not enforced</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_string_case.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_family_utility"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_family_utility.html"><code>key-of&lt;T&gt;</code> and <code>value-of&lt;T&gt;</code> utility types</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Enforced</a></td>
@@ -568,6 +613,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Enforced</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Enforced</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Enforced</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Not enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Not enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Not enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_family_utility.html">Not enforced</a></td>
@@ -580,6 +626,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 26">&#9888; 1 false positive</small> <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`int-range&lt;min,max&gt;` is Phan&#039;s spelling; PHPStan, Psalm and Mago write the same range as `int&lt;min,max&gt;`. Not recognizing the other tool&#039;s spelling is expected, not a defect. Only Phan models `int-range`.</span></span></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Widened to int</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Widened to int</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 26">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_int_range_keyword.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_alias_compatible"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Imported aliases should remain compatible with canonical PHPDoc names</a></td>
@@ -590,6 +637,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_alias_compatible.html">Pass</a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_array_nullable_mismatch"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">PHPDoc/native array mismatch for nullable array parameters</a></td>
@@ -601,6 +649,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Fail</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_array_nullable_mismatch.html">Fail</a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_boolean_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html"><code>boolean</code> PHPDoc synonym is compatible with native <code>bool</code></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Enforced</a></td>
@@ -610,6 +659,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Enforced</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small> <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify rejects the `boolean` PHPDoc spelling as an invalid docblock type (suggests `bool`) rather than treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `boolean` as `bool` and reject the string argument.</span></span></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Not enforced</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_boolean_synonym.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_byref_compatible"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">By-reference parameters should match even if PHPDoc omits the reference marker</a></td>
@@ -621,8 +671,10 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_byref_compatible.html">Pass</a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_callable_compatible"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Callable PHPDoc signatures should be compatible with callable typehints</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_callable_compatible.html">Pass</a></td>
@@ -640,6 +692,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Enforced</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small> <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify flags `double` as an invalid docblock type (suggests `float`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `double` as `float` and reject the string argument.</span></span></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Not enforced</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_double_synonym.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_integer_synonym"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html"><code>integer</code> PHPDoc synonym is compatible with native <code>int</code></a></td>
@@ -650,6 +703,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Enforced</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small> <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">NoVerify flags `integer` as an invalid docblock type (suggests `int`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `integer` as `int` and reject the string argument.</span></span></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Not enforced</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_integer_synonym.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_param_typehint_nullable_mismatch"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">PHPDoc/native type mismatch for nullable parameters</a></td>
@@ -661,6 +715,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Fail</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_param_typehint_nullable_mismatch.html">Fail</a></td>
 </tr>
 <tr id="phpdoc_advanced_phan_non_empty_associative_array"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html"><code>non-empty-associative-array</code> is a Phan-only array refinement</a></td>
 <td class="partial"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Partly enforced (1/2)</a></td>
@@ -668,6 +723,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Unrecognized <small>(pzoom&ne;)</small> <small class="fp-tag" title="Unexpected diagnostics on line(s) 26">&#9888; 1 false positive</small></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 26">&#9888; 1 false positive</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 26">&#9888; 1 false positive</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Unrecognized</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Unrecognized</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_empty_associative_array.html">Not enforced</a></td>
@@ -680,6 +736,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 26">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Not enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Not enforced</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 26">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_phan_non_null_mixed.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_phan_object_shape"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_phan_object_shape.html"><code>stdClass{field: T}</code> object shapes are a Phan-only notation</a></td>
@@ -691,6 +748,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Not enforced</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_phan_object_shape.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_psalm_arraylike_object"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html"><code>arraylike-object</code> is a Psalm-only object refinement</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 26">&#9888; 1 false positive</small></a></td>
@@ -700,6 +758,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not enforced</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_arraylike_object.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_psalm_class_string_map"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_psalm_class_string_map.html"><code>class-string-map&lt;T of X, T&gt;</code> is a Psalm-only dependent generic</a></td>
@@ -709,6 +768,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Unrecognized</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 26">&#9888; 1 false positive</small></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small></a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Unrecognized</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_class_string_map.html">Not enforced</a></td>
 </tr>
@@ -721,6 +781,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Not enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Not enforced</a></td>
+<td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_literal_int.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_psalm_properties_of"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_psalm_properties_of.html"><code>properties-of&lt;T&gt;</code> is a Psalm-only utility type</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Unrecognized</a></td>
@@ -730,6 +791,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 33">&#9888; 1 false positive</small></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Not enforced</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_properties_of.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_psalm_stringable_object"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_psalm_stringable_object.html"><code>stringable-object</code> is a Psalm-only object refinement</a></td>
@@ -740,6 +802,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Not enforced</a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Not enforced</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Unrecognized <small class="fp-tag" title="Unexpected diagnostics on line(s) 38">&#9888; 1 false positive</small></a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_psalm_stringable_object.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_pseudotype_class_precedence"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">A same-named class takes precedence over the <code>integer</code> pseudo-type keyword</a></td>
@@ -748,6 +811,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Fail <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">Resolves `@param Integer` as the `int` keyword rather than the same-named `Integer` class, so it rejects the class instance instead of the plain int. PHPStan, Psalm, and Mago resolve the class.</span></span></a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_pseudotype_class_precedence.html">Pass</a></td>
@@ -760,6 +824,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Not enforced</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Not enforced <small class="fp-tag" title="Unexpected diagnostics on line(s) 12">&#9888; 1 false positive</small> <span class="hover-card"><span class="hover-card__trigger hover-card__notes-label">Notes</span><span class="hover-card__popup">`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`.</span></span></a></td>
 <td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Unrecognized</a></td>
+<td class="not-supported"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Unrecognized</a></td>
 <td class="falls-back"><a class="cell-link" href="tests/phpdoc_advanced_return_noreturn_synonym.html">Not enforced</a></td>
 </tr>
 <tr id="phpdoc_advanced_vendor_prefixed_param_phan"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Cross-tool handling of @phan-param</a></td>
@@ -767,6 +832,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phan.html">Fail</a></td>
@@ -781,6 +847,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_phpstan.html">Pass</a></td>
 </tr>
 <tr id="phpdoc_advanced_vendor_prefixed_param_psalm"><td class="test-cell"><a class="test-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Cross-tool handling of @psalm-param</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Pass</a></td>
@@ -791,11 +858,13 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/phpdoc_advanced_vendor_prefixed_param_psalm.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Conditional types</td></tr>
+<tr class="group"><td colspan="10">Conditional types</td></tr>
 <tr id="conditionals_param_return"><td class="test-cell"><a class="test-link" href="tests/conditionals_param_return.html">Conditional return type driven by a parameter type check</a></td>
 <td class="pass"><a class="cell-link" href="tests/conditionals_param_return.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/conditionals_param_return.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/conditionals_param_return.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/conditionals_param_return.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/conditionals_param_return.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/conditionals_param_return.html">Pass</a></td>
@@ -812,11 +881,13 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/conditionals_template_return.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/conditionals_template_return.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/conditionals_template_return.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/conditionals_template_return.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Type aliases</td></tr>
+<tr class="group"><td colspan="10">Type aliases</td></tr>
 <tr id="aliases_import_type"><td class="test-cell"><a class="test-link" href="tests/aliases_import_type.html">Importing a local type alias into another class</a></td>
 <td class="pass"><a class="cell-link" href="tests/aliases_import_type.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/aliases_import_type.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/aliases_import_type.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/aliases_import_type.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/aliases_import_type.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/aliases_import_type.html">Pass</a></td>
@@ -833,13 +904,15 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/aliases_local_type.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/aliases_local_type.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/aliases_local_type.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/aliases_local_type.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Assertions and narrowing</td></tr>
+<tr class="group"><td colspan="10">Assertions and narrowing</td></tr>
 <tr id="assertions_assert_non_empty_list"><td class="test-cell"><a class="test-link" href="tests/assertions_assert_non_empty_list.html">Assertion-driven narrowing to non-empty list</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Pass <small class="level-tag" title="Reported from PHPStan level 3 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.3+</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Pass</a></td>
+<td class="fail"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Fail</a></td>
 <td class="fail"><a class="cell-link" href="tests/assertions_assert_non_empty_list.html">Fail</a></td>
@@ -854,10 +927,12 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_instanceof_narrowing.html">Pass</a></td>
 </tr>
 <tr id="assertions_non_empty_string_false_guard"><td class="test-cell"><a class="test-link" href="tests/assertions_non_empty_string_false_guard.html"><code>!== false</code> narrowing with non-empty-string|false</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_non_empty_string_false_guard.html">Pass</a></td>
@@ -874,6 +949,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_non_falsy_string_false_guard.html">Pass</a></td>
 </tr>
 <tr id="assertions_null_guard"><td class="test-cell"><a class="test-link" href="tests/assertions_null_guard.html">Null-check narrowing</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
@@ -884,8 +960,10 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/assertions_null_guard.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_null_guard.html">Pass</a></td>
 </tr>
 <tr id="assertions_param_out"><td class="test-cell"><a class="test-link" href="tests/assertions_param_out.html">By-reference output parameters via <code>@param-out</code></a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_param_out.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_param_out.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_param_out.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_param_out.html">Pass</a></td>
@@ -904,8 +982,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/assertions_this_out_self_out.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Stubs and external signatures</td></tr>
+<tr class="group"><td colspan="10">Stubs and external signatures</td></tr>
 <tr id="stubs_external_signature_support"><td class="test-cell"><a class="test-link" href="tests/stubs_external_signature_support.html">External signature support through companion helper files</a></td>
 <td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass <small class="level-tag" title="Reported from PHPStan level 5 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.5+</small></a></td>
@@ -915,8 +994,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/stubs_external_signature_support.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/stubs_external_signature_support.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">FIG and PSR compatibility</td></tr>
+<tr class="group"><td colspan="10">FIG and PSR compatibility</td></tr>
 <tr id="psr_phpdoc_param_return"><td class="test-cell"><a class="test-link" href="tests/psr_phpdoc_param_return.html">FIG proposed PHPDoc: <code>@param</code> / <code>@return</code> as the baseline type contract</a></td>
 <td class="pass"><a class="cell-link" href="tests/psr_phpdoc_param_return.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/psr_phpdoc_param_return.html">Pass <small class="level-tag" title="Reported from PHPStan level 4 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.4+</small></a></td>
@@ -926,11 +1006,13 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/psr_phpdoc_param_return.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/psr_phpdoc_param_return.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/psr_phpdoc_param_return.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/psr_phpdoc_param_return.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Historical and legacy behavior</td></tr>
+<tr class="group"><td colspan="10">Historical and legacy behavior</td></tr>
 <tr id="historical_implicit_nullable_parameter"><td class="test-cell"><a class="test-link" href="tests/historical_implicit_nullable_parameter.html">Historical implicit-nullable parameter syntax</a></td>
 <td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass <small class="level-tag" title="Reported from PHPStan level 0 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.0+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/historical_implicit_nullable_parameter.html">Pass</a></td>
@@ -947,11 +1029,13 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="fail"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/historical_nullable_array_default_null.html">Pass</a></td>
 </tr>
-<tr class="group"><td colspan="9">Cross-analyzer regressions</td></tr>
+<tr class="group"><td colspan="10">Cross-analyzer regressions</td></tr>
 <tr id="regressions_array_element_null_subtraction"><td class="test-cell"><a class="test-link" href="tests/regressions_array_element_null_subtraction.html">Element-type narrowing by subtracting the null case</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass <small class="level-tag" title="Reported from PHPStan level 8 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.8+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_array_element_null_subtraction.html">Pass</a></td>
@@ -968,6 +1052,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_backed_enum_value_narrowing.html">Pass</a></td>
 </tr>
 <tr id="regressions_class_string_negative_narrowing"><td class="test-cell"><a class="test-link" href="tests/regressions_class_string_negative_narrowing.html">Negative-branch narrowing via a class-string identity comparison</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
@@ -978,8 +1063,10 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_class_string_negative_narrowing.html">Pass</a></td>
 </tr>
 <tr id="regressions_explicit_key_shape_is_list"><td class="test-cell"><a class="test-link" href="tests/regressions_explicit_key_shape_is_list.html">Explicit-integer-key sealed shape as a <code>list</code></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_explicit_key_shape_is_list.html">Pass</a></td>
@@ -998,10 +1085,12 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_keyless_tuple_is_list.html">Pass</a></td>
 </tr>
 <tr id="regressions_list_destructure_string_key"><td class="test-cell"><a class="test-link" href="tests/regressions_list_destructure_string_key.html">Positional list destructuring of a string-keyed array</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass <small class="level-tag" title="Reported from PHPStan level 3 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.3+</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_list_destructure_string_key.html">Pass</a></td>
@@ -1018,12 +1107,14 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Fail</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_object_property_discriminant_narrowing.html">Pass</a></td>
 </tr>
 <tr id="regressions_optional_extra_key_is_list"><td class="test-cell"><a class="test-link" href="tests/regressions_optional_extra_key_is_list.html">Optional extra non-list key stays list-compatible</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass <small class="level-tag" title="Reported from PHPStan level 4 upwards. Levels enable rule sets; type inference itself is level-independent.">reported Lv.4+</small></a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
 <td class="fail"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Fail</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_extra_key_is_list.html">Pass</a></td>
@@ -1038,8 +1129,10 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_optional_key_shape_is_list.html">Pass</a></td>
 </tr>
 <tr id="regressions_reversed_literal_list_param"><td class="test-cell"><a class="test-link" href="tests/regressions_reversed_literal_list_param.html">A reversed-key array literal passed to a <code>list{...}</code> parameter</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_reversed_literal_list_param.html">Pass</a></td>
@@ -1058,11 +1151,13 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_string_narrowing_assert_if_true.html">Pass</a></td>
 </tr>
 <tr id="regressions_trait_property_type_conflict"><td class="test-cell"><a class="test-link" href="tests/regressions_trait_property_type_conflict.html">Conflicting property types composed from two traits</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass <small>(pzoom&ne;)</small></a></td>
+<td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
 <td class="pass"><a class="cell-link" href="tests/regressions_trait_property_type_conflict.html">Pass</a></td>
@@ -1081,9 +1176,10 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <th scope="col">mir<br><small><span class="hover-card"><a href="https://github.com/jorgsowa/mir/releases/tag/v0.60.0" class="hover-card__trigger" target="_blank" rel="noopener">0.60.0</a><span class="hover-card__popup">mir 0.60.0</span></span></small></th>
 <th scope="col">noverify<br><small><span class="hover-card"><a href="https://github.com/VKCOM/noverify/releases/tag/v0.5.5" class="hover-card__trigger" target="_blank" rel="noopener">0.5.5</a><span class="hover-card__popup">NoVerify, version 0.5.5: built on: 2025.04.22 14:36:46 OS: r-kuchinskas arm64 Commit: 4774b82f8adc53fbef38f95e97af4b953b4d1529</span></span></small></th>
 <th scope="col">intelephense<br><small><span class="hover-card"><a href="https://www.npmjs.com/package/intelephense/v/1.18.5" class="hover-card__trigger" target="_blank" rel="noopener">1.18.5</a><span class="hover-card__popup">intelephense 1.18.5</span></span></small></th>
+<th scope="col">phpy<br><small><span class="hover-card"><span class="hover-card__trigger">phpy 0.2.0</span><span class="hover-card__popup">phpy 0.2.0</span></span></small></th>
 <th scope="col">steins<br><small><span class="hover-card"><a href="https://github.com/rigortype/steins/releases/tag/v0.1.0" class="hover-card__trigger" target="_blank" rel="noopener">0.1.0</a><span class="hover-card__popup">steins 0.1.0</span></span></small></th>
 </tr></thead><tbody>
-<tr class="group"><td colspan="9">Exceptions</td></tr>
+<tr class="group"><td colspan="10">Exceptions</td></tr>
 <tr id="exceptions_throws_docblock"><td class="test-cell"><a class="test-link" href="tests/exceptions_throws_docblock.html">Basic @throws compatibility checks</a></td>
 <td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
@@ -1093,8 +1189,9 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
+<td class="muted"><a class="cell-link" href="tests/exceptions_throws_docblock.html">—</a></td>
 </tr>
-<tr class="group"><td colspan="9">Analyzer directives</td></tr>
+<tr class="group"><td colspan="10">Analyzer directives</td></tr>
 <tr id="directives_deprecated_usage"><td class="test-cell"><a class="test-link" href="tests/directives_deprecated_usage.html">Deprecated symbol usage through companion support files</a></td>
 <td class="reported"><a class="cell-link" href="tests/directives_deprecated_usage.html">Reported</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_deprecated_usage.html">—</a></td>
@@ -1103,11 +1200,13 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="muted"><a class="cell-link" href="tests/directives_deprecated_usage.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_deprecated_usage.html">—</a></td>
 <td class="reported"><a class="cell-link" href="tests/directives_deprecated_usage.html">Reported</a></td>
+<td class="reported"><a class="cell-link" href="tests/directives_deprecated_usage.html">Reported</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_deprecated_usage.html">—</a></td>
 </tr>
 <tr id="directives_phpstan_strict_bool_condition"><td class="test-cell"><a class="test-link" href="tests/directives_phpstan_strict_bool_condition.html">PHPStan strict-rules opt-in detection for boolean conditions</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
 <td class="reported"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">Reported <small>(strict)</small></a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_bool_condition.html">—</a></td>
@@ -1122,6 +1221,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
 <td class="reported"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">Reported</a></td>
+<td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
 <td class="muted"><a class="cell-link" href="tests/directives_phpstan_strict_empty.html">—</a></td>
 </tr>
@@ -1152,6 +1252,7 @@ details summary { cursor: pointer; font-size: 0.85em; color: #555; }
 <tr><th class="tool-name"><a href="https://intelephense.com" target="_blank" rel="noopener">Intelephense</a></th><td>Code intelligence</td><td>LSP</td><td>Formatter, rename</td><td>TypeScript</td><td><a href="https://github.com/bmewburn" target="_blank" rel="noopener">Ben Mewburn</a></td><td><a href="https://intelephense.com" target="_blank" rel="noopener">Intelephense</a></td><td>Ben Mewburn</td><td>Proprietary (freemium)</td><td><time datetime="2017">2017</time></td><td>1.18.5 (<time datetime="2026-06-21">2026-06-21</time>)</td><td>own parser</td><td><span class="none">—</span></td></tr>
 <tr><th class="tool-name"><a href="https://github.com/VKCOM/noverify" target="_blank" rel="noopener">NoVerify</a></th><td>Type-aware linter</td><td>CLI</td><td>—</td><td>Go</td><td><a href="https://github.com/YuriyNasretdinov" target="_blank" rel="noopener">Yuriy Nasretdinov</a> (VK)</td><td><a href="https://github.com/VKCOM" target="_blank" rel="noopener">VK.COM</a></td><td>—</td><td>MIT</td><td><time datetime="2019">2019</time></td><td>0.5.5 (<time datetime="2025-04-22">2025-04-22</time>)</td><td>VKCOM/php-parser</td><td><a href="https://habr.com/ru/companies/vk/articles/442284/" target="_blank" rel="noopener">VK open-sources it (Habr)</a></td></tr>
 <tr><th class="tool-name"><a href="https://mago.carthage.software" target="_blank" rel="noopener">Mago</a></th><td>Type checker</td><td>CLI</td><td>Linter, formatter, arch guard</td><td>Rust</td><td><a href="https://github.com/azjezz" target="_blank" rel="noopener">Saif Eddin Gmati</a></td><td><a href="https://github.com/carthage-software" target="_blank" rel="noopener">Carthage Software</a></td><td>Saif Eddin Gmati</td><td>MIT OR Apache-2.0</td><td><time datetime="2024">2024</time></td><td>1.44.0 (<time datetime="2026-07-18">2026-07-18</time>)</td><td>own parser</td><td><a href="https://github.com/carthage-software/mago/releases/tag/1.0.0" target="_blank" rel="noopener">Mago 1.0.0</a></td></tr>
+<tr><th class="tool-name"><a href="https://github.com/DEVSENSE/phpy" target="_blank" rel="noopener">phpy / PHPTools</a></th><td>Code intelligence</td><td>CLI, LSP</td><td>Formatter</td><td>C#, TypeScript</td><td><a href="https://github.com/jakubmisek" target="_blank" rel="noopener">Jakub Míšek</a></td><td><a href="https://www.devsense.com" target="_blank" rel="noopener">DEVSENSE</a></td><td>Jakub Míšek</td><td>Proprietary (freemium)</td><td><time datetime="2025">2025</time></td><td>1.0.18519 (<time datetime="2026-02-19">2026-02-19</time>)</td><td>own (C#/.NET compiled to WASM)</td><td><a href="https://blog.devsense.com/2025/update-1-58-benchmarks/" target="_blank" rel="noopener">phpy: a proof-of-concept CLI</a></td></tr>
 <tr><th class="tool-name"><a href="https://github.com/jorgsowa/mir" target="_blank" rel="noopener">mir</a></th><td>Type checker</td><td>CLI</td><td>—</td><td>Rust</td><td><a href="https://github.com/jorgsowa" target="_blank" rel="noopener">Jorg Sowa</a></td><td>Personal</td><td>Jorg Sowa</td><td>MIT</td><td><time datetime="2026">2026</time></td><td>0.60.0 (<time datetime="2026-07-18">2026-07-18</time>)</td><td>own (php-rs-parser)</td><td><span class="none">—</span></td></tr>
 <tr><th class="tool-name"><a href="https://pzoom.dev" target="_blank" rel="noopener">Pzoom</a></th><td>Type checker</td><td>CLI</td><td>—</td><td>Rust</td><td><a href="https://github.com/muglug" target="_blank" rel="noopener">Matt Brown</a></td><td>Personal</td><td>Matt Brown</td><td>MIT</td><td><time datetime="2026">2026</time></td><td>unversioned (<time datetime="2026-06-24">2026-06-24</time>)</td><td>Mago parser</td><td><a href="https://mattbrown.dev/articles/from-psalm-to-pzoom" target="_blank" rel="noopener">From Psalm to Pzoom</a></td></tr>
 <tr><th class="tool-name"><a href="https://github.com/rigortype/steins" target="_blank" rel="noopener">PHP;STEINS</a></th><td>Type checker</td><td>CLI</td><td>Annotator, transforms</td><td>Rust</td><td><a href="https://github.com/zonuexe" target="_blank" rel="noopener">USAMI Kenta</a></td><td><a href="https://github.com/rigortype" target="_blank" rel="noopener">TypedDuck</a></td><td>USAMI Kenta</td><td>Apache-2.0</td><td><time datetime="2026">2026</time></td><td>0.1.0 (<time datetime="2026-07-24">2026-07-24</time>)</td><td>Mago parser (fork)</td><td><span class="none">—</span></td></tr>

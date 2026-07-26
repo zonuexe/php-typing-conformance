@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_vendor_prefixed_param_psalm.php:24: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedVendorPrefixedParamPsalm\\takesPsalmParam() is expected to be of type int, string given"
+errors_diff = ""
+notes = ""
+ignore_errors = []

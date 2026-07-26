@@ -241,6 +241,28 @@ final class SummaryReport
         // "(muglug)" -- are dropped here; "(Etsy)" and "(Vimeo)" stay because
         // they name an employer, not a handle.
         //
+        // phpy's row names the tool "phpy / PHPTools" outright, in the name
+        // field itself like every other row -- no <abbr> tooltip, since
+        // unlike every other row the thing being compared here is not the
+        // whole product: phpy (github.com/DEVSENSE/phpy) is a thin CLI
+        // wrapper DEVSENSE published 2025-05 (v0.1.0) around the same
+        // closed-source analysis engine that has shipped inside PHP Tools
+        // for Visual Studio since 2012 -- DEVSENSE's own blog post
+        // introduces it as "a proof of concept" for a standalone language
+        // server, not a ground-up product. Initial release is phpy's own
+        // 2025 start, not PHP Tools' 2012 origin: every other row tracks the
+        // specific artifact being compared, not whatever earlier tooling its
+        // maintainer previously built (NoVerify's row doesn't inherit VK's
+        // earlier internal tooling either). License is "Proprietary
+        // (freemium)" like Intelephense, verified against DEVSENSE's own
+        // Community License page: free for OSI-licensed open-source
+        // projects, education, and businesses under 250 seats/$1M revenue;
+        // above that it requires a paid license. Organization links
+        // DEVSENSE's own homepage, the same standard applied to
+        // Intelephense's own site. Founder and Lead maintainer are both
+        // Jakub Míšek -- DEVSENSE's founder and the sole author on phpy's
+        // GitHub releases.
+        //
         // [name, expansion, homepage, analysis, interface, bundled, language,
         //  founder(raw HTML), backing, backingUrl, lead, leadUrl, leadNote,
         //  license, initial, latest, ast, announceUrl, announceLabel]
@@ -251,6 +273,7 @@ final class SummaryReport
             ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', '<a href="https://github.com/bmewburn" target="_blank" rel="noopener">Ben Mewburn</a>', 'Intelephense', 'https://intelephense.com', 'Ben Mewburn', '', '', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
             ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', '<a href="https://github.com/YuriyNasretdinov" target="_blank" rel="noopener">Yuriy Nasretdinov</a> (VK)', 'VK.COM', 'https://github.com/VKCOM', '—', '', '', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
             ['Mago', '', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', '<a href="https://github.com/azjezz" target="_blank" rel="noopener">Saif Eddin Gmati</a>', 'Carthage Software', 'https://github.com/carthage-software', 'Saif Eddin Gmati', '', '', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
+            ['phpy / PHPTools', '', 'https://github.com/DEVSENSE/phpy', 'Code intelligence', 'CLI, LSP', 'Formatter', 'C#, TypeScript', '<a href="https://github.com/jakubmisek" target="_blank" rel="noopener">Jakub Míšek</a>', 'DEVSENSE', 'https://www.devsense.com', 'Jakub Míšek', '', '', 'Proprietary (freemium)', '2025', '1.0.18519 (2026-02-19)', 'own (C#/.NET compiled to WASM)', 'https://blog.devsense.com/2025/update-1-58-benchmarks/', 'phpy: a proof-of-concept CLI'],
             ['mir', '', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', '<a href="https://github.com/jorgsowa" target="_blank" rel="noopener">Jorg Sowa</a>', 'Personal', '', 'Jorg Sowa', '', '', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
             ['Pzoom', '', 'https://pzoom.dev', 'Type checker', 'CLI', '—', 'Rust', '<a href="https://github.com/muglug" target="_blank" rel="noopener">Matt Brown</a>', 'Personal', '', 'Matt Brown', '', '', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
             ['PHP;STEINS', '', 'https://github.com/rigortype/steins', 'Type checker', 'CLI', 'Annotator, transforms', 'Rust', '<a href="https://github.com/zonuexe" target="_blank" rel="noopener">USAMI Kenta</a>', 'TypedDuck', 'https://github.com/rigortype', 'USAMI Kenta', '', '', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],

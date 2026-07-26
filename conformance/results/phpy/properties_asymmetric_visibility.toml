@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = "properties_asymmetric_visibility.php:29: Member has public private(set) visibility and is not accessible from the current context."
+errors_diff = ""
+notes = ""
+ignore_errors = []

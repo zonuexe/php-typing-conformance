@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 5
+output = """
+native_types_resource_argument.php:16: Use of unknown class: 'Conformance\\Tests\\NativeTypesResourceArgument\\resource'
+native_types_resource_argument.php:37: Argument '1' passed to Conformance\\Tests\\NativeTypesResourceArgument\\takesResource() is expected to be of type Conformance\\Tests\\NativeTypesResourceArgument\\resource, bool|resource given
+native_types_resource_argument.php:38: Argument '1' passed to Conformance\\Tests\\NativeTypesResourceArgument\\takesString() is expected to be of type string, bool|resource given
+native_types_resource_argument.php:39: Argument '1' passed to Conformance\\Tests\\NativeTypesResourceArgument\\takesInt() is expected to be of type int, bool|resource given"""
+errors_diff = "Line 40: Expected 1 error(s)"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_basics_param_types.php:23: Argument '1' passed to Conformance\\Tests\\PhpdocBasicsParamTypes\\takesDocblockInt() is expected to be of type int, string given"
+errors_diff = ""
+notes = ""
+ignore_errors = []

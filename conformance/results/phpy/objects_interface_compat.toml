@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "objects_interface_compat.php:41: Argument '1' passed to Conformance\\Tests\\ObjectsInterfaceCompat\\takesHasName() is expected to be of type Conformance\\Tests\\ObjectsInterfaceCompat\\HasName, Conformance\\Tests\\ObjectsInterfaceCompat\\AnonymousUser given"
+errors_diff = ""
+notes = ""
+ignore_errors = []

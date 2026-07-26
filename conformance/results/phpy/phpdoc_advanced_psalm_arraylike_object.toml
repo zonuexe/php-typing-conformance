@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_arraylike_object.php:19: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object'
+phpdoc_advanced_psalm_arraylike_object.php:29: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object, stdClass given"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [19]
+false_positive_lines = []

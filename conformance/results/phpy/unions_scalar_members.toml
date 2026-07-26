@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+unions_scalar_members.php:27: Argument '1' passed to Conformance\\Tests\\UnionsScalarMembers\\takesIntOrString() is expected to be of type int|string, float given
+unions_scalar_members.php:28: Argument '1' passed to Conformance\\Tests\\UnionsScalarMembers\\takesNullableInt() is expected to be of type int|null, string given"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

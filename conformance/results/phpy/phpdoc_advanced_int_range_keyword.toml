@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_int_range_keyword.php:19: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range'
+phpdoc_advanced_int_range_keyword.php:26: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte() is expected to be of type Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range, int given
+phpdoc_advanced_int_range_keyword.php:30: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte() is expected to be of type Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range, int given"""
+errors_diff = "Line 26: Unexpected errors [\"Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\acceptsByte() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range, int given\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [19]
+false_positive_lines = [26]

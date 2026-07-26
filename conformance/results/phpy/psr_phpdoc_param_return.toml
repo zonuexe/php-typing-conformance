@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+psr_phpdoc_param_return.php:44: Argument '1' passed to Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() is expected to be of type string, int given
+psr_phpdoc_param_return.php:47: Argument '1' passed to Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage() is expected to be of type string, int given"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

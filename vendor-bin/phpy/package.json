@@ -1,0 +1,8 @@
+{
+    "name": "php-typing-conformance-phpy",
+    "description": "Isolated phpy (DEVSENSE PHP Tools CLI) install for the conformance runner.",
+    "private": true,
+    "dependencies": {
+        "phpy": "1.0.18519"
+    }
+}

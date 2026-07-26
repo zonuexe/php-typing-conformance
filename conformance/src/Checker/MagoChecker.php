@@ -115,6 +115,12 @@ final class MagoChecker implements Checker
         return $diagnostics;
     }
 
+    /**
+     * Mago talks around its own report: since 1.45 it prints `INFO` lines both
+     * before the payload ("Overriding workspace directory with ...") and after
+     * it ("No issues found."), on the same stream. So the object is cut out
+     * rather than taken from the first brace to the end.
+     */
     private function extractJsonPayload(string $output): string
     {
         $start = strpos($output, '{');
@@ -126,7 +132,12 @@ final class MagoChecker implements Checker
             throw new RuntimeException('Mago output did not contain JSON payload.');
         }
 
-        return substr($output, $start);
+        $end = strrpos($output, '}');
+        if ($end === false || $end < $start) {
+            throw new RuntimeException('Mago output did not contain a complete JSON payload.');
+        }
+
+        return substr($output, $start, $end - $start + 1);
     }
 
     /**

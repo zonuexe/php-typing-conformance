@@ -9,6 +9,7 @@ use Conformance\Metadata\LanguageServerMetadata;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 
 /**
  * php-lsp, the server built on mir.
@@ -100,5 +101,10 @@ final class PhpLsp extends LanguageServerMetadata
     public function parserNote(): ?string
     {
         return 'Dedicated php-rs-parser and php-ast crates, published separately by the same author.';
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::gitHub('jorgsowa/php-lsp');
     }
 }

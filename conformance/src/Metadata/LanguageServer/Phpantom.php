@@ -9,6 +9,7 @@ use Conformance\Metadata\LanguageServerMetadata;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 
 /**
  * PHPantom.
@@ -91,5 +92,10 @@ final class Phpantom extends LanguageServerMetadata
     public function parserNote(): ?string
     {
         return 'The README credits “Mago: the PHP parser that powers all of PHPantom’s AST analysis”; Cargo.toml exact-pins mago-syntax and a half-dozen sibling mago-* crates.';
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::gitHub('PHPantom-dev/phpantom_lsp');
     }
 }

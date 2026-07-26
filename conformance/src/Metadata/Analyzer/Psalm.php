@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 use function sprintf;
 
 final class Psalm extends AnalyzerMetadata
@@ -121,5 +122,10 @@ final class Psalm extends AnalyzerMetadata
     public function releaseUrl(string $version): ?string
     {
         return sprintf('https://github.com/vimeo/psalm/releases/tag/%s', $version);
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::gitHub('vimeo/psalm');
     }
 }

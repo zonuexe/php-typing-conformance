@@ -9,6 +9,7 @@ use Conformance\Metadata\LanguageServerMetadata;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 
 /**
  * Intelephense's language server — the same artifact the analyzer table has a
@@ -96,5 +97,10 @@ final class Intelephense extends LanguageServerMetadata
     public function parserNote(): ?string
     {
         return 'Never described as “own parser” in so many words — the developer’s own phrase is “error tolerant parser”. Read as in-house because early versions depended on php7parser, which Ben Mewburn also wrote; the current server bundles its parser closed-source, so the dependency is no longer visible.';
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::npm('intelephense');
     }
 }

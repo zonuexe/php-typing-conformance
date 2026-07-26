@@ -10,6 +10,7 @@ use Conformance\Metadata\LanguageServerMetadata;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 
 /**
  * DEVSENSE's standalone language server.
@@ -115,5 +116,10 @@ final class DevsensePhpLs extends LanguageServerMetadata
             'https://blog.devsense.com/2025/update-1-58-benchmarks/',
             'A standalone language server',
         );
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::npm('devsense-php-ls');
     }
 }

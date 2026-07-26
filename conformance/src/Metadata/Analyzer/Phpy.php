@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 
 /**
  * phpy, DEVSENSE's CLI wrapper around the PHP Tools analysis engine.
@@ -111,5 +112,10 @@ final class Phpy extends AnalyzerMetadata
             'https://blog.devsense.com/2025/update-1-58-benchmarks/',
             'phpy: a proof-of-concept CLI',
         );
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::npm('phpy');
     }
 }

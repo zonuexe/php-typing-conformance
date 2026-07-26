@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 use function sprintf;
 
 final class Phan extends AnalyzerMetadata
@@ -105,5 +106,10 @@ final class Phan extends AnalyzerMetadata
     public function releaseUrl(string $version): ?string
     {
         return sprintf('https://github.com/phan/phan/releases/tag/%s', $version);
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::gitHub('phan/phan');
     }
 }

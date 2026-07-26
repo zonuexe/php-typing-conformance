@@ -10,6 +10,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 use function sprintf;
 
 final class Steins extends AnalyzerMetadata
@@ -83,5 +84,10 @@ final class Steins extends AnalyzerMetadata
     public function releaseUrl(string $version): ?string
     {
         return sprintf('https://github.com/rigortype/steins/releases/tag/v%s', $version);
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::packagist('typedduck/steins');
     }
 }

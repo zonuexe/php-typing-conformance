@@ -10,6 +10,7 @@ use Conformance\Metadata\LanguageServerMetadata;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 
 /**
  * Psalm's language server: the same artifact the analyzer table has a record
@@ -116,5 +117,10 @@ final class Psalm extends LanguageServerMetadata
             'https://psalm.dev/articles/announcing-psalm-v3',
             'Announcing Psalm v3',
         );
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::gitHub('vimeo/psalm');
     }
 }

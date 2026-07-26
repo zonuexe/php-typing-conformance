@@ -10,6 +10,7 @@ use Conformance\Metadata\LanguageServerMetadata;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 
 /**
  * Phpactor.
@@ -105,5 +106,10 @@ final class Phpactor extends LanguageServerMetadata
             'https://www.dantleech.com/blog/2018/08/19/three-years-of-phpactor/',
             'Three Years of Phpactor',
         );
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::gitHub('phpactor/phpactor');
     }
 }

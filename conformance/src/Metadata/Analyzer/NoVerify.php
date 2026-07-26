@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 use function sprintf;
 
 final class NoVerify extends AnalyzerMetadata
@@ -103,5 +104,10 @@ final class NoVerify extends AnalyzerMetadata
     public function releaseUrl(string $version): ?string
     {
         return sprintf('https://github.com/VKCOM/noverify/releases/tag/v%s', $version);
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::gitHub('VKCOM/noverify');
     }
 }

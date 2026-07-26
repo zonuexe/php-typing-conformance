@@ -18,6 +18,31 @@ This fetches only the documentation-relevant parts of each submodule, which keep
 
 Current references include `python-typing`, `fig-standards`, `mago`, `phpstan`, `psalm`, `phpDocumentor`, `phan.wiki`, and `noverify`.
 
+## Keeping the tools current
+
+```sh
+make update-tools            # report what has a newer release upstream
+make update-tools APPLY=1    # install those, and record the new releases
+```
+
+Each analyzer and language server states where it publishes releases, so this
+asks GitHub, npm or Packagist directly and lines up four answers: what
+`vendor-bin/` has **installed**, what the package manager would **install**
+now, what `conformance/data/releases.toml` **records** as upstream's newest,
+and what **upstream** says today. Composer resolves the installable version
+against the platform, so a release that wants a PHP this machine does not have
+shows up as installable-below-upstream rather than as a phantom update.
+
+`APPLY=1` installs what can be installed and records the current releases;
+re-run the suite afterwards to measure the new versions.
+
+GitHub allows 60 unauthenticated API requests an hour, which one run can
+exhaust. Pass a token to raise it:
+
+```sh
+GITHUB_TOKEN=$(gh auth token) make update-tools
+```
+
 ## The report
 
 Running the analyzers writes one TOML file per tool and test under

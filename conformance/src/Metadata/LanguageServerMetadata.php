@@ -178,4 +178,13 @@ abstract class LanguageServerMetadata
     {
         return null;
     }
+
+    /**
+     * Where this project announces releases, for update-tools.php to read.
+     * Null where nothing is published in a form a script can follow.
+     */
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return null;
+    }
 }

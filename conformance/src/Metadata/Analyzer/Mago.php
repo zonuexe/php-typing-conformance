@@ -11,6 +11,7 @@ use Conformance\Metadata\InterfaceKind;
 use Conformance\Metadata\LeadMaintainer;
 use Conformance\Metadata\Organization;
 use Conformance\Metadata\Person;
+use Conformance\Metadata\ReleaseFeed;
 use function sprintf;
 
 final class Mago extends AnalyzerMetadata
@@ -91,5 +92,10 @@ final class Mago extends AnalyzerMetadata
     public function releaseUrl(string $version): ?string
     {
         return sprintf('https://github.com/carthage-software/mago/releases/tag/%s', $version);
+    }
+
+    public function releaseFeed(): ?ReleaseFeed
+    {
+        return ReleaseFeed::gitHub('carthage-software/mago');
     }
 }

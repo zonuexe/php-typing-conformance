@@ -1,4 +1,4 @@
-.PHONY: init-submodules pull-submodules render-report-html serve install-intelephense install-phpy
+.PHONY: init-submodules pull-submodules render-report-html serve update-tools install-intelephense install-phpy
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
@@ -57,6 +57,11 @@ install-phpy:
 
 render-report-html:
 	php conformance/src/render-report-html.php
+
+# Report which tracked tools have a newer release. `make update-tools APPLY=1`
+# installs them and records the new releases; re-run the suite afterwards.
+update-tools:
+	php conformance/src/update-tools.php $(if $(APPLY),--apply,)
 
 # Read the report locally the way it is published. Every page is rendered per
 # request from the committed results, so this needs no build first.

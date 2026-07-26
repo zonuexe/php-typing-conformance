@@ -195,23 +195,27 @@ final class SummaryReport
         // question for every row:
         //
         // - Organization: the entity currently behind the project, if any,
-        //   linked to that org's own page. Often the founder's own company or
-        //   GitHub org (PHPStan s.r.o., Carthage Software, TypedDuck/
-        //   rigortype, VK.COM/VKCOM, and Intelephense itself — its footer
-        //   carries an Australian Business Number, so "Intelephense" is a
-        //   registered business, not just a product name, the same
-        //   solo-founder-formalized-as-an-entity pattern as the others)
-        //   rather than an outside backer — verified via each org's own page,
-        //   not assumed from the name; the display text is that page's own
-        //   name, not the URL slug (VKCOM's is "VK.COM", rigortype's is
-        //   "TypedDuck"). Phan and Psalm have no company at all, just a
-        //   multi-contributor GitHub home with no single commercial owner —
-        //   github.com/phan for
-        //   Phan, and github.com/psalm (a separate community-packages org,
-        //   not vimeo/psalm itself) for Psalm — rendered as a "Community
-        //   (org)" link rather than a bare "—" so that distinction ("no
-        //   backer" vs. "collectively run, here") is visible rather than
-        //   collapsed into the same dash as, say, mir's true one-person "—".
+        //   linked to that org's own page. Every row states this positively —
+        //   no bare "—", since a dash reads as "not checked" once other rows
+        //   carry real values, which would undo the point of separating this
+        //   from Lead maintainer in the first place. Three kinds of answer:
+        //   - A company or the founder's own formalized entity (PHPStan
+        //     s.r.o., Carthage Software, TypedDuck/rigortype, VK.COM/VKCOM,
+        //     and Intelephense itself — its footer carries an Australian
+        //     Business Number, so "Intelephense" is a registered business,
+        //     not just a product name). Verified via each org's own page, not
+        //     assumed from the name; the display text is that page's own
+        //     name, not the URL slug (VKCOM's is "VK.COM", rigortype's is
+        //     "TypedDuck").
+        //   - "Community (org)" for Phan and Psalm, which have no company at
+        //     all, just a multi-contributor GitHub home with no single
+        //     commercial owner: github.com/phan for Phan, github.com/psalm
+        //     (a separate community-packages org, not vimeo/psalm itself) for
+        //     Psalm.
+        //   - "Personal" for mir and Pzoom, genuinely one person's project
+        //     with no separate entity, formal or informal — the same
+        //     information Lead maintainer already carries, restated here so
+        //     the column never falls back to an ambiguous dash.
         // - Lead maintainer: the individual currently driving day-to-day
         //   development. Usually the founder; `leadNote` is set only for rows
         //   where it verifiably is not, and renders as a hover note rather
@@ -231,8 +235,8 @@ final class SummaryReport
             ['Intelephense', '', 'https://intelephense.com', 'Code intelligence', 'LSP', 'Formatter, rename', 'TypeScript', 'Ben Mewburn', 'Intelephense', 'https://intelephense.com', 'Ben Mewburn', '', 'Proprietary (freemium)', '2017', '1.18.5 (2026-06-21)', 'own parser', '', ''],
             ['NoVerify', '', 'https://github.com/VKCOM/noverify', 'Type-aware linter', 'CLI', '—', 'Go', 'VK (VKCOM)', 'VK.COM', 'https://github.com/VKCOM', '—', '', 'MIT', '2019', '0.5.5 (2025-04-22)', 'VKCOM/php-parser', 'https://habr.com/ru/companies/vk/articles/442284/', 'VK open-sources it (Habr)'],
             ['Mago', '', 'https://mago.carthage.software', 'Type checker', 'CLI', 'Linter, formatter, arch guard', 'Rust', 'Saif Eddin Gmati (Carthage Software)', 'Carthage Software', 'https://github.com/carthage-software', 'Saif Eddin Gmati', '', 'MIT OR Apache-2.0', '2024', '1.44.0 (2026-07-18)', 'own parser', 'https://github.com/carthage-software/mago/releases/tag/1.0.0', 'Mago 1.0.0'],
-            ['mir', '', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', 'Jorg Sowa', '—', '', 'Jorg Sowa', '', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
-            ['Pzoom', '', 'https://pzoom.dev', 'Type checker', 'CLI', '—', 'Rust', 'Matt Brown (muglug)', '—', '', 'Matt Brown', '', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
+            ['mir', '', 'https://github.com/jorgsowa/mir', 'Type checker', 'CLI', '—', 'Rust', 'Jorg Sowa', 'Personal', '', 'Jorg Sowa', '', 'MIT', '2026', '0.60.0 (2026-07-18)', 'own (php-rs-parser)', '', ''],
+            ['Pzoom', '', 'https://pzoom.dev', 'Type checker', 'CLI', '—', 'Rust', 'Matt Brown (muglug)', 'Personal', '', 'Matt Brown', '', 'MIT', '2026', 'unversioned (2026-06-24)', 'Mago parser', 'https://mattbrown.dev/articles/from-psalm-to-pzoom', 'From Psalm to Pzoom'],
             ['PHP;STEINS', '', 'https://github.com/rigortype/steins', 'Type checker', 'CLI', 'Annotator, transforms', 'Rust', 'USAMI Kenta (rigortype)', 'TypedDuck', 'https://github.com/rigortype', 'USAMI Kenta', '', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
         ];
 
@@ -249,7 +253,7 @@ final class SummaryReport
             . '<li><strong>Interface</strong> &mdash; how you talk to it. CLI, the Language Server Protocol, or both. Independent of the analysis: Phan and Psalm ship the same engine behind either.</li>'
             . '<li><strong>Bundled with it</strong> &mdash; what else lives in the same distribution. A formatter or a fixer next to the checker says nothing about how the checker reasons; Mago calls itself a toolchain, but its <code>analyze</code> command is a type checker like the rest.</li>'
             . '</ul>';
-        $lines[] = '<p class="section-note">Founder / Organization / Lead maintainer are three more independent questions, kept apart for the same reason: <strong>Founder</strong> is who started it. <strong>Organization</strong> is the entity currently behind it, if any &mdash; often the founder&rsquo;s own company or GitHub org rather than an outside adopter, and not necessarily a financial backer: a linked <em>Community (org)</em> marks a project with no company at all, just a shared GitHub home, distinct from the plain &ldquo;&mdash;&rdquo; of a true one-person project. <strong>Lead maintainer</strong> is the individual currently driving day-to-day development; usually the founder, but a hover note marks the rows where it verifiably is not.</p>';
+        $lines[] = '<p class="section-note">Founder / Organization / Lead maintainer are three more independent questions, kept apart for the same reason: <strong>Founder</strong> is who started it. <strong>Organization</strong> is the entity currently behind it &mdash; often the founder&rsquo;s own company or GitHub org rather than an outside adopter, and not necessarily a financial backer: a linked <em>Community (org)</em> marks a project with no company at all, just a shared GitHub home, and <em>Personal</em> marks one with no separate entity of any kind, rather than leaving either as an ambiguous &ldquo;&mdash;&rdquo;. <strong>Lead maintainer</strong> is the individual currently driving day-to-day development; usually the founder, but a hover note marks the rows where it verifiably is not.</p>';
         $lines[] = '<div class="table-scroll"><table class="analyzer-meta">';
         $lines[] = '<thead><tr>';
         foreach ($headers as $header) {

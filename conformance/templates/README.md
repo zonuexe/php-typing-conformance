@@ -21,8 +21,8 @@ variables it expects.
 
 `report.css` is copied next to the generated pages rather than rendered.
 
-The analyzer table's contents are not in the template: each tool is a class
-under `src/Metadata/Analyzer/`, holding neutral data (names, URLs, enums) with
-no markup in it, and the latest release of each is injected from
-`data/analyzer-releases.toml`. `analyzers.phtml` decides what becomes a link,
-an `<abbr>` or a `<time>`.
+Neither reference table's contents are in its template: each tool is a class
+under `src/Metadata/Analyzer/` or `src/Metadata/LanguageServer/`, holding
+neutral data (names, URLs, enums) with no markup in it, and the latest release
+of each is injected from `data/releases.toml`. The templates decide what
+becomes a link, an `<abbr>`, a `<time>`, a dash or the words "Not stated".

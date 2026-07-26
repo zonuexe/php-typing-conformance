@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Conformance\Discovery\TestCaseDiscovery;
 use Conformance\Metadata\AnalyzerCatalog;
+use Conformance\Metadata\LanguageServerCatalog;
 use Conformance\Metadata\ReleaseTable;
 use Conformance\Reporting\SummaryReport;
 use Conformance\Reporting\TemplateRenderer;
@@ -16,15 +17,17 @@ $testGroupsFile = $rootDir . '/src/test-groups.toml';
 $testsDir = $rootDir . '/tests';
 $resultsDir = $rootDir . '/results';
 $templatesDir = $rootDir . '/templates';
-$analyzerReleasesFile = $rootDir . '/data/analyzer-releases.toml';
+$releasesFile = $rootDir . '/data/releases.toml';
 
 $loader = new TestGroupLoader();
 $testGroups = $loader->load($testGroupsFile);
 $discovery = new TestCaseDiscovery();
 $testCases = $discovery->discover($testsDir, $testGroups);
+$releases = ReleaseTable::fromTomlFile($releasesFile);
 $summaryReport = new SummaryReport(
     new TemplateRenderer($templatesDir),
-    AnalyzerCatalog::build(ReleaseTable::fromTomlFile($analyzerReleasesFile)),
+    AnalyzerCatalog::build($releases),
+    LanguageServerCatalog::build($releases),
 );
 $summaryPath = $resultsDir . '/results.html';
 // phpstan-strict is merged into the phpstan column by the report, so it is not

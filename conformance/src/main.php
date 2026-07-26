@@ -21,6 +21,7 @@ use Conformance\Expectation\ExpectedDiagnostic;
 use Conformance\Result\ResultRecord;
 use Conformance\Result\ResultRepository;
 use Conformance\Metadata\AnalyzerCatalog;
+use Conformance\Metadata\LanguageServerCatalog;
 use Conformance\Metadata\ReleaseTable;
 use Conformance\Reporting\SummaryReport;
 use Conformance\Reporting\TemplateRenderer;
@@ -62,7 +63,7 @@ $testGroupsFile = $rootDir . '/src/test-groups.toml';
 $testsDir = $rootDir . '/tests';
 $resultsDir = $rootDir . '/results';
 $templatesDir = $rootDir . '/templates';
-$analyzerReleasesFile = $rootDir . '/data/analyzer-releases.toml';
+$releasesFile = $rootDir . '/data/releases.toml';
 $projectRoot = dirname($rootDir);
 $phpStanConfigPath = $rootDir . '/phpstan.dist.neon';
 $phpStanNoStrictConfigPath = $rootDir . '/phpstan-no-strict.neon';
@@ -75,9 +76,11 @@ $testCases = $discovery->discover($testsDir, $testGroups);
 $expectationEvaluator = new ExpectationEvaluator();
 $expectationParser = new ExpectationParser();
 $resultRepository = new ResultRepository($resultsDir);
+$releases = ReleaseTable::fromTomlFile($releasesFile);
 $summaryReport = new SummaryReport(
     new TemplateRenderer($templatesDir),
-    AnalyzerCatalog::build(ReleaseTable::fromTomlFile($analyzerReleasesFile)),
+    AnalyzerCatalog::build($releases),
+    LanguageServerCatalog::build($releases),
 );
 $phpStanChecker = new PhpStanChecker(
     toolName: 'phpstan',

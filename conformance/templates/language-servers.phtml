@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
+use Conformance\Metadata\LanguageServerMetadata;
+
 /**
  * The reference table of PHP language servers.
  *
  * Most cells carry a hover note explaining what the short value does and does
- * not claim; `founder` is curated markup and goes out as written. See
- * SummaryReport::languageServerRows() for the sourcing rules this table
- * follows.
+ * not claim, and an empty value means the project does not state it — so this
+ * is where "nothing recorded" becomes the words "Not stated" or a dash. See
+ * Conformance\Metadata\LanguageServerMetadata for what a record may claim.
  *
- * @var list<array<string, string>> $rows every note key is present, '' when unused
+ * @var list<LanguageServerMetadata> $servers
  */
 
 $headers = ['Language server', 'Diagnostics', 'Analyzers driven', 'Bundled with it', 'Language', 'Founder', 'Organization', 'Lead maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
@@ -25,39 +27,66 @@ $headers = ['Language server', 'Diagnostics', 'Analyzers driven', 'Bundled with 
 <th scope="col"><?= h($header) ?></th>
 <?php endforeach; ?>
 </tr></thead><tbody>
-<?php foreach ($rows as $row): ?>
-<tr><th class="tool-name"><a href="<?= h($row['url']) ?>" target="_blank" rel="noopener"><?= h($row['name']) ?></a></th><td><?= h_noted($row['diagnostics'], $row['diagnosticsNote']) ?></td><td><?= h_noted($row['analyzers'], $row['analyzersNote']) ?></td><td><?= h_noted($row['bundled'], $row['bundledNote']) ?></td><td><?= h_noted($row['language'], $row['languageNote']) ?></td><td><?= $row['founder'] ?></td><td><?php
-    if ($row['orgUrl'] === ''):
-        echo h($row['org']);
+<?php foreach ($servers as $server): ?>
+<?php
+    // A server that claims to drive none says so with a dash; php-lsp's own
+    // engine is marked so its record in the analyzer table is not read as a
+    // third-party integration.
+    $analyzers = $server->analyzersDriven() === []
+        ? '—'
+        : implode(', ', $server->analyzersDriven()) . ($server->analyzersAreInHouse() ? ' (in-house)' : '');
+    // An unstated fact is said outright rather than left blank, so a reader can
+    // tell it apart from one nobody has looked up yet.
+    $languages = $server->languages() === [] ? 'Not stated' : implode(', ', $server->languages());
+    $parser = $server->parser() ?? 'Not stated';
+    $organization = $server->organization();
+    $lead = $server->lead();
+    $release = $server->latestRelease;
+    $announcement = $server->announcement();
+?>
+<tr><th class="tool-name"><a href="<?= h($server->url()) ?>" target="_blank" rel="noopener"><?= h($server->name()) ?></a></th><td><?= h_noted($server->diagnostics()->label(), $server->diagnosticsNote() ?? '') ?></td><td><?= h_noted($analyzers, $server->analyzersDrivenNote() ?? '') ?></td><td><?= h_noted($server->bundled(), $server->bundledNote() ?? '') ?></td><td><?= h_noted($languages, $server->languagesNote() ?? '') ?></td><td><?php
+    $names = [];
+    foreach ($server->founders() as $founder) {
+        $names[] = $founder->profileUrl === null
+            ? h($founder->name)
+            : sprintf('<a href="%s" target="_blank" rel="noopener">%s</a>', h($founder->profileUrl), h($founder->name));
+    }
+    echo implode(' &amp; ', $names);
+    echo $server->founderEmployer() === null ? '' : ' (' . h($server->founderEmployer()) . ')';
+?></td><td><?php
+    if ($organization->url === null):
+        echo h($organization->label());
     else:
-        ?><a href="<?= h($row['orgUrl']) ?>" target="_blank" rel="noopener"><?= h($row['org']) ?></a><?php
+        ?><a href="<?= h($organization->url) ?>" target="_blank" rel="noopener"><?= h($organization->label()) ?></a><?php
     endif;
 ?></td><td><?php
     // Same rule as the analyzer table: linked only when the lead differs from
     // the founder, since Founder already links that person and a second link
     // would point back at itself.
-    if ($row['leadUrl'] !== ''):
-        ?><a href="<?= h($row['leadUrl']) ?>" target="_blank" rel="noopener"<?= $row['leadNote'] === '' ? '' : ' title="' . h($row['leadNote']) . '"' ?>><?= h($row['lead']) ?></a><?php
-    elseif ($row['leadNote'] !== ''):
-        ?><span class="succession" title="<?= h($row['leadNote']) ?>"><?= h($row['lead']) ?></span><?php
+    if ($lead === null):
+        echo '—';
+    elseif ($lead->profileUrl !== null):
+        ?><a href="<?= h($lead->profileUrl) ?>" target="_blank" rel="noopener"<?= $lead->note === null ? '' : ' title="' . h($lead->note) . '"' ?>><?= h($lead->name) ?></a><?php
+    elseif ($lead->note !== null):
+        ?><span class="succession" title="<?= h($lead->note) ?>"><?= h($lead->name) ?></span><?php
     else:
-        echo h($row['lead']);
+        echo h($lead->name);
     endif;
-?></td><td><?= h_noted($row['license'], $row['licenseNote']) ?></td><td><?php
+?></td><td><?= h_noted($server->license(), $server->licenseNote() ?? '') ?></td><td><?php
     // The year cell already carries markup, so it takes the note as a wrapper
-    // rather than through noted(), which escapes its input. Psalm needs one:
+    // rather than through h_noted(), which escapes its input. Psalm needs one:
     // its server shipped in a release two months before the release that
     // announced it.
-    if ($row['initialNote'] === ''):
-        echo h_year($row['initial']);
+    if ($server->initialReleaseNote() === null):
+        echo h_year((string) $server->initialReleaseYear());
     else:
-        ?><span class="noted" title="<?= h($row['initialNote']) ?>"><?= h_year($row['initial']) ?></span><?php
+        ?><span class="noted" title="<?= h($server->initialReleaseNote()) ?>"><?= h_year((string) $server->initialReleaseYear()) ?></span><?php
     endif;
-?></td><td><?= h_release($row['latestVersion'], $row['latestDate']) ?></td><td><?= h_noted($row['ast'], $row['astNote']) ?></td><td><?php
-    if ($row['announceUrl'] === ''):
+?></td><td><?= h_release($release->version, $release->date) ?></td><td><?= h_noted($parser, $server->parserNote() ?? '') ?></td><td><?php
+    if ($announcement === null):
         ?><span class="none">—</span><?php
     else:
-        ?><a href="<?= h($row['announceUrl']) ?>" target="_blank" rel="noopener"><?= h($row['announceLabel']) ?></a><?php
+        ?><a href="<?= h($announcement->url) ?>" target="_blank" rel="noopener"><?= h($announcement->label) ?></a><?php
     endif;
 ?></td></tr>
 <?php endforeach; ?>

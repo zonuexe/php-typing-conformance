@@ -194,7 +194,7 @@ final class SummaryReport
         // to someone else. Split into two columns that each answer one
         // question for every row:
         //
-        // - Backing: the organisation currently behind the project, if any,
+        // - Organization: the entity currently behind the project, if any,
         //   linked to that org's own page. Often the founder's own company or
         //   GitHub org (PHPStan s.r.o., Carthage Software, TypedDuck/
         //   rigortype, VK.COM/VKCOM, and Intelephense itself — its footer
@@ -236,7 +236,7 @@ final class SummaryReport
             ['PHP;STEINS', '', 'https://github.com/rigortype/steins', 'Type checker', 'CLI', 'Annotator, transforms', 'Rust', 'USAMI Kenta (rigortype)', 'TypedDuck', 'https://github.com/rigortype', 'USAMI Kenta', '', 'Apache-2.0', '2026', '0.1.0 (2026-07-24)', 'Mago parser (fork)', '', ''],
         ];
 
-        $headers = ['Analyzer', 'Analysis', 'Interface', 'Bundled with it', 'Language', 'Founder', 'Backing', 'Lead maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
+        $headers = ['Analyzer', 'Analysis', 'Interface', 'Bundled with it', 'Language', 'Founder', 'Organization', 'Lead maintainer', 'License', 'Initial release', 'Latest release', 'AST / parser', 'Release announcement'];
 
         $lines = [];
         $lines[] = '<h2 class="section">Analyzers</h2>';
@@ -249,7 +249,7 @@ final class SummaryReport
             . '<li><strong>Interface</strong> &mdash; how you talk to it. CLI, the Language Server Protocol, or both. Independent of the analysis: Phan and Psalm ship the same engine behind either.</li>'
             . '<li><strong>Bundled with it</strong> &mdash; what else lives in the same distribution. A formatter or a fixer next to the checker says nothing about how the checker reasons; Mago calls itself a toolchain, but its <code>analyze</code> command is a type checker like the rest.</li>'
             . '</ul>';
-        $lines[] = '<p class="section-note">Founder / Backing / Lead maintainer are three more independent questions, kept apart for the same reason: <strong>Founder</strong> is who started it. <strong>Backing</strong> is the organisation currently behind it, if any &mdash; often the founder&rsquo;s own company or GitHub org rather than an outside adopter; a linked <em>Community (org)</em> marks a project with no company at all, just a shared GitHub home, distinct from the plain &ldquo;&mdash;&rdquo; of a true one-person project. <strong>Lead maintainer</strong> is the individual currently driving day-to-day development; usually the founder, but a hover note marks the rows where it verifiably is not.</p>';
+        $lines[] = '<p class="section-note">Founder / Organization / Lead maintainer are three more independent questions, kept apart for the same reason: <strong>Founder</strong> is who started it. <strong>Organization</strong> is the entity currently behind it, if any &mdash; often the founder&rsquo;s own company or GitHub org rather than an outside adopter, and not necessarily a financial backer: a linked <em>Community (org)</em> marks a project with no company at all, just a shared GitHub home, distinct from the plain &ldquo;&mdash;&rdquo; of a true one-person project. <strong>Lead maintainer</strong> is the individual currently driving day-to-day development; usually the founder, but a hover note marks the rows where it verifiably is not.</p>';
         $lines[] = '<div class="table-scroll"><table class="analyzer-meta">';
         $lines[] = '<thead><tr>';
         foreach ($headers as $header) {

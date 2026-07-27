@@ -75,12 +75,14 @@ $phpStanChecker = new PhpStanChecker(
     toolName: 'phpstan',
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
     configPath: $phpStanNoStrictConfigPath,
+    testsDir: $testsDir,
     resolveDiagnosticLevels: true,
 );
 $phpStanStrictChecker = new PhpStanChecker(
     toolName: 'phpstan-strict',
     binaryPath: $projectRoot . '/vendor-bin/phpstan/vendor/bin/phpstan',
     configPath: $phpStanConfigPath,
+    testsDir: $testsDir,
     resolveDiagnosticLevels: false,
 );
 $magoChecker = new MagoChecker(

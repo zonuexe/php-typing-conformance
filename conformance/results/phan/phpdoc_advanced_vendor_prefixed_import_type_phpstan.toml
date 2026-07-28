@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_vendor_prefixed_import_type_phpstan.php:35: Parameter $point has undeclared type \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePhpStan\\Coordinates [PhanUndeclaredTypeParameter]
+phpdoc_advanced_vendor_prefixed_import_type_phpstan.php:43: Argument 1 ($point) is ['lat'=>1.0,'lng'=>2.0] of type array{lat:1.0,lng:2.0} but \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePhpStan\\Map::pin() takes \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePhpStan\\Coordinates (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_import_type_phpstan.php:35 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_vendor_prefixed_import_type_phpstan.php:46: Argument 1 ($point) is ['lat'=>1.0] of type array{lat:1.0} but \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePhpStan\\Map::pin() takes \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePhpStan\\Coordinates (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_import_type_phpstan.php:35 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = "Line 43: Unexpected errors [\"Argument 1 ($point) is ['lat'=>1.0,'lng'=>2.0] of type array{lat:1.0,lng:2.0} but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedImportTypePhpStan\\\\Map::pin() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedImportTypePhpStan\\\\Coordinates (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_import_type_phpstan.php:35 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [35]
+false_positive_lines = [43]

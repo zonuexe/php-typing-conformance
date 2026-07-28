@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_vendor_prefixed_assert_if_true_psalm.php:31: Type int for $value is never string [TypeDoesNotContainType]
+phpdoc_advanced_vendor_prefixed_assert_if_true_psalm.php:31: Type int for $value is never string [RedundantCondition]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_vendor_prefixed_import_type_psalm.php:34: Parameter $point has undeclared type \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePsalm\\Coordinates [PhanUndeclaredTypeParameter]
+phpdoc_advanced_vendor_prefixed_import_type_psalm.php:42: Argument 1 ($point) is ['lat'=>1.0,'lng'=>2.0] of type array{lat:1.0,lng:2.0} but \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePsalm\\Map::pin() takes \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePsalm\\Coordinates (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_import_type_psalm.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_vendor_prefixed_import_type_psalm.php:45: Argument 1 ($point) is ['lat'=>1.0] of type array{lat:1.0} but \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePsalm\\Map::pin() takes \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePsalm\\Coordinates (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_import_type_psalm.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = "Line 42: Unexpected errors [\"Argument 1 ($point) is ['lat'=>1.0,'lng'=>2.0] of type array{lat:1.0,lng:2.0} but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedImportTypePsalm\\\\Map::pin() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedImportTypePsalm\\\\Coordinates (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_import_type_psalm.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [34]
+false_positive_lines = [42]

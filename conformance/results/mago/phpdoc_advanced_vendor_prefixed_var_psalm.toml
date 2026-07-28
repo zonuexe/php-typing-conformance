@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_vendor_prefixed_var_psalm.php:32: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedVendorPrefixedVarPsalm\\takesString`: expected `string`, but found `int`. [invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

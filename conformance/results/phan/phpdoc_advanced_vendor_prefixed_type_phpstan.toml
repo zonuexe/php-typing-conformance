@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_vendor_prefixed_type_phpstan.php:29: Parameter $row has undeclared type \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhpStan\\UserRow [PhanUndeclaredTypeParameter]
+phpdoc_advanced_vendor_prefixed_type_phpstan.php:37: Argument 1 ($row) is ['id'=>1,'name'=>'Ada'] of type array{id:1,name:'Ada'} but \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhpStan\\Repository::save() takes \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhpStan\\UserRow (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_type_phpstan.php:29 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_vendor_prefixed_type_phpstan.php:40: Argument 1 ($row) is ['id'=>1] of type array{id:1} but \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhpStan\\Repository::save() takes \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhpStan\\UserRow (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_type_phpstan.php:29 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = "Line 37: Unexpected errors [\"Argument 1 ($row) is ['id'=>1,'name'=>'Ada'] of type array{id:1,name:'Ada'} but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedTypePhpStan\\\\Repository::save() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedTypePhpStan\\\\UserRow (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_vendor_prefixed_type_phpstan.php:29 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [29]
+false_positive_lines = [37]

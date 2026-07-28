@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_vendor_prefixed_pure_psalm.php:24: Impure echo in pure function Conformance\\Tests\\PhpdocAdvancedVendorPrefixedPurePsalm\\claimsPure(). [identifier=impure.echo] [reported-from-level=2]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 2
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_array_key.php:58: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey() is expected to be of type int|string, float given
+phpdoc_advanced_fallback_array_key.php:59: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey() is expected to be of type int|string, bool given
+phpdoc_advanced_fallback_array_key.php:60: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey() is expected to be of type int|string, null given"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/5"
+unrecognized_lines = []
+false_positive_lines = []

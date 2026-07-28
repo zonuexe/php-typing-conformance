@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_array_key.php:58: InvalidArgument: Argument $value of acceptsArrayKey() expects 'int|string', got '1.5' [MIR0201]
+phpdoc_advanced_fallback_array_key.php:59: InvalidArgument: Argument $value of acceptsArrayKey() expects 'int|string', got 'true' [MIR0201]
+phpdoc_advanced_fallback_array_key.php:60: NullArgument: Argument $value of acceptsArrayKey() cannot be null [MIR0100]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/5"
+unrecognized_lines = []
+false_positive_lines = []

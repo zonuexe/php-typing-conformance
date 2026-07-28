@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_array_key.php:58: argument 1.5 to acceptsArrayKey() violates declared @param array-key $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_fallback_array_key.php:59: argument true to acceptsArrayKey() violates declared @param array-key $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_fallback_array_key.php:60: argument null to acceptsArrayKey() violates declared @param array-key $value — declared contract violation [phpdoc.param-mismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/5"
+unrecognized_lines = []
+false_positive_lines = []

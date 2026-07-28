@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_array_key.php:58: Argument 1 ($value) is 1.5 of type float (value: 1.5) but \\Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey() takes int|string (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_array_key.php:48 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_array_key.php:59: Argument 1 ($value) is true of type true but \\Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey() takes int|string (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_array_key.php:48 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_array_key.php:60: Argument 1 ($value) is null of type null but \\Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey() takes int|string (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_array_key.php:48 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/5"
+unrecognized_lines = []
+false_positive_lines = []

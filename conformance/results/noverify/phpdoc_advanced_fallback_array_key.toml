@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_array_key.php:59: potentially not safe access in parameter value of function Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey [notSafeCall]
+phpdoc_advanced_fallback_array_key.php:60: null passed to non-nullable parameter value in function Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey [notNullSafetyFunctionArgumentConstFetch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/5"
+unrecognized_lines = []
+false_positive_lines = []

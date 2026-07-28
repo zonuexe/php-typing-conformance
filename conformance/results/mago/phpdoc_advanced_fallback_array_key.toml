@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_array_key.php:58: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey`: expected `array-key`, but found `float(1.5)`. [invalid-argument]
+phpdoc_advanced_fallback_array_key.php:59: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey`: expected `array-key`, but found `true`. [invalid-argument]
+phpdoc_advanced_fallback_array_key.php:60: Argument #1 of function `Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey` is `null`, but parameter type `array-key` does not accept it. [null-argument]
+phpdoc_advanced_fallback_array_key.php:65: Argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsInt`: expected `int`, but provided type `array-key` is less specific. [less-specific-argument]
+phpdoc_advanced_fallback_array_key.php:66: Argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsString`: expected `string`, but provided type `array-key` is less specific. [less-specific-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "5/5"
+unrecognized_lines = []
+false_positive_lines = []

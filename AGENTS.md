@@ -54,7 +54,9 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
 - `conformance/fixtures/`: support files loaded together with a primary test case.
 - `conformance/src/`: discovery, expectation parsing, checker adapters, result persistence, and report generation.
 - `conformance/results/`: per-tool TOML results and `version.toml` (committed), plus the generated `index.html`, `tests/*.html` and `report.css` (git-ignored; built by `make render-report-html` and by CI).
-- `docs/`: design and architecture documents.
+- `docs/`: design and architecture documents, plus `analyzer-adapters.md`, which
+  documents each adapter's invocation, version reporting, PHP-version knob and
+  output normalization for readers outside this repository.
 - `references/`: upstream specs, docs, and source trees used for behavior research and citations.
 - `vendor-bin/`: one isolated Composer environment per analyzer.
 - `vendor/`: root Composer plugin dependencies and shared bin shims.
@@ -144,6 +146,34 @@ PHPStan handling is intentionally split:
 
 - `phpstan`: non-strict config, persists max-level output, and resolves the reporting level of each individual diagnostic
 - `phpstan-strict`: strict-rules config at max only
+
+### The Analysis Target Is Pinned To PHP 8.5
+
+The corpus uses PHP 8.4+ syntax (property hooks, asymmetric visibility), so
+every analyzer has to be told which language version it is reading. Left to
+their defaults the tools disagree, and a tool that targets an older version
+reports parse noise instead of the type behavior under test.
+
+`composer.json` (root and `conformance/`) requires `php-64bit: ^8.5` and pins
+`config.platform.php` to `8.5.0`; each analyzer that exposes a knob is set to
+8.5 explicitly:
+
+| Tool | Where |
+| --- | --- |
+| PHPStan | `phpVersion: 80500` in both `.neon` files |
+| Psalm, pzoom | `phpVersion="8.5"` in `conformance/psalm.xml` |
+| Phan | `--target-php-version 8.5` |
+| Mago | `--php-version 8.5` (global flag, before `analyze`) |
+| mir | `--php-version 8.5` |
+| Intelephense | `environment.phpVersion` in `intelephense-client.mjs` |
+
+NoVerify (only `--php7`), phpy and Steins expose nothing to set. Steins accepts
+any unknown flag silently, so do not "set" a version there and assume it took.
+
+Never state the corpus version through `require.php` in `conformance/composer.json`:
+Psalm reads that key and walks a candidate list from 5.4 upward, taking the
+*lowest* version the constraint admits — `">=8.2"` made it analyse at 8.2 and
+drop every `private(set)` property.
 
 ### PHPStan Levels Are Rule Sets, Not Type-Support Tiers
 

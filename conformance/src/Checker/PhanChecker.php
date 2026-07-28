@@ -47,7 +47,7 @@ final class PhanChecker implements Checker
             [...$testCase->supportPaths, $testCase->path],
         );
         $command = sprintf(
-            '%s --allow-polyfill-parser --output-mode text --directory %s %s 2>&1',
+            '%s --allow-polyfill-parser --target-php-version 8.5 --output-mode text --directory %s %s 2>&1',
             escapeshellarg($this->binaryPath),
             escapeshellarg($this->testsDir),
             implode(' ', $paths),

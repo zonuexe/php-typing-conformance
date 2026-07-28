@@ -50,7 +50,7 @@ final class MirChecker implements Checker
         );
 
         $command = sprintf(
-            '%s --no-progress --no-cache %s 2>&1',
+            '%s --no-progress --no-cache --php-version 8.5 %s 2>&1',
             escapeshellarg($this->binaryPath),
             implode(' ', $paths),
         );

@@ -2,12 +2,18 @@
     "name": "zonuexe/php-typing-conformance",
     "description": "Tracking type system compatibility and conformance across PHP static analyzers.",
     "license": "Apache-2.0",
+    "require": {
+        "php-64bit": "^8.5"
+    },
     "require-dev": {
         "bamarni/composer-bin-plugin": "^1.9"
     },
     "config": {
         "allow-plugins": {
             "bamarni/composer-bin-plugin": true
+        },
+        "platform": {
+            "php": "8.5.0"
         },
         "sort-packages": true
     },

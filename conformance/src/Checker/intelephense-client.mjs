@@ -117,6 +117,9 @@ server.stdout.on('data', (chunk) => {
 
 const settings = {
   intelephense: {
+    // Intelephense's own default is 8.3.0, which would silently analyse the
+    // corpus below the PHP version the rest of the suite targets.
+    environment: { phpVersion: '8.5.0' },
     files: { associations: ['*.php'], maxSize: 5000000 },
     diagnostics: {
       enable: true,

@@ -42,7 +42,7 @@ final class MagoChecker implements Checker
             [...$testCase->supportPaths, $testCase->path],
         );
         $command = sprintf(
-            '%s --workspace %s --colors never analyze --reporting-format json %s 2>&1',
+            '%s --workspace %s --colors never --php-version 8.5 analyze --reporting-format json %s 2>&1',
             escapeshellarg($this->binaryPath),
             escapeshellarg($this->workspacePath),
             implode(' ', $relativePaths),

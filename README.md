@@ -43,6 +43,31 @@ exhaust. Pass a token to raise it:
 GITHUB_TOKEN=$(gh auth token) make update-tools
 ```
 
+## The PHP version everything is measured against
+
+The corpus uses current PHP syntax, so the language version each tool reads is
+stated rather than inherited. Both `composer.json` files require `php-64bit`
+and pin `config.platform.php` to the **first release of the newest PHP line** —
+`8.5.0` today. The `.0` is deliberate: the platform version is a floor, so the
+suite resolves against what the whole line guarantees instead of against
+whichever patch release happens to be installed on the machine that ran it.
+
+Every analyzer that exposes a target-version knob is set to the same line —
+`phpVersion` for PHPStan and Psalm, `--target-php-version` for Phan,
+`--php-version` for Mago and mir, `environment.phpVersion` for Intelephense —
+or to the highest version it accepts when it cannot reach that far. NoVerify,
+phpy and Steins expose nothing to set and read the corpus on their own terms.
+[`docs/analyzer-adapters.md`](docs/analyzer-adapters.md) documents that per tool,
+along with how each one is invoked, reports its version, and gets its output
+normalized.
+
+Left to their defaults the tools disagree, and one targeting an older version
+reports parse noise where the test wanted a type verdict. `conformance/psalm.xml`
+carries an explicit `phpVersion` for exactly that reason: Psalm otherwise infers
+its target from `require.php` in `composer.json` and picks the *lowest* version
+the constraint admits. Bumping the pinned line means re-running the suite, since
+it can move any tool's verdict.
+
 ## The report
 
 Running the analyzers writes one TOML file per tool and test under

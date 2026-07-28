@@ -3,8 +3,13 @@
     "description": "Conformance runner for PHP static analyzer compatibility tests.",
     "type": "project",
     "require": {
-        "php": ">=8.2",
+        "php-64bit": "^8.5",
         "internal/toml": "^1.1"
+    },
+    "config": {
+        "platform": {
+            "php": "8.5.0"
+        }
     },
     "autoload": {
         "psr-4": {

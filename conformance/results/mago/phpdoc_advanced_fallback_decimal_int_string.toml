@@ -1,0 +1,25 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_decimal_int_string.php:23: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string`. [non-existent-class-like]
+phpdoc_advanced_fallback_decimal_int_string.php:27: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\returnsDecimalIntString`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string)`, but found `string('123')`. [invalid-return-statement]
+phpdoc_advanced_fallback_decimal_int_string.php:35: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string`. [non-existent-class-like]
+phpdoc_advanced_fallback_decimal_int_string.php:42: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsString`: expected `string`, but found `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string)`. [invalid-argument]
+phpdoc_advanced_fallback_decimal_int_string.php:45: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string)`, but found `string('123')`. [invalid-argument]
+phpdoc_advanced_fallback_decimal_int_string.php:46: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string)`, but found `string('-1')`. [invalid-argument]
+phpdoc_advanced_fallback_decimal_int_string.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string)`, but found `string('007')`. [invalid-argument]
+phpdoc_advanced_fallback_decimal_int_string.php:51: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string)`, but found `string('+1')`. [invalid-argument]
+phpdoc_advanced_fallback_decimal_int_string.php:54: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string)`, but found `string('abc')`. [invalid-argument]"""
+errors_diff = """
+Line 27: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackDecimalIntString\\\\returnsDecimalIntString`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackDecimalIntString\\\\decimal-int-string)`, but found `string('123')`. [invalid-return-statement]"]
+Line 42: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackDecimalIntString\\\\acceptsString`: expected `string`, but found `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackDecimalIntString\\\\decimal-int-string)`. [invalid-argument]"]
+Line 45: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackDecimalIntString\\\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackDecimalIntString\\\\decimal-int-string)`, but found `string('123')`. [invalid-argument]"]
+Line 46: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackDecimalIntString\\\\acceptsDecimalIntString`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackDecimalIntString\\\\decimal-int-string)`, but found `string('-1')`. [invalid-argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = [23, 35]
+false_positive_lines = [27, 42, 45, 46]

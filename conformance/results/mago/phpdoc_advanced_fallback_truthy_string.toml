@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_truthy_string.php:47: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsTruthyString`: expected `truthy-string`, but found `string('')`. [invalid-argument]
+phpdoc_advanced_fallback_truthy_string.php:51: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsTruthyString`: expected `truthy-string`, but possibly received `string('0')`. [possibly-invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_non_empty_literal_string.php:46: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyLiteralString\\acceptsNonEmptyLiteralString expects non-empty-literal-string, but '' provided [InvalidArgument]
+phpdoc_advanced_fallback_non_empty_literal_string.php:51: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyLiteralString\\acceptsNonEmptyLiteralString expects non-empty-literal-string, but parent type string provided [ArgumentTypeCoercion]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

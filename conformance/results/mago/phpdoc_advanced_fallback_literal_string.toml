@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_literal_string.php:52: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\acceptsLiteralString`: expected `literal-string`, but possibly received `string`. [possibly-invalid-argument]
+phpdoc_advanced_fallback_literal_string.php:55: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\acceptsLiteralString`: expected `literal-string`, but possibly received `truthy-string`. [possibly-invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

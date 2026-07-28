@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_non_falsy_string.php:47: argument "" to acceptsNonFalsyString() violates declared @param non-falsy-string $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_fallback_non_falsy_string.php:51: argument "0" to acceptsNonFalsyString() violates declared @param non-falsy-string $value — declared contract violation [phpdoc.param-mismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

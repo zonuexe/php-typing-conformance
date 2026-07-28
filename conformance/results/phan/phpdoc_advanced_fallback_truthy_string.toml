@@ -1,0 +1,25 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_truthy_string.php:22: Saw a token Phan may have failed to parse after '* @return truthy-string': after truthy, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_truthy_string.php:24: Return type of returnsTruthyString() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\truthy [PhanUndeclaredTypeReturnType]
+phpdoc_advanced_fallback_truthy_string.php:26: Returning 'x' of type string but returnsTruthyString() is declared to return \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\truthy (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]
+phpdoc_advanced_fallback_truthy_string.php:34: Saw possibly unextractable annotation for a fragment of comment '* @param truthy-string $value': after truthy, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_fallback_truthy_string.php:34: Saw a token Phan may have failed to parse after '* @param truthy-string $value': after truthy, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_truthy_string.php:36: Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\truthy [PhanUndeclaredTypeParameter]
+phpdoc_advanced_fallback_truthy_string.php:41: Argument 1 ($value) is returnsTruthyString() of type \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\truthy but \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_truthy_string.php:29 [PhanTypeMismatchArgument]
+phpdoc_advanced_fallback_truthy_string.php:44: Argument 1 ($value) is 'x' of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsTruthyString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\truthy (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_truthy_string.php:36 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_truthy_string.php:47: Argument 1 ($value) is '' of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsTruthyString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\truthy (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_truthy_string.php:36 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_truthy_string.php:51: Argument 1 ($value) is '0' of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsTruthyString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\truthy (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_truthy_string.php:36 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = """
+Line 26: Unexpected errors ["Returning 'x' of type string but returnsTruthyString() is declared to return \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTruthyString\\\\truthy (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]"]
+Line 41: Unexpected errors ["Argument 1 ($value) is returnsTruthyString() of type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTruthyString\\\\truthy but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTruthyString\\\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_truthy_string.php:29 [PhanTypeMismatchArgument]"]
+Line 44: Unexpected errors ["Argument 1 ($value) is 'x' of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTruthyString\\\\acceptsTruthyString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTruthyString\\\\truthy (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_truthy_string.php:36 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [22, 24, 34, 36]
+false_positive_lines = [26, 41, 44]

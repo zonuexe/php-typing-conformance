@@ -1,0 +1,23 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_non_positive_int.php:20: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int'
+phpdoc_advanced_fallback_non_positive_int.php:24: Return value of Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\returnsNonPositiveInt() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int, int returned
+phpdoc_advanced_fallback_non_positive_int.php:32: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int'
+phpdoc_advanced_fallback_non_positive_int.php:39: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\acceptsInt() is expected to be of type int, Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int given
+phpdoc_advanced_fallback_non_positive_int.php:43: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\acceptsNonPositiveInt() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int, int given
+phpdoc_advanced_fallback_non_positive_int.php:44: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\acceptsNonPositiveInt() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int, int given
+phpdoc_advanced_fallback_non_positive_int.php:47: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\acceptsNonPositiveInt() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int, int given"""
+errors_diff = """
+Line 24: Unexpected errors ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\returnsNonPositiveInt() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\non-positive-int, int returned"]
+Line 39: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\acceptsInt() is expected to be of type int, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\non-positive-int given"]
+Line 43: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\acceptsNonPositiveInt() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\non-positive-int, int given"]
+Line 44: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\acceptsNonPositiveInt() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\non-positive-int, int given"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [20, 32]
+false_positive_lines = [24, 39, 43, 44]

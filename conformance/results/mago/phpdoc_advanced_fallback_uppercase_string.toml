@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_uppercase_string.php:49: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackUppercaseString\\acceptsUppercaseString`: expected `uppercase-string`, but found `string('abc')`. [invalid-argument]
+phpdoc_advanced_fallback_uppercase_string.php:52: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackUppercaseString\\acceptsUppercaseString`: expected `uppercase-string`, but found `string('ABc')`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

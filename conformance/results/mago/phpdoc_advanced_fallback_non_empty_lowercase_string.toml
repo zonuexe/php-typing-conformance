@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_non_empty_lowercase_string.php:47: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyLowercaseString\\acceptsNonEmptyLowercaseString`: expected `lowercase-non-empty-string`, but found `string('')`. [invalid-argument]
+phpdoc_advanced_fallback_non_empty_lowercase_string.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyLowercaseString\\acceptsNonEmptyLowercaseString`: expected `lowercase-non-empty-string`, but found `string('ABC')`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

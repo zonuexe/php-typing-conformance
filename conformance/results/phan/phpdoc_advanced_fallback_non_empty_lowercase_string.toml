@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_fallback_non_empty_lowercase_string.php:47: Argument 1 ($value) is '' of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyLowercaseString\\acceptsNonEmptyLowercaseString() takes non-empty-string (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_non_empty_lowercase_string.php:35 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

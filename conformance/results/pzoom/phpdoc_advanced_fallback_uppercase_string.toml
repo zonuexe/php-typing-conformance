@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_uppercase_string.php:23: Invalid return docblock type [InvalidDocblock]
+phpdoc_advanced_fallback_uppercase_string.php:23: Function Conformance\\Tests\\PhpdocAdvancedFallbackUppercaseString\\returnsUppercaseString does not have a return type [MissingReturnType]
+phpdoc_advanced_fallback_uppercase_string.php:35: Invalid docblock type [InvalidDocblock]
+phpdoc_advanced_fallback_uppercase_string.php:35: Argument $value of Conformance\\Tests\\PhpdocAdvancedFallbackUppercaseString\\acceptsUppercaseString does not have a type [MissingParamType]
+phpdoc_advanced_fallback_uppercase_string.php:40: Argument 1 of acceptsString cannot be mixed, expecting string [MixedArgument]"""
+errors_diff = "Line 40: Unexpected errors [\"Argument 1 of acceptsString cannot be mixed, expecting string [MixedArgument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [23, 35]
+false_positive_lines = [40]

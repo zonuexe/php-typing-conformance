@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_negative_int.php:45: Argument 1 of acceptsNegativeInt expects int<min, -1>, but 0 provided [InvalidArgument]
+phpdoc_advanced_fallback_negative_int.php:48: Argument 1 of acceptsNegativeInt expects int<min, -1>, but 5 provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

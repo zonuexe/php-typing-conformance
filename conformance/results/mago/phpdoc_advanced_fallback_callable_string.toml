@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_fallback_callable_string.php:45: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackCallableString\\acceptsCallableString`: expected `callable-string`, but possibly received `string('definitely_not_a_function')`. [possibly-invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

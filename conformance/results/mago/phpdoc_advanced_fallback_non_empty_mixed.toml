@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_fallback_non_empty_mixed.php:51: Argument #1 of function `Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\acceptsNonEmptyMixed` is `null`, but parameter type `truthy-mixed` does not accept it. [null-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/4"
+unrecognized_lines = []
+false_positive_lines = []

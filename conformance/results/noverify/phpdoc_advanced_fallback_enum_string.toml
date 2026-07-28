@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_enum_string.php:29: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\enum-string does not exist [undefinedClass]
+phpdoc_advanced_fallback_enum_string.php:41: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\enum-string does not exist [undefinedClass]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [29, 41]
+false_positive_lines = []

@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_fallback_true.php:45: Argument 1 ($value) is false of type false but \\Conformance\\Tests\\PhpdocAdvancedFallbackTrue\\acceptsTrue() takes true defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_true.php:34 [PhanTypeMismatchArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

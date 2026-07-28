@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_scalar.php:47: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects scalar, but list{1, 2} provided [InvalidArgument]
+phpdoc_advanced_fallback_scalar.php:48: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects scalar, but stdClass provided [InvalidArgument]
+phpdoc_advanced_fallback_scalar.php:49: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar cannot be null, null value provided to parameter with type scalar [NullArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

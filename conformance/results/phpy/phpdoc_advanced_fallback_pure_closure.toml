@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_pure_closure.php:25: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure'
+phpdoc_advanced_fallback_pure_closure.php:29: Return value of Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\returnsPureClosure() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure, callable returned
+phpdoc_advanced_fallback_pure_closure.php:37: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure'
+phpdoc_advanced_fallback_pure_closure.php:47: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\acceptsPureClosure() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure, callable given
+phpdoc_advanced_fallback_pure_closure.php:50: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\acceptsPureClosure() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure, string given
+phpdoc_advanced_fallback_pure_closure.php:56: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\acceptsPureClosure() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure, callable given"""
+errors_diff = """
+Line 29: Unexpected errors ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\returnsPureClosure() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\pure-closure, callable returned"]
+Line 47: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\acceptsPureClosure() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\pure-closure, callable given"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [25, 37]
+false_positive_lines = [29, 47]

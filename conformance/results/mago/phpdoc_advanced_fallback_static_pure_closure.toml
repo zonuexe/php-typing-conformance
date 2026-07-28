@@ -1,0 +1,22 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_static_pure_closure.php:25: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure`. [non-existent-class-like]
+phpdoc_advanced_fallback_static_pure_closure.php:29: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\returnsStaticPureClosure`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure)`, but found `(closure(int): int)`. [invalid-return-statement]
+phpdoc_advanced_fallback_static_pure_closure.php:37: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure`. [non-existent-class-like]
+phpdoc_advanced_fallback_static_pure_closure.php:44: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsClosure`: expected `(closure(...mixed=): mixed)`, but found `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure)`. [invalid-argument]
+phpdoc_advanced_fallback_static_pure_closure.php:47: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure)`, but found `(closure(int): int)`. [invalid-argument]
+phpdoc_advanced_fallback_static_pure_closure.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure)`, but found `(closure(int): int)`. [invalid-argument]
+phpdoc_advanced_fallback_static_pure_closure.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure)`, but found `(closure(): void)`. [invalid-argument]"""
+errors_diff = """
+Line 29: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\returnsStaticPureClosure`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\static-pure-closure)`, but found `(closure(int): int)`. [invalid-return-statement]"]
+Line 44: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\acceptsClosure`: expected `(closure(...mixed=): mixed)`, but found `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\static-pure-closure)`. [invalid-argument]"]
+Line 47: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\acceptsStaticPureClosure`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\static-pure-closure)`, but found `(closure(int): int)`. [invalid-argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [25, 37]
+false_positive_lines = [29, 44, 47]

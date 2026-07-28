@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_pure_closure.php:29: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\returnsPureClosure`: expected `(pure-closure(...mixed): mixed)`, but found `(closure(int): int)`. [invalid-return-statement]
+phpdoc_advanced_fallback_pure_closure.php:47: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\acceptsPureClosure`: expected `(pure-closure(...mixed): mixed)`, but found `(closure(int): int)`. [invalid-argument]
+phpdoc_advanced_fallback_pure_closure.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\acceptsPureClosure`: expected `(pure-closure(...mixed): mixed)`, but found `string('strlen')`. [invalid-argument]
+phpdoc_advanced_fallback_pure_closure.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\acceptsPureClosure`: expected `(pure-closure(...mixed): mixed)`, but found `(closure(): void)`. [invalid-argument]"""
+errors_diff = """
+Line 29: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\returnsPureClosure`: expected `(pure-closure(...mixed): mixed)`, but found `(closure(int): int)`. [invalid-return-statement]"]
+Line 47: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\acceptsPureClosure`: expected `(pure-closure(...mixed): mixed)`, but found `(closure(int): int)`. [invalid-argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = [29, 47]

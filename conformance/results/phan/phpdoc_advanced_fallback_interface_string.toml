@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_interface_string.php:28: Saw a token Phan may have failed to parse after '* @return interface-string': after interface, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_interface_string.php:30: Return type of returnsInterfaceString() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackInterfaceString\\interface [PhanUndeclaredTypeReturnType]
+phpdoc_advanced_fallback_interface_string.php:32: Returning SomeInterface::class of type string but returnsInterfaceString() is declared to return \\Conformance\\Tests\\PhpdocAdvancedFallbackInterfaceString\\interface (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]
+phpdoc_advanced_fallback_interface_string.php:40: Saw possibly unextractable annotation for a fragment of comment '* @param interface-string $value': after interface, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_fallback_interface_string.php:40: Saw a token Phan may have failed to parse after '* @param interface-string $value': after interface, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_interface_string.php:42: Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackInterfaceString\\interface [PhanUndeclaredTypeParameter]
+phpdoc_advanced_fallback_interface_string.php:47: Argument 1 ($value) is returnsInterfaceString() of type \\Conformance\\Tests\\PhpdocAdvancedFallbackInterfaceString\\interface but \\Conformance\\Tests\\PhpdocAdvancedFallbackInterfaceString\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_interface_string.php:35 [PhanTypeMismatchArgument]
+phpdoc_advanced_fallback_interface_string.php:50: Argument 1 ($value) is SomeInterface::class of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackInterfaceString\\acceptsInterfaceString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackInterfaceString\\interface (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_interface_string.php:42 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_interface_string.php:54: Argument 1 ($value) is SomeClass::class of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackInterfaceString\\acceptsInterfaceString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackInterfaceString\\interface (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_interface_string.php:42 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = """
+Line 32: Unexpected errors ["Returning SomeInterface::class of type string but returnsInterfaceString() is declared to return \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackInterfaceString\\\\interface (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]"]
+Line 47: Unexpected errors ["Argument 1 ($value) is returnsInterfaceString() of type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackInterfaceString\\\\interface but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackInterfaceString\\\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_interface_string.php:35 [PhanTypeMismatchArgument]"]
+Line 50: Unexpected errors ["Argument 1 ($value) is SomeInterface::class of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackInterfaceString\\\\acceptsInterfaceString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackInterfaceString\\\\interface (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_interface_string.php:42 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [28, 30, 40, 42]
+false_positive_lines = [32, 47, 50]

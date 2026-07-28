@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_callable_string.php:45: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackCallableString\\acceptsCallableString expects callable-string, but 'definitely_not_a_function' provided [InvalidArgument]
+phpdoc_advanced_fallback_callable_string.php:48: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackCallableString\\acceptsCallableString expects callable-string, but stdClass::class provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_enum_string.php:29: Saw a token Phan may have failed to parse after '* @return enum-string': after enum, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_enum_string.php:31: Return type of returnsEnumString() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\enum [PhanUndeclaredTypeReturnType]
+phpdoc_advanced_fallback_enum_string.php:33: Returning SomeEnum::class of type string but returnsEnumString() is declared to return \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\enum (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]
+phpdoc_advanced_fallback_enum_string.php:41: Saw possibly unextractable annotation for a fragment of comment '* @param enum-string $value': after enum, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_fallback_enum_string.php:41: Saw a token Phan may have failed to parse after '* @param enum-string $value': after enum, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_enum_string.php:43: Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\enum [PhanUndeclaredTypeParameter]
+phpdoc_advanced_fallback_enum_string.php:48: Argument 1 ($value) is returnsEnumString() of type \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\enum but \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_enum_string.php:36 [PhanTypeMismatchArgument]
+phpdoc_advanced_fallback_enum_string.php:51: Argument 1 ($value) is SomeEnum::class of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\acceptsEnumString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\enum (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_enum_string.php:43 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_enum_string.php:54: Argument 1 ($value) is SomeClass::class of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\acceptsEnumString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackEnumString\\enum (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_enum_string.php:43 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = """
+Line 33: Unexpected errors ["Returning SomeEnum::class of type string but returnsEnumString() is declared to return \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackEnumString\\\\enum (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]"]
+Line 48: Unexpected errors ["Argument 1 ($value) is returnsEnumString() of type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackEnumString\\\\enum but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackEnumString\\\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_enum_string.php:36 [PhanTypeMismatchArgument]"]
+Line 51: Unexpected errors ["Argument 1 ($value) is SomeEnum::class of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackEnumString\\\\acceptsEnumString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackEnumString\\\\enum (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_enum_string.php:43 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [29, 31, 41, 43]
+false_positive_lines = [33, 48, 51]

@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_closed_resource.php:21: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\closed-resource'
+phpdoc_advanced_fallback_closed_resource.php:32: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\acceptsClosedResource() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\closed-resource, bool|resource given
+phpdoc_advanced_fallback_closed_resource.php:35: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\acceptsClosedResource() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\closed-resource, string given
+phpdoc_advanced_fallback_closed_resource.php:41: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\acceptsClosedResource() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\closed-resource, bool|resource given"""
+errors_diff = "Line 32: Unexpected errors [\"Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackClosedResource\\\\acceptsClosedResource() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackClosedResource\\\\closed-resource, bool|resource given\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [21]
+false_positive_lines = [32]

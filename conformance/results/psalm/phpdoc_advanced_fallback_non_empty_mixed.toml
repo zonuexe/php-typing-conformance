@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_fallback_non_empty_mixed.php:22: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\non-empty-mixed in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\returnsNonEmptyMixed [InvalidDocblock]
+phpdoc_advanced_fallback_non_empty_mixed.php:22: Method Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\returnsNonEmptyMixed does not have a return type, expecting 1 [MissingReturnType]
+phpdoc_advanced_fallback_non_empty_mixed.php:32: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\non-empty-mixed in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\acceptsNonEmptyMixed [InvalidDocblock]
+phpdoc_advanced_fallback_non_empty_mixed.php:34: Parameter $value has no provided type [MissingParamType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/4"
+unrecognized_lines = [22, 32, 34]
+false_positive_lines = []

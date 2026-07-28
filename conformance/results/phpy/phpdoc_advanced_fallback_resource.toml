@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_resource.php:33: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackResource\\acceptsResource() is expected to be of type resource, int given
+phpdoc_advanced_fallback_resource.php:34: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackResource\\acceptsResource() is expected to be of type resource, string given
+phpdoc_advanced_fallback_resource.php:35: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackResource\\acceptsResource() is expected to be of type resource, stdClass given"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

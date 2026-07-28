@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_open_resource.php:21: Saw possibly unextractable annotation for a fragment of comment '* @param open-resource $value': after open, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_fallback_open_resource.php:21: Saw a token Phan may have failed to parse after '* @param open-resource $value': after open, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_open_resource.php:23: Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\open [PhanUndeclaredTypeParameter]
+phpdoc_advanced_fallback_open_resource.php:31: Argument 1 ($value) is $handle of type resource but \\Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\acceptsOpenResource() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\open defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_open_resource.php:23 [PhanTypeMismatchArgument]
+phpdoc_advanced_fallback_open_resource.php:34: Argument 1 ($value) is 'not a resource' of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\acceptsOpenResource() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\open (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_open_resource.php:23 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_open_resource.php:41: Argument 1 ($value) is $closed of type resource but \\Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\acceptsOpenResource() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\open defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_open_resource.php:23 [PhanTypeMismatchArgument]"""
+errors_diff = "Line 31: Unexpected errors [\"Argument 1 ($value) is $handle of type resource but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackOpenResource\\\\acceptsOpenResource() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackOpenResource\\\\open defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_open_resource.php:23 [PhanTypeMismatchArgument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [21, 23]
+false_positive_lines = [31]

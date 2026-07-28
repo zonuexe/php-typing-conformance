@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_closed_resource.php:35: Argument 1 of acceptsClosedResource expects closed-resource, but 'not a resource' provided [InvalidArgument]
+phpdoc_advanced_fallback_closed_resource.php:41: Argument 1 of acceptsClosedResource expects closed-resource, but resource provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

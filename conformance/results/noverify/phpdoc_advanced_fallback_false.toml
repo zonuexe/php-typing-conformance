@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_false.php:45: potentially not safe access in parameter value of function Conformance\\Tests\\PhpdocAdvancedFallbackFalse\\acceptsFalse [notSafeCall]
+phpdoc_advanced_fallback_false.php:50: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFallbackFalse\\acceptsFalse signature of param value [notSafeCall]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

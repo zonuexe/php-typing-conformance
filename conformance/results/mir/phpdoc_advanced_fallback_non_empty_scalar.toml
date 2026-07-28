@@ -1,0 +1,25 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_non_empty_scalar.php:48: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '1' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:49: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '1.5' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:50: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '"x"' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:51: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got 'true' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:54: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '0' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:55: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '0' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:56: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '""' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:57: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got 'false' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:60: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '"0"' [MIR0201]"""
+errors_diff = """
+Line 48: Unexpected errors ["InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar', got '1' [MIR0201]"]
+Line 49: Unexpected errors ["InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar', got '1.5' [MIR0201]"]
+Line 50: Unexpected errors ["InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar', got '\\"x\\"' [MIR0201]"]
+Line 51: Unexpected errors ["InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar', got 'true' [MIR0201]"]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "5/5"
+unrecognized_lines = []
+false_positive_lines = [48, 49, 50, 51]

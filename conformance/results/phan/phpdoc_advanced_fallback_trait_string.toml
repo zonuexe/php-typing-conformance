@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_trait_string.php:30: Saw a token Phan may have failed to parse after '* @return trait-string': after trait, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_trait_string.php:32: Return type of returnsTraitString() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\trait [PhanUndeclaredTypeReturnType]
+phpdoc_advanced_fallback_trait_string.php:34: Returning SomeTrait::class of type string but returnsTraitString() is declared to return \\Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\trait (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]
+phpdoc_advanced_fallback_trait_string.php:42: Saw possibly unextractable annotation for a fragment of comment '* @param trait-string $value': after trait, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_fallback_trait_string.php:42: Saw a token Phan may have failed to parse after '* @param trait-string $value': after trait, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_trait_string.php:44: Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\trait [PhanUndeclaredTypeParameter]
+phpdoc_advanced_fallback_trait_string.php:49: Argument 1 ($value) is returnsTraitString() of type \\Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\trait but \\Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_trait_string.php:37 [PhanTypeMismatchArgument]
+phpdoc_advanced_fallback_trait_string.php:52: Argument 1 ($value) is SomeTrait::class of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\acceptsTraitString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\trait (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_trait_string.php:44 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_trait_string.php:55: Argument 1 ($value) is SomeClass::class of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\acceptsTraitString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\trait (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_trait_string.php:44 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = """
+Line 34: Unexpected errors ["Returning SomeTrait::class of type string but returnsTraitString() is declared to return \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\trait (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]"]
+Line 49: Unexpected errors ["Argument 1 ($value) is returnsTraitString() of type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\trait but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_trait_string.php:37 [PhanTypeMismatchArgument]"]
+Line 52: Unexpected errors ["Argument 1 ($value) is SomeTrait::class of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\acceptsTraitString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\trait (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_trait_string.php:44 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [30, 32, 42, 44]
+false_positive_lines = [34, 49, 52]

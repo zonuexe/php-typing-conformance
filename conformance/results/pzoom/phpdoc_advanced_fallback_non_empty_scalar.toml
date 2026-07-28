@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_non_empty_scalar.php:31: Invalid return docblock type [InvalidDocblock]
+phpdoc_advanced_fallback_non_empty_scalar.php:31: Function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\returnsNonEmptyScalar does not have a return type [MissingReturnType]
+phpdoc_advanced_fallback_non_empty_scalar.php:41: Invalid docblock type [InvalidDocblock]
+phpdoc_advanced_fallback_non_empty_scalar.php:41: Argument $value of Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar does not have a type [MissingParamType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/5"
+unrecognized_lines = [31, 41]
+false_positive_lines = []

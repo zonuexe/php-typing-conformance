@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_non_empty_scalar.php:56: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar expects float|int<min, -1>|int<1, max>|non-falsy-string|true, '' given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_non_empty_scalar.php:57: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar expects float|int<min, -1>|int<1, max>|non-falsy-string|true, false given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_non_empty_scalar.php:60: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar expects float|int<min, -1>|int<1, max>|non-falsy-string|true, '0' given. [identifier=argument.type] [reported-from-level=5]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/5"
+unrecognized_lines = []
+false_positive_lines = []

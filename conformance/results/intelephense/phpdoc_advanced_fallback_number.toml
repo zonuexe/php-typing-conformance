@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_number.php:19: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number'. [P1133]
+phpdoc_advanced_fallback_number.php:27: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number'. [P1133]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [19, 27]
+false_positive_lines = []

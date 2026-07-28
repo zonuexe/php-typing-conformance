@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_static_pure_closure.php:12: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure does not exist [undefinedClass]
+phpdoc_advanced_fallback_static_pure_closure.php:37: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure does not exist [undefinedClass]
+phpdoc_advanced_fallback_static_pure_closure.php:56: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure signature of param value [notSafeCall]"""
+errors_diff = "Line 12: Unexpected errors [\"Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\static-pure-closure does not exist [undefinedClass]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [37]
+false_positive_lines = [12]

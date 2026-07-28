@@ -1,0 +1,22 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_callable_array.php:28: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array`. [non-existent-class-like]
+phpdoc_advanced_fallback_callable_array.php:32: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\returnsCallableArray`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array)`, but found `list{Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\Greeter, string('greet')}`. [invalid-return-statement]
+phpdoc_advanced_fallback_callable_array.php:43: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array`. [non-existent-class-like]
+phpdoc_advanced_fallback_callable_array.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsArray`: expected `array<array-key, mixed>`, but found `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array)`. [invalid-argument]
+phpdoc_advanced_fallback_callable_array.php:53: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array)`, but found `list{Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\Greeter, string('greet')}`. [invalid-argument]
+phpdoc_advanced_fallback_callable_array.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array)`, but found `list{Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\Greeter, string('missing')}`. [invalid-argument]
+phpdoc_advanced_fallback_callable_array.php:59: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array)`, but found `list{int(1), int(2)}`. [invalid-argument]"""
+errors_diff = """
+Line 32: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\returnsCallableArray`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array)`, but found `list{Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\Greeter, string('greet')}`. [invalid-return-statement]"]
+Line 50: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsArray`: expected `array<array-key, mixed>`, but found `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array)`. [invalid-argument]"]
+Line 53: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsCallableArray`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array)`, but found `list{Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\Greeter, string('greet')}`. [invalid-argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [28, 43]
+false_positive_lines = [32, 50, 53]

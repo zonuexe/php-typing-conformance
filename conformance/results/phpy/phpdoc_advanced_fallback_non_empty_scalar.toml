@@ -1,0 +1,29 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_non_empty_scalar.php:29: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar'
+phpdoc_advanced_fallback_non_empty_scalar.php:35: Return value of Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\returnsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, bool|float|int|string returned
+phpdoc_advanced_fallback_non_empty_scalar.php:39: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar'
+phpdoc_advanced_fallback_non_empty_scalar.php:48: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, int given
+phpdoc_advanced_fallback_non_empty_scalar.php:49: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, float given
+phpdoc_advanced_fallback_non_empty_scalar.php:50: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, string given
+phpdoc_advanced_fallback_non_empty_scalar.php:51: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, bool given
+phpdoc_advanced_fallback_non_empty_scalar.php:54: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, int given
+phpdoc_advanced_fallback_non_empty_scalar.php:55: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, float given
+phpdoc_advanced_fallback_non_empty_scalar.php:56: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, string given
+phpdoc_advanced_fallback_non_empty_scalar.php:57: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, bool given
+phpdoc_advanced_fallback_non_empty_scalar.php:60: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar, string given"""
+errors_diff = """
+Line 35: Unexpected errors ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\returnsNonEmptyScalar() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar, bool|float|int|string returned"]
+Line 48: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar, int given"]
+Line 49: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar, float given"]
+Line 50: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar, string given"]
+Line 51: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar, bool given"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "5/5"
+unrecognized_lines = [29, 39]
+false_positive_lines = [35, 48, 49, 50, 51]

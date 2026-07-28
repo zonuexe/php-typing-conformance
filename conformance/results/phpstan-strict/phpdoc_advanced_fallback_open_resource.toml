@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_fallback_open_resource.php:34: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\acceptsOpenResource expects resource, string given. [identifier=argument.type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

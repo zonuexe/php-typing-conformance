@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_pure_callable.php:55: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable expects pure-callable, but impure-Closure():void provided [InvalidArgument]
+phpdoc_advanced_fallback_pure_callable.php:58: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable expects pure-callable, but impure-Closure():int provided [InvalidArgument]
+phpdoc_advanced_fallback_pure_callable.php:61: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable expects pure-callable, but 1 provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

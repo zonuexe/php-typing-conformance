@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_scalar.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects bool|float|int|string, array<int, int> given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_scalar.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects bool|float|int|string, stdClass given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_scalar.php:49: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects bool|float|int|string, null given. [identifier=argument.type] [reported-from-level=5]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

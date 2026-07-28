@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_pure_callable.php:27: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\pure-callable does not exist [undefinedClass]
+phpdoc_advanced_fallback_pure_callable.php:39: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\pure-callable does not exist [undefinedClass]
+phpdoc_advanced_fallback_pure_callable.php:55: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable signature of param value [notSafeCall]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/3"
+unrecognized_lines = [27, 39]
+false_positive_lines = []

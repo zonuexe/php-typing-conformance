@@ -1,0 +1,25 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_static_closure.php:20: Saw a token Phan may have failed to parse after '* @return static-closure': after static, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_static_closure.php:22: Return type of returnsStaticClosure() is undeclared type static [PhanUndeclaredTypeReturnType]
+phpdoc_advanced_fallback_static_closure.php:24: Returning (fn) of type Closure():int but returnsStaticClosure() is declared to return static (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]
+phpdoc_advanced_fallback_static_closure.php:32: Saw possibly unextractable annotation for a fragment of comment '* @param static-closure $value': after static, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_fallback_static_closure.php:32: Saw a token Phan may have failed to parse after '* @param static-closure $value': after static, saw '-' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_fallback_static_closure.php:34: Parameter $value has undeclared type static [PhanUndeclaredTypeParameter]
+phpdoc_advanced_fallback_static_closure.php:39: Argument 1 ($value) is returnsStaticClosure() of type static but \\Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsClosure() takes \\Closure defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_static_closure.php:27 [PhanTypeMismatchArgument]
+phpdoc_advanced_fallback_static_closure.php:42: Argument 1 ($value) is (fn) of type Closure():int but \\Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure() takes static (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_static_closure.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_static_closure.php:45: Argument 1 ($value) is (fn) of type Closure():int but \\Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure() takes static (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_static_closure.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+phpdoc_advanced_fallback_static_closure.php:48: Argument 1 ($value) is 'strlen' of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure() takes static (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_static_closure.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = """
+Line 24: Unexpected errors ["Returning (fn) of type Closure():int but returnsStaticClosure() is declared to return static (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]"]
+Line 39: Unexpected errors ["Argument 1 ($value) is returnsStaticClosure() of type static but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\acceptsClosure() takes \\\\Closure defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_static_closure.php:27 [PhanTypeMismatchArgument]"]
+Line 42: Unexpected errors ["Argument 1 ($value) is (fn) of type Closure():int but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\acceptsStaticClosure() takes static (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_static_closure.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [20, 22, 32, 34]
+false_positive_lines = [24, 39, 42]

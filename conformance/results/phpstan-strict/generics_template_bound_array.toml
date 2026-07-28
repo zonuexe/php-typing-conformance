@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+generics_template_bound_array.php:57: Call to new Conformance\\Tests\\GenericsTemplateBoundArray\\Collection() on a separate line has no effect. [identifier=new.resultUnused]
+generics_template_bound_array.php:57: Parameter #1 $items of class Conformance\\Tests\\GenericsTemplateBoundArray\\Collection constructor expects T of array, int given. [identifier=argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 0
+output = "generics_template_contravariant.php:66: Argument 1 of takesDogConsumer expects Conformance\\Tests\\GenericsTemplateContravariant\\Consumer<Conformance\\Tests\\GenericsTemplateContravariant\\Dog>, but parent type Conformance\\Tests\\GenericsTemplateContravariant\\Consumer<Conformance\\Tests\\GenericsTemplateContravariant\\Animal> provided [ArgumentTypeCoercion]"
+errors_diff = "Line 66: Unexpected errors [\"Argument 1 of takesDogConsumer expects Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer<Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Dog>, but parent type Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer<Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Animal> provided [ArgumentTypeCoercion]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+generics_template_bound_array.php:57: Unused result of new object creation expression in new Collection(1) (this is likely free of side effects - there is no known non-empty constructor or destructor) [PhanNoopNewNoSideEffects]
+generics_template_bound_array.php:57: Template type T of \\Conformance\\Tests\\GenericsTemplateBoundArray\\Collection::__construct() must be compatible with array, but 1 was provided in call to \\Conformance\\Tests\\GenericsTemplateBoundArray\\Collection::__construct() [PhanTemplateTypeConstraintViolation]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

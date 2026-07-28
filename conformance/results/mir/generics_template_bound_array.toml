@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "generics_template_bound_array.php:57: InvalidTemplateParam: Template type 'T' inferred as '1' does not satisfy bound 'array' [MIR0900]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

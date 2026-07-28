@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+generics_template_bound_array.php:38: param $collection miss matched with phpdoc type <<Collection<array{id: int}>>> [funcParamTypeMissMatch]
+generics_template_bound_array.php:49: param $row miss matched with phpdoc type <<array{id: int}>> [funcParamTypeMissMatch]
+generics_template_bound_array.php:57: Expression evaluated but not used [discardExpr]"""
+errors_diff = """
+Line 38: Unexpected errors ["param $collection miss matched with phpdoc type <<Collection<array{id: int}>>> [funcParamTypeMissMatch]"]
+Line 49: Unexpected errors ["param $row miss matched with phpdoc type <<array{id: int}>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

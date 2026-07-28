@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 0
+output = """
+generics_template_contravariant.php:62: Missing template parameter for type T on constructor for generic class \\Conformance\\Tests\\GenericsTemplateContravariant\\Consumer defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_template_contravariant.php:40 [PhanGenericConstructorTypes]
+generics_template_contravariant.php:66: Argument 1 ($consumer) is animalConsumer() of type \\Conformance\\Tests\\GenericsTemplateContravariant\\Consumer|\\Conformance\\Tests\\GenericsTemplateContravariant\\Consumer<\\Conformance\\Tests\\GenericsTemplateContravariant\\Animal> but \\Conformance\\Tests\\GenericsTemplateContravariant\\takesDogConsumer() takes \\Conformance\\Tests\\GenericsTemplateContravariant\\Consumer<\\Conformance\\Tests\\GenericsTemplateContravariant\\Dog> defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_template_contravariant.php:53 [PhanTypeMismatchArgument]"""
+errors_diff = """
+Line 62: Unexpected errors ["Missing template parameter for type T on constructor for generic class \\\\Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_template_contravariant.php:40 [PhanGenericConstructorTypes]"]
+Line 66: Unexpected errors ["Argument 1 ($consumer) is animalConsumer() of type \\\\Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer|\\\\Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer<\\\\Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Animal> but \\\\Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\takesDogConsumer() takes \\\\Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer<\\\\Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Dog> defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_template_contravariant.php:53 [PhanTypeMismatchArgument]"]"""
+notes = ""
+ignore_errors = []

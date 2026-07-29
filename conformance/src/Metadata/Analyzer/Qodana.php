@@ -31,12 +31,9 @@ use Conformance\Metadata\ReleaseFeed;
  * it in that sense.
  *
  * What can be sourced is one step removed, and the column should be read as
- * that and nothing more: the engine is PhpStorm's, and the only individual
- * JetBrains itself puts a name to is Maxim Mossienko, quoted as "project lead
- * at JetBrains" in the press release announcing PhpStorm 1.0 —
- * https://blog.jetbrains.com/blog/2010/05/27/pr_270510/ — with a JetBrains
- * blog author page at https://blog.jetbrains.com/author/nicity/. Project lead
- * on the 2010 IDE is not the same claim as founder of the 2021 product.
+ * that and nothing more: the engine is PhpStorm's, and the name recorded is
+ * the person who led PhpStorm. Lead on the IDE whose inspections are measured
+ * is not the same claim as founder of the 2021 product that packages them.
  */
 final class Qodana extends AnalyzerMetadata
 {
@@ -75,9 +72,14 @@ final class Qodana extends AnalyzerMetadata
         return ['Java', 'Kotlin'];
     }
 
+    /**
+     * The profile is the verification: it gives the name, JetBrains as the
+     * employer, and jetbrains.com/phpstorm as the site, so the person and the
+     * product are tied together by the person themselves.
+     */
     public function founders(): array
     {
-        return [new Person('Maxim Mossienko', 'https://blog.jetbrains.com/author/nicity/')];
+        return [new Person('Alexey Gopachenko', 'https://github.com/neuro159')];
     }
 
     // founderEmployer() is left unanswered on purpose. It exists to say that a

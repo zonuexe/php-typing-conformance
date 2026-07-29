@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_shape_discriminant_match.php:45: Function Conformance\\Tests\\ArraysShapeDiscriminantMatch\\crossedArms() should return string but returns mixed. [identifier=return.type]
+arrays_shape_discriminant_match.php:46: Offset 'cover_url' does not exist on array{type: 'Illust', image_url: non-falsy-string}. [identifier=offsetAccess.notFound]
+arrays_shape_discriminant_match.php:47: Offset 'image_url' does not exist on array{type: 'Novel', cover_url: non-falsy-string}. [identifier=offsetAccess.notFound]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

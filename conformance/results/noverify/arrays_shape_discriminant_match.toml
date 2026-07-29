@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+arrays_shape_discriminant_match.php:12: Class or interface named \\Conformance\\Tests\\ArraysShapeDiscriminantMatch\\non-falsy-string does not exist [undefinedClass]
+arrays_shape_discriminant_match.php:12: Class or interface named \\Conformance\\Tests\\ArraysShapeDiscriminantMatch\\non-falsy-string does not exist [undefinedClass]
+arrays_shape_discriminant_match.php:26: param $work miss matched with phpdoc type <<array{type: 'Illust', image_url: non-falsy-string}|array{type: 'Novel', cover_url: non-falsy-string}>> [funcParamTypeMissMatch]
+arrays_shape_discriminant_match.php:39: Class or interface named \\Conformance\\Tests\\ArraysShapeDiscriminantMatch\\non-falsy-string does not exist [undefinedClass]
+arrays_shape_discriminant_match.php:39: Class or interface named \\Conformance\\Tests\\ArraysShapeDiscriminantMatch\\non-falsy-string does not exist [undefinedClass]
+arrays_shape_discriminant_match.php:41: param $work miss matched with phpdoc type <<array{type: 'Illust', image_url: non-falsy-string}|array{type: 'Novel', cover_url: non-falsy-string}>> [funcParamTypeMissMatch]"""
+errors_diff = """
+Line 12: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\ArraysShapeDiscriminantMatch\\\\non-falsy-string does not exist [undefinedClass]","Class or interface named \\\\Conformance\\\\Tests\\\\ArraysShapeDiscriminantMatch\\\\non-falsy-string does not exist [undefinedClass]"]
+Line 26: Unexpected errors ["param $work miss matched with phpdoc type <<array{type: 'Illust', image_url: non-falsy-string}|array{type: 'Novel', cover_url: non-falsy-string}>> [funcParamTypeMissMatch]"]
+Line 39: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\ArraysShapeDiscriminantMatch\\\\non-falsy-string does not exist [undefinedClass]","Class or interface named \\\\Conformance\\\\Tests\\\\ArraysShapeDiscriminantMatch\\\\non-falsy-string does not exist [undefinedClass]"]
+Line 41: Unexpected errors ["param $work miss matched with phpdoc type <<array{type: 'Illust', image_url: non-falsy-string}|array{type: 'Novel', cover_url: non-falsy-string}>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

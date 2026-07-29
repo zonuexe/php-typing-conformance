@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+arrays_shape_discriminant_match.php:32: The type non-falsy-string|null does not match the declared return type string [NullableReturnStatement]
+arrays_shape_discriminant_match.php:33: Cannot access value using offset value of 'image_url' [PossiblyInvalidArrayOffset]
+arrays_shape_discriminant_match.php:33: Possibly undefined array offset [PossiblyUndefinedArrayOffset]
+arrays_shape_discriminant_match.php:34: Cannot access value using offset value of 'cover_url' [PossiblyInvalidArrayOffset]
+arrays_shape_discriminant_match.php:34: Possibly undefined array offset [PossiblyUndefinedArrayOffset]
+arrays_shape_discriminant_match.php:45: The type non-falsy-string|null does not match the declared return type string [NullableReturnStatement]
+arrays_shape_discriminant_match.php:46: Cannot access value using offset value of 'cover_url' [PossiblyInvalidArrayOffset]
+arrays_shape_discriminant_match.php:46: Possibly undefined array offset [PossiblyUndefinedArrayOffset]
+arrays_shape_discriminant_match.php:47: Cannot access value using offset value of 'image_url' [PossiblyInvalidArrayOffset]
+arrays_shape_discriminant_match.php:47: Possibly undefined array offset [PossiblyUndefinedArrayOffset]"""
+errors_diff = """
+Line 32: Unexpected errors ["The type non-falsy-string|null does not match the declared return type string [NullableReturnStatement]"]
+Line 33: Unexpected errors ["Cannot access value using offset value of 'image_url' [PossiblyInvalidArrayOffset]","Possibly undefined array offset [PossiblyUndefinedArrayOffset]"]
+Line 34: Unexpected errors ["Cannot access value using offset value of 'cover_url' [PossiblyInvalidArrayOffset]","Possibly undefined array offset [PossiblyUndefinedArrayOffset]"]"""
+notes = ""
+ignore_errors = []

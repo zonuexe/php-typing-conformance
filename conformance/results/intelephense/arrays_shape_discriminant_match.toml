@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+arrays_shape_discriminant_match.php:32: Expected type 'string'. Found 'mixed'. [P1006]
+arrays_shape_discriminant_match.php:45: Expected type 'string'. Found 'mixed'. [P1006]"""
+errors_diff = "Line 32: Unexpected errors [\"Expected type 'string'. Found 'mixed'. [P1006]\"]"
+notes = ""
+ignore_errors = []

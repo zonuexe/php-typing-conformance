@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+arrays_shape_discriminant_match.php:32: Function `Conformance\\Tests\\ArraysShapeDiscriminantMatch\\coverUrl` is declared to return `string` but possibly returns a nullable value (inferred as `null|truthy-string`). [nullable-return-statement]
+arrays_shape_discriminant_match.php:32: Invalid return type for function `Conformance\\Tests\\ArraysShapeDiscriminantMatch\\coverUrl`: expected `string`, but found `null|truthy-string`. [invalid-return-statement]
+arrays_shape_discriminant_match.php:33: Possibly undefined array key accessed on `array{'cover_url': truthy-string, 'type': string('Novel')}|array{'image_url': truthy-string, 'type': string('Illust')}`. [possibly-undefined-string-array-index]
+arrays_shape_discriminant_match.php:45: Function `Conformance\\Tests\\ArraysShapeDiscriminantMatch\\crossedArms` is declared to return `string` but possibly returns a nullable value (inferred as `null|truthy-string`). [nullable-return-statement]
+arrays_shape_discriminant_match.php:45: Invalid return type for function `Conformance\\Tests\\ArraysShapeDiscriminantMatch\\crossedArms`: expected `string`, but found `null|truthy-string`. [invalid-return-statement]
+arrays_shape_discriminant_match.php:46: Possibly undefined array key accessed on `array{'cover_url': truthy-string, 'type': string('Novel')}|array{'image_url': truthy-string, 'type': string('Illust')}`. [possibly-undefined-string-array-index]
+arrays_shape_discriminant_match.php:47: Undefined array key 'image_url' accessed on `array{'cover_url': truthy-string, 'type': string('Novel')}`. [undefined-string-array-index]"""
+errors_diff = """
+Line 32: Unexpected errors ["Function `Conformance\\\\Tests\\\\ArraysShapeDiscriminantMatch\\\\coverUrl` is declared to return `string` but possibly returns a nullable value (inferred as `null|truthy-string`). [nullable-return-statement]","Invalid return type for function `Conformance\\\\Tests\\\\ArraysShapeDiscriminantMatch\\\\coverUrl`: expected `string`, but found `null|truthy-string`. [invalid-return-statement]"]
+Line 33: Unexpected errors ["Possibly undefined array key accessed on `array{'cover_url': truthy-string, 'type': string('Novel')}|array{'image_url': truthy-string, 'type': string('Illust')}`. [possibly-undefined-string-array-index]"]"""
+notes = ""
+ignore_errors = []

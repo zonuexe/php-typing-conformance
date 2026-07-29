@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+arrays_shape_discriminant_match.php:26: The declared return type 'string' for Conformance\\Tests\\ArraysShapeDiscriminantMatch\\coverUrl is not nullable, but 'null|string' contains null [InvalidNullableReturnType]
+arrays_shape_discriminant_match.php:32: The declared return type 'string' for Conformance\\Tests\\ArraysShapeDiscriminantMatch\\coverUrl is not nullable, but the function returns 'non-falsy-string|null' [NullableReturnStatement]
+arrays_shape_discriminant_match.php:33: Possibly undefined array key $work['image_url'] on array{cover_url?: non-falsy-string, image_url?: non-falsy-string, type: 'Illust'|'Novel'} [PossiblyUndefinedArrayOffset]
+arrays_shape_discriminant_match.php:34: Possibly undefined array key $work['cover_url'] on array{cover_url?: non-falsy-string, image_url?: non-falsy-string, type: 'Novel'} [PossiblyUndefinedArrayOffset]
+arrays_shape_discriminant_match.php:41: The declared return type 'string' for Conformance\\Tests\\ArraysShapeDiscriminantMatch\\crossedArms is not nullable, but 'null|string' contains null [InvalidNullableReturnType]
+arrays_shape_discriminant_match.php:45: The declared return type 'string' for Conformance\\Tests\\ArraysShapeDiscriminantMatch\\crossedArms is not nullable, but the function returns 'non-falsy-string|null' [NullableReturnStatement]
+arrays_shape_discriminant_match.php:46: Possibly undefined array key $work['cover_url'] on array{cover_url?: non-falsy-string, image_url?: non-falsy-string, type: 'Illust'|'Novel'} [PossiblyUndefinedArrayOffset]
+arrays_shape_discriminant_match.php:47: Possibly undefined array key $work['image_url'] on array{cover_url?: non-falsy-string, image_url?: non-falsy-string, type: 'Novel'} [PossiblyUndefinedArrayOffset]"""
+errors_diff = """
+Line 26: Unexpected errors ["The declared return type 'string' for Conformance\\\\Tests\\\\ArraysShapeDiscriminantMatch\\\\coverUrl is not nullable, but 'null|string' contains null [InvalidNullableReturnType]"]
+Line 32: Unexpected errors ["The declared return type 'string' for Conformance\\\\Tests\\\\ArraysShapeDiscriminantMatch\\\\coverUrl is not nullable, but the function returns 'non-falsy-string|null' [NullableReturnStatement]"]
+Line 33: Unexpected errors ["Possibly undefined array key $work['image_url'] on array{cover_url?: non-falsy-string, image_url?: non-falsy-string, type: 'Illust'|'Novel'} [PossiblyUndefinedArrayOffset]"]
+Line 34: Unexpected errors ["Possibly undefined array key $work['cover_url'] on array{cover_url?: non-falsy-string, image_url?: non-falsy-string, type: 'Novel'} [PossiblyUndefinedArrayOffset]"]
+Line 41: Unexpected errors ["The declared return type 'string' for Conformance\\\\Tests\\\\ArraysShapeDiscriminantMatch\\\\crossedArms is not nullable, but 'null|string' contains null [InvalidNullableReturnType]"]"""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/fig-standards" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/intelephense.wiki" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/mago" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/mir" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/noverify" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/phan.wiki" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/phpDocumentor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/phpstan" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/psalm" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/references/python-typing" vcs="Git" />
+  </component>
+</project>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/conformance/corpus" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/conformance/src" isTestSource="false" packagePrefix="Conformance\" />
+      <sourceFolder url="file://$MODULE_DIR$/conformance/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/references/mago/composer/src" isTestSource="false" packagePrefix="Mago\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/mir/composer/src" isTestSource="false" packagePrefix="Mir\Composer\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/noverify/src/cmd/composer-get/src" isTestSource="false" packagePrefix="NoVerify\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/phpDocumentor/coding-standard/PhpDocumentorStandard" isTestSource="true" packagePrefix="PhpDocumentorStandard\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/phpDocumentor/incubator/json-path/tests/unit" isTestSource="true" packagePrefix="phpDocumentor\JsonPath\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/phpDocumentor/src/phpDocumentor" isTestSource="false" packagePrefix="phpDocumentor\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/phpDocumentor/tests/architecture" isTestSource="true" packagePrefix="phpDocumentor\Architecture\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/phpDocumentor/tests/functional/phpDocumentor" isTestSource="true" packagePrefix="phpDocumentor\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/phpDocumentor/tests/integration/phpDocumentor" isTestSource="true" packagePrefix="phpDocumentor\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/phpDocumentor/tests/twig-cs-fixer" isTestSource="true" packagePrefix="TwigCsFixer\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/phpDocumentor/tests/unit/Prophecy" isTestSource="true" packagePrefix="Prophecy\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/phpDocumentor/tests/unit/phpDocumentor" isTestSource="true" packagePrefix="phpDocumentor\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/psalm/src/Psalm" isTestSource="false" packagePrefix="Psalm\" />
+      <sourceFolder url="file://$MODULE_DIR$/references/psalm/tests" isTestSource="true" packagePrefix="Psalm\Tests\" />
+      <excludeFolder url="file://$MODULE_DIR$/conformance/corpus" />
+      <excludeFolder url="file://$MODULE_DIR$/conformance/data" />
+      <excludeFolder url="file://$MODULE_DIR$/conformance/fixtures" />
+      <excludeFolder url="file://$MODULE_DIR$/conformance/results" />
+      <excludeFolder url="file://$MODULE_DIR$/conformance/src" />
+      <excludeFolder url="file://$MODULE_DIR$/conformance/templates" />
+      <excludeFolder url="file://$MODULE_DIR$/conformance/vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/conformance/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/conformance/vendor/internal/toml" />
+      <excludeFolder url="file://$MODULE_DIR$/docs" />
+      <excludeFolder url="file://$MODULE_DIR$/references" />
+      <excludeFolder url="file://$MODULE_DIR$/skills" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/mago/vendor/carthage-software/mago" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/mago/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/mir/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/mir/vendor/miropen/mir-php" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/noverify/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/noverify/vendor/vkcom/noverify" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/danog/advanced-json-rpc" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/netresearch/jsonmapper" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/phan/phan" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/phan/tolerant-php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/phan/var_representation_polyfill" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/phpstan/phpdoc-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/sabre/event" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/symfony/polyfill-php85" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phan/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phpstan/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phpstan/vendor/phpstan/extension-installer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phpstan/vendor/phpstan/phpstan" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/phpstan/vendor/phpstan/phpstan-strict-rules" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/amp" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/byte-stream" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/dns" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/parallel" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/parser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/pipeline" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/process" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/serialization" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/socket" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/amphp/sync" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/danog/advanced-json-rpc" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/daverandom/libdns" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/dnoegel/php-xdg-base-dir" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/felixfbecker/language-server-protocol" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/fidry/cpu-core-counter" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/kelunik/certificate" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/league/uri" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/league/uri-interfaces" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/netresearch/jsonmapper" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/phpstan/phpdoc-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/revolt/event-loop" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/spatie/array-to-xml" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/polyfill-php84" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/polyfill-php85" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/vimeo/psalm" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/psalm/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/steins/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/steins/vendor/typedduck/steins" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor-bin/steins/vendor/typedduck/steins-attributes" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bamarni/composer-bin-plugin" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_value_of_constant.php:54: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\acceptsLevel`: expected `int(1)|int(10)`, but found `int(5)`. [invalid-argument]
+phpdoc_advanced_fallback_value_of_constant.php:57: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\acceptsLevel`: expected `int(1)|int(10)`, but found `string('low')`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

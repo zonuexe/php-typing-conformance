@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_value_of_enum.php:54: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\acceptsSuitValue`: expected `string('hearts')|string('spades')`, but found `string('clubs')`. [invalid-argument]
+phpdoc_advanced_fallback_value_of_enum.php:58: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\acceptsSuitValue`: expected `string('hearts')|string('spades')`, but found `enum(Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit::Hearts)`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

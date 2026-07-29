@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_value_of_enum.php:28: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit does not exist [undefinedClass]
+phpdoc_advanced_fallback_value_of_enum.php:40: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit does not exist [undefinedClass]
+phpdoc_advanced_fallback_value_of_enum.php:58: Class constant \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit::Hearts does not exist [undefinedConstant]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [28, 40]
+false_positive_lines = []

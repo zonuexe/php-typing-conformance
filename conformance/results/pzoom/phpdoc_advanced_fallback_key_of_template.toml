@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_key_of_template.php:34: The type array-key does not match the declared return type key-of<T> [InvalidReturnStatement]
+phpdoc_advanced_fallback_key_of_template.php:63: Argument 1 of acceptsInt expects int, but 'debug'|'verbose' provided [InvalidArgument]"""
+errors_diff = "Line 34: Unexpected errors [\"The type array-key does not match the declared return type key-of<T> [InvalidReturnStatement]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = [34]

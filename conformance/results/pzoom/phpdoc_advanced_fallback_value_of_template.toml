@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_value_of_template.php:29: Unable to determine the type that $value is being assigned to [MixedAssignment]
+phpdoc_advanced_fallback_value_of_template.php:33: Could not infer a return type [MixedReturnStatement]
+phpdoc_advanced_fallback_value_of_template.php:62: Argument 1 of acceptsString expects string, but 1|10 provided [InvalidArgument]"""
+errors_diff = """
+Line 29: Unexpected errors ["Unable to determine the type that $value is being assigned to [MixedAssignment]"]
+Line 33: Unexpected errors ["Could not infer a return type [MixedReturnStatement]"]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = [29, 33]

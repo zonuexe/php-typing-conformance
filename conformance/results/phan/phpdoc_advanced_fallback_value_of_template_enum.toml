@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_value_of_template_enum.php:34: Template type T not used in return value of function/method backingValue() [PhanTemplateTypeNotUsedInFunctionReturn]
+phpdoc_advanced_fallback_value_of_template_enum.php:58: Argument 1 ($value) is backingValue(Suit::Hearts) of type value-of<T> but \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_value_of_template_enum.php:42 [PhanTypeMismatchArgument]
+phpdoc_advanced_fallback_value_of_template_enum.php:62: Argument 1 ($value) is backingValue(Suit::Hearts) of type value-of<T> but \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\acceptsHearts() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_value_of_template_enum.php:53 [PhanTypeMismatchArgument]
+phpdoc_advanced_fallback_value_of_template_enum.php:65: Argument 1 ($value) is backingValue(Suit::Spades) of type value-of<T> but \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\acceptsInt() takes int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_value_of_template_enum.php:46 [PhanTypeMismatchArgument]"""
+errors_diff = """
+Line 58: Unexpected errors ["Argument 1 ($value) is backingValue(Suit::Hearts) of type value-of<T> but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\acceptsString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_value_of_template_enum.php:42 [PhanTypeMismatchArgument]"]
+Line 62: Unexpected errors ["Argument 1 ($value) is backingValue(Suit::Hearts) of type value-of<T> but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\acceptsHearts() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_value_of_template_enum.php:53 [PhanTypeMismatchArgument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [34]
+false_positive_lines = [58, 62]

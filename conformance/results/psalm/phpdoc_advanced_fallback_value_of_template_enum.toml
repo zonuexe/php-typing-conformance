@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_value_of_template_enum.php:32: The declared return type 'value-of<T:fn-conformance\\tests\\phpdocadvancedfallbackvalueoftemplateenum\\backingvalue as Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit>' for Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\backingValue is incorrect, got ''hearts'|'spades'' [InvalidReturnType]
+phpdoc_advanced_fallback_value_of_template_enum.php:39: The inferred type ''hearts'|'spades'' does not match the declared return type 'value-of<T:fn-conformance\\tests\\phpdocadvancedfallbackvalueoftemplateenum\\backingvalue as Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit>' for Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\backingValue [InvalidReturnStatement]
+phpdoc_advanced_fallback_value_of_template_enum.php:65: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\acceptsInt expects int, but 'spades' provided [InvalidScalarArgument]"""
+errors_diff = "Line 39: Unexpected errors [\"The inferred type ''hearts'|'spades'' does not match the declared return type 'value-of<T:fn-conformance\\\\tests\\\\phpdocadvancedfallbackvalueoftemplateenum\\\\backingvalue as Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit>' for Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\backingValue [InvalidReturnStatement]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [32]
+false_positive_lines = [39]

@@ -1,0 +1,23 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_value_of_template_enum.php:34: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit does not exist [undefinedClass]
+phpdoc_advanced_fallback_value_of_template_enum.php:34: param $case miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]
+phpdoc_advanced_fallback_value_of_template_enum.php:39: Property {\\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit|\\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\T}->value does not exist [undefinedProperty]
+phpdoc_advanced_fallback_value_of_template_enum.php:53: param $value miss matched with phpdoc type <<'hearts'>> [funcParamTypeMissMatch]
+phpdoc_advanced_fallback_value_of_template_enum.php:58: Class constant \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit::Hearts does not exist [undefinedConstant]
+phpdoc_advanced_fallback_value_of_template_enum.php:62: Class constant \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit::Hearts does not exist [undefinedConstant]
+phpdoc_advanced_fallback_value_of_template_enum.php:65: Class constant \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit::Spades does not exist [undefinedConstant]"""
+errors_diff = """
+Line 39: Unexpected errors ["Property {\\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit|\\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\T}->value does not exist [undefinedProperty]"]
+Line 53: Unexpected errors ["param $value miss matched with phpdoc type <<'hearts'>> [funcParamTypeMissMatch]"]
+Line 58: Unexpected errors ["Class constant \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit::Hearts does not exist [undefinedConstant]"]
+Line 62: Unexpected errors ["Class constant \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit::Hearts does not exist [undefinedConstant]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [34]
+false_positive_lines = [39, 53, 58, 62]

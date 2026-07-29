@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+properties_promoted_param_mismatch.php:23: Parameter ''x'' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+properties_promoted_param_mismatch.php:23: Parameter ''x'' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

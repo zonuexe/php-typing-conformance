@@ -1,0 +1,21 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_static_closure.php:20: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_static_closure.php:20: Undefined class 'static-closure' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_static_closure.php:24: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_static_closure.php:32: Undefined class 'static-closure' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_static_closure.php:42: Parameter 'static fn (): int => 1' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_static_closure.php:45: Parameter 'fn (): int => 1' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_static_closure.php:48: Parameter ''strlen'' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 24: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 42: Unexpected errors ["Parameter 'static fn (): int => 1' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [20, 32]
+false_positive_lines = [24, 42]

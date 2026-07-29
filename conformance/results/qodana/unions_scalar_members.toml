@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+unions_scalar_members.php:27: Parameter '1.5' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+unions_scalar_members.php:27: Parameter '1.5' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+unions_scalar_members.php:28: Parameter ''x'' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_decimal_int_string.php:23: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_decimal_int_string.php:23: Undefined class 'decimal-int-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_decimal_int_string.php:27: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_decimal_int_string.php:35: Undefined class 'decimal-int-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_decimal_int_string.php:45: Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_decimal_int_string.php:46: Parameter ''-1'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_decimal_int_string.php:50: Parameter ''007'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_decimal_int_string.php:51: Parameter ''+1'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_decimal_int_string.php:54: Parameter ''abc'' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 27: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 45: Unexpected errors ["Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 46: Unexpected errors ["Parameter ''-1'' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = [23, 35]
+false_positive_lines = [27, 45, 46]

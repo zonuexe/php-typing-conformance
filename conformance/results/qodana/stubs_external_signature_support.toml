@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "stubs_external_signature_support.php:37: Parameter 'new InvalidClock()' type is not compatible with declaration [PhpParamsInspection]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

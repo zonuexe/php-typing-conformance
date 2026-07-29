@@ -17,4 +17,11 @@ enum ReleaseFeedKind
     case GitHub;
     case Npm;
     case Packagist;
+
+    /**
+     * JetBrains publishes IDE builds through its own release service rather
+     * than any package registry, and that service is the only place the exact
+     * build a Qodana report names can be resolved to a date.
+     */
+    case JetBrains;
 }

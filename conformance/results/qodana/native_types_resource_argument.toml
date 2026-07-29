@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+native_types_resource_argument.php:16: Undefined class 'resource' [PhpUndefinedClassInspection]
+native_types_resource_argument.php:37: Parameter '$handle' type is not compatible with declaration [PhpParamsInspection]
+native_types_resource_argument.php:38: Parameter '$handle' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+native_types_resource_argument.php:39: Parameter '$handle' type is not compatible with declaration [PhpParamsInspection]
+native_types_resource_argument.php:39: Parameter '$handle' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+native_types_resource_argument.php:40: Parameter '$handle' type is not compatible with declaration [PhpParamsInspection]
+native_types_resource_argument.php:40: Parameter '$handle' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

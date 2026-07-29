@@ -7,6 +7,7 @@ use Conformance\Checker\Checker;
 use Conformance\Checker\PhanChecker;
 use Conformance\Checker\PhpStanChecker;
 use Conformance\Checker\PsalmChecker;
+use Conformance\Checker\QodanaChecker;
 use Conformance\Checker\MagoChecker;
 use Conformance\Checker\MirChecker;
 use Conformance\Checker\IntelephenseChecker;
@@ -116,11 +117,14 @@ $steinsChecker = new SteinsChecker(
 $pzoomChecker = new PzoomChecker(
     configPath: $psalmConfigPath,
 );
+$qodanaChecker = new QodanaChecker(
+    projectRoot: $projectRoot,
+);
 $phpyChecker = new PhpyChecker(
     nodeBinary: 'node',
     cliPath: $projectRoot . '/vendor-bin/phpy/node_modules/phpy/dist/index.js',
 );
-$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $pzoomChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker];
+$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $pzoomChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker];
 
 // Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
 // selected checker(s), leaving every other tool's results untouched. Accepts a

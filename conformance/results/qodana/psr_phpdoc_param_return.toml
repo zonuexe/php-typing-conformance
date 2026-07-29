@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = "psr_phpdoc_param_return.php:44: Parameter '42' type is not compatible with declaration when using strict type matching [PhpParamsInspection]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,25 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_non_decimal_int_string.php:22: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_non_decimal_int_string.php:22: Undefined class 'non-decimal-int-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_decimal_int_string.php:26: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_non_decimal_int_string.php:34: Undefined class 'non-decimal-int-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_decimal_int_string.php:45: Parameter ''00'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_decimal_int_string.php:46: Parameter ''1.2'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_decimal_int_string.php:47: Parameter ''foo'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_decimal_int_string.php:51: Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_decimal_int_string.php:52: Parameter ''-1'' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 26: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 45: Unexpected errors ["Parameter ''00'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 46: Unexpected errors ["Parameter ''1.2'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 47: Unexpected errors ["Parameter ''foo'' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [22, 34]
+false_positive_lines = [26, 45, 46, 47]

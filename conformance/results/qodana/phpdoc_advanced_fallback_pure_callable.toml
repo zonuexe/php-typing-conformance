@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_pure_callable.php:27: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_pure_callable.php:27: Undefined class 'pure-callable' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_pure_callable.php:31: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_pure_callable.php:39: Undefined class 'pure-callable' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_pure_callable.php:46: Parameter 'returnsPureCallable()' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_pure_callable.php:49: Parameter 'static fn (int $value): int => $value + 1' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_pure_callable.php:55: Parameter '$impureClosure' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_pure_callable.php:58: Parameter 'impureFunction(...)' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_pure_callable.php:61: Parameter '1' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 31: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 46: Unexpected errors ["Parameter 'returnsPureCallable()' type is not compatible with declaration [PhpParamsInspection]"]
+Line 49: Unexpected errors ["Parameter 'static fn (int $value): int => $value + 1' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = [27, 39]
+false_positive_lines = [31, 46, 49]

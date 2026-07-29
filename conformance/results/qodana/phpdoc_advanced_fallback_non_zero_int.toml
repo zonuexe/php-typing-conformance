@@ -1,0 +1,23 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_non_zero_int.php:21: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_non_zero_int.php:21: Undefined class 'non-zero-int' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_zero_int.php:25: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_non_zero_int.php:25: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_non_zero_int.php:33: Undefined class 'non-zero-int' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_zero_int.php:43: Parameter '1' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_zero_int.php:44: Parameter '-1' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_zero_int.php:47: Parameter '0' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 25: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]","Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 43: Unexpected errors ["Parameter '1' type is not compatible with declaration [PhpParamsInspection]"]
+Line 44: Unexpected errors ["Parameter '-1' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [21, 33]
+false_positive_lines = [25, 43, 44]

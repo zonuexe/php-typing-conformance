@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 11
+output = """
+assertions_non_falsy_string_false_guard.php:41: Variable is always 'false' when reached [PhpConditionAlreadyCheckedInspection]
+assertions_non_falsy_string_false_guard.php:41: Parameter '$value' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+assertions_non_falsy_string_false_guard.php:41: Parameter '$value' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+assertions_non_falsy_string_false_guard.php:42: Variable is always 'false' when reached [PhpConditionAlreadyCheckedInspection]
+assertions_non_falsy_string_false_guard.php:42: Parameter '$value' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+assertions_non_falsy_string_false_guard.php:42: Parameter '$value' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_enum_string.php:29: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_enum_string.php:29: Undefined class 'enum-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_enum_string.php:33: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_enum_string.php:41: Undefined class 'enum-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_enum_string.php:51: Parameter 'SomeEnum::class' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_enum_string.php:54: Parameter 'SomeClass::class' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 33: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 51: Unexpected errors ["Parameter 'SomeEnum::class' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [29, 41]
+false_positive_lines = [33, 51]

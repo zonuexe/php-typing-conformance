@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_arraylike_object.php:19: Undefined class 'arraylike-object' [PhpUndefinedClassInspection]
+phpdoc_advanced_psalm_arraylike_object.php:26: Parameter 'new \\ArrayObject([1, 2, 3])' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_psalm_arraylike_object.php:29: Parameter 'new \\stdClass()' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = "Line 26: Unexpected errors [\"Parameter 'new \\\\ArrayObject([1, 2, 3])' type is not compatible with declaration [PhpParamsInspection]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [19]
+false_positive_lines = [26]

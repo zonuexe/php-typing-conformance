@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = "assertions_instanceof_narrowing.php:37: Argument type does not match the declared [PhpDocSignatureInspection]"
+errors_diff = """
+Line 46: Expected 1 error(s)
+Line 37: Unexpected errors ["Argument type does not match the declared [PhpDocSignatureInspection]"]"""
+notes = ""
+ignore_errors = []

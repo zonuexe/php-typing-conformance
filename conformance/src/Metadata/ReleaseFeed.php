@@ -38,12 +38,22 @@ final readonly class ReleaseFeed
         return new self(ReleaseFeedKind::Packagist, $package);
     }
 
+    /** @param string $productCode JetBrains' own code, e.g. `PS` for PhpStorm */
+    public static function jetBrains(string $productCode): self
+    {
+        return new self(ReleaseFeedKind::JetBrains, $productCode);
+    }
+
     public function url(): string
     {
         return match ($this->kind) {
             ReleaseFeedKind::GitHub => sprintf('https://api.github.com/repos/%s/releases/latest', $this->id),
             ReleaseFeedKind::Npm => sprintf('https://registry.npmjs.org/%s', $this->id),
             ReleaseFeedKind::Packagist => sprintf('https://repo.packagist.org/p2/%s.json', $this->id),
+            ReleaseFeedKind::JetBrains => sprintf(
+                'https://data.services.jetbrains.com/products/releases?code=%s&latest=true&type=release',
+                $this->id,
+            ),
         };
     }
 

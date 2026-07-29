@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "properties_readonly_assignment.php:23: Cannot write to 'readonly' property outside of declaration scope [PhpReadonlyPropertyWrittenOutsideDeclarationScopeInspection]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

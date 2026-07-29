@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 9
+output = """
+arrays_open_shapes.php:32: Value should be one of: "name" [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_open_shapes.php:33: Incomplete array according to shape declaration. Missing key(s): name [PhpMissingArrayKeyInspection]
+arrays_open_shapes.php:33: Value should be one of: "name" [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_open_shapes.php:36: Argument type does not match the declared [PhpDocSignatureInspection]"""
+errors_diff = "Line 32: Unexpected errors [\"Value should be one of: \\\"name\\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]\"]"
+notes = ""
+ignore_errors = []

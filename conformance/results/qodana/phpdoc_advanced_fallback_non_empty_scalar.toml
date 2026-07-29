@@ -1,0 +1,30 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_non_empty_scalar.php:29: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:29: Undefined class 'non-empty-scalar' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:35: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:39: Undefined class 'non-empty-scalar' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:48: Parameter '1' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:49: Parameter '1.5' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:50: Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:51: Parameter 'true' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:54: Parameter '0' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:55: Parameter '0.0' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:56: Parameter '''' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:57: Parameter 'false' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_scalar.php:60: Parameter ''0'' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 35: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 48: Unexpected errors ["Parameter '1' type is not compatible with declaration [PhpParamsInspection]"]
+Line 49: Unexpected errors ["Parameter '1.5' type is not compatible with declaration [PhpParamsInspection]"]
+Line 50: Unexpected errors ["Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 51: Unexpected errors ["Parameter 'true' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "5/5"
+unrecognized_lines = [29, 39]
+false_positive_lines = [35, 48, 49, 50, 51]

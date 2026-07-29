@@ -13,6 +13,7 @@ use Conformance\Metadata\Analyzer\Phpy;
 use Conformance\Metadata\Analyzer\PhpStan;
 use Conformance\Metadata\Analyzer\Psalm;
 use Conformance\Metadata\Analyzer\Pzoom;
+use Conformance\Metadata\Analyzer\Qodana;
 use Conformance\Metadata\Analyzer\Steins;
 use RuntimeException;
 use function sprintf;
@@ -36,6 +37,7 @@ final class AnalyzerCatalog
         'phpstan' => PhpStan::class,
         'intelephense' => Intelephense::class,
         'noverify' => NoVerify::class,
+        'qodana' => Qodana::class,
         'mago' => Mago::class,
         'phpy' => Phpy::class,
         'mir' => Mir::class,

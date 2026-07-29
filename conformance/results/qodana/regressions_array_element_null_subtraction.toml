@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = "regressions_array_element_null_subtraction.php:20: Argument type does not match the declared [PhpDocSignatureInspection]"
+errors_diff = "Line 20: Unexpected errors [\"Argument type does not match the declared [PhpDocSignatureInspection]\"]"
+notes = ""
+ignore_errors = []

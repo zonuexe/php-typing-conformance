@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_class_string_map.php:19: Argument type does not match the declared [PhpDocSignatureInspection]
+phpdoc_advanced_psalm_class_string_map.php:19: Undefined class 'class-string-map' [PhpUndefinedClassInspection]
+phpdoc_advanced_psalm_class_string_map.php:19: Undefined class 'T' [PhpUndefinedClassInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [19]
+false_positive_lines = []

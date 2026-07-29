@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+enums_case_object_vs_backing_scalar.php:25: Parameter 'Status::Active' type is not compatible with declaration [PhpParamsInspection]
+enums_case_object_vs_backing_scalar.php:25: Parameter 'Status::Active' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

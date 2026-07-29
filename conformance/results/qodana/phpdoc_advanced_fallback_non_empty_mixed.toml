@@ -1,0 +1,29 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_fallback_non_empty_mixed.php:20: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:20: Undefined class 'non-empty-mixed' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:24: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:32: Undefined class 'non-empty-mixed' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:42: Parameter '1' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:43: Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:44: Parameter '[1]' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:45: Parameter 'new \\stdClass()' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:48: Parameter '''' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:49: Parameter '0' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:50: Parameter '[]' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_mixed.php:51: Parameter 'null' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 24: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 42: Unexpected errors ["Parameter '1' type is not compatible with declaration [PhpParamsInspection]"]
+Line 43: Unexpected errors ["Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 44: Unexpected errors ["Parameter '[1]' type is not compatible with declaration [PhpParamsInspection]"]
+Line 45: Unexpected errors ["Parameter 'new \\\\stdClass()' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "4/4"
+unrecognized_lines = [20, 32]
+false_positive_lines = [24, 42, 43, 44, 45]

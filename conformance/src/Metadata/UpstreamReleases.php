@@ -42,6 +42,7 @@ final class UpstreamReleases
             ReleaseFeedKind::GitHub => $this->fromGitHub($payload),
             ReleaseFeedKind::Npm => $this->fromNpm($payload),
             ReleaseFeedKind::Packagist => $this->fromPackagist($payload, $feed->id),
+            ReleaseFeedKind::JetBrains => $this->fromJetBrains($payload, $feed->id),
         };
     }
 
@@ -92,6 +93,31 @@ final class UpstreamReleases
 
         return is_string($version) && is_string($published)
             ? $this->release($version, $published)
+            : null;
+    }
+
+    /**
+     * The service answers with the product code as the only key, holding the
+     * releases newest first. `version` is the marketing number (2026.2.0.1)
+     * and `build` the one a Qodana report states (262.8665.325); the build is
+     * what identifies what ran, so that is what the table records.
+     *
+     * @param array<string, mixed> $payload
+     */
+    private function fromJetBrains(array $payload, string $productCode): ?Release
+    {
+        $releases = $payload[$productCode] ?? null;
+        $newest = is_array($releases) ? ($releases[0] ?? null) : null;
+
+        if (!is_array($newest)) {
+            return null;
+        }
+
+        $build = $newest['build'] ?? null;
+        $date = $newest['date'] ?? null;
+
+        return is_string($build) && is_string($date)
+            ? $this->release($build, $date)
             : null;
     }
 

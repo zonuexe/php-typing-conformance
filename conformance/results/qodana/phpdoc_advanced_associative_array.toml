@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_associative_array.php:21: Argument type does not match the declared [PhpDocSignatureInspection]
+phpdoc_advanced_associative_array.php:21: Undefined class 'associative-array' [PhpUndefinedClassInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [21]
+false_positive_lines = []

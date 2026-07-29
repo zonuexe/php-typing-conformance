@@ -1,0 +1,23 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_static_pure_closure.php:25: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_static_pure_closure.php:25: Undefined class 'static-pure-closure' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_static_pure_closure.php:29: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_static_pure_closure.php:37: Undefined class 'static-pure-closure' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_static_pure_closure.php:44: Parameter 'returnsStaticPureClosure()' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_static_pure_closure.php:47: Parameter 'static fn (int $value): int => $value + 1' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_static_pure_closure.php:50: Parameter 'fn (int $value): int => $value + 1' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_static_pure_closure.php:56: Parameter '$impureClosure' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 29: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 44: Unexpected errors ["Parameter 'returnsStaticPureClosure()' type is not compatible with declaration [PhpParamsInspection]"]
+Line 47: Unexpected errors ["Parameter 'static fn (int $value): int => $value + 1' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [25, 37]
+false_positive_lines = [29, 44, 47]

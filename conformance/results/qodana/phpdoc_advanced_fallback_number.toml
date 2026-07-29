@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_number.php:19: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_number.php:40: Parameter ''1'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_number.php:43: Parameter 'true' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [19]
+false_positive_lines = []

@@ -225,6 +225,47 @@ use and reports progress on stderr, so stderr is dropped everywhere in this
 adapter — it must never reach the parsed output. `STEINS_BIN` points the suite at
 a local build.
 
+### Qodana — a report to read, not a tool to run
+
+The only adapter that runs nothing. Qodana's licence does not permit shipping
+the linter, so the column is measured by running Inspect Code in PhpStorm by
+hand; `QodanaChecker` reads the `qodana.sarif.json` the IDE leaves in a
+temporary directory, and `QodanaSarifReport` normalises it.
+
+Everything else follows from having no binary to pin. The configuration is
+pinned instead, and it takes two files that do not compose the way one would
+guess: the effective inspection set is `(qodana.yaml profile + include)`
+intersected with `.idea/inspectionProfiles/Project_Default.xml`. The named
+profile sets the ceiling and is the only place an inspection can be added; the
+project profile can only subtract. Marking something `enabled="true"` there
+does nothing if `qodana.starter` does not carry it.
+
+Four things about the report itself are worth knowing. `tool.driver.rules` is
+empty — rule metadata lives in `tool.extensions[].rules`, split across 48
+plugins. Everything in the file is localised, taxonomy included, so
+inspections are selected by an explicit list of ASCII ids rather than by
+taxon. `runs[0].properties["qodana.promo.results"]` is a rotating sample of
+what the profile leaves disabled, not a result set, and is ignored. And the
+sibling `qodana-short.sarif.json` carries the same summary counts over an
+empty `results` array, so reading it would record a clean run.
+
+Report selection is by modification time: PhpStorm numbers runs
+`qodana_output`, `qodana_output1`, … and wipes the set on restart, so the
+counter resets and the unsuffixed directory becomes newest again.
+
+Two properties every other adapter gets for free have to be asserted here. The
+report's git revision is compared against HEAD, because a stale report will
+answer for test files that have changed underneath it. And a file the report
+never mentions is recorded as clean — SARIF carries no list of what was
+analysed, so "inspected and silent" is indistinguishable from "never
+inspected", and the whole-project scan makes the former far likelier.
+
+PhpStorm anchors PHPDoc diagnostics to the `@param` or `@return` line rather
+than the declaration below it, which the corpus already accommodates:
+`ExpectationParser::docblockAbove()` extends each `// T` marker over the
+docblock above it, so an "undefined class `non-empty-string`" on the tag line
+records as unrecognized rather than as a false positive.
+
 ## What the suite wants from a CLI
 
 Collected from the friction above, in rough order of how much work each one saves

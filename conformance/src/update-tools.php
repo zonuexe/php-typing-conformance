@@ -43,6 +43,11 @@ const LANGUAGE_SERVER_SECTION = '# Language servers.';
  * newest release into it, an npm one by installing the newest tag. Tools with
  * no entry are read about but not installed here -- pzoom is built from a
  * local checkout, and the language servers are not run by the suite at all.
+ *
+ * qodana is the one entry that is measured without being installable: its
+ * licence rules out shipping the linter, so its column comes from a PhpStorm
+ * report produced by hand. A new release still shows up here, but acting on
+ * it means updating the IDE and re-running Inspect Code.
  */
 const INSTALLS = [
     'phan' => ['composer', 'phan', 'phan/phan'],

@@ -1,0 +1,21 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_non_empty_literal_string.php:21: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_non_empty_literal_string.php:21: Undefined class 'non-empty-literal-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_empty_literal_string.php:25: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_non_empty_literal_string.php:33: Undefined class 'non-empty-literal-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_empty_literal_string.php:43: Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_literal_string.php:46: Parameter '''' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_empty_literal_string.php:51: Parameter '$value' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 25: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 43: Unexpected errors ["Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [21, 33]
+false_positive_lines = [25, 43]

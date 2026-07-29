@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = "generics_template_bound.php:40: Argument type does not match the declared [PhpDocSignatureInspection]"
+errors_diff = """
+Line 56: Expected 1 error(s)
+Line 40: Unexpected errors ["Argument type does not match the declared [PhpDocSignatureInspection]"]"""
+notes = ""
+ignore_errors = []

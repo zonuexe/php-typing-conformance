@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+native_types_scalar_params.php:25: Parameter ''x'' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+native_types_scalar_params.php:25: Parameter ''x'' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+native_types_scalar_params.php:26: Parameter '1' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+native_types_scalar_params.php:26: Parameter '1' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

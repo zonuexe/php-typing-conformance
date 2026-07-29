@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_array_key.php:58: Parameter '1.5' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+phpdoc_advanced_fallback_array_key.php:59: Parameter 'true' type is not compatible with declaration when using strict type matching [PhpParamsInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/5"
+unrecognized_lines = []
+false_positive_lines = []

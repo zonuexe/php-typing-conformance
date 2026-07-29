@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+arrays_shape_discriminant_match.php:51: Incomplete array according to shape declaration. Missing key(s): cover_url [PhpMissingArrayKeyInspection]
+arrays_shape_discriminant_match.php:52: Incomplete array according to shape declaration. Missing key(s): image_url [PhpMissingArrayKeyInspection]"""
+errors_diff = """
+Line 51: Unexpected errors ["Incomplete array according to shape declaration. Missing key(s): cover_url [PhpMissingArrayKeyInspection]"]
+Line 52: Unexpected errors ["Incomplete array according to shape declaration. Missing key(s): image_url [PhpMissingArrayKeyInspection]"]"""
+notes = ""
+ignore_errors = []

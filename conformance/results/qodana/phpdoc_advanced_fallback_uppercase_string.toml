@@ -1,0 +1,25 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_uppercase_string.php:21: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_uppercase_string.php:21: Undefined class 'uppercase-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_uppercase_string.php:25: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_uppercase_string.php:33: Undefined class 'uppercase-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_uppercase_string.php:44: Parameter ''ABC'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_uppercase_string.php:45: Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_uppercase_string.php:46: Parameter '''' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_uppercase_string.php:49: Parameter ''abc'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_uppercase_string.php:52: Parameter ''ABc'' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 25: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 44: Unexpected errors ["Parameter ''ABC'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 45: Unexpected errors ["Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 46: Unexpected errors ["Parameter '''' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [21, 33]
+false_positive_lines = [25, 44, 45, 46]

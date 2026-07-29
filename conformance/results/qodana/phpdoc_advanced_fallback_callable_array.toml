@@ -1,0 +1,21 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_callable_array.php:28: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_callable_array.php:28: Undefined class 'callable-array' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_callable_array.php:32: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_callable_array.php:43: Undefined class 'callable-array' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_callable_array.php:53: Parameter '[new Greeter(), 'greet']' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_callable_array.php:56: Parameter '[new Greeter(), 'missing']' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_callable_array.php:59: Parameter '[1, 2]' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 32: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 53: Unexpected errors ["Parameter '[new Greeter(), 'greet']' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [28, 43]
+false_positive_lines = [32, 53]

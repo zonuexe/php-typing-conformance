@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = "properties_property_hooks.php:29: Property must be of type 'string', 'int' provided [PhpStrictTypeCheckingInspection]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -139,6 +139,7 @@ Current checker columns in the report:
 - `mago`
 - `mir`
 - `intelephense`
+- `qodana`
 - `phan`
 - `noverify`
 
@@ -166,6 +167,7 @@ reports parse noise instead of the type behavior under test.
 | Mago | `--php-version 8.5` (global flag, before `analyze`) |
 | mir | `--php-version 8.5` |
 | Intelephense | `environment.phpVersion` in `intelephense-client.mjs` |
+| Qodana | `php.version: 8.5` in `qodana.yaml`, and the IDE's own PHP language level |
 
 NoVerify (only `--php7`), phpy and Steins expose nothing to set. Steins accepts
 any unknown flag silently, so do not "set" a version there and assume it took.

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_resource.php:33: Parameter '123' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_resource.php:34: Parameter ''php://memory'' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_resource.php:35: Parameter 'new \\stdClass()' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

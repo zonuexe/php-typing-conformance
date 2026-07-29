@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 0
+output = "exceptions_throws_docblock.php:8: Undefined class 'compatibility' [PhpUndefinedClassInspection]"
+errors_diff = "Line 8: Unexpected errors [\"Undefined class 'compatibility' [PhpUndefinedClassInspection]\"]"
+notes = ""
+ignore_errors = []

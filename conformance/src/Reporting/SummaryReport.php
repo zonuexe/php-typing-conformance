@@ -155,9 +155,7 @@ final class SummaryReport
 
             $rows = [];
 
-            foreach ($groupCases as $testCase) {
-                [$title] = $this->docblock($testCase);
-
+            foreach ($this->byTitle($groupCases) as [$testCase, $title]) {
                 $cells = [];
 
                 foreach ($tools as $tool) {
@@ -344,6 +342,55 @@ final class SummaryReport
         if (file_put_contents($destination, $this->stylesheet()) === false) {
             throw new RuntimeException(sprintf('Failed to write stylesheet: %s', $destination));
         }
+    }
+
+    /**
+     * The cases of one group, paired with their titles and ordered by them.
+     *
+     * Rows read as an alphabetical index of what the group covers -- the type
+     * spellings and PHPDoc tags themselves, not the file names they happen to
+     * live under. Sorting by file name put `associative-array` ahead of
+     * `array-key` (one file says `fallback_`, the other does not) and buried
+     * `int-range<0, 255>` far below `int<0, 255>`, which is unreadable in a
+     * list this long.
+     *
+     * @param list<TestCase> $cases
+     * @return list<array{0: TestCase, 1: string}>
+     */
+    private function byTitle(array $cases): array
+    {
+        $titled = [];
+        foreach ($cases as $testCase) {
+            [$title] = $this->docblock($testCase);
+            $titled[] = [$testCase, $title];
+        }
+
+        usort(
+            $titled,
+            static function (array $left, array $right): int {
+                $order = strnatcasecmp(self::sortKey($left[1]), self::sortKey($right[1]));
+
+                return $order !== 0 ? $order : ($left[0]->fileName <=> $right[0]->fileName);
+            },
+        );
+
+        return $titled;
+    }
+
+    /**
+     * A title reduced to what it should alphabetize under.
+     *
+     * Titles wear decoration that would otherwise drive the order: the markup
+     * backticks around a spelling, and leading punctuation such as the `@` of a
+     * tag or the `!==` of a narrowing test. Dropping it files `@phpstan-param`
+     * under P and `` `array-key` `` under A, where a reader looks for them.
+     */
+    private static function sortKey(string $title): string
+    {
+        $stripped = ltrim(str_replace('`', '', $title));
+        $stripped = preg_replace('/^[^\p{L}\p{N}]+/u', '', $stripped) ?? $stripped;
+
+        return $stripped === '' ? $title : $stripped;
     }
 
     /**

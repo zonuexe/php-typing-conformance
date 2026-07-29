@@ -4,6 +4,31 @@ An automated conformance test suite that compares how different PHP static analy
 
 This project is inspired by the Python typing project's repository: [python/typing](https://github.com/python/typing). How the conformance material here relates to that upstream suite is summarized in [`conformance/README.md`](conformance/README.md).
 
+## What "conformance" means here
+
+PHP has no agreed typing specification beyond the runtime type declarations.
+Everything else — PHPDoc types, generics, conditional types, integer ranges —
+exists because one tool implemented it and others adopted it, or because a
+convention became de facto without ever being written down as a norm. So where
+Python's suite measures conformance to the typing spec, this corpus cannot: it
+is instead a collection of typing features, each originating in a specific
+tool's implementation or in de-facto convention, with the expected behaviour
+stated inline by the test itself. `// T` markers name the type spelling a test
+probes and `// E` markers name the diagnostics it should produce; those
+expectations are the conformance target.
+
+What the report then measures is how every tool covering the same ground
+responds to a feature it did not originate. The suite keeps two questions
+apart: **recognition** — does the tool resolve the spelling at all? — and
+**enforcement** — does it then reject the values the spelling excludes? A tool
+may implement the feature faithfully (recognized and enforced), degrade
+gracefully (recognized but enforced partially or not at all, typically by
+falling back to a wider type), or not cover it and report the spelling itself
+as an error. That last outcome is recorded as an honest "not implemented", not
+as a defect: complaining about a dialect you do not implement is legitimate
+behaviour. The marker syntax is described in
+[`conformance/tests/README.md`](conformance/tests/README.md).
+
 ## Repository Setup
 
 This repository includes several heavy reference submodules under `references/`. Do not fully checkout all submodules by default.

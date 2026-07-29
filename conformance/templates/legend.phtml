@@ -17,6 +17,7 @@ declare(strict_types=1);
 $verdicts = [
     ['pass', 'Pass', 'The analyzer&rsquo;s diagnostics match what the test expects.'],
     ['fail', 'Fail', 'They do not: an expected diagnostic is missing, or something unexpected is reported.'],
+    ['not-measured', 'Not measured', 'The test is newer than the analyzer&rsquo;s last run, so nothing has been measured for it yet. Only ever appears for Qodana, which is run by hand from PhpStorm rather than by this suite; re-run Inspect Code and the cell fills in.'],
     ['by-design', 'Not reported (by design)', 'The analyzer declines to report the diagnostic and has said so upstream; the issue is linked in the cell notes. Hand-curated &mdash; the harness cannot tell this apart from a plain miss.'],
 ];
 

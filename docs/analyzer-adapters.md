@@ -259,12 +259,25 @@ Report selection is by modification time: PhpStorm numbers runs
 `qodana_output`, `qodana_output1`, … and wipes the set on restart, so the
 counter resets and the unsuffixed directory becomes newest again.
 
-Two properties every other adapter gets for free have to be asserted here. The
-report's git revision is compared against HEAD, because a stale report will
-answer for test files that have changed underneath it. And a file the report
-never mentions is recorded as clean — SARIF carries no list of what was
-analysed, so "inspected and silent" is indistinguishable from "never
-inspected", and the whole-project scan makes the former far likelier.
+The property every other adapter gets for free is that its results describe
+the corpus as it is now. Here they describe the corpus as it was when someone
+last ran the inspection, and SARIF carries no list of what was analysed — so
+silence about a file cannot be read as a clean result. A test written since
+the report was produced would otherwise join the matrix already green.
+
+`QodanaChecker` therefore implements `CoverageAware`, and a test whose file
+or support file is newer than the report's `startTimeUtc` is recorded as
+`Not measured` rather than as a pass, with a note naming the file and the
+report it outran. The matrix gives that its own hatched cell, so adding a
+test case shows immediately which column still owes an answer.
+
+Modification time, not git history: the report snapshots a working tree, not
+a commit, so a test added but not yet committed is absent from every revision
+and was nonetheless inspected. Keying on the revision would mark such a test
+unmeasured permanently, including right after someone re-ran the inspection.
+The mtime failure mode is one-directional — a fresh clone or a branch switch
+asks for an inspection that was not strictly needed, and never claims a
+measurement that was not taken.
 
 PhpStorm anchors PHPDoc diagnostics to the `@param` or `@return` line rather
 than the declaration below it, which the corpus already accommodates:

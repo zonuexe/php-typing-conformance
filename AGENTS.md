@@ -143,6 +143,13 @@ Current checker columns in the report:
 - `phan`
 - `noverify`
 
+`qodana` is measured by hand: run Qodana from PhpStorm (Code | Analyze Code |
+Run Qodana in the IDE), then `php conformance/src/main.php --tool=qodana`,
+which reads the newest report out of the system temp directory. Any test file
+newer than that report is recorded as `Not measured` instead of passing, so a
+newly added test case shows the gap in the matrix until the inspection is
+re-run.
+
 PHPStan handling is intentionally split:
 
 - `phpstan`: non-strict config, persists max-level output, and resolves the reporting level of each individual diagnostic

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Conformance\TestGroup\TestGroupLoader;
 use Conformance\Checker\Checker;
+use Conformance\Checker\CoverageAware;
 use Conformance\Checker\PhanChecker;
 use Conformance\Checker\PhpStanChecker;
 use Conformance\Checker\PsalmChecker;
@@ -201,6 +202,30 @@ foreach ($testCases as $testCase) {
     }
 
     foreach ($checkers as $checker) {
+        // A checker whose results are produced by hand can be older than the
+        // corpus. Recording an empty diagnostic list for a test it never saw
+        // would enter the matrix as a clean pass, so say so instead.
+        if ($checker instanceof CoverageAware && !$checker->covers($testCase)) {
+            $gap = $checker->coverageGap($testCase);
+            printf("  %s: not measured (%s)\n", $checker->name(), $gap);
+
+            $resultPath = $resultRepository->save(new ResultRecord(
+                tool: $checker->name(),
+                testName: $testCase->name,
+                status: 'Unknown',
+                conformanceAutomated: 'Not measured',
+                expectedDiagnosticLevel: null,
+                output: '',
+                errorsDiff: '',
+                notes: $gap,
+                ignoreErrors: [],
+                expectedDiagnosticCount: count($expectedDiagnostics),
+            ));
+            printf("  wrote %s\n", $resultPath);
+
+            continue;
+        }
+
         $diagnostics = $checker->analyse($testCase);
         printf("  %s: %d diagnostic line(s)\n", $checker->name(), count($diagnostics));
 

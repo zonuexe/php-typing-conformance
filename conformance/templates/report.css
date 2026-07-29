@@ -286,6 +286,15 @@ tr[id]:target {
 .reported { background: #dbe7fb; }
 .unknown { background: #f0f0f0; }
 
+/* Hatched rather than tinted: this cell is not a verdict on a scale with the
+   others, it is the absence of one, and should not read as a shade of pass. */
+.not-measured {
+  background: repeating-linear-gradient(
+    45deg, #f4f4f5, #f4f4f5 5px, #e6e6e8 5px, #e6e6e8 10px
+  );
+  color: #6b6b70;
+}
+
 .not-supported {
   background: #f4f4f5;
   color: #9a9a9a;

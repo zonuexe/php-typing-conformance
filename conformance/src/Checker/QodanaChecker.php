@@ -30,19 +30,18 @@ use RuntimeException;
  * {@see QodanaSarifReport::TYPE_RULES} for which inspections are measured and
  * why those.
  *
- * A report is a snapshot of one working tree at one moment, so two things
- * that other checkers get for free have to be asserted here. Its git revision
- * is compared against HEAD, because a stale report will happily answer for
- * test files that have changed underneath it. And a file the report never
- * mentions is recorded as clean — SARIF carries no list of what was analysed,
- * so "inspected and silent" and "never inspected" are indistinguishable, and
- * the whole-project scan makes the former overwhelmingly likelier.
+ * A report is a snapshot of one working tree at one moment, which is the one
+ * thing every other checker gets for free and this one has to assert. A test
+ * file touched after the report was produced was never looked at, and SARIF
+ * carries no list of what was analysed, so silence about it cannot be read as
+ * a clean result. {@see covers()} draws that line; see {@see CoverageAware}
+ * for why it has to exist at all.
  *
  * Support files are not passed separately the way the CLI checkers pass them:
  * PhpStorm indexes the entire project, so a `_`-prefixed helper is always in
  * scope whether or not this suite mentions it.
  */
-final class QodanaChecker implements Checker
+final class QodanaChecker implements CoverageAware
 {
     private ?QodanaSarifReport $report = null;
 
@@ -81,6 +80,72 @@ final class QodanaChecker implements Checker
         return $this->report()->forPath($this->toProjectRelativePath($testCase->path));
     }
 
+    public function covers(TestCase $testCase): bool
+    {
+        return $this->staleFile($testCase) === null;
+    }
+
+    public function coverageGap(TestCase $testCase): string
+    {
+        $stale = $this->staleFile($testCase);
+        if ($stale === null) {
+            return '';
+        }
+
+        return sprintf(
+            '%s changed after the Qodana report of %s was produced, so the report cannot answer for it. Run Inspect Code in PhpStorm and re-run this tool.',
+            basename($stale),
+            $this->report()->startedAt ?? 'unknown date',
+        );
+    }
+
+    /**
+     * The first file this test depends on that is newer than the report, or
+     * null when the report still speaks for all of them.
+     *
+     * Modification time rather than git history, because the report is a
+     * snapshot of the working tree and not of a commit: a test file added but
+     * not yet committed is absent from every revision, and yet PhpStorm
+     * inspected it. Keying on the revision would call such a test unmeasured
+     * forever, including immediately after someone re-ran the inspection.
+     *
+     * Support files count too. A test whose stub changed is being answered on
+     * the strength of the stub the report saw, which is no longer the stub.
+     *
+     * The failure mode is one-directional by construction. Anything that
+     * rewrites mtimes without changing content — a fresh clone, a branch
+     * switch, a rebase — asks for an inspection that was not strictly needed.
+     * It never claims a measurement that was not taken.
+     */
+    private function staleFile(TestCase $testCase): ?string
+    {
+        $producedAt = $this->reportTimestamp();
+        if ($producedAt === null) {
+            return null;
+        }
+
+        foreach ([$testCase->path, ...$testCase->supportPaths] as $path) {
+            $modified = @filemtime($path);
+            if ($modified !== false && $modified > $producedAt) {
+                return $path;
+            }
+        }
+
+        return null;
+    }
+
+    private function reportTimestamp(): ?int
+    {
+        $startedAt = $this->report()->startedAt;
+        if ($startedAt === null) {
+            return null;
+        }
+
+        $timestamp = strtotime($startedAt);
+
+        return $timestamp !== false ? $timestamp : null;
+    }
+
     private function report(): QodanaSarifReport
     {
         if ($this->report !== null) {
@@ -90,50 +155,33 @@ final class QodanaChecker implements Checker
         $path = $this->reportPath ?? QodanaSarifReport::locateLatest($this->searchDirectory);
         $report = QodanaSarifReport::fromFile($path);
 
-        $this->warnIfStale($report, $path);
+        $this->warnIfLocalised($report, $path);
 
         return $this->report = $report;
     }
 
     /**
-     * Loudly, and once, and without stopping the run: which revision to
-     * measure is the operator's call, and a deliberate re-read of an older
-     * report is a reasonable thing to want.
+     * Once, and without stopping the run.
+     *
+     * Staleness used to be warned about here too, by comparing the report's
+     * revision against HEAD. That fires after any commit at all, including the
+     * commits that record these very results, so it cried wolf constantly
+     * while saying nothing about which tests were affected. covers() answers
+     * the same question per test case and lands the answer in the matrix,
+     * where it is actually read.
      */
-    private function warnIfStale(QodanaSarifReport $report, string $path): void
+    private function warnIfLocalised(QodanaSarifReport $report, string $path): void
     {
-        if ($this->stalenessReported) {
+        if ($this->stalenessReported || !$report->localised) {
             return;
         }
 
         $this->stalenessReported = true;
 
-        if ($report->localised) {
-            fwrite(STDERR, sprintf(
-                "qodana: %s was produced by a localised IDE; its messages will not match an English run.\n",
-                $path,
-            ));
-        }
-
-        $head = $this->headRevision();
-        if ($head === null || $report->revisionId === null || $report->revisionId === $head) {
-            return;
-        }
-
         fwrite(STDERR, sprintf(
-            "qodana: %s was produced at %s but HEAD is %s; re-run Inspect Code in PhpStorm to re-measure.\n",
+            "qodana: %s was produced by a localised IDE; its messages will not match an English run.\n",
             $path,
-            substr($report->revisionId, 0, 12),
-            substr($head, 0, 12),
         ));
-    }
-
-    private function headRevision(): ?string
-    {
-        $command = sprintf('git -C %s rev-parse HEAD 2>/dev/null', escapeshellarg($this->projectRoot));
-        $revision = trim((string) shell_exec($command));
-
-        return $revision !== '' ? $revision : null;
     }
 
     private function toProjectRelativePath(string $path): string

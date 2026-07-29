@@ -497,6 +497,7 @@ final class SummaryReport
         $class = match ($display) {
             'Pass' => 'pass',
             'Fail' => 'fail',
+            'Not measured' => 'not-measured',
             default => 'unknown',
         };
 
@@ -517,6 +518,13 @@ final class SummaryReport
      */
     private function typeHandlingOf(array $result): array
     {
+        // A hand-run analyzer that has not seen this test yet has no
+        // recognition or enforcement to report, and saying "Unrecognized"
+        // would blame it for a measurement nobody took.
+        if ((string) ($result['conformance_automated'] ?? '') === 'Not measured') {
+            return ['Not measured', 'not-measured'];
+        }
+
         if ((string) $result['recognition'] === 'unrecognized') {
             return ['Unrecognized', 'not-supported'];
         }

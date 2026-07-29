@@ -75,7 +75,9 @@ final class Qodana extends AnalyzerMetadata
     /**
      * The profile is the verification: it gives the name, JetBrains as the
      * employer, and jetbrains.com/phpstorm as the site, so the person and the
-     * product are tied together by the person themselves.
+     * product are tied together by the person themselves. How the name was
+     * arrived at, and who else was considered, is written up in
+     * docs/ja/JetBrains製品の創設者調査.md.
      */
     public function founders(): array
     {

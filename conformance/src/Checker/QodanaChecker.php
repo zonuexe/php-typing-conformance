@@ -11,11 +11,21 @@ use RuntimeException;
  * Adapter for Qodana (https://www.jetbrains.com/qodana/), the analysis engine
  * behind PhpStorm's inspections.
  *
- * The one column this suite does not run. Qodana's licence does not permit
- * shipping the linter, so the measurement is a PhpStorm "Inspect Code" run
- * performed by hand, and this class reads the `qodana.sarif.json` it leaves
- * behind rather than invoking anything. Everything else here follows from
- * that: there is no binary to pin, so the configuration is pinned instead, in
+ * The one column this suite does not run. Qodana is proprietary and cannot be
+ * shipped here, so the measurement is performed by hand from PhpStorm — the
+ * IDE's own "Run Qodana in the IDE" action, described at
+ * https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide
+ * — and this class reads the `qodana.sarif.json` it leaves behind rather than
+ * invoking anything.
+ *
+ * It is worth being explicit that this is *not*
+ * https://github.com/JetBrains/qodana-cli. That is a separate artifact with
+ * its own versioning and its own Qodana Cloud licensing, and the version it
+ * pins in qodana.yaml's `linter:` field describes a CI container that never
+ * runs here.
+ *
+ * Everything else follows from having no binary to invoke: there is no
+ * artifact to pin, so the configuration is pinned instead, in
  * `qodana.yaml` and `.idea/inspectionProfiles/Project_Default.xml` — see
  * {@see QodanaSarifReport::TYPE_RULES} for which inspections are measured and
  * why those.

@@ -227,12 +227,18 @@ a local build.
 
 ### Qodana — a report to read, not a tool to run
 
-The only adapter that runs nothing. Qodana's licence does not permit shipping
-the linter, so the column is measured by running Inspect Code in PhpStorm by
-hand; `QodanaChecker` reads the `qodana.sarif.json` the IDE leaves in a
+The only adapter that runs nothing. Qodana is proprietary and cannot be
+shipped here, so the column is measured by hand from PhpStorm, using the IDE's
+[Run Qodana in the IDE](https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide)
+action; `QodanaChecker` reads the `qodana.sarif.json` the IDE leaves in a
 temporary directory, and `QodanaSarifReport` normalises it.
 
-Everything else follows from having no binary to pin. The configuration is
+This is deliberately not [qodana-cli](https://github.com/JetBrains/qodana-cli),
+which is a separate artifact with its own versioning and its own Qodana Cloud
+licensing. The `linter:` field in `qodana.yaml` pins a version of that CI
+container, and nothing here ever runs it.
+
+Everything else follows from having no binary to invoke. The configuration is
 pinned instead, and it takes two files that do not compose the way one would
 guess: the effective inspection set is `(qodana.yaml profile + include)`
 intersected with `.idea/inspectionProfiles/Project_Default.xml`. The named

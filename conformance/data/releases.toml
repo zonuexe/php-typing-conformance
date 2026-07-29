@@ -64,11 +64,11 @@ date = "2026-06-24"
 version = "0.1.1"
 date = "2026-07-26"
 
-# A PhpStorm build number rather than a Qodana version. The column measures
-# the IDE's inspection engine through Inspect Code, and the build is the only
-# version a report states -- 262.8665.325 is PhpStorm 2026.2.0.1. The separate
-# `qodana-cli` versioning that qodana.yaml's `linter:` follows describes the CI
-# container, which is not what is measured here.
+# A PhpStorm build number rather than a Qodana version. The column runs Qodana
+# from inside PhpStorm, and the build is the only version a report states --
+# 262.8665.325 is PhpStorm 2026.2.0.1. Not to be confused with the qodana-cli
+# versioning that qodana.yaml's `linter:` field follows: that pins a CI
+# container this suite never runs.
 [qodana]
 version = "262.8665.325"
 date = "2026-07-23"

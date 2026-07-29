@@ -16,8 +16,13 @@ use Conformance\Metadata\ReleaseFeed;
 /**
  * Qodana is the packaging, not the analysis. What actually inspects the code
  * is the PHP plugin's inspection engine — the same one that underlines a type
- * error as you type in PhpStorm — and this column measures it through the
- * IDE's own Inspect Code, because the CLI linter is licensed separately.
+ * error as you type in PhpStorm.
+ *
+ * This column measures it through PhpStorm, using the IDE's own "Run Qodana
+ * in the IDE" action, documented at
+ * https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide
+ * — not through https://github.com/JetBrains/qodana-cli, which is a separate
+ * artifact on a separate release cadence and reports to Qodana Cloud.
  *
  * That makes the founder question awkward to answer honestly. The engine has
  * no founder in the sense the other rows use the word: it is a JetBrains
@@ -81,9 +86,16 @@ final class Qodana extends AnalyzerMetadata
         return null;
     }
 
+    /**
+     * Not freemium, unlike Intelephense, which this row otherwise resembles.
+     * There is no free tier on the path measured here: running the inspections
+     * from the IDE needs a commercial PhpStorm licence whether or not any
+     * individual inspection is an Ultimate-only feature. qodana-cli has a free
+     * Qodana Cloud tier, but that is the artifact this column does not use.
+     */
     public function license(): string
     {
-        return 'Proprietary (freemium)';
+        return 'Proprietary';
     }
 
     /** The year Qodana itself first shipped, not the year PhpStorm did. */
@@ -108,9 +120,9 @@ final class Qodana extends AnalyzerMetadata
     /**
      * PhpStorm's own release service, not a package registry, and not the
      * `qodana-cli` tags that qodana.yaml's `linter:` field follows: those
-     * version the CI container, whereas this column measures Inspect Code
-     * inside the IDE. The service reports the build number a report states,
-     * so the two can be compared directly.
+     * version the CI container, whereas this column runs Qodana from inside
+     * the IDE. The service reports the build number a report states, so the
+     * two can be compared directly.
      */
     public function releaseFeed(): ?ReleaseFeed
     {

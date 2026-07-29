@@ -24,10 +24,19 @@ use Conformance\Metadata\ReleaseFeed;
  * — not through https://github.com/JetBrains/qodana-cli, which is a separate
  * artifact on a separate release cadence and reports to Qodana Cloud.
  *
- * That makes the founder question awkward to answer honestly. The engine has
- * no founder in the sense the other rows use the word: it is a JetBrains
- * product that predates Qodana by more than a decade, built by a team. The
- * name recorded is the one JetBrains itself credits with starting PhpStorm.
+ * The founder column is the one this row cannot answer the way the others do.
+ * Everywhere else it names someone who started a project and links the profile
+ * the name was verified against; here the artifact is a 2021 JetBrains product
+ * built by a team inside a company founded in 2000, and no individual founded
+ * it in that sense.
+ *
+ * What can be sourced is one step removed, and the column should be read as
+ * that and nothing more: the engine is PhpStorm's, and the only individual
+ * JetBrains itself puts a name to is Maxim Mossienko, quoted as "project lead
+ * at JetBrains" in the press release announcing PhpStorm 1.0 —
+ * https://blog.jetbrains.com/blog/2010/05/27/pr_270510/ — with a JetBrains
+ * blog author page at https://blog.jetbrains.com/author/nicity/. Project lead
+ * on the 2010 IDE is not the same claim as founder of the 2021 product.
  */
 final class Qodana extends AnalyzerMetadata
 {
@@ -68,13 +77,13 @@ final class Qodana extends AnalyzerMetadata
 
     public function founders(): array
     {
-        return [new Person('Dmitry Jemerov', 'https://github.com/yole')];
+        return [new Person('Maxim Mossienko', 'https://blog.jetbrains.com/author/nicity/')];
     }
 
-    public function founderEmployer(): ?string
-    {
-        return 'JetBrains';
-    }
+    // founderEmployer() is left unanswered on purpose. It exists to say that a
+    // founder built the thing somewhere other than where the project now lives
+    // — Vimeo for Psalm, VK for NoVerify. Here the employer and the
+    // organization are both JetBrains, so stating it twice adds nothing.
 
     public function organization(): Organization
     {

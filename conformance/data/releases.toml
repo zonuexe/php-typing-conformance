@@ -33,8 +33,8 @@ version = "6.16.1"
 date = "2026-03-19"
 
 [phpstan]
-version = "2.2.6"
-date = "2026-07-26"
+version = "2.2.7"
+date = "2026-07-29"
 
 [intelephense]
 version = "1.18.5"
@@ -43,6 +43,10 @@ date = "2026-06-21"
 [noverify]
 version = "0.5.5"
 date = "2025-04-22"
+
+[qodana]
+version = "262.8665.325"
+date = "2026-07-23"
 
 [mago]
 version = "1.45.0"
@@ -63,15 +67,6 @@ date = "2026-06-24"
 [steins]
 version = "0.1.2"
 date = "2026-07-29"
-
-# A PhpStorm build number rather than a Qodana version. The column runs Qodana
-# from inside PhpStorm, and the build is the only version a report states --
-# 262.8665.325 is PhpStorm 2026.2.0.1. Not to be confused with the qodana-cli
-# versioning that qodana.yaml's `linter:` field follows: that pins a CI
-# container this suite never runs.
-[qodana]
-version = "262.8665.325"
-date = "2026-07-23"
 
 # Language servers.
 

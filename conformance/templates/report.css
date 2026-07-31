@@ -364,6 +364,9 @@ tr[id]:target {
   line-height: 1.5;
   text-align: left;
   white-space: normal;
+  /* Same reason as .note-line, plus the popup has a max-width to respect: a
+     version string like `6.16.1@f1f5de59…` is one token and overran it. */
+  overflow-wrap: anywhere;
   visibility: hidden;
   opacity: 0;
   transform: translateY(-2px);
@@ -505,6 +508,10 @@ pre.source {
 .note-line {
   font-size: var(--text-ui);
   margin: 0.5em 0 0;
+  /* A note is prose in a table cell, and the column is sized from whatever it
+     cannot break. One bare URL kept as its own link text is a single 350px
+     token, which widened the cell until the whole table overflowed. */
+  overflow-wrap: anywhere;
 }
 
 details > summary {

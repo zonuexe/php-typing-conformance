@@ -115,9 +115,12 @@ function h_linkify(string $escaped): string
                 $url = substr($url, 0, -1);
             }
 
-            // Shorten GitHub issue/PR links to `<repo>#<number>`.
+            // Shorten GitHub issue/PR/discussion links to `<repo>#<number>`.
+            // A URL kept whole becomes its own link text, and link text is one
+            // unbreakable token: a bare discussion URL rendered 350px wide and
+            // widened the table column it sat in.
             $label = $url;
-            if (preg_match('~^https?://github\.com/[^/\s]+/([^/\s]+)/(?:issues|pull)/(\d+)(?:[/#?][^\s<]*)?$~i', $url, $ref) === 1) {
+            if (preg_match('~^https?://github\.com/[^/\s]+/([^/\s]+)/(?:issues|pull|discussions)/(\d+)(?:[/#?][^\s<]*)?$~i', $url, $ref) === 1) {
                 $label = htmlspecialchars($ref[1] . '#' . $ref[2]);
             }
 

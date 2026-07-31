@@ -50,7 +50,7 @@ function inspectReplacement(string $next): void
     $box = new MutableBox(1);
 
     takesIntBox($box);
-    takesStringBox($box); // E<phpstan>: int box should not satisfy string box before replacement // E<phpstan-strict>: int box should not satisfy string box before replacement // E<psalm>: int box should not satisfy string box before replacement // E<mago>: int box should not satisfy string box before replacement // E<phan>: int box should not satisfy string box before replacement
+    takesStringBox($box); // E: int box should not satisfy string box before replacement
 
     $box->replace($next);
 

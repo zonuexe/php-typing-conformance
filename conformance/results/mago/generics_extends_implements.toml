@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 4
 output = "generics_extends_implements.php:61: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsExtendsImplements\\takesStringBox`: expected `Conformance\\Tests\\GenericsExtendsImplements\\Box<string>`, but found `Conformance\\Tests\\GenericsExtendsImplements\\IntBox`. [invalid-argument]"
 errors_diff = ""
 notes = ""

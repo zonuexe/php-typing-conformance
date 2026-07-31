@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 8
+expected_diagnostic_count = 5
 output = """
 regressions_list_destructure_string_key.php:28: List-style destructuring of a value with non-integer keys (`array<string, int>`). [list-destructure-string-key]
 regressions_list_destructure_string_key.php:28: Invalid array key type: `int(0)` is not a valid key for this array. [mismatched-array-index]

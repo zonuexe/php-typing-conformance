@@ -58,4 +58,4 @@ function takesStringBox(Box $box): void // E<noverify>: NoVerify does not accept
 takesIntBox(new IntBox(1));
 
 // IntBox is Box<int>, not Box<string>.
-takesStringBox(new IntBox(1)); // E<phpstan>: Box<int> subclass should not satisfy Box<string> // E<phpstan-strict>: Box<int> subclass should not satisfy Box<string> // E<psalm>: Box<int> subclass should not satisfy Box<string> // E<mago>: Box<int> subclass should not satisfy Box<string> // E<mir>: Box<int> subclass should not satisfy Box<string> // E<phan>: Box<int> subclass should not satisfy Box<string>
+takesStringBox(new IntBox(1)); // E: Box<int> subclass should not satisfy Box<string>

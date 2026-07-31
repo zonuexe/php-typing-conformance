@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = "regressions_reversed_literal_list_param.php:26: Argument 1 ($list) is [1=>'x',0=>'y'] of type array{1:'x',0:'y'} but \\Conformance\\Tests\\RegressionsReversedLiteralListParam\\takesTwoList() takes list<mixed> defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/regressions_reversed_literal_list_param.php:19 [PhanTypeMismatchArgument]"
+output = "regressions_reversed_literal_list_param.php:32: Argument 1 ($list) is [1=>'x',0=>'y'] of type array{1:'x',0:'y'} but \\Conformance\\Tests\\RegressionsReversedLiteralListParam\\takesTwoList() takes list<mixed> defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/regressions_reversed_literal_list_param.php:25 [PhanTypeMismatchArgument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 4
 output = "generics_extends_implements.php:61: InvalidArgument: Argument $box of takesStringBox() expects 'Conformance\\Tests\\GenericsExtendsImplements\\Box<string>', got 'Conformance\\Tests\\GenericsExtendsImplements\\IntBox<int>' [MIR0201]"
 errors_diff = ""
 notes = ""

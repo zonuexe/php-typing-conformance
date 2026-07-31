@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = ""
-errors_diff = ""
+errors_diff = "Lines 23, 32: Expected error (tag reversed_literal)"
 notes = ""
 ignore_errors = []

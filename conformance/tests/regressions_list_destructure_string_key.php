@@ -25,7 +25,7 @@ function stringKeyed(): array
 
 function caller(): void
 {
-    [$a, $b] = stringKeyed(); // E<phpstan>: offsets 0 and 1 do not exist on array<string, int> // E<phpstan-strict>: same offset mismatch // E<mago>: mismatched-array-index — int keys are not valid for a string-keyed array // E<phan>: PhanTypeMismatchArrayDestructuringKey. Psalm alone accepts this silently
+    [$a, $b] = stringKeyed(); // E: offsets 0 and 1 do not exist on array<string, int>, so the destructure cannot succeed
 
     echo $a; // E<phpstan>: $a is mixed after the failed destructure, not string-convertible // E<phpstan-strict>: same
     echo $b; // E<phpstan>: $b is mixed after the failed destructure, not string-convertible // E<phpstan-strict>: same

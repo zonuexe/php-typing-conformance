@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedPhpstanNewObjectTypeConstantMap;
 
 /**
- * `new<DATETIME_CLASSES[TName]>`
+ * `new<CONSTANT[T]>`
  *
  * The shape `new<>` was introduced for: a constant map from names to classes,
  * a template parameter bound by `key-of<>` over that map, and an offset into
@@ -37,11 +37,11 @@ function takesMutable(\DateTime $value): void
 }
 
 /**
- * @template TName of key-of<DATETIME_CLASSES>
- * @param TName $type
- * @return new<DATETIME_CLASSES[TName]>
+ * @template T of key-of<DATETIME_CLASSES>
+ * @param T $type
+ * @return new<DATETIME_CLASSES[T]>
  */
-function createNow(string $type = 'immutable'): \DateTimeInterface // T: new<DATETIME_CLASSES[TName]>
+function createNow(string $type = 'immutable'): \DateTimeInterface // T: new<DATETIME_CLASSES[T]>
 {
     return new (DATETIME_CLASSES[$type]);
 }

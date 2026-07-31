@@ -2,14 +2,13 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_constant_offset_template_key.php:43: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\TName does not exist [undefinedClass]
 phpdoc_advanced_fallback_constant_offset_template_key.php:44: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE does not exist [undefinedClass]
-phpdoc_advanced_fallback_constant_offset_template_key.php:46: param $type miss matched with phpdoc type <<TName>> [funcParamTypeMissMatch]"""
+phpdoc_advanced_fallback_constant_offset_template_key.php:46: param $type miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]"""
 errors_diff = ""
-notes = "Reports `TName` and `ID_TABLE` as undefined classes and checks no call site; there is no template or constant machinery here to fall back on."
+notes = "Reports `ID_TABLE` as an undefined class and the parameter as mismatching its docblock type, then checks no call site. The template parameter draws nothing under the name `T`, where the earlier `TName` was reported as an undefined class too, so NoVerify's docblock reader takes some template names for classes and not others."
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "none"
 enforced_lines = "0/2"
-unrecognized_lines = [43, 44, 46]
+unrecognized_lines = [44, 46]
 false_positive_lines = []

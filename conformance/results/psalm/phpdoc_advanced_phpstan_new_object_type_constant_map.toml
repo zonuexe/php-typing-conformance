@@ -2,7 +2,7 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: Template TName has invalid as type - Untemplated key-of param Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES should be an array [InvalidDocblock]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: Template T has invalid as type - Untemplated key-of param Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES should be an array [InvalidDocblock]
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: Unrecognised template param Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES in docblock for Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\createNow [InvalidDocblock]
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:50: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:51: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]

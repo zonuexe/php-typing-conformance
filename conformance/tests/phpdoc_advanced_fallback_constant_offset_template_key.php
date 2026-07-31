@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Tests\PhpdocAdvancedFallbackConstantOffsetTemplateKey;
 
 /**
- * `ID_TABLE[TName]`
+ * `CONSTANT[T]`
  *
  * An offset into a constant array where the key is a template parameter, so
  * the return type is decided by the argument the caller passed. Resolving it
@@ -39,11 +39,11 @@ function takesString(string $value): void
 }
 
 /**
- * @template TName of key-of<ID_TABLE>
- * @param TName $type
- * @return ID_TABLE[TName]
+ * @template T of key-of<ID_TABLE>
+ * @param T $type
+ * @return ID_TABLE[T]
  */
-function lookUp(string $type = 'immutable'): int|string // T: ID_TABLE[TName]
+function lookUp(string $type = 'immutable'): int|string // T: ID_TABLE[T]
 {
     return ID_TABLE[$type];
 }

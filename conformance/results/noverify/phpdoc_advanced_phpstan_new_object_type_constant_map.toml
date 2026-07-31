@@ -2,14 +2,13 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:41: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\TName does not exist [undefinedClass]
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:42: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new does not exist [undefinedClass]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: param $type miss matched with phpdoc type <<TName>> [funcParamTypeMissMatch]"""
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: param $type miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]"""
 errors_diff = ""
-notes = "Reports `TName` and `new` as undefined classes and checks no call site; there is no template or constant-map machinery here to begin with."
+notes = "Reports `new` as an undefined class and the parameter as mismatching its docblock type, then checks no call site. As on the dim-fetch row, the template parameter is let through under the name `T` but was reported as an undefined class under `TName`."
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "none"
 enforced_lines = "0/2"
-unrecognized_lines = [41, 42, 44]
+unrecognized_lines = [42, 44]
 false_positive_lines = []

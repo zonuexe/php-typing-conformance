@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+arrays_shape_sealed_by_default.php:35: InvalidArgument: Argument $shape of takesShape() expects 'array{'foo': int}', got 'array{}' [MIR0201]
+arrays_shape_sealed_by_default.php:36: InvalidArgument: Argument $shape of takesShape() expects 'array{'foo': int}', got 'array{'foo': "one"}' [MIR0201]"""
+errors_diff = """
+Line 40: Expected 1 error(s)
+Line 49: Expected 1 error(s)"""
+notes = "Shapes are open by default: the missing key and the mistyped value are caught, but the undeclared `buz` is admitted both from a literal and from a wider declared shape. mir accepts the same calls under `array{foo: int, ...}` (arrays_unsealed_shape), so the two spellings are indistinguishable to it."
+ignore_errors = []

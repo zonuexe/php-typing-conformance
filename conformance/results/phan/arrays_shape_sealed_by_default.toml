@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+arrays_shape_sealed_by_default.php:35: Argument 1 ($shape) is [] of type array{} but \\Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape() takes array{foo:int} defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/arrays_shape_sealed_by_default.php:30 [PhanTypeMismatchArgument]
+arrays_shape_sealed_by_default.php:36: Argument 1 ($shape) is ['foo'=>'one'] of type array{foo:'one'} but \\Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape() takes array{foo:int} defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/arrays_shape_sealed_by_default.php:30 [PhanTypeMismatchArgument]"""
+errors_diff = """
+Line 40: Expected 1 error(s)
+Line 49: Expected 1 error(s)"""
+notes = "Shapes are open by default: `array{foo: int}` admits the undeclared `buz`, though the Phan wiki introduces the syntax as an \"exact array structure\". Phan also cannot parse the explicit `...` (arrays_unsealed_shape), so neither spelling seals and neither is rejected."
+ignore_errors = []

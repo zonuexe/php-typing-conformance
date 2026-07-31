@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = ""
+errors_diff = """
+Line 35: Expected 1 error(s)
+Line 36: Expected 1 error(s)
+Line 40: Expected 1 error(s)
+Line 49: Expected 1 error(s)"""
+notes = "Checks nothing here rather than answering the question: phpy does not compare arguments against array shapes at all, so even the missing-key and wrong-value controls go unreported."
+ignore_errors = []

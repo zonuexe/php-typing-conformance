@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+arrays_shape_sealed_by_default.php:35: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape`: expected `array{'foo': int}`, but possibly received `array{}`. [possibly-invalid-argument]
+arrays_shape_sealed_by_default.php:36: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape`: expected `array{'foo': int}`, but possibly received `array{'foo': string('one')}`. [possibly-invalid-argument]
+arrays_shape_sealed_by_default.php:40: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape`: expected `array{'foo': int}`, but possibly received `array{'buz': float(42.0), 'foo': int(2)}`. [possibly-invalid-argument]
+arrays_shape_sealed_by_default.php:49: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape`: expected `array{'foo': int}`, but possibly received `array{'buz': float, 'foo': int}`. [possibly-invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+arrays_shape_sealed_by_default.php:30: param $shape miss matched with phpdoc type <<array{foo: int}>> [funcParamTypeMissMatch]
+arrays_shape_sealed_by_default.php:45: param $wider miss matched with phpdoc type <<array{foo: int, buz: float}>> [funcParamTypeMissMatch]"""
+errors_diff = """
+Line 35: Expected 1 error(s)
+Line 36: Expected 1 error(s)
+Line 40: Expected 1 error(s)
+Line 49: Expected 1 error(s)
+Line 30: Unexpected errors ["param $shape miss matched with phpdoc type <<array{foo: int}>> [funcParamTypeMissMatch]"]
+Line 45: Unexpected errors ["param $wider miss matched with phpdoc type <<array{foo: int, buz: float}>> [funcParamTypeMissMatch]"]"""
+notes = "Does not model array shapes at all. It rejects the shape spelling itself on both declaration lines (30 and 45) and checks none of the call sites, so it has no default to read off."
+ignore_errors = []

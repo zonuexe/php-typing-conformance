@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+arrays_shape_sealed_by_default.php:35: Incomplete array according to shape declaration. Missing key(s): foo [PhpMissingArrayKeyInspection]
+arrays_shape_sealed_by_default.php:36: Expected parameter of type 'int', 'string' provided [PhpParamsInspection]
+arrays_shape_sealed_by_default.php:40: Value should be one of: "foo" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"""
+errors_diff = "Line 49: Expected 1 error(s)"
+notes = "Seals the shape against the literal at line 40 but not against a value whose extra key comes from a declaration: `array{foo: int, buz: float}` passes through at line 49. Same split as steins."
+ignore_errors = []

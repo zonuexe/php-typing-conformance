@@ -1,0 +1,22 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_constant_offset_template_key.php:46: Template TName has invalid as type - Untemplated key-of param Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE should be an array [InvalidDocblock]
+phpdoc_advanced_fallback_constant_offset_template_key.php:46: Unrecognised template param Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\lookUp [InvalidDocblock]
+phpdoc_advanced_fallback_constant_offset_template_key.php:52: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\takesInt expects int, but int|string provided [InvalidScalarArgument]
+phpdoc_advanced_fallback_constant_offset_template_key.php:53: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\takesInt expects int, but int|string provided [InvalidScalarArgument]
+phpdoc_advanced_fallback_constant_offset_template_key.php:54: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\takesString expects string, but int|string provided [InvalidScalarArgument]
+phpdoc_advanced_fallback_constant_offset_template_key.php:57: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\takesString expects string, but int|string provided [InvalidScalarArgument]
+phpdoc_advanced_fallback_constant_offset_template_key.php:58: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\takesInt expects int, but int|string provided [InvalidScalarArgument]"""
+errors_diff = """
+Line 52: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\takesInt expects int, but int|string provided [InvalidScalarArgument]"]
+Line 53: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\takesInt expects int, but int|string provided [InvalidScalarArgument]"]
+Line 54: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\takesString expects string, but int|string provided [InvalidScalarArgument]"]"""
+notes = "Falls back to the native `int|string`. The `key-of<>` bound over a global constant is rejected as an invalid template bound, so the offset never gets an operand and every call is reported as a coercion."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [46]
+false_positive_lines = [52, 53, 54]

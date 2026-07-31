@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = ""
+errors_diff = ""
+notes = "Silent everywhere, probes included. The native `int|string` alone would have made the three correct calls fail, so this is not a widening to it either."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = []
+false_positive_lines = []

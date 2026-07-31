@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_constant_offset_template_key.php:52: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[TName]' [MIR0201]
+phpdoc_advanced_fallback_constant_offset_template_key.php:53: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[TName]' [MIR0201]
+phpdoc_advanced_fallback_constant_offset_template_key.php:54: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[TName]' [MIR0201]
+phpdoc_advanced_fallback_constant_offset_template_key.php:57: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[TName]' [MIR0201]
+phpdoc_advanced_fallback_constant_offset_template_key.php:58: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[TName]' [MIR0201]"""
+errors_diff = """
+Line 52: Unexpected errors ["InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[TName]' [MIR0201]"]
+Line 53: Unexpected errors ["InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[TName]' [MIR0201]"]
+Line 54: Unexpected errors ["InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[TName]' [MIR0201]"]"""
+notes = "Accepts the spelling and then carries `ID_TABLE[TName]` around unevaluated, handing it to every call site: all five calls are rejected, the three correct ones included."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = [52, 53, 54]

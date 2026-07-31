@@ -1,0 +1,26 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_constant_offset_template_key.php:44: Docblock class Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE does not exist [UndefinedDocblockClass]
+phpdoc_advanced_fallback_constant_offset_template_key.php:44: Docblock class Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\pzoom_indexed_access does not exist [UndefinedDocblockClass]
+phpdoc_advanced_fallback_constant_offset_template_key.php:46: Docblock has incorrect return type 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\pzoom_indexed_access<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE, array-key>', should be 'int|string' [MismatchingDocblockReturnType]
+phpdoc_advanced_fallback_constant_offset_template_key.php:48: The type 'two'|1 does not match the declared return type Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\pzoom_indexed_access<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE, TName:Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\lookUp as array-key> [InvalidReturnStatement]
+phpdoc_advanced_fallback_constant_offset_template_key.php:48: Coercion from array offset type 'TName:Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\lookUp as array-key' to the expected type ''immutable'|'mutable'' [MixedArrayTypeCoercion]
+phpdoc_advanced_fallback_constant_offset_template_key.php:52: Argument 1 of takesInt expects int, but Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\pzoom_indexed_access<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE, string> provided [InvalidArgument]
+phpdoc_advanced_fallback_constant_offset_template_key.php:53: Argument 1 of takesInt expects int, but Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\pzoom_indexed_access<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE, string> provided [InvalidArgument]
+phpdoc_advanced_fallback_constant_offset_template_key.php:54: Argument 1 of takesString expects string, but Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\pzoom_indexed_access<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE, string> provided [InvalidArgument]
+phpdoc_advanced_fallback_constant_offset_template_key.php:57: Argument 1 of takesString expects string, but Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\pzoom_indexed_access<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE, string> provided [InvalidArgument]
+phpdoc_advanced_fallback_constant_offset_template_key.php:58: Argument 1 of takesInt expects int, but Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\pzoom_indexed_access<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE, string> provided [InvalidArgument]"""
+errors_diff = """
+Line 48: Unexpected errors ["The type 'two'|1 does not match the declared return type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\pzoom_indexed_access<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE, TName:Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\lookUp as array-key> [InvalidReturnStatement]","Coercion from array offset type 'TName:Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\lookUp as array-key' to the expected type ''immutable'|'mutable'' [MixedArrayTypeCoercion]"]
+Line 52: Unexpected errors ["Argument 1 of takesInt expects int, but Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\pzoom_indexed_access<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE, string> provided [InvalidArgument]"]
+Line 53: Unexpected errors ["Argument 1 of takesInt expects int, but Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\pzoom_indexed_access<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE, string> provided [InvalidArgument]"]
+Line 54: Unexpected errors ["Argument 1 of takesString expects string, but Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\pzoom_indexed_access<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE, string> provided [InvalidArgument]"]"""
+notes = "Same reading as Psalm -- the `key-of<>` bound over a global constant is rejected and the return falls back to the native `int|string` -- plus a complaint about the dim fetch in the body."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [44, 46]
+false_positive_lines = [48, 52, 53, 54]

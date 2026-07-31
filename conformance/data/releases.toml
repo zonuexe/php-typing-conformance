@@ -61,8 +61,8 @@ version = "unversioned"
 date = "2026-06-24"
 
 [steins]
-version = "0.1.1"
-date = "2026-07-26"
+version = "0.1.2"
+date = "2026-07-29"
 
 # A PhpStorm build number rather than a Qodana version. The column runs Qodana
 # from inside PhpStorm, and the build is the only version a report states --

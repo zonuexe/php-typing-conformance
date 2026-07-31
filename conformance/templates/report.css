@@ -306,6 +306,13 @@ tr[id]:target {
   color: #2f5c9e;
 }
 
+/* Recognized, but enforcement was never asked: neutral, and deliberately not
+   on the pass/fail scale the tinted verdict cells share. */
+.no-probes {
+  background: #eeeeef;
+  color: #55555c;
+}
+
 .muted {
   background: #f6f6f6;
   color: var(--ink-faint);

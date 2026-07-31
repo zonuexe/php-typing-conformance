@@ -30,6 +30,13 @@ final readonly class TypeHandling
     public const NONE = 'none';
 
     /**
+     * The test carries no `// E` probes at all, so enforcement was never put to
+     * the question. Distinct from NONE, which means probes existed and none of
+     * them fired: "nothing rejected" and "nothing asked" are different facts.
+     */
+    public const NO_PROBES = 'no-probes';
+
+    /**
      * @param list<int> $unrecognizedLines `// T` lines the analyzer complained about
      * @param list<int> $falsePositiveLines lines that are neither marked nor expected
      */

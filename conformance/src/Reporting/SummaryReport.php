@@ -542,6 +542,12 @@ final class SummaryReport
             ];
         }
 
+        // No probes at all: the spelling resolved, and nothing was ever asked of
+        // enforcement. Saying "Not enforced" here would read as a miss.
+        if ($enforcement === 'no-probes') {
+            return ['Recognized (no probes)', 'no-probes'];
+        }
+
         $status = (string) ($result['status'] ?? 'Unknown');
 
         // "Falls back to <base>" carries the base type name, so match by prefix.
@@ -561,7 +567,7 @@ final class SummaryReport
      * spell out line by line: null for a test that is not type-handling.
      *
      * @param array<string, mixed> $result
-     * @return array{recognition: string, enforced: string, incidental: bool, falsePositives: string}|null
+     * @return array{recognition: string, enforced: string, incidental: bool, noProbes: bool, falsePositives: string}|null
      */
     private function typeHandlingFacets(array $result): ?array
     {
@@ -579,6 +585,7 @@ final class SummaryReport
                 : 'spelling resolved',
             'enforced' => (string) ($result['enforced_lines'] ?? ''),
             'incidental' => $unresolved,
+            'noProbes' => (string) ($result['enforcement'] ?? '') === 'no-probes',
             'falsePositives' => is_array($falsePositives) && $falsePositives !== []
                 ? sprintf('line(s) %s', implode(', ', $falsePositives))
                 : '',

@@ -1,12 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 0
-output = "phpdoc_advanced_return_noreturn_synonym.php:24: Return type of alwaysThrows() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn [PhanUndeclaredTypeReturnType]"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_return_noreturn_synonym.php:27: Return type of alwaysThrows() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn [PhanUndeclaredTypeReturnType]
+phpdoc_advanced_return_noreturn_synonym.php:35: Return type of claimsNoreturnButReturns() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn [PhanUndeclaredTypeReturnType]
+phpdoc_advanced_return_noreturn_synonym.php:37: Returning 1 of type int (value: 1) but claimsNoreturnButReturns() is declared to return \\Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn (no real type) (the inferred real return type has nothing in common with the declared phpdoc return type) [PhanTypeMismatchReturnProbablyReal]"""
 errors_diff = ""
 notes = "`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`."
 ignore_errors = []
 recognition = "unrecognized"
-enforcement = "none"
-enforced_lines = "0/0"
-unrecognized_lines = [24]
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [27, 35]
 false_positive_lines = []

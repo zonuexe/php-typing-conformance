@@ -237,10 +237,15 @@ Both facets are now derived by `ExpectationEvaluator` and stored per result:
 | TOML key | Meaning |
 | --- | --- |
 | `recognition` | `recognized` / `unrecognized` |
-| `enforcement` | `enforced` / `partial` / `none` |
+| `enforcement` | `enforced` / `partial` / `none` / `no-probes` |
 | `enforced_lines` | `n/m` — expected violation lines actually reported |
 | `unrecognized_lines` | `// T` lines the analyzer complained about |
 | `false_positive_lines` | reported lines that are neither expected nor marked |
+
+`no-probes` is the case where the file carries no `// E` line at all, so
+enforcement was never put to the question; it renders as
+`Recognized (no probes)` rather than `Not enforced`, which would read as a miss.
+Prefer adding probes to leaving a `// T` test at `no-probes`.
 
 Only the reason a *recognized* type goes unenforced stays hand-curated in
 `status`, because the harness cannot derive it:

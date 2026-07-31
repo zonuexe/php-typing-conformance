@@ -144,7 +144,8 @@ final class ExpectationEvaluator
 
         $expectedLineCount = count($expectedLines);
         $enforcement = match (true) {
-            $expectedLineCount === 0 || $enforcedLineCount === 0 => TypeHandling::NONE,
+            $expectedLineCount === 0 => TypeHandling::NO_PROBES,
+            $enforcedLineCount === 0 => TypeHandling::NONE,
             $enforcedLineCount === $expectedLineCount => TypeHandling::ENFORCED,
             default => TypeHandling::PARTIAL,
         };

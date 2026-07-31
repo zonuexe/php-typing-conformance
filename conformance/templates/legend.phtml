@@ -27,6 +27,7 @@ $handling = [
     ['partial', 'Partly enforced (<em>n</em>/<em>m</em>)', 'Resolved, and some but not all of the excluded values are rejected. Common in files that probe several related spellings at once.'],
     ['falls-back', 'Widened to <em>X</em>', 'Resolved, but widened to <em>X</em>, so nothing is rejected. Not an error &mdash; just a coarser type. The base type is hand-curated.'],
     ['falls-back', 'Not enforced', 'Resolved, nothing rejected, and the base type it widened to has not been pinned down yet.'],
+    ['no-probes', 'Recognized (no probes)', 'The spelling resolves; this test has no rejection probes, so enforcement is not measured.'],
     ['by-design', 'Not enforced (by design)', 'Resolved and reportable, but the analyzer deliberately declines; the upstream issue is in the cell notes.'],
 ];
 

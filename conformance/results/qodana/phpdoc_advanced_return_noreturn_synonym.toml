@@ -1,12 +1,16 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 0
-output = "phpdoc_advanced_return_noreturn_synonym.php:22: Undefined class 'noreturn' [PhpUndefinedClassInspection]"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_return_noreturn_synonym.php:25: Undefined class 'noreturn' [PhpUndefinedClassInspection]
+phpdoc_advanced_return_noreturn_synonym.php:33: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_return_noreturn_synonym.php:33: Undefined class 'noreturn' [PhpUndefinedClassInspection]
+phpdoc_advanced_return_noreturn_synonym.php:37: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
-enforcement = "none"
-enforced_lines = "0/0"
-unrecognized_lines = [22]
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [25, 33]
 false_positive_lines = []

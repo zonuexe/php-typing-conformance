@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @var string $file
  * @var bool $isStyle
  * @var string $description
- * @var list<array{tool: string, versionHtml: string, statusClass: string, statusHtml: string, output: string, extra: array{summary: string, output: string, emptyMessage: string}|null, facets: array{recognition: string, enforced: string, incidental: bool, falsePositives: string}|null, errorsDiff: string, notes: string}> $rows
+ * @var list<array{tool: string, versionHtml: string, statusClass: string, statusHtml: string, output: string, extra: array{summary: string, output: string, emptyMessage: string}|null, facets: array{recognition: string, enforced: string, incidental: bool, noProbes: bool, falsePositives: string}|null, errorsDiff: string, notes: string}> $rows
  * @var string $source
  * @var list<array{name: string, code: string}> $supports
  */
@@ -65,10 +65,15 @@ if ($isStyle) {
     // `Partly enforced` or `Unrecognized` cell can be traced back to the exact
     // declarations and call sites behind it.
     if ($row['facets'] !== null):
-        ?><ul class="facets"><li><strong>Recognition:</strong> <?= h($row['facets']['recognition']) ?></li><li><strong>Enforcement:</strong> <?= h($row['facets']['enforced']) ?> of the expected violations reported<?php
-        // An unresolved spelling often rejects every value, valid ones
-        // included, so hits on the violating lines are not enforcement.
-        echo $row['facets']['incidental'] ? ' &mdash; incidental, since the spelling was not resolved' : '';
+        ?><ul class="facets"><li><strong>Recognition:</strong> <?= h($row['facets']['recognition']) ?></li><li><strong>Enforcement:</strong> <?php
+        if ($row['facets']['noProbes']):
+            ?>not measured &mdash; this test carries no rejection probes<?php
+        else:
+            ?><?= h($row['facets']['enforced']) ?> of the expected violations reported<?php
+            // An unresolved spelling often rejects every value, valid ones
+            // included, so hits on the violating lines are not enforcement.
+            echo $row['facets']['incidental'] ? ' &mdash; incidental, since the spelling was not resolved' : '';
+        endif;
         ?></li><?php
         if ($row['facets']['falsePositives'] !== ''):
             ?><li><strong>False positives:</strong> <?= h($row['facets']['falsePositives']) ?></li><?php

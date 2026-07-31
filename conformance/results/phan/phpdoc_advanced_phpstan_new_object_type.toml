@@ -1,0 +1,21 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_new_object_type.php:39: Return type of instantiate() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<TClass> [PhanUndeclaredTypeReturnType]
+phpdoc_advanced_phpstan_new_object_type.php:41: Expected an object instance or the name of a class but saw expression $class with type TClass [PhanTypeExpectedObjectOrClassName]
+phpdoc_advanced_phpstan_new_object_type.php:45: Argument 1 ($value) is instantiate(\\DateTimeImmutable::class) of type \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new|\\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<'DateTimeImmutable'> but \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesImmutable() takes \\DateTimeImmutable defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_new_object_type.php:26 [PhanTypeMismatchArgument]
+phpdoc_advanced_phpstan_new_object_type.php:46: Argument 1 ($value) is instantiate(\\DateTime::class) of type \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new|\\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<'DateTime'> but \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesMutable() takes \\DateTime defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_new_object_type.php:30 [PhanTypeMismatchArgument]
+phpdoc_advanced_phpstan_new_object_type.php:49: Argument 1 ($value) is instantiate(\\DateTimeImmutable::class) of type \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new|\\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<'DateTimeImmutable'> but \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesMutable() takes \\DateTime defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_new_object_type.php:30 [PhanTypeMismatchArgument]
+phpdoc_advanced_phpstan_new_object_type.php:50: Argument 1 ($value) is instantiate(\\DateTime::class) of type \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new|\\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<'DateTime'> but \\Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesImmutable() takes \\DateTimeImmutable defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_new_object_type.php:26 [PhanTypeMismatchArgument]"""
+errors_diff = """
+Line 41: Unexpected errors ["Expected an object instance or the name of a class but saw expression $class with type TClass [PhanTypeExpectedObjectOrClassName]"]
+Line 45: Unexpected errors ["Argument 1 ($value) is instantiate(\\\\DateTimeImmutable::class) of type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new|\\\\Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<'DateTimeImmutable'> but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\takesImmutable() takes \\\\DateTimeImmutable defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_new_object_type.php:26 [PhanTypeMismatchArgument]"]
+Line 46: Unexpected errors ["Argument 1 ($value) is instantiate(\\\\DateTime::class) of type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new|\\\\Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<'DateTime'> but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\takesMutable() takes \\\\DateTime defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_new_object_type.php:30 [PhanTypeMismatchArgument]"]"""
+notes = "Reads the return as the undeclared type `new<TClass>` and cannot instantiate a template-typed string in the body. All four calls are rejected, so the probe lines are incidental."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [39]
+false_positive_lines = [41, 45, 46]

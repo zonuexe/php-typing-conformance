@@ -1,0 +1,19 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_new_object_type.php:37: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new'. [P1133]
+phpdoc_advanced_phpstan_new_object_type.php:45: Expected type 'DateTimeImmutable'. Found 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<class-string<DateTimeImmutable>>'. [P1006]
+phpdoc_advanced_phpstan_new_object_type.php:46: Expected type 'DateTime'. Found 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<class-string<DateTime>>'. [P1006]
+phpdoc_advanced_phpstan_new_object_type.php:49: Expected type 'DateTime'. Found 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<class-string<DateTimeImmutable>>'. [P1006]
+phpdoc_advanced_phpstan_new_object_type.php:50: Expected type 'DateTimeImmutable'. Found 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<class-string<DateTime>>'. [P1006]"""
+errors_diff = """
+Line 45: Unexpected errors ["Expected type 'DateTimeImmutable'. Found 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<class-string<DateTimeImmutable>>'. [P1006]"]
+Line 46: Unexpected errors ["Expected type 'DateTime'. Found 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<class-string<DateTime>>'. [P1006]"]"""
+notes = "Reads `new` as an undefined PHPDoc type and rejects all four calls, so the probe lines are hit for the wrong reason."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [37]
+false_positive_lines = [45, 46]

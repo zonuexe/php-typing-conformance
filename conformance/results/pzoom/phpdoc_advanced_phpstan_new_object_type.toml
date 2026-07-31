@@ -1,0 +1,21 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_new_object_type.php:37: Docblock class Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new does not exist [UndefinedDocblockClass]
+phpdoc_advanced_phpstan_new_object_type.php:41: The type object does not match the declared return type Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<TClass:Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\instantiate as string> [LessSpecificReturnStatement]
+phpdoc_advanced_phpstan_new_object_type.php:45: Argument 1 of takesImmutable expects DateTimeImmutable, but Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<DateTimeImmutable::class> provided [InvalidArgument]
+phpdoc_advanced_phpstan_new_object_type.php:46: Argument 1 of takesMutable expects DateTime, but Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<DateTime::class> provided [InvalidArgument]
+phpdoc_advanced_phpstan_new_object_type.php:49: Argument 1 of takesMutable expects DateTime, but Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<DateTimeImmutable::class> provided [InvalidArgument]
+phpdoc_advanced_phpstan_new_object_type.php:50: Argument 1 of takesImmutable expects DateTimeImmutable, but Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<DateTime::class> provided [InvalidArgument]"""
+errors_diff = """
+Line 41: Unexpected errors ["The type object does not match the declared return type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<TClass:Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\instantiate as string> [LessSpecificReturnStatement]"]
+Line 45: Unexpected errors ["Argument 1 of takesImmutable expects DateTimeImmutable, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTimeImmutable::class> provided [InvalidArgument]"]
+Line 46: Unexpected errors ["Argument 1 of takesMutable expects DateTime, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTime::class> provided [InvalidArgument]"]"""
+notes = "Same undefined-class reading as Psalm, plus it cannot follow `new $class()` in the body. The probe lines are hit incidentally."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [37]
+false_positive_lines = [41, 45, 46]

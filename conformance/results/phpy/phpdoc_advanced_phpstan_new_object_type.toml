@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_phpstan_new_object_type.php:37: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new'"
+errors_diff = ""
+notes = "Reports the unknown class `new` on the declaration and then checks no call site, so nothing is enforced in either direction."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [37]
+false_positive_lines = []

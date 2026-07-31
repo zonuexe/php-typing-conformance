@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_phpstan_new_object_type.php:37: Undefined class 'new' [PhpUndefinedClassInspection]"
+errors_diff = ""
+notes = "Reports `new` as an undefined class in the docblock and then checks no call site, so neither the correct calls nor the probes draw anything."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [37]
+false_positive_lines = []

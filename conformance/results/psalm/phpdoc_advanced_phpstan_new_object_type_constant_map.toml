@@ -1,0 +1,22 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: Template TName has invalid as type - Untemplated key-of param Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES should be an array [InvalidDocblock]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: Unrecognised template param Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES in docblock for Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\createNow [InvalidDocblock]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:50: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:51: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:52: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesMutable expects DateTime, but parent type DateTimeInterface provided [ArgumentTypeCoercion]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesMutable expects DateTime, but parent type DateTimeInterface provided [ArgumentTypeCoercion]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"""
+errors_diff = """
+Line 50: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"]
+Line 51: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"]
+Line 52: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\takesMutable expects DateTime, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"]"""
+notes = "Rejects `key-of<DATETIME_CLASSES>` as a template bound over a global constant and reads `new` as a class name, so the return falls back to the native `DateTimeInterface` and every call is reported as a coercion -- the three correct ones included."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [44]
+false_positive_lines = [50, 51, 52]

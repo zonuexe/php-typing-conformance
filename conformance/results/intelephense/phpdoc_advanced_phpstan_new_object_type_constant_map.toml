@@ -1,0 +1,26 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:40: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES'. [P1133]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:42: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new'. [P1133]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:42: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES'. [P1133]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:42: Documented type is not compatible with the declared type. [P1131]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:46: Expected type 'DateTimeInterface'. Found 'object'. [P1006]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:50: Expected type 'DateTimeImmutable'. Found 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES['immutable']>'. [P1006]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:51: Expected type 'DateTimeImmutable'. Found 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES['immutable']>'. [P1006]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:52: Expected type 'DateTime'. Found 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES['mutable']>'. [P1006]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: Expected type 'DateTime'. Found 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES['immutable']>'. [P1006]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: Expected type 'DateTimeImmutable'. Found 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES['mutable']>'. [P1006]"""
+errors_diff = """
+Line 46: Unexpected errors ["Expected type 'DateTimeInterface'. Found 'object'. [P1006]"]
+Line 50: Unexpected errors ["Expected type 'DateTimeImmutable'. Found 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\new<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\DATETIME_CLASSES['immutable']>'. [P1006]"]
+Line 51: Unexpected errors ["Expected type 'DateTimeImmutable'. Found 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\new<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\DATETIME_CLASSES['immutable']>'. [P1006]"]
+Line 52: Unexpected errors ["Expected type 'DateTime'. Found 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\new<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\DATETIME_CLASSES['mutable']>'. [P1006]"]"""
+notes = "Neither the constant in type position nor `new` resolves, so the return stays at the native `DateTimeInterface` and all five calls are reported."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [40, 42]
+false_positive_lines = [46, 50, 51, 52]

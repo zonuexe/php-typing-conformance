@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_new_object_type.php:39: Docblock return type `new<('TClass.conformance\\tests\\phpdocadvancedphpstannewobjecttype\\instantiate() extends string)>` is incompatible with native return type `object`. [docblock-type-mismatch]
+phpdoc_advanced_phpstan_new_object_type.php:41: Cannot determine the concrete class for instantiation. [unknown-class-instantiation]
+phpdoc_advanced_phpstan_new_object_type.php:41: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\instantiate`: expected `new<('TClass.conformance\\tests\\phpdocadvancedphpstannewobjecttype\\instantiate() extends string)>`, but found `object`. [invalid-return-statement]
+phpdoc_advanced_phpstan_new_object_type.php:49: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesMutable`: expected `DateTime`, but found `DateTimeImmutable`. [invalid-argument]
+phpdoc_advanced_phpstan_new_object_type.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesImmutable`: expected `DateTimeImmutable`, but found `DateTime`. [invalid-argument]"""
+errors_diff = "Line 41: Unexpected errors [\"Cannot determine the concrete class for instantiation. [unknown-class-instantiation]\",\"Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\instantiate`: expected `new<('TClass.conformance\\\\tests\\\\phpdocadvancedphpstannewobjecttype\\\\instantiate() extends string)>`, but found `object`. [invalid-return-statement]\"]"
+notes = "Models `new<>`: the two correct calls pass and both probes are rejected as DateTimeImmutable against DateTime and back. What it reports instead is everything around the type -- the declaration is called a docblock/native mismatch (`new<...>` against `object`), and `new $class()` in the body is an instantiation it cannot resolve. The only other analyzer that resolves the spelling at all."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [39]
+false_positive_lines = [41]

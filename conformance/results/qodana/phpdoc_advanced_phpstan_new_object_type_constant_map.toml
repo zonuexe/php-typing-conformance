@@ -1,0 +1,25 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:40: Undefined class 'DATETIME_CLASSES' [PhpUndefinedClassInspection]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:41: Argument type does not match the declared [PhpDocSignatureInspection]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:42: Return type does not match the declared [PhpDocSignatureInspection]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:42: Undefined class 'new' [PhpUndefinedClassInspection]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:42: Undefined class 'DATETIME_CLASSES' [PhpUndefinedClassInspection]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:50: Parameter 'createNow()' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:51: Parameter 'createNow('immutable')' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:52: Parameter 'createNow('mutable')' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: Parameter 'createNow('immutable')' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: Parameter 'createNow('mutable')' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 50: Unexpected errors ["Parameter 'createNow()' type is not compatible with declaration [PhpParamsInspection]"]
+Line 51: Unexpected errors ["Parameter 'createNow('immutable')' type is not compatible with declaration [PhpParamsInspection]"]
+Line 52: Unexpected errors ["Parameter 'createNow('mutable')' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = "Reports both `DATETIME_CLASSES` and `new` as undefined classes, and then rejects every call to `createNow()` as incompatible with the declaration -- the three correct ones included. The probe lines are hit for that reason, not because the mapping was followed."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [40, 41, 42]
+false_positive_lines = [50, 51, 52]

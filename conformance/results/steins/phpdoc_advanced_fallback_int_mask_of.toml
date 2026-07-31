@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to a nonexistent-class reference"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`int-mask-of<...>` has no entry in `lower_generic`, so it lowers through the catch-all to `ContractTy::Class(\"int-mask-of\")`, and the class-constant mask membership check is never performed."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

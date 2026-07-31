@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to a nonexistent-class reference"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`resource` is not a native type and has no `lower_identifier` entry, so it lowers to `ContractTy::Class(\"resource\")` and is treated as a reference to a non-existent class (divergence-registry.md entry 4) — no resource-value modeling exists to check against."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

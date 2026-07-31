@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to mixed"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "key-of<T> projects over the lowered operand (project_key_of, steins-contract/src/lib.rs); a @template T type variable lowers to ContractTy::Class(\"t\"), which isn't a Shape/ListOf/MapOf/ArrayAny, so the projection's catch-all floors to Opaque — the key type is never narrowed from a template parameter."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

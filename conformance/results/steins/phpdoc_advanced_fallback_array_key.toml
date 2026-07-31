@@ -6,7 +6,7 @@ phpdoc_advanced_fallback_array_key.php:58: argument 1.5 to acceptsArrayKey() vio
 phpdoc_advanced_fallback_array_key.php:59: argument true to acceptsArrayKey() violates declared @param array-key $value — declared contract violation [phpdoc.param-mismatch]
 phpdoc_advanced_fallback_array_key.php:60: argument null to acceptsArrayKey() violates declared @param array-key $value — declared contract violation [phpdoc.param-mismatch]"""
 errors_diff = ""
-notes = ""
+notes = "The 2 residual lines (65-66: forwarding returnsArrayKey()'s declared int|string return straight into acceptsInt()/acceptsString()) are an honest gap, not a Maybe: nothing in steins-infer propagates a callee's declared @return contract into the caller's argument-fact lane for a bare call-expression argument, so no verdict at all is computed there. The 3 direct-value lines (58-60) do fire correctly."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"

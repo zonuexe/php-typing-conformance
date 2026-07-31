@@ -1,7 +1,7 @@
-status = "Unknown"
+status = "By design"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = "Lines 15, 18: Expected error (tag array_param_mismatch)"
-notes = ""
+notes = "Same refusal as the scalar variant: native-nullable widening over a phpdoc type is tolerated by design (Steins divergence registry, conformance entry 2)."
 ignore_errors = []

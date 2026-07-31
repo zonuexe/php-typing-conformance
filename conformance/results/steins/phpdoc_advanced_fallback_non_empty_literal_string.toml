@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to a nonexistent-class reference"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Unlike `literal-string`, `non-empty-literal-string` has no `lower_identifier` entry (steins-contract/src/lib.rs), so it lowers through the catch-all to `ContractTy::Class(\"non-empty-literal-string\")` instead of `StrOpaque` — the unknown-class gate then silently declines to check either half (literalness or non-emptiness)."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

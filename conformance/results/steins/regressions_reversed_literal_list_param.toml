@@ -1,7 +1,7 @@
-status = "Unknown"
+status = "By design"
 conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = "regressions_reversed_literal_list_param.php:26: argument [1 => 'x', 0 => 'y'] to takesTwoList() violates declared @param list{string, string} $list — declared contract violation [phpdoc.param-mismatch]"
 errors_diff = "Line 26: Unexpected errors [\"argument [1 => 'x', 0 => 'y'] to takesTwoList() violates declared @param list{string, string} $list — declared contract violation [phpdoc.param-mismatch]\"]"
-notes = ""
+notes = "Steins implements the https://github.com/phpstan/phpstan/discussions/14939 model natively: list{} shapes are positional and reject a proven reversed literal, so the 'unexpected' error is the intended semantics (Steins divergence registry entry 2; matches Phan/Psalm, diverges from PHPStan stable)."
 ignore_errors = []

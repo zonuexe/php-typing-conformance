@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_int_range_keyword.php:30: argument 256 to acceptsByte() violates declared @param int-range<0, 255> $value — declared contract violation [phpdoc.param-mismatch]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

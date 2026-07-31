@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`interface-string` lowers to the same `ContractTy::StrOpaque` as `class-string` (ADR-0038), so Steins never checks that the string names an interface specifically — it accepts any string."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

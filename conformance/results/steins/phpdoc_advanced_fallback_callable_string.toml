@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`callable-string` lowers to `ContractTy::StrOpaque` (ADR-0038), so Steins never checks that the string names an existing function or method — it accepts any string."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

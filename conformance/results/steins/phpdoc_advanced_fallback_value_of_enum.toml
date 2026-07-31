@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to mixed"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = ""
-notes = ""
+notes = "value-of<Suit> projects over the lowered operand (project_value_of); the enum class name lowers to ContractTy::Class(\"suit\"), which the projection's catch-all can't read a value set out of, so it floors to Opaque — enum backing values are not modeled as shape facts."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

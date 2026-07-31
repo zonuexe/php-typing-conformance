@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to a nonexistent-class reference"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`properties-of<User>` has no `lower_generic` entry, so it lowers through the catch-all to `ContractTy::Class(\"properties-of\")` — Steins has no fact form for a class's declared property types, so per-key checking against them is unmodeled."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

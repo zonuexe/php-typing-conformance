@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`literal-string` lowers to `ContractTy::StrOpaque` (ADR-0038): provenance is not an extensional value property, so Steins can never confirm a string came from source code — every string is `Maybe`, exactly as a bare `string` parameter, and only non-strings are rejected."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

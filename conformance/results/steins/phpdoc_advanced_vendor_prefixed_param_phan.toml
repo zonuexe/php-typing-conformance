@@ -1,7 +1,7 @@
-status = "Unknown"
+status = "By design"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = "Line 24: Expected 1 error(s)"
-notes = ""
+notes = "Vendor-tag scope is deliberate: only @phpstan-* / @psalm-* prefixes carry contracts (ADR-0029; Steins divergence registry, conformance entry 1). @phan-param is erased."
 ignore_errors = []

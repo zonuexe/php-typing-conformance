@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to a nonexistent-class reference"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`closed-resource` lowers to `ContractTy::Class(\"closed-resource\")` (no `lower_identifier` entry), the same non-existent-class treatment as `resource` (divergence-registry.md entry 4) — open/closed handle state is not modeled."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

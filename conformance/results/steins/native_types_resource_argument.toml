@@ -7,5 +7,5 @@ Line 16: Expected 1 error(s)
 Line 38: Expected 1 error(s)
 Line 39: Expected 1 error(s)
 Line 40: Expected 1 error(s)"""
-notes = ""
+notes = "Honest deferral, not a refusal: no resource type nor resource-value tracking exists yet (Steins divergence registry, conformance entry 4 — the non-scalar value-modeling cluster)."
 ignore_errors = []

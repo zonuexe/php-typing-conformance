@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to a nonexistent-class reference"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`int-mask<...>` has no entry in `lower_generic`'s vocabulary table (steins-contract/src/lib.rs), so it lowers through the catch-all to `ContractTy::Class(\"int-mask\")` rather than any int refinement, and the bit-set membership is never checked."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

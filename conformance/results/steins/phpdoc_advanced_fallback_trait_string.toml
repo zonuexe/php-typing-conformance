@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`trait-string` lowers to `ContractTy::StrOpaque` (ADR-0038) like the rest of the `*-string` family, so Steins never checks that the string names a trait specifically — it accepts any string."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

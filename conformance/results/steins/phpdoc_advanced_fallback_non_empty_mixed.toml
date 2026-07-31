@@ -1,12 +1,16 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = ""
+output = """
+phpdoc_advanced_fallback_non_empty_mixed.php:48: argument "" to acceptsNonEmptyMixed() violates declared @param non-empty-mixed $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_fallback_non_empty_mixed.php:49: argument 0 to acceptsNonEmptyMixed() violates declared @param non-empty-mixed $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_fallback_non_empty_mixed.php:50: argument [] to acceptsNonEmptyMixed() violates declared @param non-empty-mixed $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_fallback_non_empty_mixed.php:51: argument null to acceptsNonEmptyMixed() violates declared @param non-empty-mixed $value — declared contract violation [phpdoc.param-mismatch]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/4"
+enforcement = "enforced"
+enforced_lines = "4/4"
 unrecognized_lines = []
 false_positive_lines = []

@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to mixed"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "steins-phpdoc's object-shape grammar only fires on the literal `object` keyword before `{` (parser.rs), not an arbitrary class name, so `stdClass{name: string}` fails to parse as a shape and the whole annotation drops to no envelope (ADR-0029) — the per-property constraint is never checked."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

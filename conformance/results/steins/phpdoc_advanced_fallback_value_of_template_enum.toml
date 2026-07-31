@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to mixed"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Same mechanism as value-of<T> on a plain template: @template T of Suit still lowers T to ContractTy::Class(\"t\") (the enum bound is not consulted), so project_value_of floors to Opaque and the backing-value type is never narrowed."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

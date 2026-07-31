@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to a nonexistent-class reference"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`stringable-object` has no `lower_identifier` entry, so it lowers through the catch-all to `ContractTy::Class(\"stringable-object\")` — Steins has no `__toString`-presence fact to check against."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

@@ -1,12 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
+output = """
+phpdoc_advanced_fallback_numeric.php:45: argument "abc" to acceptsNumeric() violates declared @param numeric $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_fallback_numeric.php:48: argument true to acceptsNumeric() violates declared @param numeric $value — declared contract violation [phpdoc.param-mismatch]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []

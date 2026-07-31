@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to mixed"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Same project_value_of catch-all as key-of<T>: a @template T type variable lowers to ContractTy::Class(\"t\"), not a shape-bearing arm, so value-of<T> floors to Opaque and the value type is never narrowed from the template parameter."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

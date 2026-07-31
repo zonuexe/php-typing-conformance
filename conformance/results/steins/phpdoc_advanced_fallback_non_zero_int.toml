@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_fallback_non_zero_int.php:47: argument 0 to acceptsNonZeroInt() violates declared @param non-zero-int $value — declared contract violation [phpdoc.param-mismatch]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "`class-string` lowers to `ContractTy::StrOpaque` (ADR-0038: non-extensional membership) rather than checking the string names a declared class, so it accepts any string and rejects only non-strings — the same acceptance a bare `string` parameter gives."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

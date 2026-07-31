@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_fallback_key_of_constant.php:53: argument \"missing\" to acceptsConfigKey() violates declared @param key-of<Config::MAP> $key — declared contract violation [phpdoc.param-mismatch]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

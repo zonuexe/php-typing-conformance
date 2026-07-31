@@ -1,22 +1,12 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = """
-phpdoc_advanced_fallback_literal_string.php:40: InvalidArgument: Argument $value of acceptsString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\literal-string' [MIR0201]
-phpdoc_advanced_fallback_literal_string.php:44: InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\literal-string', got '"a literal"' [MIR0201]
-phpdoc_advanced_fallback_literal_string.php:45: InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\literal-string', got '"a literal"' [MIR0201]
-phpdoc_advanced_fallback_literal_string.php:46: InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\literal-string', got '""' [MIR0201]
-phpdoc_advanced_fallback_literal_string.php:52: InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\literal-string', got 'string' [MIR0201]
-phpdoc_advanced_fallback_literal_string.php:55: InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\literal-string', got 'non-empty-string' [MIR0201]"""
-errors_diff = """
-Line 40: Unexpected errors ["InvalidArgument: Argument $value of acceptsString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackLiteralString\\\\literal-string' [MIR0201]"]
-Line 44: Unexpected errors ["InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackLiteralString\\\\literal-string', got '\\"a literal\\"' [MIR0201]"]
-Line 45: Unexpected errors ["InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackLiteralString\\\\literal-string', got '\\"a literal\\"' [MIR0201]"]
-Line 46: Unexpected errors ["InvalidArgument: Argument $value of acceptsLiteralString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackLiteralString\\\\literal-string', got '\\"\\"' [MIR0201]"]"""
-notes = ""
+output = ""
+errors_diff = ""
+notes = "Was measured 'Enforced 2/2' under mir 0.62.0, but that was a parsing artifact, not real enforcement: mir's changelog for 0.63.0 says literal-int/literal-string previously 'fell through to a bogus named-class bound, always failing a genuinely-satisfying literal argument' — it rejected every literal-string argument, valid or not, which is also why false positives showed up on lines 40/44/45/46. 0.63.0 fixed the recognition, and the over-rejection (both the coincidental hits on these probes and the false positives) went away together, leaving the honest state: recognized, not yet enforced."
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "2/2"
+enforcement = "none"
+enforced_lines = "0/2"
 unrecognized_lines = []
-false_positive_lines = [40, 44, 45, 46]
+false_positive_lines = []

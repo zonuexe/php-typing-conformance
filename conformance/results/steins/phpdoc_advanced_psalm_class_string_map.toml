@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to mixed"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Psalm's `T of X` template bound isn't valid inside a plain generic-argument list in steins-phpdoc's grammar, so `class-string-map<T of \\Throwable, T>` fails to parse entirely and the whole `@param` drops to no envelope (ADR-0029) — the dependent key-to-value relationship is never checked."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

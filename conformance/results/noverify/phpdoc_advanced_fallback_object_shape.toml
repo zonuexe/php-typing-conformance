@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_fallback_object_shape.php:42: param $shape miss matched with phpdoc type <<object{foo: int}>> [funcParamTypeMissMatch]"
+errors_diff = ""
+notes = "Rejects the spelling itself on the declaration line as a docblock/native mismatch, and checks no call site."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [42]
+false_positive_lines = []

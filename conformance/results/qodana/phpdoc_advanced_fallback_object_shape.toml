@@ -1,0 +1,12 @@
+status = "Falls back to object"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = ""
+errors_diff = ""
+notes = "Enforces array shapes strictly -- the unsealed rows show it rejecting keys it should admit -- yet checks nothing against an object shape. The named class carrying `public int $foo` passes, so the widening is to plain `object`, not to `\\stdClass`."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = []
+false_positive_lines = []

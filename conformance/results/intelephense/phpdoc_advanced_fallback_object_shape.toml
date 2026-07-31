@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = ""
+errors_diff = ""
+notes = "Not specific to object shapes: Intelephense does not compare arguments against shapes of either kind, so the array-shape rows are silent too."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = []
+false_positive_lines = []

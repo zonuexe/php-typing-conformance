@@ -1,0 +1,12 @@
+status = "Falls back to object"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = ""
+errors_diff = ""
+notes = "Accepts the spelling and enforces nothing: both the mistyped and the missing property go through. mir does enforce array shapes (arrays_unsealed_shape), so this is object shapes specifically. It is not read as `\\stdClass` either -- the named class carrying `public int $foo` passes."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,0 +1,12 @@
+status = "Falls back to object"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = ""
+errors_diff = ""
+notes = "Accepts the spelling and enforces nothing, while array shapes are enforced (arrays_unsealed_shape). The named class carrying `public int $foo` passes, so the shape was widened to plain `object` rather than read as `\\stdClass`."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = []
+false_positive_lines = []

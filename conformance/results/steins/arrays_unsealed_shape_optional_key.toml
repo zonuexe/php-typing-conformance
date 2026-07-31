@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_unsealed_shape_optional_key.php:40: argument ['foo' => 1, 'bar' => 'yes'] to acceptsUnsealedShapeWithOptionalKey() violates declared @param array{foo: int, bar?: bool, ...} $shape — declared contract violation [phpdoc.param-mismatch]
+arrays_unsealed_shape_optional_key.php:44: argument ['bar' => true] to acceptsUnsealedShapeWithOptionalKey() violates declared @param array{foo: int, bar?: bool, ...} $shape — declared contract violation [phpdoc.param-mismatch]
+arrays_unsealed_shape_optional_key.php:45: argument ['buz' => 42.0] to acceptsUnsealedShapeWithOptionalKey() violates declared @param array{foo: int, bar?: bool, ...} $shape — declared contract violation [phpdoc.param-mismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

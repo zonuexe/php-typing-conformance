@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "arrays_unsealed_shape.php:23: param $shape miss matched with phpdoc type <<array{foo: int, ...}>> [funcParamTypeMissMatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/3"
+unrecognized_lines = [23]
+false_positive_lines = []

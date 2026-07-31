@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_unsealed_shape.php:37: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape`: expected `array{'foo': int, ...}`, but possibly received `array{}`. [possibly-invalid-argument]
+arrays_unsealed_shape.php:38: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape`: expected `array{'foo': int, ...}`, but possibly received `array{'buz': float(42.0)}`. [possibly-invalid-argument]
+arrays_unsealed_shape.php:41: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape`: expected `array{'foo': int, ...}`, but possibly received `array{'foo': string('one')}`. [possibly-invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

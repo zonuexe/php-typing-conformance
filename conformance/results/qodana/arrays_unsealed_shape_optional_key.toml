@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+arrays_unsealed_shape_optional_key.php:29: Value should be one of: "foo", "bar" [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_unsealed_shape_optional_key.php:33: Value should be one of: "foo", "bar" [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_unsealed_shape_optional_key.php:40: Expected parameter of type 'bool', 'string' provided [PhpParamsInspection]
+arrays_unsealed_shape_optional_key.php:44: Incomplete array according to shape declaration. Missing key(s): foo [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_optional_key.php:45: Incomplete array according to shape declaration. Missing key(s): foo [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_optional_key.php:45: Value should be one of: "foo", "bar" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"""
+errors_diff = """
+Line 29: Unexpected errors ["Value should be one of: \\"foo\\", \\"bar\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"]
+Line 33: Unexpected errors ["Value should be one of: \\"foo\\", \\"bar\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"]"""
+notes = "Same as the plain unsealed shape: `...` is dropped, so both calls carrying an undeclared key are rejected. The optional `bar` is handled correctly -- absent is fine, present as a string is caught."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = [29, 33]

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_unsealed_shape.php:37: Argument 1 of Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape expects array{foo: int, ...<array-key, mixed>}, but array<never, never> provided [InvalidArgument]
+arrays_unsealed_shape.php:38: Argument 1 of Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape expects array{foo: int, ...<array-key, mixed>}, but array{buz: float(42)} provided [InvalidArgument]
+arrays_unsealed_shape.php:41: Argument 1 of Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape expects array{foo: int, ...<array-key, mixed>}, but array{foo: 'one'} provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_unsealed_shape_optional_key.php:40: Argument 1 of Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey expects array{bar?: bool, foo: int, ...<array-key, mixed>}, but array{bar: 'yes', foo: 1} provided [InvalidArgument]
+arrays_unsealed_shape_optional_key.php:44: Argument 1 of Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey expects array{bar?: bool, foo: int, ...<array-key, mixed>}, but array{bar: true} provided [InvalidArgument]
+arrays_unsealed_shape_optional_key.php:45: Argument 1 of Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey expects array{bar?: bool, foo: int, ...<array-key, mixed>}, but array{buz: float(42)} provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

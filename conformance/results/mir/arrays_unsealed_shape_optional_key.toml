@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_unsealed_shape_optional_key.php:40: InvalidArgument: Argument $shape of acceptsUnsealedShapeWithOptionalKey() expects 'array{'foo': int, 'bar'?: bool}', got 'array{'foo': 1, 'bar': "yes"}' [MIR0201]
+arrays_unsealed_shape_optional_key.php:44: InvalidArgument: Argument $shape of acceptsUnsealedShapeWithOptionalKey() expects 'array{'foo': int, 'bar'?: bool}', got 'array{'bar': true}' [MIR0201]
+arrays_unsealed_shape_optional_key.php:45: InvalidArgument: Argument $shape of acceptsUnsealedShapeWithOptionalKey() expects 'array{'foo': int, 'bar'?: bool}', got 'array{'buz': 42}' [MIR0201]"""
+errors_diff = ""
+notes = "Enforces the shape correctly, but as with the plain unsealed shape the `...` is missing from the type it prints."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

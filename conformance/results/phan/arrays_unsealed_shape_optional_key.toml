@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_unsealed_shape_optional_key.php:21: Saw possibly unextractable annotation for a fragment of comment '* @param array{foo: int, bar?: bool, ...} $shape': after array, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+arrays_unsealed_shape_optional_key.php:21: Saw a token Phan may have failed to parse after '* @param array{foo: int, bar?: bool, ...} $shape': after array, saw '{' [PhanUnextractableAnnotationSuffix]"""
+errors_diff = ""
+notes = "Same annotation-extraction failure as the plain unsealed shape: Phan handles sealed shapes with optional keys, but stops at the `...` and drops the `@param` entirely."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/3"
+unrecognized_lines = [21]
+false_positive_lines = []

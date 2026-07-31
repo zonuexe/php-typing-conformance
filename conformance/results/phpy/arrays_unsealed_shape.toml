@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = ""
+errors_diff = ""
+notes = "Not specific to `...`: phpy does not check arguments against array shapes at all, and leaves the sealed case in arrays_shape_required_keys unreported too."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/3"
+unrecognized_lines = []
+false_positive_lines = []

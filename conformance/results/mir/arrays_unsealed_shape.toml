@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_unsealed_shape.php:37: InvalidArgument: Argument $shape of acceptsUnsealedShape() expects 'array{'foo': int}', got 'array{}' [MIR0201]
+arrays_unsealed_shape.php:38: InvalidArgument: Argument $shape of acceptsUnsealedShape() expects 'array{'foo': int}', got 'array{'buz': 42}' [MIR0201]
+arrays_unsealed_shape.php:41: InvalidArgument: Argument $shape of acceptsUnsealedShape() expects 'array{'foo': int}', got 'array{'foo': "one"}' [MIR0201]"""
+errors_diff = ""
+notes = "mir honours the `...` -- the calls carrying undeclared keys are accepted -- but prints the expected type as `array{'foo': int}` without it, so the message reads as though the shape were sealed."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

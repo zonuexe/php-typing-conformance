@@ -154,6 +154,7 @@ That target uses sparse checkout for the documentation-oriented repositories. `r
 - HTML-only regeneration from existing TOML results: `make render-report-html`
 - Main report output: `conformance/results/index.html` (or `make serve`, which renders the same pages per request)
 - Report stylesheet: authored in `conformance/templates/report.css`, copied to `conformance/results/report.css` on every render and linked from the index and the detail pages
+- OGP image: authored in `conformance/templates/ogp.png`, copied to `conformance/results/ogp.png` on every render; Open Graph / Twitter Card tags in `page.phtml` share one description and image, with only the title per page
 
 Current checker columns in the report:
 

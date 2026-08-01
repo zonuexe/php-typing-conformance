@@ -31,6 +31,7 @@ final class SummaryReport
     private const DETAILS_DIR = 'tests';
     private const INDEX_FILE = 'index.html';
     private const STYLESHEET_FILE = 'report.css';
+    private const OGP_IMAGE_FILE = 'ogp.png';
 
     /** What loadVersion() reports when a tool has not recorded one. */
     private const UNKNOWN_VERSION = 'unknown';
@@ -63,6 +64,7 @@ final class SummaryReport
         $detailsDir = $resultsRoot . '/' . self::DETAILS_DIR;
         $this->prepareDetailsDir($detailsDir);
         $this->writeStylesheet($resultsRoot);
+        $this->writeOgpImage($resultsRoot);
 
         // Detail pages first so the index can link to known files.
         foreach ($testCases as $testCase) {
@@ -343,6 +345,37 @@ final class SummaryReport
 
         if (file_put_contents($destination, $this->stylesheet()) === false) {
             throw new RuntimeException(sprintf('Failed to write stylesheet: %s', $destination));
+        }
+    }
+
+    /**
+     * The Open Graph / Twitter Card image every page references.
+     *
+     * Authored next to the stylesheet under templates/; the static build
+     * copies it next to the generated pages so the published site can serve
+     * it at a stable absolute URL.
+     */
+    public function ogpImage(): string
+    {
+        $path = $this->renderer->path(self::OGP_IMAGE_FILE);
+        $image = file_get_contents($path);
+
+        if ($image === false) {
+            throw new RuntimeException(sprintf('Failed to read OGP image: %s', $path));
+        }
+
+        return $image;
+    }
+
+    /**
+     * Put the OGP image next to the generated pages, for the static build.
+     */
+    private function writeOgpImage(string $resultsRoot): void
+    {
+        $destination = $resultsRoot . '/' . self::OGP_IMAGE_FILE;
+
+        if (file_put_contents($destination, $this->ogpImage()) === false) {
+            throw new RuntimeException(sprintf('Failed to write OGP image: %s', $destination));
         }
     }
 

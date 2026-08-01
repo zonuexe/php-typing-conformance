@@ -5,12 +5,19 @@ declare(strict_types=1);
 /**
  * The shared page skeleton for both the index and the detail pages.
  *
+ * OGP / Twitter Card metadata is common across every page; only the title
+ * changes. The absolute image URL points at the published GitHub Pages site —
+ * crawlers need a stable absolute URL, not a relative path.
+ *
  * @var string $title
  * @var string $bodyClass  `index` or `detail`
  * @var string $stylesheet href of the stylesheet, relative to this page
  * @var string $body       already-rendered page body
  * @var string $script     already-rendered trailing <script>, or ''
  */
+
+$ogDescription = 'Side-by-side results of how PHP static analysis tools interpret native types and PHPDoc.';
+$ogImage = 'https://zonuexe.github.io/php-typing-conformance/ogp.png';
 
 ?>
 <!DOCTYPE html>
@@ -19,6 +26,18 @@ declare(strict_types=1);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= h($title) ?></title>
+  <meta name="description" content="<?= h($ogDescription) ?>">
+  <meta property="og:title" content="<?= h($title) ?>">
+  <meta property="og:description" content="<?= h($ogDescription) ?>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PHP Typing Conformance">
+  <meta property="og:image" content="<?= h($ogImage) ?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?= h($title) ?>">
+  <meta name="twitter:description" content="<?= h($ogDescription) ?>">
+  <meta name="twitter:image" content="<?= h($ogImage) ?>">
   <link rel="stylesheet" href="<?= h($stylesheet) ?>">
 </head>
 <body class="<?= h($bodyClass) ?>">

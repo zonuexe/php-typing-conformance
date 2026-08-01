@@ -20,7 +20,9 @@ variables it expects.
 | `detail.phtml` | One per-test page |
 | `highlight.phtml` | Shiki syntax highlighting for the detail pages |
 
-`report.css` is copied next to the generated pages rather than rendered.
+`report.css` and `ogp.png` are copied next to the generated pages rather than
+rendered. The Open Graph / Twitter Card tags live in `page.phtml` and share
+one description and image across every page; only the title changes.
 
 Neither reference table's contents are in its template: each tool is a class
 under `src/Metadata/Analyzer/` or `src/Metadata/LanguageServer/`, holding

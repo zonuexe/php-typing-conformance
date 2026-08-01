@@ -14,10 +14,10 @@ re-derives the same results for the same tests at the same versions leaves it
 alone, so re-running the suite neither dirties the working tree nor claims the
 comparison is fresher than it is.
 
-`index.html`, `report.css` and the per-test pages under `tests/` are built
-from these files by `make render-report-html`, and rebuilt by GitHub Actions on
-every push to master before the site is published, so nothing generated is kept
-under version control.
+`index.html`, `report.css`, `ogp.png` and the per-test pages under `tests/`
+are built from these files by `make render-report-html`, and rebuilt by GitHub
+Actions on every push to master before the site is published, so nothing
+generated is kept under version control.
 
 Most keys are regenerated on every run. Two are hand-curated and preserved
 across runs by `ResultRepository::save()`: `status` and `notes` (plus

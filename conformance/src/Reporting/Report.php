@@ -116,4 +116,9 @@ final class Report
     {
         return $this->summary->stylesheet();
     }
+
+    public function ogpImage(): string
+    {
+        return $this->summary->ogpImage();
+    }
 }

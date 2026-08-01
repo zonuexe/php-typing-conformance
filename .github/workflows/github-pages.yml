@@ -41,6 +41,7 @@ jobs:
           mkdir -p site/tests
           cp conformance/results/index.html site/index.html
           cp conformance/results/report.css site/report.css
+          cp conformance/results/ogp.png site/ogp.png
           cp conformance/results/tests/*.html site/tests/
           touch site/.nojekyll
 

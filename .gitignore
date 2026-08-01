@@ -12,6 +12,7 @@ vendor-bin/phpantom/bin/
 # `make render-report-html`, and rebuilt in CI on every push to master.
 conformance/results/index.html
 conformance/results/report.css
+conformance/results/ogp.png
 conformance/results/tests/
 
 # Some global excludes files ignore every lsp/ directory (editor caches).

@@ -60,6 +60,12 @@ if ($path === '/report.css') {
     return true;
 }
 
+if ($path === '/ogp.png') {
+    serve('image/png', $report->ogpImage());
+
+    return true;
+}
+
 if (preg_match('~^/tests/([^/]+)\.html$~', $path, $matches) === 1) {
     $detail = $report->detail($matches[1]);
 

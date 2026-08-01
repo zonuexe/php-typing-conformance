@@ -15,6 +15,7 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
 ├── conformance/
 │   ├── composer.json
 │   ├── fixtures/
+│   ├── lsp/
 │   ├── phpstan.dist.neon
 │   ├── phpstan-no-strict.neon
 │   ├── psalm.xml
@@ -42,8 +43,12 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
     ├── mago/
     ├── mir/
     ├── intelephense/
+    ├── devsense-php-ls/
     ├── noverify/
     ├── phan/
+    ├── phpactor/
+    ├── phpantom/
+    ├── php-lsp/
     ├── phpstan/
     └── psalm/
 ```
@@ -52,6 +57,7 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
 
 - `conformance/tests/`: one PHP test case per file, with inline expectations.
 - `conformance/fixtures/`: support files loaded together with a primary test case.
+- `conformance/lsp/`: the language-server measurement's fixtures, probe definitions (`probes.toml`) and per-server workspace config; results land in `conformance/results/lsp/`.
 - `conformance/src/`: discovery, expectation parsing, checker adapters, result persistence, and report generation.
 - `conformance/results/`: per-tool TOML results and `version.toml` (committed), plus the generated `index.html`, `tests/*.html` and `report.css` (git-ignored; built by `make render-report-html` and by CI).
 - `docs/`: design and architecture documents, plus `analyzer-adapters.md`, which
@@ -76,8 +82,26 @@ Concrete paths currently used:
 - `vendor-bin/phan/vendor/bin/phan`
 - `vendor-bin/mago/vendor/bin/mago`
 - `vendor-bin/mir/vendor/bin/mir`
+- `vendor-bin/phpactor/vendor/bin/phpactor` (installed only to be probed over LSP; its `composer.json` needs `minimum-stability: dev` + `prefer-stable` because phpactor requires `jetbrains/phpstorm-stubs dev-master`)
+- `vendor-bin/devsense-php-ls/node_modules/.bin/devsense-php-ls` (npm, `make install-devsense-php-ls`; separately versioned from the copy phpy bundles)
+- `vendor-bin/php-lsp/bin/php-lsp` and `vendor-bin/phpantom/bin/phpantom_lsp` (per-platform GitHub release binaries, git-ignored; `make install-php-lsp` / `make install-phpantom`)
 
 Intelephense is a Node LSP server (not a CLI). Install it with `make install-intelephense` (npm), and it is driven through the LSP client at `conformance/src/Checker/intelephense-client.mjs`. Binary: `vendor-bin/intelephense/node_modules/.bin/intelephense`.
+
+## Language-server probes
+
+`make run-lsp-probes` measures the language servers over LSP itself
+(capability handshake, one probe per capability, hover type conformance,
+and — when `~/repo/php/steins-survey/psysh` exists — real-project
+definition/references navigation) and writes committed TOMLs to
+`conformance/results/lsp/`. Fixtures and probe definitions live in
+`conformance/lsp/` (`probes.toml` for fixtures, `navigation.toml` for the
+line-pinned corpus ground truth), the client and runner in
+`conformance/src/Lsp/`. Method and hard-won traps (macOS `/var` realpath,
+Psalm's open-file-sensitive hover and its NAN crash on psysh, index-timing
+and `$/progress` waiting, Intelephense's docblock-anchored definition
+ranges) are documented in `docs/language-servers.md` — read it before
+touching the probe flow.
 
 ## NoVerify Exception
 

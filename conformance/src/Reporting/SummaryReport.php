@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Conformance\Reporting;
 
 use Conformance\Discovery\TestCase;
+use Conformance\Lsp\ProbeGrading;
 use Conformance\Metadata\AnalyzerCatalog;
 use Conformance\Metadata\LanguageServerCatalog;
 use Conformance\Result\ResultsUpdate;
@@ -114,6 +115,7 @@ final class SummaryReport
                 : $this->renderMatrix($resultsRoot, $testGroups, $styleCases, $tools, true),
             'analyzers' => $this->render('analyzers.phtml', ['analyzers' => $this->analyzers->all()]),
             'languageServers' => $this->render('language-servers.phtml', ['servers' => $this->languageServers->all()]),
+            'languageServerCapabilities' => $this->renderLanguageServerCapabilities($resultsRoot),
         ]);
 
         return $this->renderPage('PHP Typing Conformance Results', $body, false);
@@ -813,5 +815,238 @@ final class SummaryReport
         }
 
         return Toml::parseToArray($contents);
+    }
+
+    /**
+     * Columns of the measured capability matrix, in claims-table order for
+     * the tools both tables carry. run-lsp-probes.php decides which servers
+     * get measured; this list only decides who stands where.
+     */
+    private const LSP_TOOL_ORDER = ['intelephense', 'phpactor', 'psalm', 'devsense-php-ls', 'phpantom', 'php-lsp', 'phan'];
+
+    /** Row labels of the capability matrix, in ProbeGrading::COLUMNS order. */
+    private const LSP_CAPABILITY_LABELS = [
+        'push-diagnostics' => 'Diagnostics (push)',
+        'pull-diagnostics' => 'Diagnostics (pull)',
+        'hover' => 'Hover',
+        'completion' => 'Completion',
+        'signature-help' => 'Signature help',
+        'definition' => 'Go to definition',
+        'declaration' => 'Go to declaration',
+        'type-definition' => 'Go to type definition',
+        'implementation' => 'Go to implementation',
+        'references' => 'Find references',
+        'document-highlight' => 'Document highlight',
+        'document-symbol' => 'Document symbols',
+        'workspace-symbol' => 'Workspace symbols',
+        'code-action' => 'Code actions',
+        'code-lens' => 'Code lens',
+        'rename' => 'Rename',
+        'formatting' => 'Formatting',
+        'range-formatting' => 'Range formatting',
+        'folding-range' => 'Folding ranges',
+        'selection-range' => 'Selection ranges',
+        'semantic-tokens' => 'Semantic tokens',
+        'inlay-hint' => 'Inlay hints',
+        'call-hierarchy' => 'Call hierarchy',
+        'type-hierarchy' => 'Type hierarchy',
+    ];
+
+    /**
+     * The measured half of the language-server story: what each launchable
+     * server's initialize handshake advertised and how it answered the
+     * probes, from results/lsp/<tool>.toml. Renders to '' until the first
+     * probe run has been committed, so the claims table can ship alone.
+     */
+    private function renderLanguageServerCapabilities(string $resultsRoot): string
+    {
+        $results = [];
+        foreach (self::LSP_TOOL_ORDER as $tool) {
+            $path = "{$resultsRoot}/lsp/{$tool}.toml";
+            $contents = is_file($path) ? file_get_contents($path) : false;
+            if ($contents === false) {
+                continue;
+            }
+            $results[$tool] = Toml::parseToArray($contents);
+        }
+
+        if ($results === []) {
+            return '';
+        }
+
+        $tools = [];
+        foreach ($results as $tool => $data) {
+            // "Psalm 6.16.1@f1f5de..." carries the commit for provenance; the
+            // column header wants the human half, the title keeps it whole.
+            $version = (string) ($data['version'] ?? self::UNKNOWN_VERSION);
+            $short = explode('@', $version, 2)[0];
+            $tools[] = ['name' => $tool, 'version' => $short, 'versionFull' => $version];
+        }
+
+        $capabilityRows = [];
+        foreach (array_keys(ProbeGrading::COLUMNS) as $column) {
+            $cells = [];
+            foreach ($results as $data) {
+                $cells[] = $this->lspCapabilityCell($column, $data['capabilities'][$column] ?? []);
+            }
+            $capabilityRows[] = [
+                'label' => self::LSP_CAPABILITY_LABELS[$column] ?? $column,
+                'cells' => $cells,
+            ];
+        }
+
+        $hoverRows = [];
+        $caseIds = array_keys(((array) reset($results))['hover'] ?? []);
+        foreach ($caseIds as $caseId) {
+            $first = reset($results)['hover'][$caseId];
+            $cells = [];
+            foreach ($results as $data) {
+                $cells[] = $this->lspHoverCell($data['hover'][$caseId] ?? []);
+            }
+            $hoverRows[] = [
+                'feature' => (string) ($first['feature'] ?? $caseId),
+                'expected' => (string) ($first['expected'] ?? ''),
+                'cells' => $cells,
+            ];
+        }
+
+        $navCorpus = '';
+        $navFailures = [];
+        $navDefRows = [];
+        $navRefRows = [];
+        $withNavigation = array_filter($results, static fn (array $data): bool => isset($data['navigation']));
+        if ($withNavigation !== []) {
+            $first = (array) reset($withNavigation);
+            $navCorpus = (string) ($first['navigation_corpus'] ?? '');
+            foreach ($results as $tool => $data) {
+                if (isset($data['navigation_failure'])) {
+                    $navFailures[$tool] = (string) $data['navigation_failure'];
+                }
+            }
+            foreach (array_keys($first['navigation']) as $symbolId) {
+                $symbol = $first['navigation'][$symbolId];
+                $defCells = [];
+                $refCells = [];
+                foreach ($results as $data) {
+                    $row = $data['navigation'][$symbolId] ?? [];
+                    $defCells[] = $this->lspNavigationDefinitionCell($row);
+                    $refCells[] = $this->lspNavigationReferencesCell($row);
+                }
+                $label = ['kind' => (string) ($symbol['kind'] ?? $symbolId), 'name' => (string) ($symbol['name'] ?? '')];
+                $navDefRows[] = [...$label, 'cells' => $defCells];
+                $navRefRows[] = [...$label, 'cells' => $refCells];
+            }
+        }
+
+        return $this->render('language-server-capabilities.phtml', [
+            'tools' => $tools,
+            'capabilityRows' => $capabilityRows,
+            'hoverRows' => $hoverRows,
+            'navCorpus' => $navCorpus,
+            'navFailures' => $navFailures,
+            'navDefRows' => $navDefRows,
+            'navRefRows' => $navRefRows,
+        ]);
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     * @return array{class: string, text: string, note: string}
+     */
+    private function lspNavigationDefinitionCell(array $row): array
+    {
+        return match ((string) ($row['definition'] ?? '')) {
+            'correct' => ['class' => 'pass', 'text' => 'Correct', 'note' => 'A returned range in the right file covers the declaration line.'],
+            'wrong-location' => ['class' => 'fail', 'text' => 'Wrong location', 'note' => 'Answered, but landed at ' . (string) ($row['definition_actual'] ?? 'an unexpected location') . '.'],
+            'empty' => ['class' => 'fail', 'text' => 'No answer', 'note' => 'The request succeeded but returned no location.'],
+            'timeout' => ['class' => 'fail', 'text' => 'Timed out', 'note' => 'No response within the probe timeout.'],
+            'error' => ['class' => 'fail', 'text' => 'Error', 'note' => 'The request failed.'],
+            'skipped' => ['class' => 'not-supported', 'text' => '—', 'note' => 'Go to definition is not advertised by this server.'],
+            default => ['class' => 'unknown', 'text' => '?', 'note' => 'No measurement recorded.'],
+        };
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     * @return array{class: string, text: string, note: string}
+     */
+    private function lspNavigationReferencesCell(array $row): array
+    {
+        $found = (int) ($row['refs_found'] ?? 0);
+        $expected = (int) ($row['refs_expected'] ?? 0);
+        $extra = (int) ($row['refs_extra'] ?? 0);
+        $score = "{$found}/{$expected}" . ($extra > 0 ? " +{$extra}" : '');
+        $extraNote = $extra > 0 ? " {$extra} location(s) beyond the expected set were also returned." : '';
+        /** @var list<string> $missing */
+        $missing = $row['refs_missing'] ?? [];
+        $missingNote = $missing === [] ? '' : ' Missing: ' . implode(', ', $missing) . '.';
+
+        return match ((string) ($row['references'] ?? '')) {
+            'all' => ['class' => 'pass', 'text' => $score, 'note' => 'Every expected reference was enumerated.' . $extraNote],
+            'partial' => ['class' => 'partial', 'text' => $score, 'note' => 'Part of the expected reference set was enumerated.' . $missingNote . $extraNote],
+            'none' => ['class' => 'fail', 'text' => $score, 'note' => 'No expected reference was enumerated.' . $extraNote],
+            'timeout' => ['class' => 'fail', 'text' => 'Timed out', 'note' => 'No response within the probe timeout.'],
+            'error' => ['class' => 'fail', 'text' => 'Error', 'note' => 'The request failed.'],
+            'skipped' => ['class' => 'not-supported', 'text' => '—', 'note' => 'Find references is not advertised by this server.'],
+            default => ['class' => 'unknown', 'text' => '?', 'note' => 'No measurement recorded.'],
+        };
+    }
+
+    /**
+     * One capability cell: the handshake's claim and the probe's answer,
+     * folded into a word. The vocabulary deliberately never says "supported"
+     * — every value states what was observed and nothing more.
+     *
+     * @param array<string, mixed> $row
+     * @return array{class: string, text: string, note: string}
+     */
+    private function lspCapabilityCell(string $column, array $row): array
+    {
+        $probe = (string) ($row['probe'] ?? 'not-probed');
+
+        if ($column === 'push-diagnostics') {
+            // The push model has no capability flag to advertise, so this row
+            // is behaviour alone: did the session ever carry diagnostics for
+            // the fixture holding the deliberate type error?
+            return $probe === 'answered'
+                ? ['class' => 'pass', 'text' => 'Publishes', 'note' => 'The server published diagnostics for the fixture with the deliberate type error.']
+                : ['class' => 'not-supported', 'text' => 'Silent', 'note' => 'The server never published a diagnostic for the fixture with the deliberate type error. The protocol has no capability flag for push diagnostics, so behaviour is the whole measurement.'];
+        }
+
+        if (($row['advertised'] ?? false) !== true) {
+            return ['class' => 'not-supported', 'text' => '—', 'note' => 'Not advertised in the initialize handshake.'];
+        }
+
+        $via = ($row['via'] ?? '') === 'dynamic' ? ' (registered dynamically after initialize)' : '';
+
+        return match ($probe) {
+            'answered' => ['class' => 'pass', 'text' => 'Answered', 'note' => 'Advertised' . $via . ', and the probe request got a non-empty answer.'],
+            'empty' => ['class' => 'partial', 'text' => 'Empty', 'note' => 'Advertised' . $via . ', but the probe request came back empty at a position where an answer was expected.'],
+            'timeout' => ['class' => 'fail', 'text' => 'No answer', 'note' => 'Advertised' . $via . ', but the probe request got no response before the timeout.'],
+            'gated' => ['class' => 'by-design', 'text' => 'Gated', 'note' => trim('Advertised, but the server refused the call by licence: ' . (string) ($row['note'] ?? ''))],
+            'error' => ['class' => 'fail', 'text' => 'Error', 'note' => trim('Advertised' . $via . ', but the probe request failed: ' . (string) ($row['note'] ?? ''))],
+            default => ['class' => 'reported', 'text' => 'Advertised', 'note' => 'Advertised in the handshake' . $via . '; no probe exercises this capability yet, so this cell records the claim alone.'],
+        };
+    }
+
+    /**
+     * One hover-conformance cell; the note carries what the server actually
+     * showed, so a "Widened / other" verdict is always auditable in place.
+     *
+     * @param array<string, mixed> $row
+     * @return array{class: string, text: string, note: string}
+     */
+    private function lspHoverCell(array $row): array
+    {
+        $shown = trim((string) ($row['shown'] ?? ''));
+        $shownNote = $shown === '' ? '' : "The server showed:\n" . $shown;
+
+        return match ((string) ($row['verdict'] ?? '')) {
+            'precise' => ['class' => 'pass', 'text' => 'Precise', 'note' => $shownNote],
+            'other' => ['class' => 'partial', 'text' => 'Widened / other', 'note' => $shownNote],
+            'none' => ['class' => 'fail', 'text' => 'No type shown', 'note' => 'Hover answered nothing at this position.'],
+            'not-advertised' => ['class' => 'not-supported', 'text' => '—', 'note' => 'Hover is not advertised by this server.'],
+            default => ['class' => 'unknown', 'text' => '?', 'note' => 'No measurement recorded.'],
+        };
     }
 }

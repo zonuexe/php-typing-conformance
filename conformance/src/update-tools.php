@@ -42,7 +42,11 @@ const LANGUAGE_SERVER_SECTION = '# Language servers.';
  * `bin` is a vendor-bin namespace: a Composer one is updated by requiring the
  * newest release into it, an npm one by installing the newest tag. Tools with
  * no entry are read about but not installed here -- pzoom is built from a
- * local checkout, and the language servers are not run by the suite at all.
+ * local checkout, and phpantom and php-lsp ship only as per-platform GitHub
+ * release binaries (installed by `make install-phpantom` / `make
+ * install-php-lsp`, which this script cannot version-track). phpactor and
+ * devsense-php-ls have entries for the opposite reason: they are installed
+ * purely to be probed over LSP.
  *
  * qodana is the one entry that is measured without being installable: its
  * licence rules out shipping the linter, so its column comes from a PhpStorm
@@ -59,6 +63,8 @@ const INSTALLS = [
     'phpy' => ['npm', 'phpy', 'phpy'],
     'mir' => ['composer', 'mir', 'miropen/mir-php'],
     'steins' => ['composer', 'steins', 'typedduck/steins'],
+    'phpactor' => ['composer', 'phpactor', 'phpactor/phpactor'],
+    'devsense-php-ls' => ['npm', 'devsense-php-ls', 'devsense-php-ls'],
 ];
 
 $rootDir = dirname(__DIR__);

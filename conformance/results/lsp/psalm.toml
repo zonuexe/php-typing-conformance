@@ -1,0 +1,219 @@
+tool = "psalm"
+version = "Psalm 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac"
+server_info = "Psalm Language Server 6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac"
+dynamic_registrations = []
+raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":1,\"willSave\":null,\"willSaveWaitUntil\":null,\"save\":{\"includeText\":true}},\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":false,\"triggerCharacters\":[\"$\",\">\",\":\",\"[\",\"(\",\",\",\" \"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":null,\"implementationProvider\":null,\"referencesProvider\":false,\"documentHighlightProvider\":false,\"documentSymbolProvider\":false,\"workspaceSymbolProvider\":false,\"codeActionProvider\":null,\"codeLensProvider\":null,\"documentFormattingProvider\":null,\"documentRangeFormattingProvider\":null,\"documentOnTypeFormattingProvider\":null,\"renameProvider\":null,\"executeCommandProvider\":null,\"xworkspaceReferencesProvider\":null,\"xdefinitionProvider\":null,\"dependenciesProvider\":null}"
+navigation_corpus = "psy/psysh@0e8ec1af5990"
+
+[capabilities.push-diagnostics]
+advertised = false
+via = "n/a"
+probe = "answered"
+
+[capabilities.pull-diagnostics]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.hover]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.completion]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.signature-help]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.definition]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.declaration]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.type-definition]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.implementation]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.references]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.document-highlight]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.document-symbol]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.workspace-symbol]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.code-action]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.code-lens]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.rename]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.formatting]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.range-formatting]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.folding-range]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.selection-range]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.semantic-tokens]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.inlay-hint]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.call-hierarchy]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.type-hierarchy]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[hover.native-return]
+feature = "Native return type"
+expected = "int"
+shown = "```php\n<?php declare(strict_types=1);\nint<1, max>\n```"
+verdict = "precise"
+
+[hover.narrowed-union]
+feature = "Union narrowed by is_int()"
+expected = "int"
+shown = "```php\n<?php declare(strict_types=1);\nint\n```"
+verdict = "precise"
+
+[hover.array-shape]
+feature = "Array shape from @return"
+expected = "array{name: string, age: int}"
+shown = "```php\n<?php declare(strict_types=1);\narray{age: int, name: string}\n```"
+verdict = "precise"
+
+[hover.int-range]
+feature = "Integer range from @var"
+expected = "int<1, 100>"
+shown = "```php\n<?php declare(strict_types=1);\nint<1, 100>\n```"
+verdict = "precise"
+
+[hover.generic-call]
+feature = "@template T resolved through a call"
+expected = "string"
+shown = "```php\n<?php declare(strict_types=1);\nstring\n```"
+verdict = "precise"
+
+[navigation.function]
+kind = "Function"
+name = "Psy\\info()"
+definition = "correct"
+refs_expected = 13
+references = "skipped"
+refs_found = 0
+refs_extra = 0
+
+[navigation.instance-method]
+kind = "Instance method"
+name = "Psy\\Context::getAll()"
+definition = "correct"
+refs_expected = 10
+references = "skipped"
+refs_found = 0
+refs_extra = 0
+
+[navigation.static-method]
+kind = "Static method"
+name = "Psy\\Util\\Str::unvis()"
+definition = "correct"
+refs_expected = 4
+references = "skipped"
+refs_found = 0
+refs_extra = 0
+
+[navigation.local-variable]
+kind = "Local variable"
+name = "$output in Str::unvis()"
+definition = "correct"
+refs_expected = 2
+references = "skipped"
+refs_found = 0
+refs_extra = 0
+
+[navigation.class-constant]
+kind = "Class constant"
+name = "Psy\\Shell::VERSION"
+definition = "correct"
+refs_expected = 21
+references = "skipped"
+refs_found = 0
+refs_extra = 0
+
+[navigation.instance-property]
+kind = "Instance property"
+name = "Psy\\Context::$scopeVariables"
+definition = "correct"
+refs_expected = 5
+references = "skipped"
+refs_found = 0
+refs_extra = 0
+
+[navigation.static-property]
+kind = "Static property"
+name = "Psy\\Util\\Docblock::$vectors"
+definition = "correct"
+refs_expected = 6
+references = "skipped"
+refs_found = 0
+refs_extra = 0

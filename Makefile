@@ -1,4 +1,4 @@
-.PHONY: init-submodules pull-submodules render-report-html serve update-tools install-intelephense install-phpy
+.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
@@ -55,8 +55,39 @@ install-phpy:
 	cd vendor-bin/phpy && npm install
 	find vendor-bin/phpy/node_modules -name 'devsense.php.ls' -exec chmod +x {} \;
 
+# The standalone DEVSENSE language server, versioned separately from the copy
+# phpy bundles; probed over LSP by run-lsp-probes.
+install-devsense-php-ls:
+	cd vendor-bin/devsense-php-ls && npm install
+	find vendor-bin/devsense-php-ls/node_modules -name 'devsense.php.ls' -exec chmod +x {} \;
+
+# php-lsp and PHPantom ship only as per-platform binaries on GitHub releases
+# (no Packagist/npm package), so they are fetched by tag. Keep the versions in
+# step with conformance/data/releases.toml when bumping.
+PHP_LSP_VERSION := 0.22.0
+PHPANTOM_VERSION := 0.9.0
+LSP_BIN_PLATFORM := aarch64-apple-darwin
+
+install-php-lsp:
+	mkdir -p vendor-bin/php-lsp/bin
+	gh release download v$(PHP_LSP_VERSION) --repo jorgsowa/php-lsp \
+		-p 'php-lsp-$(LSP_BIN_PLATFORM).tar.gz' -O - | tar xz -C vendor-bin/php-lsp/bin
+	chmod +x vendor-bin/php-lsp/bin/php-lsp
+
+install-phpantom:
+	mkdir -p vendor-bin/phpantom/bin
+	gh release download $(PHPANTOM_VERSION) --repo phpantom-dev/phpantom_lsp \
+		-p 'phpantom_lsp-$(LSP_BIN_PLATFORM).tar.gz' -O - | tar xz -C vendor-bin/phpantom/bin
+	chmod +x vendor-bin/phpantom/bin/phpantom_lsp
+
 render-report-html:
 	php conformance/src/render-report-html.php
+
+# Launch every runnable language server headless, record what its initialize
+# handshake advertises and how it answers the probes in conformance/lsp/,
+# then re-render the report to publish the new measurements.
+run-lsp-probes:
+	php conformance/src/run-lsp-probes.php
 
 # Report which tracked tools have a newer release. `make update-tools APPLY=1`
 # installs them and records the new releases; re-run the suite afterwards.

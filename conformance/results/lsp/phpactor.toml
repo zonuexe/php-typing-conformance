@@ -1,0 +1,223 @@
+tool = "phpactor"
+version = "Phpactor 2026.07.22.0"
+server_info = "__root__ dev-master"
+dynamic_registrations = []
+raw_capabilities = "{\"textDocumentSync\":1,\"completionProvider\":{\"triggerCharacters\":[\":\",\">\",\"$\",\"[\",\"@\",\"(\",\"'\",\"\\\"\",\"\\\\\"],\"resolveProvider\":true},\"hoverProvider\":true,\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\",\"@\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"refactor.class.simplify\",\"quickfix.import_class\",\"quickfix.promote_constructor\",\"quickfix.remove_unused_imports\",\"quickfix.promote_constructor_public\",\"quickfix.complete_constructor\",\"quickfix.fill.object\",\"quickfix.complete_constructor_public\",\"quickfix.here_doc_provider\",\"refactor.extract.constant\",\"refactor.extract.method\",\"quickfix.generate_member\",\"quickfix.create_class\",\"quickfix.add_override_attribute\",\"quickfix.add_missing_return_types\",\"quickfix.add_missing_params\",\"quickfix.add_missing_docblocks_return\",\"quickfix.fill.matchArms\",\"quickfix.add_missing_properties\",\"quickfix.generate_mutators\",\"quickfix.correct_variable_name\",\"quickfix.create_unresolable_class\",\"quickfix.generate_decorator\",\"refactor\",\"refactor.extract.expression\",\"quickfix.implement_contracts\",\"quickfix.fix_namespace_class_name\",\"quickfix.add_missing_class_generic\",\"quickfix.generate_accessors\",\"quickfix.override_method\"]},\"workspaceSymbolProvider\":true,\"renameProvider\":{\"prepareProvider\":true},\"selectionRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"name_import\",\"transform\",\"create_class\",\"generate_member\",\"extract_method\",\"replace_qualifier_with_import\",\"extract_constant\",\"generate_accessors\",\"generate_mutators\",\"import_all_unresolved_names\",\"extract_expression\",\"generate_decorator\",\"override_method\"]},\"inlineValueProvider\":true,\"workspace\":{\"fileOperations\":{\"willRename\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\"}}]}}},\"experimental\":{\"xevaluatableExpressionProvider\":true}}"
+navigation_corpus = "psy/psysh@0e8ec1af5990"
+
+[capabilities.push-diagnostics]
+advertised = false
+via = "n/a"
+probe = "empty"
+
+[capabilities.pull-diagnostics]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.hover]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.completion]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.signature-help]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.definition]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.declaration]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.type-definition]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.implementation]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.references]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.document-highlight]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.document-symbol]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.workspace-symbol]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.code-action]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.code-lens]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.rename]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.formatting]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.range-formatting]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.folding-range]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.selection-range]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.semantic-tokens]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.inlay-hint]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.call-hierarchy]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.type-hierarchy]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[hover.native-return]
+feature = "Native return type"
+expected = "int"
+shown = "variable length: `int<0, max>`"
+verdict = "precise"
+
+[hover.narrowed-union]
+feature = "Union narrowed by is_int()"
+expected = "int"
+shown = "variable value: `int`"
+verdict = "precise"
+
+[hover.array-shape]
+feature = "Array shape from @return"
+expected = "array{name: string, age: int}"
+shown = "variable user: `array{name:string,age:int}`"
+verdict = "precise"
+
+[hover.int-range]
+feature = "Integer range from @var"
+expected = "int<1, 100>"
+shown = "variable percent: `int<1, 100>`"
+verdict = "precise"
+
+[hover.generic-call]
+feature = "@template T resolved through a call"
+expected = "string"
+shown = "variable firstName: `T`"
+verdict = "other"
+
+[navigation.function]
+kind = "Function"
+name = "Psy\\info()"
+definition = "correct"
+refs_expected = 13
+refs_found = 2
+refs_extra = 0
+references = "partial"
+refs_missing = ["src/functions.php:137", "src/Shell.php:126", "test/FunctionsTest.php:37", "test/FunctionsTest.php:38", "test/FunctionsTest.php:52", "test/FunctionsTest.php:68", "test/FunctionsTest.php:69", "test/FunctionsTest.php:73", "test/FunctionsTest.php:91", "test/FunctionsTest.php:92", "test/FunctionsTest.php:102"]
+
+[navigation.instance-method]
+kind = "Instance method"
+name = "Psy\\Context::getAll()"
+definition = "correct"
+refs_expected = 10
+refs_found = 9
+refs_extra = 0
+references = "partial"
+refs_missing = ["src/Command/ListCommand/VariableEnumerator.php:81"]
+
+[navigation.static-method]
+kind = "Static method"
+name = "Psy\\Util\\Str::unvis()"
+definition = "correct"
+refs_expected = 4
+refs_found = 4
+refs_extra = 0
+references = "all"
+
+[navigation.local-variable]
+kind = "Local variable"
+name = "$output in Str::unvis()"
+definition = "correct"
+refs_expected = 2
+refs_found = 2
+refs_extra = 0
+references = "all"
+
+[navigation.class-constant]
+kind = "Class constant"
+name = "Psy\\Shell::VERSION"
+definition = "correct"
+refs_expected = 21
+refs_found = 20
+refs_extra = 0
+references = "partial"
+refs_missing = ["src/functions.php:383"]
+
+[navigation.instance-property]
+kind = "Instance property"
+name = "Psy\\Context::$scopeVariables"
+definition = "correct"
+refs_expected = 5
+refs_found = 5
+refs_extra = 0
+references = "all"
+
+[navigation.static-property]
+kind = "Static property"
+name = "Psy\\Util\\Docblock::$vectors"
+definition = "correct"
+refs_expected = 6
+refs_found = 4
+refs_extra = 0
+references = "partial"
+refs_missing = ["src/Formatter/DocblockFormatter.php:46", "src/Formatter/DocblockFormatter.php:54"]

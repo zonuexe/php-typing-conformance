@@ -56,14 +56,12 @@ namespace Conformance\Metadata;
  * Founder, organization and lead maintainer follow the analyzer table's rules
  * exactly — see [[OrganizationKind]] and [[LeadMaintainer]].
  *
- * Deferred: which LSP capabilities each server actually advertises is not a
- * column yet. The material for it exists — Psalm's server declares
- * documentSymbolProvider, workspaceSymbolProvider, referencesProvider and
- * documentHighlightProvider false outright and has no rename or formatting
- * provider, while Intelephense gates rename and inlay hints behind a paid key —
- * but capability names are a fixed protocol vocabulary and deserve their own
- * compatibility matrix rather than more prose in bundled(), which is where that
- * detail currently sits as a hover note.
+ * Which LSP capabilities a server actually advertises is deliberately NOT
+ * recorded here: that is a measurement, not a claim, and it lives in
+ * results/lsp/<tool>.toml as written by src/run-lsp-probes.php — the report
+ * renders it as its own matrix below this table. The division of labour is
+ * strict: this class stores what a project says about itself, the probe run
+ * stores what its initialize handshake and probe answers actually did.
  */
 abstract class LanguageServerMetadata
 {

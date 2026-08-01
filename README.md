@@ -93,6 +93,33 @@ its target from `require.php` in `composer.json` and picks the *lowest* version
 the constraint admits. Bumping the pinned line means re-running the suite, since
 it can move any tool's verdict.
 
+## The language servers, measured over the protocol
+
+The analyzers are measured through their CLIs; the language servers get their
+own measurement over LSP itself:
+
+```sh
+make run-lsp-probes
+```
+
+That launches every server headless — Intelephense, Phpactor, Psalm,
+devsense-php-ls, PHPantom, php-lsp, Phan — records what each `initialize`
+handshake advertises,
+exercises one probe per advertised capability against a small fixture
+workspace, and asks the typing question over the protocol too: hovering a
+variable whose type the annotation or the narrowing established, does the
+server show that type? When the steins-survey checkout is present, a fourth
+layer measures dependency-graph navigation on a real project (psysh): per
+symbol kind, does go-to-definition land on the declaration, and how much of
+the complete reference set does find-references enumerate from the server's
+own index? Results are committed as one TOML per server under
+`conformance/results/lsp/` and rendered as their own matrices in the report,
+strictly apart from the reference table of what each project claims about
+itself. php-lsp and PHPantom ship only as per-platform GitHub release
+binaries; `make install-php-lsp` and `make install-phpantom` fetch them.
+[`docs/language-servers.md`](docs/language-servers.md) documents the method
+and the traps.
+
 ## The report
 
 Running the analyzers writes one TOML file per tool and test under

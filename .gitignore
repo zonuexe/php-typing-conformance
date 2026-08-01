@@ -3,8 +3,20 @@ conformance/vendor/*
 vendor-bin/*/vendor/*
 vendor-bin/*/node_modules/
 
+# Per-platform GitHub-release binaries, fetched by make install-php-lsp /
+# install-phpantom; too large and too platform-bound to commit.
+vendor-bin/php-lsp/bin/
+vendor-bin/phpantom/bin/
+
 # The report is generated -- from the committed results/<tool>/*.toml -- by
 # `make render-report-html`, and rebuilt in CI on every push to master.
 conformance/results/index.html
 conformance/results/report.css
 conformance/results/tests/
+
+# Some global excludes files ignore every lsp/ directory (editor caches).
+# Here lsp/ directories are real, committed content -- the language-server
+# fixtures, probe code and measurements -- and a repository .gitignore
+# outranks core.excludesFile, so re-include them explicitly.
+!lsp/
+!Lsp/

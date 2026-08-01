@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- The Psalm config the probe workspace carries. Mirrors conformance/psalm.xml
+     (same phpVersion and errorLevel) so the server analyses the fixtures on
+     the same terms the CLI column analyses the tests. -->
+<psalm
+    phpVersion="8.5"
+    errorLevel="1"
+    findUnusedCode="false"
+    findUnusedBaselineEntry="false"
+    resolveFromConfigFile="true"
+>
+    <projectFiles>
+        <directory name="." />
+    </projectFiles>
+</psalm>

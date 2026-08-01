@@ -16,6 +16,7 @@ variables it expects.
 | `matrix.phtml` | One results matrix (soundness, or style) |
 | `analyzers.phtml` | Reference table of the analyzers |
 | `language-servers.phtml` | Reference table of the language servers |
+| `language-server-capabilities.phtml` | Measured LSP capability matrix and hover type conformance, from `results/lsp/*.toml` |
 | `detail.phtml` | One per-test page |
 | `highlight.phtml` | Shiki syntax highlighting for the detail pages |
 

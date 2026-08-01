@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- The Psalm config the navigation corpus workspace carries. errorLevel 8:
+     the corpus is real third-party code and its diagnostics are not the
+     measurement here — only definition/reference navigation is.
+
+     src only, and not for speed: Psalm 6.16.1 crashes while scanning psysh's
+     test/Command/ListCommand/ConstantEnumeratorTest.php — its
+     `const NAN_CONSTANT = \NAN;` makes TLiteralFloat coerce NAN to string,
+     which is a PHP error under 8.5, and the whole language server dies in
+     initialize. Every navigation probe lands in src/, so nothing measured is
+     lost. Upstream: vimeo/psalm#11831, fixed on master by ca151242 but in no
+     published release yet — widen projectFiles back to test/ once a release
+     ships the fix. -->
+<psalm
+    errorLevel="8"
+    findUnusedCode="false"
+    findUnusedBaselineEntry="false"
+    resolveFromConfigFile="true"
+>
+    <projectFiles>
+        <directory name="src" />
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
+    </projectFiles>
+</psalm>

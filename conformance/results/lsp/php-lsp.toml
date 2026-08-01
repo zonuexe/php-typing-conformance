@@ -1,0 +1,219 @@
+tool = "php-lsp"
+version = "php-lsp 0.22.0"
+server_info = ""
+dynamic_registrations = ["workspace/didChangeConfiguration", "workspace/didChangeWatchedFiles"]
+raw_capabilities = "{\"callHierarchyProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":true},\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"(\",\"[\",\"\\\\\"]},\"declarationProvider\":true,\"definitionProvider\":true,\"diagnosticProvider\":{\"interFileDependencies\":true,\"workspaceDiagnostics\":true},\"documentFormattingProvider\":true,\"documentHighlightProvider\":true,\"documentLinkProvider\":{\"resolveProvider\":false},\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"}\",\"moreTriggerCharacter\":[\"\\n\"]},\"documentRangeFormattingProvider\":true,\"documentSymbolProvider\":true,\"executeCommandProvider\":{\"commands\":[\"php-lsp.runTest\"]},\"foldingRangeProvider\":true,\"hoverProvider\":true,\"implementationProvider\":true,\"inlayHintProvider\":{\"resolveProvider\":true},\"inlineValueProvider\":[],\"linkedEditingRangeProvider\":true,\"monikerProvider\":true,\"referencesProvider\":true,\"renameProvider\":{\"prepareProvider\":true},\"selectionRangeProvider\":true,\"semanticTokensProvider\":{\"full\":{\"delta\":true},\"legend\":{\"tokenModifiers\":[\"declaration\",\"static\",\"abstract\",\"readonly\",\"deprecated\"],\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"function\",\"method\",\"property\",\"variable\",\"parameter\",\"type\",\"string\",\"number\",\"comment\",\"enumMember\"]},\"range\":true},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"]},\"textDocumentSync\":{\"change\":2,\"openClose\":true,\"save\":{\"includeText\":false},\"willSave\":true,\"willSaveWaitUntil\":true},\"typeDefinitionProvider\":true,\"workspace\":{\"fileOperations\":{\"didCreate\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"didDelete\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"didRename\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willCreate\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willDelete\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willRename\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]}},\"workspaceFolders\":{\"changeNotifications\":true,\"supported\":true}},\"workspaceSymbolProvider\":{\"resolveProvider\":true}}"
+navigation_corpus = "psy/psysh@0e8ec1af5990"
+
+[capabilities.push-diagnostics]
+advertised = false
+via = "n/a"
+probe = "answered"
+
+[capabilities.pull-diagnostics]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.hover]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.completion]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.signature-help]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.definition]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.declaration]
+advertised = true
+via = "static"
+probe = "not-probed"
+
+[capabilities.type-definition]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.implementation]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.references]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.document-highlight]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.document-symbol]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.workspace-symbol]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.code-action]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.code-lens]
+advertised = true
+via = "static"
+probe = "not-probed"
+
+[capabilities.rename]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.formatting]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.range-formatting]
+advertised = true
+via = "static"
+probe = "not-probed"
+
+[capabilities.folding-range]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.selection-range]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.semantic-tokens]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.inlay-hint]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.call-hierarchy]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.type-hierarchy]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[hover.native-return]
+feature = "Native return type"
+expected = "int"
+shown = "`$length` `7`"
+verdict = "precise"
+
+[hover.narrowed-union]
+feature = "Union narrowed by is_int()"
+expected = "int"
+shown = "`$value` `int`"
+verdict = "precise"
+
+[hover.array-shape]
+feature = "Array shape from @return"
+expected = "array{name: string, age: int}"
+shown = "`$user` `array{'name': string, 'age': int}`"
+verdict = "precise"
+
+[hover.int-range]
+feature = "Integer range from @var"
+expected = "int<1, 100>"
+shown = "`$percent` `int<1, 100>`"
+verdict = "precise"
+
+[hover.generic-call]
+feature = "@template T resolved through a call"
+expected = "string"
+shown = "`$firstName` `string`"
+verdict = "precise"
+
+[navigation.function]
+kind = "Function"
+name = "Psy\\info()"
+definition = "timeout"
+refs_expected = 13
+references = "timeout"
+refs_found = 0
+refs_extra = 0
+
+[navigation.instance-method]
+kind = "Instance method"
+name = "Psy\\Context::getAll()"
+definition = "timeout"
+refs_expected = 10
+references = "timeout"
+refs_found = 0
+refs_extra = 0
+
+[navigation.static-method]
+kind = "Static method"
+name = "Psy\\Util\\Str::unvis()"
+definition = "timeout"
+refs_expected = 4
+references = "timeout"
+refs_found = 0
+refs_extra = 0
+
+[navigation.local-variable]
+kind = "Local variable"
+name = "$output in Str::unvis()"
+definition = "timeout"
+refs_expected = 2
+references = "timeout"
+refs_found = 0
+refs_extra = 0
+
+[navigation.class-constant]
+kind = "Class constant"
+name = "Psy\\Shell::VERSION"
+definition = "timeout"
+refs_expected = 21
+references = "timeout"
+refs_found = 0
+refs_extra = 0
+
+[navigation.instance-property]
+kind = "Instance property"
+name = "Psy\\Context::$scopeVariables"
+definition = "timeout"
+refs_expected = 5
+references = "timeout"
+refs_found = 0
+refs_extra = 0
+
+[navigation.static-property]
+kind = "Static property"
+name = "Psy\\Util\\Docblock::$vectors"
+definition = "timeout"
+refs_expected = 6
+references = "timeout"
+refs_found = 0
+refs_extra = 0

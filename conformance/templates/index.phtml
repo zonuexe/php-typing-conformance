@@ -12,6 +12,7 @@ declare(strict_types=1);
  * @var string $styleMatrix     '' when the suite has no style tests
  * @var string $analyzers
  * @var string $languageServers
+ * @var string $languageServerCapabilities '' until a probe run has been committed
  */
 
 ?>
@@ -31,3 +32,4 @@ declare(strict_types=1);
 <?php endif; ?>
 <?= $analyzers ?>
 <?= $languageServers ?>
+<?= $languageServerCapabilities ?>

@@ -1,0 +1,153 @@
+# Can a language server enumerate a real project's dependency graph?
+#
+# Each symbol below names one declaration in the psysh checkout of the
+# steins-survey corpus, one use site to jump FROM (go to definition must land
+# on the declaration line), and the complete set of code references the
+# server should enumerate when asked from the declaration (find references
+# with includeDeclaration). The corpus is pinned to a commit, so positions
+# are line numbers, verified against the checkout at load time; `at` names
+# the token within that line and only supplies the column.
+#
+# The reference lists are complete over src/ and test/ by construction
+# (assembled by exhaustive grep, code references only — mentions inside
+# docblocks and string literals deliberately excluded). Recall is therefore
+# measurable as found/expected, and anything else a server returns is
+# counted as an extra. The corpus sets two deliberate precision traps:
+# Psy\info() coexists with the unrelated FakePsrLogger::info(), and
+# Context::getAll() with several other getAll() methods (History, etc.), so
+# a server that matches references by name alone reports inflated extras.
+#
+# One kind the user asked for is absent by honest necessity: psysh defines
+# NO namespace-level constant that any code references (its SOME_CONSTANT /
+# NS_CONST test constants are only ever named inside string literals).
+# Class constants are covered by Shell::VERSION below; measuring define()/
+# const navigation needs a corpus from another era — ec-cube2 in the same
+# survey is the natural candidate — and is left for a follow-up.
+
+root = "~/repo/php/steins-survey/psysh"
+commit = "0e8ec1af599068441378bacf60f44a5975fb3d4f"
+project = "psy/psysh"
+
+[[symbol]]
+id = "function"
+kind = "Function"
+name = "Psy\\info()"
+decl = { file = "src/functions.php", line = 137, at = "info" }
+probe = { file = "src/Shell.php", line = 126, at = "info" }
+refs = [
+  { file = "src/functions.php", line = 137 },
+  { file = "src/functions.php", line = 618 },
+  { file = "src/functions.php", line = 619 },
+  { file = "src/Shell.php", line = 126 },
+  { file = "test/FunctionsTest.php", line = 37 },
+  { file = "test/FunctionsTest.php", line = 38 },
+  { file = "test/FunctionsTest.php", line = 52 },
+  { file = "test/FunctionsTest.php", line = 68 },
+  { file = "test/FunctionsTest.php", line = 69 },
+  { file = "test/FunctionsTest.php", line = 73 },
+  { file = "test/FunctionsTest.php", line = 91 },
+  { file = "test/FunctionsTest.php", line = 92 },
+  { file = "test/FunctionsTest.php", line = 102 },
+]
+
+[[symbol]]
+id = "instance-method"
+kind = "Instance method"
+name = "Psy\\Context::getAll()"
+decl = { file = "src/Context.php", line = 95, at = "getAll" }
+probe = { file = "src/Shell.php", line = 1202, at = "getAll" }
+refs = [
+  { file = "src/Context.php", line = 95 },
+  { file = "src/Shell.php", line = 1202 },
+  { file = "src/Shell.php", line = 1272 },
+  { file = "src/TabCompletion/Matcher/AbstractContextAwareMatcher.php", line = 63 },
+  { file = "src/Completion/Source/VariableSource.php", line = 46 },
+  { file = "src/Command/ReflectingCommand.php", line = 266 },
+  { file = "src/Command/ListCommand/VariableEnumerator.php", line = 81 },
+  { file = "test/ContextTest.php", line = 36 },
+  { file = "test/ContextTest.php", line = 68 },
+  { file = "test/ContextTest.php", line = 102 },
+]
+
+[[symbol]]
+id = "static-method"
+kind = "Static method"
+name = "Psy\\Util\\Str::unvis()"
+decl = { file = "src/Util/Str.php", line = 60, at = "unvis" }
+probe = { file = "src/Readline/Libedit.php", line = 120, at = "unvis" }
+refs = [
+  { file = "src/Util/Str.php", line = 60 },
+  { file = "src/Readline/Libedit.php", line = 120 },
+  { file = "src/Readline/Interactive/Input/History.php", line = 493 },
+  { file = "test/Util/StrTest.php", line = 24 },
+]
+
+[[symbol]]
+id = "local-variable"
+kind = "Local variable"
+name = "$output in Str::unvis()"
+decl = { file = "src/Util/Str.php", line = 62, at = "output" }
+probe = { file = "src/Util/Str.php", line = 65, at = "output" }
+refs = [
+  { file = "src/Util/Str.php", line = 62 },
+  { file = "src/Util/Str.php", line = 65 },
+]
+
+[[symbol]]
+id = "class-constant"
+kind = "Class constant"
+name = "Psy\\Shell::VERSION"
+decl = { file = "src/Shell.php", line = 74, at = "VERSION" }
+probe = { file = "src/VersionUpdater/NoopChecker.php", line = 28, at = "VERSION" }
+refs = [
+  { file = "src/Shell.php", line = 74 },
+  { file = "src/Shell.php", line = 121 },
+  { file = "src/Shell.php", line = 2457 },
+  { file = "src/Shell.php", line = 2618 },
+  { file = "src/functions.php", line = 153 },
+  { file = "src/functions.php", line = 383 },
+  { file = "src/ManualUpdater/GitHubChecker.php", line = 148 },
+  { file = "src/VersionUpdater/NoopChecker.php", line = 28 },
+  { file = "src/VersionUpdater/SelfUpdate.php", line = 69 },
+  { file = "src/VersionUpdater/SelfUpdate.php", line = 70 },
+  { file = "src/VersionUpdater/SelfUpdate.php", line = 86 },
+  { file = "src/VersionUpdater/Downloader/CurlDownloader.php", line = 55 },
+  { file = "src/VersionUpdater/GitHubChecker.php", line = 26 },
+  { file = "src/VersionUpdater/GitHubChecker.php", line = 65 },
+  { file = "test/ShellTest.php", line = 235 },
+  { file = "test/ShellTest.php", line = 1225 },
+  { file = "test/ShellTest.php", line = 1234 },
+  { file = "test/VersionUpdater/GitHubCheckerTest.php", line = 63 },
+  { file = "test/VersionUpdater/NoopCheckerTest.php", line = 24 },
+  { file = "test/VersionUpdater/SelfUpdateTest.php", line = 206 },
+  { file = "test/Command/PsyVersionCommandTest.php", line = 28 },
+]
+
+[[symbol]]
+id = "instance-property"
+kind = "Instance property"
+name = "Psy\\Context::$scopeVariables"
+decl = { file = "src/Context.php", line = 30, at = "scopeVariables" }
+probe = { file = "src/Context.php", line = 97, at = "scopeVariables" }
+refs = [
+  { file = "src/Context.php", line = 30 },
+  { file = "src/Context.php", line = 83 },
+  { file = "src/Context.php", line = 84 },
+  { file = "src/Context.php", line = 97 },
+  { file = "src/Context.php", line = 140 },
+]
+
+[[symbol]]
+id = "static-property"
+kind = "Static property"
+name = "Psy\\Util\\Docblock::$vectors"
+decl = { file = "src/Util/Docblock.php", line = 36, at = "vectors" }
+probe = { file = "src/Formatter/DocblockFormatter.php", line = 46, at = "vectors" }
+refs = [
+  { file = "src/Util/Docblock.php", line = 36 },
+  { file = "src/Util/Docblock.php", line = 183 },
+  { file = "src/Util/Docblock.php", line = 185 },
+  { file = "src/Util/Docblock.php", line = 196 },
+  { file = "src/Formatter/DocblockFormatter.php", line = 46 },
+  { file = "src/Formatter/DocblockFormatter.php", line = 54 },
+]

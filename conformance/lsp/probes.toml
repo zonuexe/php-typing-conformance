@@ -1,0 +1,204 @@
+# What the LSP probe run asks every language server, and where.
+#
+# Positions are anchored to source text, not to line numbers: `at` is a
+# substring that must occur in `file` (the first occurrence wins), and the
+# probe lands `offset` characters past the start of that match — usually 1,
+# to sit inside an identifier rather than on its `$` sigil. Editing a fixture
+# never silently moves a probe; deleting the anchored text breaks the run
+# loudly instead.
+#
+# [[capability]] entries are the smoke layer: one request per capability,
+# judged only on whether an advertised capability produces a non-empty,
+# well-formed answer. The probe client skips any method the server did not
+# advertise (statically or by dynamic registration), so a missing capability
+# costs nothing and is reported as exactly that.
+#
+# [[hover]] entries are the conformance layer: each hovers one variable in
+# hover-types.php and grades the shown type. `precise` is a list of regexes
+# that must ALL match the hover text and `reject` a list that must match
+# NOWHERE in it; both matching and non-matching hover text is kept in the
+# result file, so a "other" verdict always shows what the server actually
+# said. Regexes are PCRE bodies without delimiters, case-sensitive.
+
+# ---- Capability smoke probes ----
+
+[[capability]]
+id = "pull-diagnostics"
+method = "textDocument/diagnostic"
+file = "capabilities.php"
+
+[[capability]]
+id = "hover"
+method = "textDocument/hover"
+file = "capabilities.php"
+at = "strtoupper($message)"
+offset = 1
+
+[[capability]]
+id = "completion"
+method = "textDocument/completion"
+file = "capabilities.php"
+at = "greet($visitor)"
+
+[[capability]]
+id = "signature-help"
+method = "textDocument/signatureHelp"
+file = "capabilities.php"
+at = "'world'"
+
+[[capability]]
+id = "definition"
+method = "textDocument/definition"
+file = "capabilities.php"
+at = "measureLength($renameTarget)"
+offset = 1
+
+[[capability]]
+id = "type-definition"
+method = "textDocument/typeDefinition"
+file = "capabilities.php"
+at = "$greeter);"
+offset = 1
+
+[[capability]]
+id = "implementation"
+method = "textDocument/implementation"
+file = "capabilities.php"
+at = "Greeter $greeter)"
+offset = 1
+
+[[capability]]
+id = "references"
+method = "textDocument/references"
+file = "capabilities.php"
+at = "function measureLength"
+offset = 9
+
+[[capability]]
+id = "document-highlight"
+method = "textDocument/documentHighlight"
+file = "capabilities.php"
+at = "$message);"
+offset = 1
+
+[[capability]]
+id = "document-symbol"
+method = "textDocument/documentSymbol"
+file = "capabilities.php"
+
+[[capability]]
+id = "workspace-symbol"
+method = "workspace/symbol"
+file = "capabilities.php"
+query = "ProbeSubject"
+
+[[capability]]
+id = "code-action"
+method = "textDocument/codeAction"
+file = "capabilities.php"
+at = "return 'not an int';"
+
+[[capability]]
+id = "rename"
+method = "textDocument/rename"
+file = "capabilities.php"
+at = "$renameTarget = "
+offset = 1
+newName = "renamedByProbe"
+
+[[capability]]
+id = "formatting"
+method = "textDocument/formatting"
+file = "capabilities.php"
+
+[[capability]]
+id = "folding-range"
+method = "textDocument/foldingRange"
+file = "capabilities.php"
+
+[[capability]]
+id = "selection-range"
+method = "textDocument/selectionRange"
+file = "capabilities.php"
+at = "class ProbeSubject"
+offset = 6
+
+[[capability]]
+id = "semantic-tokens"
+method = "textDocument/semanticTokens/full"
+file = "capabilities.php"
+
+[[capability]]
+id = "inlay-hint"
+method = "textDocument/inlayHint"
+file = "capabilities.php"
+
+[[capability]]
+id = "call-hierarchy"
+method = "textDocument/prepareCallHierarchy"
+file = "capabilities.php"
+at = "function measureLength"
+offset = 9
+
+[[capability]]
+id = "type-hierarchy"
+method = "textDocument/prepareTypeHierarchy"
+file = "capabilities.php"
+at = "class ProbeSubject"
+offset = 6
+
+# ---- Hover type conformance ----
+
+[[hover]]
+id = "native-return"
+file = "hover-types.php"
+at = "$length; // hover expects int"
+offset = 1
+feature = "Native return type"
+expected = "int"
+# strlen('subject') has a constant argument, so a server may fold it to the
+# literal 7 — a subtype of int, more precise, and accepted as such.
+precise = ['\bint\b|(?<![0-9.])7(?![0-9.])']
+reject = ['\bmixed\b', '\bstring\b']
+
+[[hover]]
+id = "narrowed-union"
+file = "hover-types.php"
+at = "$value; // hover expects int"
+offset = 1
+feature = "Union narrowed by is_int()"
+expected = "int"
+precise = ['\bint\b']
+reject = ['\bstring\b']
+
+[[hover]]
+id = "array-shape"
+file = "hover-types.php"
+at = "$user; // hover expects the array shape"
+offset = 1
+feature = "Array shape from @return"
+expected = "array{name: string, age: int}"
+precise = ['array\s*\{', 'name']
+reject = []
+
+[[hover]]
+id = "int-range"
+file = "hover-types.php"
+at = "$percent; // hover expects int<1, 100>"
+offset = 1
+feature = "Integer range from @var"
+expected = "int<1, 100>"
+# The range survives under more than one spelling: PHPStan-style
+# `int<1, 100>` and PHPantom's `int<1..100>` name the same type.
+precise = ['int<1(?:,\s*|\.\.)100>']
+reject = []
+
+[[hover]]
+id = "generic-call"
+file = "hover-types.php"
+at = "$firstName; // hover expects string"
+offset = 1
+feature = "@template T resolved through a call"
+expected = "string"
+precise = ['\bstring\b']
+reject = ['\bmixed\b', '\bT\b']

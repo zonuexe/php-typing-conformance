@@ -1,0 +1,219 @@
+tool = "phpantom"
+version = "phpantom_lsp 0.9.0"
+server_info = "PHPantom 0.9.0"
+dynamic_registrations = ["workspace/didChangeWatchedFiles"]
+raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":2,\"save\":{\"includeText\":false}},\"selectionRangeProvider\":true,\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"@\",\"'\",\"\\\"\",\"[\",\"\\\\\",\"/\",\"*\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"],\"retriggerCharacters\":[\",\",\")\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":false},\"documentFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"\\n\"},\"renameProvider\":{\"prepareProvider\":true},\"documentLinkProvider\":{\"resolveProvider\":false},\"foldingRangeProvider\":true,\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"enum\",\"type\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"function\",\"method\",\"decorator\",\"enumMember\",\"keyword\",\"comment\"],\"tokenModifiers\":[\"declaration\",\"static\",\"readonly\",\"deprecated\",\"abstract\",\"definition\",\"defaultLibrary\"]},\"range\":false,\"full\":true},\"linkedEditingRangeProvider\":true,\"inlayHintProvider\":true}"
+navigation_corpus = "psy/psysh@0e8ec1af5990"
+
+[capabilities.push-diagnostics]
+advertised = false
+via = "n/a"
+probe = "answered"
+
+[capabilities.pull-diagnostics]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.hover]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.completion]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.signature-help]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.definition]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.declaration]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.type-definition]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.implementation]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.references]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.document-highlight]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.document-symbol]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.workspace-symbol]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.code-action]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.code-lens]
+advertised = true
+via = "static"
+probe = "not-probed"
+
+[capabilities.rename]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.formatting]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.range-formatting]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.folding-range]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.selection-range]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.semantic-tokens]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.inlay-hint]
+advertised = true
+via = "static"
+probe = "answered"
+
+[capabilities.call-hierarchy]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.type-hierarchy]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[hover.native-return]
+feature = "Native return type"
+expected = "int"
+shown = "```php\n<?php\n$length = int<0..max>\n```"
+verdict = "precise"
+
+[hover.narrowed-union]
+feature = "Union narrowed by is_int()"
+expected = "int"
+shown = "```php\n<?php\n$value = int\n```"
+verdict = "precise"
+
+[hover.array-shape]
+feature = "Array shape from @return"
+expected = "array{name: string, age: int}"
+shown = "```php\n<?php\n$user = array{name: string, age: int}\n```"
+verdict = "precise"
+
+[hover.int-range]
+feature = "Integer range from @var"
+expected = "int<1, 100>"
+shown = "```php\n<?php\n$percent = int<1..100>\n```"
+verdict = "precise"
+
+[hover.generic-call]
+feature = "@template T resolved through a call"
+expected = "string"
+shown = "```php\n<?php\n$firstName = string\n```"
+verdict = "precise"
+
+[navigation.function]
+kind = "Function"
+name = "Psy\\info()"
+definition = "correct"
+refs_expected = 13
+refs_found = 13
+refs_extra = 0
+references = "all"
+
+[navigation.instance-method]
+kind = "Instance method"
+name = "Psy\\Context::getAll()"
+definition = "correct"
+refs_expected = 10
+refs_found = 10
+refs_extra = 3
+references = "all"
+
+[navigation.static-method]
+kind = "Static method"
+name = "Psy\\Util\\Str::unvis()"
+definition = "correct"
+refs_expected = 4
+refs_found = 4
+refs_extra = 0
+references = "all"
+
+[navigation.local-variable]
+kind = "Local variable"
+name = "$output in Str::unvis()"
+definition = "correct"
+refs_expected = 2
+refs_found = 2
+refs_extra = 0
+references = "all"
+
+[navigation.class-constant]
+kind = "Class constant"
+name = "Psy\\Shell::VERSION"
+definition = "correct"
+refs_expected = 21
+refs_found = 21
+refs_extra = 0
+references = "all"
+
+[navigation.instance-property]
+kind = "Instance property"
+name = "Psy\\Context::$scopeVariables"
+definition = "correct"
+refs_expected = 5
+refs_found = 5
+refs_extra = 0
+references = "all"
+
+[navigation.static-property]
+kind = "Static property"
+name = "Psy\\Util\\Docblock::$vectors"
+definition = "correct"
+refs_expected = 6
+refs_found = 6
+refs_extra = 0
+references = "all"

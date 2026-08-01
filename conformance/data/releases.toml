@@ -57,7 +57,7 @@ version = "1.0.18519"
 date = "2026-02-19"
 
 [mir]
-version = "0.65.0"
+version = "0.66.1"
 date = "2026-07-31"
 
 [pzoom]

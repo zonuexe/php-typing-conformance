@@ -15,6 +15,14 @@ declare(strict_types=1);
  * capability matrix move for different reasons — a new tool release changes
  * both, but a new probe or fixture only changes this one, and re-running
  * eleven analyzers to remeasure four language servers helps nobody.
+ *
+ * It shares one thing with main.php regardless: results/updated.toml. The
+ * "Results last updated" line on the report reads as a claim about the whole
+ * page, language-server section included, so this run stamps it exactly as
+ * main.php does. The digest ResultsUpdate hashes already covers results/lsp/
+ * — its glob (one directory, then any .toml file) matches a per-server file
+ * here exactly as it matches a per-test one under results/<analyzer>/ — so
+ * only the write needed adding, not the accounting.
  */
 
 use Conformance\Lsp\LspResultFile;
@@ -23,13 +31,15 @@ use Conformance\Lsp\NavigationDefinitions;
 use Conformance\Lsp\ProbeDefinitions;
 use Conformance\Lsp\ProbeGrading;
 use Conformance\Lsp\ProbeRunner;
+use Conformance\Result\ResultsUpdate;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $rootDir = dirname(__DIR__);
 $projectRoot = dirname($rootDir);
 $lspDir = $rootDir . '/lsp';
-$resultsDir = $rootDir . '/results/lsp';
+$resultsRoot = $rootDir . '/results';
+$resultsDir = $resultsRoot . '/lsp';
 
 $only = [];
 foreach (array_slice($argv, 1) as $arg) {
@@ -172,5 +182,21 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
 
     printf("   %s  (%.1fs)\n", $path, microtime(true) - $started);
 }
+
+// The same stamp main.php writes: one "Results last updated" line covers the
+// whole report, and the digest it hashes (results/*/*.toml, which matches
+// results/lsp/<tool>.toml exactly like it matches results/<analyzer>/<test>.toml)
+// already accounts for these files. Only the trigger was missing — without
+// this call, an LSP-only run left the stamp exactly where a CLI-analyzer run
+// last put it, silently understating how fresh the language-server section is.
+$resultsUpdate = new ResultsUpdate($resultsRoot, $rootDir . '/tests');
+$previousUpdate = $resultsUpdate->recorded();
+$currentUpdate = $resultsUpdate->record();
+printf(
+    $currentUpdate === $previousUpdate
+        ? "Nothing changed; the update stamp stays at %s\n"
+        : "Recorded the update at %s\n",
+    $currentUpdate,
+);
 
 exit($failures === 0 ? 0 : 1);

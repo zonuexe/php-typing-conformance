@@ -19,7 +19,7 @@ declare(strict_types=1);
 <h1>PHP Typing Conformance Results</h1>
 <p class="lead">Each row links to a per-test detail page with the source, expectations, and every analyzer&rsquo;s raw output.</p>
 <?php if ($updatedAt !== null): ?>
-<p class="updated" title="When the analyzer results in this repository last changed. The pages themselves are rebuilt on every publish.">Results last updated: <time datetime="<?= h($updatedAt) ?>"><?= h($updatedAt) ?></time></p>
+<p class="updated" title="When the results on this page last changed -- analyzer diagnostics and language-server measurements alike. The pages themselves are rebuilt on every publish.">Results last updated: <time datetime="<?= h($updatedAt) ?>"><?= h($updatedAt) ?></time></p>
 <?php endif; ?>
 <?= $legend ?>
 <h2 class="section">Soundness &mdash; potential runtime type errors</h2>

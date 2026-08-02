@@ -1,10 +1,11 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
 arrays_shape_sealed_by_default.php:35: argument [] to takesShape() violates declared @param array{foo: int} $shape — declared contract violation [phpdoc.param-mismatch]
 arrays_shape_sealed_by_default.php:36: argument ['foo' => 'one'] to takesShape() violates declared @param array{foo: int} $shape — declared contract violation [phpdoc.param-mismatch]
-arrays_shape_sealed_by_default.php:40: argument ['foo' => 2, 'buz' => 42.0] to takesShape() violates declared @param array{foo: int} $shape — declared contract violation [phpdoc.param-mismatch]"""
-errors_diff = "Line 49: Expected 1 error(s)"
+arrays_shape_sealed_by_default.php:40: argument ['foo' => 2, 'buz' => 42.0] to takesShape() violates declared @param array{foo: int} $shape — declared contract violation [phpdoc.param-mismatch]
+arrays_shape_sealed_by_default.php:49: argument a value of type non-empty-array{buz: mixed, foo: int} to takesShape() violates declared @param array{foo: int} $shape — declared contract violation [phpdoc.param-mismatch]"""
+errors_diff = ""
 notes = "Seals the shape against the literal at line 40 but not against a value whose extra key comes from a declaration: `array{foo: int, buz: float}` passes through at line 49."
 ignore_errors = []

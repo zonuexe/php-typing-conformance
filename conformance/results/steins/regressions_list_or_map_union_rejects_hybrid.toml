@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "regressions_list_or_map_union_rejects_hybrid.php:37: argument [0 => 'disabled', 'href' => 'https://example.com'] to attrs() violates declared @param (list<string> | array<string, (bool | string | int)>) $values — declared contract violation [phpdoc.param-mismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

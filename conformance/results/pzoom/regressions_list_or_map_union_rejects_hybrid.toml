@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "regressions_list_or_map_union_rejects_hybrid.php:37: Argument 1 of attrs expects array<string, bool|int|string>|list<string>, but parent type array{0: 'disabled', href: 'https://example.com'} provided [ArgumentTypeCoercion]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

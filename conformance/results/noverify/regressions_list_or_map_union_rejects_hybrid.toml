@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+regressions_list_or_map_union_rejects_hybrid.php:26: param $values miss matched with phpdoc type <<list<string>|array<string, bool|string|int>>> [funcParamTypeMissMatch]
+regressions_list_or_map_union_rejects_hybrid.php:37: Mixing implicit and explicit array keys [mixedArrayKeys]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "regressions_union_of_arrays_vs_array_of_unions.php:36: InvalidArgument: Argument $values of takesHomogeneousIntOrStringArray() expects 'array<int|string, int>|array<int|string, string>', got 'array{0: 1, 1: \"b\", 2: 3}' [MIR0201]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

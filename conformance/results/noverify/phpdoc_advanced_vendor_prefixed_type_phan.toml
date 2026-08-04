@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_vendor_prefixed_type_phan.php:25: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\UserRow does not exist [undefinedClass]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [25]
+false_positive_lines = []

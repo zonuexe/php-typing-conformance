@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = "regressions_keyless_tuple_is_list.php:22: Call to function array_is_list() with array{int, string} will always evaluate to true. [identifier=function.alreadyNarrowedType]"
+output = "regressions_keyless_tuple_is_list.php:22: Call to function array_is_list() with array{int, string} will always evaluate to true."
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,4 +1,4 @@
 version = '''
 Phan 6.0.7
 php-ast version 1.1.3
-PHP version used to run Phan: 8.5.8'''
+PHP version used to run Phan: 8.5.9'''

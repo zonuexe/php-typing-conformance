@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_fallback_decimal_int_string.php:50: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString expects decimal-int-string, '007' given. [identifier=argument.type] [reported-from-level=5]
-phpdoc_advanced_fallback_decimal_int_string.php:51: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString expects decimal-int-string, '+1' given. [identifier=argument.type] [reported-from-level=5]
-phpdoc_advanced_fallback_decimal_int_string.php:54: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString expects decimal-int-string, 'abc' given. [identifier=argument.type] [reported-from-level=5]"""
+phpdoc_advanced_fallback_decimal_int_string.php:50: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString expects decimal-int-string, '007' given. [reported-from-level=5]
+phpdoc_advanced_fallback_decimal_int_string.php:51: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString expects decimal-int-string, '+1' given. [reported-from-level=5]
+phpdoc_advanced_fallback_decimal_int_string.php:54: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString expects decimal-int-string, 'abc' given. [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "stubs_external_signature_support.php:37: Parameter #1 $clock of function Conformance\\Tests\\StubsExternalSignatureSupport\\takesClock expects Conformance\\Tests\\StubsExternalSignatureSupport\\ExternalClock, Conformance\\Tests\\StubsExternalSignatureSupport\\InvalidClock given. [identifier=argument.type] [reported-from-level=5]"
+output = "stubs_external_signature_support.php:37: Parameter #1 $clock of function Conformance\\Tests\\StubsExternalSignatureSupport\\takesClock expects Conformance\\Tests\\StubsExternalSignatureSupport\\ExternalClock, Conformance\\Tests\\StubsExternalSignatureSupport\\InvalidClock given. [reported-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

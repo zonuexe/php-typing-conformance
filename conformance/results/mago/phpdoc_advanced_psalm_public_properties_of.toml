@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_psalm_public_properties_of.php:44: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\acceptsPublicUserProps`: expected `array{'name': string}`, but possibly received `array{'age': int(42), 'name': string('Ada')}`. [possibly-invalid-argument]
+phpdoc_advanced_psalm_public_properties_of.php:47: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\acceptsPublicUserProps`: expected `array{'name': string}`, but possibly received `array{'name': int(1)}`. [possibly-invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

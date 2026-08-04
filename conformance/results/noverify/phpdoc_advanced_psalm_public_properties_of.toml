@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_psalm_public_properties_of.php:36: param $data miss matched with phpdoc type <<public-properties-of<User>>> [funcParamTypeMissMatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [36]
+false_positive_lines = []

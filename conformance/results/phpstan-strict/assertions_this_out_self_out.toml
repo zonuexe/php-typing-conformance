@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 12
 output = """
-assertions_this_out_self_out.php:53: Parameter #1 $box of function Conformance\\Tests\\AssertionsThisOutSelfOut\\takesStringBox expects Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string>, Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int> given. [identifier=argument.type]
-assertions_this_out_self_out.php:58: Parameter #1 $box of function Conformance\\Tests\\AssertionsThisOutSelfOut\\takesIntBox expects Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int>, Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string> given. [identifier=argument.type]"""
+assertions_this_out_self_out.php:53: Parameter #1 $box of function Conformance\\Tests\\AssertionsThisOutSelfOut\\takesStringBox expects Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string>, Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int> given.
+assertions_this_out_self_out.php:58: Parameter #1 $box of function Conformance\\Tests\\AssertionsThisOutSelfOut\\takesIntBox expects Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int>, Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string> given."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

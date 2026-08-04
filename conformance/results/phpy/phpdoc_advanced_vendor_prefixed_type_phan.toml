@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_vendor_prefixed_type_phan.php:25: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\UserRow'
+phpdoc_advanced_vendor_prefixed_type_phan.php:35: Argument '1' passed to save() is expected to be of type Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\UserRow, array given
+phpdoc_advanced_vendor_prefixed_type_phan.php:38: Argument '1' passed to save() is expected to be of type Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\UserRow, array given"""
+errors_diff = "Line 35: Unexpected errors [\"Argument '1' passed to save() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedTypePhan\\\\UserRow, array given\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [25]
+false_positive_lines = [35]

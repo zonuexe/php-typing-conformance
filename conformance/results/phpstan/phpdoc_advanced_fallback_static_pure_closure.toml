@@ -2,13 +2,13 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_static_pure_closure.php:29: Function Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\returnsStaticPureClosure() should return static-pure-Closure but returns static-Closure(int): int. [identifier=return.type] [reported-from-level=3]
-phpdoc_advanced_fallback_static_pure_closure.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure expects static-pure-Closure, static-Closure(int): int given. [identifier=argument.type] [reported-from-level=5]
-phpdoc_advanced_fallback_static_pure_closure.php:50: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure expects static-pure-Closure, Closure(int): int given. [identifier=argument.type] [reported-from-level=5]
-phpdoc_advanced_fallback_static_pure_closure.php:56: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure expects static-pure-Closure, static-Closure(): void given. [identifier=argument.type] [reported-from-level=5]"""
+phpdoc_advanced_fallback_static_pure_closure.php:29: Function Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\returnsStaticPureClosure() should return static-pure-Closure but returns static-Closure(int): int. [reported-from-level=3]
+phpdoc_advanced_fallback_static_pure_closure.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure expects static-pure-Closure, static-Closure(int): int given. [reported-from-level=5]
+phpdoc_advanced_fallback_static_pure_closure.php:50: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure expects static-pure-Closure, Closure(int): int given. [reported-from-level=5]
+phpdoc_advanced_fallback_static_pure_closure.php:56: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure expects static-pure-Closure, static-Closure(): void given. [reported-from-level=5]"""
 errors_diff = """
-Line 29: Unexpected errors ["Function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\returnsStaticPureClosure() should return static-pure-Closure but returns static-Closure(int): int. [identifier=return.type] [reported-from-level=3]"]
-Line 47: Unexpected errors ["Parameter #1 $value of function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\acceptsStaticPureClosure expects static-pure-Closure, static-Closure(int): int given. [identifier=argument.type] [reported-from-level=5]"]"""
+Line 29: Unexpected errors ["Function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\returnsStaticPureClosure() should return static-pure-Closure but returns static-Closure(int): int. [reported-from-level=3]"]
+Line 47: Unexpected errors ["Parameter #1 $value of function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\acceptsStaticPureClosure expects static-pure-Closure, static-Closure(int): int given. [reported-from-level=5]"]"""
 notes = ""
 ignore_errors = []
 expected_diagnostic_level = 5

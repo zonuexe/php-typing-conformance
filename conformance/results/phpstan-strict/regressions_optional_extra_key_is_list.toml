@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = "regressions_optional_extra_key_is_list.php:24: Call to function array_is_list() with array{0: int, a?: string} will always evaluate to false. [identifier=function.impossibleType]"
+output = "regressions_optional_extra_key_is_list.php:24: Call to function array_is_list() with array{0: int, a?: string} will always evaluate to false."
 errors_diff = ""
 notes = ""
 ignore_errors = []

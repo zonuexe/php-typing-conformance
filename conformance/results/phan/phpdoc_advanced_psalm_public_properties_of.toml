@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_psalm_public_properties_of.php:34: Saw possibly unextractable annotation for a fragment of comment '* @param public-properties-of<User> $data': after public, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_psalm_public_properties_of.php:34: Saw a token Phan may have failed to parse after '* @param public-properties-of<User> $data': after public, saw '-' [PhanUnextractableAnnotationSuffix]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [34]
+false_positive_lines = []

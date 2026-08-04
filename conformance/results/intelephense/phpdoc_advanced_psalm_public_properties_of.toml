@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_psalm_public_properties_of.php:34: Documented type is not compatible with the declared type. [P1131]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [34]
+false_positive_lines = []

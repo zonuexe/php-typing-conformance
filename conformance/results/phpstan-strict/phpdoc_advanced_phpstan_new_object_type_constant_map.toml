@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesMutable expects DateTime, DateTimeImmutable given. [identifier=argument.type]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesImmutable expects DateTimeImmutable, DateTime given. [identifier=argument.type]"""
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesMutable expects DateTime, DateTimeImmutable given.
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesImmutable expects DateTimeImmutable, DateTime given."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

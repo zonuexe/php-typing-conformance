@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_psalm_public_properties_of.php:41: InvalidArgument: Argument $data of acceptsPublicUserProps() expects 'Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\public-properties-of<Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\User>', got 'array{'name': "Ada"}' [MIR0201]
+phpdoc_advanced_psalm_public_properties_of.php:44: InvalidArgument: Argument $data of acceptsPublicUserProps() expects 'Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\public-properties-of<Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\User>', got 'array{'name': "Ada", 'age': 42}' [MIR0201]
+phpdoc_advanced_psalm_public_properties_of.php:47: InvalidArgument: Argument $data of acceptsPublicUserProps() expects 'Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\public-properties-of<Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\User>', got 'array{'name': 1}' [MIR0201]"""
+errors_diff = "Line 41: Unexpected errors [\"InvalidArgument: Argument $data of acceptsPublicUserProps() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedPsalmPublicPropertiesOf\\\\public-properties-of<Conformance\\\\Tests\\\\PhpdocAdvancedPsalmPublicPropertiesOf\\\\User>', got 'array{'name': \\\"Ada\\\"}' [MIR0201]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = [41]

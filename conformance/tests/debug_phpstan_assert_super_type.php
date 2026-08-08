@@ -19,8 +19,8 @@ namespace Conformance\Tests\DebugPhpstanAssertSuperType;
 function example(int $value): void // T: PHPStan\Testing\assertSuperType
 {
     // int is a subtype of int|string — silent when honoured.
-    \PHPStan\Testing\assertSuperType('int|string', $value); // E?: tools that do not know assertSuperType report undefined function
+    \PHPStan\Testing\assertSuperType('int|string', $value); // E?: foreign undefined-function is incidental, not enforcement
 
     // string is not a super-type of int.
-    \PHPStan\Testing\assertSuperType('string', $value); // E?: super-type assertion fails (or undefined function)
+    \PHPStan\Testing\assertSuperType('string', $value); // E?: super-type assertion fails
 }

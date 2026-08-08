@@ -19,9 +19,9 @@ namespace Conformance\Tests\DebugPhpstanAssertType;
 
 function example(int $value): void // T: PHPStan\Testing\assertType
 {
-    // Correct: silent when the helper is honoured; undefined-function elsewhere.
-    \PHPStan\Testing\assertType('int', $value); // E?: tools that do not know assertType report undefined function
+    // Correct: silent when the helper is honoured; undefined-function elsewhere (not enforcement).
+    \PHPStan\Testing\assertType('int', $value); // E?: foreign undefined-function is incidental, not enforcement
 
     // Wrong expected type: diagnostic when assertType is live.
-    \PHPStan\Testing\assertType('string', $value); // E?: Expected type string, actual: int (or undefined function)
+    \PHPStan\Testing\assertType('string', $value); // E?: Expected type string, actual: int
 }

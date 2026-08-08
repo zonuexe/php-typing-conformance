@@ -120,19 +120,20 @@ This is where the families diverge sharply in practice.
 
 That matters for reading the matrix:
 
-- A foreign tool on a dump/inspect test still “fires” on the expected line,
-  but the message is incidental (`Function PHPStan\dumpType does not exist`,
-  `Function Mago\inspect not found`). Recognition of the *helper* is wrong;
-  the line is only noisy because the name is unresolved.
+- A foreign tool on a dump/inspect test may still “fire” on the expected line
+  with `Function PHPStan\dumpType does not exist` or
+  `Function Mago\inspect not found`. That is a **non-support signal**, not
+  inspection: the harness classifies those messages as incidental and scores
+  the row **Not enforced**, even though Pass/Fail still allows the line (via
+  `// E?` or `// E?[noise]`).
 - A foreign tool on a `@psalm-trace` / `@trace` test typically contributes
   **no** diagnostic at all. Silence means “I do not implement this tag,” not
   “the type is empty.”
 
 Phan’s string form sits between the two: it is *syntactically* an expression
 statement, but *semantically* a trace. Tools that do not know
-`@phan-debug-var` usually leave the string alone (no unused-expression noise
-in this suite’s configuration), so foreign rows look like silent
-trace-style behaviour.
+`@phan-debug-var` often emit no-op-expression lint (`does not do anything`);
+that is the same class of incidental noise and does not count as enforcement.
 
 ### What you can inspect
 
@@ -208,25 +209,26 @@ refined type while `assertNativeType('int', $value)` still holds and
 
 | Surface | Suite test | Notes |
 | --- | --- | --- |
-| `@psalm-trace $var` | `debug_psalm_trace` | Diagnostic on the **next** statement; message `$var: Type [Trace]` |
-| bare `@trace $var` | `debug_psalm_trace_short` | **Not** accepted by Psalm in this suite (empty output); Mago and mir do accept it |
+| `@psalm-trace $var` | `debug_psalm_trace` | Official spelling only; diagnostic on the **next** statement (`$var: Type [Trace]`) |
 
-Psalm does not ship a first-class `dumpType()`-style function. Trace is the
-native inspection surface.
+Psalm does **not** document bare `@trace`. That form is mir’s native tag (and
+a Mago compatibility alias), measured in `debug_mir_trace`. Psalm has no
+first-class `dumpType()`-style function; `@psalm-trace` is the inspection
+surface.
 
 ### Mago
 
 | Surface | Suite test | Notes |
 | --- | --- | --- |
 | `\Mago\inspect($expr)` | `debug_mago_inspect` | Preferred function-style helper; any expression |
-| `@psalm-trace` / `@trace` | `debug_psalm_trace`, `debug_psalm_trace_short`, `debug_mir_trace` | Compatibility; diagnostic often attributed to the **docblock** line, not the following statement |
+| `@psalm-trace` / `@trace` | `debug_psalm_trace`, `debug_mir_trace` | Compatibility; often attributes to the **docblock** line (not the next statement) |
 
 ### mir
 
 | Surface | Suite test | Notes |
 | --- | --- | --- |
-| `@trace $var` (and Psalm-compatible forms mir accepts) | `debug_mir_trace`, `debug_psalm_trace_short` | Info-level issue **MIR0221**; requires `--show-info` |
-| `@psalm-trace` specifically | `debug_psalm_trace` | In this suite’s pin, bare `@trace` fires more reliably than the `psalm-` prefix |
+| bare `@trace $var` | `debug_mir_trace` | Official mir spelling; info-level **MIR0221**; needs `--show-info` |
+| `@psalm-trace` | `debug_psalm_trace` | **Not** equivalent in this pin (silent) |
 
 The harness enables `--show-info` **only** for test files whose name starts
 with `debug_`. Elsewhere, info-level noise (including unused parameters) would
@@ -239,11 +241,15 @@ pollute ordinary soundness rows. See `MirChecker`.
 | `'@phan-debug-var $var';` | `debug_phan_debug_var` | Must be a **string expression statement**, not a comment — php-ast does not surface comment annotations for this feature |
 | Line attribution | same | Often the enclosing `if` / statement, not only the string line |
 
-### Tools without a native helper
+### Other tools that sometimes honour a trace
 
-Intelephense, NoVerify, phpy, pzoom, Steins, and Qodana (as measured here) do
-not expose a comparable dump/trace/assert surface in this matrix. Their cells
-show incidental behaviour only (undefined function, silence, or Not measured).
+| Tool | Behaviour in this suite |
+| --- | --- |
+| pzoom | Psalm port: honours `@psalm-trace` and bare `@trace` like Psalm’s Trace issue |
+| Steins | Honours `@psalm-trace` (`traced type of … [debug.trace]`) |
+
+Intelephense, NoVerify, phpy, and Qodana (as measured here) do not expose a
+comparable dump/trace surface.
 
 ## Cross-tool summary
 
@@ -263,25 +269,30 @@ Very roughly, for “show me the type of this narrowed `int`”:
 2. **Kind** `@conformance-kind debug` in each test’s leading docblock — pulls
    the file out of the soundness table into the debug matrix.
 3. **Markers**
-   - `// T: <helper>` on the declaration (or the line under test) so unknown-
-     dialect noise on that spelling is classified as recognition, not as an
-     unexpected error.
-   - `// E?` on lines that *may* report, because foreign tools and line
-     attribution differ.
+   - `// T: <helper>` on the **function** (or other declaration), never on the
+     line that receives the Trace dump — otherwise the successful dump is
+     misread as “unrecognized spelling”.
+   - `// E?[trace]` on lines that *may* report (and/or a flexible `trace` group
+     so Mago’s docblock attribution still counts). The `@trace` **docblock
+     line itself must not carry a trailing `//` comment**, or mir drops the
+     annotation.
 4. **Scoring** uses recognition / enforcement / enforced_lines, same as type-
    spelling rows. For asserts, partial enforcement on the native tool is
-   expected (only the failing assert speaks).
+   expected (only the failing assert speaks). A `// E[tag]` group is **one**
+   enforcement probe (OR of its lines), not N independent lines.
 5. **mir** special-case: `--show-info` only for `debug_*` file names.
 
 Reading a debug cell:
 
 - **Recognized + enforced** on the owning tool means the helper worked and
   printed (or failed an assert) as designed.
-- **Enforced** on a foreign tool for a **function** helper is often
-  *incidental* undefined-function noise — open the detail page and read the
-  message.
-- **none** on a foreign tool for a **trace** helper usually means the tag was
-  ignored, not that the type was empty.
+- **Not enforced** on a foreign tool that still prints something on the call
+  line usually means the message is *incidental* — typically
+  `Function PHPStan\… does not exist` / `Function Mago\inspect not found` /
+  `Expression has no effect`. Those light up the line but are **not** type
+  inspection; the harness does not count them toward `enforced_lines`.
+- **none** with an empty output on a **trace** helper usually means the tag
+  was ignored, not that the type was empty.
 
 ## Pitfalls when authoring or reading debug tests
 
@@ -290,24 +301,28 @@ Reading a debug cell:
    `// E?` on the dump/assert line. Marking the dump line as a type spelling
    confuses recognition with the dump diagnostic itself.
 
-2. **mir `@trace` is brittle about layout.** Trailing `//` comments on the
-   same line as the docblock, comments between `@trace` and the next
-   statement, or a `*/` that terminates an earlier docblock early can make mir
-   drop the annotation. Keep a clean `/** @trace $var */` immediately above
-   the next statement.
+2. **mir `@trace` is brittle about layout.** Any trailing `//` on the same
+   line as `/** @trace $var */` (including `// E?[trace]`) makes mir **drop**
+   the annotation entirely. Keep that line clean; put expectations on the
+   enclosing `if` and/or the next statement, and let the `trace` group accept
+   a type-trace diagnostic attributed to the docblock.
 
-3. **Psalm wants `@psalm-trace`; bare `@trace` is for Mago/mir.** A single
-   file cannot mean the same thing to all three without tool-specific
-   expectations. The suite splits `debug_psalm_trace` and
-   `debug_psalm_trace_short` for that reason.
+3. **Psalm wants `@psalm-trace`; bare `@trace` is mir’s spelling.** They are
+   separate tests (`debug_psalm_trace` vs `debug_mir_trace`), not short/long
+   forms of one feature. Psalm ignores bare `@trace`; mir ignores
+   `@psalm-trace` in this pin.
 
-4. **Mago attributes trace diagnostics to the docblock line.** If the
-   expectation sits only on the following `echo`, native Mago can look like
-   `enforced_lines = 0/1` even though it printed a perfect Trace message one
-   line up.
+4. **Mago (and Steins) often attribute Trace to the docblock line.** The
+   harness treats a successful type-trace message as satisfying the `trace`
+   probe group even when that line cannot host a `// E` marker.
 
-5. **Phan attributes `@phan-debug-var` to the enclosing statement.** Expect
-   `// E?` on both the `if` and the string line.
+5. **Phan attributes `@phan-debug-var` to the enclosing statement.** Put the
+   enforcement probe (`// E?`) on the `if` (or other enclosing statement), not
+   on the string. Foreign "expression has no effect" / "does not do anything"
+   reports on the string line are **not** feature enforcement — mark them
+   `// E?[noise]` so they stay Pass without counting toward `enforced_lines`
+   (the reserved expectation tag `noise` is handled in
+   `ExpectationEvaluator`).
 
 6. **Assert success is silence.** Do not treat “PHPStan said nothing on the
    correct `assertType`” as a missing feature.

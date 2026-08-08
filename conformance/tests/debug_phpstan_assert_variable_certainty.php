@@ -20,9 +20,9 @@ function example(?string $value): void // T: PHPStan\Testing\assertVariableCerta
 {
     if ($value !== null) {
         // Definitely defined here.
-        \PHPStan\Testing\assertVariableCertainty(\PHPStan\TrinaryLogic::createYes(), $value); // E?: tools that lack TrinaryLogic / the helper
+        \PHPStan\Testing\assertVariableCertainty(\PHPStan\TrinaryLogic::createYes(), $value); // E?: foreign undefined helper/class is incidental, not enforcement
     }
 
     // Still defined as a parameter (always certain), so Maybe is wrong.
-    \PHPStan\Testing\assertVariableCertainty(\PHPStan\TrinaryLogic::createMaybe(), $value); // E?: expected Maybe, actual Yes (or undefined helper)
+    \PHPStan\Testing\assertVariableCertainty(\PHPStan\TrinaryLogic::createMaybe(), $value); // E?: expected Maybe, actual Yes
 }

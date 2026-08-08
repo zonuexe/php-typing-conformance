@@ -19,6 +19,6 @@ namespace Conformance\Tests\DebugPhpstanDumpPhpDocType;
 function example(int|string $value): void // T: PHPStan\dumpPhpDocType
 {
     if (\is_int($value)) {
-        \PHPStan\dumpPhpDocType($value); // E?: reports the PHPDoc type (int)
+        \PHPStan\dumpPhpDocType($value); // E?: reports the PHPDoc type (int); foreign undefined-function is not enforcement
     }
 }

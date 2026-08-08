@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "debug_phan_debug_var.php:27: Expression evaluated but not used [discardExpr]"
+output = "debug_phan_debug_var.php:29: Expression evaluated but not used [discardExpr]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "none"
+enforced_lines = "0/1"
 unrecognized_lines = []
 false_positive_lines = []

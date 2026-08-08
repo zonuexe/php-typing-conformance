@@ -27,9 +27,18 @@ final class ExpectationEvaluator
         $requiredByLine = [];
         $optionalByLine = [];
         $groups = [];
+        // Lines marked `// E[noise]` / `// E?[noise]` may report incidental
+        // diagnostics (e.g. "expression has no effect") without counting as
+        // enforcement probes for `// T` type-handling rows.
+        $noiseLines = [];
 
         foreach ($expectedDiagnostics as $diagnostic) {
             if ($diagnostic->tool !== null && $diagnostic->tool !== $toolName) {
+                continue;
+            }
+
+            if ($diagnostic->tag === 'noise') {
+                $noiseLines[$diagnostic->line] = true;
                 continue;
             }
 
@@ -37,8 +46,16 @@ final class ExpectationEvaluator
                 $groups[$diagnostic->tag] ??= [
                     'lines' => [],
                     'allow_multiple' => $diagnostic->allowMultiple,
+                    // A group is required only if at least one of its markers is.
+                    // `// E?[tag]` alone means "may fire on any of these lines".
+                    'required' => false,
                 ];
                 $groups[$diagnostic->tag]['lines'][] = $diagnostic->line;
+                $groups[$diagnostic->tag]['allow_multiple'] = $groups[$diagnostic->tag]['allow_multiple']
+                    || $diagnostic->allowMultiple;
+                if ($diagnostic->required) {
+                    $groups[$diagnostic->tag]['required'] = true;
+                }
                 continue;
             }
 
@@ -51,6 +68,8 @@ final class ExpectationEvaluator
 
         $differences = [];
         $groupLines = [];
+        /** @var list<array{tag: string, lines: list<int>}> $groupProbes */
+        $groupProbes = [];
 
         foreach ($requiredByLine as $line => $count) {
             if (!isset($actualDiagnostics[$line])) {
@@ -59,7 +78,7 @@ final class ExpectationEvaluator
         }
 
         foreach ($groups as $tag => $group) {
-            $lines = $group['lines'];
+            $lines = array_values(array_unique($group['lines']));
             sort($lines);
             $numErrors = 0;
             foreach ($lines as $line) {
@@ -68,14 +87,24 @@ final class ExpectationEvaluator
                 }
                 $groupLines[$line] = true;
             }
+            // @trace / @psalm-trace: tools disagree on which line to blame, and
+            // the docblock line cannot carry `// E` without a trailing comment
+            // that makes mir drop the annotation. Count a type-trace diagnostic
+            // anywhere in the file as satisfying the group for Pass/Fail.
+            if ($tag === 'trace' && $numErrors === 0 && $this->fileHasTypeTraceSignal($actualDiagnostics)) {
+                $numErrors = 1;
+            }
+            $groupProbes[] = ['tag' => $tag, 'lines' => $lines];
 
             if ($numErrors === 0) {
-                $differences[] = sprintf(
-                    'Lines %s: Expected error (tag %s)',
-                    implode(', ', $lines),
-                    $tag,
-                );
-            } elseif ($numErrors > 1 && !$group['allow_multiple']) {
+                if ($group['required']) {
+                    $differences[] = sprintf(
+                        'Lines %s: Expected error (tag %s)',
+                        implode(', ', $lines),
+                        $tag,
+                    );
+                }
+            } elseif ($numErrors > 1 && !$group['allow_multiple'] && $tag !== 'trace') {
                 $differences[] = sprintf(
                     'Lines %s: Expected exactly one error (tag %s)',
                     implode(', ', $lines),
@@ -85,13 +114,20 @@ final class ExpectationEvaluator
         }
 
         $falsePositiveLines = [];
+        $traceSpellingUnderTest = $this->hasTraceSpellingMarker($typeMarkers);
 
         foreach ($actualDiagnostics as $line => $messages) {
-            if (isset($requiredByLine[$line]) || isset($optionalByLine[$line]) || isset($groupLines[$line])) {
+            if (isset($requiredByLine[$line]) || isset($optionalByLine[$line]) || isset($groupLines[$line]) || isset($noiseLines[$line])) {
                 continue;
             }
 
             if (isset($markedLines[$line])) {
+                continue;
+            }
+
+            // Type-trace dumps for the spelling under test may land on the
+            // docblock line (Mago, Steins) rather than the // E?[trace] anchor.
+            if ($traceSpellingUnderTest && $this->hasTypeTraceSignal($messages)) {
                 continue;
             }
 
@@ -104,26 +140,29 @@ final class ExpectationEvaluator
         }
 
         $errorsDiff = implode("\n", $differences);
-        $expectedLines = array_keys($requiredByLine + $optionalByLine + $groupLines);
+        // Per-line probes (untagged // E) plus one probe per // E[tag] group.
+        $lineProbes = array_keys($requiredByLine + $optionalByLine);
 
         return new ExpectationEvaluation(
             errorsDiff: $errorsDiff,
             conformanceAutomated: $errorsDiff === '' ? 'Pass' : 'Fail',
             typeHandling: $typeMarkers === []
                 ? null
-                : $this->typeHandling($markedLines, $expectedLines, $actualDiagnostics, $falsePositiveLines),
+                : $this->typeHandling($markedLines, $lineProbes, $groupProbes, $actualDiagnostics, $falsePositiveLines),
         );
     }
 
     /**
      * @param array<int, true> $markedLines
-     * @param list<int> $expectedLines
+     * @param list<int> $lineProbes untagged expected lines
+     * @param list<array{tag: string, lines: list<int>}> $groupProbes
      * @param array<int, list<string>> $actualDiagnostics
      * @param list<int> $falsePositiveLines
      */
     private function typeHandling(
         array $markedLines,
-        array $expectedLines,
+        array $lineProbes,
+        array $groupProbes,
         array $actualDiagnostics,
         array $falsePositiveLines,
     ): TypeHandling {
@@ -135,14 +174,35 @@ final class ExpectationEvaluator
         }
         sort($unrecognizedLines);
 
+        // A diagnostic only counts as enforcement when it is about the feature
+        // under test. "Function PHPStan\dumpType does not exist" and similar
+        // mean the analyzer does *not* implement the helper.
         $enforcedLineCount = 0;
-        foreach ($expectedLines as $line) {
-            if (isset($actualDiagnostics[$line])) {
+        foreach ($lineProbes as $line) {
+            $messages = $actualDiagnostics[$line] ?? [];
+            if ($messages !== [] && $this->hasEnforcementSignal($messages)) {
+                $enforcedLineCount++;
+            }
+        }
+        foreach ($groupProbes as $group) {
+            $hit = false;
+            foreach ($group['lines'] as $line) {
+                $messages = $actualDiagnostics[$line] ?? [];
+                if ($messages !== [] && $this->hasEnforcementSignal($messages)) {
+                    $hit = true;
+                    break;
+                }
+            }
+            // Same attribution flexibility as Pass/Fail for @trace groups.
+            if (!$hit && $group['tag'] === 'trace' && $this->fileHasTypeTraceSignal($actualDiagnostics)) {
+                $hit = true;
+            }
+            if ($hit) {
                 $enforcedLineCount++;
             }
         }
 
-        $expectedLineCount = count($expectedLines);
+        $expectedLineCount = count($lineProbes) + count($groupProbes);
         $enforcement = match (true) {
             $expectedLineCount === 0 => TypeHandling::NO_PROBES,
             $enforcedLineCount === 0 => TypeHandling::NONE,
@@ -158,5 +218,125 @@ final class ExpectationEvaluator
             expectedLineCount: $expectedLineCount,
             enforcedLineCount: $enforcedLineCount,
         );
+    }
+
+    /**
+     * @param list<\Conformance\Expectation\TypeMarker> $typeMarkers
+     */
+    private function hasTraceSpellingMarker(array $typeMarkers): bool
+    {
+        foreach ($typeMarkers as $marker) {
+            if (preg_match('/@?(psalm-)?trace\b/i', $marker->spelling) === 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param array<int, list<string>> $actualDiagnostics
+     */
+    private function fileHasTypeTraceSignal(array $actualDiagnostics): bool
+    {
+        foreach ($actualDiagnostics as $messages) {
+            if ($this->hasTypeTraceSignal($messages)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param list<string> $messages
+     */
+    private function hasTypeTraceSignal(array $messages): bool
+    {
+        foreach ($messages as $message) {
+            if ($this->isTypeTraceDiagnostic($message)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * A successful dump of an inferred type from @trace / @psalm-trace (not an
+     * undefined-function incidental).
+     */
+    private function isTypeTraceDiagnostic(string $message): bool
+    {
+        if (preg_match('/\[(Trace|MIR0221|psalm-trace|debug\.trace)\]/', $message) === 1) {
+            return true;
+        }
+
+        if (preg_match('/\bTrace:\s*Type of\b/i', $message) === 1) {
+            return true;
+        }
+
+        if (preg_match('/\btraced type of\b/i', $message) === 1) {
+            return true;
+        }
+
+        // Psalm: "$value: int [Trace]" already matched by [Trace]; bare form:
+        if (preg_match('/^\$\w+:\s+.+\s+\[Trace\]/', $message) === 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param list<string> $messages
+     */
+    private function hasEnforcementSignal(array $messages): bool
+    {
+        foreach ($messages as $message) {
+            if (!$this->isIncidentalDiagnostic($message)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Diagnostics that appear on a probe line without meaning the analyzer
+     * honoured the feature:
+     *
+     * - unknown **analyzer pseudo-APIs** (`PHPStan\dumpType`, `Mago\inspect`,
+     *   `PHPStan\TrinaryLogic`, …) reported as undefined function/class;
+     * - no-op expression lint on string annotations such as `@phan-debug-var`.
+     *
+     * Deliberately narrow: a real type probe may itself be "function X is not
+     * defined" (e.g. `callable-string` rejecting `definitely_not_a_function`).
+     * Only missing **tool helpers** are incidental.
+     */
+    private function isIncidentalDiagnostic(string $message): bool
+    {
+        if (preg_match(
+            '/\b(does not do anything|has no effect as a statement|has no effect|evaluated but not used|unused-statement|discardexpr)\b/i',
+            $message,
+        ) === 1) {
+            return true;
+        }
+
+        // Pseudo-API names that live in analyzer namespaces, not user code.
+        if (preg_match('/(?:PHPStan\\\\|Mago\\\\inspect)/', $message) !== 1) {
+            return false;
+        }
+
+        // Missing symbol of any kind on a pseudo-API path (function, class,
+        // type, method on TrinaryLogic, …) is still "I do not know this helper".
+        return preg_match(
+            '/\b(does not exist|could not be found|not found|is not defined|undeclared function|undeclared class|undefined function|undefined class|undefined type|undefined method|undefinedclass|non-existent-function|non-existent-method|phanundeclaredfunction|phanundeclaredclassmethod)\b/i',
+            $message,
+        ) === 1
+            || preg_match(
+                '/\[(UndefinedFunction|UndefinedClass|non-existent-function|non-existent-method|PhanUndeclaredFunction|PhanUndeclaredClassMethod|MIR0003|P1009|P1010)\]/',
+                $message,
+            ) === 1;
     }
 }

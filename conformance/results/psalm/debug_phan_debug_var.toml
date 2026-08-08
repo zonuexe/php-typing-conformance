@@ -7,6 +7,6 @@ notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"
-enforced_lines = "0/2"
+enforced_lines = "0/1"
 unrecognized_lines = []
 false_positive_lines = []

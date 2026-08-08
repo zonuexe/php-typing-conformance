@@ -1,7 +1,0 @@
-status = "Unknown"
-conformance_automated = "Not measured"
-expected_diagnostic_count = 1
-output = ""
-errors_diff = ""
-notes = "No qodana SARIF report available locally; re-run Qodana in PhpStorm then php conformance/src/main.php --tool=qodana."
-ignore_errors = []

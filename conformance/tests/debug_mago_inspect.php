@@ -19,6 +19,6 @@ namespace Conformance\Tests\DebugMagoInspect;
 function example(int|string $value): void // T: Mago\inspect
 {
     if (\is_int($value)) {
-        \Mago\inspect($value); // E?: reports the inferred type (int)
+        \Mago\inspect($value); // E?: reports the inferred type; foreign undefined-function is not enforcement
     }
 }

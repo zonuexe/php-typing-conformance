@@ -21,6 +21,6 @@ function example(int|string $value): void // T: PHPStan\dumpType
 {
     if (\is_int($value)) {
         // Narrowed to int: native dump reports that.
-        \PHPStan\dumpType($value); // E?: reports the inferred type (int)
+        \PHPStan\dumpType($value); // E?: reports the inferred type (int); foreign undefined-function is not enforcement
     }
 }

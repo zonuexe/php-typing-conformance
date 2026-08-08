@@ -9,7 +9,8 @@ namespace Conformance\Tests\DebugPhpstanAssertType;
  *
  * Fixture-style assertion: the first argument is the expected type string.
  * When the actual type disagrees, PHPStan reports a type assertion failure.
- * Correct assertions are silent.
+ * Correct assertions are silent — that silence is success, not a miss, so
+ * only the *mismatch* line is an enforcement probe.
  *
  * References:
  * - PHPStan Testing helpers: `PHPStan\Testing\assertType`
@@ -19,9 +20,9 @@ namespace Conformance\Tests\DebugPhpstanAssertType;
 
 function example(int $value): void // T: PHPStan\Testing\assertType
 {
-    // Correct: silent when the helper is honoured; undefined-function elsewhere (not enforcement).
-    \PHPStan\Testing\assertType('int', $value); // E?: foreign undefined-function is incidental, not enforcement
+    // Correct: silence when honoured. Foreign undefined-function is noise only.
+    \PHPStan\Testing\assertType('int', $value); // E?[noise]
 
-    // Wrong expected type: diagnostic when assertType is live.
+    // Wrong expected type: the sole enforcement probe.
     \PHPStan\Testing\assertType('string', $value); // E?: Expected type string, actual: int
 }

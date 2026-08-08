@@ -5,7 +5,7 @@ output = """
 phpdoc_advanced_psalm_public_properties_of.php:34: Argument type does not match the declared [PhpDocSignatureInspection]
 phpdoc_advanced_psalm_public_properties_of.php:34: Undefined class 'public-properties-of' [PhpUndefinedClassInspection]"""
 errors_diff = ""
-notes = "No qodana SARIF report available locally; re-run Qodana in PhpStorm then php conformance/src/main.php --tool=qodana."
+notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "none"

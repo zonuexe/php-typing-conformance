@@ -6,7 +6,7 @@ phpdoc_advanced_vendor_prefixed_type_phan.php:25: Undefined class 'UserRow' [Php
 phpdoc_advanced_vendor_prefixed_type_phan.php:35: Parameter '['id' => 1, 'name' => 'Ada']' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_vendor_prefixed_type_phan.php:38: Parameter '['id' => 1]' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = "Line 35: Unexpected errors [\"Parameter '['id' => 1, 'name' => 'Ada']' type is not compatible with declaration [PhpParamsInspection]\"]"
-notes = "No qodana SARIF report available locally; re-run Qodana in PhpStorm then php conformance/src/main.php --tool=qodana."
+notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"

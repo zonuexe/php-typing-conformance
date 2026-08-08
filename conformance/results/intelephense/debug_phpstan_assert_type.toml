@@ -2,13 +2,13 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-debug_phpstan_assert_type.php:23: Undefined function 'PHPStan\\Testing\\assertType'. [P1010]
-debug_phpstan_assert_type.php:26: Undefined function 'PHPStan\\Testing\\assertType'. [P1010]"""
+debug_phpstan_assert_type.php:24: Undefined function 'PHPStan\\Testing\\assertType'. [P1010]
+debug_phpstan_assert_type.php:27: Undefined function 'PHPStan\\Testing\\assertType'. [P1010]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"
-enforced_lines = "0/2"
+enforced_lines = "0/1"
 unrecognized_lines = []
 false_positive_lines = []

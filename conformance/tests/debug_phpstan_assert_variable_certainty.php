@@ -19,10 +19,10 @@ namespace Conformance\Tests\DebugPhpstanAssertVariableCertainty;
 function example(?string $value): void // T: PHPStan\Testing\assertVariableCertainty
 {
     if ($value !== null) {
-        // Definitely defined here.
-        \PHPStan\Testing\assertVariableCertainty(\PHPStan\TrinaryLogic::createYes(), $value); // E?: foreign undefined helper/class is incidental, not enforcement
+        // Definitely defined here — silence on match (not a probe).
+        \PHPStan\Testing\assertVariableCertainty(\PHPStan\TrinaryLogic::createYes(), $value); // E?[noise]
     }
 
-    // Still defined as a parameter (always certain), so Maybe is wrong.
+    // Still defined as a parameter (always certain), so Maybe is wrong — probe.
     \PHPStan\Testing\assertVariableCertainty(\PHPStan\TrinaryLogic::createMaybe(), $value); // E?: expected Maybe, actual Yes
 }

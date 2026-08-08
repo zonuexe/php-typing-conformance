@@ -172,20 +172,20 @@ A third family lives under `PHPStan\Testing\`:
 These are the building blocks of PHPStan’s own fixture tests. Behaviour:
 
 1. **Match → silence.** A correct `assertType('int', $value)` produces no
-   diagnostic from PHPStan.
+   diagnostic from PHPStan. That silence is success, not a missing feature.
 2. **Mismatch → one diagnostic** that names expected and actual, for example
    `Expected type string, actual: int` or
    `Expected subtype of string, actual: int` or
    `Expected native type positive-int, actual: int` or
    `Expected variable $value certainty Maybe, actual: Yes`.
 3. **Foreign tools** see undefined functions / unknown classes
-   (`PHPStan\TrinaryLogic`), so both the “correct” and “wrong” lines may
-   light up for the wrong reason.
+   (`PHPStan\TrinaryLogic`) on both lines for the wrong reason.
 
-In this suite, assert tests deliberately put `// E?` on **both** the matching
-and the failing call. Native PHPStan therefore scores **partial** enforcement
-(`1/2`): only the failing assert is expected to speak. That is correct for an
-assert API; it is not a bug in the helper.
+In this suite only the **mismatch** line is an enforcement probe (`// E?`).
+The matching call is marked `// E?[noise]` so foreign undefined-function
+noise stays Pass without counting toward the denominator. Native PHPStan
+therefore scores **Enforced (1/1)** when the failing assert speaks — full
+honour of the API, not “partly enforced”.
 
 `assertNativeType` is the one that makes PHPDoc vs native visible. With
 `@param positive-int $value` on an `int` parameter, `assertType` would see the
@@ -277,8 +277,8 @@ Very roughly, for “show me the type of this narrowed `int`”:
      line itself must not carry a trailing `//` comment**, or mir drops the
      annotation.
 4. **Scoring** uses recognition / enforcement / enforced_lines, same as type-
-   spelling rows. For asserts, partial enforcement on the native tool is
-   expected (only the failing assert speaks). A `// E[tag]` group is **one**
+   spelling rows. For asserts, only the mismatch line is a probe — match →
+   silence scores as Enforced (1/1), not Partly. A `// E[tag]` group is **one**
    enforcement probe (OR of its lines), not N independent lines.
 5. **mir** special-case: `--show-info` only for `debug_*` file names.
 

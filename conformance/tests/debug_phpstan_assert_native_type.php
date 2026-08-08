@@ -21,9 +21,9 @@ namespace Conformance\Tests\DebugPhpstanAssertNativeType;
  */
 function example(int $value): void // T: PHPStan\Testing\assertNativeType
 {
-    // Native type is int even when PHPDoc says positive-int.
-    \PHPStan\Testing\assertNativeType('int', $value); // E?: foreign undefined-function is incidental, not enforcement
+    // Native type is int even when PHPDoc says positive-int — silence on match.
+    \PHPStan\Testing\assertNativeType('int', $value); // E?[noise]
 
-    // positive-int is not the native type string.
-    \PHPStan\Testing\assertNativeType('positive-int', $value); // E?: native type is int, not positive-int
+    // positive-int is not the native type string — the sole enforcement probe.
+    \PHPStan\Testing\assertNativeType('positive-int', $value); // E?: Expected native type positive-int, actual: int
 }

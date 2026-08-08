@@ -1,12 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
+output = """
+phpdoc_advanced_return_never_return.php:29: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_return_never_return.php:33: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"""
 errors_diff = ""
-notes = "No qodana SARIF report available locally; re-run Qodana in PhpStorm then php conformance/src/main.php --tool=qodana."
+notes = ""
 ignore_errors = []
-recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/2"
-unrecognized_lines = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [29]
 false_positive_lines = []

@@ -1,7 +1,16 @@
 status = "Unknown"
-conformance_automated = "Not measured"
-expected_diagnostic_count = 1
-output = ""
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+debug_phpstan_assert_variable_certainty.php:23: Undefined namespace 'Testing' [PhpUndefinedNamespaceInspection]
+debug_phpstan_assert_variable_certainty.php:23: Undefined class 'TrinaryLogic' [PhpUndefinedClassInspection]
+debug_phpstan_assert_variable_certainty.php:27: Undefined namespace 'Testing' [PhpUndefinedNamespaceInspection]
+debug_phpstan_assert_variable_certainty.php:27: Undefined class 'TrinaryLogic' [PhpUndefinedClassInspection]"""
 errors_diff = ""
-notes = "No qodana SARIF report available locally; re-run Qodana in PhpStorm then php conformance/src/main.php --tool=qodana."
+notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

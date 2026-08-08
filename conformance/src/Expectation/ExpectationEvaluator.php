@@ -323,6 +323,13 @@ final class ExpectationEvaluator
             return true;
         }
 
+        // IDE / Qodana: "Undefined namespace 'Testing'" on PHPStan\Testing\…
+        // without naming the full helper — still "I do not know this API".
+        if (preg_match('/\bundefined namespace\b/i', $message) === 1
+            || preg_match('/\[PhpUndefinedNamespaceInspection\]/', $message) === 1) {
+            return true;
+        }
+
         // Pseudo-API names that live in analyzer namespaces, not user code.
         if (preg_match('/(?:PHPStan\\\\|Mago\\\\inspect)/', $message) !== 1) {
             return false;

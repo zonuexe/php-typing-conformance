@@ -11,6 +11,6 @@ notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
-enforced_lines = "2/2"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

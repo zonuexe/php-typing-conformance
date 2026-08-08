@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "debug_psalm_trace.php:25: $value: int [Trace]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [25]
+false_positive_lines = []

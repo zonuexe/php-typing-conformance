@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+debug_phpstan_assert_native_type.php:25: Undefined function 'PHPStan\\Testing\\assertNativeType'. [P1010]
+debug_phpstan_assert_native_type.php:28: Undefined function 'PHPStan\\Testing\\assertNativeType'. [P1010]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

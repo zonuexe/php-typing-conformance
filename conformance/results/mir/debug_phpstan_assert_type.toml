@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+debug_phpstan_assert_type.php:23: UndefinedFunction: Function PHPStan\\Testing\\assertType() is not defined [MIR0003]
+debug_phpstan_assert_type.php:26: UndefinedFunction: Function PHPStan\\Testing\\assertType() is not defined [MIR0003]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

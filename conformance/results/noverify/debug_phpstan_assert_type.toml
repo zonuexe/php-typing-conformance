@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+debug_phpstan_assert_type.php:23: Call to undefined function \\PHPStan\\Testing\\assertType [undefinedFunction]
+debug_phpstan_assert_type.php:26: Call to undefined function \\PHPStan\\Testing\\assertType [undefinedFunction]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

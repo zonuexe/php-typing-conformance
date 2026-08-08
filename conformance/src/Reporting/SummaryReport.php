@@ -99,11 +99,15 @@ final class SummaryReport
     ): string {
         $soundnessCases = array_values(array_filter(
             $testCases,
-            fn (TestCase $testCase): bool => $this->testKind($testCase) !== 'style',
+            fn (TestCase $testCase): bool => !in_array($this->testKind($testCase), ['style', 'debug'], true),
         ));
         $styleCases = array_values(array_filter(
             $testCases,
             fn (TestCase $testCase): bool => $this->testKind($testCase) === 'style',
+        ));
+        $debugCases = array_values(array_filter(
+            $testCases,
+            fn (TestCase $testCase): bool => $this->testKind($testCase) === 'debug',
         ));
 
         $updatedAt = $this->resultsUpdate->recorded();
@@ -115,6 +119,9 @@ final class SummaryReport
             'styleMatrix' => $styleCases === []
                 ? ''
                 : $this->renderMatrix($resultsRoot, $testGroups, $styleCases, $tools, true),
+            'debugMatrix' => $debugCases === []
+                ? ''
+                : $this->renderMatrix($resultsRoot, $testGroups, $debugCases, $tools, false),
             'analyzers' => $this->render('analyzers.phtml', ['analyzers' => $this->analyzers->all()]),
             'languageServers' => $this->render('language-servers.phtml', ['servers' => $this->languageServers->all()]),
             'languageServerCapabilities' => $this->renderLanguageServerCapabilities($resultsRoot),

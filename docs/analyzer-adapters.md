@@ -22,6 +22,10 @@ For a tool-by-tool comparison of the raw interfaces themselves — independent o
 how this repository's adapters cope with them — see
 [`analyzer-cli-interfaces.md`](analyzer-cli-interfaces.md).
 
+For dump/trace/assert helpers (`PHPStan\dumpType`, `@psalm-trace`,
+`Mago\inspect`, mir MIR0221, and so on) — including how function-style and
+trace-style outputs differ — see [`debug-features.md`](debug-features.md).
+
 ## The adapter contract
 
 ```php

@@ -10,6 +10,7 @@ declare(strict_types=1);
  * @var string $legend
  * @var string $soundnessMatrix
  * @var string $styleMatrix     '' when the suite has no style tests
+ * @var string $debugMatrix     '' when the suite has no debug-feature tests
  * @var string $analyzers
  * @var string $languageServers
  * @var string $languageServerCapabilities '' until a probe run has been committed
@@ -29,6 +30,11 @@ declare(strict_types=1);
 <h2 class="section">Style &amp; opinionated rules &mdash; no runtime-safety impact</h2>
 <p class="section-note">Lint-style opinions and advisories (PHPStan strict-rules, deprecations, doc conventions) that do not change whether the code runs. Cells show whether each analyzer <em>opts into</em> reporting the rule &mdash; not a pass/fail verdict.</p>
 <?= $styleMatrix ?>
+<?php endif; ?>
+<?php if ($debugMatrix !== ''): ?>
+<h2 class="section">Debug features &mdash; type-inspection helpers</h2>
+<p class="section-note">Dump/trace APIs used while debugging inference (<code>PHPStan\dumpType()</code>, <code>@psalm-trace</code>, <code>@phan-debug-var</code>, <code>Mago\inspect()</code>, &hellip;). Cells use the same recognition/enforcement vocabulary as type-spelling rows: does the analyzer accept this helper, and does it emit a diagnostic that reveals the inferred type?</p>
+<?= $debugMatrix ?>
 <?php endif; ?>
 <?= $analyzers ?>
 <?= $languageServers ?>

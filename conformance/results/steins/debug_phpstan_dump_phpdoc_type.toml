@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "debug_phpstan_dump_phpdoc_type.php:22: dumped phpdoc type: int [debug.phpdoc-type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

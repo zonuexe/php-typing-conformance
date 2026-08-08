@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "debug_mago_inspect.php:22: Type information for arguments of `Mago\\inspect()` call. [type-inspection]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

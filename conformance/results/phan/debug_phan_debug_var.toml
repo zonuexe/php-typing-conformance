@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "debug_phan_debug_var.php:25: @phan-debug-var requested for variable $value - it has union type int(real=int) [PhanDebugAnnotation]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "debug_phpstan_assert_super_type.php:25: Expected subtype of string, actual: int"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

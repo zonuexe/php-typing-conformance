@@ -157,6 +157,18 @@ references = [
   "references/phan.wiki/How-To-Use-Stubs.md",
 ]
 
+[debug]
+name = "Debug features"
+source_category = "extension"
+description = "Cross-tool type-inspection helpers: PHPStan\\dumpType()/dumpPhpDocType()/Testing\\assert*, @psalm-trace, @phan-debug-var, Mago\\inspect(), mir @trace."
+references = [
+  "references/phpstan/website/src/writing-php-code",
+  "references/psalm/docs/annotating_code/supported_annotations.md",
+  "references/phan.wiki/Annotating-Your-Source-Code-V6.md",
+  "references/mago/docs",
+  "references/mir/site/src/content/docs/reference/issues/type-mismatches/trace.md",
+]
+
 [psr]
 name = "FIG and PSR compatibility"
 source_category = "fig"

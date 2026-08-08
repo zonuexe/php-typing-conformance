@@ -49,9 +49,15 @@ final class MirChecker implements Checker
             [$this->anchorPath(), ...$testCase->supportPaths, $testCase->path],
         );
 
+        // Info-level issues (e.g. `@trace` → MIR0221) are off by default so
+        // ordinary tests stay free of UnusedParam noise. Debug-feature cases
+        // need them, and only those files are named `debug_*`.
+        $showInfo = str_starts_with($testCase->name, 'debug_') ? ' --show-info' : '';
+
         $command = sprintf(
-            '%s --no-progress --no-cache --php-version 8.5 %s 2>&1',
+            '%s --no-progress --no-cache --php-version 8.5%s %s 2>&1',
             escapeshellarg($this->binaryPath),
+            $showInfo,
             implode(' ', $paths),
         );
 

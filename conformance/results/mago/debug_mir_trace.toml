@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "debug_mir_trace.php:28: Trace: Type of `$value` is `int` [psalm-trace]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [28]
+false_positive_lines = []

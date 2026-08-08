@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "debug_phan_debug_var.php:27: Expression \"'@phan-debug-var $value'\" on a separate line does not do anything. [reported-from-level=4]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 4
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

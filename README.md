@@ -120,6 +120,17 @@ binaries; `make install-php-lsp` and `make install-phpantom` fetch them.
 [`docs/language-servers.md`](docs/language-servers.md) documents the method
 and the traps.
 
+## Debug helpers (dump, trace, assert)
+
+Besides Pass/Fail soundness rows, the report has a **Debug features** matrix for
+type-inspection surfaces each analyzer ships for humans and fixtures:
+`\PHPStan\dumpType()` / `dumpPhpDocType()` / `Testing\assert*`, `@psalm-trace`,
+`@phan-debug-var`, `\Mago\inspect()`, mir `@trace` (MIR0221). Function-style
+helpers and annotation-style traces answer the same question — “what type is
+this here?” — but differ in syntax, message shape, line attribution, and how
+foreign tools react (undefined function vs silence).
+[`docs/debug-features.md`](docs/debug-features.md) compares them in prose.
+
 ## The report
 
 Running the analyzers writes one TOML file per tool and test under

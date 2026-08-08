@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+debug_phpstan_assert_native_type.php:25: call to undefined function PHPStan\\Testing\\assertNativeType() — not defined in the project, not on PHP 8.5.9 (70 extensions) [call.undefined-function]
+debug_phpstan_assert_native_type.php:28: call to undefined function PHPStan\\Testing\\assertNativeType() — not defined in the project, not on PHP 8.5.9 (70 extensions) [call.undefined-function]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

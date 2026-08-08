@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "debug_phpstan_assert_variable_certainty.php:27: Expected variable $value certainty Maybe, actual: Yes [reported-from-level=0]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 0
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

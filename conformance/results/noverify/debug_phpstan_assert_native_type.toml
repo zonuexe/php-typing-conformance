@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+debug_phpstan_assert_native_type.php:22: param $value miss matched with phpdoc type <<positive-int>> [funcParamTypeMissMatch]
+debug_phpstan_assert_native_type.php:25: Call to undefined function \\PHPStan\\Testing\\assertNativeType [undefinedFunction]
+debug_phpstan_assert_native_type.php:28: Call to undefined function \\PHPStan\\Testing\\assertNativeType [undefinedFunction]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [22]
+false_positive_lines = []

@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+debug_phpstan_assert_super_type.php:22: Call to undeclared function \\PHPStan\\Testing\\assertSuperType() [PhanUndeclaredFunction]
+debug_phpstan_assert_super_type.php:25: Call to undeclared function \\PHPStan\\Testing\\assertSuperType() [PhanUndeclaredFunction]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

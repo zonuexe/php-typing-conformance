@@ -39,6 +39,20 @@ use RuntimeException;
  */
 final class SteinsChecker implements Checker
 {
+    /**
+     * Finding ids dropped as non-conformance noise.
+     *
+     * `untyped.class-constant` ("class constant … has no type — no native type
+     * and no `@var`") lights up bare shape maps used by key-of / value-of /
+     * int-mask fixtures. Steins 0.1.5 is expected to remove the rule, so the
+     * 0.1.4 noise is ignored rather than rewritten into every test.
+     *
+     * @var list<string>
+     */
+    private const IGNORED_IDS = [
+        'untyped.class-constant',
+    ];
+
     private readonly string $binaryPath;
 
     public function __construct(string $binaryPath)
@@ -151,6 +165,10 @@ final class SteinsChecker implements Checker
             $id = trim((string) ($finding['id'] ?? ''));
 
             if ($lineNumber <= 0 || $message === '') {
+                continue;
+            }
+
+            if ($id !== '' && in_array($id, self::IGNORED_IDS, true)) {
                 continue;
             }
 

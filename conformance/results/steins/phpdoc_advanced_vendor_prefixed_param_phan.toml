@@ -1,7 +1,7 @@
 status = "By design"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
-output = ""
+output = "phpdoc_advanced_vendor_prefixed_param_phan.php:19: parameter $value of takesPhanParam() has no type — no native type and no `@param` [untyped.parameter]"
 errors_diff = "Line 24: Expected 1 error(s)"
 notes = "Vendor-tag scope is deliberate: only @phpstan-* / @psalm-* prefixes carry contracts (ADR-0029; Steins divergence registry, conformance entry 1). @phan-param is erased."
 ignore_errors = []

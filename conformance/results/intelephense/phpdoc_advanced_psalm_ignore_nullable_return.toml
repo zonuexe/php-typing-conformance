@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_psalm_ignore_nullable_return.php:34: Expected type 'Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item'. Found 'null|Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item'. [P1006]
+phpdoc_advanced_psalm_ignore_nullable_return.php:37: Expected type 'Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item'. Found 'null'. [P1006]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

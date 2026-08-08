@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_mixin.php:52: Argument 1 of takesInt cannot be mixed, expecting int [MixedArgument]
+phpdoc_advanced_mixin.php:52: Magic method Conformance\\Tests\\PhpdocAdvancedMixin\\Facade::missing does not exist [UndefinedMagicMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

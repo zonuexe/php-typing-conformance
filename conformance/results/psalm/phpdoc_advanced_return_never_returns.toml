@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_return_never_returns.php:31: Conformance\\Tests\\PhpdocAdvancedReturnNeverReturns\\claimsNeverButReturns is not expected to return, but it does, either implicitly or explicitly [InvalidReturnType]
+phpdoc_advanced_return_never_returns.php:35: The inferred type '1' does not match the declared return type 'never' for Conformance\\Tests\\PhpdocAdvancedReturnNeverReturns\\claimsNeverButReturns [InvalidReturnStatement]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [31]
+false_positive_lines = []

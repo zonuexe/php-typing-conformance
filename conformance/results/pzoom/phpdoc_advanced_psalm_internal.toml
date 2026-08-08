@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_psalm_internal.php:45: Conformance\\Tests\\PhpdocAdvancedPsalmInternal\\Library\\Secret is internal to Conformance\\Tests\\PhpdocAdvancedPsalmInternal\\Library [InternalClass]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

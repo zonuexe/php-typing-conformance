@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_return_never_returns.php:35: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedReturnNeverReturns\\claimsNeverButReturns`: expected `never`, but found `int(1)`. [invalid-return-statement]
+phpdoc_advanced_return_never_returns.php:42: Unreachable code detected. [unevaluated-code]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

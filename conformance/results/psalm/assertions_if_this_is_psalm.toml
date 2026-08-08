@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = "assertions_if_this_is_psalm.php:53: Class type must be Conformance\\Tests\\AssertionsIfThisIsPsalm\\Box<int> current type Conformance\\Tests\\AssertionsIfThisIsPsalm\\Box<'x'> [IfThisIsMismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

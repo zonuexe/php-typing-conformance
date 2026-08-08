@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_psalm_consistent_constructor.php:33: Parameter `$id` of `Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ChildWithDifferentCtor::__construct()` expects type `int` but parent `Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ParentWithCtor::__construct()` expects type `string` [incompatible-parameter-type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

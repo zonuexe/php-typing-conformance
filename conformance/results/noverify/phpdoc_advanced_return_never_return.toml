@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_return_never_return.php:12: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedReturnNeverReturn\\never-return does not exist [undefinedClass]
+phpdoc_advanced_return_never_return.php:29: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedReturnNeverReturn\\never-return does not exist [undefinedClass]
+phpdoc_advanced_return_never_return.php:40: Unreachable code [deadCode]"""
+errors_diff = "Line 12: Unexpected errors [\"Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedReturnNeverReturn\\\\never-return does not exist [undefinedClass]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [29]
+false_positive_lines = [12]

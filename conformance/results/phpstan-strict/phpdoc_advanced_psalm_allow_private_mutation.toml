@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_psalm_allow_private_mutation.php:34: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value is assigned outside of its declaring class."
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

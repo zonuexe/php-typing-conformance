@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_phpstan_require_implements.php:31: InvalidTraitUse: Trait NeedsContract used incorrectly: Class Conformance\\Tests\\PhpdocAdvancedPhpstanRequireImplements\\BadUser uses trait NeedsContract but does not implement Conformance\\Tests\\PhpdocAdvancedPhpstanRequireImplements\\RequiredContract [MIR1300]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

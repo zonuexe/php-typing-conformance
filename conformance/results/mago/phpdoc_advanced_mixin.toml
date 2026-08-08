@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_mixin.php:52: Ambiguous method call to `missing` on class `Conformance\\Tests\\PhpdocAdvancedMixin\\Facade`. [non-documented-method]
+phpdoc_advanced_mixin.php:52: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedMixin\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

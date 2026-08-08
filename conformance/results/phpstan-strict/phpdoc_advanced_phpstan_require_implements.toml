@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_phpstan_require_implements.php:29: Trait Conformance\\Tests\\PhpdocAdvancedPhpstanRequireImplements\\NeedsContract requires using class to implement Conformance\\Tests\\PhpdocAdvancedPhpstanRequireImplements\\RequiredContract, but Conformance\\Tests\\PhpdocAdvancedPhpstanRequireImplements\\BadUser does not."
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

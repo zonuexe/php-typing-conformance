@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+assertions_if_this_is_psalm.php:24: param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]
+assertions_if_this_is_psalm.php:30: Class or interface named \\Conformance\\Tests\\AssertionsIfThisIsPsalm\\U does not exist [undefinedClass]
+assertions_if_this_is_psalm.php:34: param $value miss matched with phpdoc type <<U>> [funcParamTypeMissMatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/4"
+unrecognized_lines = []
+false_positive_lines = []

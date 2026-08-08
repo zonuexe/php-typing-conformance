@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phpstan_template_type.php:34: Invalid return docblock type [InvalidDocblock]
+phpdoc_advanced_phpstan_template_type.php:44: Argument 1 of takesString cannot be mixed, expecting string [MixedArgument]
+phpdoc_advanced_phpstan_template_type.php:47: Argument 1 of takesString cannot be mixed, expecting string [MixedArgument]"""
+errors_diff = "Line 44: Unexpected errors [\"Argument 1 of takesString cannot be mixed, expecting string [MixedArgument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [34]
+false_positive_lines = [44]

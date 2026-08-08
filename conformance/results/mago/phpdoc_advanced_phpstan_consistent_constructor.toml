@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_phpstan_consistent_constructor.php:34: Parameter `$id` of `Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor::__construct()` expects type `int` but parent `Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ParentWithCtor::__construct()` expects type `string` [incompatible-parameter-type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

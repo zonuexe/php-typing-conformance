@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phpstan_template_type.php:24: param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]
+phpdoc_advanced_phpstan_template_type.php:32: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type does not exist [undefinedClass]
+phpdoc_advanced_phpstan_template_type.php:34: param $box miss matched with phpdoc type <<Box<T>>> [funcParamTypeMissMatch]"""
+errors_diff = "Line 24: Unexpected errors [\"param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [32, 34]
+false_positive_lines = [24]

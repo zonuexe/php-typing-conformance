@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_phan_read_only_write_only.php:28: Cannot write to protected property `$id` on class `Conformance\\Tests\\PhpdocAdvancedPhanReadOnlyWriteOnly\\Bag`. [invalid-property-write]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

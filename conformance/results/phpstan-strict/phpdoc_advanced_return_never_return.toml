@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_return_never_return.php:33: Function Conformance\\Tests\\PhpdocAdvancedReturnNeverReturn\\claimsNeverButReturns() should never return but return statement found.
+phpdoc_advanced_return_never_return.php:40: Unreachable statement - code above always terminates."""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

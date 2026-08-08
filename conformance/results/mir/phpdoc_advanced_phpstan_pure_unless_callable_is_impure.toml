@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:47: ImpureFunctionCall: Calling impure function mapInts() in a @pure function [MIR1704]
+phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:58: ImpureFunctionCall: Calling impure function mapInts() in a @pure function [MIR1704]"""
+errors_diff = "Line 47: Unexpected errors [\"ImpureFunctionCall: Calling impure function mapInts() in a @pure function [MIR1704]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = [47]

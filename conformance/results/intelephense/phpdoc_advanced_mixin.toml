@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_mixin.php:49: Expected type 'int'. Found 'mixed'. [P1006]
+phpdoc_advanced_mixin.php:52: Expected type 'int'. Found 'mixed'. [P1006]"""
+errors_diff = "Line 49: Unexpected errors [\"Expected type 'int'. Found 'mixed'. [P1006]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = [49]

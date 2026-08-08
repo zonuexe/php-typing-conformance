@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_return_never_returns.php:23: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedReturnNeverReturns\\never-returns'
+phpdoc_advanced_return_never_returns.php:31: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedReturnNeverReturns\\never-returns'
+phpdoc_advanced_return_never_returns.php:35: Return value of Conformance\\Tests\\PhpdocAdvancedReturnNeverReturns\\claimsNeverButReturns() is expected to be of type Conformance\\Tests\\PhpdocAdvancedReturnNeverReturns\\never-returns, int returned"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [23, 31]
+false_positive_lines = []

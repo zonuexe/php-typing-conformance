@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_phpstan_param_immediately_invoked_callable.php:41: Argument 1 ($value) is $name of type null but \\Conformance\\Tests\\PhpdocAdvancedPhpstanParamImmediatelyInvokedCallable\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_param_immediately_invoked_callable.php:29 [PhanTypeMismatchArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

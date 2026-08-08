@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phpstan_template_type.php:32: Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type does not exist [UndefinedDocblockClass]
+phpdoc_advanced_phpstan_template_type.php:44: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\takesString expects string, but Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<'ok'>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, 'T'> provided [InvalidArgument]
+phpdoc_advanced_phpstan_template_type.php:47: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\takesString expects string, but Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<1>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, 'T'> provided [InvalidArgument]"""
+errors_diff = "Line 44: Unexpected errors [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\takesString expects string, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<'ok'>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, 'T'> provided [InvalidArgument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [32]
+false_positive_lines = [44]

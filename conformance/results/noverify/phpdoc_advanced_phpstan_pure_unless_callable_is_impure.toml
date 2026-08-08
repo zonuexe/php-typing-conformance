@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:23: param $values miss matched with phpdoc type <<list<int>>> [funcParamTypeMissMatch]
+phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:27: not null safety call in function Closure$(int):int signature of param closure param #0 [notNullSafetyFunctionArgumentVariable]
+phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:58: Too few arguments for Conformance\\Tests\\PhpdocAdvancedPhpstanPureUnlessCallableIsImpure\\impureMapper, expecting 1, saw 0 [argCount]"""
+errors_diff = "Line 27: Unexpected errors [\"not null safety call in function Closure$(int):int signature of param closure param #0 [notNullSafetyFunctionArgumentVariable]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [23]
+false_positive_lines = [27]

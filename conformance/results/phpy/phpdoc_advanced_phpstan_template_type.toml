@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_phpstan_template_type.php:47: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\takesString() is expected to be of type string, int given"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

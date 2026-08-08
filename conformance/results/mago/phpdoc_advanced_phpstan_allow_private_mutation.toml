@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_allow_private_mutation.php:28: Cannot modify a readonly property. [invalid-property-write]
+phpdoc_advanced_phpstan_allow_private_mutation.php:34: Cannot write to protected property `$value` on class `Conformance\\Tests\\PhpdocAdvancedPhpstanAllowPrivateMutation\\Counter`. [invalid-property-write]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_vendor_prefixed_impure_phpstan.php:31: Parameter #1 $string of function strlen expects string, string|null given. [reported-from-level=8]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 8
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

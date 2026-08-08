@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_phpstan_require_implements.php:31: trait Conformance\\Tests\\PhpdocAdvancedPhpstanRequireImplements\\NeedsContract expects interface Conformance\\Tests\\PhpdocAdvancedPhpstanRequireImplements\\RequiredContract"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []

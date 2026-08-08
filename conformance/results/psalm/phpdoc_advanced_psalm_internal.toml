@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_psalm_internal.php:45: The method Conformance\\Tests\\PhpdocAdvancedPsalmInternal\\Library\\Secret::token is internal to Conformance\\Tests\\PhpdocAdvancedPsalmInternal\\Library but called from Conformance\\Tests\\PhpdocAdvancedPsalmInternal\\App\\Conformance\\Tests\\PhpdocAdvancedPsalmInternal\\App\\outside [InternalMethod]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

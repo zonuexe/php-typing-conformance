@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phan_closure_scope.php:31: Variable $this is undeclared [PhanUndeclaredThis]
+phpdoc_advanced_phan_closure_scope.php:33: Variable $this is undeclared [PhanUndeclaredThis]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

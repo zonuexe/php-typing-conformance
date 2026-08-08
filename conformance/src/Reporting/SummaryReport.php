@@ -157,55 +157,123 @@ final class SummaryReport
                 continue;
             }
 
-            $rows = [];
-
-            foreach ($this->byTitle($groupCases) as [$testCase, $title]) {
-                $cells = [];
-
-                foreach ($tools as $tool) {
-                    $result = $this->loadResult($resultsRoot, $tool, $testCase->name);
-                    [$display, $class] = $style ? $this->styleStatusOf($result) : $this->statusOf($result);
-
-                    $cell = htmlspecialchars($display);
-                    if ($tool === 'phpstan') {
-                        // Merge the phpstan-strict column: mark diagnostics that
-                        // only the strict-rules config catches.
-                        [$display, $class, $suffix] = $this->phpstanMerged($resultsRoot, $testCase->name, $result, $style);
-                        $cell = htmlspecialchars($display) . $suffix;
-                    } elseif ($tool === 'psalm') {
-                        // Merge the pzoom column: mark where the Psalm port differs.
-                        [$display, $class, $suffix] = $this->psalmMerged($resultsRoot, $testCase->name, $result, $style);
-                        $cell = htmlspecialchars($display) . $suffix;
-                    } elseif (!$style) {
-                        $cell .= $this->levelSuffix($result);
+            // Advanced PHPDoc mixes type spellings (int-range, class-string, …)
+            // with annotation tags (@psalm-assert, @mixin, …). One header for both
+            // makes the matrix hard to scan, so the display splits them.
+            if ($groupKey === 'phpdoc_advanced') {
+                $typeCases = [];
+                $tagCases = [];
+                foreach ($groupCases as $testCase) {
+                    if ($this->isPhpdocTagCase($testCase)) {
+                        $tagCases[] = $testCase;
+                    } else {
+                        $typeCases[] = $testCase;
                     }
+                }
 
-                    if (!$style) {
-                        $cell .= $this->falsePositiveSuffix($result);
-                    }
-
-                    $cells[] = [
-                        'class' => $class,
-                        'html' => $cell,
-                        'notes' => trim((string) ($result['notes'] ?? '')),
+                if ($typeCases !== []) {
+                    $groups[] = [
+                        'name' => $group->name,
+                        'rows' => $this->matrixRows($resultsRoot, $typeCases, $tools, $style),
                     ];
                 }
 
-                $rows[] = [
-                    'id' => $testCase->name,
-                    'href' => self::DETAILS_DIR . '/' . rawurlencode($testCase->name) . '.html',
-                    'titleHtml' => h_inline($title),
-                    'cells' => $cells,
-                ];
+                if ($tagCases !== []) {
+                    $groups[] = [
+                        'name' => 'PHPDoc tags',
+                        'rows' => $this->matrixRows($resultsRoot, $tagCases, $tools, $style),
+                    ];
+                }
+
+                continue;
             }
 
-            $groups[] = ['name' => $group->name, 'rows' => $rows];
+            $groups[] = [
+                'name' => $group->name,
+                'rows' => $this->matrixRows($resultsRoot, $groupCases, $tools, $style),
+            ];
         }
 
         return $this->render('matrix.phtml', [
             'tools' => $toolColumns,
             'groups' => $groups,
         ]);
+    }
+
+    /**
+     * Build the matrix body rows for a set of test cases.
+     *
+     * @param list<TestCase> $cases
+     * @param list<string> $tools
+     * @return list<array{id: string, href: string, titleHtml: string, cells: list<array{class: string, html: string, notes: string}>}>
+     */
+    private function matrixRows(
+        string $resultsRoot,
+        array $cases,
+        array $tools,
+        bool $style,
+    ): array {
+        $rows = [];
+
+        foreach ($this->byTitle($cases) as [$testCase, $title]) {
+            $cells = [];
+
+            foreach ($tools as $tool) {
+                $result = $this->loadResult($resultsRoot, $tool, $testCase->name);
+                [$display, $class] = $style ? $this->styleStatusOf($result) : $this->statusOf($result);
+
+                $cell = htmlspecialchars($display);
+                if ($tool === 'phpstan') {
+                    // Merge the phpstan-strict column: mark diagnostics that
+                    // only the strict-rules config catches.
+                    [$display, $class, $suffix] = $this->phpstanMerged($resultsRoot, $testCase->name, $result, $style);
+                    $cell = htmlspecialchars($display) . $suffix;
+                } elseif ($tool === 'psalm') {
+                    // Merge the pzoom column: mark where the Psalm port differs.
+                    [$display, $class, $suffix] = $this->psalmMerged($resultsRoot, $testCase->name, $result, $style);
+                    $cell = htmlspecialchars($display) . $suffix;
+                } elseif (!$style) {
+                    $cell .= $this->levelSuffix($result);
+                }
+
+                if (!$style) {
+                    $cell .= $this->falsePositiveSuffix($result);
+                }
+
+                $cells[] = [
+                    'class' => $class,
+                    'html' => $cell,
+                    'notes' => trim((string) ($result['notes'] ?? '')),
+                ];
+            }
+
+            $rows[] = [
+                'id' => $testCase->name,
+                'href' => self::DETAILS_DIR . '/' . rawurlencode($testCase->name) . '.html',
+                'titleHtml' => h_inline($title),
+                'cells' => $cells,
+            ];
+        }
+
+        return $rows;
+    }
+
+    /**
+     * Whether a phpdoc_advanced case is about an annotation tag rather than a
+     * type spelling.
+     *
+     * Tag cases are those whose `// T` marker names a docblock tag (`@…`), or
+     * whose filename is a vendor-prefixed tag probe without a `// T` marker
+     * (e.g. `@phan-param` under `vendor_prefixed_param_*`).
+     */
+    private function isPhpdocTagCase(TestCase $testCase): bool
+    {
+        $source = $this->readSource($testCase->path);
+        if (preg_match('/\/\/\s*T:\s*@\S+/', $source) === 1) {
+            return true;
+        }
+
+        return str_contains($testCase->name, 'vendor_prefixed');
     }
 
     /**

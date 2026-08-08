@@ -99,7 +99,7 @@ references = [
 [phpdoc_advanced]
 name = "Advanced PHPDoc types"
 source_category = "ecosystem"
-description = "Conditional types, utility types, ranges, literal strings, key-of, and value-of."
+description = "Utility and fallback type spellings (ranges, class-string, key-of, shapes, …). Vendor PHPDoc *tags* (@psalm-assert, @mixin, …) share this group on disk but render as a separate “PHPDoc tags” section in the HTML matrix."
 references = [
   "references/phpstan/website/src",
   "references/psalm/docs/annotating_code/type_syntax",

@@ -323,22 +323,34 @@ final class ExpectationEvaluator
             return true;
         }
 
-        // IDE / Qodana: "Undefined namespace 'Testing'" on PHPStan\Testing\…
-        // without naming the full helper — still "I do not know this API".
+        // IDE / Qodana: "Undefined namespace 'Testing'" / "Undefined class
+        // 'TrinaryLogic'" — short names without the PHPStan\ prefix.
         if (preg_match('/\bundefined namespace\b/i', $message) === 1
             || preg_match('/\[PhpUndefinedNamespaceInspection\]/', $message) === 1) {
             return true;
         }
 
+        if (preg_match('/\bTrinaryLogic\b/', $message) === 1
+            && preg_match('/\b(undefined|unknown|does not exist|not found|undeclared)\b/i', $message) === 1) {
+            return true;
+        }
+
+        if (preg_match('/\[PhpUndefinedClassInspection\]/', $message) === 1
+            && preg_match('/\b(TrinaryLogic|Testing)\b/', $message) === 1) {
+            return true;
+        }
+
         // Pseudo-API names that live in analyzer namespaces, not user code.
-        if (preg_match('/(?:PHPStan\\\\|Mago\\\\inspect)/', $message) !== 1) {
+        // Messages may use one backslash (PHPStan\dumpType) after TOML round-trip.
+        if (preg_match('/(?:PHPStan\\\\?|Mago\\\\?inspect)/', $message) !== 1) {
             return false;
         }
 
         // Missing symbol of any kind on a pseudo-API path (function, class,
         // type, method on TrinaryLogic, …) is still "I do not know this helper".
+        // Includes phpy's "Call to unknown function: 'PHPStan\…'".
         return preg_match(
-            '/\b(does not exist|could not be found|not found|is not defined|undeclared function|undeclared class|undefined function|undefined class|undefined type|undefined method|undefinedclass|non-existent-function|non-existent-method|phanundeclaredfunction|phanundeclaredclassmethod)\b/i',
+            '/\b(does not exist|could not be found|not found|is not defined|undeclared function|undeclared class|undefined function|unknown function|use of unknown class|undefined class|undefined type|undefined method|undefinedclass|non-existent-function|non-existent-method|phanundeclaredfunction|phanundeclaredclassmethod)\b/i',
             $message,
         ) === 1
             || preg_match(

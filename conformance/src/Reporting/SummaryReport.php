@@ -549,10 +549,24 @@ final class SummaryReport
             $titleText = $this->humanize($testCase->name);
         }
 
+        // Many advanced/debug cases open with this stock phrase; the matrix and
+        // detail headings are clearer as just the tag or helper under test.
+        $stripped = preg_replace('/^Cross-tool handling of\s+/i', '', $titleText);
+        if (is_string($stripped) && $stripped !== $titleText) {
+            $titleText = trim($stripped);
+            if ($titleText !== '' && preg_match('/^[\p{Ll}]/u', $titleText) === 1) {
+                $titleText = mb_strtoupper(mb_substr($titleText, 0, 1)) . mb_substr($titleText, 1);
+            }
+        }
+
         // Headings read better without the sentence-ending period (but keep an
         // ellipsis intact).
         if (str_ends_with($titleText, '.') && !str_ends_with($titleText, '..')) {
             $titleText = substr($titleText, 0, -1);
+        }
+
+        if ($titleText === '') {
+            $titleText = $this->humanize($testCase->name);
         }
 
         return [$titleText, rtrim(implode("\n", $rest))];

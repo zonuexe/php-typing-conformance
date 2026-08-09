@@ -1,12 +1,12 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = "phpdoc_advanced_psalm_ignore_nullable_return.php:37: Parameter 'null' type is not compatible with declaration [PhpParamsInspection]"
-errors_diff = ""
+errors_diff = "Line 37: Unexpected errors [\"Parameter 'null' type is not compatible with declaration [PhpParamsInspection]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"
 enforced_lines = "1/2"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [37]

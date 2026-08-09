@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_phpstan_allow_private_mutation.php:34: Conformance\\Tests\\PhpdocAdvancedPhpstanAllowPrivateMutation\\Counter::$value is marked readonly [InaccessibleProperty]"
+output = "phpdoc_advanced_phpstan_allow_private_mutation.php:33: Conformance\\Tests\\PhpdocAdvancedPhpstanAllowPrivateMutation\\Counter::$value is marked readonly [InaccessibleProperty]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []

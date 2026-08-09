@@ -23,12 +23,12 @@ final class Counter
 
     public function increment(): void
     {
-        // Allowed under @psalm-allow-private-mutation; other tools may still
-        // treat @readonly as fully frozen.
-        $this->value++; // E?: tools that ignore allow-private-mutation treat @readonly strictly
+        // Allowed under the tag (Psalm baseline). Silence = success.
+        $this->value++; // Q?: silence when @psalm-allow-private-mutation is applied
     }
 }
 
 $counter = new Counter();
 $counter->increment();
+// External write must still fail under @readonly.
 $counter->value = 99; // E?: readonly property assigned outside declaring class

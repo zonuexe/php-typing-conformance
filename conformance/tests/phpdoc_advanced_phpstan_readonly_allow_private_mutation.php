@@ -21,7 +21,8 @@ final class Counter
 
     public function increment(): void
     {
-        $this->value++;
+        // Allowed under the combined tag (PHPStan baseline). Silence = success.
+        $this->value++; // Q?: silence when @phpstan-readonly-allow-private-mutation is applied
     }
 }
 

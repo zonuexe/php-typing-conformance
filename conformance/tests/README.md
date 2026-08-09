@@ -7,6 +7,7 @@ Rules for test files:
 - one focused topic per file,
 - filename starts with a test-group prefix,
 - expected diagnostics are marked inline with `// E`, `// E?`, `// E[tag]`, `// E?[tag]`, or `// E[tag+]` (`+` allows multiple hits in the group),
+- quiet probes `// Q` / `// Q?` expect **silence** (success for suppress tags such as `@psalm-ignore-falsable-return`); a real diagnostic on a quiet line means the feature was not applied,
 - a tagged group is **one** logical probe (OR of its lines): useful when tools disagree which line to blame,
 - `// E?[tag]` is optional (silence is Pass); `// E[tag]` still requires at least one hit,
 - `// E[noise]` / `// E?[noise]` marks incidental diagnostics that are allowed for Pass/Fail (e.g. "expression has no effect" on a Phan string annotation) but **do not count as enforcement probes** for `// T` type-handling / debug rows,

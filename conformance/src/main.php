@@ -187,14 +187,16 @@ foreach ($testCases as $testCase) {
 
     foreach ($expectedDiagnostics as $diagnostic) {
         $kind = $diagnostic->required ? 'required' : 'optional';
+        $mode = $diagnostic->quiet ? 'quiet' : 'report';
         $tool = $diagnostic->tool !== null ? sprintf(', tool=%s', $diagnostic->tool) : '';
         $tag = $diagnostic->tag !== null ? sprintf(', tag=%s', $diagnostic->tag) : '';
         $multi = $diagnostic->allowMultiple ? ', multiple' : '';
 
         printf(
-            "  line %d: %s%s%s%s\n",
+            "  line %d: %s %s%s%s%s\n",
             $diagnostic->line,
             $kind,
+            $mode,
             $tool,
             $tag,
             $multi,

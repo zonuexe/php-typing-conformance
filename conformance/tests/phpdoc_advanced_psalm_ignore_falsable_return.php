@@ -26,7 +26,9 @@ function takesString(string $value): void
 {
 }
 
-// Supporting tools accept the call; tools that ignore the tag may still warn.
-takesString(maybeString()); // E?: tools without ignore-falsable-return still see string|false
+// Honouring the tag means silence here (Psalm baseline). A diagnostic means
+// the ignore was not applied — score with // Q?, not // E?.
+takesString(maybeString()); // Q?: silence when @psalm-ignore-falsable-return is applied
 
+// Still never a string, whether or not the ignore tag is known.
 takesString(false); // E?: false is not a string regardless of ignore-falsable-return

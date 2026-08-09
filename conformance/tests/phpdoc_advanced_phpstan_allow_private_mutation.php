@@ -23,9 +23,8 @@ final class Counter
 
     public function increment(): void
     {
-        // Allowed under @phpstan-allow-private-mutation; tools that only see
-        // @readonly may still flag this write.
-        $this->value++; // E?: tools that ignore allow-private-mutation treat @readonly strictly
+        // Allowed under the tag (PHPStan baseline). Silence = success.
+        $this->value++; // Q?: silence when @phpstan-allow-private-mutation is applied
     }
 }
 

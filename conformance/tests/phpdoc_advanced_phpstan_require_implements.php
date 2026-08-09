@@ -26,9 +26,9 @@ trait NeedsContract // T: @phpstan-require-implements
 }
 
 // Missing the required interface (diagnostic may land on the class or the use).
-final class BadUser // E?: using class must implement RequiredContract
+final class BadUser // E?[req]: using class must implement RequiredContract
 {
-    use NeedsContract; // E?: using class must implement RequiredContract
+    use NeedsContract; // E?[req]: using class must implement RequiredContract
 }
 
 // Satisfies the requirement.

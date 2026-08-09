@@ -1,14 +1,14 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_psalm_ignore_falsable_return.php:32: Parameter 'false' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
 phpdoc_advanced_psalm_ignore_falsable_return.php:32: Parameter 'false' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
-errors_diff = ""
+errors_diff = "Line 32: Unexpected errors [\"Parameter 'false' type is not compatible with declaration when using strict type matching [PhpParamsInspection]\",\"Parameter 'false' type is not compatible with declaration [PhpStrictTypeCheckingInspection]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"
 enforced_lines = "1/2"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [32]

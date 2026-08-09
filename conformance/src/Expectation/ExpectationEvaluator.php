@@ -24,8 +24,12 @@ final class ExpectationEvaluator
             $markedLines[$marker->line] = true;
         }
 
+        // Report probes (`// E`): success is a diagnostic.
         $requiredByLine = [];
         $optionalByLine = [];
+        // Quiet probes (`// Q`): success is silence (suppress/ignore tags).
+        $requiredQuietByLine = [];
+        $optionalQuietByLine = [];
         $groups = [];
         // Lines marked `// E[noise]` / `// E?[noise]` may report incidental
         // diagnostics (e.g. "expression has no effect") without counting as
@@ -59,6 +63,15 @@ final class ExpectationEvaluator
                 continue;
             }
 
+            if ($diagnostic->quiet) {
+                if ($diagnostic->required) {
+                    $requiredQuietByLine[$diagnostic->line] = true;
+                } else {
+                    $optionalQuietByLine[$diagnostic->line] = true;
+                }
+                continue;
+            }
+
             if ($diagnostic->required) {
                 $requiredByLine[$diagnostic->line] = ($requiredByLine[$diagnostic->line] ?? 0) + 1;
             } else {
@@ -74,6 +87,17 @@ final class ExpectationEvaluator
         foreach ($requiredByLine as $line => $count) {
             if (!isset($actualDiagnostics[$line])) {
                 $differences[] = sprintf('Line %d: Expected %d error(s)', $line, $count);
+            }
+        }
+
+        foreach (array_keys($requiredQuietByLine) as $line) {
+            $messages = $actualDiagnostics[$line] ?? [];
+            if ($messages !== [] && $this->hasEnforcementSignal($messages)) {
+                $differences[] = sprintf(
+                    'Line %d: Expected silence (quiet probe), got %s',
+                    $line,
+                    json_encode($messages, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+                );
             }
         }
 
@@ -117,7 +141,14 @@ final class ExpectationEvaluator
         $traceSpellingUnderTest = $this->hasTraceSpellingMarker($typeMarkers);
 
         foreach ($actualDiagnostics as $line => $messages) {
-            if (isset($requiredByLine[$line]) || isset($optionalByLine[$line]) || isset($groupLines[$line]) || isset($noiseLines[$line])) {
+            if (
+                isset($requiredByLine[$line])
+                || isset($optionalByLine[$line])
+                || isset($requiredQuietByLine[$line])
+                || isset($optionalQuietByLine[$line])
+                || isset($groupLines[$line])
+                || isset($noiseLines[$line])
+            ) {
                 continue;
             }
 
@@ -140,28 +171,38 @@ final class ExpectationEvaluator
         }
 
         $errorsDiff = implode("\n", $differences);
-        // Per-line probes (untagged // E) plus one probe per // E[tag] group.
-        $lineProbes = array_keys($requiredByLine + $optionalByLine);
+        // Report probes: success = diagnostic. Quiet probes: success = silence.
+        $reportProbes = array_keys($requiredByLine + $optionalByLine);
+        $quietProbes = array_keys($requiredQuietByLine + $optionalQuietByLine);
 
         return new ExpectationEvaluation(
             errorsDiff: $errorsDiff,
             conformanceAutomated: $errorsDiff === '' ? 'Pass' : 'Fail',
             typeHandling: $typeMarkers === []
                 ? null
-                : $this->typeHandling($markedLines, $lineProbes, $groupProbes, $actualDiagnostics, $falsePositiveLines),
+                : $this->typeHandling(
+                    $markedLines,
+                    $reportProbes,
+                    $quietProbes,
+                    $groupProbes,
+                    $actualDiagnostics,
+                    $falsePositiveLines,
+                ),
         );
     }
 
     /**
      * @param array<int, true> $markedLines
-     * @param list<int> $lineProbes untagged expected lines
+     * @param list<int> $reportProbes untagged // E lines (success = diagnostic)
+     * @param list<int> $quietProbes untagged // Q lines (success = silence)
      * @param list<array{tag: string, lines: list<int>}> $groupProbes
      * @param array<int, list<string>> $actualDiagnostics
      * @param list<int> $falsePositiveLines
      */
     private function typeHandling(
         array $markedLines,
-        array $lineProbes,
+        array $reportProbes,
+        array $quietProbes,
         array $groupProbes,
         array $actualDiagnostics,
         array $falsePositiveLines,
@@ -174,13 +215,20 @@ final class ExpectationEvaluator
         }
         sort($unrecognizedLines);
 
-        // A diagnostic only counts as enforcement when it is about the feature
-        // under test. "Function PHPStan\dumpType does not exist" and similar
-        // mean the analyzer does *not* implement the helper.
+        // Report probes: a real diagnostic about the feature counts.
+        // Quiet probes (ignore/suppress tags): silence counts; a real
+        // diagnostic means the tag was not applied.
+        // Incidental "undefined function" noise never counts either way.
         $enforcedLineCount = 0;
-        foreach ($lineProbes as $line) {
+        foreach ($reportProbes as $line) {
             $messages = $actualDiagnostics[$line] ?? [];
             if ($messages !== [] && $this->hasEnforcementSignal($messages)) {
+                $enforcedLineCount++;
+            }
+        }
+        foreach ($quietProbes as $line) {
+            $messages = $actualDiagnostics[$line] ?? [];
+            if ($messages === [] || !$this->hasEnforcementSignal($messages)) {
                 $enforcedLineCount++;
             }
         }
@@ -202,7 +250,7 @@ final class ExpectationEvaluator
             }
         }
 
-        $expectedLineCount = count($lineProbes) + count($groupProbes);
+        $expectedLineCount = count($reportProbes) + count($quietProbes) + count($groupProbes);
         $enforcement = match (true) {
             $expectedLineCount === 0 => TypeHandling::NO_PROBES,
             $enforcedLineCount === 0 => TypeHandling::NONE,

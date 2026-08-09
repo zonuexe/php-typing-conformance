@@ -30,8 +30,9 @@ function takesItem(Item $item): void
 {
 }
 
-// Supporting tools accept the call; tools that ignore the tag may still warn.
-takesItem(maybeItem()); // E?: tools without ignore-nullable-return still see ?Item
+// Honouring the tag means silence here (Psalm baseline). A diagnostic means
+// the ignore was not applied — score with // Q?, not // E?.
+takesItem(maybeItem()); // Q?: silence when @psalm-ignore-nullable-return is applied
 
-// A call site that should still be rejected if the ignore is not a blanket.
+// Still never an Item, whether or not the ignore tag is known.
 takesItem(null); // E?: null is not an Item regardless of ignore-nullable-return

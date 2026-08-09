@@ -19,13 +19,21 @@ final class ExpectationParser
         foreach ($lines as $index => $line) {
             $lineNumber = $index + 1;
 
-            if (!preg_match_all('/\/\/\s*E(\?)?(?:<([^>]+)>)?(?:\[([^\]]+)\])?(?::\s*(.*?))?(?=(?:\s*\/\/\s*E|$))/', $line, $matches, PREG_SET_ORDER)) {
+            // `// E` / `// E?`: expect a diagnostic (or optional diagnostic).
+            // `// Q` / `// Q?`: expect silence — success for suppress/ignore tags.
+            if (!preg_match_all(
+                '/\/\/\s*([EQ])(\?)?(?:<([^>]+)>)?(?:\[([^\]]+)\])?(?::\s*(.*?))?(?=(?:\s*\/\/\s*[EQ]|$))/',
+                $line,
+                $matches,
+                PREG_SET_ORDER,
+            )) {
                 continue;
             }
 
             foreach ($matches as $match) {
-                $tool = $match[2] ?? null;
-                $tag = $match[3] ?? null;
+                $kind = $match[1];
+                $tool = $match[3] ?? null;
+                $tag = $match[4] ?? null;
                 $allowMultiple = false;
 
                 if (is_string($tag) && str_ends_with($tag, '+')) {
@@ -35,11 +43,12 @@ final class ExpectationParser
 
                 $diagnostics[] = new ExpectedDiagnostic(
                     line: $lineNumber,
-                    required: ($match[1] ?? '') !== '?',
+                    required: ($match[2] ?? '') !== '?',
                     tool: $tool !== '' ? $tool : null,
                     tag: $tag !== '' ? $tag : null,
                     allowMultiple: $allowMultiple,
-                    comment: trim((string) ($match[4] ?? '')),
+                    comment: trim((string) ($match[5] ?? '')),
+                    quiet: $kind === 'Q',
                 );
             }
         }

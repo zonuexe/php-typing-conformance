@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 2
-output = "phpdoc_advanced_psalm_allow_private_mutation.php:34: Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value is marked readonly [InaccessibleProperty]"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_psalm_allow_private_mutation.php:35: Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value is marked readonly [InaccessibleProperty]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

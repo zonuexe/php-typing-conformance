@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 2
-output = "phpdoc_advanced_phpstan_readonly_allow_private_mutation.php:31: @readonly property Conformance\\Tests\\PhpdocAdvancedPhpstanReadonlyAllowPrivateMutation\\Counter::$value is assigned outside of its declaring class."
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_phpstan_readonly_allow_private_mutation.php:33: @readonly property Conformance\\Tests\\PhpdocAdvancedPhpstanReadonlyAllowPrivateMutation\\Counter::$value is assigned outside of its declaring class."
 errors_diff = ""
 notes = ""
 ignore_errors = []

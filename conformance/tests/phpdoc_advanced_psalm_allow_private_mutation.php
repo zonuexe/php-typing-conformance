@@ -23,8 +23,9 @@ final class Counter
 
     public function increment(): void
     {
-        // Allowed under the tag (Psalm baseline). Silence = success.
-        $this->value++; // Q?: silence when @psalm-allow-private-mutation is applied
+        // Allowed under the tag (Psalm baseline). Quiet is origin-only;
+        // foreign tools that treat plain @readonly as frozen are noise here.
+        $this->value++; // Q?<psalm> // Q?<pzoom> // E?[noise]
     }
 }
 

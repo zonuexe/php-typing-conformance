@@ -31,7 +31,7 @@ final class Facade // T: @mixin
     /**
      * @param list<mixed> $arguments
      */
-    public function __call(string $name, array $arguments): mixed
+    public function __call(string $name, array $arguments): mixed // E?[noise]: some tools flag the docblock/native array mismatch
     {
         if ($name === 'answer') {
             return (new Delegated())->answer();
@@ -45,8 +45,17 @@ function takesInt(int $value): void
 {
 }
 
-// Mixin makes answer() visible and typed as int.
-takesInt((new Facade())->answer());
+// Mixin makes answer() visible and typed as int. Honouring the tag means this
+// is silent; a tool that ignores @mixin routes answer() through __call and sees
+// `mixed`, so a diagnostic here means the tag was not applied. Silence is the
+// discriminator, so this is a quiet probe — but only for the analyzers that
+// both flag `mixed` arguments and would therefore stay silent *because* the
+// mixin resolved answer() to int. Tools that never flag `mixed` (phan, phpy,
+// …) would be silent regardless, so scoring them here would hand out a free
+// pass; they are left as recognition-only instead.
+takesInt((new Facade())->answer()); // Q?<phpstan> // Q?<phpstan-strict> // Q?<psalm> // Q?<pzoom> // Q?<mago> // Q?<intelephense> // E?[noise]
 
-// A method neither on Facade nor on the mixin target stays undefined.
-takesInt((new Facade())->missing()); // E?: missing is not provided by @mixin Delegated
+// A method neither on Facade nor on the mixin target stays undefined. It is
+// caught by __call handling whether or not @mixin is honoured, so it is noise
+// for the tag rather than an enforcement probe.
+takesInt((new Facade())->missing()); // E?[noise]: missing is not provided by @mixin Delegated

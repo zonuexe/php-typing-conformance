@@ -35,6 +35,11 @@ function example(): void
         $name = 'Ada';
     });
 
-    // Under later invocation the assignment is not yet visible.
-    takesString($name); // E?: after later-invoked callback, $name may still be null
+    // NOTE: the invocation-timing tags govern checked-exception propagation
+    // (@throws / try-catch), not by-ref narrowing. PHPStan infers `'Ada'|null`
+    // for $name whether or not the callable is invoked later, so this diagnostic
+    // fires independently of the tag and must not be scored as tag enforcement.
+    // The checked-exceptions rule the tag actually feeds is not enabled here, so
+    // there is no enforcement probe to make.
+    takesString($name); // E?[noise]: string|null argument, independent of the tag
 }

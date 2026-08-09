@@ -27,7 +27,11 @@ function flip(): ?string // T: @phpstan-impure
 function demo(): void
 {
     if (flip() !== null) {
-        // Under @phpstan-impure the second call is still ?string.
-        echo \strlen(flip()); // E?: second flip() is still string|null under @phpstan-impure
+        // Under @phpstan-impure the second call is still ?string, so strlen()
+        // rejects it. Only PHPStan memoizes return values by default, so this is
+        // the one tool the tag can be measured on: every other analyzer already
+        // treats a second call as ?string regardless of the tag, so its
+        // diagnostic here is baseline behaviour, not tag enforcement.
+        echo \strlen(flip()); // E?<phpstan> // E?<phpstan-strict> // E?[noise]
     }
 }

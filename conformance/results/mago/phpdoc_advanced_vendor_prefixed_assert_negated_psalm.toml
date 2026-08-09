@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:44: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedVendorPrefixedAssertNegatedPsalm\\takesInt`: expected `int`, but found `string`. [invalid-argument]"
+output = """
+phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:43: Impossible type assertion: `$value` of type `string` can never be `int`. [impossible-type-comparison]
+phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:43: Redundant ternary operator: condition is always falsy. [impossible-condition]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

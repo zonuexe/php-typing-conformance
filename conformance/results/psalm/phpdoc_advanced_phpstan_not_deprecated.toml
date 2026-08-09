@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_phpstan_not_deprecated.php:39: The method Conformance\\Tests\\PhpdocAdvancedPhpstanNotDeprecated\\Base::run has been marked as deprecated [DeprecatedMethod]"
+output = "phpdoc_advanced_phpstan_not_deprecated.php:43: The method Conformance\\Tests\\PhpdocAdvancedPhpstanNotDeprecated\\Base::run has been marked as deprecated [DeprecatedMethod]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "no-probes"
+enforced_lines = "0/0"
 unrecognized_lines = []
 false_positive_lines = []

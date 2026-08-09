@@ -26,15 +26,13 @@ function assertIsInt(mixed $value): void // T: @phan-assert
     }
 }
 
-function takesString(string $value): void
-{
-}
-
 function example(mixed $value): void
 {
     assertIsInt($value);
 
-    // Applying the assertion makes $value an int, so a string parameter must
-    // reject it. Ignoring the tag leaves `mixed`, which often still accepts.
-    takesString($value); // E?: after @phan-assert int, value is not string
+    // Applying the assertion makes $value an int, so an is_string() branch is
+    // provably dead. A tool that ignores the tag keeps `mixed`, where
+    // is_string() is a live check and nothing is reported — so the diagnostic
+    // is emitted only by a tool that actually honoured @phan-assert.
+    echo \is_string($value) ? 'string' : 'int'; // E?: after @phan-assert int, is_string() is always false
 }

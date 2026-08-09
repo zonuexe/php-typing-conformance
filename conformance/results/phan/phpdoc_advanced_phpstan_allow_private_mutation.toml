@@ -1,14 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 2
+expected_diagnostic_count = 4
 output = """
-phpdoc_advanced_phpstan_allow_private_mutation.php:27: Cannot modify read-only property \\Conformance\\Tests\\PhpdocAdvancedPhpstanAllowPrivateMutation\\Counter->value defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_allow_private_mutation.php:22 [PhanAccessReadOnlyProperty]
-phpdoc_advanced_phpstan_allow_private_mutation.php:33: Cannot modify read-only property \\Conformance\\Tests\\PhpdocAdvancedPhpstanAllowPrivateMutation\\Counter->value defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_allow_private_mutation.php:22 [PhanAccessReadOnlyProperty]"""
+phpdoc_advanced_phpstan_allow_private_mutation.php:28: Cannot modify read-only property \\Conformance\\Tests\\PhpdocAdvancedPhpstanAllowPrivateMutation\\Counter->value defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_allow_private_mutation.php:22 [PhanAccessReadOnlyProperty]
+phpdoc_advanced_phpstan_allow_private_mutation.php:34: Cannot modify read-only property \\Conformance\\Tests\\PhpdocAdvancedPhpstanAllowPrivateMutation\\Counter->value defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_phpstan_allow_private_mutation.php:22 [PhanAccessReadOnlyProperty]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

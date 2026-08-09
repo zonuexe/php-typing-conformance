@@ -34,6 +34,11 @@ function example(): void
     $value = null;
     assignString($value);
 
-    // After output-reference, $value should be string for supporting tools.
-    takesString($value); // E?: tools that ignore @phan-output-reference may still see null
+    // NOTE: no analyzer in this suite discriminates on @phan-output-reference
+    // here. Tools that ignore it fall back to the declared `?string` by-ref type
+    // and report the null argument; Phan (the origin) does not surface this
+    // by-ref flow at all, so it stays silent whether or not the tag is honoured.
+    // The diagnostic therefore tracks the declared by-ref type, not the tag, and
+    // must not be scored as enforcement.
+    takesString($value); // E?[noise]: declared ?string by-ref type, independent of the tag
 }

@@ -1,9 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 11
 output = """
-phpdoc_advanced_phpstan_param_closure_this.php:38: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
-phpdoc_advanced_phpstan_param_closure_this.php:38: Undefined property '$missing'. [P1014]"""
+phpdoc_advanced_phpstan_param_closure_this.php:43: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+phpdoc_advanced_phpstan_param_closure_this.php:43: Undefined property '$missing'. [P1014]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

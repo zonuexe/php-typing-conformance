@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:44: Argument 1 of Conformance\\Tests\\PhpdocAdvancedVendorPrefixedAssertNegatedPsalm\\takesInt expects int, but string provided [InvalidScalarArgument]"
+output = """
+phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:43: Docblock-defined type string for $value is never int [DocblockTypeContradiction]
+phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:43: Docblock-defined type string for $value is never int [RedundantConditionGivenDocblockType]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

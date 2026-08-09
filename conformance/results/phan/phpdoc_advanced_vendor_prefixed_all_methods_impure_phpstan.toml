@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_all_methods_impure_phpstan.php:40: Argument 1 ($string) is $coin->flip() of type ?string but \\strlen() takes string (expected type to be non-nullable) [PhanTypeMismatchArgumentNullableInternal]"
+expected_diagnostic_count = 3
+output = "phpdoc_advanced_vendor_prefixed_all_methods_impure_phpstan.php:44: Argument 1 ($string) is $coin->flip() of type ?string but \\strlen() takes string (expected type to be non-nullable) [PhanTypeMismatchArgumentNullableInternal]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "no-probes"
+enforced_lines = "0/0"
 unrecognized_lines = []
 false_positive_lines = []

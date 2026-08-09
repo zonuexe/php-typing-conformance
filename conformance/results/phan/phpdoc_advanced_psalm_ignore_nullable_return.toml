@@ -1,14 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 2
+expected_diagnostic_count = 4
 output = """
-phpdoc_advanced_psalm_ignore_nullable_return.php:35: Argument 1 ($item) is maybeItem() of type ?\\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item but \\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem() takes \\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_ignore_nullable_return.php:29 (expected type to be non-nullable) [PhanTypeMismatchArgumentNullable]
-phpdoc_advanced_psalm_ignore_nullable_return.php:38: Argument 1 ($item) is null of type null but \\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem() takes \\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_ignore_nullable_return.php:29 [PhanTypeMismatchArgumentReal]"""
+phpdoc_advanced_psalm_ignore_nullable_return.php:36: Argument 1 ($item) is maybeItem() of type ?\\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item but \\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem() takes \\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_ignore_nullable_return.php:29 (expected type to be non-nullable) [PhanTypeMismatchArgumentNullable]
+phpdoc_advanced_psalm_ignore_nullable_return.php:39: Argument 1 ($item) is null of type null but \\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem() takes \\Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_ignore_nullable_return.php:29 [PhanTypeMismatchArgumentReal]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 2
-output = "phpdoc_advanced_psalm_ignore_nullable_return.php:38: null passed to non-nullable parameter item in function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem [notNullSafetyFunctionArgumentConstFetch]"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_psalm_ignore_nullable_return.php:39: null passed to non-nullable parameter item in function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem [notNullSafetyFunctionArgumentConstFetch]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
-enforced_lines = "2/2"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

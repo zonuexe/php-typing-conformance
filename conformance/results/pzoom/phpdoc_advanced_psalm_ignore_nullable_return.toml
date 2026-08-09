@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 2
-output = "phpdoc_advanced_psalm_ignore_nullable_return.php:38: Argument 1 of takesItem cannot be null, Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item expected [NullArgument]"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_psalm_ignore_nullable_return.php:39: Argument 1 of takesItem cannot be null, Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item expected [NullArgument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

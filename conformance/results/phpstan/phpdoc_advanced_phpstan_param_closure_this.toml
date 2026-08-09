@@ -1,13 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 11
 output = """
-phpdoc_advanced_phpstan_param_closure_this.php:38: Access to an undefined property Conformance\\Tests\\PhpdocAdvancedPhpstanParamClosureThis\\Host::$missing. [reported-from-level=0]
-phpdoc_advanced_phpstan_param_closure_this.php:38: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]"""
+phpdoc_advanced_phpstan_param_closure_this.php:43: Access to an undefined property Conformance\\Tests\\PhpdocAdvancedPhpstanParamClosureThis\\Host::$missing. [reported-from-level=0]
+phpdoc_advanced_phpstan_param_closure_this.php:43: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
-expected_diagnostic_level = 0
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "1/1"

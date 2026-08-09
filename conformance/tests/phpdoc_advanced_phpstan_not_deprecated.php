@@ -36,4 +36,8 @@ class Child extends Base
 
 (new Child())->run();
 
-(new Base())->run(); // E?: deprecated parent method usage
+// Direct call to the parent's own @deprecated method. This exercises plain
+// @deprecated support, not @not-deprecated: no tested analyzer propagates a
+// parent's deprecation onto an override, so there is nothing for the tag to
+// break, and this diagnostic must not be counted as tag enforcement.
+(new Base())->run(); // E?[noise]: deprecated parent method usage

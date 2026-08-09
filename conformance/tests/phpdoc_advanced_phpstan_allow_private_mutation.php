@@ -23,8 +23,9 @@ final class Counter
 
     public function increment(): void
     {
-        // Allowed under the tag (PHPStan baseline). Silence = success.
-        $this->value++; // Q?: silence when @phpstan-allow-private-mutation is applied
+        // Allowed under the tag (PHPStan baseline). Quiet is origin-only;
+        // foreign tools that treat plain @readonly as frozen are noise here.
+        $this->value++; // Q?<phpstan> // Q?<phpstan-strict> // E?[noise]
     }
 }
 

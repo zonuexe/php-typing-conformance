@@ -1,9 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 9
 output = """
-phpdoc_advanced_mixin.php:52: Argument 1 of Conformance\\Tests\\PhpdocAdvancedMixin\\takesInt cannot be mixed, expecting int [MixedArgument]
-phpdoc_advanced_mixin.php:52: Magic method Conformance\\Tests\\PhpdocAdvancedMixin\\Facade::missing does not exist [UndefinedMagicMethod]"""
+phpdoc_advanced_mixin.php:61: Argument 1 of Conformance\\Tests\\PhpdocAdvancedMixin\\takesInt cannot be mixed, expecting int [MixedArgument]
+phpdoc_advanced_mixin.php:61: Magic method Conformance\\Tests\\PhpdocAdvancedMixin\\Facade::missing does not exist [UndefinedMagicMethod]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

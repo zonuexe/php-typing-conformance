@@ -1,14 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 2
+expected_diagnostic_count = 4
 output = """
-phpdoc_advanced_psalm_ignore_falsable_return.php:31: Expected type 'string'. Found 'string|false'. [P1006]
-phpdoc_advanced_psalm_ignore_falsable_return.php:34: Expected type 'string'. Found 'false'. [P1006]"""
+phpdoc_advanced_psalm_ignore_falsable_return.php:32: Expected type 'string'. Found 'string|false'. [P1006]
+phpdoc_advanced_psalm_ignore_falsable_return.php:35: Expected type 'string'. Found 'false'. [P1006]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_output_reference_phan.php:38: Parameter '$value' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"
+output = "phpdoc_advanced_vendor_prefixed_output_reference_phan.php:43: Parameter '$value' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "no-probes"
+enforced_lines = "0/0"
 unrecognized_lines = []
 false_positive_lines = []

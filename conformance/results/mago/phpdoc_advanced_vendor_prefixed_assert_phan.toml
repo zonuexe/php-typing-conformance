@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_assert_phan.php:39: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedVendorPrefixedAssertPhan\\takesString`: expected `string`, but found `int`. [invalid-argument]"
+output = """
+phpdoc_advanced_vendor_prefixed_assert_phan.php:37: Impossible type assertion: `$value` of type `int` can never be `string`. [impossible-type-comparison]
+phpdoc_advanced_vendor_prefixed_assert_phan.php:37: Redundant ternary operator: condition is always falsy. [impossible-condition]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

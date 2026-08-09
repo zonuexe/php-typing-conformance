@@ -1,9 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 9
 output = """
-phpdoc_advanced_mixin.php:52: Ambiguous method call to `missing` on class `Conformance\\Tests\\PhpdocAdvancedMixin\\Facade`. [non-documented-method]
-phpdoc_advanced_mixin.php:52: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedMixin\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]"""
+phpdoc_advanced_mixin.php:61: Ambiguous method call to `missing` on class `Conformance\\Tests\\PhpdocAdvancedMixin\\Facade`. [non-documented-method]
+phpdoc_advanced_mixin.php:61: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedMixin\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

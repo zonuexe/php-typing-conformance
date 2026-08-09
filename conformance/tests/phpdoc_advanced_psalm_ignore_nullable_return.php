@@ -30,9 +30,10 @@ function takesItem(Item $item): void
 {
 }
 
-// Honouring the tag means silence here (Psalm baseline). A diagnostic means
-// the ignore was not applied — score with // Q?, not // E?.
-takesItem(maybeItem()); // Q?: silence when @psalm-ignore-nullable-return is applied
+// Honouring the tag means silence here (Psalm baseline). Quiet is origin-only
+// so tools that never warn on ?Item do not earn a free half-point; tools that
+// still see the nullable return are noise, not tag enforcement.
+takesItem(maybeItem()); // Q?<psalm> // Q?<pzoom> // E?[noise]
 
 // Still never an Item, whether or not the ignore tag is known.
 takesItem(null); // E?: null is not an Item regardless of ignore-nullable-return

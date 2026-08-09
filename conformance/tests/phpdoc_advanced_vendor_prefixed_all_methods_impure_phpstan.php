@@ -35,8 +35,12 @@ final class Coin // T: @phpstan-all-methods-impure
 function demo(Coin $coin): void
 {
     if ($coin->flip() !== null) {
-        // Under the class-level impure claim the second call is still ?string.
-        // Ignoring the tag remembers the first result as string.
-        echo \strlen($coin->flip()); // E?: second flip() is still string|null under @phpstan-all-methods-impure
+        // Under the class-level impure claim the second call is still ?string,
+        // so strlen() rejects it. Only PHPStan memoizes return values by
+        // default, so this is the one tool the tag can be measured on: every
+        // other analyzer already treats a second call as ?string regardless of
+        // the tag, so its diagnostic here is baseline behaviour, not tag
+        // enforcement.
+        echo \strlen($coin->flip()); // E?<phpstan> // E?<phpstan-strict> // E?[noise]
     }
 }

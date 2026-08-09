@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 2
-output = "phpdoc_advanced_psalm_allow_private_mutation.php:34: Cannot modify readonly property Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_psalm_allow_private_mutation.php:35: Cannot modify readonly property Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
-enforced_lines = "2/2"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

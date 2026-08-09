@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 2
-output = "phpdoc_advanced_psalm_ignore_nullable_return.php:38: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item, null given"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_psalm_ignore_nullable_return.php:39: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item, null given"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
-enforced_lines = "2/2"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

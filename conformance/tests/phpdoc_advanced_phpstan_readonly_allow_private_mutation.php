@@ -21,8 +21,10 @@ final class Counter
 
     public function increment(): void
     {
-        // Allowed under the combined tag (PHPStan baseline). Silence = success.
-        $this->value++; // Q?: silence when @phpstan-readonly-allow-private-mutation is applied
+        // Allowed under the combined tag (PHPStan baseline). Quiet probes are
+        // origin-only so tools that never model the tag do not earn a free
+        // half-point from silence; foreign @readonly rejections are noise.
+        $this->value++; // Q?<phpstan> // Q?<phpstan-strict> // E?[noise]
     }
 }
 

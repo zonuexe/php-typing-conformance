@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_output_reference_phan.php:38: Argument #1 of function `Conformance\\Tests\\PhpdocAdvancedVendorPrefixedOutputReferencePhan\\takesString` is possibly `null`, but parameter type `string` does not accept it. [possibly-null-argument]"
+output = "phpdoc_advanced_vendor_prefixed_output_reference_phan.php:43: Argument #1 of function `Conformance\\Tests\\PhpdocAdvancedVendorPrefixedOutputReferencePhan\\takesString` is possibly `null`, but parameter type `string` does not accept it. [possibly-null-argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "no-probes"
+enforced_lines = "0/0"
 unrecognized_lines = []
 false_positive_lines = []

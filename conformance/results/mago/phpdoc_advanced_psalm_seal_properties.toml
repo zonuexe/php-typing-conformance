@@ -1,12 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
-output = "phpdoc_advanced_psalm_seal_properties.php:37: Ambiguous property access: $extra on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\SealedBag`. [non-documented-property]"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_psalm_seal_properties.php:75: Ambiguous property access: $extra on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\SealedBag`. [non-documented-property]
+phpdoc_advanced_psalm_seal_properties.php:84: Ambiguous property access: $extra on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\UnsealedBag`. [non-documented-property]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "no-probes"
+enforced_lines = "0/0"
 unrecognized_lines = []
 false_positive_lines = []

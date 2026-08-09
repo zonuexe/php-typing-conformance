@@ -1,14 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 6
 output = """
-phpdoc_advanced_psalm_seal_methods.php:40: Call to an undefined method Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Greeter::wave().
-phpdoc_advanced_psalm_seal_methods.php:40: Parameter #1 (mixed) of echo cannot be converted to string."""
+phpdoc_advanced_psalm_seal_methods.php:72: Call to an undefined method Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Sealed::wave().
+phpdoc_advanced_psalm_seal_methods.php:81: Call to an undefined method Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Unsealed::wave()."""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "no-probes"
+enforced_lines = "0/0"
 unrecognized_lines = []
 false_positive_lines = []

@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 6
 output = ""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "no-probes"
+enforced_lines = "0/0"
 unrecognized_lines = []
 false_positive_lines = []

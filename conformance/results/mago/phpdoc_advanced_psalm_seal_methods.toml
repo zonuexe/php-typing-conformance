@@ -1,14 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 6
 output = """
-phpdoc_advanced_psalm_seal_methods.php:40: Ambiguous method call to `wave` on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Greeter`. [non-documented-method]
-phpdoc_advanced_psalm_seal_methods.php:40: The first value for `echo` is too general. [mixed-argument]"""
+phpdoc_advanced_psalm_seal_methods.php:72: Ambiguous method call to `wave` on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Sealed`. [non-documented-method]
+phpdoc_advanced_psalm_seal_methods.php:81: Ambiguous method call to `wave` on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Unsealed`. [non-documented-method]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "no-probes"
+enforced_lines = "0/0"
 unrecognized_lines = []
 false_positive_lines = []

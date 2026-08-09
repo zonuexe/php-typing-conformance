@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
-output = "phpdoc_advanced_psalm_seal_properties.php:37: Magic instance property Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\SealedBag::$extra is not defined [UndefinedMagicPropertyAssignment]"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_psalm_seal_properties.php:75: Magic instance property Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\SealedBag::$extra is not defined [UndefinedMagicPropertyAssignment]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,12 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
-output = "phpdoc_advanced_psalm_seal_properties.php:37: Property $extra accessed via magic method SealedBag::__set(): void."
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_psalm_seal_properties.php:75: Property $extra accessed via magic method SealedBag::__set(): void.
+phpdoc_advanced_psalm_seal_properties.php:84: Property $extra accessed via magic method UnsealedBag::__set(): void."""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "no-probes"
+enforced_lines = "0/0"
 unrecognized_lines = []
 false_positive_lines = []

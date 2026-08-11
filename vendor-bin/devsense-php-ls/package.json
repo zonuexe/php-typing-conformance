@@ -2,6 +2,6 @@
     "private": true,
     "description": "Isolated npm environment for the DEVSENSE PHP language server, probed over LSP by conformance/src/run-lsp-probes.php. Versioned separately from phpy, which bundles its own copy of the same engine.",
     "dependencies": {
-        "devsense-php-ls": "^1.0.19124"
+        "devsense-php-ls": "^1.0.19148"
     }
 }

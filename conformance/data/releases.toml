@@ -33,8 +33,8 @@ version = "6.16.1"
 date = "2026-03-19"
 
 [phpstan]
-version = "2.2.7"
-date = "2026-07-29"
+version = "2.2.8"
+date = "2026-08-04"
 
 [intelephense]
 version = "1.18.5"
@@ -45,20 +45,20 @@ version = "0.5.5"
 date = "2025-04-22"
 
 [qodana]
-version = "262.8665.325"
-date = "2026-07-23"
+version = "262.9437.196"
+date = "2026-08-10"
 
 [mago]
-version = "1.45.0"
-date = "2026-07-24"
+version = "1.46.0"
+date = "2026-08-05"
 
 [phpy]
 version = "1.0.18519"
 date = "2026-02-19"
 
 [mir]
-version = "0.66.1"
-date = "2026-07-31"
+version = "0.70.1"
+date = "2026-08-06"
 
 [pzoom]
 version = "unversioned"
@@ -75,13 +75,13 @@ version = "2026.07.22.0"
 date = "2026-07-22"
 
 [devsense-php-ls]
-version = "1.0.19124"
-date = "2026-07-28"
+version = "1.0.19148"
+date = "2026-08-09"
 
 [phpantom]
 version = "0.9.0"
 date = "2026-07-19"
 
 [php-lsp]
-version = "0.22.2"
-date = "2026-08-02"
+version = "0.24.1"
+date = "2026-08-11"

@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-arrays_unsealed_shape_optional_key.php:40: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey expects array{foo: int, bar?: bool, ...}, array{foo: 1, bar: 'yes'} given. [reported-from-level=5]
-arrays_unsealed_shape_optional_key.php:44: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey expects array{foo: int, bar?: bool, ...}, array{bar: true} given. [reported-from-level=5]
-arrays_unsealed_shape_optional_key.php:45: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey expects array{foo: int, bar?: bool, ...}, array{buz: 42.0} given. [reported-from-level=5]"""
+arrays_unsealed_shape_optional_key.php:40: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey expects array{foo: int, bar?: bool, ...}, array{foo: 1, bar: 'yes'} given. [identifier=argument.type] [reported-from-level=5]
+arrays_unsealed_shape_optional_key.php:44: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey expects array{foo: int, bar?: bool, ...}, array{bar: true} given. [identifier=argument.type] [reported-from-level=5]
+arrays_unsealed_shape_optional_key.php:45: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey expects array{foo: int, bar?: bool, ...}, array{buz: 42.0} given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

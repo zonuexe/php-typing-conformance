@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_fallback_key_of_constant.php:53: Parameter #1 $key of function Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfConstant\\acceptsConfigKey expects 'debug'|'verbose', 'missing' given. [reported-from-level=5]"
+output = "phpdoc_advanced_fallback_key_of_constant.php:53: Parameter #1 $key of function Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfConstant\\acceptsConfigKey expects 'debug'|'verbose', 'missing' given. [identifier=argument.type] [reported-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

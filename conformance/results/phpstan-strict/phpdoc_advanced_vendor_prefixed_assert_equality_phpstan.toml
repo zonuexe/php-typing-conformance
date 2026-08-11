@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_assert_equality_phpstan.php:32: Call to function is_string() with int will always evaluate to false."
+output = "phpdoc_advanced_vendor_prefixed_assert_equality_phpstan.php:32: Call to function is_string() with int will always evaluate to false. [identifier=function.impossibleType]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

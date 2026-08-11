@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 9
 output = """
-arrays_open_shapes.php:33: Parameter #1 $options of function Conformance\\Tests\\ArraysOpenShapes\\inspectOpenArrayShape expects array{name: string, ...}, array{extra: 123} given.
-arrays_open_shapes.php:51: Parameter #1 $values of function Conformance\\Tests\\ArraysOpenShapes\\inspectOpenListShape expects array{string, int, ...}, array{1, 'demo', true} given."""
+arrays_open_shapes.php:33: Parameter #1 $options of function Conformance\\Tests\\ArraysOpenShapes\\inspectOpenArrayShape expects array{name: string, ...}, array{extra: 123} given. [identifier=argument.type]
+arrays_open_shapes.php:51: Parameter #1 $values of function Conformance\\Tests\\ArraysOpenShapes\\inspectOpenListShape expects array{string, int, ...}, array{1, 'demo', true} given. [identifier=argument.type]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

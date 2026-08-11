@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_non_empty_uppercase_string.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyUppercaseString\\acceptsNonEmptyUppercaseString expects non-empty-string&uppercase-string, '' given. [reported-from-level=5]
-phpdoc_advanced_fallback_non_empty_uppercase_string.php:50: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyUppercaseString\\acceptsNonEmptyUppercaseString expects non-empty-string&uppercase-string, 'abc' given. [reported-from-level=5]"""
+phpdoc_advanced_fallback_non_empty_uppercase_string.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyUppercaseString\\acceptsNonEmptyUppercaseString expects non-empty-string&uppercase-string, '' given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_non_empty_uppercase_string.php:50: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyUppercaseString\\acceptsNonEmptyUppercaseString expects non-empty-string&uppercase-string, 'abc' given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

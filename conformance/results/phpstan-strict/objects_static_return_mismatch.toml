@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "objects_static_return_mismatch.php:23: Method Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder::rebuild() should return Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder but returns Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder."
+output = "objects_static_return_mismatch.php:23: Method Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder::rebuild() should return Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder but returns Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder. [identifier=return.type]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

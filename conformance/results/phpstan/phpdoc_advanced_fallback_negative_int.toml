@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_negative_int.php:45: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNegativeInt\\acceptsNegativeInt expects int<min, -1>, 0 given. [reported-from-level=5]
-phpdoc_advanced_fallback_negative_int.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNegativeInt\\acceptsNegativeInt expects int<min, -1>, 5 given. [reported-from-level=5]"""
+phpdoc_advanced_fallback_negative_int.php:45: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNegativeInt\\acceptsNegativeInt expects int<min, -1>, 0 given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_negative_int.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNegativeInt\\acceptsNegativeInt expects int<min, -1>, 5 given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

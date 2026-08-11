@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 7
 output = """
-assertions_non_empty_string_false_guard.php:37: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString expects non-falsy-string, non-empty-string given. [reported-from-level=7]
-assertions_non_empty_string_false_guard.php:41: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonEmptyString expects non-empty-string, false given. [reported-from-level=5]
-assertions_non_empty_string_false_guard.php:42: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString expects non-falsy-string, false given. [reported-from-level=5]"""
+assertions_non_empty_string_false_guard.php:37: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString expects non-falsy-string, non-empty-string given. [identifier=argument.type] [reported-from-level=7]
+assertions_non_empty_string_false_guard.php:41: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonEmptyString expects non-empty-string, false given. [identifier=argument.type] [reported-from-level=5]
+assertions_non_empty_string_false_guard.php:42: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString expects non-falsy-string, false given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

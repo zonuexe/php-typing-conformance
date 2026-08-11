@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
-phpdoc_advanced_psalm_ignore_nullable_return.php:36: Parameter #1 $item of function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem expects Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item, Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item|null given. [reported-from-level=8]
-phpdoc_advanced_psalm_ignore_nullable_return.php:39: Parameter #1 $item of function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem expects Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item, null given. [reported-from-level=5]"""
+phpdoc_advanced_psalm_ignore_nullable_return.php:36: Parameter #1 $item of function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem expects Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item, Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item|null given. [identifier=argument.type] [reported-from-level=8]
+phpdoc_advanced_psalm_ignore_nullable_return.php:39: Parameter #1 $item of function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\takesItem expects Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item, null given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

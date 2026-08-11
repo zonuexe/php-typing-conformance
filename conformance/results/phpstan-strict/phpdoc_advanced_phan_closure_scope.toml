@@ -2,12 +2,12 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-phpdoc_advanced_phan_closure_scope.php:33: Cannot access property $label on mixed.
-phpdoc_advanced_phan_closure_scope.php:33: Parameter #1 (mixed) of echo cannot be converted to string.
-phpdoc_advanced_phan_closure_scope.php:33: Undefined variable: $this
-phpdoc_advanced_phan_closure_scope.php:37: Cannot access property $missing on mixed.
-phpdoc_advanced_phan_closure_scope.php:37: Parameter #1 (mixed) of echo cannot be converted to string.
-phpdoc_advanced_phan_closure_scope.php:37: Undefined variable: $this"""
+phpdoc_advanced_phan_closure_scope.php:33: Cannot access property $label on mixed. [identifier=property.nonObject]
+phpdoc_advanced_phan_closure_scope.php:33: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
+phpdoc_advanced_phan_closure_scope.php:33: Undefined variable: $this [identifier=variable.undefined]
+phpdoc_advanced_phan_closure_scope.php:37: Cannot access property $missing on mixed. [identifier=property.nonObject]
+phpdoc_advanced_phan_closure_scope.php:37: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
+phpdoc_advanced_phan_closure_scope.php:37: Undefined variable: $this [identifier=variable.undefined]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

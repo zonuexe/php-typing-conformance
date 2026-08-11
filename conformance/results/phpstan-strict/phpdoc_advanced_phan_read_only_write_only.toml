@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_phan_read_only_write_only.php:20: @readonly property cannot have a default value.
-phpdoc_advanced_phan_read_only_write_only.php:28: @readonly property Conformance\\Tests\\PhpdocAdvancedPhanReadOnlyWriteOnly\\Bag::$id is assigned outside of its declaring class."""
+phpdoc_advanced_phan_read_only_write_only.php:20: @readonly property cannot have a default value. [identifier=property.readOnlyByPhpDocDefaultValue]
+phpdoc_advanced_phan_read_only_write_only.php:28: @readonly property Conformance\\Tests\\PhpdocAdvancedPhanReadOnlyWriteOnly\\Bag::$id is assigned outside of its declaring class. [identifier=property.readOnlyByPhpDocAssignOutOfClass]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

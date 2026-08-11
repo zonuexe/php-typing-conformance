@@ -1,15 +1,12 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = """
-phpdoc_advanced_fallback_pure_closure.php:47: InvalidArgument: Argument $value of acceptsPureClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\Closure', got 'Closure(int): int' [MIR0201]
-phpdoc_advanced_fallback_pure_closure.php:50: InvalidArgument: Argument $value of acceptsPureClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\Closure', got '"strlen"' [MIR0201]
-phpdoc_advanced_fallback_pure_closure.php:56: InvalidArgument: Argument $value of acceptsPureClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\Closure', got 'Closure(): void' [MIR0201]"""
-errors_diff = "Line 47: Unexpected errors [\"InvalidArgument: Argument $value of acceptsPureClosure() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\Closure', got 'Closure(int): int' [MIR0201]\"]"
+output = "phpdoc_advanced_fallback_pure_closure.php:50: InvalidArgument: Argument $value of acceptsPureClosure() expects 'Closure', got '\"strlen\"' [MIR0201]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "2/2"
+enforcement = "partial"
+enforced_lines = "1/2"
 unrecognized_lines = []
-false_positive_lines = [47]
+false_positive_lines = []

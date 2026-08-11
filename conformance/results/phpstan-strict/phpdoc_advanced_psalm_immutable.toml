@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_psalm_immutable.php:29: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmImmutable\\Point::$label is assigned outside of the constructor.
-phpdoc_advanced_psalm_immutable.php:34: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmImmutable\\Point::$label is assigned outside of its declaring class."""
+phpdoc_advanced_psalm_immutable.php:29: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmImmutable\\Point::$label is assigned outside of the constructor. [identifier=property.readOnlyByPhpDocAssignNotInConstructor]
+phpdoc_advanced_psalm_immutable.php:34: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmImmutable\\Point::$label is assigned outside of its declaring class. [identifier=property.readOnlyByPhpDocAssignOutOfClass]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

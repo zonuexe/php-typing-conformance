@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_phan_side_effect_free.php:22: Impure echo in pure function Conformance\\Tests\\PhpdocAdvancedPhanSideEffectFree\\claimsSideEffectFree()."
+output = "phpdoc_advanced_phan_side_effect_free.php:22: Impure echo in pure function Conformance\\Tests\\PhpdocAdvancedPhanSideEffectFree\\claimsSideEffectFree(). [identifier=impure.echo]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

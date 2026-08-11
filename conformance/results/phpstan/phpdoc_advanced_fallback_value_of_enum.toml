@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_value_of_enum.php:54: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\acceptsSuitValue expects 'hearts'|'spades', 'clubs' given. [reported-from-level=5]
-phpdoc_advanced_fallback_value_of_enum.php:58: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\acceptsSuitValue expects 'hearts'|'spades', Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit::Hearts given. [reported-from-level=5]"""
+phpdoc_advanced_fallback_value_of_enum.php:54: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\acceptsSuitValue expects 'hearts'|'spades', 'clubs' given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_value_of_enum.php:58: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\acceptsSuitValue expects 'hearts'|'spades', Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit::Hearts given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

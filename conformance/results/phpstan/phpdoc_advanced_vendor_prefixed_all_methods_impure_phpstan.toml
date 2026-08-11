@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = "phpdoc_advanced_vendor_prefixed_all_methods_impure_phpstan.php:44: Parameter #1 $string of function strlen expects string, string|null given. [reported-from-level=8]"
+output = "phpdoc_advanced_vendor_prefixed_all_methods_impure_phpstan.php:44: Parameter #1 $string of function strlen expects string, string|null given. [identifier=argument.type] [reported-from-level=8]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

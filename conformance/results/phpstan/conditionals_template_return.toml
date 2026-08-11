@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = "conditionals_template_return.php:52: Parameter #1 $item of function Conformance\\Tests\\ConditionalsTemplateReturn\\takesItem expects Conformance\\Tests\\ConditionalsTemplateReturn\\Item, list<Conformance\\Tests\\ConditionalsTemplateReturn\\Item> given. [reported-from-level=5]"
+output = "conditionals_template_return.php:52: Parameter #1 $item of function Conformance\\Tests\\ConditionalsTemplateReturn\\takesItem expects Conformance\\Tests\\ConditionalsTemplateReturn\\Item, list<Conformance\\Tests\\ConditionalsTemplateReturn\\Item> given. [identifier=argument.type] [reported-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

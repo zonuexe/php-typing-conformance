@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-unions_scalar_members.php:27: Parameter #1 $value of function Conformance\\Tests\\UnionsScalarMembers\\takesIntOrString expects int|string, float given. [reported-from-level=5]
-unions_scalar_members.php:28: Parameter #1 $value of function Conformance\\Tests\\UnionsScalarMembers\\takesNullableInt expects int|null, string given. [reported-from-level=5]"""
+unions_scalar_members.php:27: Parameter #1 $value of function Conformance\\Tests\\UnionsScalarMembers\\takesIntOrString expects int|string, float given. [identifier=argument.type] [reported-from-level=5]
+unions_scalar_members.php:28: Parameter #1 $value of function Conformance\\Tests\\UnionsScalarMembers\\takesNullableInt expects int|null, string given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

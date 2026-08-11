@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 11
 output = """
-assertions_non_falsy_string_false_guard.php:41: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\takesNonFalsyString expects non-falsy-string, false given.
-assertions_non_falsy_string_false_guard.php:42: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\takesNonEmptyString expects non-empty-string, false given."""
+assertions_non_falsy_string_false_guard.php:41: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\takesNonFalsyString expects non-falsy-string, false given. [identifier=argument.type]
+assertions_non_falsy_string_false_guard.php:42: Parameter #1 $value of function Conformance\\Tests\\AssertionsNonFalsyStringFalseGuard\\takesNonEmptyString expects non-empty-string, false given. [identifier=argument.type]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

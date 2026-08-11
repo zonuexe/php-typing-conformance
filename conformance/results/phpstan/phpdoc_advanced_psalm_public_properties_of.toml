@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_psalm_public_properties_of.php:36: Function Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\acceptsPublicUserProps() has parameter $data with no value type specified in iterable type array. [reported-from-level=6]
-phpdoc_advanced_psalm_public_properties_of.php:36: PHPDoc tag @param for parameter $data contains unresolvable type. [reported-from-level=2]"""
+phpdoc_advanced_psalm_public_properties_of.php:36: Function Conformance\\Tests\\PhpdocAdvancedPsalmPublicPropertiesOf\\acceptsPublicUserProps() has parameter $data with no value type specified in iterable type array. [identifier=missingType.iterableValue] [reported-from-level=6]
+phpdoc_advanced_psalm_public_properties_of.php:36: PHPDoc tag @param for parameter $data contains unresolvable type. [identifier=parameter.unresolvableType] [reported-from-level=2]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

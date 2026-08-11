@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
-phpdoc_advanced_psalm_ignore_falsable_return.php:32: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreFalsableReturn\\takesString expects string, string|false given. [reported-from-level=7]
-phpdoc_advanced_psalm_ignore_falsable_return.php:35: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreFalsableReturn\\takesString expects string, false given. [reported-from-level=5]"""
+phpdoc_advanced_psalm_ignore_falsable_return.php:32: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreFalsableReturn\\takesString expects string, string|false given. [identifier=argument.type] [reported-from-level=7]
+phpdoc_advanced_psalm_ignore_falsable_return.php:35: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreFalsableReturn\\takesString expects string, false given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

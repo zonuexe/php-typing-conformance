@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "debug_phpstan_dump_type.php:24: Dumped type: int"
+output = "debug_phpstan_dump_type.php:24: Dumped type: int [identifier=phpstan.dumpType]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

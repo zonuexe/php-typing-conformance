@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:43: Call to function is_int() with string will always evaluate to false. [reported-from-level=4]"
+output = "phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:43: Call to function is_int() with string will always evaluate to false. [identifier=function.impossibleType] [reported-from-level=4]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

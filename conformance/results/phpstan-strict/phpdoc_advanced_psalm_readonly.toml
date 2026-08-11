@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_psalm_readonly.php:28: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmReadonly\\Label::$text is assigned outside of its declaring class."
+output = "phpdoc_advanced_psalm_readonly.php:28: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmReadonly\\Label::$text is assigned outside of its declaring class. [identifier=property.readOnlyByPhpDocAssignOutOfClass]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

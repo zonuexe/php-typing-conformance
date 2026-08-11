@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-phpdoc_advanced_fallback_array_key.php:58: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey expects (int|string), float given. [reported-from-level=5]
-phpdoc_advanced_fallback_array_key.php:59: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey expects (int|string), true given. [reported-from-level=5]
-phpdoc_advanced_fallback_array_key.php:60: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey expects (int|string), null given. [reported-from-level=5]"""
+phpdoc_advanced_fallback_array_key.php:58: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey expects (int|string), float given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_array_key.php:59: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey expects (int|string), true given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_array_key.php:60: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackArrayKey\\acceptsArrayKey expects (int|string), null given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_phpstan_sealed.php:33: Type Conformance\\Tests\\PhpdocAdvancedPhpstanSealed\\Forbidden is not allowed to be a subtype of Conformance\\Tests\\PhpdocAdvancedPhpstanSealed\\Base."
+output = "phpdoc_advanced_phpstan_sealed.php:33: Type Conformance\\Tests\\PhpdocAdvancedPhpstanSealed\\Forbidden is not allowed to be a subtype of Conformance\\Tests\\PhpdocAdvancedPhpstanSealed\\Base. [identifier=class.disallowedSubtype]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

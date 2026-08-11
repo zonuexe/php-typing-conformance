@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_phan_non_null_mixed.php:21: Function Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull() has parameter $value with no type specified.
-phpdoc_advanced_phan_non_null_mixed.php:21: PHPDoc tag @param for parameter $value contains unresolvable type."""
+phpdoc_advanced_phan_non_null_mixed.php:21: Function Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull() has parameter $value with no type specified. [identifier=missingType.parameter]
+phpdoc_advanced_phan_non_null_mixed.php:21: PHPDoc tag @param for parameter $value contains unresolvable type. [identifier=parameter.unresolvableType]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

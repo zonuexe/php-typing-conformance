@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_all_methods_pure_phpstan.php:30: Impure echo in pure method Conformance\\Tests\\PhpdocAdvancedVendorPrefixedAllMethodsPurePhpStan\\PureBox::add()."
+output = "phpdoc_advanced_vendor_prefixed_all_methods_pure_phpstan.php:30: Impure echo in pure method Conformance\\Tests\\PhpdocAdvancedVendorPrefixedAllMethodsPurePhpStan\\PureBox::add(). [identifier=impure.echo]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

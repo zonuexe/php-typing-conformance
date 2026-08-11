@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:58: Impure call to function Conformance\\Tests\\PhpdocAdvancedPhpstanPureUnlessCallableIsImpure\\impureMapper() in pure function Conformance\\Tests\\PhpdocAdvancedPhpstanPureUnlessCallableIsImpure\\impureCaller().
-phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:58: Impure call to function Conformance\\Tests\\PhpdocAdvancedPhpstanPureUnlessCallableIsImpure\\mapInts() in pure function Conformance\\Tests\\PhpdocAdvancedPhpstanPureUnlessCallableIsImpure\\impureCaller()."""
+phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:58: Impure call to function Conformance\\Tests\\PhpdocAdvancedPhpstanPureUnlessCallableIsImpure\\impureMapper() in pure function Conformance\\Tests\\PhpdocAdvancedPhpstanPureUnlessCallableIsImpure\\impureCaller(). [identifier=impure.functionCall]
+phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:58: Impure call to function Conformance\\Tests\\PhpdocAdvancedPhpstanPureUnlessCallableIsImpure\\mapInts() in pure function Conformance\\Tests\\PhpdocAdvancedPhpstanPureUnlessCallableIsImpure\\impureCaller(). [identifier=impure.functionCall]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

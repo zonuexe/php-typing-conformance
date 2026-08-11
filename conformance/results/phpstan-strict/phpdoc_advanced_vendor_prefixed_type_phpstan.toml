@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_type_phpstan.php:40: Parameter #1 $row of method Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhpStan\\Repository::save() expects array{id: int, name: string}, array{id: 1} given."
+output = "phpdoc_advanced_vendor_prefixed_type_phpstan.php:40: Parameter #1 $row of method Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhpStan\\Repository::save() expects array{id: int, name: string}, array{id: 1} given. [identifier=argument.type]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_truthy_string.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsTruthyString expects non-falsy-string, '' given. [reported-from-level=5]
-phpdoc_advanced_fallback_truthy_string.php:51: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsTruthyString expects non-falsy-string, '0' given. [reported-from-level=5]"""
+phpdoc_advanced_fallback_truthy_string.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsTruthyString expects non-falsy-string, '' given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_truthy_string.php:51: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackTruthyString\\acceptsTruthyString expects non-falsy-string, '0' given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

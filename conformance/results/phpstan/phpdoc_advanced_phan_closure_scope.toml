@@ -2,15 +2,16 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-phpdoc_advanced_phan_closure_scope.php:33: Cannot access property $label on mixed. [reported-from-level=10]
-phpdoc_advanced_phan_closure_scope.php:33: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]
-phpdoc_advanced_phan_closure_scope.php:33: Undefined variable: $this [reported-from-level=0]
-phpdoc_advanced_phan_closure_scope.php:37: Cannot access property $missing on mixed. [reported-from-level=10]
-phpdoc_advanced_phan_closure_scope.php:37: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]
-phpdoc_advanced_phan_closure_scope.php:37: Undefined variable: $this [reported-from-level=0]"""
+phpdoc_advanced_phan_closure_scope.php:33: Cannot access property $label on mixed. [identifier=property.nonObject] [reported-from-level=10]
+phpdoc_advanced_phan_closure_scope.php:33: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]
+phpdoc_advanced_phan_closure_scope.php:33: Undefined variable: $this [identifier=variable.undefined] [reported-from-level=0]
+phpdoc_advanced_phan_closure_scope.php:37: Cannot access property $missing on mixed. [identifier=property.nonObject] [reported-from-level=10]
+phpdoc_advanced_phan_closure_scope.php:37: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]
+phpdoc_advanced_phan_closure_scope.php:37: Undefined variable: $this [identifier=variable.undefined] [reported-from-level=0]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
+expected_diagnostic_level = 0
 recognition = "recognized"
 enforcement = "no-probes"
 enforced_lines = "0/0"

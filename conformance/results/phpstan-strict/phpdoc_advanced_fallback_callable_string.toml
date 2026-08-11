@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_callable_string.php:45: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackCallableString\\acceptsCallableString expects callable-string, 'definitely_not_a…' given.
-phpdoc_advanced_fallback_callable_string.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackCallableString\\acceptsCallableString expects callable-string, 'stdClass' given."""
+phpdoc_advanced_fallback_callable_string.php:45: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackCallableString\\acceptsCallableString expects callable-string, 'definitely_not_a…' given. [identifier=argument.type]
+phpdoc_advanced_fallback_callable_string.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackCallableString\\acceptsCallableString expects callable-string, 'stdClass' given. [identifier=argument.type]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_fallback_scalar.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects bool|float|int|string, array<int, int> given. [reported-from-level=5]
-phpdoc_advanced_fallback_scalar.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects bool|float|int|string, stdClass given. [reported-from-level=5]
-phpdoc_advanced_fallback_scalar.php:49: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects bool|float|int|string, null given. [reported-from-level=5]"""
+phpdoc_advanced_fallback_scalar.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects bool|float|int|string, array<int, int> given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_scalar.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects bool|float|int|string, stdClass given. [identifier=argument.type] [reported-from-level=5]
+phpdoc_advanced_fallback_scalar.php:49: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar expects bool|float|int|string, null given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

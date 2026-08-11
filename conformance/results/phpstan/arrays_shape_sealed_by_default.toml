@@ -2,10 +2,10 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
-arrays_shape_sealed_by_default.php:35: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{} given. [reported-from-level=5]
-arrays_shape_sealed_by_default.php:36: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{foo: 'one'} given. [reported-from-level=5]
-arrays_shape_sealed_by_default.php:40: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{foo: 2, buz: 42.0} given. [reported-from-level=5]
-arrays_shape_sealed_by_default.php:49: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{foo: int, buz: float} given. [reported-from-level=5]"""
+arrays_shape_sealed_by_default.php:35: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{} given. [identifier=argument.type] [reported-from-level=5]
+arrays_shape_sealed_by_default.php:36: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{foo: 'one'} given. [identifier=argument.type] [reported-from-level=5]
+arrays_shape_sealed_by_default.php:40: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{foo: 2, buz: 42.0} given. [identifier=argument.type] [reported-from-level=5]
+arrays_shape_sealed_by_default.php:49: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{foo: int, buz: float} given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

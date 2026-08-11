@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-generics_template_bound.php:56: Parameter #1 $box of function Conformance\\Tests\\GenericsTemplateBound\\takesNamedBox expects Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\User>, Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\HasName> given.
-generics_template_bound.php:56: Parameter #1 $value of class Conformance\\Tests\\GenericsTemplateBound\\NamedBox constructor expects T of Conformance\\Tests\\GenericsTemplateBound\\HasName, Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser given."""
+generics_template_bound.php:56: Parameter #1 $box of function Conformance\\Tests\\GenericsTemplateBound\\takesNamedBox expects Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\User>, Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\HasName> given. [identifier=argument.type]
+generics_template_bound.php:56: Parameter #1 $value of class Conformance\\Tests\\GenericsTemplateBound\\NamedBox constructor expects T of Conformance\\Tests\\GenericsTemplateBound\\HasName, Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser given. [identifier=argument.type]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

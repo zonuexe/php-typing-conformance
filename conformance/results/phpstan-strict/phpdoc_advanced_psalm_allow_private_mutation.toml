@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = "phpdoc_advanced_psalm_allow_private_mutation.php:35: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value is assigned outside of its declaring class."
+output = "phpdoc_advanced_psalm_allow_private_mutation.php:35: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value is assigned outside of its declaring class. [identifier=property.readOnlyByPhpDocAssignOutOfClass]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

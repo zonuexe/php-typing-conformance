@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-arrays_unsealed_shape.php:37: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape expects array{foo: int, ...}, array{} given. [reported-from-level=5]
-arrays_unsealed_shape.php:38: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape expects array{foo: int, ...}, array{buz: 42.0} given. [reported-from-level=5]
-arrays_unsealed_shape.php:41: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape expects array{foo: int, ...}, array{foo: 'one'} given. [reported-from-level=5]"""
+arrays_unsealed_shape.php:37: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape expects array{foo: int, ...}, array{} given. [identifier=argument.type] [reported-from-level=5]
+arrays_unsealed_shape.php:38: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape expects array{foo: int, ...}, array{buz: 42.0} given. [identifier=argument.type] [reported-from-level=5]
+arrays_unsealed_shape.php:41: Parameter #1 $shape of function Conformance\\Tests\\ArraysUnsealedShape\\acceptsUnsealedShape expects array{foo: int, ...}, array{foo: 'one'} given. [identifier=argument.type] [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

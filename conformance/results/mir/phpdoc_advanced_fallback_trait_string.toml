@@ -2,16 +2,16 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_fallback_trait_string.php:49: InvalidArgument: Argument $value of acceptsString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\trait-string' [MIR0201]
-phpdoc_advanced_fallback_trait_string.php:52: InvalidArgument: Argument $value of acceptsTraitString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\trait-string', got 'class-string<Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\SomeTrait>' [MIR0201]
-phpdoc_advanced_fallback_trait_string.php:55: InvalidArgument: Argument $value of acceptsTraitString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\trait-string', got 'class-string<Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\SomeClass>' [MIR0201]"""
+phpdoc_advanced_fallback_trait_string.php:34: InvalidReturnType: Return type 'class-string<Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\SomeTrait>' is not compatible with declared 'trait-string' [MIR0200]
+phpdoc_advanced_fallback_trait_string.php:52: InvalidArgument: Argument $value of acceptsTraitString() expects 'trait-string', got 'class-string<Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\SomeTrait>' [MIR0201]
+phpdoc_advanced_fallback_trait_string.php:55: InvalidArgument: Argument $value of acceptsTraitString() expects 'trait-string', got 'class-string<Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\SomeClass>' [MIR0201]"""
 errors_diff = """
-Line 49: Unexpected errors ["InvalidArgument: Argument $value of acceptsString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\trait-string' [MIR0201]"]
-Line 52: Unexpected errors ["InvalidArgument: Argument $value of acceptsTraitString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\trait-string', got 'class-string<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\SomeTrait>' [MIR0201]"]"""
+Line 34: Unexpected errors ["InvalidReturnType: Return type 'class-string<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\SomeTrait>' is not compatible with declared 'trait-string' [MIR0200]"]
+Line 52: Unexpected errors ["InvalidArgument: Argument $value of acceptsTraitString() expects 'trait-string', got 'class-string<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\SomeTrait>' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [49, 52]
+false_positive_lines = [34, 52]

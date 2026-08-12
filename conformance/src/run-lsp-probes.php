@@ -119,6 +119,18 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
     echo "== {$server->tool}\n";
     $started = microtime(true);
 
+    // A real project indexes slower than five fixture files, hence the
+    // generous navigation windows. php-lsp is the exception: it goes
+    // unresponsive on the corpus and every navigation probe times out, so
+    // the default window costs 30s per symbol for a verdict that 5s reaches
+    // just as well — shorten its per-probe and index windows only, and keep
+    // the generous defaults for the servers that actually answer. Verified
+    // against 0.24.1: a 30s window records the identical timeouts.
+    $navigationTimeouts = match ($server->tool) {
+        'php-lsp' => ['indexTimeoutMs' => 15000, 'timeoutMs' => 120000, 'probeTimeoutMs' => 5000],
+        default => ['indexTimeoutMs' => 90000, 'timeoutMs' => 600000, 'probeTimeoutMs' => 30000],
+    };
+
     try {
         $output = $runner->run($server, $capabilityProbes);
         $hoverOutput = $runner->run($server, $hoverProbes, $hoverFixtures);
@@ -128,7 +140,7 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
             $navigationOpen,
             sourceDir: $navigation->root,
             configFiles: $navigationConfigs[$server->tool] ?? [],
-            specOverrides: ['indexTimeoutMs' => 90000, 'timeoutMs' => 600000, 'probeTimeoutMs' => 30000],
+            specOverrides: $navigationTimeouts,
         );
     } catch (Throwable $e) {
         fwrite(STDERR, "{$server->tool}: {$e->getMessage()}\n");

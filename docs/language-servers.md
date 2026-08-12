@@ -153,11 +153,18 @@ These cost real debugging time; each one is now load-bearing in the code.
   6.16.1 or 7.0.0-beta19 — contains it yet. The minimal repro
   (`const NAN_CONSTANT = \NAN;` alone) is posted on that issue; drop the
   src/-only scoping once a release ships the fix.
-- **php-lsp 0.22.0 goes unresponsive on the corpus.** It advertises
+- **php-lsp goes unresponsive on the corpus.** It advertises
   workspace-wide pull diagnostics and appears to analyse the whole project
-  on open; on psysh every navigation probe — definition included — timed
-  out at 30s. Recorded as measured; a per-layer failure only marks that
-  layer, so its fixture results still stand.
+  on open; on psysh every navigation probe — definition included — times
+  out. This holds across 0.22.0 and 0.24.1: the 0.24 line's startup and
+  mention-index work fixed its capability layer (implementation,
+  references and workspace-symbol probes now answer) but not navigation
+  on a large corpus. The runner gives php-lsp a short navigation window
+  (5s per probe, 15s to settle, against the 30s/90s the answering servers
+  get), since a server that never replies costs the full window per symbol
+  and a verdict is reached just as well in 5s — a 30s window records the
+  identical timeouts. Recorded as measured; a per-layer failure only marks
+  that layer, so its fixture results still stand.
 
 ## Reading the results
 

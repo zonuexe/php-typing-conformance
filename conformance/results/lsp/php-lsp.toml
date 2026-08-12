@@ -1,5 +1,5 @@
 tool = "php-lsp"
-version = "php-lsp 0.22.0"
+version = "php-lsp 0.24.1"
 server_info = ""
 dynamic_registrations = ["workspace/didChangeConfiguration", "workspace/didChangeWatchedFiles"]
 raw_capabilities = "{\"callHierarchyProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":true},\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"(\",\"[\",\"\\\\\"]},\"declarationProvider\":true,\"definitionProvider\":true,\"diagnosticProvider\":{\"interFileDependencies\":true,\"workspaceDiagnostics\":true},\"documentFormattingProvider\":true,\"documentHighlightProvider\":true,\"documentLinkProvider\":{\"resolveProvider\":false},\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"}\",\"moreTriggerCharacter\":[\"\\n\"]},\"documentRangeFormattingProvider\":true,\"documentSymbolProvider\":true,\"executeCommandProvider\":{\"commands\":[\"php-lsp.runTest\"]},\"foldingRangeProvider\":true,\"hoverProvider\":true,\"implementationProvider\":true,\"inlayHintProvider\":{\"resolveProvider\":true},\"inlineValueProvider\":[],\"linkedEditingRangeProvider\":true,\"monikerProvider\":true,\"referencesProvider\":true,\"renameProvider\":{\"prepareProvider\":true},\"selectionRangeProvider\":true,\"semanticTokensProvider\":{\"full\":{\"delta\":true},\"legend\":{\"tokenModifiers\":[\"declaration\",\"static\",\"abstract\",\"readonly\",\"deprecated\"],\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"function\",\"method\",\"property\",\"variable\",\"parameter\",\"type\",\"string\",\"number\",\"comment\",\"enumMember\"]},\"range\":true},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"]},\"textDocumentSync\":{\"change\":2,\"openClose\":true,\"save\":{\"includeText\":false},\"willSave\":true,\"willSaveWaitUntil\":true},\"typeDefinitionProvider\":true,\"workspace\":{\"fileOperations\":{\"didCreate\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"didDelete\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"didRename\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willCreate\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willDelete\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willRename\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]}},\"workspaceFolders\":{\"changeNotifications\":true,\"supported\":true}},\"workspaceSymbolProvider\":{\"resolveProvider\":true}}"
@@ -48,12 +48,12 @@ probe = "answered"
 [capabilities.implementation]
 advertised = true
 via = "static"
-probe = "empty"
+probe = "answered"
 
 [capabilities.references]
 advertised = true
 via = "static"
-probe = "empty"
+probe = "answered"
 
 [capabilities.document-highlight]
 advertised = true
@@ -68,7 +68,7 @@ probe = "answered"
 [capabilities.workspace-symbol]
 advertised = true
 via = "static"
-probe = "empty"
+probe = "answered"
 
 [capabilities.code-action]
 advertised = true
@@ -118,7 +118,7 @@ probe = "answered"
 [capabilities.call-hierarchy]
 advertised = true
 via = "static"
-probe = "empty"
+probe = "answered"
 
 [capabilities.type-hierarchy]
 advertised = false

@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = ""
-errors_diff = "Line 28: Expected 1 error(s)"
+output = """
+regressions_list_destructure_string_key.php:28: offset 0 is outside the declared shape — stringKeyed() is array<string, int>, which cannot carry the key; reads null with "Undefined array key 0" [offset.undeclared]
+regressions_list_destructure_string_key.php:28: offset 1 is outside the declared shape — stringKeyed() is array<string, int>, which cannot carry the key; reads null with "Undefined array key 1" [offset.undeclared]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

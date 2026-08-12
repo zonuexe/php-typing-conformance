@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = "Line 57: Expected 1 error(s)"
+output = "generics_template_bound_array.php:57: argument 1 to Collection::__construct() violates declared @param array $items — declared contract violation [phpdoc.param-mismatch]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

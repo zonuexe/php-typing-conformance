@@ -1,12 +1,12 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:58: impureMapper() has effect nondet.random (via random_int at line 38), but impureCaller() is declared @phpstan-pure [effect.envelope-exceeded]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []

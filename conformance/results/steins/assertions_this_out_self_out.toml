@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 12
-output = ""
-errors_diff = "Line 53: Expected 1 error(s)"
+output = "assertions_this_out_self_out.php:53: argument new MutableBox() to takesStringBox() violates declared @param MutableBox<string> $box — declared contract violation [phpdoc.param-mismatch]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

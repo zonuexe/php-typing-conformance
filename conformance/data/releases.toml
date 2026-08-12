@@ -65,8 +65,8 @@ version = "unversioned"
 date = "2026-06-24"
 
 [steins]
-version = "0.1.4"
-date = "2026-08-08"
+version = "0.1.5"
+date = "2026-08-12"
 
 # Language servers.
 

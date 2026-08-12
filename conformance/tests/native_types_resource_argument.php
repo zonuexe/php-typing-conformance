@@ -37,4 +37,4 @@ if ($handle === false) {
 takesResource($handle); // E?: resource-typed parameters should also be rejected at call sites
 takesString($handle); // E: resource is not accepted by string parameter
 takesInt($handle); // E: resource is not accepted by int parameter
-takesBool($handle); // E: resource is not accepted by bool parameter
+takesBool($handle); // E?: resource is not accepted by bool parameter (bool is the one scalar most tools model as universally accepting)

@@ -66,6 +66,7 @@ $projectRoot = dirname($rootDir);
 $phpStanConfigPath = $rootDir . '/phpstan.dist.neon';
 $phpStanNoStrictConfigPath = $rootDir . '/phpstan-no-strict.neon';
 $psalmConfigPath = $rootDir . '/psalm.xml';
+$psalmNextConfigPath = $rootDir . '/psalm-next.xml';
 
 $loader = new TestGroupLoader();
 $testGroups = $loader->load($testGroupsFile);
@@ -113,7 +114,7 @@ $psalmChecker = new PsalmChecker(
 $psalmNextChecker = new PsalmChecker(
     projectRoot: $projectRoot,
     binaryPath: $projectRoot . '/vendor-bin/psalm-next/vendor/bin/psalm',
-    configPath: $psalmConfigPath,
+    configPath: $psalmNextConfigPath,
     toolName: 'psalm-next',
 );
 $intelephenseChecker = new IntelephenseChecker(

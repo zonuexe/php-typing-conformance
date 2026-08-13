@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<psalm
+    phpVersion="8.5"
+    errorLevel="1"
+    findUnusedCode="false"
+    findUnusedBaselineEntry="false"
+    resolveFromConfigFile="true"
+>
+    <projectFiles>
+        <directory name="tests" />
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
+    </projectFiles>
+    <!-- Psalm 7-only issue types: Psalm 6's schema rejects the element, so
+         these live in the next-line config, not the shared psalm.xml. The
+         corpus does not test mutation-free annotations. -->
+    <issueHandlers>
+        <MissingPureAnnotation errorLevel="suppress" />
+        <MissingAbstractPureAnnotation errorLevel="suppress" />
+    </issueHandlers>
+</psalm>

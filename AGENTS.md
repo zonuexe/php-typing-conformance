@@ -180,8 +180,10 @@ the index matrix; the psalm version cell names the next line on its second
 line (`6.16.1 / next: 7.0.0-beta19`), and the detail pages carry it as a
 full row. Only the CLI is measured; there is no LSP probe for the next line.
 The 7.x-only purity findings (`MissingPureAnnotation`,
-`MissingAbstractPureAnnotation`) are suppressed in `conformance/psalm.xml`
-because the corpus does not test mutation-free annotations.
+`MissingAbstractPureAnnotation`) are suppressed in
+`conformance/psalm-next.xml` — a copy of `psalm.xml` with the 7.x-only
+handlers, since Psalm 6's schema rejects the elements — because the corpus
+does not test mutation-free annotations.
 
 `qodana` is measured by hand: run Qodana from PhpStorm (Code | Analyze Code |
 Run Qodana in the IDE), then `php conformance/src/main.php --tool=qodana`,

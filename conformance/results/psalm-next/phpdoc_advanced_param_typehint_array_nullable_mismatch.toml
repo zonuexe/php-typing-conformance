@@ -1,0 +1,7 @@
+status = "By design"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = ""
+errors_diff = "Lines 15, 18: Expected error (tag array_param_mismatch)"
+notes = "Intentionally not reported in Psalm by design. See https://github.com/vimeo/psalm/issues/3785"
+ignore_errors = []

@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_vendor_prefixed_import_type_phpstan.php:46: Argument 1 of Conformance\\Tests\\PhpdocAdvancedVendorPrefixedImportTypePhpStan\\Map::pin expects array{lat: float, lng: float}, but array{lat: float(1)} provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

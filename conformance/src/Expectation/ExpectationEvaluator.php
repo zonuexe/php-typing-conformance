@@ -37,7 +37,13 @@ final class ExpectationEvaluator
         $noiseLines = [];
 
         foreach ($expectedDiagnostics as $diagnostic) {
-            if ($diagnostic->tool !== null && $diagnostic->tool !== $toolName) {
+            // psalm-next is a second Psalm installation, not a tool of its
+            // own: expectations written for psalm apply to the next line
+            // too, and where the 7.x line diverges that shows up as a
+            // missed expectation or an unexpected diagnostic — a real
+            // finding — rather than as a marker the column never saw.
+            $inheritedTool = $toolName === 'psalm-next' && $diagnostic->tool === 'psalm';
+            if ($diagnostic->tool !== null && $diagnostic->tool !== $toolName && !$inheritedTool) {
                 continue;
             }
 

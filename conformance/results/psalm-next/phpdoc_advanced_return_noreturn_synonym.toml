@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_return_noreturn_synonym.php:25: Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn does not exist [UndefinedDocblockClass]
+phpdoc_advanced_return_noreturn_synonym.php:33: Docblock-defined class, interface or enum named Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn does not exist [UndefinedDocblockClass]
+phpdoc_advanced_return_noreturn_synonym.php:33: The declared return type 'Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn' for Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\claimsNoreturnButReturns is incorrect, got '1' [InvalidReturnType]
+phpdoc_advanced_return_noreturn_synonym.php:37: The inferred type '1' does not match the declared return type 'Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn' for Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\claimsNoreturnButReturns [InvalidReturnStatement]"""
+errors_diff = ""
+notes = "`noreturn` was a rejected RFC name candidate; PHP adopted `never` instead, so treating the unknown name as an undefined type is expected, not a defect. Recorded for reference only. PHPStan and mir keep `noreturn` as a legacy alias for `never`."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [25, 33]
+false_positive_lines = []

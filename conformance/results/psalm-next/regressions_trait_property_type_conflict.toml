@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "regressions_trait_property_type_conflict.php:20: Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\Composed has an uninitialized property Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\LeftTrait::$prop, but no constructor [MissingConstructor]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

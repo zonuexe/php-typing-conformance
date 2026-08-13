@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_psalm_ignore_falsable_return.php:35: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreFalsableReturn\\takesString cannot be false, string value expected [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

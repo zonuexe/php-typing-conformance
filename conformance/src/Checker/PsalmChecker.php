@@ -13,12 +13,13 @@ final class PsalmChecker implements Checker
         private readonly string $projectRoot,
         private readonly string $binaryPath,
         private readonly string $configPath,
+        private readonly string $toolName = 'psalm',
     ) {
     }
 
     public function name(): string
     {
-        return 'psalm';
+        return $this->toolName;
     }
 
     public function version(): string

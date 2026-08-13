@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+objects_static_return_mismatch.php:21: The declared return type 'Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder' for Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder::rebuild is incorrect, got 'Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder' [InvalidReturnType]
+objects_static_return_mismatch.php:23: The inferred type 'Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder' does not match the declared return type 'Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder' for Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder::rebuild [InvalidReturnStatement]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

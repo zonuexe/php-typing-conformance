@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_pure_closure.php:27: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\returnsPureClosure [InvalidDocblock]
+phpdoc_advanced_fallback_pure_closure.php:27: Method Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\returnsPureClosure does not have a return type, expecting pure-Closure(int):int [MissingReturnType]
+phpdoc_advanced_fallback_pure_closure.php:37: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\acceptsPureClosure [InvalidDocblock]
+phpdoc_advanced_fallback_pure_closure.php:39: Parameter $value has no provided type [MissingParamType]
+phpdoc_advanced_fallback_pure_closure.php:44: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\acceptsClosure cannot be mixed, expecting impure-Closure [MixedArgument]"""
+errors_diff = "Line 44: Unexpected errors [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\acceptsClosure cannot be mixed, expecting impure-Closure [MixedArgument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [27, 37, 39]
+false_positive_lines = [44]

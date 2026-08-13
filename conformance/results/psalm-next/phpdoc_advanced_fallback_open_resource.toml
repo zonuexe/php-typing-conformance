@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_open_resource.php:21: Unrecognized type open-resource in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\acceptsOpenResource [InvalidDocblock]
+phpdoc_advanced_fallback_open_resource.php:23: Parameter $value has no provided type [MissingParamType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [21, 23]
+false_positive_lines = []

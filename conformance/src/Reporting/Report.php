@@ -67,7 +67,7 @@ final class Report
         return new self(
             new SummaryReport(
                 new TemplateRenderer($rootDir . '/templates'),
-                AnalyzerCatalog::build($releases),
+                AnalyzerCatalog::build($releases, self::versionBanners($rootDir)),
                 LanguageServerCatalog::build($releases),
                 new ResultsUpdate($rootDir . '/results', $rootDir . '/tests'),
             ),
@@ -76,6 +76,28 @@ final class Report
             (new TestCaseDiscovery())->discover($rootDir . '/tests', $testGroups),
             $tools ?? self::DISPLAY_TOOLS,
         );
+    }
+
+    /**
+     * The raw version banners recorded per results/<tool>/version.toml, for
+     * the evaluated-release column: the version the suite actually ran.
+     *
+     * @return array<string, string> keyed by tool name
+     */
+    private static function versionBanners(string $rootDir): array
+    {
+        $banners = [];
+
+        foreach (glob($rootDir . '/results/*/version.toml') ?: [] as $path) {
+            $tool = basename(dirname($path));
+            $contents = file_get_contents($path);
+
+            if ($contents !== false && preg_match('/^version\s*=\s*["\'](.+)["\']/m', $contents, $m) === 1) {
+                $banners[$tool] = $m[1];
+            }
+        }
+
+        return $banners;
     }
 
     /**

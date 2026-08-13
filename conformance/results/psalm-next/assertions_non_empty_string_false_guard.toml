@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+assertions_non_empty_string_false_guard.php:37: Argument 1 of Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString expects non-falsy-string, but parent type non-empty-string provided [ArgumentTypeCoercion]
+assertions_non_empty_string_false_guard.php:41: Argument 1 of Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonEmptyString cannot be false, non-empty-string value expected [InvalidArgument]
+assertions_non_empty_string_false_guard.php:42: Argument 1 of Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString cannot be false, non-falsy-string value expected [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

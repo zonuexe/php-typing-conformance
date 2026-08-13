@@ -106,6 +106,12 @@ $psalmChecker = new PsalmChecker(
     binaryPath: $projectRoot . '/vendor-bin/psalm/vendor/bin/psalm',
     configPath: $psalmConfigPath,
 );
+$psalmNextChecker = new PsalmChecker(
+    projectRoot: $projectRoot,
+    binaryPath: $projectRoot . '/vendor-bin/psalm-next/vendor/bin/psalm',
+    configPath: $psalmConfigPath,
+    toolName: 'psalm-next',
+);
 $intelephenseChecker = new IntelephenseChecker(
     nodeBinary: 'node',
     serverPath: $projectRoot . '/vendor-bin/intelephense/node_modules/intelephense/lib/intelephense.js',
@@ -125,7 +131,7 @@ $phpyChecker = new PhpyChecker(
     nodeBinary: 'node',
     cliPath: $projectRoot . '/vendor-bin/phpy/node_modules/phpy/dist/index.js',
 );
-$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $pzoomChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker];
+$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker];
 
 // Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
 // selected checker(s), leaving every other tool's results untouched. Accepts a

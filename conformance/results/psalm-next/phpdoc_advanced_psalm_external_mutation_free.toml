@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_external_mutation_free.php:30: The context allows only reading and mutating instance state but property assignment to Conformance\\Tests\\PhpdocAdvancedPsalmExternalMutationFree\\Cell::$value is impure [ImpurePropertyAssignment]
+phpdoc_advanced_psalm_external_mutation_free.php:30: The context allows only reading and mutating instance state but property assignment is impure [ImpurePropertyAssignment]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

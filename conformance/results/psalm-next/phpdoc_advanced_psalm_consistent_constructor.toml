@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_consistent_constructor.php:33: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ChildWithDifferentCtor::__construct has wrong name $id, expecting $name as defined by Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ParentWithCtor::__construct [ParamNameMismatch]
+phpdoc_advanced_psalm_consistent_constructor.php:33: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ChildWithDifferentCtor::__construct has wrong type 'int', expecting 'string' as defined by Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ParentWithCtor::__construct [ConstructorSignatureMismatch]
+phpdoc_advanced_psalm_consistent_constructor.php:33: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ChildWithDifferentCtor::__construct has wrong type 'int', expecting 'string' as defined by Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ParentWithCtor::__construct [ImplementedParamTypeMismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

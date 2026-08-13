@@ -146,6 +146,13 @@ final class SummaryReport
     ): string {
         $toolColumns = [];
         foreach ($tools as $tool) {
+            // Configurations (phpstan-strict, psalm-next) are not columns of
+            // their own; their data rides in the base column's cell and on
+            // the detail pages.
+            if ($this->analyzers->isConfiguration($tool)) {
+                continue;
+            }
+
             $toolColumns[] = [
                 'name' => $tool,
                 'versionHtml' => $this->versionCell($resultsRoot, $tool),
@@ -292,6 +299,15 @@ final class SummaryReport
         ?TestGroup $group,
         array $tools,
     ): string {
+        // The detail pages show the configurations too — psalm-next gets a
+        // full row here even though the index matrix folds it into psalm.
+        foreach ($tools as $tool) {
+            foreach ($this->analyzers->configurationsOf($tool) as $configuration) {
+                $tools[] = $configuration['tool'];
+            }
+        }
+        $tools = array_values(array_unique($tools));
+
         [$title, $description] = $this->docblock($testCase);
 
         $rows = [];
@@ -885,11 +901,37 @@ final class SummaryReport
             $versionHtml = sprintf('<span class="hover-card__trigger">%s</span>', $versionHtml);
         }
 
-        return sprintf(
+        $card = sprintf(
             '<span class="hover-card">%s<span class="hover-card__popup">%s</span></span>',
             $versionHtml,
             $popupHtml,
         );
+
+        // A configuration that runs a different binary — psalm-next under
+        // psalm — is named on its own line in the base column's version cell,
+        // so the folded line stays visible where the column is. A
+        // configuration that reuses the same binary (phpstan-strict) has the
+        // same version and adds nothing.
+        foreach ($this->analyzers->configurationsOf($tool) as $configuration) {
+            $configShort = $configuration['release']->version;
+            if ($configShort === $shortVersion) {
+                continue;
+            }
+
+            $configUrl = $analyzer?->releaseUrl($configShort);
+            $configHtml = htmlspecialchars($configShort);
+            if ($configUrl !== null) {
+                $configHtml = sprintf(
+                    '<a href="%s" target="_blank" rel="noopener">%s</a>',
+                    htmlspecialchars($configUrl),
+                    $configHtml,
+                );
+            }
+
+            $card .= sprintf('<br>next: %s', $configHtml);
+        }
+
+        return $card;
     }
 
     private function prepareDetailsDir(string $detailsDir): void

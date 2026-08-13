@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "callables_docblock_signature.php:27: Argument 1 of Conformance\\Tests\\CallablesDocblockSignature\\takesIntToStringCallable expects impure-callable(int):string, but pure-Closure(string):string provided [InvalidScalarArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

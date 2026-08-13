@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "properties_uninitialized_read.php:17: Conformance\\Tests\\PropertiesUninitializedRead\\User has an uninitialized property Conformance\\Tests\\PropertiesUninitializedRead\\User::$name, but no constructor [MissingConstructor]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

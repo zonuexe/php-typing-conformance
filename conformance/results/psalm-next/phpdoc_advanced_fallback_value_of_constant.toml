@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_value_of_constant.php:54: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\acceptsLevel expects 1|10, but 5 provided [InvalidArgument]
+phpdoc_advanced_fallback_value_of_constant.php:57: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\acceptsLevel expects 1|10, but 'low' provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

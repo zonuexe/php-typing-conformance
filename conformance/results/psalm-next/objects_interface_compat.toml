@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "objects_interface_compat.php:41: Argument 1 of Conformance\\Tests\\ObjectsInterfaceCompat\\takesHasName expects Conformance\\Tests\\ObjectsInterfaceCompat\\HasName, but Conformance\\Tests\\ObjectsInterfaceCompat\\AnonymousUser provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

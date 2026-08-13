@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 12
+output = """
+assertions_this_out_self_out.php:53: Argument 1 of Conformance\\Tests\\AssertionsThisOutSelfOut\\takesStringBox expects Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string>, but Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int> provided [InvalidArgument]
+assertions_this_out_self_out.php:58: Argument 1 of Conformance\\Tests\\AssertionsThisOutSelfOut\\takesIntBox expects Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int>, but Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string> provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

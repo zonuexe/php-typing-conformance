@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:43: Docblock-defined type string for $value is never int [DocblockTypeContradiction]
+phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:43: Docblock-defined type string for $value is never int [RedundantConditionGivenDocblockType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+arrays_shape_sealed_by_default.php:35: Argument 1 of Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, but array<never, never> provided [InvalidArgument]
+arrays_shape_sealed_by_default.php:36: Argument 1 of Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, but array{foo: 'one'} provided [InvalidArgument]
+arrays_shape_sealed_by_default.php:40: Argument 1 of Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, but array{buz: float(42), foo: 2} with additional array shape fields (buz) was provided [InvalidArgument]
+arrays_shape_sealed_by_default.php:49: Argument 1 of Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, but array{buz: float, foo: int} with additional array shape fields (buz) was provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

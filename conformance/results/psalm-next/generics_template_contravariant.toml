@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 0
+output = """
+generics_template_contravariant.php:43: Docblock-defined class, interface or enum named Conformance\\Tests\\GenericsTemplateContravariant\\T does not exist [UndefinedDocblockClass]
+generics_template_contravariant.php:51: Conformance\\Tests\\GenericsTemplateContravariant\\Consumer<Conformance\\Tests\\GenericsTemplateContravariant\\Dog> has too many template params, expecting 0 [TooManyTemplateParams]
+generics_template_contravariant.php:58: Conformance\\Tests\\GenericsTemplateContravariant\\Consumer<Conformance\\Tests\\GenericsTemplateContravariant\\Animal> has too many template params, expecting 0 [TooManyTemplateParams]
+generics_template_contravariant.php:66: Argument 1 of Conformance\\Tests\\GenericsTemplateContravariant\\takesDogConsumer expects Conformance\\Tests\\GenericsTemplateContravariant\\Consumer<Conformance\\Tests\\GenericsTemplateContravariant\\Dog>, but parent type Conformance\\Tests\\GenericsTemplateContravariant\\Consumer<Conformance\\Tests\\GenericsTemplateContravariant\\Animal> provided [ArgumentTypeCoercion]"""
+errors_diff = """
+Line 43: Unexpected errors ["Docblock-defined class, interface or enum named Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\T does not exist [UndefinedDocblockClass]"]
+Line 51: Unexpected errors ["Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer<Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Dog> has too many template params, expecting 0 [TooManyTemplateParams]"]
+Line 58: Unexpected errors ["Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer<Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Animal> has too many template params, expecting 0 [TooManyTemplateParams]"]
+Line 66: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\takesDogConsumer expects Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer<Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Dog>, but parent type Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Consumer<Conformance\\\\Tests\\\\GenericsTemplateContravariant\\\\Animal> provided [ArgumentTypeCoercion]"]"""
+notes = ""
+ignore_errors = []

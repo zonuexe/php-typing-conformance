@@ -56,12 +56,25 @@ abstract class AnalyzerMetadata
 {
     /**
      * @param string $tool the runner's name for it, and its results directory
+     * @param string|null $versionBanner the tool's own `--version` output as
+     *        recorded in results/<tool>/version.toml; the evaluated release is
+     *        the version this suite actually ran, kept alongside the curated
+     *        latest release because the point of the report is often that they
+     *        differ (psalm at 6.16.1 while upstream lists a newer 7.0.0-beta19
+     *        is the everyday case)
      */
     public function __construct(
         public readonly string $tool,
         public readonly Release $latestRelease,
+        ?string $versionBanner = null,
     ) {
+        $this->evaluatedRelease = $versionBanner === null
+            ? null
+            : new Release($this->shortVersion($versionBanner));
     }
+
+    /** The release this suite measured, from the tool's own version banner. */
+    public readonly ?Release $evaluatedRelease;
 
     /**
      * Reduce the tool's own version banner to the version number alone.

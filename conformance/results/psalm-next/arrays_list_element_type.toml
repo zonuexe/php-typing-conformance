@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "arrays_list_element_type.php:24: Argument 1 of Conformance\\Tests\\ArraysListElementType\\takesIntList expects list<int>, but list{'x'} provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

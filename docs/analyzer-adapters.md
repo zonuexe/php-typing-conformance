@@ -137,6 +137,21 @@ Exit codes 0 and 1 are both normal.
 keyed by `line_from`, formatted as `message [IssueType]`. Exit code 2 means
 issues were found and is treated as success.
 
+### psalm-next — the 7.x line, folded into the psalm column
+
+A second Psalm installation (`vendor-bin/psalm-next`, currently
+`7.0.0-beta19`) run through the same adapter with the same `psalm.xml`. It is
+a configuration of the psalm column's metadata: the reference and release
+tables describe Psalm once, the index matrix does not give it a column of its
+own (the psalm version cell names it on a second line — `6.16.1 / next:
+7.0.0-beta19`), and the detail pages show it as a full row. Only the CLI is
+measured — no LSP probe for the next line. Two 7.x deltas are absorbed in the
+harness: `MissingPureAnnotation` fires at every level on the 7.x line (the
+corpus does not test mutation-free annotations), so it is suppressed in
+`psalm.xml`; and the version banner reads `Psalm 7.0.0-beta19@…`, which the
+version pattern now parses with its prerelease suffix so the cell links to
+the tag that exists.
+
 ### pzoom — a Psalm port folded into Psalm's column
 
 pzoom reads the same `psalm.xml` and aims at Psalm compatibility, so the report

@@ -12,4 +12,12 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <!-- Psalm 7 emits MissingPureAnnotation / MissingAbstractPureAnnotation
+             at every level; the corpus does not test mutation-free annotations,
+             and Psalm 6 never reports them, so ignoring them keeps the two
+             lines comparable. -->
+        <MissingPureAnnotation errorLevel="suppress" />
+        <MissingAbstractPureAnnotation errorLevel="suppress" />
+    </issueHandlers>
 </psalm>

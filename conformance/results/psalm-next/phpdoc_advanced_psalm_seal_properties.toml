@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_psalm_seal_properties.php:75: Magic instance property Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\SealedBag::$extra is not defined [UndefinedMagicPropertyAssignment]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

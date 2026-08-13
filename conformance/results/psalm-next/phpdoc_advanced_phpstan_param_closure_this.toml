@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 11
+output = """
+phpdoc_advanced_phpstan_param_closure_this.php:39: Invalid reference to $this in a non-class context [InvalidScope]
+phpdoc_advanced_phpstan_param_closure_this.php:39: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+phpdoc_advanced_phpstan_param_closure_this.php:43: Invalid reference to $this in a non-class context [InvalidScope]
+phpdoc_advanced_phpstan_param_closure_this.php:43: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = []
+false_positive_lines = []

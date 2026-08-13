@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_psalm_arraylike_object.php:33: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike expects Traversable<string, int>&ArrayAccess<string, int>&Countable, but stdClass provided [InvalidArgument]
+phpdoc_advanced_psalm_arraylike_object.php:48: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\takesInt cannot be null, possibly null value provided [PossiblyNullArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []

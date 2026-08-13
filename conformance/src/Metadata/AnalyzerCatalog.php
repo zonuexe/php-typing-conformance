@@ -50,10 +50,16 @@ final class AnalyzerCatalog
      * not an analyzer of their own: the same binary, so the same version
      * banner and the same releases.
      *
+     * psalm-next is a second, separately installed Psalm — the 7.x line,
+     * currently 7.0.0-beta19 — so it has its own version banner, but it is
+     * still the same project: the reference table and the release table
+     * describe Psalm once, and the matrix column carries the next line.
+     *
      * @var array<string, string>
      */
     private const CONFIGURATIONS = [
         'phpstan-strict' => 'phpstan',
+        'psalm-next' => 'psalm',
     ];
 
     /** @var array<string, AnalyzerMetadata> */
@@ -61,9 +67,12 @@ final class AnalyzerCatalog
 
     /**
      * @param list<AnalyzerMetadata> $analyzers
+     * @param array<string, string> $versionBanners raw version banners, keyed by tool
      */
-    public function __construct(private readonly array $analyzers)
-    {
+    public function __construct(
+        private readonly array $analyzers,
+        private readonly array $versionBanners = [],
+    ) {
         $byTool = [];
 
         foreach ($analyzers as $analyzer) {
@@ -77,8 +86,12 @@ final class AnalyzerCatalog
      * Pair each analyzer's curated facts with its current release.
      *
      * @param array<string, Release> $releases keyed by tool name; see [[ReleaseTable]]
+     * @param array<string, string> $versionBanners the raw `--version` output
+     *        recorded per results/<tool>/version.toml, keyed by tool name —
+     *        the version this suite evaluated. Absent where nothing has been
+     *        measured yet (update-tools.php builds without results).
      */
-    public static function build(array $releases): self
+    public static function build(array $releases, array $versionBanners = []): self
     {
         $analyzers = [];
 
@@ -87,10 +100,10 @@ final class AnalyzerCatalog
                 sprintf('No release recorded for analyzer: %s', $tool),
             );
 
-            $analyzers[] = new $class($tool, $release);
+            $analyzers[] = new $class($tool, $release, $versionBanners[$tool] ?? null);
         }
 
-        return new self($analyzers);
+        return new self($analyzers, $versionBanners);
     }
 
     /**
@@ -111,5 +124,45 @@ final class AnalyzerCatalog
         $tool = self::CONFIGURATIONS[$tool] ?? $tool;
 
         return $this->byTool[$tool] ?? null;
+    }
+
+    /**
+     * True for a result directory that is one analyzer under another
+     * configuration (phpstan-strict, psalm-next) rather than a column of its
+     * own. The index matrix does not give such a row a column; the detail
+     * pages still show it.
+     */
+    public function isConfiguration(string $tool): bool
+    {
+        return isset(self::CONFIGURATIONS[$tool]);
+    }
+
+    /**
+     * The configuration rows of one analyzer (psalm-next under psalm), for the
+     * version cell to name the other line when it has one. Each entry carries
+     * the configuration's own evaluated release; the base analyzer's version
+     * pattern reads its banner, since a configuration is the same project.
+     *
+     * @return list<array{tool: string, release: Release}>
+     */
+    public function configurationsOf(string $tool): array
+    {
+        $base = $this->byTool[$tool] ?? null;
+        $out = [];
+
+        foreach (self::CONFIGURATIONS as $configTool => $baseTool) {
+            if ($baseTool !== $tool || $base === null) {
+                continue;
+            }
+
+            $banner = $this->versionBanners[$configTool] ?? null;
+            if ($banner === null) {
+                continue;
+            }
+
+            $out[] = ['tool' => $configTool, 'release' => new Release($base->shortVersion($banner))];
+        }
+
+        return $out;
     }
 }

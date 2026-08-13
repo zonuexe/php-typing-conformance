@@ -1,15 +1,23 @@
 status = "Unknown"
 conformance_automated = "Fail"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_psalm_arraylike_object.php:19: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object`. [non-existent-class-like]
-phpdoc_advanced_psalm_arraylike_object.php:26: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object)`, but possibly received `ArrayObject<int, int|int|int>`. [possibly-invalid-argument]
-phpdoc_advanced_psalm_arraylike_object.php:29: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object)`, but possibly received `stdClass`. [possibly-invalid-argument]"""
-errors_diff = "Line 26: Unexpected errors [\"Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike-object)`, but possibly received `ArrayObject<int, int|int|int>`. [possibly-invalid-argument]\"]"
+phpdoc_advanced_psalm_arraylike_object.php:23: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object`. [non-existent-class-like]
+phpdoc_advanced_psalm_arraylike_object.php:30: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object)`, but possibly received `ArrayObject<string, int>`. [possibly-invalid-argument]
+phpdoc_advanced_psalm_arraylike_object.php:33: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object)`, but possibly received `stdClass`. [possibly-invalid-argument]
+phpdoc_advanced_psalm_arraylike_object.php:40: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object`. [non-existent-class-like]
+phpdoc_advanced_psalm_arraylike_object.php:47: Impossible condition: variable `$obj` can never have a non-null entry for key `'key'`. [impossible-nonnull-entry-check]
+phpdoc_advanced_psalm_arraylike_object.php:47: Assigning `mixed` type to a variable may lead to unexpected behavior. [mixed-assignment]
+phpdoc_advanced_psalm_arraylike_object.php:48: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]
+phpdoc_advanced_psalm_arraylike_object.php:51: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\readsElement`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object)`, but possibly received `ArrayObject<string, int>`. [possibly-invalid-argument]"""
+errors_diff = """
+Line 47: Expected silence (quiet probe), got ["Impossible condition: variable `$obj` can never have a non-null entry for key `'key'`. [impossible-nonnull-entry-check]","Assigning `mixed` type to a variable may lead to unexpected behavior. [mixed-assignment]"]
+Line 30: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike-object)`, but possibly received `ArrayObject<string, int>`. [possibly-invalid-argument]"]
+Line 51: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\readsElement`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike-object)`, but possibly received `ArrayObject<string, int>`. [possibly-invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
-unrecognized_lines = [19]
-false_positive_lines = [26]
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = [23, 40]
+false_positive_lines = [30, 51]

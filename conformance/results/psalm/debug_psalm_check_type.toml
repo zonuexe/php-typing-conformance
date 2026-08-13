@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+debug_psalm_check_type.php:37: Checked variable $x = 1 does not match $x = 2 [CheckType]
+debug_psalm_check_type.php:48: Checked variable $x = int does not match $x = 2 [CheckType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []

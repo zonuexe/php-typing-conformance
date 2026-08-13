@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+unions_scalar_members.php:27: Argument 1 ($value) expects int|string, got 1.5 [type_mismatch_argument]
+unions_scalar_members.php:28: Argument 1 ($value) expects ?int, got 'x' [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

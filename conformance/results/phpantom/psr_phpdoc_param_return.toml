@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+psr_phpdoc_param_return.php:44: Argument 1 ($message) expects string, got 42 [type_mismatch_argument]
+psr_phpdoc_param_return.php:47: Argument 1 ($message) expects string, got int [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

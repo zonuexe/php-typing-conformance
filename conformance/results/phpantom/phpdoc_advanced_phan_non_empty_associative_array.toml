@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_phan_non_empty_associative_array.php:19: Class 'Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array<string, int>' not found [unknown_class]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [19]
+false_positive_lines = []

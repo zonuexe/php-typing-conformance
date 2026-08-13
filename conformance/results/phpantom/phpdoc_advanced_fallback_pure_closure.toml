@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_pure_closure.php:25: Class 'Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure' not found [unknown_class]
+phpdoc_advanced_fallback_pure_closure.php:29: Return type Closure is incompatible with declared return type Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure [type_mismatch_return]
+phpdoc_advanced_fallback_pure_closure.php:37: Class 'Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure' not found [unknown_class]
+phpdoc_advanced_fallback_pure_closure.php:47: Argument 1 ($value) expects Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure, got Closure [type_mismatch_argument]
+phpdoc_advanced_fallback_pure_closure.php:50: Argument 1 ($value) expects Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure, got 'strlen' [type_mismatch_argument]
+phpdoc_advanced_fallback_pure_closure.php:56: Argument 1 ($value) expects Conformance\\Tests\\PhpdocAdvancedFallbackPureClosure\\pure-closure, got Closure [type_mismatch_argument]"""
+errors_diff = """
+Line 29: Unexpected errors ["Return type Closure is incompatible with declared return type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\pure-closure [type_mismatch_return]"]
+Line 47: Unexpected errors ["Argument 1 ($value) expects Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPureClosure\\\\pure-closure, got Closure [type_mismatch_argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [25, 37]
+false_positive_lines = [29, 47]

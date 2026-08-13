@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 11
+output = "phpdoc_advanced_phpstan_param_closure_this.php:43: Property 'missing' not found on class 'Conformance\\Tests\\PhpdocAdvancedPhpstanParamClosureThis\\Host' [unknown_member]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "no-probes"
+enforced_lines = "0/0"
+unrecognized_lines = []
+false_positive_lines = []

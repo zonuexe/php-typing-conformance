@@ -156,18 +156,19 @@ That target uses sparse checkout for the documentation-oriented repositories. `r
 - Report stylesheet: authored in `conformance/templates/report.css`, copied to `conformance/results/report.css` on every render and linked from the index and the detail pages
 - OGP image: authored in `conformance/templates/ogp.png`, copied to `conformance/results/ogp.png` on every render; Open Graph / Twitter Card tags in `page.phtml` share one description and image, with only the title per page
 
-Current checker columns in the report:
+Current checker columns in the report, in display order:
 
+- `phan`
 - `phpstan`
-- `phpstan-strict`
 - `psalm`
-- `psalm-next`
 - `mago`
 - `mir`
+- `phpantom`
 - `intelephense`
+- `phpy`
 - `qodana`
-- `phan`
 - `noverify`
+- `steins`
 
 `psalm-next` is a second Psalm installation running the next major line
 (`vendor-bin/psalm-next`, currently 7.0.0-beta19) through the same adapter

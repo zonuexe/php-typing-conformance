@@ -1,0 +1,22 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_value_of_enum.php:32: Return type string is incompatible with declared return type value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit> [type_mismatch_return]
+phpdoc_advanced_fallback_value_of_enum.php:47: Argument 1 ($value) expects string, got value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit> [type_mismatch_argument]
+phpdoc_advanced_fallback_value_of_enum.php:50: Argument 1 ($value) expects value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit>, got 'hearts' [type_mismatch_argument]
+phpdoc_advanced_fallback_value_of_enum.php:51: Argument 1 ($value) expects value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit>, got 'spades' [type_mismatch_argument]
+phpdoc_advanced_fallback_value_of_enum.php:54: Argument 1 ($value) expects value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit>, got 'clubs' [type_mismatch_argument]
+phpdoc_advanced_fallback_value_of_enum.php:58: Argument 1 ($value) expects value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit>, got Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit [type_mismatch_argument]"""
+errors_diff = """
+Line 32: Unexpected errors ["Return type string is incompatible with declared return type value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit> [type_mismatch_return]"]
+Line 47: Unexpected errors ["Argument 1 ($value) expects string, got value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit> [type_mismatch_argument]"]
+Line 50: Unexpected errors ["Argument 1 ($value) expects value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit>, got 'hearts' [type_mismatch_argument]"]
+Line 51: Unexpected errors ["Argument 1 ($value) expects value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit>, got 'spades' [type_mismatch_argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = [32, 47, 50, 51]

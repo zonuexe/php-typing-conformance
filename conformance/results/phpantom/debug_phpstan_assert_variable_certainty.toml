@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+debug_phpstan_assert_variable_certainty.php:23: Class 'PHPStan\\TrinaryLogic' not found [unknown_class]
+debug_phpstan_assert_variable_certainty.php:23: Function 'PHPStan\\Testing\\assertVariableCertainty' not found [unknown_function]
+debug_phpstan_assert_variable_certainty.php:27: Class 'PHPStan\\TrinaryLogic' not found [unknown_class]
+debug_phpstan_assert_variable_certainty.php:27: Function 'PHPStan\\Testing\\assertVariableCertainty' not found [unknown_function]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = []
+false_positive_lines = []

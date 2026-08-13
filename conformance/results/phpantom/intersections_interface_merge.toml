@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "intersections_interface_merge.php:54: Argument 1 ($value) expects Conformance\\Tests\\IntersectionsInterfaceMerge\\HasId&Conformance\\Tests\\IntersectionsInterfaceMerge\\HasName, got Conformance\\Tests\\IntersectionsInterfaceMerge\\AnonymousUser [type_mismatch_argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+stubs_external_signature_support.php:15: Class 'Conformance\\Tests\\StubsExternalSignatureSupport\\ExternalClock' not found [unknown_class]
+stubs_external_signature_support.php:32: Class 'Conformance\\Tests\\StubsExternalSignatureSupport\\ExternalClock' not found [unknown_class]
+stubs_external_signature_support.php:37: Argument 1 ($clock) expects Conformance\\Tests\\StubsExternalSignatureSupport\\ExternalClock, got Conformance\\Tests\\StubsExternalSignatureSupport\\InvalidClock [type_mismatch_argument]"""
+errors_diff = """
+Line 15: Unexpected errors ["Class 'Conformance\\\\Tests\\\\StubsExternalSignatureSupport\\\\ExternalClock' not found [unknown_class]"]
+Line 32: Unexpected errors ["Class 'Conformance\\\\Tests\\\\StubsExternalSignatureSupport\\\\ExternalClock' not found [unknown_class]"]"""
+notes = ""
+ignore_errors = []

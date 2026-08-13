@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "assertions_null_guard.php:38: Cannot access method 'name' on type 'null' [scalar_member_access]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_value_of.php:24: Return type int is incompatible with declared return type value-of<array{a: int, b: int}> [type_mismatch_return]
+phpdoc_advanced_fallback_value_of.php:39: Argument 1 ($value) expects int, got value-of<array{a: int, b: int}> [type_mismatch_argument]
+phpdoc_advanced_fallback_value_of.php:42: Argument 1 ($value) expects value-of<array{a: int, b: int}>, got 1 [type_mismatch_argument]
+phpdoc_advanced_fallback_value_of.php:45: Argument 1 ($value) expects value-of<array{a: int, b: int}>, got 'x' [type_mismatch_argument]
+phpdoc_advanced_fallback_value_of.php:46: Argument 1 ($value) expects value-of<array{a: int, b: int}>, got 'a' [type_mismatch_argument]"""
+errors_diff = """
+Line 24: Unexpected errors ["Return type int is incompatible with declared return type value-of<array{a: int, b: int}> [type_mismatch_return]"]
+Line 39: Unexpected errors ["Argument 1 ($value) expects int, got value-of<array{a: int, b: int}> [type_mismatch_argument]"]
+Line 42: Unexpected errors ["Argument 1 ($value) expects value-of<array{a: int, b: int}>, got 1 [type_mismatch_argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = [24, 39, 42]

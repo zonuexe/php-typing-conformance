@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_decimal_int_string.php:23: Class 'Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string' not found [unknown_class]
+phpdoc_advanced_fallback_decimal_int_string.php:35: Class 'Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string' not found [unknown_class]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/3"
+unrecognized_lines = [23, 35]
+false_positive_lines = []

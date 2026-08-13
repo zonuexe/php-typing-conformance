@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_vendor_prefixed_type_phan.php:25: Class 'Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\UserRow' not found [unknown_class]
+phpdoc_advanced_vendor_prefixed_type_phan.php:35: Argument 1 ($row) expects Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\UserRow, got array{id: int, name: string} [type_mismatch_argument]
+phpdoc_advanced_vendor_prefixed_type_phan.php:38: Argument 1 ($row) expects Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\UserRow, got array{id: int} [type_mismatch_argument]"""
+errors_diff = "Line 35: Unexpected errors [\"Argument 1 ($row) expects Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedTypePhan\\\\UserRow, got array{id: int, name: string} [type_mismatch_argument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [25]
+false_positive_lines = [35]

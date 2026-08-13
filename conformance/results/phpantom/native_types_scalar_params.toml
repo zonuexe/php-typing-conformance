@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+native_types_scalar_params.php:25: Argument 1 ($value) expects int, got 'x' [type_mismatch_argument]
+native_types_scalar_params.php:26: Argument 1 ($value) expects string, got 1 [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

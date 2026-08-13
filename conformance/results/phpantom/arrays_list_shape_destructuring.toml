@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+arrays_list_shape_destructuring.php:48: Argument 1 ($value) expects int, got bool [type_mismatch_argument]
+arrays_list_shape_destructuring.php:49: Argument 1 ($value) expects string, got bool [type_mismatch_argument]
+arrays_list_shape_destructuring.php:50: Argument 1 ($value) expects bool, got int [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

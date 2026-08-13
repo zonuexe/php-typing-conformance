@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_psalm_ignore_nullable_return.php:39: Argument 1 ($item) expects Conformance\\Tests\\PhpdocAdvancedPsalmIgnoreNullableReturn\\Item, got null [type_mismatch_argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []

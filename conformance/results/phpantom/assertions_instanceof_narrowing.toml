@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "assertions_instanceof_narrowing.php:46: Method 'name' not found on class 'Conformance\\Tests\\AssertionsInstanceofNarrowing\\Guest' [unknown_member]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

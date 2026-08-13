@@ -39,7 +39,7 @@ final class Report
      *
      * @var list<string>
      */
-    public const DISPLAY_TOOLS = ['phan', 'phpstan', 'psalm', 'mago', 'mir', 'noverify', 'intelephense', 'qodana', 'phpy', 'steins'];
+    public const DISPLAY_TOOLS = ['phan', 'phpstan', 'psalm', 'mago', 'mir', 'phpantom', 'intelephense', 'phpy', 'qodana', 'noverify', 'steins'];
 
     /**
      * @param array<string, \Conformance\TestGroup\TestGroup> $testGroups

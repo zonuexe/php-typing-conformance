@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 11
+output = """
+assertions_non_falsy_string_false_guard.php:37: Argument 1 ($value) expects non-empty-string, got non-falsy-string|false [type_mismatch_argument]
+assertions_non_falsy_string_false_guard.php:42: Argument 1 ($value) expects non-empty-string, got non-falsy-string|false [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

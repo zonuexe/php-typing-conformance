@@ -10,6 +10,7 @@ use Conformance\Checker\PhpStanChecker;
 use Conformance\Checker\PsalmChecker;
 use Conformance\Checker\QodanaChecker;
 use Conformance\Checker\MagoChecker;
+use Conformance\Checker\PhpantomChecker;
 use Conformance\Checker\MirChecker;
 use Conformance\Checker\IntelephenseChecker;
 use Conformance\Checker\NoVerifyChecker;
@@ -91,6 +92,9 @@ $magoChecker = new MagoChecker(
     binaryPath: $projectRoot . '/vendor-bin/mago/vendor/bin/mago',
     workspacePath: $rootDir,
 );
+$phpantomChecker = new PhpantomChecker(
+    binaryPath: $projectRoot . '/vendor-bin/phpantom/bin/phpantom_lsp',
+);
 $mirChecker = new MirChecker(
     binaryPath: $projectRoot . '/vendor-bin/mir/vendor/bin/mir',
 );
@@ -131,7 +135,7 @@ $phpyChecker = new PhpyChecker(
     nodeBinary: 'node',
     cliPath: $projectRoot . '/vendor-bin/phpy/node_modules/phpy/dist/index.js',
 );
-$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker];
+$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $phpantomChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker];
 
 // Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
 // selected checker(s), leaving every other tool's results untouched. Accepts a

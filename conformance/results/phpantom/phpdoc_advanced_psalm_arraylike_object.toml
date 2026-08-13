@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_psalm_arraylike_object.php:23: Class 'Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object<string, int>' not found [unknown_class]
+phpdoc_advanced_psalm_arraylike_object.php:40: Class 'Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object<string, int>' not found [unknown_class]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/3"
+unrecognized_lines = [23, 40]
+false_positive_lines = []

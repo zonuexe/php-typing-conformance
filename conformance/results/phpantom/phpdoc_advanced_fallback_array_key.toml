@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+phpdoc_advanced_fallback_array_key.php:58: Argument 1 ($value) expects array-key, got 1.5 [type_mismatch_argument]
+phpdoc_advanced_fallback_array_key.php:59: Argument 1 ($value) expects array-key, got bool [type_mismatch_argument]
+phpdoc_advanced_fallback_array_key.php:60: Argument 1 ($value) expects array-key, got null [type_mismatch_argument]
+phpdoc_advanced_fallback_array_key.php:65: Argument 1 ($value) expects int, got array-key [type_mismatch_argument]
+phpdoc_advanced_fallback_array_key.php:66: Argument 1 ($value) expects string, got array-key [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "5/5"
+unrecognized_lines = []
+false_positive_lines = []

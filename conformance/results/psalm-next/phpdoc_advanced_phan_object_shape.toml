@@ -1,13 +1,16 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_phan_object_shape.php:19: Unexpected brace character in type Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\stdClass in docblock for Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\acceptsObjectShape [InvalidDocblock]"
-errors_diff = ""
+output = """
+phpdoc_advanced_phan_object_shape.php:27: Unexpected brace character in type Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\stdClass in docblock for Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\acceptsObjectShape [InvalidDocblock]
+phpdoc_advanced_phan_object_shape.php:31: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\takesString cannot be mixed, expecting string [MixedArgument]
+phpdoc_advanced_phan_object_shape.php:32: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\takesInt expects int, but string provided [InvalidScalarArgument]"""
+errors_diff = "Line 31: Expected valid value to be accepted, got [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhanObjectShape\\\\takesString cannot be mixed, expecting string [MixedArgument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
-enforcement = "none"
-enforced_lines = "0/1"
-unrecognized_lines = [19]
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [27]
 false_positive_lines = []
 over_rejected_lines = []

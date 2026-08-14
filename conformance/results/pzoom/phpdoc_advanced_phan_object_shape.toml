@@ -2,15 +2,19 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_phan_object_shape.php:21: Parameter $obj has wrong type 'array{name: string}', should be 'stdClass' [MismatchingDocblockParamType]
-phpdoc_advanced_phan_object_shape.php:28: Argument 1 of acceptsObjectShape expects array{name: string}, but stdClass provided [InvalidArgument]
-phpdoc_advanced_phan_object_shape.php:33: Argument 1 of acceptsObjectShape expects array{name: string}, but stdClass provided [InvalidArgument]"""
-errors_diff = "Line 28: Expected valid value to be accepted, got [\"Argument 1 of acceptsObjectShape expects array{name: string}, but stdClass provided [InvalidArgument]\"]"
+phpdoc_advanced_phan_object_shape.php:29: Parameter $obj has wrong type 'array{name: string}', should be 'stdClass' [MismatchingDocblockParamType]
+phpdoc_advanced_phan_object_shape.php:31: Cannot access property $name on array{name: string} [InvalidPropertyFetch]
+phpdoc_advanced_phan_object_shape.php:31: Argument 1 of takesString cannot be mixed, expecting string [MixedArgument]
+phpdoc_advanced_phan_object_shape.php:32: Argument 1 of takesInt cannot be mixed, expecting int [MixedArgument]
+phpdoc_advanced_phan_object_shape.php:47: Argument 1 of acceptsObjectShape expects array{name: string}, but stdClass provided [InvalidArgument]"""
+errors_diff = """
+Line 31: Expected valid value to be accepted, got ["Cannot access property $name on array{name: string} [InvalidPropertyFetch]","Argument 1 of takesString cannot be mixed, expecting string [MixedArgument]"]
+Line 47: Expected valid value to be accepted, got ["Argument 1 of acceptsObjectShape expects array{name: string}, but stdClass provided [InvalidArgument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
-unrecognized_lines = [21]
+unrecognized_lines = [29]
 false_positive_lines = []
-over_rejected_lines = [28]
+over_rejected_lines = [47]

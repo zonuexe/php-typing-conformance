@@ -30,6 +30,6 @@ final class Counter
 }
 
 $counter = new Counter();
-$counter->increment();
+$counter->increment(); // V
 // External write must still fail under @readonly.
 $counter->value = 99; // E?: readonly property assigned outside declaring class

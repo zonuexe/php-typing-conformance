@@ -1,7 +1,13 @@
 status = "Unknown"
-conformance_automated = "Pass"
-expected_diagnostic_count = 5
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
 output = "aliases_import_type.php:48: Expected parameter of type 'float', 'string' provided [PhpParamsInspection]"
-errors_diff = ""
+errors_diff = "Line 48: Unexpected errors [\"Expected parameter of type 'float', 'string' provided [PhpParamsInspection]\"]"
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = []
+false_positive_lines = [48]
+over_rejected_lines = [48]

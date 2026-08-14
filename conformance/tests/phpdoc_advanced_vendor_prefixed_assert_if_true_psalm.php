@@ -24,9 +24,15 @@ function isIntValue(mixed $value): bool // T: @psalm-assert-if-true
     return \is_int($value);
 }
 
+function takesInt(int $value): void
+{
+}
+
 function example(mixed $value): void
 {
     if (isIntValue($value)) {
+        takesInt($value); // V
+
         // Inside this branch the conditional assertion makes $value an int.
         echo \is_string($value) ? 'string' : 'int'; // E?: in the true branch, is_string() is always false
     }

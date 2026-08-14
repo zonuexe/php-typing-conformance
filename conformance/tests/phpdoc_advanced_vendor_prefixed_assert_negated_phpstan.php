@@ -26,9 +26,15 @@ function assertNotInt(int|string $value): void // T: @phpstan-assert !int
     }
 }
 
+function takesString(string $value): void
+{
+}
+
 function example(int|string $value): void
 {
     assertNotInt($value);
+
+    takesString($value); // V
 
     // After subtracting int, only string remains, so an is_int() check is
     // provably dead. A tool that ignores the tag (or parses `!int` as an

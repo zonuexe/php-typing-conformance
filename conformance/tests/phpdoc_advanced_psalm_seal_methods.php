@@ -64,7 +64,7 @@ final class Unsealed // T: @psalm-no-seal-methods
 }
 
 $sealed = new Sealed();
-$sealed->greet();
+$sealed->greet(); // V
 
 // Rejected by every default-sealing tool, tag or no tag — baseline, not the
 // seal tag under test. A bare statement avoids a confounding mixed-return
@@ -72,7 +72,7 @@ $sealed->greet();
 $sealed->wave(); // E?[noise]: undeclared magic method rejected by default sealing
 
 $unsealed = new Unsealed();
-$unsealed->greet();
+$unsealed->greet(); // V
 
 // Honouring the seal family means `@psalm-no-seal-methods` lifts the seal and
 // this undeclared call is allowed (silence). A tool that ignores the tag still

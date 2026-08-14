@@ -32,7 +32,7 @@ final class BadUser // E?[req]: using class must implement RequiredContract
 }
 
 // Satisfies the requirement.
-final class GoodUser implements RequiredContract
+final class GoodUser implements RequiredContract // V
 {
     use NeedsContract;
 }

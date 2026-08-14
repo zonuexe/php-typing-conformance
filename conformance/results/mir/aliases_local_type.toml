@@ -1,7 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 5
+expected_diagnostic_count = 1
 output = "aliases_local_type.php:40: InvalidArgument: Argument $address of setAddress() expects 'array{'street': string, 'city': string, 'zip': string}', got 'array{'street': \"1 Main St\", 'city': \"Town\"}' [MIR0201]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

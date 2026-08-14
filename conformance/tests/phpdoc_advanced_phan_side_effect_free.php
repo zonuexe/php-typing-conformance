@@ -21,7 +21,7 @@ function claimsSideEffectFree(int $value): int // T: @phan-side-effect-free
 {
     echo 'side effect'; // E?: echo contradicts @phan-side-effect-free
 
-    return $value + 1;
+    return $value + 1; // V
 }
 
 echo claimsSideEffectFree(1);

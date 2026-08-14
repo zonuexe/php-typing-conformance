@@ -1,14 +1,14 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = "phpdoc_advanced_psalm_consistent_constructor.php:33: Parameter #1 $id (int) of method Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ChildWithDifferentCtor::__construct() is not contravariant with parameter #1 $name (string) of method Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ParentWithCtor::__construct(). [identifier=method.childParameterType] [reported-from-level=0]"
-errors_diff = ""
+errors_diff = "Line 33: Unexpected errors [\"Parameter #1 $id (int) of method Conformance\\\\Tests\\\\PhpdocAdvancedPsalmConsistentConstructor\\\\ChildWithDifferentCtor::__construct() is not contravariant with parameter #1 $name (string) of method Conformance\\\\Tests\\\\PhpdocAdvancedPsalmConsistentConstructor\\\\ParentWithCtor::__construct(). [identifier=method.childParameterType] [reported-from-level=0]\"]"
 notes = ""
 ignore_errors = []
 expected_diagnostic_level = 0
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "none"
+enforced_lines = "0/1"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [33]
 over_rejected_lines = []

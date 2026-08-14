@@ -20,9 +20,10 @@ final class Label
 
     public function __construct(string $text)
     {
-        $this->text = $text;
+        $this->text = $text; // V
     }
 }
 
 $label = new Label('ok');
+echo $label->text; // V
 $label->text = 'no'; // E?: @psalm-readonly property assigned outside constructor

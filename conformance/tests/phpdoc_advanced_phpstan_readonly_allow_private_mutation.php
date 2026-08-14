@@ -34,5 +34,5 @@ function bumpOutside(Counter $counter): void
 }
 
 $counter = new Counter();
-$counter->increment();
+$counter->increment(); // V
 bumpOutside($counter);

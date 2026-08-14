@@ -14,7 +14,7 @@ phpdoc_advanced_psalm_arraylike_object.php:47: Suspicious array access to $obj o
 phpdoc_advanced_psalm_arraylike_object.php:51: Argument 1 ($obj) is new \\ArrayObject(['a'=>1]) of type \\ArrayAccess|\\ArrayObject|\\Countable|\\IteratorAggregate|\\Serializable|\\Traversable|iterable but \\Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\readsElement() takes \\Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_arraylike_object.php:42 [PhanTypeMismatchArgument]"""
 errors_diff = """
 Line 47: Expected silence (quiet probe), got ["Suspicious array access to $obj of type \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike [PhanTypeArraySuspicious]"]
-Line 30: Unexpected errors ["Argument 1 ($obj) is new \\\\ArrayObject(['a'=>1]) of type \\\\ArrayAccess|\\\\ArrayObject|\\\\Countable|\\\\IteratorAggregate|\\\\Serializable|\\\\Traversable|iterable but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_arraylike_object.php:25 [PhanTypeMismatchArgument]"]
+Line 30: Expected valid value to be accepted, got ["Argument 1 ($obj) is new \\\\ArrayObject(['a'=>1]) of type \\\\ArrayAccess|\\\\ArrayObject|\\\\Countable|\\\\IteratorAggregate|\\\\Serializable|\\\\Traversable|iterable but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_arraylike_object.php:25 [PhanTypeMismatchArgument]"]
 Line 51: Unexpected errors ["Argument 1 ($obj) is new \\\\ArrayObject(['a'=>1]) of type \\\\ArrayAccess|\\\\ArrayObject|\\\\Countable|\\\\IteratorAggregate|\\\\Serializable|\\\\Traversable|iterable but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\readsElement() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_psalm_arraylike_object.php:42 [PhanTypeMismatchArgument]"]"""
 notes = ""
 ignore_errors = []
@@ -22,5 +22,5 @@ recognition = "unrecognized"
 enforcement = "partial"
 enforced_lines = "1/3"
 unrecognized_lines = [23, 25, 40, 42]
-false_positive_lines = [30, 51]
+false_positive_lines = [51]
 over_rejected_lines = [30, 51]

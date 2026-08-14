@@ -25,7 +25,7 @@ function claimsPure(int $value): int // T: @phpstan-pure
     // The claim and the body disagree: honouring the tag means saying so.
     echo 'side effect'; // E?: an echo contradicts @phpstan-pure
 
-    return $value + 1;
+    return $value + 1; // V
 }
 
 echo claimsPure(1);

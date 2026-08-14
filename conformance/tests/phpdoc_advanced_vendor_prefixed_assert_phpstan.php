@@ -28,9 +28,15 @@ function assertIsInt(mixed $value): void // T: @phpstan-assert
     }
 }
 
+function takesInt(int $value): void
+{
+}
+
 function example(mixed $value): void
 {
     assertIsInt($value);
+
+    takesInt($value); // V
 
     // Applying the assertion makes $value an int, so this test can never be
     // true. Ignoring the tag leaves `mixed`, where it is an ordinary check.

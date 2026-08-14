@@ -28,6 +28,11 @@ class ParentWithCtor // T: @psalm-consistent-constructor
     }
 }
 
+// Compatible: inherits the parent's constructor, so the tag must stay silent.
+final class ChildWithInheritedCtor extends ParentWithCtor // V
+{
+}
+
 final class ChildWithDifferentCtor extends ParentWithCtor
 {
     public function __construct(int $id) // E?: not compatible under @psalm-consistent-constructor

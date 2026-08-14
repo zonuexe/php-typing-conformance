@@ -21,11 +21,11 @@ abstract class Base // T: @phpstan-sealed
 {
 }
 
-final class AllowedOne extends Base
+final class AllowedOne extends Base // V
 {
 }
 
-final class AllowedTwo extends Base
+final class AllowedTwo extends Base // V
 {
 }
 

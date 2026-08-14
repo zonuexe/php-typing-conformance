@@ -108,6 +108,13 @@ Phan/Psalm dialect types, `new<T>`, vendor-prefixed param/return/var/import,
 never-return). Debug helpers and Q-primary tag tests were left alone:
 dump/inspect lines *are* the probe, and honour-is-silence is already `// Q`.
 
+A third pass added `// V` to tag rows that have a clear valid side
+(`GoodChild`, `AllowedOne`, constructor-compatible children, declared
+magic `greet()` / `$name`, assert-then-`takesInt`, inside-namespace
+`@psalm-internal`) and turned `aliases_local_type` /
+`aliases_import_type` into `// T` rows so alias-as-class rejection of
+the complete shape is incidental rather than a tool-specific Pass.
+
 ## What we still do not do
 
 - **Match `// E: comment` text against the diagnostic.** Tool messages do

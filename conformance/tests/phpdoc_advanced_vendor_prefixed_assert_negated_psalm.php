@@ -32,9 +32,15 @@ function assertNotInt(int|string $value): void // T: @psalm-assert !int
     }
 }
 
+function takesString(string $value): void
+{
+}
+
 function example(int|string $value): void
 {
     assertNotInt($value);
+
+    takesString($value); // V
 
     // After subtracting int, only string remains, so an is_int() check is
     // provably dead. A tool that parses `!int` as an unknown type name (or

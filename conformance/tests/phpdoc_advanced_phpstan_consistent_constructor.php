@@ -28,6 +28,11 @@ class ParentWithCtor // T: @phpstan-consistent-constructor
     }
 }
 
+// Compatible: inherits the parent's constructor, so the tag must stay silent.
+final class ChildWithInheritedCtor extends ParentWithCtor // V
+{
+}
+
 // Divergent constructor: rejected only when the parent requires consistency.
 final class ChildWithDifferentCtor extends ParentWithCtor
 {

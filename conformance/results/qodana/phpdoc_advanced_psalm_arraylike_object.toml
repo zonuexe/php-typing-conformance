@@ -8,7 +8,7 @@ phpdoc_advanced_psalm_arraylike_object.php:33: Parameter 'new \\stdClass()' type
 phpdoc_advanced_psalm_arraylike_object.php:40: Undefined class 'arraylike-object' [PhpUndefinedClassInspection]
 phpdoc_advanced_psalm_arraylike_object.php:51: Parameter 'new \\ArrayObject(['a' => 1])' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 30: Unexpected errors ["Parameter 'new \\\\ArrayObject(['a' => 1])' type is not compatible with declaration [PhpParamsInspection]"]
+Line 30: Expected valid value to be accepted, got ["Parameter 'new \\\\ArrayObject(['a' => 1])' type is not compatible with declaration [PhpParamsInspection]"]
 Line 51: Unexpected errors ["Parameter 'new \\\\ArrayObject(['a' => 1])' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
@@ -16,5 +16,5 @@ recognition = "unrecognized"
 enforcement = "partial"
 enforced_lines = "2/3"
 unrecognized_lines = [23, 40]
-false_positive_lines = [30, 51]
+false_positive_lines = [51]
 over_rejected_lines = [30, 51]

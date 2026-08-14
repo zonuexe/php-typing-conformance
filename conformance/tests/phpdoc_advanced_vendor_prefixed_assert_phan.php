@@ -26,9 +26,15 @@ function assertIsInt(mixed $value): void // T: @phan-assert
     }
 }
 
+function takesInt(int $value): void
+{
+}
+
 function example(mixed $value): void
 {
     assertIsInt($value);
+
+    takesInt($value); // V
 
     // Applying the assertion makes $value an int, so an is_string() branch is
     // provably dead. A tool that ignores the tag keeps `mixed`, where

@@ -23,7 +23,7 @@ function acceptsPositionalOnly(int $value): void // T: @no-named-arguments
 {
 }
 
-acceptsPositionalOnly(1);
+acceptsPositionalOnly(1); // V
 
 // Named form is forbidden by the tag.
 acceptsPositionalOnly(value: 2); // E?: named argument disallowed by @no-named-arguments

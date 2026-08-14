@@ -1,10 +1,16 @@
 status = "Unknown"
-conformance_automated = "Pass"
-expected_diagnostic_count = 5
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
 output = """
 aliases_local_type.php:28: Parameter $address has undeclared type \\Conformance\\Tests\\AliasesLocalType\\UserAddress [PhanUndeclaredTypeParameter]
 aliases_local_type.php:37: Argument 1 ($address) is ['street'=>'1 Main St','city'=>'Town','zip'=>'12345'] of type array{street:'1 Main St',city:'Town',zip:'12345'} but \\Conformance\\Tests\\AliasesLocalType\\User::setAddress() takes \\Conformance\\Tests\\AliasesLocalType\\UserAddress (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_local_type.php:28 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
 aliases_local_type.php:40: Argument 1 ($address) is ['street'=>'1 Main St','city'=>'Town'] of type array{street:'1 Main St',city:'Town'} but \\Conformance\\Tests\\AliasesLocalType\\User::setAddress() takes \\Conformance\\Tests\\AliasesLocalType\\UserAddress (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_local_type.php:28 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
-errors_diff = ""
+errors_diff = "Line 37: Expected valid value to be accepted, got [\"Argument 1 ($address) is ['street'=>'1 Main St','city'=>'Town','zip'=>'12345'] of type array{street:'1 Main St',city:'Town',zip:'12345'} but \\\\Conformance\\\\Tests\\\\AliasesLocalType\\\\User::setAddress() takes \\\\Conformance\\\\Tests\\\\AliasesLocalType\\\\UserAddress (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_local_type.php:28 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]\"]"
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [28]
+false_positive_lines = []
+over_rejected_lines = [37]

@@ -21,7 +21,7 @@ namespace Conformance\Tests\AliasesImportType;
  * @phpstan-type Coordinates array{lat: float, lng: float}
  * @psalm-type Coordinates = array{lat: float, lng: float}
  */
-final class Geo
+final class Geo // T: @phpstan-type / @psalm-type
 {
 }
 
@@ -29,20 +29,21 @@ final class Geo
  * @phpstan-import-type Coordinates from Geo
  * @psalm-import-type Coordinates from Geo
  */
-final class Map
+final class Map // T: @phpstan-import-type / @psalm-import-type
 {
     /**
-     * @param Coordinates $point // E<noverify>: NoVerify treats the imported alias name as a class
+     * @param Coordinates $point
      */
-    public function pin($point): void // E<phan>: Phan does not expand imported type aliases
+    public function pin($point): void // T: Coordinates
     {
     }
 }
 
 $map = new Map();
 
-// Valid complete shape.
-$map->pin(['lat' => 35.0, 'lng' => 139.0]); // E<phan>: Phan treats Coordinates as an undeclared class type
+// Valid complete shape. Treating the imported name as a class and rejecting
+// the array is incidental, not enforcement.
+$map->pin(['lat' => 35.0, 'lng' => 139.0]); // V
 
 // Wrong value type for `lat` — imported alias should still enforce float.
-$map->pin(['lat' => 'north', 'lng' => 139.0]); // E?: imported Coordinates should reject string lat // E<phan>: Phan rejects any array against unresolved Coordinates
+$map->pin(['lat' => 'north', 'lng' => 139.0]); // E?: imported Coordinates should reject string lat

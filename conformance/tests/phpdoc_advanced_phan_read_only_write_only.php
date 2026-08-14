@@ -24,8 +24,8 @@ final class Bag
 }
 
 $bag = new Bag();
-echo $bag->id;
+echo $bag->id; // V
 $bag->id = 2; // E?: @phan-read-only property written
 
-$bag->scratch = 3;
+$bag->scratch = 3; // V
 echo $bag->scratch; // E?: @phan-write-only property read

@@ -24,7 +24,7 @@ final class Cell
     public function copyFrom(Cell $other): void // T: @psalm-external-mutation-free
     {
         // Own state is allowed under external-mutation-free.
-        $this->value = $other->value;
+        $this->value = $other->value; // V
 
         // Mutating a parameter is not.
         $other->value = 'stolen'; // E?: external object write contradicts @psalm-external-mutation-free

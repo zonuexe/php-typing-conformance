@@ -27,7 +27,7 @@ function acceptsArrayLike($obj): void // T: arraylike-object<string, int>
 }
 
 // ArrayObject implements ArrayAccess, Countable and Traversable.
-acceptsArrayLike(new \ArrayObject(['a' => 1]));
+acceptsArrayLike(new \ArrayObject(['a' => 1])); // V
 
 // A plain object is not array-like; analyzers that model it reject this.
 acceptsArrayLike(new \stdClass()); // E?: stdClass is not an arraylike-object

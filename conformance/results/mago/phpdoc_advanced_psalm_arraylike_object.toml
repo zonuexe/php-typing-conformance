@@ -12,7 +12,7 @@ phpdoc_advanced_psalm_arraylike_object.php:48: Invalid argument type for argumen
 phpdoc_advanced_psalm_arraylike_object.php:51: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\readsElement`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\arraylike-object)`, but possibly received `ArrayObject<string, int>`. [possibly-invalid-argument]"""
 errors_diff = """
 Line 47: Expected silence (quiet probe), got ["Impossible condition: variable `$obj` can never have a non-null entry for key `'key'`. [impossible-nonnull-entry-check]","Assigning `mixed` type to a variable may lead to unexpected behavior. [mixed-assignment]"]
-Line 30: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike-object)`, but possibly received `ArrayObject<string, int>`. [possibly-invalid-argument]"]
+Line 30: Expected valid value to be accepted, got ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\acceptsArrayLike`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike-object)`, but possibly received `ArrayObject<string, int>`. [possibly-invalid-argument]"]
 Line 51: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\readsElement`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\arraylike-object)`, but possibly received `ArrayObject<string, int>`. [possibly-invalid-argument]"]"""
 notes = ""
 ignore_errors = []
@@ -20,5 +20,5 @@ recognition = "unrecognized"
 enforcement = "partial"
 enforced_lines = "2/3"
 unrecognized_lines = [23, 40]
-false_positive_lines = [30, 51]
+false_positive_lines = [51]
 over_rejected_lines = []

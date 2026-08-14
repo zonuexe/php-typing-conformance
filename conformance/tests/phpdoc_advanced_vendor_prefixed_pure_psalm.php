@@ -23,7 +23,7 @@ function claimsPure(int $value): int // T: @psalm-pure
     // The claim and the body disagree: honouring the tag means saying so.
     echo 'side effect'; // E?: an echo contradicts @psalm-pure
 
-    return $value + 1;
+    return $value + 1; // V
 }
 
 echo claimsPure(1);

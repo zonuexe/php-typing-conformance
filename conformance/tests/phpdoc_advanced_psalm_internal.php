@@ -32,7 +32,7 @@ use Conformance\Tests\PhpdocAdvancedPsalmInternal\Library\Secret;
 // Nested under the allowed namespace: OK.
 function inside(): string
 {
-    return Secret::token();
+    return Secret::token(); // V
 }
 
 namespace Conformance\Tests\PhpdocAdvancedPsalmInternal\App;

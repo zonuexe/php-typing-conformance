@@ -32,9 +32,15 @@ function equalsFive(mixed $value): bool // T: @psalm-assert-if-true =int
     return \is_int($value) && $value === 5;
 }
 
+function takesInt(int $value): void
+{
+}
+
 function example(mixed $value): void
 {
     if (equalsFive($value)) {
+        takesInt($value); // V
+
         // True branch: equality still asserts int, so is_string is impossible.
         echo \is_string($value) ? 'string' : 'int'; // E?: in the true branch of =int, is_string() is always false
     } else {

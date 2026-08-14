@@ -30,5 +30,6 @@ final class Point // T: @psalm-immutable
     }
 }
 
-$point = new Point('origin');
+$point = new Point('origin'); // V
+echo $point->label; // V
 $point->label = 'moved'; // E?: immutable property assigned outside constructor

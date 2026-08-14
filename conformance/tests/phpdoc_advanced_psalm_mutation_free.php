@@ -21,6 +21,14 @@ final class Counter
     /**
      * @psalm-mutation-free
      */
+    public function get(): int
+    {
+        return $this->value; // V
+    }
+
+    /**
+     * @psalm-mutation-free
+     */
     public function bump(): void // T: @psalm-mutation-free
     {
         $this->value++; // E?: property write contradicts @psalm-mutation-free

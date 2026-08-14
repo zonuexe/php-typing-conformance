@@ -31,6 +31,6 @@ final class BadChild implements NeedsParent // E?: implementing class must exten
 }
 
 // Satisfies the requirement.
-final class GoodChild extends RequiredParent implements NeedsParent
+final class GoodChild extends RequiredParent implements NeedsParent // V
 {
 }

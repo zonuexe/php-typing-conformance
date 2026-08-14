@@ -68,14 +68,14 @@ final class UnsealedBag // T: @psalm-no-seal-properties
 }
 
 $sealed = new SealedBag();
-$sealed->name = 'Ada';
+$sealed->name = 'Ada'; // V
 
 // Rejected by every default-sealing tool, tag or no tag — baseline, not the
 // seal tag under test.
 $sealed->extra = 1; // E?[noise]: undeclared magic property rejected by default sealing
 
 $unsealed = new UnsealedBag();
-$unsealed->name = 'Ada';
+$unsealed->name = 'Ada'; // V
 
 // Honouring the seal family means `@psalm-no-seal-properties` lifts the seal and
 // this undeclared assignment is allowed (silence). A tool that ignores the tag

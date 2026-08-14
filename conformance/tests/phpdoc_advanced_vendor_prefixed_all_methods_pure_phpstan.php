@@ -29,7 +29,7 @@ final class PureBox // T: @phpstan-all-methods-pure
         // The claim and the body disagree: honouring the class tag means saying so.
         echo 'side effect'; // E?: an echo contradicts @phpstan-all-methods-pure
 
-        return $left + $right;
+        return $left + $right; // V
     }
 }
 

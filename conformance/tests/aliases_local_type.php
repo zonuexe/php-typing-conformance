@@ -20,21 +20,21 @@ namespace Conformance\Tests\AliasesLocalType;
  * @phpstan-type UserAddress array{street: string, city: string, zip: string}
  * @psalm-type UserAddress = array{street: string, city: string, zip: string}
  */
-final class User
+final class User // T: @phpstan-type / @psalm-type
 {
     /**
-     * @param UserAddress $address // E<noverify>: NoVerify treats the alias name as a class
+     * @param UserAddress $address
      */
-    public function setAddress($address): void // E<phan>: Phan does not expand @phpstan-type / @psalm-type aliases
+    public function setAddress($address): void // T: UserAddress
     {
     }
 }
 
 $user = new User();
 
-// Valid complete shape — tools that model the alias accept; Phan rejects arrays
-// against the unresolved alias name.
-$user->setAddress(['street' => '1 Main St', 'city' => 'Town', 'zip' => '12345']); // E<phan>: Phan treats UserAddress as an undeclared class type
+// Valid complete shape — tools that model the alias accept. An analyzer that
+// treats the alias as a class name rejects this too (incidental, not enforcement).
+$user->setAddress(['street' => '1 Main St', 'city' => 'Town', 'zip' => '12345']); // V
 
 // Missing required key `zip` — alias expansion should reject this shape.
-$user->setAddress(['street' => '1 Main St', 'city' => 'Town']); // E?: incomplete UserAddress shape should be rejected // E<phan>: Phan rejects any array against unresolved UserAddress
+$user->setAddress(['street' => '1 Main St', 'city' => 'Town']); // E?: incomplete UserAddress shape should be rejected

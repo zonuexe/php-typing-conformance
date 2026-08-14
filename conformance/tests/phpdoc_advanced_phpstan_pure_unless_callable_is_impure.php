@@ -44,7 +44,7 @@ function impureMapper(int $n): int
 function pureCaller(): int
 {
     // Pure callback: mapInts stays pure and the call is allowed.
-    $mapped = mapInts(static fn (int $n): int => $n + 1, [1, 2]);
+    $mapped = mapInts(static fn (int $n): int => $n + 1, [1, 2]); // V
 
     return $mapped[0];
 }

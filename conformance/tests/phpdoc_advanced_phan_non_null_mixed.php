@@ -23,7 +23,7 @@ function acceptsNonNull($value): void // T: non-null-mixed
 }
 
 // Any non-null value satisfies the parameter.
-acceptsNonNull(5);
+acceptsNonNull(5); // V
 
 // Null is excluded for analyzers that model it; others fall back to `mixed`.
 acceptsNonNull(null); // E?: null is excluded from non-null-mixed

@@ -30,4 +30,4 @@ function forwardsRuntimeInt(int $value): void
 }
 
 // A literal integer satisfies the parameter.
-acceptsLiteralInt(42);
+acceptsLiteralInt(42); // V

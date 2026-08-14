@@ -16,9 +16,9 @@ namespace Conformance\Tests\PhpdocAdvancedVendorPrefixedParamPhan;
 /**
  * @phan-param int $value
  */
-function takesPhanParam($value): void // E?: some tools do not treat @phan-param as a full parameter type declaration
+function takesPhanParam($value): void // T: @phan-param
 {
 }
 
-takesPhanParam(1);
+takesPhanParam(1); // V
 takesPhanParam('x'); // E: vendor-prefixed phan param tag should be enforced

@@ -28,13 +28,13 @@ function takesNonEmptyString(string $value): void // T: non-empty-string
 }
 
 /**
- * @param non-falsy-string|false $value // E?: some tools do not parse non-falsy-string unions in PHPDoc syntax
+ * @param non-falsy-string|false $value
  */
-function inspectNonFalsyStringOrFalse($value): void // E?: some tools do not accept non-falsy-string|false PHPDoc on untyped parameters
+function inspectNonFalsyStringOrFalse($value): void // T: non-falsy-string|false
 {
     if ($value !== false) {
-        takesNonFalsyString($value); // E?: some tools fail to preserve non-falsy-string after !== false
-        takesNonEmptyString($value); // E?: some tools fail to treat non-falsy-string as non-empty-string
+        takesNonFalsyString($value); // V
+        takesNonEmptyString($value); // V
         return;
     }
 

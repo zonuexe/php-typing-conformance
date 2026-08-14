@@ -22,12 +22,18 @@ namespace Conformance\Tests\PhpdocAdvancedVendorPrefixedReturnPhpStan;
  */
 function returnsInt() // T: @phpstan-return
 {
-    return 1;
+    return 1; // V
+}
+
+function takesInt(int $value): void
+{
 }
 
 function takesString(string $value): void
 {
 }
+
+takesInt(returnsInt()); // V
 
 // The prefixed tag says the return is an int, which is not a string.
 takesString(returnsInt()); // E?: @phpstan-return int should be enforced at the call site

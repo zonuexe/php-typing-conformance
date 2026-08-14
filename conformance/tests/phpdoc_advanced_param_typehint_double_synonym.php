@@ -20,7 +20,7 @@ namespace Conformance\Tests\PhpdocAdvancedParamTypehintDoubleSynonym;
  */
 function returnsDouble() // T: double
 {
-    return 1.5;
+    return 1.5; // V
 }
 
 function acceptsOnlyFloat(float $value): void
@@ -35,10 +35,10 @@ function acceptsOnlyDouble($value): void // T: double
 }
 
 // A `double`-documented value should satisfy a native `float` parameter.
-acceptsOnlyFloat(returnsDouble());
+acceptsOnlyFloat(returnsDouble()); // V
 
 // A native `float` should satisfy a `double`-documented parameter.
-acceptsOnlyDouble(1.5);
+acceptsOnlyDouble(1.5); // V
 
 // `double` must still be enforced as a real float.
 acceptsOnlyDouble('not a float'); // E?: string should be rejected where @param double is required

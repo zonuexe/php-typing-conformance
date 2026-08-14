@@ -16,9 +16,9 @@ namespace Conformance\Tests\PhpdocAdvancedVendorPrefixedParamPsalm;
 /**
  * @psalm-param int $value
  */
-function takesPsalmParam($value): void
+function takesPsalmParam($value): void // T: @psalm-param
 {
 }
 
-takesPsalmParam(1);
+takesPsalmParam(1); // V
 takesPsalmParam('x'); // E: vendor-prefixed psalm param tag should be enforced

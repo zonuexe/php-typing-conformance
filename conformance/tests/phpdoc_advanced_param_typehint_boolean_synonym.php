@@ -22,7 +22,7 @@ namespace Conformance\Tests\PhpdocAdvancedParamTypehintBooleanSynonym;
  */
 function returnsBoolean() // T: boolean
 {
-    return true;
+    return true; // V
 }
 
 function acceptsOnlyBool(bool $flag): void
@@ -37,10 +37,10 @@ function acceptsOnlyBoolean($flag): void // T: boolean
 }
 
 // A `boolean`-documented value should satisfy a native `bool` parameter.
-acceptsOnlyBool(returnsBoolean());
+acceptsOnlyBool(returnsBoolean()); // V
 
 // A native `bool` should satisfy a `boolean`-documented parameter.
-acceptsOnlyBoolean(true);
+acceptsOnlyBoolean(true); // V
 
 // `boolean` must still be enforced as a real boolean, not silently ignored.
 acceptsOnlyBoolean('not a bool'); // E?: string should be rejected where @param boolean is required

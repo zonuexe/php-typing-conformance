@@ -80,8 +80,10 @@ foreach (scandir($testsDir) ?: [] as $entry) {
         }
 
         $isReturn = preg_match('/^return\s+\S/', $trim) === 1;
-        $isCall = preg_match('/^(?:\\\\)?[A-Za-z_][\w\\\\]*\s*\(.*\)\s*;$/', $trim) === 1
-            && preg_match('/^(?:\\\\)?(declare|assert|fopen|fclose)\b/i', $trim) !== 1;
+        $isCall = (
+            preg_match('/^(?:\\\\)?[A-Za-z_][\w\\\\]*\s*\(.*\)\s*;$/', $trim) === 1
+            || preg_match('/^\$\w+->[A-Za-z_]\w*\s*\(.*\)\s*;$/', $trim) === 1
+        ) && preg_match('/^(?:\\\\)?(declare|assert|fopen|fclose)\b/i', $trim) !== 1;
 
         if (!$isReturn && !$isCall) {
             continue;

@@ -8,13 +8,13 @@ phpdoc_advanced_phpstan_new_object_type.php:46: Argument 1 of Conformance\\Tests
 phpdoc_advanced_phpstan_new_object_type.php:49: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesMutable expects DateTime, but Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<DateTimeImmutable::class> provided [InvalidArgument]
 phpdoc_advanced_phpstan_new_object_type.php:50: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesImmutable expects DateTimeImmutable, but Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<DateTime::class> provided [InvalidArgument]"""
 errors_diff = """
-Line 45: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\takesImmutable expects DateTimeImmutable, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTimeImmutable::class> provided [InvalidArgument]"]
-Line 46: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\takesMutable expects DateTime, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTime::class> provided [InvalidArgument]"]"""
+Line 45: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\takesImmutable expects DateTimeImmutable, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTimeImmutable::class> provided [InvalidArgument]"]
+Line 46: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\takesMutable expects DateTime, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTime::class> provided [InvalidArgument]"]"""
 notes = "Reads `new` as a class name in the current namespace, so the return type is an undefined docblock class and every call is rejected -- the two correct ones included. The hits on the probe lines are incidental, not the mapping being enforced."
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [37]
-false_positive_lines = [45, 46]
+false_positive_lines = []
 over_rejected_lines = [45, 46]

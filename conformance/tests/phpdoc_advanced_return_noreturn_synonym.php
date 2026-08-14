@@ -39,7 +39,7 @@ function claimsNoreturnButReturns() // T: noreturn
 
 function afterNoreturnCall(): int
 {
-    alwaysThrows();
+    alwaysThrows(); // V
 
     return 1; // E?: code after a call to a noreturn function is unreachable
 }

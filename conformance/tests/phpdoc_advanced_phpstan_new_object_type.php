@@ -38,12 +38,12 @@ function takesMutable(\DateTime $value): void
  */
 function instantiate(string $class): object // T: new<TClass>
 {
-    return new $class();
+    return new $class(); // V
 }
 
 // The class-string handed in comes back as an instance of that class.
-takesImmutable(instantiate(\DateTimeImmutable::class));
-takesMutable(instantiate(\DateTime::class));
+takesImmutable(instantiate(\DateTimeImmutable::class)); // V
+takesMutable(instantiate(\DateTime::class)); // V
 
 // And not as an instance of the other one.
 takesMutable(instantiate(\DateTimeImmutable::class)); // E?: new<DateTimeImmutable::class> is not a DateTime

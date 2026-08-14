@@ -15,9 +15,9 @@ namespace Conformance\Tests\PhpdocAdvancedVendorPrefixedParamPhpStan;
 /**
  * @phpstan-param int $value
  */
-function takesPhpStanParam($value): void
+function takesPhpStanParam($value): void // T: @phpstan-param
 {
 }
 
-takesPhpStanParam(1);
+takesPhpStanParam(1); // V
 takesPhpStanParam('x'); // E: vendor-prefixed phpstan param tag should be enforced

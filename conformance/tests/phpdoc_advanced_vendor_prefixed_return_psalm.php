@@ -21,12 +21,18 @@ namespace Conformance\Tests\PhpdocAdvancedVendorPrefixedReturnPsalm;
  */
 function returnsInt() // T: @psalm-return
 {
-    return 1;
+    return 1; // V
+}
+
+function takesInt(int $value): void
+{
 }
 
 function takesString(string $value): void
 {
 }
+
+takesInt(returnsInt()); // V
 
 // The prefixed tag says the return is an int, which is not a string.
 takesString(returnsInt()); // E?: @psalm-return int should be enforced at the call site

@@ -5,12 +5,12 @@ output = """
 phpdoc_advanced_phan_non_null_mixed.php:19: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed`. [non-existent-class-like]
 phpdoc_advanced_phan_non_null_mixed.php:26: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed)`, but found `int(5)`. [invalid-argument]
 phpdoc_advanced_phan_non_null_mixed.php:29: Argument #1 of function `Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\acceptsNonNull` is `null`, but parameter type `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed)` does not accept it. [null-argument]"""
-errors_diff = "Line 26: Unexpected errors [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\acceptsNonNull`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\non-null-mixed)`, but found `int(5)`. [invalid-argument]\"]"
+errors_diff = "Line 26: Expected valid value to be accepted, got [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\acceptsNonNull`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonNullMixed\\\\non-null-mixed)`, but found `int(5)`. [invalid-argument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [19]
-false_positive_lines = [26]
+false_positive_lines = []
 over_rejected_lines = [26]

@@ -5,12 +5,12 @@ output = """
 phpdoc_advanced_int_range_keyword.php:19: Undefined class 'int-range' [PhpUndefinedClassInspection]
 phpdoc_advanced_int_range_keyword.php:26: Parameter '200' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_int_range_keyword.php:30: Parameter '256' type is not compatible with declaration [PhpParamsInspection]"""
-errors_diff = "Line 26: Unexpected errors [\"Parameter '200' type is not compatible with declaration [PhpParamsInspection]\"]"
+errors_diff = "Line 26: Expected valid value to be accepted, got [\"Parameter '200' type is not compatible with declaration [PhpParamsInspection]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [19]
-false_positive_lines = [26]
+false_positive_lines = []
 over_rejected_lines = [26]

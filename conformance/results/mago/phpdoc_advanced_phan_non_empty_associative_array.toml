@@ -7,12 +7,12 @@ phpdoc_advanced_phan_non_empty_associative_array.php:21: Docblock type `unknown-
 phpdoc_advanced_phan_non_empty_associative_array.php:26: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array)`, but found `array{'a': int(1)}`. [invalid-argument]
 phpdoc_advanced_phan_non_empty_associative_array.php:29: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array)`, but found `array{}`. [invalid-argument]
 phpdoc_advanced_phan_non_empty_associative_array.php:32: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array)`, but found `list{int(1), int(2), int(3)}`. [invalid-argument]"""
-errors_diff = "Line 26: Unexpected errors [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array)`, but found `array{'a': int(1)}`. [invalid-argument]\"]"
+errors_diff = "Line 26: Expected valid value to be accepted, got [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\acceptsNonEmptyAssoc`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array)`, but found `array{'a': int(1)}`. [invalid-argument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [19, 21]
-false_positive_lines = [26]
+false_positive_lines = []
 over_rejected_lines = [26]

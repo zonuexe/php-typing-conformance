@@ -23,7 +23,7 @@ function acceptsThrowableMap(array $map): void // T: class-string-map<T of \Thro
 }
 
 // A class-string key mapped to an instance of that class is valid.
-acceptsThrowableMap([\RuntimeException::class => new \RuntimeException()]);
+acceptsThrowableMap([\RuntimeException::class => new \RuntimeException()]); // V
 
 // A value that is not an instance of the key class is rejected by Psalm.
 acceptsThrowableMap([\RuntimeException::class => new \LogicException()]); // E?: value must be an instance of the class-string key

@@ -33,7 +33,7 @@ final class Repository // T: @psalm-type
 $repository = new Repository();
 
 // A value matching the alias.
-$repository->save(['id' => 1, 'name' => 'Ada']);
+$repository->save(['id' => 1, 'name' => 'Ada']); // V
 
 // The alias requires both keys, so this is short one.
 $repository->save(['id' => 1]); // E?: the alias requires a `name` key

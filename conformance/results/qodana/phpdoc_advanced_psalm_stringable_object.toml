@@ -5,12 +5,12 @@ output = """
 phpdoc_advanced_psalm_stringable_object.php:31: Undefined class 'stringable-object' [PhpUndefinedClassInspection]
 phpdoc_advanced_psalm_stringable_object.php:38: Parameter 'new WithToString()' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_psalm_stringable_object.php:41: Parameter 'new WithoutToString()' type is not compatible with declaration [PhpParamsInspection]"""
-errors_diff = "Line 38: Unexpected errors [\"Parameter 'new WithToString()' type is not compatible with declaration [PhpParamsInspection]\"]"
+errors_diff = "Line 38: Expected valid value to be accepted, got [\"Parameter 'new WithToString()' type is not compatible with declaration [PhpParamsInspection]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [31]
-false_positive_lines = [38]
+false_positive_lines = []
 over_rejected_lines = [38]

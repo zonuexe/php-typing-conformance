@@ -4,12 +4,12 @@ expected_diagnostic_count = 1
 output = """
 phpdoc_advanced_vendor_prefixed_type_phan.php:35: Argument 1 of Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\Repository::save expects Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\UserRow, but array{id: 1, name: 'Ada'} provided [InvalidArgument]
 phpdoc_advanced_vendor_prefixed_type_phan.php:38: Argument 1 of Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\Repository::save expects Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\UserRow, but array{id: 1} provided [InvalidArgument]"""
-errors_diff = "Line 35: Unexpected errors [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedTypePhan\\\\Repository::save expects Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedTypePhan\\\\UserRow, but array{id: 1, name: 'Ada'} provided [InvalidArgument]\"]"
+errors_diff = "Line 35: Expected valid value to be accepted, got [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedTypePhan\\\\Repository::save expects Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedTypePhan\\\\UserRow, but array{id: 1, name: 'Ada'} provided [InvalidArgument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [35]
+false_positive_lines = []
 over_rejected_lines = [35]

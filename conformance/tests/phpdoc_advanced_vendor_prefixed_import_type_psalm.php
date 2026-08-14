@@ -39,7 +39,7 @@ final class Map // T: @psalm-import-type
 $map = new Map();
 
 // A value matching the imported alias.
-$map->pin(['lat' => 1.0, 'lng' => 2.0]);
+$map->pin(['lat' => 1.0, 'lng' => 2.0]); // V
 
 // The imported alias requires both keys.
 $map->pin(['lat' => 1.0]); // E?: the imported alias requires a `lng` key

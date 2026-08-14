@@ -23,7 +23,7 @@ function acceptsNonEmptyAssoc(array $map): void // T: non-empty-associative-arra
 }
 
 // A non-empty string-keyed array satisfies the parameter.
-acceptsNonEmptyAssoc(['a' => 1]);
+acceptsNonEmptyAssoc(['a' => 1]); // V
 
 // An empty array violates the non-empty part.
 acceptsNonEmptyAssoc([]); // E?: an empty array is not a non-empty-associative-array

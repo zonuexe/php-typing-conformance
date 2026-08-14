@@ -4,12 +4,12 @@ expected_diagnostic_count = 1
 output = """
 phpdoc_advanced_phpstan_template_type.php:44: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<string>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, "T">' [MIR0201]
 phpdoc_advanced_phpstan_template_type.php:47: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<int>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, "T">' [MIR0201]"""
-errors_diff = "Line 44: Unexpected errors [\"InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<string>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, \\\"T\\\">' [MIR0201]\"]"
+errors_diff = "Line 44: Expected valid value to be accepted, got [\"InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<string>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, \\\"T\\\">' [MIR0201]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [44]
+false_positive_lines = []
 over_rejected_lines = [44]

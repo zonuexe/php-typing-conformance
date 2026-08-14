@@ -10,14 +10,14 @@ phpdoc_advanced_phpstan_new_object_type_constant_map.php:52: Argument 1 of Confo
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesMutable expects DateTime, but parent type DateTimeInterface provided [ArgumentTypeCoercion]
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"""
 errors_diff = """
-Line 50: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"]
-Line 51: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"]
-Line 52: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\takesMutable expects DateTime, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"]"""
+Line 50: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"]
+Line 51: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\takesImmutable expects DateTimeImmutable, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"]
+Line 52: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\takesMutable expects DateTime, but parent type DateTimeInterface provided [ArgumentTypeCoercion]"]"""
 notes = "Rejects `key-of<DATETIME_CLASSES>` as a template bound over a global constant and reads `new` as a class name, so the return falls back to the native `DateTimeInterface` and every call is reported as a coercion -- the three correct ones included."
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [44]
-false_positive_lines = [50, 51, 52]
+false_positive_lines = []
 over_rejected_lines = []

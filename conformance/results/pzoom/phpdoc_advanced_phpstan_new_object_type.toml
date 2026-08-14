@@ -9,14 +9,14 @@ phpdoc_advanced_phpstan_new_object_type.php:46: Argument 1 of takesMutable expec
 phpdoc_advanced_phpstan_new_object_type.php:49: Argument 1 of takesMutable expects DateTime, but Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<DateTimeImmutable::class> provided [InvalidArgument]
 phpdoc_advanced_phpstan_new_object_type.php:50: Argument 1 of takesImmutable expects DateTimeImmutable, but Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<DateTime::class> provided [InvalidArgument]"""
 errors_diff = """
-Line 41: Unexpected errors ["The type object does not match the declared return type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<TClass:Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\instantiate as string> [LessSpecificReturnStatement]"]
-Line 45: Unexpected errors ["Argument 1 of takesImmutable expects DateTimeImmutable, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTimeImmutable::class> provided [InvalidArgument]"]
-Line 46: Unexpected errors ["Argument 1 of takesMutable expects DateTime, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTime::class> provided [InvalidArgument]"]"""
+Line 41: Expected valid value to be accepted, got ["The type object does not match the declared return type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<TClass:Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\instantiate as string> [LessSpecificReturnStatement]"]
+Line 45: Expected valid value to be accepted, got ["Argument 1 of takesImmutable expects DateTimeImmutable, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTimeImmutable::class> provided [InvalidArgument]"]
+Line 46: Expected valid value to be accepted, got ["Argument 1 of takesMutable expects DateTime, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<DateTime::class> provided [InvalidArgument]"]"""
 notes = "Same undefined-class reading as Psalm, plus it cannot follow `new $class()` in the body. The probe lines are hit incidentally."
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [37]
-false_positive_lines = [41, 45, 46]
+false_positive_lines = []
 over_rejected_lines = [41, 45, 46]

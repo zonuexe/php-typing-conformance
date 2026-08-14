@@ -4,12 +4,12 @@ expected_diagnostic_count = 1
 output = """
 phpdoc_advanced_int_range_keyword.php:26: InvalidArgument: Argument $value of acceptsByte() expects 'Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range<0, 255>', got '200' [MIR0201]
 phpdoc_advanced_int_range_keyword.php:30: InvalidArgument: Argument $value of acceptsByte() expects 'Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range<0, 255>', got '256' [MIR0201]"""
-errors_diff = "Line 26: Unexpected errors [\"InvalidArgument: Argument $value of acceptsByte() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range<0, 255>', got '200' [MIR0201]\"]"
+errors_diff = "Line 26: Expected valid value to be accepted, got [\"InvalidArgument: Argument $value of acceptsByte() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range<0, 255>', got '200' [MIR0201]\"]"
 notes = "`int-range<min,max>` is Phan's spelling; PHPStan, Psalm and Mago write the same range as `int<min,max>`. Not recognizing the other tool's spelling is expected, not a defect. Only Phan models `int-range`."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [26]
+false_positive_lines = []
 over_rejected_lines = [26]

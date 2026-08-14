@@ -20,7 +20,7 @@ namespace Conformance\Tests\PhpdocAdvancedParamTypehintIntegerSynonym;
  */
 function returnsInteger() // T: integer
 {
-    return 1;
+    return 1; // V
 }
 
 function acceptsOnlyInt(int $value): void
@@ -35,10 +35,10 @@ function acceptsOnlyInteger($value): void // T: integer
 }
 
 // An `integer`-documented value should satisfy a native `int` parameter.
-acceptsOnlyInt(returnsInteger());
+acceptsOnlyInt(returnsInteger()); // V
 
 // A native `int` should satisfy an `integer`-documented parameter.
-acceptsOnlyInteger(1);
+acceptsOnlyInteger(1); // V
 
 // `integer` must still be enforced as a real integer.
 acceptsOnlyInteger('not an int'); // E?: string should be rejected where @param integer is required

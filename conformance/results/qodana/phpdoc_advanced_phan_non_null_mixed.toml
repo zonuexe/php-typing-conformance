@@ -5,12 +5,12 @@ output = """
 phpdoc_advanced_phan_non_null_mixed.php:19: Undefined class 'non-null-mixed' [PhpUndefinedClassInspection]
 phpdoc_advanced_phan_non_null_mixed.php:26: Parameter '5' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_phan_non_null_mixed.php:29: Parameter 'null' type is not compatible with declaration [PhpParamsInspection]"""
-errors_diff = "Line 26: Unexpected errors [\"Parameter '5' type is not compatible with declaration [PhpParamsInspection]\"]"
+errors_diff = "Line 26: Expected valid value to be accepted, got [\"Parameter '5' type is not compatible with declaration [PhpParamsInspection]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [19]
-false_positive_lines = [26]
+false_positive_lines = []
 over_rejected_lines = [26]

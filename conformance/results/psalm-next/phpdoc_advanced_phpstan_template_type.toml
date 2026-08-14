@@ -7,12 +7,12 @@ phpdoc_advanced_phpstan_template_type.php:44: Conformance\\Tests\\PhpdocAdvanced
 phpdoc_advanced_phpstan_template_type.php:44: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\takesString expects string, but Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<'ok'>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, 'T'> provided [InvalidArgument]
 phpdoc_advanced_phpstan_template_type.php:47: Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<1>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, 'T'> cannot be cast to string [InvalidCast]
 phpdoc_advanced_phpstan_template_type.php:47: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\takesString expects string, but Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<1>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, 'T'> provided [InvalidArgument]"""
-errors_diff = "Line 44: Unexpected errors [\"Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<'ok'>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, 'T'> cannot be cast to string [InvalidCast]\",\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\takesString expects string, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<'ok'>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, 'T'> provided [InvalidArgument]\"]"
+errors_diff = "Line 44: Expected valid value to be accepted, got [\"Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<'ok'>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, 'T'> cannot be cast to string [InvalidCast]\",\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\takesString expects string, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<'ok'>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, 'T'> provided [InvalidArgument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [32]
-false_positive_lines = [44]
+false_positive_lines = []
 over_rejected_lines = [44]

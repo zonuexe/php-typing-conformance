@@ -23,7 +23,7 @@ function acceptsByte($value): void // T: int-range<0, 255>
 }
 
 // An in-range literal satisfies the parameter for analyzers that model it.
-acceptsByte(200);
+acceptsByte(200); // V
 
 // An out-of-range literal: analyzers that model `int-range` reject it, others
 // do not recognize the keyword.

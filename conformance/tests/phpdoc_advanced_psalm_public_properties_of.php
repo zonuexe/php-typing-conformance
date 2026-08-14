@@ -38,7 +38,7 @@ function acceptsPublicUserProps(array $data): void // T: public-properties-of<Us
 }
 
 // Only the public property is required / accepted by the shape.
-acceptsPublicUserProps(['name' => 'Ada']);
+acceptsPublicUserProps(['name' => 'Ada']); // V
 
 // A non-public property key is not part of public-properties-of<User>.
 acceptsPublicUserProps(['name' => 'Ada', 'age' => 42]); // E?: age is protected, not in public-properties-of

@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 7
+expected_diagnostic_count = 3
 output = """
 assertions_non_falsy_string_false_guard.php:41: Expected type 'string'. Found 'false'. [P1006]
 assertions_non_falsy_string_false_guard.php:42: Expected type 'string'. Found 'false'. [P1006]"""
@@ -9,7 +9,7 @@ notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"
-enforced_lines = "2/7"
+enforced_lines = "2/3"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

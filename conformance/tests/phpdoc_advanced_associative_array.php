@@ -25,7 +25,7 @@ function acceptsAssoc(array $map): void // T: associative-array<int, string>
 }
 
 // A non-sequential int-keyed array is associative everywhere.
-acceptsAssoc([5 => 'a', 9 => 'b']);
+acceptsAssoc([5 => 'a', 9 => 'b']); // V
 
 // A plain list has the same int-key/string-value element types, so alias-only
 // analyzers accept it; Phan rejects it because a list is not associative.

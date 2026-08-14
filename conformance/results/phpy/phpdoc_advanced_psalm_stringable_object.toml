@@ -5,12 +5,12 @@ output = """
 phpdoc_advanced_psalm_stringable_object.php:31: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\stringable-object'
 phpdoc_advanced_psalm_stringable_object.php:38: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\acceptsStringable() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\stringable-object, Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\WithToString given
 phpdoc_advanced_psalm_stringable_object.php:41: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\acceptsStringable() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\stringable-object, Conformance\\Tests\\PhpdocAdvancedPsalmStringableObject\\WithoutToString given"""
-errors_diff = "Line 38: Unexpected errors [\"Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\acceptsStringable() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\stringable-object, Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\WithToString given\"]"
+errors_diff = "Line 38: Expected valid value to be accepted, got [\"Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\acceptsStringable() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\stringable-object, Conformance\\\\Tests\\\\PhpdocAdvancedPsalmStringableObject\\\\WithToString given\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [31]
-false_positive_lines = [38]
+false_positive_lines = []
 over_rejected_lines = []

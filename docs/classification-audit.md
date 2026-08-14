@@ -99,6 +99,14 @@ Four `// T` tests remain no-probes on purpose:
 `phpdoc_advanced_phpstan_param_later_invoked_callable`,
 `phpdoc_advanced_vendor_prefixed_output_reference_phan`. Their honour
 signal is not measurable with the rules this harness enables.
+`@not-deprecated` would need a tool that inherits parent deprecations onto
+overrides (none here do); the invocation-timing tags feed checked-exceptions,
+which this suite does not enable.
+
+A second pass added `// V` to the remaining type-spelling rows (synonyms,
+Phan/Psalm dialect types, `new<T>`, vendor-prefixed param/return/var/import,
+never-return). Debug helpers and Q-primary tag tests were left alone:
+dump/inspect lines *are* the probe, and honour-is-silence is already `// Q`.
 
 ## What we still do not do
 

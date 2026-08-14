@@ -37,7 +37,7 @@ function claimsNeverButReturns() // T: never-returns
 
 function afterCall(): int
 {
-    alwaysThrows();
+    alwaysThrows(); // V
 
     return 0; // E?: unreachable after never-returns call
 }

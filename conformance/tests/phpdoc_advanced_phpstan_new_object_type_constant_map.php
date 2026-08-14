@@ -43,13 +43,13 @@ function takesMutable(\DateTime $value): void
  */
 function createNow(string $type = 'immutable'): \DateTimeInterface // T: new<DATETIME_CLASSES[T]>
 {
-    return new (DATETIME_CLASSES[$type]);
+    return new (DATETIME_CLASSES[$type]); // V
 }
 
 // Each key names its own class, the default argument included.
-takesImmutable(createNow());
-takesImmutable(createNow('immutable'));
-takesMutable(createNow('mutable'));
+takesImmutable(createNow()); // V
+takesImmutable(createNow('immutable')); // V
+takesMutable(createNow('mutable')); // V
 
 // Swapping the two is what the mapping exists to catch.
 takesMutable(createNow('immutable')); // E?: 'immutable' maps to DateTimeImmutable, not DateTime

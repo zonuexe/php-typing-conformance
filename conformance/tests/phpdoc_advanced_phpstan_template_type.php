@@ -33,7 +33,7 @@ final class Box
  */
 function unwrap(Box $box): mixed // T: template-type<Box<T>, Box, 'T'>
 {
-    return $box->value;
+    return $box->value; // V
 }
 
 function takesString(string $value): void
@@ -41,7 +41,7 @@ function takesString(string $value): void
 }
 
 // T resolves to string.
-takesString(unwrap(new Box('ok')));
+takesString(unwrap(new Box('ok'))); // V
 
 // T resolves to int, so string is wrong.
 takesString(unwrap(new Box(1))); // E?: template-type should yield int here

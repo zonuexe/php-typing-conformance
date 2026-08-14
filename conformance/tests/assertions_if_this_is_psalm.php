@@ -47,7 +47,7 @@ final class Box
 function example(): void
 {
     $box = new Box(1);
-    $box->needsInt();
+    $box->needsInt(); // V
 
     $box->set('x');
     $box->needsInt(); // E?: after this-out to Box<string>, if-this-is Box<int> must fail

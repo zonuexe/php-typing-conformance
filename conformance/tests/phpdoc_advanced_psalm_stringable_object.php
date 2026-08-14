@@ -35,7 +35,7 @@ function acceptsStringable($obj): void // T: stringable-object
 }
 
 // An object with __toString satisfies the parameter.
-acceptsStringable(new WithToString());
+acceptsStringable(new WithToString()); // V
 
 // An object without __toString is rejected by analyzers that model it.
 acceptsStringable(new WithoutToString()); // E?: object without __toString is not a stringable-object

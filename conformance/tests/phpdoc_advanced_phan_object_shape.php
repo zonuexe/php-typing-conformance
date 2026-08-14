@@ -25,7 +25,7 @@ function acceptsObjectShape(\stdClass $obj): void // T: stdClass{name: string}
 // A stdClass carrying the declared field satisfies the shape.
 $valid = new \stdClass();
 $valid->name = 'Ada';
-acceptsObjectShape($valid);
+acceptsObjectShape($valid); // V
 
 // A stdClass with the field set to the wrong type violates the shape.
 $invalid = new \stdClass();

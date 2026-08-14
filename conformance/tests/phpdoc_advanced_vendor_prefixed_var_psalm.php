@@ -24,9 +24,15 @@ final class Holder
     public $value = 1; // T: @psalm-var
 }
 
+function takesInt(int $value): void
+{
+}
+
 function takesString(string $value): void
 {
 }
+
+takesInt((new Holder())->value); // V
 
 // The prefixed tag says the property is an int, which is not a string.
 takesString((new Holder())->value); // E?: @psalm-var int should be enforced where the property is read

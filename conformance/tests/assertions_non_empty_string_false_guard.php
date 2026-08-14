@@ -33,7 +33,7 @@ function takesNonFalsyString(string $value): void // T: non-falsy-string
 function inspectNonEmptyStringOrFalse($value): void
 {
     if ($value !== false) {
-        takesNonEmptyString($value);
+        takesNonEmptyString($value); // V
         takesNonFalsyString($value); // E?: non-empty-string should not automatically narrow to non-falsy-string
         return;
     }

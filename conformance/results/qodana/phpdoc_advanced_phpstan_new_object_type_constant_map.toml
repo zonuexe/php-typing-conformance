@@ -13,14 +13,14 @@ phpdoc_advanced_phpstan_new_object_type_constant_map.php:52: Parameter 'createNo
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: Parameter 'createNow('immutable')' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: Parameter 'createNow('mutable')' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 50: Unexpected errors ["Parameter 'createNow()' type is not compatible with declaration [PhpParamsInspection]"]
-Line 51: Unexpected errors ["Parameter 'createNow('immutable')' type is not compatible with declaration [PhpParamsInspection]"]
-Line 52: Unexpected errors ["Parameter 'createNow('mutable')' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 50: Expected valid value to be accepted, got ["Parameter 'createNow()' type is not compatible with declaration [PhpParamsInspection]"]
+Line 51: Expected valid value to be accepted, got ["Parameter 'createNow('immutable')' type is not compatible with declaration [PhpParamsInspection]"]
+Line 52: Expected valid value to be accepted, got ["Parameter 'createNow('mutable')' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = "Reports both `DATETIME_CLASSES` and `new` as undefined classes, and then rejects every call to `createNow()` as incompatible with the declaration -- the three correct ones included. The probe lines are hit for that reason, not because the mapping was followed."
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [40, 41, 42]
-false_positive_lines = [50, 51, 52]
+false_positive_lines = []
 over_rejected_lines = [50, 51, 52]

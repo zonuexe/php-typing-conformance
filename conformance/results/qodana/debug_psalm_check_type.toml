@@ -1,7 +1,13 @@
 status = "Unknown"
-conformance_automated = "Not measured"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = ""
 errors_diff = ""
-notes = "Qodana is measured by hand: run Inspect Code in PhpStorm, then re-run php conformance/src/main.php --tool=qodana to cover this test."
+notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

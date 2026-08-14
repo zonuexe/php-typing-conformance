@@ -28,7 +28,7 @@ $handle = \fopen('php://memory', 'r');
 \assert($handle !== false);
 
 // A freshly opened handle satisfies the parameter.
-acceptsOpenResource($handle);
+acceptsOpenResource($handle); // V
 
 // A non-resource does not.
 acceptsOpenResource('not a resource'); // E?: a string is not an open-resource

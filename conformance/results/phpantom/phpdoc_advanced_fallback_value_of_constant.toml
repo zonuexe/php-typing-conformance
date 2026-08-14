@@ -9,14 +9,15 @@ phpdoc_advanced_fallback_value_of_constant.php:50: Argument 1 ($value) expects v
 phpdoc_advanced_fallback_value_of_constant.php:54: Argument 1 ($value) expects value-of<Levels::MAP>, got 5 [type_mismatch_argument]
 phpdoc_advanced_fallback_value_of_constant.php:57: Argument 1 ($value) expects value-of<Levels::MAP>, got 'low' [type_mismatch_argument]"""
 errors_diff = """
-Line 31: Unexpected errors ["Return type int is incompatible with declared return type value-of<Levels::MAP> [type_mismatch_return]"]
-Line 46: Unexpected errors ["Argument 1 ($value) expects int, got value-of<Levels::MAP> [type_mismatch_argument]"]
-Line 49: Unexpected errors ["Argument 1 ($value) expects value-of<Levels::MAP>, got 1 [type_mismatch_argument]"]
-Line 50: Unexpected errors ["Argument 1 ($value) expects value-of<Levels::MAP>, got 10 [type_mismatch_argument]"]"""
+Line 31: Expected valid value to be accepted, got ["Return type int is incompatible with declared return type value-of<Levels::MAP> [type_mismatch_return]"]
+Line 46: Expected valid value to be accepted, got ["Argument 1 ($value) expects int, got value-of<Levels::MAP> [type_mismatch_argument]"]
+Line 49: Expected valid value to be accepted, got ["Argument 1 ($value) expects value-of<Levels::MAP>, got 1 [type_mismatch_argument]"]
+Line 50: Expected valid value to be accepted, got ["Argument 1 ($value) expects value-of<Levels::MAP>, got 10 [type_mismatch_argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [31, 46, 49, 50]
+false_positive_lines = []
+over_rejected_lines = [31, 46, 49, 50]

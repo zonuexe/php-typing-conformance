@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackPositiveInt;
  */
 function returnsPositiveInt() // T: positive-int
 {
-    return 5;
+    return 5; // V
 }
 
 function acceptsInt(int $value): void
@@ -36,10 +36,10 @@ function acceptsPositiveInt($value): void // T: positive-int
 }
 
 // A `positive-int` value always satisfies a native `int` parameter.
-acceptsInt(returnsPositiveInt());
+acceptsInt(returnsPositiveInt()); // V
 
 // A literal positive integer satisfies the refined parameter.
-acceptsPositiveInt(5);
+acceptsPositiveInt(5); // V
 
 // A negative literal is out of range; range-aware analyzers reject it, others
 // fall back to `int` and accept it.

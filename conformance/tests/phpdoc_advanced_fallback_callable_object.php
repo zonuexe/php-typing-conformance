@@ -32,7 +32,7 @@ final class NotInvokable
  */
 function returnsCallableObject() // T: callable-object
 {
-    return new Invokable();
+    return new Invokable(); // V
 }
 
 function acceptsObject(object $value): void
@@ -47,11 +47,11 @@ function acceptsCallableObject($value): void // T: callable-object
 }
 
 // A `callable-object` value always satisfies a native `object` parameter.
-acceptsObject(returnsCallableObject());
+acceptsObject(returnsCallableObject()); // V
 
 // An object with __invoke() satisfies the parameter, and so does a Closure.
-acceptsCallableObject(new Invokable());
-acceptsCallableObject(static fn (): int => 1);
+acceptsCallableObject(new Invokable()); // V
+acceptsCallableObject(static fn (): int => 1); // V
 
 // An object without __invoke() does not.
 acceptsCallableObject(new NotInvokable()); // E?: an object without __invoke() is not a callable-object

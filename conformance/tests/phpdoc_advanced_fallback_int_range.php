@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackIntRange;
  */
 function returnsByte() // T: int<0, 255>
 {
-    return 200;
+    return 200; // V
 }
 
 function acceptsInt(int $value): void
@@ -36,10 +36,10 @@ function acceptsByte($value): void // T: int<0, 255>
 }
 
 // An `int<0, 255>` value always satisfies a native `int` parameter.
-acceptsInt(returnsByte());
+acceptsInt(returnsByte()); // V
 
 // An in-range literal satisfies the refined parameter.
-acceptsByte(200);
+acceptsByte(200); // V
 
 // An out-of-range literal: range-aware analyzers reject it, others fall back to
 // `int` and accept it.

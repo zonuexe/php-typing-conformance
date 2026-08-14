@@ -26,7 +26,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackPureClosure;
  */
 function returnsPureClosure() // T: pure-closure
 {
-    return static fn (int $value): int => $value + 1;
+    return static fn (int $value): int => $value + 1; // V
 }
 
 function acceptsClosure(\Closure $value): void
@@ -41,10 +41,10 @@ function acceptsPureClosure($value): void // T: pure-closure
 }
 
 // A `pure-closure` value always satisfies a native `Closure` parameter.
-acceptsClosure(returnsPureClosure());
+acceptsClosure(returnsPureClosure()); // V
 
 // A closure that only computes satisfies the parameter.
-acceptsPureClosure(static fn (int $value): int => $value + 1);
+acceptsPureClosure(static fn (int $value): int => $value + 1); // V
 
 // A callable string is callable, but it is not a Closure.
 acceptsPureClosure('strlen'); // E?: a callable-string is not a Closure

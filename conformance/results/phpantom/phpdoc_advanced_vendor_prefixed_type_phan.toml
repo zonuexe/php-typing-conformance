@@ -13,3 +13,4 @@ enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [25]
 false_positive_lines = [35]
+over_rejected_lines = [35]

@@ -30,7 +30,7 @@ function firstValue(array $items) // T: value-of<T>
         // A tool can evaluate the projection at call sites and still be unable
         // to prove this body produces value-of<T>; that limitation surfaces as
         // a false positive here, not as an expectation of the test.
-        return $value;
+        return $value; // V
     }
 
     throw new \InvalidArgumentException('empty array');
@@ -52,11 +52,11 @@ function acceptsLevel(int $level): void
 }
 
 // With int values, the returned value is an int.
-acceptsInt(firstValue(['low' => 1, 'high' => 10]));
+acceptsInt(firstValue(['low' => 1, 'high' => 10])); // V
 
 // More precisely, it is the union of this argument's values: a tool that
 // infers T but widens the values to `int` reports a false positive here.
-acceptsLevel(firstValue(['low' => 1, 'high' => 10]));
+acceptsLevel(firstValue(['low' => 1, 'high' => 10])); // V
 
 // A value of this argument is never a string.
 acceptsString(firstValue(['low' => 1, 'high' => 10])); // E?: the values of this argument are ints

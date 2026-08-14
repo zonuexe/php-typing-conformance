@@ -21,8 +21,10 @@ final class ExpectationParser
 
             // `// E` / `// E?`: expect a diagnostic (or optional diagnostic).
             // `// Q` / `// Q?`: expect silence — success for suppress/ignore tags.
+            // `// V`: valid control — this line must stay silent or enforcement
+            // is incidental (the analyzer also rejects values the type admits).
             if (!preg_match_all(
-                '/\/\/\s*([EQ])(\?)?(?:<([^>]+)>)?(?:\[([^\]]+)\])?(?::\s*(.*?))?(?=(?:\s*\/\/\s*[EQ]|$))/',
+                '/\/\/\s*([EQV])(\?)?(?:<([^>]+)>)?(?:\[([^\]]+)\])?(?::\s*(.*?))?(?=(?:\s*\/\/\s*[EQV]|$))/',
                 $line,
                 $matches,
                 PREG_SET_ORDER,
@@ -43,12 +45,13 @@ final class ExpectationParser
 
                 $diagnostics[] = new ExpectedDiagnostic(
                     line: $lineNumber,
-                    required: ($match[2] ?? '') !== '?',
+                    required: $kind === 'V' ? true : ($match[2] ?? '') !== '?',
                     tool: $tool !== '' ? $tool : null,
                     tag: $tag !== '' ? $tag : null,
                     allowMultiple: $allowMultiple,
                     comment: trim((string) ($match[5] ?? '')),
                     quiet: $kind === 'Q',
+                    valid: $kind === 'V',
                 );
             }
         }

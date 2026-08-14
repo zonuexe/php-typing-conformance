@@ -19,6 +19,14 @@ final readonly class ExpectedDiagnostic
          * where honouring the feature means not reporting, not reporting.
          */
         public bool $quiet = false,
+        /**
+         * Valid-control probe (`// V`): this line must stay silent for
+         * enforcement to be genuine. A type-rejection here means the analyzer
+         * also rejects values the spelling admits — incidental / over-rejection,
+         * not enforcement. Distinct from `quiet`, which *counts* silence as
+         * honouring a suppress tag.
+         */
+        public bool $valid = false,
     ) {
     }
 }

@@ -25,11 +25,11 @@ function acceptsUnsealedShape(array $shape): void // T: array{foo: int, ...}
 }
 
 // The declared key on its own satisfies the shape.
-acceptsUnsealedShape(['foo' => 1]);
+acceptsUnsealedShape(['foo' => 1]); // V
 
 // So does the declared key alongside undeclared ones of any type.
-acceptsUnsealedShape(['foo' => 2, 'buz' => 42.0]);
-acceptsUnsealedShape(['foo' => 3, 'buz' => 42.0, 'qux' => null]);
+acceptsUnsealedShape(['foo' => 2, 'buz' => 42.0]); // V
+acceptsUnsealedShape(['foo' => 3, 'buz' => 42.0, 'qux' => null]); // V
 
 // `...` relaxes the undeclared keys only. `foo` is still required — an
 // analyzer that widened the spelling to plain `array` accepts all three of

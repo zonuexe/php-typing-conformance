@@ -12,14 +12,15 @@ phpdoc_advanced_fallback_uppercase_string.php:46: Parameter '''' type is not com
 phpdoc_advanced_fallback_uppercase_string.php:49: Parameter ''abc'' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_uppercase_string.php:52: Parameter ''ABc'' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 25: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 44: Unexpected errors ["Parameter ''ABC'' type is not compatible with declaration [PhpParamsInspection]"]
-Line 45: Unexpected errors ["Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]"]
-Line 46: Unexpected errors ["Parameter '''' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 25: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 44: Expected valid value to be accepted, got ["Parameter ''ABC'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 45: Expected valid value to be accepted, got ["Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 46: Expected valid value to be accepted, got ["Parameter '''' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [21, 33]
-false_positive_lines = [25, 44, 45, 46]
+false_positive_lines = []
+over_rejected_lines = [44, 45, 46]

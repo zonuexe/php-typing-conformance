@@ -7,12 +7,13 @@ phpdoc_advanced_fallback_non_empty_literal_string.php:43: InvalidArgument: Argum
 phpdoc_advanced_fallback_non_empty_literal_string.php:46: InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyLiteralString\\non-empty-literal-string', got '""' [MIR0201]
 phpdoc_advanced_fallback_non_empty_literal_string.php:51: InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyLiteralString\\non-empty-literal-string', got 'string' [MIR0201]"""
 errors_diff = """
-Line 40: Unexpected errors ["InvalidArgument: Argument $value of acceptsString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyLiteralString\\\\non-empty-literal-string' [MIR0201]"]
-Line 43: Unexpected errors ["InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyLiteralString\\\\non-empty-literal-string', got '\\"x\\"' [MIR0201]"]"""
+Line 40: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyLiteralString\\\\non-empty-literal-string' [MIR0201]"]
+Line 43: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonEmptyLiteralString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyLiteralString\\\\non-empty-literal-string', got '\\"x\\"' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [40, 43]
+false_positive_lines = []
+over_rejected_lines = [40, 43]

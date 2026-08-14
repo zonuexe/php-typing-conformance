@@ -11,13 +11,14 @@ phpdoc_advanced_fallback_pure_closure.php:47: Parameter 'static fn (int $value):
 phpdoc_advanced_fallback_pure_closure.php:50: Parameter ''strlen'' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_pure_closure.php:56: Parameter '$impureClosure' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 29: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 44: Unexpected errors ["Parameter 'returnsPureClosure()' type is not compatible with declaration [PhpParamsInspection]"]
-Line 47: Unexpected errors ["Parameter 'static fn (int $value): int => $value + 1' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 29: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 44: Expected valid value to be accepted, got ["Parameter 'returnsPureClosure()' type is not compatible with declaration [PhpParamsInspection]"]
+Line 47: Expected valid value to be accepted, got ["Parameter 'static fn (int $value): int => $value + 1' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [25, 37]
-false_positive_lines = [29, 44, 47]
+false_positive_lines = []
+over_rejected_lines = [44, 47]

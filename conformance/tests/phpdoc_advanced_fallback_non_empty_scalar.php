@@ -32,7 +32,7 @@ function returnsNonEmptyScalar() // T: non-empty-scalar
 {
     $values = [1, -1, 1.5, 'x', true];
 
-    return $values[\array_rand($values)];
+    return $values[\array_rand($values)]; // V
 }
 
 /**
@@ -42,13 +42,13 @@ function acceptsNonEmptyScalar($value): void // T: non-empty-scalar
 {
 }
 
-acceptsNonEmptyScalar(returnsNonEmptyScalar());
+acceptsNonEmptyScalar(returnsNonEmptyScalar()); // V
 
 // Truthy values of every member satisfy the parameter.
-acceptsNonEmptyScalar(1);
-acceptsNonEmptyScalar(1.5);
-acceptsNonEmptyScalar('x');
-acceptsNonEmptyScalar(true);
+acceptsNonEmptyScalar(1); // V
+acceptsNonEmptyScalar(1.5); // V
+acceptsNonEmptyScalar('x'); // V
+acceptsNonEmptyScalar(true); // V
 
 // The falsy value of each member is subtracted.
 acceptsNonEmptyScalar(0); // E?: 0 is falsy, so it is not a non-empty-scalar

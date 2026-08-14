@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNonEmptyString;
  */
 function returnsNonEmptyString() // T: non-empty-string
 {
-    return 'x';
+    return 'x'; // V
 }
 
 function acceptsString(string $value): void
@@ -36,12 +36,12 @@ function acceptsNonEmptyString($value): void // T: non-empty-string
 }
 
 // A `non-empty-string` value always satisfies a native `string` parameter.
-acceptsString(returnsNonEmptyString());
+acceptsString(returnsNonEmptyString()); // V
 
 // Any string with at least one character satisfies the parameter — `'0'`
 // included, however falsy it is.
-acceptsNonEmptyString('x');
-acceptsNonEmptyString('0');
+acceptsNonEmptyString('x'); // V
+acceptsNonEmptyString('0'); // V
 
 // The empty string: enforcing analyzers reject it, others fall back to `string`
 // and accept it.

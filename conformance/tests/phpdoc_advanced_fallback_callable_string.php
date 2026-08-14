@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackCallableString;
  */
 function returnsCallableString() // T: callable-string
 {
-    return 'strlen';
+    return 'strlen'; // V
 }
 
 function acceptsString(string $value): void
@@ -36,10 +36,10 @@ function acceptsCallableString($value): void // T: callable-string
 }
 
 // A `callable-string` value always satisfies a native `string` parameter.
-acceptsString(returnsCallableString());
+acceptsString(returnsCallableString()); // V
 
 // The name of an existing function satisfies the parameter.
-acceptsCallableString('strlen');
+acceptsCallableString('strlen'); // V
 
 // A name nothing is declared under does not.
 acceptsCallableString('definitely_not_a_function'); // E?: an undeclared name is not a callable-string

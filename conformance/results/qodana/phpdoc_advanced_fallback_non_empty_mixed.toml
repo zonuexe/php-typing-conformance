@@ -15,15 +15,16 @@ phpdoc_advanced_fallback_non_empty_mixed.php:49: Parameter '0' type is not compa
 phpdoc_advanced_fallback_non_empty_mixed.php:50: Parameter '[]' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_non_empty_mixed.php:51: Parameter 'null' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 24: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 42: Unexpected errors ["Parameter '1' type is not compatible with declaration [PhpParamsInspection]"]
-Line 43: Unexpected errors ["Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]"]
-Line 44: Unexpected errors ["Parameter '[1]' type is not compatible with declaration [PhpParamsInspection]"]
-Line 45: Unexpected errors ["Parameter 'new \\\\stdClass()' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 24: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 42: Expected valid value to be accepted, got ["Parameter '1' type is not compatible with declaration [PhpParamsInspection]"]
+Line 43: Expected valid value to be accepted, got ["Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 44: Expected valid value to be accepted, got ["Parameter '[1]' type is not compatible with declaration [PhpParamsInspection]"]
+Line 45: Expected valid value to be accepted, got ["Parameter 'new \\\\stdClass()' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "4/4"
 unrecognized_lines = [20, 32]
-false_positive_lines = [24, 42, 43, 44, 45]
+false_positive_lines = []
+over_rejected_lines = [42, 43, 44, 45]

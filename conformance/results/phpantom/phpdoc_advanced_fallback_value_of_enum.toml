@@ -9,14 +9,15 @@ phpdoc_advanced_fallback_value_of_enum.php:51: Argument 1 ($value) expects value
 phpdoc_advanced_fallback_value_of_enum.php:54: Argument 1 ($value) expects value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit>, got 'clubs' [type_mismatch_argument]
 phpdoc_advanced_fallback_value_of_enum.php:58: Argument 1 ($value) expects value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit>, got Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit [type_mismatch_argument]"""
 errors_diff = """
-Line 32: Unexpected errors ["Return type string is incompatible with declared return type value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit> [type_mismatch_return]"]
-Line 47: Unexpected errors ["Argument 1 ($value) expects string, got value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit> [type_mismatch_argument]"]
-Line 50: Unexpected errors ["Argument 1 ($value) expects value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit>, got 'hearts' [type_mismatch_argument]"]
-Line 51: Unexpected errors ["Argument 1 ($value) expects value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit>, got 'spades' [type_mismatch_argument]"]"""
+Line 32: Expected valid value to be accepted, got ["Return type string is incompatible with declared return type value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit> [type_mismatch_return]"]
+Line 47: Expected valid value to be accepted, got ["Argument 1 ($value) expects string, got value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit> [type_mismatch_argument]"]
+Line 50: Expected valid value to be accepted, got ["Argument 1 ($value) expects value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit>, got 'hearts' [type_mismatch_argument]"]
+Line 51: Expected valid value to be accepted, got ["Argument 1 ($value) expects value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfEnum\\\\Suit>, got 'spades' [type_mismatch_argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [32, 47, 50, 51]
+false_positive_lines = []
+over_rejected_lines = [32, 47, 50, 51]

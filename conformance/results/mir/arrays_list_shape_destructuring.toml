@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 8
 output = """
 arrays_list_shape_destructuring.php:48: InvalidArgument: Argument $value of takesInt() expects 'int', got 'bool' [MIR0201]
 arrays_list_shape_destructuring.php:49: InvalidArgument: Argument $value of takesString() expects 'string', got 'bool' [MIR0201]
@@ -9,3 +9,9 @@ arrays_list_shape_destructuring.php:54: InvalidArgument: Argument $list of inspe
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "4/8"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -29,6 +29,50 @@ use Conformance\Reporting\Report;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 /**
+ * Re-parse a stored result `output` blob back into line → messages.
+ *
+ * @return array<int, list<string>>
+ */
+function diagnosticsFromOutput(string $output): array
+{
+    $byLine = [];
+    if ($output === '') {
+        return $byLine;
+    }
+
+    foreach (preg_split('/\r?\n/', $output) ?: [] as $line) {
+        if ($line === '') {
+            continue;
+        }
+
+        if (preg_match('/\.php:(\d+):\s*(.*)$/', $line, $match) !== 1) {
+            continue;
+        }
+
+        $byLine[(int) $match[1]][] = $match[2];
+    }
+
+    return $byLine;
+}
+
+/**
+ * Count expectation markers that are not valid-controls (`// V`).
+ *
+ * @param list<ExpectedDiagnostic> $expectedDiagnostics
+ */
+function expectedDiagnosticCount(array $expectedDiagnostics): int
+{
+    $count = 0;
+    foreach ($expectedDiagnostics as $diagnostic) {
+        if (!$diagnostic->valid) {
+            $count++;
+        }
+    }
+
+    return $count;
+}
+
+/**
  * Lowest PHPStan level whose rules report one of the diagnostics this test
  * expects.
  *
@@ -143,10 +187,13 @@ $checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker
 // comma-separated list. When a filter is active the HTML summary report is left
 // alone (regenerating it with a partial tool set would drop the other columns).
 $toolFilter = null;
+$rescoreOnly = false;
 $argvValues = $argv ?? [];
 for ($i = 1, $argc = count($argvValues); $i < $argc; $i++) {
     $arg = $argvValues[$i];
-    if ($arg === '--tool' && isset($argvValues[$i + 1])) {
+    if ($arg === '--rescore') {
+        $rescoreOnly = true;
+    } elseif ($arg === '--tool' && isset($argvValues[$i + 1])) {
         $toolFilter = $argvValues[$i + 1];
         $i++;
     } elseif (str_starts_with($arg, '--tool=')) {
@@ -169,6 +216,87 @@ if ($toolFilter !== null) {
 
     $reportFilterActive = true;
     printf("Tool filter active: running only [%s]\n", implode(', ', array_map(static fn (Checker $c): string => $c->name(), $checkers)));
+}
+
+if ($rescoreOnly) {
+    $toolNames = [];
+    foreach (scandir($resultsDir) ?: [] as $entry) {
+        if ($entry === '.' || $entry === '..' || $entry === 'lsp' || $entry === 'tests' || $entry === 'scaffold') {
+            continue;
+        }
+        if (!is_dir($resultsDir . '/' . $entry)) {
+            continue;
+        }
+        $toolNames[] = $entry;
+    }
+
+    if ($toolFilter !== null) {
+        $selected = array_values(array_filter(
+            array_map('trim', explode(',', $toolFilter)),
+            static fn (string $n): bool => $n !== '',
+        ));
+        $toolNames = array_values(array_intersect($toolNames, $selected));
+    }
+
+    printf("Rescoring %d test(s) across [%s] from stored output\n", count($testCases), implode(', ', $toolNames));
+
+    foreach ($testCases as $testCase) {
+        $expectedDiagnostics = $expectationParser->parseFile($testCase->path);
+        $typeMarkers = $expectationParser->parseTypeMarkers($testCase->path);
+        $count = expectedDiagnosticCount($expectedDiagnostics);
+
+        foreach ($toolNames as $toolName) {
+            $existing = $resultRepository->loadResult($toolName, $testCase->name);
+            if ($existing === []) {
+                continue;
+            }
+
+            if ((string) ($existing['conformance_automated'] ?? '') === 'Not measured') {
+                continue;
+            }
+
+            $evaluation = $expectationEvaluator->evaluate(
+                $expectedDiagnostics,
+                diagnosticsFromOutput((string) ($existing['output'] ?? '')),
+                $toolName,
+                $typeMarkers,
+            );
+
+            $level = $existing['expected_diagnostic_level'] ?? null;
+            $resultRepository->save(new ResultRecord(
+                tool: $toolName,
+                testName: $testCase->name,
+                status: (string) ($existing['status'] ?? 'Unknown'),
+                conformanceAutomated: $evaluation->conformanceAutomated,
+                expectedDiagnosticLevel: is_int($level) ? $level : null,
+                output: (string) ($existing['output'] ?? ''),
+                errorsDiff: $evaluation->errorsDiff,
+                notes: (string) ($existing['notes'] ?? ''),
+                ignoreErrors: is_array($existing['ignore_errors'] ?? null)
+                    ? array_values(array_map(static fn (mixed $v): string => (string) $v, $existing['ignore_errors']))
+                    : [],
+                expectedDiagnosticCount: $count,
+                typeHandling: $evaluation->typeHandling,
+            ));
+        }
+    }
+
+    $resultsUpdate = new ResultsUpdate($resultsDir, $testsDir);
+    $previousUpdate = $resultsUpdate->recorded();
+    $currentUpdate = $resultsUpdate->record();
+    printf(
+        $currentUpdate === $previousUpdate
+            ? "Nothing changed; the update stamp stays at %s\n"
+            : "Recorded the update at %s\n",
+        $currentUpdate,
+    );
+
+    $reportTools = array_values(array_filter(
+        $toolNames,
+        static fn (string $name): bool => $name !== 'phpstan-strict' && $name !== 'pzoom',
+    ));
+    printf("Generated summary report at %s\n", Report::fromRootDir($rootDir, $reportTools)->write());
+    return;
 }
 
 printf("Loaded %d test groups\n", count($testGroups));
@@ -232,7 +360,7 @@ foreach ($testCases as $testCase) {
                 errorsDiff: '',
                 notes: $gap,
                 ignoreErrors: [],
-                expectedDiagnosticCount: count($expectedDiagnostics),
+                expectedDiagnosticCount: expectedDiagnosticCount($expectedDiagnostics),
             ));
             printf("  wrote %s\n", $resultPath);
 
@@ -280,7 +408,7 @@ foreach ($testCases as $testCase) {
             errorsDiff: $evaluation->errorsDiff,
             notes: '',
             ignoreErrors: [],
-            expectedDiagnosticCount: count($expectedDiagnostics),
+            expectedDiagnosticCount: expectedDiagnosticCount($expectedDiagnostics),
             typeHandling: $evaluation->typeHandling,
         );
 

@@ -7,12 +7,13 @@ phpdoc_advanced_fallback_numeric.php:42: Argument '1' passed to Conformance\\Tes
 phpdoc_advanced_fallback_numeric.php:45: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNumeric\\acceptsNumeric() is expected to be of type float|int, string given
 phpdoc_advanced_fallback_numeric.php:48: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNumeric\\acceptsNumeric() is expected to be of type float|int, bool given"""
 errors_diff = """
-Line 41: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumeric\\\\acceptsNumeric() is expected to be of type float|int, string given"]
-Line 42: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumeric\\\\acceptsNumeric() is expected to be of type float|int, string given"]"""
+Line 41: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumeric\\\\acceptsNumeric() is expected to be of type float|int, string given"]
+Line 42: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumeric\\\\acceptsNumeric() is expected to be of type float|int, string given"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [41, 42]
+false_positive_lines = []
+over_rejected_lines = []

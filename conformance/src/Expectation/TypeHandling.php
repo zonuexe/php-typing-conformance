@@ -38,7 +38,11 @@ final readonly class TypeHandling
 
     /**
      * @param list<int> $unrecognizedLines `// T` lines the analyzer complained about
+     *     with a type-resolution failure (not style / documented-vs-declared noise)
      * @param list<int> $falsePositiveLines lines that are neither marked nor expected
+     * @param list<int> $overRejectedLines valid-control / unmarked-valid lines
+     *     rejected with a type-mismatch — enforcement on the `// E` lines is
+     *     then incidental (the analyzer also rejects values the type admits)
      */
     public function __construct(
         public string $recognition,
@@ -47,6 +51,16 @@ final readonly class TypeHandling
         public array $falsePositiveLines,
         public int $expectedLineCount,
         public int $enforcedLineCount,
+        public array $overRejectedLines = [],
     ) {
+    }
+
+    /**
+     * Hits on the violating lines cannot be trusted as enforcement: either the
+     * spelling was not resolved, or values the type admits were also rejected.
+     */
+    public function isIncidental(): bool
+    {
+        return $this->recognition === self::UNRECOGNIZED || $this->overRejectedLines !== [];
     }
 }

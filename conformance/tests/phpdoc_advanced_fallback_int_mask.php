@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackIntMask;
  */
 function returnsFlags() // T: int-mask<1, 2, 4>
 {
-    return 1 | 4;
+    return 1 | 4; // V
 }
 
 function acceptsInt(int $value): void
@@ -36,10 +36,10 @@ function acceptsFlags($flags): void // T: int-mask<1, 2, 4>
 }
 
 // An `int-mask` value always satisfies a native `int` parameter.
-acceptsInt(returnsFlags());
+acceptsInt(returnsFlags()); // V
 
 // A valid combination (1 | 4 = 5) satisfies the refined parameter.
-acceptsFlags(1 | 4);
+acceptsFlags(1 | 4); // V
 
 // A value outside the mask combinations: mask-aware analyzers reject it, others
 // fall back to `int` and accept it.

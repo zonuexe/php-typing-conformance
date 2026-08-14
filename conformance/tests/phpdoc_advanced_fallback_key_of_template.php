@@ -31,7 +31,7 @@ function firstKey(array $items) // T: key-of<T>
         // A tool can evaluate the projection at call sites and still be unable
         // to prove this body produces key-of<T>; that limitation surfaces as a
         // false positive here, not as an expectation of the test.
-        return $key;
+        return $key; // V
     }
 
     throw new \InvalidArgumentException('empty array');
@@ -53,11 +53,11 @@ function acceptsFlagName(string $flag): void
 }
 
 // With string keys, the returned key is a string.
-acceptsString(firstKey(['debug' => false, 'verbose' => true]));
+acceptsString(firstKey(['debug' => false, 'verbose' => true])); // V
 
 // More precisely, it is the union of this argument's keys: a tool that infers
 // T but widens the keys to `string` reports a false positive right here.
-acceptsFlagName(firstKey(['debug' => false, 'verbose' => true]));
+acceptsFlagName(firstKey(['debug' => false, 'verbose' => true])); // V
 
 // A key of this argument is never an int.
 acceptsInt(firstKey(['debug' => false, 'verbose' => true])); // E?: the keys of this argument are strings

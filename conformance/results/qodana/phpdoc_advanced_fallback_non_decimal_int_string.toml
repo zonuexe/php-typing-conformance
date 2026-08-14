@@ -12,14 +12,15 @@ phpdoc_advanced_fallback_non_decimal_int_string.php:47: Parameter ''foo'' type i
 phpdoc_advanced_fallback_non_decimal_int_string.php:51: Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_non_decimal_int_string.php:52: Parameter ''-1'' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 26: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 45: Unexpected errors ["Parameter ''00'' type is not compatible with declaration [PhpParamsInspection]"]
-Line 46: Unexpected errors ["Parameter ''1.2'' type is not compatible with declaration [PhpParamsInspection]"]
-Line 47: Unexpected errors ["Parameter ''foo'' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 26: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 45: Expected valid value to be accepted, got ["Parameter ''00'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 46: Expected valid value to be accepted, got ["Parameter ''1.2'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 47: Expected valid value to be accepted, got ["Parameter ''foo'' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [22, 34]
-false_positive_lines = [26, 45, 46, 47]
+false_positive_lines = []
+over_rejected_lines = [45, 46, 47]

@@ -10,14 +10,15 @@ phpdoc_advanced_fallback_value_of_template_enum.php:58: Class constant \\Conform
 phpdoc_advanced_fallback_value_of_template_enum.php:62: Class constant \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit::Hearts does not exist [undefinedConstant]
 phpdoc_advanced_fallback_value_of_template_enum.php:65: Class constant \\Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit::Spades does not exist [undefinedConstant]"""
 errors_diff = """
-Line 39: Unexpected errors ["Property {\\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit|\\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\T}->value does not exist [undefinedProperty]"]
-Line 53: Unexpected errors ["param $value miss matched with phpdoc type <<'hearts'>> [funcParamTypeMissMatch]"]
-Line 58: Unexpected errors ["Class constant \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit::Hearts does not exist [undefinedConstant]"]
-Line 62: Unexpected errors ["Class constant \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit::Hearts does not exist [undefinedConstant]"]"""
+Line 39: Expected valid value to be accepted, got ["Property {\\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit|\\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\T}->value does not exist [undefinedProperty]"]
+Line 58: Expected valid value to be accepted, got ["Class constant \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit::Hearts does not exist [undefinedConstant]"]
+Line 62: Expected valid value to be accepted, got ["Class constant \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit::Hearts does not exist [undefinedConstant]"]
+Line 53: Unexpected errors ["param $value miss matched with phpdoc type <<'hearts'>> [funcParamTypeMissMatch]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [34]
-false_positive_lines = [39, 53, 58, 62]
+false_positive_lines = [53]
+over_rejected_lines = []

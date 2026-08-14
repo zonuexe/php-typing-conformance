@@ -23,7 +23,8 @@ $verdicts = [
 
 $handling = [
     ['not-supported', 'Unrecognized', 'The spelling is not resolved at all: the analyzer reports an unresolvable type, an undeclared type, or a docblock parse error on the declaration. Expected whenever a test uses another analyzer&rsquo;s dialect &mdash; not a defect.'],
-    ['pass', 'Enforced', 'The spelling is resolved <em>and</em> every value the type excludes is rejected.'],
+    ['pass', 'Enforced', 'The spelling is resolved <em>and</em> every value the type excludes is rejected, without also rejecting values the type admits.'],
+    ['incidental', 'Incidental (<em>n</em>/<em>m</em>)', 'The violating lines fired, but so did valid controls: the analyzer also rejects values the type admits (class-name fallback, sealed where the test asked for unsealed, over-strict purity, &hellip;). Hits on the <code>// E</code> lines are then the wrong reason, not enforcement.'],
     ['partial', 'Partly enforced (<em>n</em>/<em>m</em>)', 'Resolved, and some but not all of the excluded values are rejected. Common in files that probe several related spellings at once.'],
     ['falls-back', 'Widened to <em>X</em>', 'Resolved, but widened to <em>X</em>, so nothing is rejected. Not an error &mdash; just a coarser type. The base type is hand-curated.'],
     ['falls-back', 'Not enforced', 'Resolved, nothing rejected, and the base type it widened to has not been pinned down yet.'],

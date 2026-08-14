@@ -31,7 +31,7 @@ function takesInt(int $value): void
 /**
  * @param list{bool, float, string, int} $list
  */
-function inspectListShape(array $list): void // E?: some tools do not fully accept list shape PHPDoc on array parameters
+function inspectListShape(array $list): void // T: list{bool, float, string, int}
 {
     [$a, $b, $c, $d] = $list;
 
@@ -50,5 +50,5 @@ function inspectListShape(array $list): void // E?: some tools do not fully acce
     takesBool($list[3]); // E?: indexed element 3 should stay int
 }
 
-inspectListShape([true, 1.5, 'x', 2]);
+inspectListShape([true, 1.5, 'x', 2]); // V
 inspectListShape([true, 1.5, 2, 'x']); // E?: call-site list shape should preserve positional element types

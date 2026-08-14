@@ -30,6 +30,9 @@ final class ExpectationEvaluator
         // Quiet probes (`// Q`): success is silence (suppress/ignore tags).
         $requiredQuietByLine = [];
         $optionalQuietByLine = [];
+        // Valid-control probes (`// V`): silence is required; a type-rejection
+        // means enforcement on the `// E` lines is incidental.
+        $validByLine = [];
         $groups = [];
         // Lines marked `// E[noise]` / `// E?[noise]` may report incidental
         // diagnostics (e.g. "expression has no effect") without counting as
@@ -44,6 +47,11 @@ final class ExpectationEvaluator
             // finding — rather than as a marker the column never saw.
             $inheritedTool = $toolName === 'psalm-next' && $diagnostic->tool === 'psalm';
             if ($diagnostic->tool !== null && $diagnostic->tool !== $toolName && !$inheritedTool) {
+                continue;
+            }
+
+            if ($diagnostic->valid) {
+                $validByLine[$diagnostic->line] = true;
                 continue;
             }
 
@@ -107,6 +115,17 @@ final class ExpectationEvaluator
             }
         }
 
+        foreach (array_keys($validByLine) as $line) {
+            $messages = $actualDiagnostics[$line] ?? [];
+            if ($messages !== [] && $this->hasEnforcementSignal($messages)) {
+                $differences[] = sprintf(
+                    'Line %d: Expected valid value to be accepted, got %s',
+                    $line,
+                    json_encode($messages, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+                );
+            }
+        }
+
         foreach ($groups as $tag => $group) {
             $lines = array_values(array_unique($group['lines']));
             sort($lines);
@@ -152,6 +171,7 @@ final class ExpectationEvaluator
                 || isset($optionalByLine[$line])
                 || isset($requiredQuietByLine[$line])
                 || isset($optionalQuietByLine[$line])
+                || isset($validByLine[$line])
                 || isset($groupLines[$line])
                 || isset($noiseLines[$line])
             ) {
@@ -190,6 +210,7 @@ final class ExpectationEvaluator
                     $markedLines,
                     $reportProbes,
                     $quietProbes,
+                    array_keys($validByLine),
                     $groupProbes,
                     $actualDiagnostics,
                     $falsePositiveLines,
@@ -201,6 +222,7 @@ final class ExpectationEvaluator
      * @param array<int, true> $markedLines
      * @param list<int> $reportProbes untagged // E lines (success = diagnostic)
      * @param list<int> $quietProbes untagged // Q lines (success = silence)
+     * @param list<int> $validProbes // V lines (success = silence; type-rejection is over-rejection)
      * @param list<array{tag: string, lines: list<int>}> $groupProbes
      * @param array<int, list<string>> $actualDiagnostics
      * @param list<int> $falsePositiveLines
@@ -209,13 +231,15 @@ final class ExpectationEvaluator
         array $markedLines,
         array $reportProbes,
         array $quietProbes,
+        array $validProbes,
         array $groupProbes,
         array $actualDiagnostics,
         array $falsePositiveLines,
     ): TypeHandling {
         $unrecognizedLines = [];
         foreach (array_keys($markedLines) as $line) {
-            if (isset($actualDiagnostics[$line])) {
+            $messages = $actualDiagnostics[$line] ?? [];
+            if ($this->hasRecognitionFailure($messages)) {
                 $unrecognizedLines[] = $line;
             }
         }
@@ -264,6 +288,22 @@ final class ExpectationEvaluator
             default => TypeHandling::PARTIAL,
         };
 
+        $overRejectedLines = [];
+        foreach ($validProbes as $line) {
+            $messages = $actualDiagnostics[$line] ?? [];
+            if ($this->hasTypeRejection($messages)) {
+                $overRejectedLines[] = $line;
+            }
+        }
+        foreach ($falsePositiveLines as $line) {
+            $messages = $actualDiagnostics[$line] ?? [];
+            if ($this->hasTypeRejection($messages)) {
+                $overRejectedLines[] = $line;
+            }
+        }
+        $overRejectedLines = array_values(array_unique($overRejectedLines));
+        sort($overRejectedLines);
+
         return new TypeHandling(
             recognition: $unrecognizedLines === [] ? TypeHandling::RECOGNIZED : TypeHandling::UNRECOGNIZED,
             enforcement: $enforcement,
@@ -271,6 +311,7 @@ final class ExpectationEvaluator
             falsePositiveLines: $falsePositiveLines,
             expectedLineCount: $expectedLineCount,
             enforcedLineCount: $enforcedLineCount,
+            overRejectedLines: $overRejectedLines,
         );
     }
 
@@ -351,6 +392,103 @@ final class ExpectationEvaluator
             if (!$this->isIncidentalDiagnostic($message)) {
                 return true;
             }
+        }
+
+        return false;
+    }
+
+    /**
+     * A diagnostic that actually rejects a value or return as the wrong type —
+     * as opposed to unused-variable lint, missing typehints, or helper noise.
+     * Used to tell "rejected a valid control" from unrelated false positives.
+     *
+     * @param list<string> $messages
+     */
+    private function hasTypeRejection(array $messages): bool
+    {
+        foreach ($messages as $message) {
+            if ($this->isTypeRejection($message)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function isTypeRejection(string $message): bool
+    {
+        if ($this->isIncidentalDiagnostic($message) || $this->isNonRecognitionDiagnostic($message)) {
+            return false;
+        }
+
+        if (preg_match(
+            '/\[(argument\.type|return\.type|parameter\.type|offsetAccess\.|MIR0201|MIR0202|PhanTypeMismatch\w*|type_mismatch_argument|type_mismatch_return|invalid-argument|invalid-return-statement|PhpParamsInspection|PhpArrayKeyDoesNotMatchArrayShapeInspection|PhpMissingArrayKeyInspection|P1006|P1012)\]/',
+            $message,
+        ) === 1) {
+            return true;
+        }
+
+        return preg_match(
+            '/\b(expects .+ given|but (?:.* )?given|but found|should return|InvalidArgument|Invalid (?:argument|return) type|TypeMismatch|incompatible with|does not (?:accept|match)|got [\'"`]|Value should be one of|Missing key|Incomplete array according to shape|nothing in common)\b/i',
+            $message,
+        ) === 1;
+    }
+
+    /**
+     * @param list<string> $messages
+     */
+    private function hasRecognitionFailure(array $messages): bool
+    {
+        $sawAny = false;
+        foreach ($messages as $message) {
+            $sawAny = true;
+            if ($this->isRecognitionFailure($message)) {
+                return true;
+            }
+        }
+
+        // No messages, or only non-resolution noise → recognized.
+        return false;
+    }
+
+    /**
+     * A diagnostic on a `// T` line that means the spelling was not resolved.
+     * Style / documented-vs-declared complaints are not recognition failures:
+     * those fire only after the type was parsed.
+     */
+    private function isRecognitionFailure(string $message): bool
+    {
+        if ($this->isNonRecognitionDiagnostic($message) || $this->isIncidentalDiagnostic($message)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Diagnostics that land on a declaration without meaning "I do not know
+     * this spelling": documented-vs-native mismatch after a successful parse,
+     * synonym style nits, unused / missing-typehint lint.
+     */
+    private function isNonRecognitionDiagnostic(string $message): bool
+    {
+        if (preg_match('/\[(P1131|PhanTypeMismatchDeclaredReturn|PhanTemplateTypeNotUsedInFunctionReturn)\]/', $message) === 1) {
+            return true;
+        }
+
+        if (preg_match('/\bDocumented type is not compatible with the declared type\b/i', $message) === 1) {
+            return true;
+        }
+
+        if (preg_match('/\bUse \w+ type instead of\b/i', $message) === 1) {
+            return true;
+        }
+
+        if (preg_match(
+            '/\b(missingType\.(?:parameter|return|property)|unused (?:parameter|variable)|never (?:read|used)|not used)\b/i',
+            $message,
+        ) === 1) {
+            return true;
         }
 
         return false;

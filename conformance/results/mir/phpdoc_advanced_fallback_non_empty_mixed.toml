@@ -10,13 +10,14 @@ phpdoc_advanced_fallback_non_empty_mixed.php:49: InvalidArgument: Argument $valu
 phpdoc_advanced_fallback_non_empty_mixed.php:50: InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\non-empty-mixed', got 'array{}' [MIR0201]
 phpdoc_advanced_fallback_non_empty_mixed.php:51: NullArgument: Argument $value of acceptsNonEmptyMixed() cannot be null [MIR0100]"""
 errors_diff = """
-Line 42: Unexpected errors ["InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyMixed\\\\non-empty-mixed', got '1' [MIR0201]"]
-Line 43: Unexpected errors ["InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyMixed\\\\non-empty-mixed', got '\\"x\\"' [MIR0201]"]
-Line 44: Unexpected errors ["InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyMixed\\\\non-empty-mixed', got 'array{0: 1}' [MIR0201]"]"""
+Line 42: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyMixed\\\\non-empty-mixed', got '1' [MIR0201]"]
+Line 43: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyMixed\\\\non-empty-mixed', got '\\"x\\"' [MIR0201]"]
+Line 44: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyMixed\\\\non-empty-mixed', got 'array{0: 1}' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "4/4"
 unrecognized_lines = []
-false_positive_lines = [42, 43, 44]
+false_positive_lines = []
+over_rejected_lines = [42, 43, 44]

@@ -9,12 +9,13 @@ phpdoc_advanced_fallback_static_closure.php:42: Argument '1' passed to Conforman
 phpdoc_advanced_fallback_static_closure.php:45: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\static-closure, callable given
 phpdoc_advanced_fallback_static_closure.php:48: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\static-closure, string given"""
 errors_diff = """
-Line 24: Unexpected errors ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\returnsStaticClosure() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure, callable returned"]
-Line 42: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\acceptsStaticClosure() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure, callable given"]"""
+Line 24: Expected valid value to be accepted, got ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\returnsStaticClosure() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure, callable returned"]
+Line 42: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\acceptsStaticClosure() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure, callable given"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [20, 32]
-false_positive_lines = [24, 42]
+false_positive_lines = []
+over_rejected_lines = []

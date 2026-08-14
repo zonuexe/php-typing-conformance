@@ -1,7 +1,13 @@
 status = "Unknown"
-conformance_automated = "Fail"
-expected_diagnostic_count = 9
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
 output = "arrays_list_shape_destructuring.php:32: Argument type does not match the declared [PhpDocSignatureInspection]"
-errors_diff = "Line 32: Unexpected errors [\"Argument type does not match the declared [PhpDocSignatureInspection]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/8"
+unrecognized_lines = [32]
+false_positive_lines = []
+over_rejected_lines = []

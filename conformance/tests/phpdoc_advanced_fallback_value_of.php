@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackValueOf;
  */
 function returnsShapeValue() // T: value-of<array{a: int, b: int}>
 {
-    return 1;
+    return 1; // V
 }
 
 function acceptsInt(int $value): void
@@ -36,10 +36,10 @@ function acceptsShapeValue($value): void // T: value-of<array{a: int, b: int}>
 }
 
 // Every value of this shape is an `int`, so the derived type satisfies `int`.
-acceptsInt(returnsShapeValue());
+acceptsInt(returnsShapeValue()); // V
 
 // An int satisfies the parameter.
-acceptsShapeValue(1);
+acceptsShapeValue(1); // V
 
 // A string does not, however much it looks like one of the shape's keys.
 acceptsShapeValue('x'); // E?: a string is not a value of array{a: int, b: int}

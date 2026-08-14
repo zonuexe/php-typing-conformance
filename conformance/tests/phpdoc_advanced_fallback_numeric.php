@@ -23,7 +23,7 @@ function returnsNumeric() // T: numeric
 {
     $values = [1, 1.5, '123'];
 
-    return $values[\array_rand($values)];
+    return $values[\array_rand($values)]; // V
 }
 
 /**
@@ -33,13 +33,13 @@ function acceptsNumeric($value): void // T: numeric
 {
 }
 
-acceptsNumeric(returnsNumeric());
+acceptsNumeric(returnsNumeric()); // V
 
 // Numbers and numeric strings alike satisfy the parameter.
-acceptsNumeric(1);
-acceptsNumeric(1.5);
-acceptsNumeric('123');
-acceptsNumeric('1.5e3');
+acceptsNumeric(1); // V
+acceptsNumeric(1.5); // V
+acceptsNumeric('123'); // V
+acceptsNumeric('1.5e3'); // V
 
 // A string that is not numeric does not.
 acceptsNumeric('abc'); // E?: 'abc' is not numeric

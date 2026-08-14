@@ -31,7 +31,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackArrayKey;
  */
 function returnsArrayKey() // T: array-key
 {
-    return \random_int(0, 1) === 1 ? 1 : 'key';
+    return \random_int(0, 1) === 1 ? 1 : 'key'; // V
 }
 
 function acceptsInt(int $value): void
@@ -50,8 +50,8 @@ function acceptsArrayKey($value): void // T: array-key
 }
 
 // Both members of the union satisfy the parameter.
-acceptsArrayKey(1);
-acceptsArrayKey('key');
+acceptsArrayKey(1); // V
+acceptsArrayKey('key'); // V
 
 // Values PHP cannot use as an array key: analyzers that model `array-key`
 // reject them, others fall back to `mixed` and accept them.

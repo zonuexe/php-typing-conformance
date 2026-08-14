@@ -1,9 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 5
 output = """
 arrays_open_shapes.php:33: Argument 1 of inspectOpenArrayShape expects array{name: string, ...<array-key, mixed>}, but array{extra: 123} provided [InvalidArgument]
 arrays_open_shapes.php:51: Argument 1 of inspectOpenListShape expects list{string, int, ...<mixed>}, but list{1, 'demo', true} provided [InvalidArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/5"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

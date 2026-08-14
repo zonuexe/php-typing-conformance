@@ -1,4 +1,4 @@
-.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom
+.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom test-harness rescore
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
@@ -79,6 +79,14 @@ install-phpantom:
 	gh release download $(PHPANTOM_VERSION) --repo phpantom-dev/phpantom_lsp \
 		-p 'phpantom_lsp-$(LSP_BIN_PLATFORM).tar.gz' -O - | tar xz -C vendor-bin/phpantom/bin
 	chmod +x vendor-bin/phpantom/bin/phpantom_lsp
+
+test-harness:
+	php conformance/src/Expectation/self-test.php
+
+# Re-derive Pass/Fail and recognition/enforcement from stored analyzer output
+# without re-running the tools. Use after evaluator or marker changes.
+rescore:
+	php conformance/src/main.php --rescore
 
 render-report-html:
 	php conformance/src/render-report-html.php

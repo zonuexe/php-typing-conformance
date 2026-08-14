@@ -7,12 +7,13 @@ phpdoc_advanced_fallback_trait_string.php:34: The inferred type 'Conformance\\Te
 phpdoc_advanced_fallback_trait_string.php:52: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\acceptsTraitString expects trait-string, but Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\SomeTrait::class provided [InvalidArgument]
 phpdoc_advanced_fallback_trait_string.php:55: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\acceptsTraitString expects trait-string, but Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\SomeClass::class provided [InvalidArgument]"""
 errors_diff = """
-Line 34: Unexpected errors ["The inferred type 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\SomeTrait::class' does not match the declared return type 'trait-string' for Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\returnsTraitString [InvalidReturnStatement]"]
-Line 52: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\acceptsTraitString expects trait-string, but Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\SomeTrait::class provided [InvalidArgument]"]"""
+Line 34: Expected valid value to be accepted, got ["The inferred type 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\SomeTrait::class' does not match the declared return type 'trait-string' for Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\returnsTraitString [InvalidReturnStatement]"]
+Line 52: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\acceptsTraitString expects trait-string, but Conformance\\\\Tests\\\\PhpdocAdvancedFallbackTraitString\\\\SomeTrait::class provided [InvalidArgument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [30]
-false_positive_lines = [34, 52]
+false_positive_lines = []
+over_rejected_lines = [34, 52]

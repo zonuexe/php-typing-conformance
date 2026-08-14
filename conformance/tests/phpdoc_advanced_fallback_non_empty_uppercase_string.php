@@ -22,7 +22,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNonEmptyUppercaseString;
  */
 function returnsNonEmptyUppercaseString() // T: non-empty-uppercase-string
 {
-    return 'ABC';
+    return 'ABC'; // V
 }
 
 function acceptsString(string $value): void
@@ -37,11 +37,11 @@ function acceptsNonEmptyUppercaseString($value): void // T: non-empty-uppercase-
 }
 
 // A `non-empty-uppercase-string` value always satisfies a native `string` parameter.
-acceptsString(returnsNonEmptyUppercaseString());
+acceptsString(returnsNonEmptyUppercaseString()); // V
 
 // A non-empty string with nothing lowercase in it satisfies both halves.
-acceptsNonEmptyUppercaseString('ABC');
-acceptsNonEmptyUppercaseString('123');
+acceptsNonEmptyUppercaseString('ABC'); // V
+acceptsNonEmptyUppercaseString('123'); // V
 
 // Uppercase, but empty.
 acceptsNonEmptyUppercaseString(''); // E?: '' is not a non-empty-uppercase-string

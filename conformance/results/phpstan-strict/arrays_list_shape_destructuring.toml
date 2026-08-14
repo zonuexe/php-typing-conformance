@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 8
 output = """
 arrays_list_shape_destructuring.php:48: Parameter #1 $value of function Conformance\\Tests\\ArraysListShapeDestructuring\\takesInt expects int, bool given. [identifier=argument.type]
 arrays_list_shape_destructuring.php:49: Parameter #1 $value of function Conformance\\Tests\\ArraysListShapeDestructuring\\takesString expects string, bool given. [identifier=argument.type]
@@ -9,3 +9,9 @@ arrays_list_shape_destructuring.php:54: Parameter #1 $list of function Conforman
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "4/8"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

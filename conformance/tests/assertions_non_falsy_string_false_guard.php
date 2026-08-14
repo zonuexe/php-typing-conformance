@@ -14,16 +14,16 @@ namespace Conformance\Tests\AssertionsNonFalsyStringFalseGuard;
  */
 
 /**
- * @param non-falsy-string $value // E?: some tools do not parse non-falsy-string PHPDoc syntax
+ * @param non-falsy-string $value
  */
-function takesNonFalsyString(string $value): void // E?: some tools do not accept non-falsy-string PHPDoc on string parameters
+function takesNonFalsyString(string $value): void // T: non-falsy-string
 {
 }
 
 /**
- * @param non-empty-string $value // E?: some tools do not parse non-empty-string PHPDoc syntax
+ * @param non-empty-string $value
  */
-function takesNonEmptyString(string $value): void // E?: some tools do not accept non-empty-string PHPDoc on string parameters
+function takesNonEmptyString(string $value): void // T: non-empty-string
 {
 }
 

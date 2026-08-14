@@ -9,13 +9,14 @@ phpdoc_advanced_fallback_callable_object.php:53: Argument '1' passed to Conforma
 phpdoc_advanced_fallback_callable_object.php:54: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\acceptsCallableObject() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\callable-object, callable given
 phpdoc_advanced_fallback_callable_object.php:57: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\acceptsCallableObject() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\callable-object, Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\NotInvokable given"""
 errors_diff = """
-Line 35: Unexpected errors ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\returnsCallableObject() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\Invokable returned"]
-Line 53: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsCallableObject() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\Invokable given"]
-Line 54: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsCallableObject() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object, callable given"]"""
+Line 35: Expected valid value to be accepted, got ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\returnsCallableObject() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\Invokable returned"]
+Line 53: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsCallableObject() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\Invokable given"]
+Line 54: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsCallableObject() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object, callable given"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [31, 43]
-false_positive_lines = [35, 53, 54]
+false_positive_lines = []
+over_rejected_lines = []

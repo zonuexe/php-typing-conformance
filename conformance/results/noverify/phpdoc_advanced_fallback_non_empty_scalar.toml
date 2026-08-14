@@ -7,12 +7,13 @@ phpdoc_advanced_fallback_non_empty_scalar.php:39: Class or interface named \\Con
 phpdoc_advanced_fallback_non_empty_scalar.php:51: potentially not safe access in parameter value of function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar [notSafeCall]
 phpdoc_advanced_fallback_non_empty_scalar.php:57: potentially not safe access in parameter value of function Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar [notSafeCall]"""
 errors_diff = """
-Line 12: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar does not exist [undefinedClass]"]
-Line 51: Unexpected errors ["potentially not safe access in parameter value of function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar [notSafeCall]"]"""
+Line 51: Expected valid value to be accepted, got ["potentially not safe access in parameter value of function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar [notSafeCall]"]
+Line 12: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar does not exist [undefinedClass]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "partial"
 enforced_lines = "1/5"
 unrecognized_lines = [39]
-false_positive_lines = [12, 51]
+false_positive_lines = [12]
+over_rejected_lines = []

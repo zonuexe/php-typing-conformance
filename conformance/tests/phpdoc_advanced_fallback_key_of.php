@@ -22,7 +22,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackKeyOf;
  */
 function returnsShapeKey() // T: key-of<array{name: string, age: int}>
 {
-    return \random_int(0, 1) === 1 ? 'name' : 'age';
+    return \random_int(0, 1) === 1 ? 'name' : 'age'; // V
 }
 
 function acceptsArrayKeyNatively(int|string $value): void
@@ -37,11 +37,11 @@ function acceptsShapeKey($key): void // T: key-of<array{name: string, age: int}>
 }
 
 // A key of the shape is an `int|string` whichever key it is.
-acceptsArrayKeyNatively(returnsShapeKey());
+acceptsArrayKeyNatively(returnsShapeKey()); // V
 
 // Both keys of the shape satisfy the parameter.
-acceptsShapeKey('name');
-acceptsShapeKey('age');
+acceptsShapeKey('name'); // V
+acceptsShapeKey('age'); // V
 
 // A string that is not one of them does not.
 acceptsShapeKey('missing'); // E?: 'missing' is not a key of array{name: string, age: int}

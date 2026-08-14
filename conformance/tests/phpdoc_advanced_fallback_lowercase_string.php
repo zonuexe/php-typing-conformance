@@ -22,7 +22,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackLowercaseString;
  */
 function returnsLowercaseString() // T: lowercase-string
 {
-    return 'abc';
+    return 'abc'; // V
 }
 
 function acceptsString(string $value): void
@@ -37,13 +37,13 @@ function acceptsLowercaseString($value): void // T: lowercase-string
 }
 
 // A `lowercase-string` value always satisfies a native `string` parameter.
-acceptsString(returnsLowercaseString());
+acceptsString(returnsLowercaseString()); // V
 
 // Lowercase letters satisfy the parameter, and so does a string with nothing
 // to lowercase.
-acceptsLowercaseString('abc');
-acceptsLowercaseString('123');
-acceptsLowercaseString('');
+acceptsLowercaseString('abc'); // V
+acceptsLowercaseString('123'); // V
+acceptsLowercaseString(''); // V
 
 // A fully uppercase literal is outside the refinement.
 acceptsLowercaseString('ABC'); // E?: 'ABC' is not a lowercase-string

@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @var string $file
  * @var bool $isStyle
  * @var string $description
- * @var list<array{tool: string, versionHtml: string, statusClass: string, statusHtml: string, output: string, extra: array{summary: string, output: string, emptyMessage: string}|null, facets: array{recognition: string, enforced: string, incidental: bool, noProbes: bool, falsePositives: string}|null, errorsDiff: string, notes: string}> $rows
+ * @var list<array{tool: string, versionHtml: string, statusClass: string, statusHtml: string, output: string, extra: array{summary: string, output: string, emptyMessage: string}|null, facets: array{recognition: string, enforced: string, incidental: bool, incidentalReason: string, noProbes: bool, falsePositives: string}|null, errorsDiff: string, notes: string}> $rows
  * @var string $source
  * @var list<array{name: string, code: string}> $supports
  */
@@ -70,9 +70,12 @@ if ($isStyle) {
             ?>not measured &mdash; this test carries no rejection probes<?php
         else:
             ?><?= h($row['facets']['enforced']) ?> of the expected violations reported<?php
-            // An unresolved spelling often rejects every value, valid ones
-            // included, so hits on the violating lines are not enforcement.
-            echo $row['facets']['incidental'] ? ' &mdash; incidental, since the spelling was not resolved' : '';
+            // Hits on the violating lines are not enforcement when the
+            // spelling was unresolved, or when values the type admits were
+            // also rejected.
+            if ($row['facets']['incidental'] && $row['facets']['incidentalReason'] !== '') {
+                echo ' &mdash; ' . h($row['facets']['incidentalReason']);
+            }
         endif;
         ?></li><?php
         if ($row['facets']['falsePositives'] !== ''):

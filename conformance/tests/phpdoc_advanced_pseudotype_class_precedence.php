@@ -23,12 +23,12 @@ final class Integer
 /**
  * @param Integer $value
  */
-function acceptsIntegerClass($value): void
+function acceptsIntegerClass($value): void // T: Integer (same-named class vs integer keyword)
 {
 }
 
 // An `Integer` instance satisfies the class-resolved parameter.
-acceptsIntegerClass(new Integer());
+acceptsIntegerClass(new Integer()); // V
 
 // A plain int is not an `Integer` instance for analyzers that resolve the
 // same-named class; keyword-only analyzers accept it as `int`.

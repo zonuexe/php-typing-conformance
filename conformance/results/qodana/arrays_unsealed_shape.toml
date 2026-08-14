@@ -10,12 +10,13 @@ arrays_unsealed_shape.php:38: Incomplete array according to shape declaration. M
 arrays_unsealed_shape.php:38: Value should be one of: "foo" [PhpArrayKeyDoesNotMatchArrayShapeInspection]
 arrays_unsealed_shape.php:41: Expected parameter of type 'int', 'string' provided [PhpParamsInspection]"""
 errors_diff = """
-Line 31: Unexpected errors ["Value should be one of: \\"foo\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"]
-Line 32: Unexpected errors ["Value should be one of: \\"foo\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]","Value should be one of: \\"foo\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"]"""
+Line 31: Expected valid value to be accepted, got ["Value should be one of: \\"foo\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"]
+Line 32: Expected valid value to be accepted, got ["Value should be one of: \\"foo\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]","Value should be one of: \\"foo\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"]"""
 notes = "Reads the shape as sealed: the trailing `...` is dropped and the undeclared keys are reported as `Value should be one of: \"foo\"`. The declared key and its type are still enforced, so the shape is modeled and only the opt-out is missing. The one analyzer in this matrix that rejects the extra key."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "3/3"
 unrecognized_lines = []
-false_positive_lines = [31, 32]
+false_positive_lines = []
+over_rejected_lines = [31, 32]

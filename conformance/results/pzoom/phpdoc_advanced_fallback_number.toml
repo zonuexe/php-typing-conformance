@@ -10,13 +10,14 @@ phpdoc_advanced_fallback_number.php:37: Argument 1 of acceptsNumber expects Conf
 phpdoc_advanced_fallback_number.php:40: Argument 1 of acceptsNumber expects Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number, but '1' provided [InvalidArgument]
 phpdoc_advanced_fallback_number.php:43: Argument 1 of acceptsNumber expects Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number, but true provided [InvalidArgument]"""
 errors_diff = """
-Line 23: Unexpected errors ["The type 1|1.5 does not match the declared return type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number [InvalidReturnStatement]"]
-Line 36: Unexpected errors ["Argument 1 of acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number, but 1 provided [InvalidArgument]"]
-Line 37: Unexpected errors ["Argument 1 of acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number, but 1.5 provided [InvalidArgument]"]"""
+Line 23: Expected valid value to be accepted, got ["The type 1|1.5 does not match the declared return type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number [InvalidReturnStatement]"]
+Line 36: Expected valid value to be accepted, got ["Argument 1 of acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number, but 1 provided [InvalidArgument]"]
+Line 37: Expected valid value to be accepted, got ["Argument 1 of acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number, but 1.5 provided [InvalidArgument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [19, 29]
-false_positive_lines = [23, 36, 37]
+false_positive_lines = []
+over_rejected_lines = [23, 36, 37]

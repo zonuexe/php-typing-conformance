@@ -45,13 +45,13 @@ function takesString(string $value): void
  */
 function lookUp(string $type = 'immutable'): int|string // T: ID_TABLE[T]
 {
-    return ID_TABLE[$type];
+    return ID_TABLE[$type]; // V
 }
 
 // Each key resolves to its own value, the default argument included.
-takesInt(lookUp());
-takesInt(lookUp('immutable'));
-takesString(lookUp('mutable'));
+takesInt(lookUp()); // V
+takesInt(lookUp('immutable')); // V
+takesString(lookUp('mutable')); // V
 
 // Reading the table as a whole instead of per key would let these through.
 takesString(lookUp('immutable')); // E?: 'immutable' maps to int, not string

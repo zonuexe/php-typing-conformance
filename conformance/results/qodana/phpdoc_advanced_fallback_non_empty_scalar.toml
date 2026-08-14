@@ -16,15 +16,16 @@ phpdoc_advanced_fallback_non_empty_scalar.php:56: Parameter '''' type is not com
 phpdoc_advanced_fallback_non_empty_scalar.php:57: Parameter 'false' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_non_empty_scalar.php:60: Parameter ''0'' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 35: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 48: Unexpected errors ["Parameter '1' type is not compatible with declaration [PhpParamsInspection]"]
-Line 49: Unexpected errors ["Parameter '1.5' type is not compatible with declaration [PhpParamsInspection]"]
-Line 50: Unexpected errors ["Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]"]
-Line 51: Unexpected errors ["Parameter 'true' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 35: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 48: Expected valid value to be accepted, got ["Parameter '1' type is not compatible with declaration [PhpParamsInspection]"]
+Line 49: Expected valid value to be accepted, got ["Parameter '1.5' type is not compatible with declaration [PhpParamsInspection]"]
+Line 50: Expected valid value to be accepted, got ["Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 51: Expected valid value to be accepted, got ["Parameter 'true' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "5/5"
 unrecognized_lines = [29, 39]
-false_positive_lines = [35, 48, 49, 50, 51]
+false_positive_lines = []
+over_rejected_lines = [48, 49, 50, 51]

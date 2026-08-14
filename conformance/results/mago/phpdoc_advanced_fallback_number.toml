@@ -10,13 +10,14 @@ phpdoc_advanced_fallback_number.php:37: Invalid argument type for argument #1 of
 phpdoc_advanced_fallback_number.php:40: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\acceptsNumber`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number)`, but found `string('1')`. [invalid-argument]
 phpdoc_advanced_fallback_number.php:43: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\acceptsNumber`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number)`, but found `true`. [invalid-argument]"""
 errors_diff = """
-Line 23: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\returnsNumber`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number)`, but found `float(1.5)|int(1)`. [invalid-return-statement]"]
-Line 36: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\acceptsNumber`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number)`, but found `int(1)`. [invalid-argument]"]
-Line 37: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\acceptsNumber`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number)`, but found `float(1.5)`. [invalid-argument]"]"""
+Line 23: Expected valid value to be accepted, got ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\returnsNumber`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number)`, but found `float(1.5)|int(1)`. [invalid-return-statement]"]
+Line 36: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\acceptsNumber`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number)`, but found `int(1)`. [invalid-argument]"]
+Line 37: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\acceptsNumber`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number)`, but found `float(1.5)`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [19, 27]
-false_positive_lines = [23, 36, 37]
+false_positive_lines = []
+over_rejected_lines = [23, 36, 37]

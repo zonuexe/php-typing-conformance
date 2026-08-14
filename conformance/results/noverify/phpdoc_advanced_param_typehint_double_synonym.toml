@@ -7,8 +7,9 @@ phpdoc_advanced_param_typehint_double_synonym.php:31: Use float type instead of 
 errors_diff = "Line 12: Unexpected errors [\"Use float type instead of double [invalidDocblockType]\"]"
 notes = "NoVerify flags `double` as an invalid docblock type (suggests `float`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `double` as `float` and reject the string argument."
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "none"
 enforced_lines = "0/1"
-unrecognized_lines = [31]
+unrecognized_lines = []
 false_positive_lines = [12]
+over_rejected_lines = []

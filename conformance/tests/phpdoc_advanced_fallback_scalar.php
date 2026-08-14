@@ -23,7 +23,7 @@ function returnsScalar() // T: scalar
 {
     $values = [1, 1.5, 'x', true];
 
-    return $values[\array_rand($values)];
+    return $values[\array_rand($values)]; // V
 }
 
 /**
@@ -35,13 +35,13 @@ function acceptsScalar($value): void // T: scalar
 
 // The spelling round-trips: what `@return scalar` produces is what `@param
 // scalar` accepts.
-acceptsScalar(returnsScalar());
+acceptsScalar(returnsScalar()); // V
 
 // All four members satisfy the parameter.
-acceptsScalar(1);
-acceptsScalar(1.5);
-acceptsScalar('x');
-acceptsScalar(true);
+acceptsScalar(1); // V
+acceptsScalar(1.5); // V
+acceptsScalar('x'); // V
+acceptsScalar(true); // V
 
 // Everything else is outside the union.
 acceptsScalar([1, 2]); // E?: an array is not a scalar

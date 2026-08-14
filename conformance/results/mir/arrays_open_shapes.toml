@@ -1,9 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 5
 output = """
 arrays_open_shapes.php:33: InvalidArgument: Argument $options of inspectOpenArrayShape() expects 'array{'name': string}', got 'array{'extra': 123}' [MIR0201]
 arrays_open_shapes.php:51: InvalidArgument: Argument $values of inspectOpenListShape() expects 'array{0: string, 1: int}', got 'array{0: 1, 1: "demo", 2: true}' [MIR0201]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/5"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

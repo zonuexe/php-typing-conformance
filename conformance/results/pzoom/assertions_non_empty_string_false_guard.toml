@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 7
+expected_diagnostic_count = 3
 output = """
 assertions_non_empty_string_false_guard.php:37: Argument 1 of takesNonFalsyString expects non-falsy-string, but parent type non-empty-string provided [ArgumentTypeCoercion]
 assertions_non_empty_string_false_guard.php:41: Argument 1 of takesNonEmptyString cannot be false, non-empty-string value expected [InvalidArgument]
@@ -8,3 +8,9 @@ assertions_non_empty_string_false_guard.php:42: Argument 1 of takesNonFalsyStrin
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

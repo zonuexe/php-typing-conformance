@@ -7,8 +7,8 @@ phpdoc_advanced_fallback_open_resource.php:31: potentially not safe call in func
 phpdoc_advanced_fallback_open_resource.php:38: potentially not safe call in function fclose signature of param stream [notSafeCall]
 phpdoc_advanced_fallback_open_resource.php:41: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\acceptsOpenResource signature of param value [notSafeCall]"""
 errors_diff = """
+Line 31: Expected valid value to be accepted, got ["potentially not safe call in function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackOpenResource\\\\acceptsOpenResource signature of param value [notSafeCall]"]
 Line 12: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackOpenResource\\\\open-resource does not exist [undefinedClass]"]
-Line 31: Unexpected errors ["potentially not safe call in function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackOpenResource\\\\acceptsOpenResource signature of param value [notSafeCall]"]
 Line 38: Unexpected errors ["potentially not safe call in function fclose signature of param stream [notSafeCall]"]"""
 notes = ""
 ignore_errors = []
@@ -16,4 +16,5 @@ recognition = "recognized"
 enforcement = "partial"
 enforced_lines = "1/2"
 unrecognized_lines = []
-false_positive_lines = [12, 31, 38]
+false_positive_lines = [12, 38]
+over_rejected_lines = []

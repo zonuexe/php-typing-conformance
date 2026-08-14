@@ -7,13 +7,14 @@ phpdoc_advanced_fallback_closed_resource.php:29: potentially not safe call in fu
 phpdoc_advanced_fallback_closed_resource.php:32: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\acceptsClosedResource signature of param value [notSafeCall]
 phpdoc_advanced_fallback_closed_resource.php:41: potentially not safe call in function Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\acceptsClosedResource signature of param value [notSafeCall]"""
 errors_diff = """
+Line 32: Expected valid value to be accepted, got ["potentially not safe call in function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackClosedResource\\\\acceptsClosedResource signature of param value [notSafeCall]"]
 Line 12: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackClosedResource\\\\closed-resource does not exist [undefinedClass]"]
-Line 29: Unexpected errors ["potentially not safe call in function fclose signature of param stream [notSafeCall]"]
-Line 32: Unexpected errors ["potentially not safe call in function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackClosedResource\\\\acceptsClosedResource signature of param value [notSafeCall]"]"""
+Line 29: Unexpected errors ["potentially not safe call in function fclose signature of param stream [notSafeCall]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"
 enforced_lines = "1/2"
 unrecognized_lines = []
-false_positive_lines = [12, 29, 32]
+false_positive_lines = [12, 29]
+over_rejected_lines = []

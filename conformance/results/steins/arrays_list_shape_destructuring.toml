@@ -1,7 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 8
 output = "arrays_list_shape_destructuring.php:54: argument [true, 1.5, 2, 'x'] to inspectListShape() violates declared @param list{bool, float, string, int} $list — declared contract violation [phpdoc.param-mismatch]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/8"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

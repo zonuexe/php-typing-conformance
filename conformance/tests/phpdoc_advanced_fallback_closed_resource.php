@@ -29,7 +29,7 @@ $closed = \fopen('php://memory', 'r');
 \fclose($closed);
 
 // A closed handle satisfies the parameter.
-acceptsClosedResource($closed);
+acceptsClosedResource($closed); // V
 
 // A non-resource does not.
 acceptsClosedResource('not a resource'); // E?: a string is not a closed-resource

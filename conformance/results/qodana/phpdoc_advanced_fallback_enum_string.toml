@@ -9,12 +9,13 @@ phpdoc_advanced_fallback_enum_string.php:41: Undefined class 'enum-string' [PhpU
 phpdoc_advanced_fallback_enum_string.php:51: Parameter 'SomeEnum::class' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_enum_string.php:54: Parameter 'SomeClass::class' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 33: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 51: Unexpected errors ["Parameter 'SomeEnum::class' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 33: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 51: Expected valid value to be accepted, got ["Parameter 'SomeEnum::class' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [29, 41]
-false_positive_lines = [33, 51]
+false_positive_lines = []
+over_rejected_lines = [51]

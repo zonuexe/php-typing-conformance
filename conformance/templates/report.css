@@ -283,6 +283,7 @@ tr[id]:target {
 .fail { background: #f9d6d6; }
 .by-design { background: #f6e7c8; }
 .partial { background: #fdf0cf; }
+.incidental { background: #fde8d4; color: #8a4b12; }
 .reported { background: #dbe7fb; }
 .unknown { background: #f0f0f0; }
 

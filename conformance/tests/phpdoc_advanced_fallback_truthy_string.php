@@ -23,7 +23,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackTruthyString;
  */
 function returnsTruthyString() // T: truthy-string
 {
-    return 'x';
+    return 'x'; // V
 }
 
 function acceptsString(string $value): void
@@ -38,10 +38,10 @@ function acceptsTruthyString($value): void // T: truthy-string
 }
 
 // A `truthy-string` value always satisfies a native `string` parameter.
-acceptsString(returnsTruthyString());
+acceptsString(returnsTruthyString()); // V
 
 // A string that passes a boolean test satisfies the parameter.
-acceptsTruthyString('x');
+acceptsTruthyString('x'); // V
 
 // The empty string is falsy.
 acceptsTruthyString(''); // E?: '' is not a truthy-string

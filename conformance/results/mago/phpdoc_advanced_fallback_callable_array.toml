@@ -10,13 +10,14 @@ phpdoc_advanced_fallback_callable_array.php:53: Invalid argument type for argume
 phpdoc_advanced_fallback_callable_array.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array)`, but found `list{Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\Greeter, string('missing')}`. [invalid-argument]
 phpdoc_advanced_fallback_callable_array.php:59: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array)`, but found `list{int(1), int(2)}`. [invalid-argument]"""
 errors_diff = """
-Line 32: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\returnsCallableArray`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array)`, but found `list{Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\Greeter, string('greet')}`. [invalid-return-statement]"]
-Line 50: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsArray`: expected `array<array-key, mixed>`, but found `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array)`. [invalid-argument]"]
-Line 53: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsCallableArray`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array)`, but found `list{Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\Greeter, string('greet')}`. [invalid-argument]"]"""
+Line 32: Expected valid value to be accepted, got ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\returnsCallableArray`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array)`, but found `list{Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\Greeter, string('greet')}`. [invalid-return-statement]"]
+Line 50: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsArray`: expected `array<array-key, mixed>`, but found `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array)`. [invalid-argument]"]
+Line 53: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsCallableArray`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array)`, but found `list{Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\Greeter, string('greet')}`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [28, 43]
-false_positive_lines = [32, 50, 53]
+false_positive_lines = []
+over_rejected_lines = [32, 50, 53]

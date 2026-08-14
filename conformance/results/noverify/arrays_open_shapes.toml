@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 5
 output = """
 arrays_open_shapes.php:26: param $options miss matched with phpdoc type <<array{name: string, ...}>> [funcParamTypeMissMatch]
 arrays_open_shapes.php:28: potential null array access in parameter value of function Conformance\\Tests\\ArraysOpenShapes\\takesString [notNullSafetyFunctionArgumentArrayDimFetch]
@@ -10,3 +10,9 @@ arrays_open_shapes.php:46: potential null array access in parameter value of fun
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "3/5"
+unrecognized_lines = [26, 38]
+false_positive_lines = []
+over_rejected_lines = []

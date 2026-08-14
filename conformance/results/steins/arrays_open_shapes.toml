@@ -1,9 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 5
 output = """
 arrays_open_shapes.php:33: argument ['extra' => 123] to inspectOpenArrayShape() violates declared @param array{name: string, ...} $options — declared contract violation [phpdoc.param-mismatch]
 arrays_open_shapes.php:51: argument [1, 'demo', true] to inspectOpenListShape() violates declared @param list{string, int, ...} $values — declared contract violation [phpdoc.param-mismatch]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/5"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

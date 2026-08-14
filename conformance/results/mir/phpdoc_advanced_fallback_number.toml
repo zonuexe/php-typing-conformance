@@ -7,12 +7,13 @@ phpdoc_advanced_fallback_number.php:37: InvalidArgument: Argument $value of acce
 phpdoc_advanced_fallback_number.php:40: InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number', got '"1"' [MIR0201]
 phpdoc_advanced_fallback_number.php:43: InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number', got 'true' [MIR0201]"""
 errors_diff = """
-Line 36: Unexpected errors ["InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number', got '1' [MIR0201]"]
-Line 37: Unexpected errors ["InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number', got '1.5' [MIR0201]"]"""
+Line 36: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number', got '1' [MIR0201]"]
+Line 37: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number', got '1.5' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [36, 37]
+false_positive_lines = []
+over_rejected_lines = [36, 37]

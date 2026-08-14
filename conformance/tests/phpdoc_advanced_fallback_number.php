@@ -20,7 +20,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNumber;
  */
 function returnsNumber() // T: number
 {
-    return \random_int(0, 1) === 1 ? 1 : 1.5;
+    return \random_int(0, 1) === 1 ? 1 : 1.5; // V
 }
 
 /**
@@ -30,11 +30,11 @@ function acceptsNumber($value): void // T: number
 {
 }
 
-acceptsNumber(returnsNumber());
+acceptsNumber(returnsNumber()); // V
 
 // Both members satisfy the parameter.
-acceptsNumber(1);
-acceptsNumber(1.5);
+acceptsNumber(1); // V
+acceptsNumber(1.5); // V
 
 // A numeric string does not: `number` is narrower than `numeric`.
 acceptsNumber('1'); // E?: a numeric string is not a number (int|float)

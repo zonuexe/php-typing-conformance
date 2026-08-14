@@ -29,7 +29,7 @@ final class Greeter
  */
 function returnsCallableArray() // T: callable-array
 {
-    return [new Greeter(), 'greet'];
+    return [new Greeter(), 'greet']; // V
 }
 
 /**
@@ -47,10 +47,10 @@ function acceptsCallableArray($value): void // T: callable-array
 }
 
 // A `callable-array` value always satisfies a native `array` parameter.
-acceptsArray(returnsCallableArray());
+acceptsArray(returnsCallableArray()); // V
 
 // The object/method pair satisfies the parameter.
-acceptsCallableArray([new Greeter(), 'greet']);
+acceptsCallableArray([new Greeter(), 'greet']); // V
 
 // A pair naming a method that does not exist does not.
 acceptsCallableArray([new Greeter(), 'missing']); // E?: the method does not exist, so this is not a callable-array

@@ -10,14 +10,15 @@ phpdoc_advanced_fallback_callable_object.php:53: Possible argument type mismatch
 phpdoc_advanced_fallback_callable_object.php:54: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\acceptsCallableObject`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\callable-object)`, but found `(closure(): int(1))`. [invalid-argument]
 phpdoc_advanced_fallback_callable_object.php:57: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\acceptsCallableObject`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\callable-object)`, but possibly received `Conformance\\Tests\\PhpdocAdvancedFallbackCallableObject\\NotInvokable`. [possibly-invalid-argument]"""
 errors_diff = """
-Line 35: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\returnsCallableObject`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object)`, but found `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\Invokable`. [invalid-return-statement]"]
-Line 50: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsObject`: expected `object`, but possibly received `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object)`. [possibly-invalid-argument]"]
-Line 53: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsCallableObject`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object)`, but possibly received `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\Invokable`. [possibly-invalid-argument]"]
-Line 54: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsCallableObject`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object)`, but found `(closure(): int(1))`. [invalid-argument]"]"""
+Line 35: Expected valid value to be accepted, got ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\returnsCallableObject`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object)`, but found `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\Invokable`. [invalid-return-statement]"]
+Line 50: Expected valid value to be accepted, got ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsObject`: expected `object`, but possibly received `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object)`. [possibly-invalid-argument]"]
+Line 53: Expected valid value to be accepted, got ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsCallableObject`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object)`, but possibly received `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\Invokable`. [possibly-invalid-argument]"]
+Line 54: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\acceptsCallableObject`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableObject\\\\callable-object)`, but found `(closure(): int(1))`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [31, 43]
-false_positive_lines = [35, 50, 53, 54]
+false_positive_lines = []
+over_rejected_lines = [35, 54]

@@ -10,13 +10,14 @@ phpdoc_advanced_fallback_static_closure.php:42: Invalid argument type for argume
 phpdoc_advanced_fallback_static_closure.php:45: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\static-closure)`, but found `(closure(): int(1))`. [invalid-argument]
 phpdoc_advanced_fallback_static_closure.php:48: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\static-closure)`, but found `string('strlen')`. [invalid-argument]"""
 errors_diff = """
-Line 24: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\returnsStaticClosure`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure)`, but found `(closure(): int(1))`. [invalid-return-statement]"]
-Line 39: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\acceptsClosure`: expected `(closure(...mixed=): mixed)`, but found `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure)`. [invalid-argument]"]
-Line 42: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\acceptsStaticClosure`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure)`, but found `(closure(): int(1))`. [invalid-argument]"]"""
+Line 24: Expected valid value to be accepted, got ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\returnsStaticClosure`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure)`, but found `(closure(): int(1))`. [invalid-return-statement]"]
+Line 39: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\acceptsClosure`: expected `(closure(...mixed=): mixed)`, but found `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure)`. [invalid-argument]"]
+Line 42: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\acceptsStaticClosure`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure)`, but found `(closure(): int(1))`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [20, 32]
-false_positive_lines = [24, 39, 42]
+false_positive_lines = []
+over_rejected_lines = [24, 39, 42]

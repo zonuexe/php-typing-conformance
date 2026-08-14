@@ -7,13 +7,14 @@ phpdoc_advanced_fallback_key_of_template.php:56: Argument 1 ($value) expects str
 phpdoc_advanced_fallback_key_of_template.php:60: Argument 1 ($flag) expects 'debug'|'verbose', got key-of<array> [type_mismatch_argument]
 phpdoc_advanced_fallback_key_of_template.php:63: Argument 1 ($value) expects int, got key-of<array> [type_mismatch_argument]"""
 errors_diff = """
-Line 34: Unexpected errors ["Return type array-key is incompatible with declared return type key-of<T> [type_mismatch_return]"]
-Line 56: Unexpected errors ["Argument 1 ($value) expects string, got key-of<array> [type_mismatch_argument]"]
-Line 60: Unexpected errors ["Argument 1 ($flag) expects 'debug'|'verbose', got key-of<array> [type_mismatch_argument]"]"""
+Line 34: Expected valid value to be accepted, got ["Return type array-key is incompatible with declared return type key-of<T> [type_mismatch_return]"]
+Line 56: Expected valid value to be accepted, got ["Argument 1 ($value) expects string, got key-of<array> [type_mismatch_argument]"]
+Line 60: Expected valid value to be accepted, got ["Argument 1 ($flag) expects 'debug'|'verbose', got key-of<array> [type_mismatch_argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [34, 56, 60]
+false_positive_lines = []
+over_rejected_lines = [34, 56, 60]

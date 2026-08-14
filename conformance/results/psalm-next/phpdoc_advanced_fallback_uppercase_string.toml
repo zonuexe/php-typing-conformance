@@ -7,11 +7,12 @@ phpdoc_advanced_fallback_uppercase_string.php:23: Method Conformance\\Tests\\Php
 phpdoc_advanced_fallback_uppercase_string.php:33: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackUppercaseString\\uppercase-string in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackUppercaseString\\acceptsUppercaseString [InvalidDocblock]
 phpdoc_advanced_fallback_uppercase_string.php:35: Parameter $value has no provided type [MissingParamType]
 phpdoc_advanced_fallback_uppercase_string.php:40: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackUppercaseString\\acceptsString cannot be mixed, expecting string [MixedArgument]"""
-errors_diff = "Line 40: Unexpected errors [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackUppercaseString\\\\acceptsString cannot be mixed, expecting string [MixedArgument]\"]"
+errors_diff = "Line 40: Expected valid value to be accepted, got [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackUppercaseString\\\\acceptsString cannot be mixed, expecting string [MixedArgument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "none"
 enforced_lines = "0/2"
 unrecognized_lines = [23, 33, 35]
-false_positive_lines = [40]
+false_positive_lines = []
+over_rejected_lines = []

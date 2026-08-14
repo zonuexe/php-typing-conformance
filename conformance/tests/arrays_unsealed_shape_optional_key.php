@@ -25,15 +25,15 @@ function acceptsUnsealedShapeWithOptionalKey(array $shape): void // T: array{foo
 }
 
 // The optional key may be left out,
-acceptsUnsealedShapeWithOptionalKey(['foo' => 1]);
-acceptsUnsealedShapeWithOptionalKey(['foo' => 2, 'buz' => 42.0]);
+acceptsUnsealedShapeWithOptionalKey(['foo' => 1]); // V
+acceptsUnsealedShapeWithOptionalKey(['foo' => 2, 'buz' => 42.0]); // V
 
 // supplied,
-acceptsUnsealedShapeWithOptionalKey(['foo' => 1, 'bar' => true]);
-acceptsUnsealedShapeWithOptionalKey(['foo' => 1, 'bar' => false, 'buz' => 42.0]);
+acceptsUnsealedShapeWithOptionalKey(['foo' => 1, 'bar' => true]); // V
+acceptsUnsealedShapeWithOptionalKey(['foo' => 1, 'bar' => false, 'buz' => 42.0]); // V
 
 // or supplied out of declaration order.
-acceptsUnsealedShapeWithOptionalKey(['bar' => true, 'foo' => 1]);
+acceptsUnsealedShapeWithOptionalKey(['bar' => true, 'foo' => 1]); // V
 
 // Optional is not the same as unconstrained: when `bar` is there it is a bool,
 // and `...` does not take over the key the shape already spoke for.

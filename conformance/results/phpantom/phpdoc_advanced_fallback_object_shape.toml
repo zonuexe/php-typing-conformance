@@ -5,11 +5,12 @@ output = """
 phpdoc_advanced_fallback_object_shape.php:47: Argument 1 ($shape) expects object{foo: int}, got Conformance\\Tests\\PhpdocAdvancedFallbackObjectShape\\Reading [type_mismatch_argument]
 phpdoc_advanced_fallback_object_shape.php:51: Argument 1 ($shape) expects object{foo: int}, got Conformance\\Tests\\PhpdocAdvancedFallbackObjectShape\\Mistyped [type_mismatch_argument]
 phpdoc_advanced_fallback_object_shape.php:54: Argument 1 ($shape) expects object{foo: int}, got Conformance\\Tests\\PhpdocAdvancedFallbackObjectShape\\Unrelated [type_mismatch_argument]"""
-errors_diff = "Line 47: Unexpected errors [\"Argument 1 ($shape) expects object{foo: int}, got Conformance\\\\Tests\\\\PhpdocAdvancedFallbackObjectShape\\\\Reading [type_mismatch_argument]\"]"
+errors_diff = "Line 47: Expected valid value to be accepted, got [\"Argument 1 ($shape) expects object{foo: int}, got Conformance\\\\Tests\\\\PhpdocAdvancedFallbackObjectShape\\\\Reading [type_mismatch_argument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [47]
+false_positive_lines = []
+over_rejected_lines = [47]

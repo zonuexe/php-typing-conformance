@@ -23,7 +23,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNonDecimalIntString;
  */
 function returnsNonDecimalIntString() // T: non-decimal-int-string
 {
-    return '00';
+    return '00'; // V
 }
 
 function acceptsString(string $value): void
@@ -38,13 +38,13 @@ function acceptsNonDecimalIntString($value): void // T: non-decimal-int-string
 }
 
 // A `non-decimal-int-string` value always satisfies a native `string` parameter.
-acceptsString(returnsNonDecimalIntString());
+acceptsString(returnsNonDecimalIntString()); // V
 
 // Strings that keep their identity as an array key satisfy the parameter,
 // whether or not they look numeric.
-acceptsNonDecimalIntString('00');
-acceptsNonDecimalIntString('1.2');
-acceptsNonDecimalIntString('foo');
+acceptsNonDecimalIntString('00'); // V
+acceptsNonDecimalIntString('1.2'); // V
+acceptsNonDecimalIntString('foo'); // V
 
 // Canonical decimal notation is the one thing excluded: enforcing analyzers
 // reject it, others fall back to `string` and accept it.

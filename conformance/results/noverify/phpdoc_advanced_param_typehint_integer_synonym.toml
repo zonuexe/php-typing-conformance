@@ -7,8 +7,9 @@ phpdoc_advanced_param_typehint_integer_synonym.php:31: Use int type instead of i
 errors_diff = "Line 12: Unexpected errors [\"Use int type instead of integer [invalidDocblockType]\"]"
 notes = "NoVerify flags `integer` as an invalid docblock type (suggests `int`) instead of treating it as a synonym, so it does not enforce the type at the call site. The other analyzers accept `integer` as `int` and reject the string argument."
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "none"
 enforced_lines = "0/1"
-unrecognized_lines = [31]
+unrecognized_lines = []
 false_positive_lines = [12]
+over_rejected_lines = []

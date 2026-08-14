@@ -7,11 +7,12 @@ phpdoc_advanced_fallback_static_closure.php:22: Function Conformance\\Tests\\Php
 phpdoc_advanced_fallback_static_closure.php:34: Invalid docblock type [InvalidDocblock]
 phpdoc_advanced_fallback_static_closure.php:34: Argument $value of Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure does not have a type [MissingParamType]
 phpdoc_advanced_fallback_static_closure.php:39: Argument 1 of acceptsClosure cannot be mixed, expecting Closure [MixedArgument]"""
-errors_diff = "Line 39: Unexpected errors [\"Argument 1 of acceptsClosure cannot be mixed, expecting Closure [MixedArgument]\"]"
+errors_diff = "Line 39: Expected valid value to be accepted, got [\"Argument 1 of acceptsClosure cannot be mixed, expecting Closure [MixedArgument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "none"
 enforced_lines = "0/2"
 unrecognized_lines = [22, 34]
-false_positive_lines = [39]
+false_positive_lines = []
+over_rejected_lines = []

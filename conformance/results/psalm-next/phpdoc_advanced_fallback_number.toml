@@ -11,13 +11,14 @@ phpdoc_advanced_fallback_number.php:37: Argument 1 of Conformance\\Tests\\Phpdoc
 phpdoc_advanced_fallback_number.php:40: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\acceptsNumber expects Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number, but '1' provided [InvalidArgument]
 phpdoc_advanced_fallback_number.php:43: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\acceptsNumber expects Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number, but true provided [InvalidArgument]"""
 errors_diff = """
-Line 23: Unexpected errors ["The inferred type '1|float(1.5)' does not match the declared return type 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number' for Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\returnsNumber [InvalidReturnStatement]"]
-Line 36: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number, but 1 provided [InvalidArgument]"]
-Line 37: Unexpected errors ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number, but float(1.5) provided [InvalidArgument]"]"""
+Line 23: Expected valid value to be accepted, got ["The inferred type '1|float(1.5)' does not match the declared return type 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number' for Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\returnsNumber [InvalidReturnStatement]"]
+Line 36: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number, but 1 provided [InvalidArgument]"]
+Line 37: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\acceptsNumber expects Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number, but float(1.5) provided [InvalidArgument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [19, 27]
-false_positive_lines = [23, 36, 37]
+false_positive_lines = []
+over_rejected_lines = [23, 36, 37]

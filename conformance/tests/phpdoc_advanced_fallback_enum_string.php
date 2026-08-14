@@ -30,7 +30,7 @@ final class SomeClass
  */
 function returnsEnumString() // T: enum-string
 {
-    return SomeEnum::class;
+    return SomeEnum::class; // V
 }
 
 function acceptsString(string $value): void
@@ -45,10 +45,10 @@ function acceptsEnumString($value): void // T: enum-string
 }
 
 // An `enum-string` value always satisfies a native `string` parameter.
-acceptsString(returnsEnumString());
+acceptsString(returnsEnumString()); // V
 
 // The name of an enum satisfies the parameter.
-acceptsEnumString(SomeEnum::class);
+acceptsEnumString(SomeEnum::class); // V
 
 // The name of an ordinary class does not.
 acceptsEnumString(SomeClass::class); // E?: a class-string is not an enum-string

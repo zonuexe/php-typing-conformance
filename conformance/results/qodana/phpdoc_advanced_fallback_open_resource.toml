@@ -6,11 +6,12 @@ phpdoc_advanced_fallback_open_resource.php:21: Undefined class 'open-resource' [
 phpdoc_advanced_fallback_open_resource.php:31: Parameter '$handle' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_open_resource.php:34: Parameter ''not a resource'' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_open_resource.php:41: Parameter '$closed' type is not compatible with declaration [PhpParamsInspection]"""
-errors_diff = "Line 31: Unexpected errors [\"Parameter '$handle' type is not compatible with declaration [PhpParamsInspection]\"]"
+errors_diff = "Line 31: Expected valid value to be accepted, got [\"Parameter '$handle' type is not compatible with declaration [PhpParamsInspection]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [21]
-false_positive_lines = [31]
+false_positive_lines = []
+over_rejected_lines = [31]

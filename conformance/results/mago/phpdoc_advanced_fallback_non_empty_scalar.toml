@@ -15,15 +15,16 @@ phpdoc_advanced_fallback_non_empty_scalar.php:56: Invalid argument type for argu
 phpdoc_advanced_fallback_non_empty_scalar.php:57: Argument #1 of function `Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar` is `false`, but parameter type `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar)` does not accept it. [false-argument]
 phpdoc_advanced_fallback_non_empty_scalar.php:60: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\acceptsNonEmptyScalar`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar)`, but found `string('0')`. [invalid-argument]"""
 errors_diff = """
-Line 35: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\returnsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `float(1.5)|int(-1)|int(1)|string('x')|true`. [invalid-return-statement]"]
-Line 48: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `int(1)`. [invalid-argument]"]
-Line 49: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `float(1.5)`. [invalid-argument]"]
-Line 50: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `string('x')`. [invalid-argument]"]
-Line 51: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `true`. [invalid-argument]"]"""
+Line 35: Expected valid value to be accepted, got ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\returnsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `float(1.5)|int(-1)|int(1)|string('x')|true`. [invalid-return-statement]"]
+Line 48: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `int(1)`. [invalid-argument]"]
+Line 49: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `float(1.5)`. [invalid-argument]"]
+Line 50: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `string('x')`. [invalid-argument]"]
+Line 51: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\acceptsNonEmptyScalar`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar)`, but found `true`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "5/5"
 unrecognized_lines = [29, 39]
-false_positive_lines = [35, 48, 49, 50, 51]
+false_positive_lines = []
+over_rejected_lines = [35, 48, 49, 50, 51]

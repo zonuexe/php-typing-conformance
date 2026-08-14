@@ -31,10 +31,11 @@ across runs by `ResultRepository::save()`: `status` and `notes` (plus
 | `errors_diff` | derived | how the output differs from the expectations |
 | `expected_diagnostic_level` | derived, PHPStan only | lowest level whose *rules* report an expected diagnostic |
 | `recognition` | derived, `// T` tests | `recognized` / `unrecognized` |
-| `enforcement` | derived, `// T` tests | `enforced` / `partial` / `none` |
+| `enforcement` | derived, `// T` tests | `enforced` / `partial` / `none` / `no-probes` |
 | `enforced_lines` | derived, `// T` tests | `n/m` expected violation lines reported |
-| `unrecognized_lines` | derived, `// T` tests | `// T` lines the analyzer complained about |
+| `unrecognized_lines` | derived, `// T` tests | `// T` lines with a type-resolution failure |
 | `false_positive_lines` | derived, `// T` tests | reported lines that are neither expected nor marked |
+| `over_rejected_lines` | derived, `// T` tests | valid-control lines rejected with a type mismatch |
 | `status` | curated | `Falls back to X` or `By design` — see below |
 | `notes` | curated | free text, rendered as a hover card; links are linkified |
 

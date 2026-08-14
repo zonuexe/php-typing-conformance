@@ -7,12 +7,13 @@ phpdoc_advanced_fallback_scalar.php:30: Class or interface named \\Conformance\\
 phpdoc_advanced_fallback_scalar.php:44: potentially not safe access in parameter value of function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar [notSafeCall]
 phpdoc_advanced_fallback_scalar.php:49: null passed to non-nullable parameter value in function Conformance\\Tests\\PhpdocAdvancedFallbackScalar\\acceptsScalar [notNullSafetyFunctionArgumentConstFetch]"""
 errors_diff = """
-Line 12: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackScalar\\\\scalar does not exist [undefinedClass]"]
-Line 44: Unexpected errors ["potentially not safe access in parameter value of function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackScalar\\\\acceptsScalar [notSafeCall]"]"""
+Line 44: Expected valid value to be accepted, got ["potentially not safe access in parameter value of function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackScalar\\\\acceptsScalar [notSafeCall]"]
+Line 12: Unexpected errors ["Class or interface named \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackScalar\\\\scalar does not exist [undefinedClass]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "partial"
 enforced_lines = "1/3"
 unrecognized_lines = [30]
-false_positive_lines = [12, 44]
+false_positive_lines = [12]
+over_rejected_lines = []

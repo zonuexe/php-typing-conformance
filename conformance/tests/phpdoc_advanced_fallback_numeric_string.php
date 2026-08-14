@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNumericString;
  */
 function returnsNumericString() // T: numeric-string
 {
-    return '123';
+    return '123'; // V
 }
 
 function acceptsString(string $value): void
@@ -36,10 +36,10 @@ function acceptsNumericString($value): void // T: numeric-string
 }
 
 // A `numeric-string` value always satisfies a native `string` parameter.
-acceptsString(returnsNumericString());
+acceptsString(returnsNumericString()); // V
 
 // A literal numeric string satisfies the refined parameter.
-acceptsNumericString('123');
+acceptsNumericString('123'); // V
 
 // A non-numeric literal: enforcing analyzers reject it, others fall back to
 // `string` and accept it.

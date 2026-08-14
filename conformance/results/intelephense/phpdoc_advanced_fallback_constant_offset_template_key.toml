@@ -7,11 +7,12 @@ phpdoc_advanced_fallback_constant_offset_template_key.php:44: PHPDoc undefined t
 phpdoc_advanced_fallback_constant_offset_template_key.php:48: Expected type 'int|string'. Found 'mixed'. [P1006]
 phpdoc_advanced_fallback_constant_offset_template_key.php:57: Expected type 'string'. Found '1'. [P1006]
 phpdoc_advanced_fallback_constant_offset_template_key.php:58: Expected type 'int'. Found ''two''. [P1006]"""
-errors_diff = "Line 48: Unexpected errors [\"Expected type 'int|string'. Found 'mixed'. [P1006]\"]"
+errors_diff = "Line 48: Expected valid value to be accepted, got [\"Expected type 'int|string'. Found 'mixed'. [P1006]\"]"
 notes = "Resolves the offset per key at the call sites: `'immutable'` comes back as `1` and `'mutable'` as `'two'`, and the three correct calls pass untouched. What it reports is the type name -- `ID_TABLE` is an undefined PHPDoc type on the declaration -- and the value going to `mixed` inside the body. Apart from PHPStan the only analyzer here that answers the question itself correctly."
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [42, 44]
-false_positive_lines = [48]
+false_positive_lines = []
+over_rejected_lines = [48]

@@ -10,14 +10,15 @@ phpdoc_advanced_fallback_non_zero_int.php:43: Argument '1' passed to Conformance
 phpdoc_advanced_fallback_non_zero_int.php:44: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\acceptsNonZeroInt() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\non-zero-int, int given
 phpdoc_advanced_fallback_non_zero_int.php:47: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\acceptsNonZeroInt() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\non-zero-int, int given"""
 errors_diff = """
-Line 25: Unexpected errors ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\returnsNonZeroInt() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int, int returned"]
-Line 40: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\acceptsInt() is expected to be of type int, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int given"]
-Line 43: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\acceptsNonZeroInt() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int, int given"]
-Line 44: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\acceptsNonZeroInt() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int, int given"]"""
+Line 25: Expected valid value to be accepted, got ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\returnsNonZeroInt() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int, int returned"]
+Line 40: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\acceptsInt() is expected to be of type int, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int given"]
+Line 43: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\acceptsNonZeroInt() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int, int given"]
+Line 44: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\acceptsNonZeroInt() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int, int given"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [21, 33]
-false_positive_lines = [25, 40, 43, 44]
+false_positive_lines = []
+over_rejected_lines = []

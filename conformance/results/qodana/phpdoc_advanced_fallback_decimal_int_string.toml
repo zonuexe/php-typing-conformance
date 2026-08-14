@@ -12,13 +12,14 @@ phpdoc_advanced_fallback_decimal_int_string.php:50: Parameter ''007'' type is no
 phpdoc_advanced_fallback_decimal_int_string.php:51: Parameter ''+1'' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_decimal_int_string.php:54: Parameter ''abc'' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 27: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 45: Unexpected errors ["Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]"]
-Line 46: Unexpected errors ["Parameter ''-1'' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 27: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 45: Expected valid value to be accepted, got ["Parameter ''123'' type is not compatible with declaration [PhpParamsInspection]"]
+Line 46: Expected valid value to be accepted, got ["Parameter ''-1'' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "3/3"
 unrecognized_lines = [23, 35]
-false_positive_lines = [27, 45, 46]
+false_positive_lines = []
+over_rejected_lines = [45, 46]

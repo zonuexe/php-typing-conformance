@@ -27,7 +27,7 @@ $handle = \fopen('php://memory', 'r');
 \assert($handle !== false);
 
 // A stream handle satisfies the parameter.
-acceptsResource($handle);
+acceptsResource($handle); // V
 
 // Scalars and objects do not.
 acceptsResource(123); // E?: an int is not a resource

@@ -10,12 +10,13 @@ phpdoc_advanced_fallback_callable_array.php:53: Parameter '[new Greeter(), 'gree
 phpdoc_advanced_fallback_callable_array.php:56: Parameter '[new Greeter(), 'missing']' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_callable_array.php:59: Parameter '[1, 2]' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 32: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 53: Unexpected errors ["Parameter '[new Greeter(), 'greet']' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 32: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 53: Expected valid value to be accepted, got ["Parameter '[new Greeter(), 'greet']' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [28, 43]
-false_positive_lines = [32, 53]
+false_positive_lines = []
+over_rejected_lines = [53]

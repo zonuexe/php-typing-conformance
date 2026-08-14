@@ -5,11 +5,12 @@ output = """
 phpdoc_advanced_fallback_closed_resource.php:32: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\acceptsClosedResource`: expected `closed-resource`, but found `open-resource`. [invalid-argument]
 phpdoc_advanced_fallback_closed_resource.php:35: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\acceptsClosedResource`: expected `closed-resource`, but found `string('not a resource')`. [invalid-argument]
 phpdoc_advanced_fallback_closed_resource.php:41: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\acceptsClosedResource`: expected `closed-resource`, but found `open-resource`. [invalid-argument]"""
-errors_diff = "Line 32: Unexpected errors [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackClosedResource\\\\acceptsClosedResource`: expected `closed-resource`, but found `open-resource`. [invalid-argument]\"]"
+errors_diff = "Line 32: Expected valid value to be accepted, got [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackClosedResource\\\\acceptsClosedResource`: expected `closed-resource`, but found `open-resource`. [invalid-argument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [32]
+false_positive_lines = []
+over_rejected_lines = [32]

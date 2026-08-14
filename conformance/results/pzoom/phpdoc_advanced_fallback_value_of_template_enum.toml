@@ -7,13 +7,14 @@ phpdoc_advanced_fallback_value_of_template_enum.php:58: Argument 1 of acceptsStr
 phpdoc_advanced_fallback_value_of_template_enum.php:62: Argument 1 of acceptsHearts cannot be mixed, expecting 'hearts' [MixedArgument]
 phpdoc_advanced_fallback_value_of_template_enum.php:65: Argument 1 of acceptsInt cannot be mixed, expecting int [MixedArgument]"""
 errors_diff = """
-Line 39: Unexpected errors ["The type 'hearts'|'spades' does not match the declared return type value-of<T> [InvalidReturnStatement]"]
-Line 58: Unexpected errors ["Argument 1 of acceptsString cannot be mixed, expecting string [MixedArgument]"]
-Line 62: Unexpected errors ["Argument 1 of acceptsHearts cannot be mixed, expecting 'hearts' [MixedArgument]"]"""
+Line 39: Expected valid value to be accepted, got ["The type 'hearts'|'spades' does not match the declared return type value-of<T> [InvalidReturnStatement]"]
+Line 58: Expected valid value to be accepted, got ["Argument 1 of acceptsString cannot be mixed, expecting string [MixedArgument]"]
+Line 62: Expected valid value to be accepted, got ["Argument 1 of acceptsHearts cannot be mixed, expecting 'hearts' [MixedArgument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [39, 58, 62]
+false_positive_lines = []
+over_rejected_lines = [39]

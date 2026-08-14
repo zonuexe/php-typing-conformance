@@ -61,6 +61,7 @@ final readonly class ResultRecord
             );
             $payload['unrecognized_lines'] = $this->typeHandling->unrecognizedLines;
             $payload['false_positive_lines'] = $this->typeHandling->falsePositiveLines;
+            $payload['over_rejected_lines'] = $this->typeHandling->overRejectedLines;
         }
 
         return $payload;

@@ -281,13 +281,21 @@ Both facets are now derived by `ExpectationEvaluator` and stored per result:
 | `recognition` | `recognized` / `unrecognized` |
 | `enforcement` | `enforced` / `partial` / `none` / `no-probes` |
 | `enforced_lines` | `n/m` — expected violation lines actually reported |
-| `unrecognized_lines` | `// T` lines the analyzer complained about |
+| `unrecognized_lines` | `// T` lines with a type-resolution failure (not style / documented-vs-declared noise) |
 | `false_positive_lines` | reported lines that are neither expected nor marked |
+| `over_rejected_lines` | valid-control (`// V`) or unmarked-valid lines rejected with a type mismatch |
 
 `no-probes` is the case where the file carries no `// E` line at all, so
 enforcement was never put to the question; it renders as
 `Recognized (no probes)` rather than `Not enforced`, which would read as a miss.
 Prefer adding probes to leaving a `// T` test at `no-probes`.
+
+`over_rejected_lines` non-empty means the analyzer also rejected values the
+type admits. The matrix then says **Incidental**, not Enforced: hits on the
+`// E` lines are the wrong reason (class-name fallback, sealed where the test
+asked for unsealed, over-strict purity, …). Re-derive classifications from
+stored output with `php conformance/src/main.php --rescore` after changing
+the evaluator; that does not re-run the analyzers.
 
 Only the reason a *recognized* type goes unenforced stays hand-curated in
 `status`, because the harness cannot derive it:
@@ -303,8 +311,14 @@ Do not reintroduce `Full support` or `Not supported` as `status` values.
 `unrecognized` together with `enforced` is not a contradiction and not a bug in
 the harness. An analyzer that resolves `int-range<0, 255>` as a nonexistent
 class rejects *every* argument, valid ones included — so it hits the violating
-line for the wrong reason. The detail page labels that enforcement
-"incidental", and the valid call shows up under `false_positive_lines`.
+line for the wrong reason. The matrix says Unrecognized; the detail page
+labels the E-line hits incidental.
+
+The same incidental label is used when recognition succeeded but
+`over_rejected_lines` is non-empty (mir treating `number` as a class without
+complaining on the declaration, Qodana reading `...` as sealed, …). Mark
+valid calls with `// V` so that case is first-class rather than an unmarked
+false positive.
 
 ## Test Authoring Conventions
 
@@ -315,6 +329,9 @@ line for the wrong reason. The detail page labels that enforcement
 - Prefer required expectations (`// E`) for stable checker behavior and optional expectations (`// E?`) when a diagnostic is tool- or version-sensitive.
 - Use tool-specific expectations when only one analyzer should report a diagnostic, for example `// E<psalm>`.
 - Mark the declaration of any PHPDoc type spelling under test with `// T: <spelling>`, for example `function acceptsByte($value): void // T: int-range<0, 255>`. The marker turns the row into a recognition/enforcement row and stops "your dialect is unknown to me" diagnostics from counting as unexpected errors. It also covers the docblock directly above the declaration, since analyzers disagree about which of the two lines to blame.
+- Mark values the spelling *admits* with `// V` (valid control). Enforcement is genuine only when those lines stay silent and the `// E` lines fire. A type-rejection on a `// V` line is over-rejection — the matrix says Incidental, not Enforced. Do not use `// Q` for this: quiet probes *count* silence as honouring a suppress tag.
+- Do not put `// E?` on a declaration to mean "this spelling may not parse". That is recognition: use `// T`. An optional-only Pass/Fail row treats silence as Pass, which hides "the tool did nothing".
+- A tag whose honour signal is silence (narrowing, `@param-out`, `@not-deprecated`) needs `// Q` / `// Q?`, not `// E?`. `// E?` on the honour-is-silence line makes every outcome Pass.
 - Do not add `// T` to a test that is about *reporting* behaviour rather than spelling recognition — `phpdoc_advanced_param_typehint_nullable_mismatch` uses ordinary types and stays a Pass/Fail row.
 - An annotation tag under test is marked the same way, `// T: @phpstan-assert`. The facets read the same as for a type spelling: recognition is "does the analyzer accept the tag", enforcement is "does it act on what the tag claims". A tag whose effect is a *narrowing* has to be probed by something the narrowing makes impossible, since ignoring it is otherwise silent — see `phpdoc_advanced_vendor_prefixed_assert_phpstan`, where an `is_string()` check becomes always-false once the assertion is applied.
 - Tag opinionated/advisory tests (PHPStan strict-rules, deprecations, doc conventions — anything with no runtime-safety impact) with a `@conformance-kind style` line in the leading docblock. Untagged tests default to `soundness`. The HTML report splits these into two tables: a soundness matrix (Pass/Fail) and a style matrix that only shows whether each analyzer opts into reporting the rule.

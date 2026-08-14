@@ -31,7 +31,7 @@ final class SomeClass
  */
 function returnsTraitString() // T: trait-string
 {
-    return SomeTrait::class;
+    return SomeTrait::class; // V
 }
 
 function acceptsString(string $value): void
@@ -46,10 +46,10 @@ function acceptsTraitString($value): void // T: trait-string
 }
 
 // A `trait-string` value always satisfies a native `string` parameter.
-acceptsString(returnsTraitString());
+acceptsString(returnsTraitString()); // V
 
 // The name of a trait satisfies the parameter.
-acceptsTraitString(SomeTrait::class);
+acceptsTraitString(SomeTrait::class); // V
 
 // The name of a class that uses it does not.
 acceptsTraitString(SomeClass::class); // E?: a class-string is not a trait-string

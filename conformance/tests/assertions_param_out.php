@@ -22,7 +22,7 @@ namespace Conformance\Tests\AssertionsParamOut;
  * @psalm-param-out string $value
  * @phpstan-param-out string $value
  */
-function assignString(?string &$value): void
+function assignString(?string &$value): void // T: @param-out
 {
     $value = 'assigned';
 }
@@ -36,8 +36,8 @@ function example(): void
     $value = null;
     assignString($value);
 
-    // After @param-out string, $value should be string for supporting tools.
-    // Tools that ignore the annotation keep null|string (or null) and may
-    // still accept via loose nullability — optional captures either outcome.
-    takesString($value); // E?: tools that ignore @param-out may still see null
+    // After @param-out string, $value is string, so this must be silent.
+    // A diagnostic here means the tag was ignored (or the tool never flags
+    // null for string). Silence is the honour signal, not a report.
+    takesString($value); // Q?: after @param-out string, $value is string
 }

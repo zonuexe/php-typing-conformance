@@ -10,13 +10,14 @@ phpdoc_advanced_fallback_callable_array.php:53: Argument '1' passed to Conforman
 phpdoc_advanced_fallback_callable_array.php:56: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array, array given
 phpdoc_advanced_fallback_callable_array.php:59: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\callable-array, array given"""
 errors_diff = """
-Line 32: Unexpected errors ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\returnsCallableArray() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array, array returned"]
-Line 50: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsArray() is expected to be of type array, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array given"]
-Line 53: Unexpected errors ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsCallableArray() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array, array given"]"""
+Line 32: Expected valid value to be accepted, got ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\returnsCallableArray() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array, array returned"]
+Line 50: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsArray() is expected to be of type array, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array given"]
+Line 53: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\acceptsCallableArray() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackCallableArray\\\\callable-array, array given"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [28, 43]
-false_positive_lines = [32, 50, 53]
+false_positive_lines = []
+over_rejected_lines = []

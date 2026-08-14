@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackFalse;
  */
 function returnsFalse() // T: false
 {
-    return false;
+    return false; // V
 }
 
 function acceptsBool(bool $value): void
@@ -36,10 +36,10 @@ function acceptsFalse($value): void // T: false
 }
 
 // A `false` value always satisfies a native `bool` parameter.
-acceptsBool(returnsFalse());
+acceptsBool(returnsFalse()); // V
 
 // The literal satisfies the parameter.
-acceptsFalse(false);
+acceptsFalse(false); // V
 
 // The opposite literal does not.
 acceptsFalse(true); // E?: true is not the literal type false

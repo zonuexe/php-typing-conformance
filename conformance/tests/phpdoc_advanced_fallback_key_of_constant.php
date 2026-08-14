@@ -28,7 +28,7 @@ final class Config
  */
 function returnsConfigKey() // T: key-of<Config::MAP>
 {
-    return \random_int(0, 1) === 1 ? 'debug' : 'verbose';
+    return \random_int(0, 1) === 1 ? 'debug' : 'verbose'; // V
 }
 
 function acceptsString(string $value): void
@@ -43,11 +43,11 @@ function acceptsConfigKey($key): void // T: key-of<Config::MAP>
 }
 
 // Every key of the constant is a string.
-acceptsString(returnsConfigKey());
+acceptsString(returnsConfigKey()); // V
 
 // Both keys of the constant satisfy the parameter.
-acceptsConfigKey('debug');
-acceptsConfigKey('verbose');
+acceptsConfigKey('debug'); // V
+acceptsConfigKey('verbose'); // V
 
 // A string that is not one of them does not.
 acceptsConfigKey('missing'); // E?: 'missing' is not a key of Config::MAP

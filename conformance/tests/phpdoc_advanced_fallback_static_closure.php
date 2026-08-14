@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackStaticClosure;
  */
 function returnsStaticClosure() // T: static-closure
 {
-    return static fn (): int => 1;
+    return static fn (): int => 1; // V
 }
 
 function acceptsClosure(\Closure $value): void
@@ -36,10 +36,10 @@ function acceptsStaticClosure($value): void // T: static-closure
 }
 
 // A `static-closure` value always satisfies a native `Closure` parameter.
-acceptsClosure(returnsStaticClosure());
+acceptsClosure(returnsStaticClosure()); // V
 
 // A static closure satisfies the parameter.
-acceptsStaticClosure(static fn (): int => 1);
+acceptsStaticClosure(static fn (): int => 1); // V
 
 // A closure without the keyword does not.
 acceptsStaticClosure(fn (): int => 1); // E?: a non-static closure is not a static-closure

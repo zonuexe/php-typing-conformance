@@ -5,11 +5,12 @@ output = """
 phpdoc_advanced_fallback_static_pure_closure.php:47: InvalidArgument: Argument $value of acceptsStaticPureClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure', got 'Closure(int): int' [MIR0201]
 phpdoc_advanced_fallback_static_pure_closure.php:50: InvalidArgument: Argument $value of acceptsStaticPureClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure', got 'Closure(int): int' [MIR0201]
 phpdoc_advanced_fallback_static_pure_closure.php:56: InvalidArgument: Argument $value of acceptsStaticPureClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure', got 'Closure(): void' [MIR0201]"""
-errors_diff = "Line 47: Unexpected errors [\"InvalidArgument: Argument $value of acceptsStaticPureClosure() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\static-pure-closure', got 'Closure(int): int' [MIR0201]\"]"
+errors_diff = "Line 47: Expected valid value to be accepted, got [\"InvalidArgument: Argument $value of acceptsStaticPureClosure() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\static-pure-closure', got 'Closure(int): int' [MIR0201]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [47]
+false_positive_lines = []
+over_rejected_lines = [47]

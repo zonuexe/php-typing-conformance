@@ -7,11 +7,12 @@ phpdoc_advanced_fallback_numeric_string.php:32: Saw a token Phan may have failed
 phpdoc_advanced_fallback_numeric_string.php:34: Parameter $value has undeclared type \\Conformance\\Tests\\PhpdocAdvancedFallbackNumericString\\numeric [PhanUndeclaredTypeParameter]
 phpdoc_advanced_fallback_numeric_string.php:42: Argument 1 ($value) is '123' of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackNumericString\\acceptsNumericString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackNumericString\\numeric (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_numeric_string.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
 phpdoc_advanced_fallback_numeric_string.php:46: Argument 1 ($value) is 'not numeric' of type string but \\Conformance\\Tests\\PhpdocAdvancedFallbackNumericString\\acceptsNumericString() takes \\Conformance\\Tests\\PhpdocAdvancedFallbackNumericString\\numeric (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_numeric_string.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
-errors_diff = "Line 42: Unexpected errors [\"Argument 1 ($value) is '123' of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumericString\\\\acceptsNumericString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumericString\\\\numeric (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_numeric_string.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]\"]"
+errors_diff = "Line 42: Expected valid value to be accepted, got [\"Argument 1 ($value) is '123' of type string but \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumericString\\\\acceptsNumericString() takes \\\\Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumericString\\\\numeric (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_fallback_numeric_string.php:34 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]\"]"
 notes = "Phan cannot parse the hyphenated `numeric-string` pseudo-type and reports an annotation-extraction error instead of checking the argument."
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [32, 34]
-false_positive_lines = [42]
+false_positive_lines = []
+over_rejected_lines = [42]

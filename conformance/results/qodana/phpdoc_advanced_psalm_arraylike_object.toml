@@ -17,3 +17,4 @@ enforcement = "partial"
 enforced_lines = "2/3"
 unrecognized_lines = [23, 40]
 false_positive_lines = [30, 51]
+over_rejected_lines = [30, 51]

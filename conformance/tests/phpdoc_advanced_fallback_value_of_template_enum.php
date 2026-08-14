@@ -36,7 +36,7 @@ function backingValue(Suit $case) // T: value-of<T>
     // A tool can evaluate the projection at call sites and still be unable to
     // prove this body produces value-of<T>; that limitation surfaces as a
     // false positive here, not as an expectation of the test.
-    return $case->value;
+    return $case->value; // V
 }
 
 function acceptsString(string $value): void
@@ -55,11 +55,11 @@ function acceptsHearts(string $value): void
 }
 
 // The backing value of any Suit case is a string.
-acceptsString(backingValue(Suit::Hearts));
+acceptsString(backingValue(Suit::Hearts)); // V
 
 // With T inferred as the single case, the projection is that case's literal
 // backing value: a tool that only reaches the bound reports a false positive.
-acceptsHearts(backingValue(Suit::Hearts));
+acceptsHearts(backingValue(Suit::Hearts)); // V
 
 // The backing values of Suit are strings, never ints.
 acceptsInt(backingValue(Suit::Spades)); // E?: Suit backs its cases with strings, not ints

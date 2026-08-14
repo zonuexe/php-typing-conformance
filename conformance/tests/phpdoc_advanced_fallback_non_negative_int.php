@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNonNegativeInt;
  */
 function returnsNonNegativeInt() // T: non-negative-int
 {
-    return 5;
+    return 5; // V
 }
 
 function acceptsInt(int $value): void
@@ -36,12 +36,12 @@ function acceptsNonNegativeInt($value): void // T: non-negative-int
 }
 
 // A `non-negative-int` value always satisfies a native `int` parameter.
-acceptsInt(returnsNonNegativeInt());
+acceptsInt(returnsNonNegativeInt()); // V
 
 // Zero is inside the range — this is what separates the spelling from
 // `positive-int` — and so is anything above it.
-acceptsNonNegativeInt(0);
-acceptsNonNegativeInt(1);
+acceptsNonNegativeInt(0); // V
+acceptsNonNegativeInt(1); // V
 
 // One past the boundary.
 acceptsNonNegativeInt(-1); // E?: -1 is not a non-negative-int

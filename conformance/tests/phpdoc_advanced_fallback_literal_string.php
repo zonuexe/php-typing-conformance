@@ -22,7 +22,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackLiteralString;
  */
 function returnsLiteralString() // T: literal-string
 {
-    return 'literal';
+    return 'literal'; // V
 }
 
 function acceptsString(string $value): void
@@ -37,13 +37,13 @@ function acceptsLiteralString($value): void // T: literal-string
 }
 
 // A `literal-string` value always satisfies a native `string` parameter.
-acceptsString(returnsLiteralString());
+acceptsString(returnsLiteralString()); // V
 
 // Source-code literals satisfy the parameter, including a concatenation of two
 // of them and the empty string.
-acceptsLiteralString('a literal');
-acceptsLiteralString('a' . ' literal');
-acceptsLiteralString('');
+acceptsLiteralString('a literal'); // V
+acceptsLiteralString('a' . ' literal'); // V
+acceptsLiteralString(''); // V
 
 function forwardsRuntimeString(string $value): void
 {

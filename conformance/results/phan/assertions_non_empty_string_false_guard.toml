@@ -1,9 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 7
+expected_diagnostic_count = 3
 output = """
 assertions_non_empty_string_false_guard.php:41: Argument 1 ($value) is $value of type false but \\Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonEmptyString() takes non-empty-string (real type string) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_non_empty_string_false_guard.php:19 [PhanTypeMismatchArgumentReal]
 assertions_non_empty_string_false_guard.php:42: Argument 1 ($value) is $value of type false but \\Conformance\\Tests\\AssertionsNonEmptyStringFalseGuard\\takesNonFalsyString() takes non-falsy-string (real type string) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/assertions_non_empty_string_false_guard.php:26 [PhanTypeMismatchArgumentReal]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

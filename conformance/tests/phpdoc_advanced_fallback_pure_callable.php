@@ -28,7 +28,7 @@ function impureFunction(): int
  */
 function returnsPureCallable() // T: pure-callable
 {
-    return static fn (int $value): int => $value + 1;
+    return static fn (int $value): int => $value + 1; // V
 }
 
 function acceptsCallable(callable $value): void
@@ -43,10 +43,10 @@ function acceptsPureCallable($value): void // T: pure-callable
 }
 
 // A `pure-callable` value always satisfies a native `callable` parameter.
-acceptsCallable(returnsPureCallable());
+acceptsCallable(returnsPureCallable()); // V
 
 // A closure that only computes satisfies the parameter.
-acceptsPureCallable(static fn (int $value): int => $value + 1);
+acceptsPureCallable(static fn (int $value): int => $value + 1); // V
 
 // A closure that echoes does not.
 $impureClosure = static function (): void {

@@ -44,8 +44,8 @@ function takesObjectShape(object $shape): void // T: object{foo: int}
 }
 
 // Any class carrying the declared property qualifies, `stdClass` included.
-takesObjectShape(new Reading());
-takesObjectShape((object) ['foo' => 1]);
+takesObjectShape(new Reading()); // V
+takesObjectShape((object) ['foo' => 1]); // V
 
 // The property is an int,
 takesObjectShape(new Mistyped()); // E?: foo is string, not int

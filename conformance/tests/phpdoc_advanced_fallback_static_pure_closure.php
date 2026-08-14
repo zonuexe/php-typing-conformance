@@ -26,7 +26,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackStaticPureClosure;
  */
 function returnsStaticPureClosure() // T: static-pure-closure
 {
-    return static fn (int $value): int => $value + 1;
+    return static fn (int $value): int => $value + 1; // V
 }
 
 function acceptsClosure(\Closure $value): void
@@ -41,10 +41,10 @@ function acceptsStaticPureClosure($value): void // T: static-pure-closure
 }
 
 // A `static-pure-closure` value always satisfies a native `Closure` parameter.
-acceptsClosure(returnsStaticPureClosure());
+acceptsClosure(returnsStaticPureClosure()); // V
 
 // A static closure that only computes satisfies both halves.
-acceptsStaticPureClosure(static fn (int $value): int => $value + 1);
+acceptsStaticPureClosure(static fn (int $value): int => $value + 1); // V
 
 // Pure, but not static.
 acceptsStaticPureClosure(fn (int $value): int => $value + 1); // E?: a non-static closure is not a static-pure-closure

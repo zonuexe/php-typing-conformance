@@ -7,11 +7,12 @@ phpdoc_advanced_fallback_non_zero_int.php:23: Function Conformance\\Tests\\Phpdo
 phpdoc_advanced_fallback_non_zero_int.php:35: Invalid docblock type [InvalidDocblock]
 phpdoc_advanced_fallback_non_zero_int.php:35: Argument $value of Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\acceptsNonZeroInt does not have a type [MissingParamType]
 phpdoc_advanced_fallback_non_zero_int.php:40: Argument 1 of acceptsInt cannot be mixed, expecting int [MixedArgument]"""
-errors_diff = "Line 40: Unexpected errors [\"Argument 1 of acceptsInt cannot be mixed, expecting int [MixedArgument]\"]"
+errors_diff = "Line 40: Expected valid value to be accepted, got [\"Argument 1 of acceptsInt cannot be mixed, expecting int [MixedArgument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "none"
 enforced_lines = "0/1"
 unrecognized_lines = [23, 35]
-false_positive_lines = [40]
+false_positive_lines = []
+over_rejected_lines = []

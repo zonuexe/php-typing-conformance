@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 8
 output = """
 arrays_list_shape_destructuring.php:48: Argument 1 ($value) expects int, got bool [type_mismatch_argument]
 arrays_list_shape_destructuring.php:49: Argument 1 ($value) expects string, got bool [type_mismatch_argument]
@@ -8,3 +8,9 @@ arrays_list_shape_destructuring.php:50: Argument 1 ($value) expects bool, got in
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/8"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

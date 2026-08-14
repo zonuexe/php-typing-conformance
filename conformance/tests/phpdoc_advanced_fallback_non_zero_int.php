@@ -22,7 +22,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNonZeroInt;
  */
 function returnsNonZeroInt() // T: non-zero-int
 {
-    return \random_int(0, 1) === 1 ? 1 : -1;
+    return \random_int(0, 1) === 1 ? 1 : -1; // V
 }
 
 function acceptsInt(int $value): void
@@ -37,11 +37,11 @@ function acceptsNonZeroInt($value): void // T: non-zero-int
 }
 
 // A `non-zero-int` value always satisfies a native `int` parameter.
-acceptsInt(returnsNonZeroInt());
+acceptsInt(returnsNonZeroInt()); // V
 
 // Both sides of the hole satisfy the parameter.
-acceptsNonZeroInt(1);
-acceptsNonZeroInt(-1);
+acceptsNonZeroInt(1); // V
+acceptsNonZeroInt(-1); // V
 
 // The hole itself.
 acceptsNonZeroInt(0); // E?: 0 is not a non-zero-int

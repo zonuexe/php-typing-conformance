@@ -8,13 +8,14 @@ phpdoc_advanced_fallback_numeric.php:42: InvalidArgument: Argument $value of acc
 phpdoc_advanced_fallback_numeric.php:45: InvalidArgument: Argument $value of acceptsNumeric() expects 'numeric', got '"abc"' [MIR0201]
 phpdoc_advanced_fallback_numeric.php:48: InvalidArgument: Argument $value of acceptsNumeric() expects 'numeric', got 'true' [MIR0201]"""
 errors_diff = """
-Line 26: Unexpected errors ["InvalidReturnType: Return type '1|1.5|\\"123\\"' is not compatible with declared 'numeric' [MIR0200]"]
-Line 41: Unexpected errors ["InvalidArgument: Argument $value of acceptsNumeric() expects 'numeric', got '\\"123\\"' [MIR0201]"]
-Line 42: Unexpected errors ["InvalidArgument: Argument $value of acceptsNumeric() expects 'numeric', got '\\"1.5e3\\"' [MIR0201]"]"""
+Line 26: Expected valid value to be accepted, got ["InvalidReturnType: Return type '1|1.5|\\"123\\"' is not compatible with declared 'numeric' [MIR0200]"]
+Line 41: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNumeric() expects 'numeric', got '\\"123\\"' [MIR0201]"]
+Line 42: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNumeric() expects 'numeric', got '\\"1.5e3\\"' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [26, 41, 42]
+false_positive_lines = []
+over_rejected_lines = [41, 42]

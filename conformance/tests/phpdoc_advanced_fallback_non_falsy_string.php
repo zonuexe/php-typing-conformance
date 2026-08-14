@@ -23,7 +23,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNonFalsyString;
  */
 function returnsNonFalsyString() // T: non-falsy-string
 {
-    return 'x';
+    return 'x'; // V
 }
 
 function acceptsString(string $value): void
@@ -38,10 +38,10 @@ function acceptsNonFalsyString($value): void // T: non-falsy-string
 }
 
 // A `non-falsy-string` value always satisfies a native `string` parameter.
-acceptsString(returnsNonFalsyString());
+acceptsString(returnsNonFalsyString()); // V
 
 // A string that passes a boolean test satisfies the parameter.
-acceptsNonFalsyString('x');
+acceptsNonFalsyString('x'); // V
 
 // The empty string is falsy.
 acceptsNonFalsyString(''); // E?: '' is not a non-falsy-string

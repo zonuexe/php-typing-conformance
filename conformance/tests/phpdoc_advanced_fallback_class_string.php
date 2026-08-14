@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackClassString;
  */
 function returnsClassString() // T: class-string
 {
-    return \stdClass::class;
+    return \stdClass::class; // V
 }
 
 function acceptsString(string $value): void
@@ -36,10 +36,10 @@ function acceptsClassString($value): void // T: class-string
 }
 
 // A `class-string` value always satisfies a native `string` parameter.
-acceptsString(returnsClassString());
+acceptsString(returnsClassString()); // V
 
 // A real class name satisfies the refined parameter.
-acceptsClassString(\stdClass::class);
+acceptsClassString(\stdClass::class); // V
 
 // A non-class literal string: enforcing analyzers reject it, others fall back
 // to `string` and accept it.

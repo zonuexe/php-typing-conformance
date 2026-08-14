@@ -1,9 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 5
 output = """
 arrays_open_shapes.php:33: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysOpenShapes\\inspectOpenArrayShape`: expected `array{'name': string, ...}`, but possibly received `array{'extra': int(123)}`. [possibly-invalid-argument]
 arrays_open_shapes.php:51: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysOpenShapes\\inspectOpenListShape`: expected `list{string, int, ...<mixed>}`, but possibly received `list{int(1), string('demo'), true}`. [possibly-invalid-argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/5"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

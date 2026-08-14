@@ -29,7 +29,7 @@ final class Permissions
  */
 function returnsPermissionMask() // T: int-mask-of<Permissions::*>
 {
-    return Permissions::READ | Permissions::EXECUTE;
+    return Permissions::READ | Permissions::EXECUTE; // V
 }
 
 function acceptsInt(int $value): void
@@ -44,10 +44,10 @@ function acceptsPermissionMask($flags): void // T: int-mask-of<Permissions::*>
 }
 
 // An `int-mask-of` value always satisfies a native `int` parameter.
-acceptsInt(returnsPermissionMask());
+acceptsInt(returnsPermissionMask()); // V
 
 // A valid combination of constants satisfies the refined parameter.
-acceptsPermissionMask(Permissions::READ | Permissions::WRITE);
+acceptsPermissionMask(Permissions::READ | Permissions::WRITE); // V
 
 // A value outside the constant mask: mask-aware analyzers reject it, others
 // fall back to `int` and accept it.

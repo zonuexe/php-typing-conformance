@@ -24,7 +24,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackDecimalIntString;
  */
 function returnsDecimalIntString() // T: decimal-int-string
 {
-    return '123';
+    return '123'; // V
 }
 
 function acceptsString(string $value): void
@@ -39,11 +39,11 @@ function acceptsDecimalIntString($value): void // T: decimal-int-string
 }
 
 // A `decimal-int-string` value always satisfies a native `string` parameter.
-acceptsString(returnsDecimalIntString());
+acceptsString(returnsDecimalIntString()); // V
 
 // Canonical decimal notation, including a negative one, satisfies the parameter.
-acceptsDecimalIntString('123');
-acceptsDecimalIntString('-1');
+acceptsDecimalIntString('123'); // V
+acceptsDecimalIntString('-1'); // V
 
 // Numeric, but not how PHP writes the integer back: enforcing analyzers reject
 // these, others fall back to `string` and accept them.

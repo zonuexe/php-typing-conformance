@@ -9,8 +9,9 @@ namespace Conformance\Expectation;
  *
  * Marked lines answer the *recognition* question. An analyzer that does not
  * know the spelling complains right here — "unresolvable type", "undeclared
- * type", a docblock parse error — so a diagnostic on a marked line means the
- * spelling was not recognized, and silence means it was. That is a different
+ * type", a docblock parse error — so a *type-resolution* diagnostic on a
+ * marked line means the spelling was not recognized, and silence (or only
+ * style / documented-vs-declared noise) means it was. That is a different
  * question from whether the analyzer then *enforces* the type at the call site,
  * which the `// E` markers answer.
  *

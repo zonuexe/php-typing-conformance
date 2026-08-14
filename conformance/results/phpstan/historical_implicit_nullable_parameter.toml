@@ -1,10 +1,10 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
 historical_implicit_nullable_parameter.php:14: Deprecated in PHP 8.4: Parameter #1 $values (array) is implicitly nullable via default value null. [identifier=parameter.implicitlyNullable] [reported-from-level=0]
 historical_implicit_nullable_parameter.php:14: Function Conformance\\Tests\\HistoricalImplicitNullableParameter\\legacyImplicitNullable() has parameter $values with no value type specified in iterable type array. [identifier=missingType.iterableValue] [reported-from-level=6]"""
-errors_diff = ""
+errors_diff = "Line 14: Unexpected errors [\"Deprecated in PHP 8.4: Parameter #1 $values (array) is implicitly nullable via default value null. [identifier=parameter.implicitlyNullable] [reported-from-level=0]\",\"Function Conformance\\\\Tests\\\\HistoricalImplicitNullableParameter\\\\legacyImplicitNullable() has parameter $values with no value type specified in iterable type array. [identifier=missingType.iterableValue] [reported-from-level=6]\"]"
 notes = ""
 ignore_errors = []
 expected_diagnostic_level = 0

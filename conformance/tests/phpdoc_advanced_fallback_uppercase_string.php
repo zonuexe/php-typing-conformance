@@ -22,7 +22,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackUppercaseString;
  */
 function returnsUppercaseString() // T: uppercase-string
 {
-    return 'ABC';
+    return 'ABC'; // V
 }
 
 function acceptsString(string $value): void
@@ -37,13 +37,13 @@ function acceptsUppercaseString($value): void // T: uppercase-string
 }
 
 // An `uppercase-string` value always satisfies a native `string` parameter.
-acceptsString(returnsUppercaseString());
+acceptsString(returnsUppercaseString()); // V
 
 // Uppercase letters satisfy the parameter, and so does a string with nothing
 // to uppercase.
-acceptsUppercaseString('ABC');
-acceptsUppercaseString('123');
-acceptsUppercaseString('');
+acceptsUppercaseString('ABC'); // V
+acceptsUppercaseString('123'); // V
+acceptsUppercaseString(''); // V
 
 // A fully lowercase literal is outside the refinement.
 acceptsUppercaseString('abc'); // E?: 'abc' is not an uppercase-string

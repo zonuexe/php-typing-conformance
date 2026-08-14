@@ -28,7 +28,7 @@ final class Levels
  */
 function returnsLevel() // T: value-of<Levels::MAP>
 {
-    return \random_int(0, 1) === 1 ? 1 : 10;
+    return \random_int(0, 1) === 1 ? 1 : 10; // V
 }
 
 function acceptsInt(int $value): void
@@ -43,11 +43,11 @@ function acceptsLevel($value): void // T: value-of<Levels::MAP>
 }
 
 // Every value of the constant is an int.
-acceptsInt(returnsLevel());
+acceptsInt(returnsLevel()); // V
 
 // Both values of the constant satisfy the parameter.
-acceptsLevel(1);
-acceptsLevel(10);
+acceptsLevel(1); // V
+acceptsLevel(10); // V
 
 // An int between them does not: the type is the union of the literals, not
 // their common base type.

@@ -14,8 +14,9 @@ Python's suite measures conformance to the typing spec, this corpus cannot: it
 is instead a collection of typing features, each originating in a specific
 tool's implementation or in de-facto convention, with the expected behaviour
 stated inline by the test itself. `// T` markers name the type spelling a test
-probes and `// E` markers name the diagnostics it should produce; those
-expectations are the conformance target.
+probes, `// E` markers name the diagnostics it should produce, and `// V`
+markers name values the spelling admits (so a tool that also rejects those
+is not counted as enforcing); those expectations are the conformance target.
 
 What the report then measures is how every tool covering the same ground
 responds to a feature it did not originate. The suite keeps two questions

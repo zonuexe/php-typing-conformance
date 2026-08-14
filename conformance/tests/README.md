@@ -8,9 +8,10 @@ Rules for test files:
 - filename starts with a test-group prefix,
 - expected diagnostics are marked inline with `// E`, `// E?`, `// E[tag]`, `// E?[tag]`, or `// E[tag+]` (`+` allows multiple hits in the group),
 - quiet probes `// Q` / `// Q?` expect **silence** (success for suppress tags such as `@psalm-ignore-falsable-return`); a real diagnostic on a quiet line means the feature was not applied,
+- valid-control probes `// V` also expect silence, but for the opposite reason: this line is a value the type *admits*. A type-rejection here means enforcement on the `// E` lines is incidental (the analyzer also rejects good values). `// V` does not count toward the enforcement denominator,
 - a tagged group is **one** logical probe (OR of its lines): useful when tools disagree which line to blame,
 - `// E?[tag]` is optional (silence is Pass); `// E[tag]` still requires at least one hit,
 - `// E[noise]` / `// E?[noise]` marks incidental diagnostics that are allowed for Pass/Fail (e.g. "expression has no effect" on a Phan string annotation) but **do not count as enforcement probes** for `// T` type-handling / debug rows,
 - for `// T` rows, diagnostics about **unknown analyzer helpers** (`Function PHPStan\… does not exist`, `Mago\inspect not found`, …) and no-op-expression lint also do **not** count as enforcement — they are non-support signals, not type inspection,
-- the type spelling a test probes is marked with `// T` — a diagnostic on that line means the analyzer did not recognize the spelling, which is recorded as "not implemented" rather than as a failure,
+- the type spelling a test probes is marked with `// T` — a *type-resolution* diagnostic on that line means the analyzer did not recognize the spelling (style nits and documented-vs-declared mismatches after a successful parse do not count), which is recorded as "not implemented" rather than as a failure,
 - helper files should start with `_` and should not be treated as standalone tests.

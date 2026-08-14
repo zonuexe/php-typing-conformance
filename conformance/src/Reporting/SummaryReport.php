@@ -670,6 +670,20 @@ final class SummaryReport
         }
 
         $enforcement = (string) ($result['enforcement'] ?? '');
+        $overRejected = $result['over_rejected_lines'] ?? [];
+        $rejectedValid = is_array($overRejected) && $overRejected !== [];
+
+        // Hits on the violating lines are not enforcement when the analyzer
+        // also rejects values the type admits (class-name fallback, sealed
+        // where the test asked for unsealed, over-strict purity, …).
+        if ($rejectedValid && ($enforcement === 'enforced' || $enforcement === 'partial' || $enforcement === 'none')) {
+            $ratio = (string) ($result['enforced_lines'] ?? '');
+
+            return [
+                $ratio !== '' ? sprintf('Incidental (%s)', $ratio) : 'Incidental',
+                'incidental',
+            ];
+        }
 
         if ($enforcement === 'enforced') {
             return ['Enforced', 'pass'];
@@ -707,7 +721,7 @@ final class SummaryReport
      * spell out line by line: null for a test that is not type-handling.
      *
      * @param array<string, mixed> $result
-     * @return array{recognition: string, enforced: string, incidental: bool, noProbes: bool, falsePositives: string}|null
+     * @return array{recognition: string, enforced: string, incidental: bool, incidentalReason: string, noProbes: bool, falsePositives: string}|null
      */
     private function typeHandlingFacets(array $result): ?array
     {
@@ -717,14 +731,27 @@ final class SummaryReport
 
         $unrecognized = $result['unrecognized_lines'] ?? [];
         $falsePositives = $result['false_positive_lines'] ?? [];
+        $overRejected = $result['over_rejected_lines'] ?? [];
         $unresolved = is_array($unrecognized) && $unrecognized !== [];
+        $rejectedValid = is_array($overRejected) && $overRejected !== [];
+
+        $incidentalReason = '';
+        if ($unresolved) {
+            $incidentalReason = 'incidental, since the spelling was not resolved';
+        } elseif ($rejectedValid) {
+            $incidentalReason = sprintf(
+                'incidental, since values the type admits were also rejected on line(s) %s',
+                implode(', ', $overRejected),
+            );
+        }
 
         return [
             'recognition' => $unresolved
                 ? sprintf('spelling not resolved — reported on declaration line(s) %s', implode(', ', $unrecognized))
                 : 'spelling resolved',
             'enforced' => (string) ($result['enforced_lines'] ?? ''),
-            'incidental' => $unresolved,
+            'incidental' => $unresolved || $rejectedValid,
+            'incidentalReason' => $incidentalReason,
             'noProbes' => (string) ($result['enforcement'] ?? '') === 'no-probes',
             'falsePositives' => is_array($falsePositives) && $falsePositives !== []
                 ? sprintf('line(s) %s', implode(', ', $falsePositives))

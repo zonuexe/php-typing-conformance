@@ -29,7 +29,7 @@ enum Suit: string
  */
 function returnsSuitValue() // T: value-of<Suit>
 {
-    return \random_int(0, 1) === 1 ? 'hearts' : 'spades';
+    return \random_int(0, 1) === 1 ? 'hearts' : 'spades'; // V
 }
 
 function acceptsString(string $value): void
@@ -44,11 +44,11 @@ function acceptsSuitValue($value): void // T: value-of<Suit>
 }
 
 // Every backing value of the enum is a string.
-acceptsString(returnsSuitValue());
+acceptsString(returnsSuitValue()); // V
 
 // Both backing values satisfy the parameter.
-acceptsSuitValue('hearts');
-acceptsSuitValue('spades');
+acceptsSuitValue('hearts'); // V
+acceptsSuitValue('spades'); // V
 
 // A string that backs no case does not.
 acceptsSuitValue('clubs'); // E?: 'clubs' backs no case of Suit

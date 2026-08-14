@@ -9,14 +9,15 @@ phpdoc_advanced_fallback_key_of.php:44: Argument 1 ($key) expects key-of<array{n
 phpdoc_advanced_fallback_key_of.php:47: Argument 1 ($key) expects key-of<array{name: string, age: int}>, got 'missing' [type_mismatch_argument]
 phpdoc_advanced_fallback_key_of.php:51: Argument 1 ($key) expects key-of<array{name: string, age: int}>, got 0 [type_mismatch_argument]"""
 errors_diff = """
-Line 25: Unexpected errors ["Return type string is incompatible with declared return type key-of<array{name: string, age: int}> [type_mismatch_return]"]
-Line 40: Unexpected errors ["Argument 1 ($value) expects int|string, got key-of<array{name: string, age: int}> [type_mismatch_argument]"]
-Line 43: Unexpected errors ["Argument 1 ($key) expects key-of<array{name: string, age: int}>, got 'name' [type_mismatch_argument]"]
-Line 44: Unexpected errors ["Argument 1 ($key) expects key-of<array{name: string, age: int}>, got 'age' [type_mismatch_argument]"]"""
+Line 25: Expected valid value to be accepted, got ["Return type string is incompatible with declared return type key-of<array{name: string, age: int}> [type_mismatch_return]"]
+Line 40: Expected valid value to be accepted, got ["Argument 1 ($value) expects int|string, got key-of<array{name: string, age: int}> [type_mismatch_argument]"]
+Line 43: Expected valid value to be accepted, got ["Argument 1 ($key) expects key-of<array{name: string, age: int}>, got 'name' [type_mismatch_argument]"]
+Line 44: Expected valid value to be accepted, got ["Argument 1 ($key) expects key-of<array{name: string, age: int}>, got 'age' [type_mismatch_argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = [25, 40, 43, 44]
+false_positive_lines = []
+over_rejected_lines = [25, 40, 43, 44]

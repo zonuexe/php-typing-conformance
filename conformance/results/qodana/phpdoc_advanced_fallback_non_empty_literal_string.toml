@@ -10,12 +10,13 @@ phpdoc_advanced_fallback_non_empty_literal_string.php:43: Parameter ''x'' type i
 phpdoc_advanced_fallback_non_empty_literal_string.php:46: Parameter '''' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_non_empty_literal_string.php:51: Parameter '$value' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 25: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 43: Unexpected errors ["Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 25: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 43: Expected valid value to be accepted, got ["Parameter ''x'' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [21, 33]
-false_positive_lines = [25, 43]
+false_positive_lines = []
+over_rejected_lines = [43]

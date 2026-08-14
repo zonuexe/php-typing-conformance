@@ -29,7 +29,7 @@ final class SomeClass implements SomeInterface
  */
 function returnsInterfaceString() // T: interface-string
 {
-    return SomeInterface::class;
+    return SomeInterface::class; // V
 }
 
 function acceptsString(string $value): void
@@ -44,10 +44,10 @@ function acceptsInterfaceString($value): void // T: interface-string
 }
 
 // An `interface-string` value always satisfies a native `string` parameter.
-acceptsString(returnsInterfaceString());
+acceptsString(returnsInterfaceString()); // V
 
 // The name of an interface satisfies the parameter.
-acceptsInterfaceString(SomeInterface::class);
+acceptsInterfaceString(SomeInterface::class); // V
 
 // The name of a class that implements it does not: the constraint is on the
 // name, not on the type it denotes.

@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 8
 output = """
 arrays_list_shape_destructuring.php:48: Expected type 'int'. Found 'bool'. [P1006]
 arrays_list_shape_destructuring.php:49: Expected type 'string'. Found 'bool'. [P1006]
@@ -8,3 +8,9 @@ arrays_list_shape_destructuring.php:50: Expected type 'bool'. Found 'int'. [P100
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/8"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,9 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 7
+expected_diagnostic_count = 3
 output = """
 assertions_non_empty_string_false_guard.php:41: argument false (from $value, proven on this branch) to takesNonEmptyString() cannot become string $value — proven TypeError (strict mode) [type.argument-mismatch]
 assertions_non_empty_string_false_guard.php:42: argument false (from $value, proven on this branch) to takesNonFalsyString() cannot become string $value — proven TypeError (strict mode) [type.argument-mismatch]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

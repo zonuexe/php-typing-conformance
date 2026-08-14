@@ -21,7 +21,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNonEmptyArray;
  */
 function returnsNonEmptyArray(): array // T: non-empty-array<mixed>
 {
-    return [1];
+    return [1]; // V
 }
 
 /**
@@ -39,11 +39,11 @@ function acceptsNonEmptyArray(array $value): void // T: non-empty-array<mixed>
 }
 
 // A `non-empty-array` value always satisfies a native `array` parameter.
-acceptsArray(returnsNonEmptyArray());
+acceptsArray(returnsNonEmptyArray()); // V
 
 // One element is enough, whatever it is.
-acceptsNonEmptyArray([1]);
-acceptsNonEmptyArray([null]);
+acceptsNonEmptyArray([1]); // V
+acceptsNonEmptyArray([null]); // V
 
 // The empty array is not.
 acceptsNonEmptyArray([]); // E?: [] is not a non-empty-array

@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 9
+expected_diagnostic_count = 8
 output = """
 arrays_list_shape_destructuring.php:34: param $list miss matched with phpdoc type <<list{bool, float, string, int}>> [funcParamTypeMissMatch]
 arrays_list_shape_destructuring.php:43: potential null array access in parameter value of function Conformance\\Tests\\ArraysListShapeDestructuring\\takesBool [notNullSafetyFunctionArgumentArrayDimFetch]
@@ -13,3 +13,9 @@ arrays_list_shape_destructuring.php:50: potential null array access in parameter
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "7/8"
+unrecognized_lines = [34]
+false_positive_lines = []
+over_rejected_lines = []

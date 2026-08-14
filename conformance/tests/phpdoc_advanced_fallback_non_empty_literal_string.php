@@ -22,7 +22,7 @@ namespace Conformance\Tests\PhpdocAdvancedFallbackNonEmptyLiteralString;
  */
 function returnsNonEmptyLiteralString() // T: non-empty-literal-string
 {
-    return 'literal';
+    return 'literal'; // V
 }
 
 function acceptsString(string $value): void
@@ -37,10 +37,10 @@ function acceptsNonEmptyLiteralString($value): void // T: non-empty-literal-stri
 }
 
 // A `non-empty-literal-string` value always satisfies a native `string` parameter.
-acceptsString(returnsNonEmptyLiteralString());
+acceptsString(returnsNonEmptyLiteralString()); // V
 
 // A non-empty source-code literal satisfies both halves.
-acceptsNonEmptyLiteralString('x');
+acceptsNonEmptyLiteralString('x'); // V
 
 // Literal, but empty.
 acceptsNonEmptyLiteralString(''); // E?: '' is not a non-empty-literal-string

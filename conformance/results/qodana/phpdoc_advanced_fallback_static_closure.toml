@@ -10,12 +10,13 @@ phpdoc_advanced_fallback_static_closure.php:42: Parameter 'static fn (): int => 
 phpdoc_advanced_fallback_static_closure.php:45: Parameter 'fn (): int => 1' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_static_closure.php:48: Parameter ''strlen'' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = """
-Line 24: Unexpected errors ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
-Line 42: Unexpected errors ["Parameter 'static fn (): int => 1' type is not compatible with declaration [PhpParamsInspection]"]"""
+Line 24: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 42: Expected valid value to be accepted, got ["Parameter 'static fn (): int => 1' type is not compatible with declaration [PhpParamsInspection]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [20, 32]
-false_positive_lines = [24, 42]
+false_positive_lines = []
+over_rejected_lines = [42]

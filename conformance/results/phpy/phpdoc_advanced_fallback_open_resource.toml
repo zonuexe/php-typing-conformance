@@ -6,11 +6,12 @@ phpdoc_advanced_fallback_open_resource.php:21: Use of unknown class: 'Conformanc
 phpdoc_advanced_fallback_open_resource.php:31: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\acceptsOpenResource() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\open-resource, bool|resource given
 phpdoc_advanced_fallback_open_resource.php:34: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\acceptsOpenResource() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\open-resource, string given
 phpdoc_advanced_fallback_open_resource.php:41: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\acceptsOpenResource() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackOpenResource\\open-resource, bool|resource given"""
-errors_diff = "Line 31: Unexpected errors [\"Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackOpenResource\\\\acceptsOpenResource() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackOpenResource\\\\open-resource, bool|resource given\"]"
+errors_diff = "Line 31: Expected valid value to be accepted, got [\"Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackOpenResource\\\\acceptsOpenResource() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackOpenResource\\\\open-resource, bool|resource given\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [21]
-false_positive_lines = [31]
+false_positive_lines = []
+over_rejected_lines = []

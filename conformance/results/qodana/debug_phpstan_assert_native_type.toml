@@ -1,9 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = """
-debug_phpstan_assert_native_type.php:25: Undefined namespace 'Testing' [PhpUndefinedNamespaceInspection]
-debug_phpstan_assert_native_type.php:28: Undefined namespace 'Testing' [PhpUndefinedNamespaceInspection]"""
+output = ""
 errors_diff = ""
 notes = ""
 ignore_errors = []

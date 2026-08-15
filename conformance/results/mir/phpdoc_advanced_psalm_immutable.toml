@@ -1,15 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_psalm_immutable.php:29: ImmutablePropertyModification: Assigning to property label of $this in an immutable context (@psalm-immutable class or @psalm-mutation-free method) [MIR1705]
-phpdoc_advanced_psalm_immutable.php:34: ImmutablePropertyModification: Assigning to property label of $point in an immutable context (@psalm-immutable class or @psalm-mutation-free method) [MIR1705]"""
-errors_diff = "Line 34: Expected valid value to be accepted, got [\"ImmutablePropertyModification: Assigning to property label of $point in an immutable context (@psalm-immutable class or @psalm-mutation-free method) [MIR1705]\"]"
+phpdoc_advanced_psalm_immutable.php:35: ImmutablePropertyModification: Assigning to property label of $point in an immutable context (@psalm-immutable class or @psalm-mutation-free method) [MIR1705]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

@@ -1,15 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_psalm_immutable.php:29: Conformance\\Tests\\PhpdocAdvancedPsalmImmutable\\Point::$label is marked readonly [InaccessibleProperty]
-phpdoc_advanced_psalm_immutable.php:34: Conformance\\Tests\\PhpdocAdvancedPsalmImmutable\\Point::$label is marked readonly [InaccessibleProperty]"""
-errors_diff = "Line 34: Expected valid value to be accepted, got [\"Conformance\\\\Tests\\\\PhpdocAdvancedPsalmImmutable\\\\Point::$label is marked readonly [InaccessibleProperty]\"]"
+phpdoc_advanced_psalm_immutable.php:35: Conformance\\Tests\\PhpdocAdvancedPsalmImmutable\\Point::$label is marked readonly [InaccessibleProperty]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

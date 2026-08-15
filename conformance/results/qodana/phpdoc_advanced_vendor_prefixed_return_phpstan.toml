@@ -1,15 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_vendor_prefixed_return_phpstan.php:33: Parameter 'returnsInt()' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
-phpdoc_advanced_vendor_prefixed_return_phpstan.php:33: Parameter 'returnsInt()' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
-errors_diff = "Line 33: Unexpected errors [\"Parameter 'returnsInt()' type is not compatible with declaration when using strict type matching [PhpParamsInspection]\",\"Parameter 'returnsInt()' type is not compatible with declaration [PhpStrictTypeCheckingInspection]\"]"
+phpdoc_advanced_vendor_prefixed_return_phpstan.php:39: Parameter 'returnsInt()' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+phpdoc_advanced_vendor_prefixed_return_phpstan.php:39: Parameter 'returnsInt()' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [33]
-over_rejected_lines = [33]
+false_positive_lines = []
+over_rejected_lines = []

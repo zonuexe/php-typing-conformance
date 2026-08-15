@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "historical_implicit_nullable_parameter.php:14: Implicitly marking parameter as nullable is deprecated [PhpDeprecatedImplicitlyNullableParameterInspection]"
-errors_diff = "Line 14: Unexpected errors [\"Implicitly marking parameter as nullable is deprecated [PhpDeprecatedImplicitlyNullableParameterInspection]\"]"
+output = "historical_implicit_nullable_parameter.php:16: Implicitly marking parameter as nullable is deprecated [PhpDeprecatedImplicitlyNullableParameterInspection]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

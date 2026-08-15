@@ -1,16 +1,16 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_phpstan_consistent_constructor.php:34: Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor::__construct() does not call parent constructor from Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ParentWithCtor. [identifier=constructor.missingParentCall]
-phpdoc_advanced_phpstan_consistent_constructor.php:34: Constructor of class Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor has an unused parameter $id. [identifier=constructor.unusedParameter]
-phpdoc_advanced_phpstan_consistent_constructor.php:34: Parameter #1 $id (int) of method Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor::__construct() is not contravariant with parameter #1 $name (string) of method Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ParentWithCtor::__construct(). [identifier=method.childParameterType]"""
-errors_diff = "Line 34: Unexpected errors [\"Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanConsistentConstructor\\\\ChildWithDifferentCtor::__construct() does not call parent constructor from Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanConsistentConstructor\\\\ParentWithCtor. [identifier=constructor.missingParentCall]\",\"Constructor of class Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanConsistentConstructor\\\\ChildWithDifferentCtor has an unused parameter $id. [identifier=constructor.unusedParameter]\",\"Parameter #1 $id (int) of method Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanConsistentConstructor\\\\ChildWithDifferentCtor::__construct() is not contravariant with parameter #1 $name (string) of method Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanConsistentConstructor\\\\ParentWithCtor::__construct(). [identifier=method.childParameterType]\"]"
+phpdoc_advanced_phpstan_consistent_constructor.php:39: Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor::__construct() does not call parent constructor from Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ParentWithCtor. [identifier=constructor.missingParentCall]
+phpdoc_advanced_phpstan_consistent_constructor.php:39: Constructor of class Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor has an unused parameter $id. [identifier=constructor.unusedParameter]
+phpdoc_advanced_phpstan_consistent_constructor.php:39: Parameter #1 $id (int) of method Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor::__construct() is not contravariant with parameter #1 $name (string) of method Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ParentWithCtor::__construct(). [identifier=method.childParameterType]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [34]
+false_positive_lines = []
 over_rejected_lines = []

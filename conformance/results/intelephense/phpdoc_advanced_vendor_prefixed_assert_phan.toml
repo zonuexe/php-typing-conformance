@@ -1,8 +1,8 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = ""
+output = "phpdoc_advanced_vendor_prefixed_assert_phan.php:37: Expected type 'int'. Found 'mixed'. [P1006]"
+errors_diff = "Line 37: Expected valid value to be accepted, got [\"Expected type 'int'. Found 'mixed'. [P1006]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
@@ -10,4 +10,4 @@ enforcement = "none"
 enforced_lines = "0/1"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = []
+over_rejected_lines = [37]

@@ -2,10 +2,10 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-arrays_open_shapes.php:24: Saw possibly unextractable annotation for a fragment of comment '* @param array{name: string, ...} $options // E?: some tools cannot parse open array shape PHPDoc syntax': after array, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
-arrays_open_shapes.php:24: Saw a token Phan may have failed to parse after '* @param array{name: string, ...} $options // E?: some tools cannot parse open array shape PHPDoc syntax': after array, saw '{' [PhanUnextractableAnnotationSuffix]
-arrays_open_shapes.php:36: Saw possibly unextractable annotation for a fragment of comment '* @param list{string, int, ...} $values // E?: some tools cannot parse open list shape PHPDoc syntax': after list, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
-arrays_open_shapes.php:36: Saw a token Phan may have failed to parse after '* @param list{string, int, ...} $values // E?: some tools cannot parse open list shape PHPDoc syntax': after list, saw '{' [PhanUnextractableAnnotationSuffix]"""
+arrays_open_shapes.php:24: Saw possibly unextractable annotation for a fragment of comment '* @param array{name: string, ...} $options': after array, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+arrays_open_shapes.php:24: Saw a token Phan may have failed to parse after '* @param array{name: string, ...} $options': after array, saw '{' [PhanUnextractableAnnotationSuffix]
+arrays_open_shapes.php:36: Saw possibly unextractable annotation for a fragment of comment '* @param list{string, int, ...} $values': after list, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+arrays_open_shapes.php:36: Saw a token Phan may have failed to parse after '* @param list{string, int, ...} $values': after list, saw '{' [PhanUnextractableAnnotationSuffix]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

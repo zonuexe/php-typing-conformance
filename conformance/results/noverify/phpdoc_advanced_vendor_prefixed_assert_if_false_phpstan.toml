@@ -1,8 +1,8 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = ""
+output = "phpdoc_advanced_vendor_prefixed_assert_if_false_phpstan.php:36: not null safety call in function Conformance\\Tests\\PhpdocAdvancedVendorPrefixedAssertIfFalsePhpStan\\takesInt signature of param value [notNullSafetyFunctionArgumentVariable]"
+errors_diff = "Line 36: Expected valid value to be accepted, got [\"not null safety call in function Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedAssertIfFalsePhpStan\\\\takesInt signature of param value [notNullSafetyFunctionArgumentVariable]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"

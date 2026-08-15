@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "historical_implicit_nullable_parameter.php:14: parameter $values of legacyImplicitNullable() is an iterable with no value type — write `array<T>`, `T[]`, `list<T>` or an array shape [untyped.iterable-value]"
-errors_diff = "Line 14: Unexpected errors [\"parameter $values of legacyImplicitNullable() is an iterable with no value type — write `array<T>`, `T[]`, `list<T>` or an array shape [untyped.iterable-value]\"]"
+output = "historical_implicit_nullable_parameter.php:16: parameter $values of legacyImplicitNullable() is an iterable with no value type — write `array<T>`, `T[]`, `list<T>` or an array shape [untyped.iterable-value]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

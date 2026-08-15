@@ -1,14 +1,14 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_assert_if_true_phpstan.php:32: Call to function is_string() with int will always evaluate to false. [identifier=function.impossibleType] [reported-from-level=4]"
-errors_diff = "Line 32: Unexpected errors [\"Call to function is_string() with int will always evaluate to false. [identifier=function.impossibleType] [reported-from-level=4]\"]"
+output = "phpdoc_advanced_vendor_prefixed_assert_if_true_phpstan.php:38: Call to function is_string() with int will always evaluate to false. [identifier=function.impossibleType] [reported-from-level=4]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 expected_diagnostic_level = 4
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [32]
+false_positive_lines = []
 over_rejected_lines = []

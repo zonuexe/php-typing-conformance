@@ -1,13 +1,13 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_psalm_readonly.php:28: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmReadonly\\Label::$text is assigned outside of its declaring class. [identifier=property.readOnlyByPhpDocAssignOutOfClass]"
-errors_diff = "Line 28: Expected valid value to be accepted, got [\"@readonly property Conformance\\\\Tests\\\\PhpdocAdvancedPsalmReadonly\\\\Label::$text is assigned outside of its declaring class. [identifier=property.readOnlyByPhpDocAssignOutOfClass]\"]"
+output = "phpdoc_advanced_psalm_readonly.php:29: @readonly property Conformance\\Tests\\PhpdocAdvancedPsalmReadonly\\Label::$text is assigned outside of its declaring class. [identifier=property.readOnlyByPhpDocAssignOutOfClass]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

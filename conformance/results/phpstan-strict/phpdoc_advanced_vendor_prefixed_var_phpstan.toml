@@ -1,13 +1,13 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_var_phpstan.php:32: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedVendorPrefixedVarPhpStan\\takesString expects string, int given. [identifier=argument.type]"
-errors_diff = "Line 32: Unexpected errors [\"Parameter #1 $value of function Conformance\\\\Tests\\\\PhpdocAdvancedVendorPrefixedVarPhpStan\\\\takesString expects string, int given. [identifier=argument.type]\"]"
+output = "phpdoc_advanced_vendor_prefixed_var_phpstan.php:38: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedVendorPrefixedVarPhpStan\\takesString expects string, int given. [identifier=argument.type]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [32]
-over_rejected_lines = [32]
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,15 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_vendor_prefixed_assert_psalm.php:36: Docblock-defined type int for $value is never string [DocblockTypeContradiction]
-phpdoc_advanced_vendor_prefixed_assert_psalm.php:36: Docblock-defined type int for $value is never string [RedundantConditionGivenDocblockType]"""
-errors_diff = "Line 36: Unexpected errors [\"Docblock-defined type int for $value is never string [DocblockTypeContradiction]\",\"Docblock-defined type int for $value is never string [RedundantConditionGivenDocblockType]\"]"
+phpdoc_advanced_vendor_prefixed_assert_psalm.php:42: Type int for $value is never string [TypeDoesNotContainType]
+phpdoc_advanced_vendor_prefixed_assert_psalm.php:42: Type int for $value is never string [RedundantCondition]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [36]
+false_positive_lines = []
 over_rejected_lines = []

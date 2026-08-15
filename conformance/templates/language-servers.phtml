@@ -97,7 +97,7 @@ $renderServerRow = static function (LanguageServerMetadata $server): string {
     return (string) ob_get_clean();
 };
 ?>
-<h2 class="section">Language servers</h2>
+<h2 class="section" id="language-servers">Language servers</h2>
 <p class="section-note"><strong>Every cell in this table records what the project claims about itself</strong> &mdash; from its README, docs, changelog, release notes, package metadata, or its maintainer&rsquo;s own blog &mdash; and no claim here has been verified by executing the tool. What <em>has</em> been measured lives elsewhere: Intelephense&rsquo;s and Psalm&rsquo;s diagnostics scores are in the matrix above, and the servers this machine can launch headless have their protocol behaviour recorded in the <a href="#language-server-capabilities">measured capability matrix below</a>. Cells read <em>Not stated</em> where the project simply does not say.</p>
 <p class="section-note">Four rows also appear in the analyzer table above. <strong>Intelephense</strong> and <strong>Psalm</strong> are in both as the same tool &mdash; Psalm&rsquo;s server runs the analyzer its CLI does, reached over the protocol instead of the command line. The other two are pairs: <strong>php-lsp</strong> drives <em>mir</em>, and <em>phpy</em> is the CLI frontend of <strong>devsense-php-ls</strong>. Each pair is versioned separately, so each artifact keeps its own row and its own dates. <a href="https://github.com/phan/phan" target="_blank" rel="noopener">Phan</a> ships a language server too and belongs here; it has simply not been researched yet.</p>
 <div class="table-scroll"><table class="analyzer-meta">
@@ -111,7 +111,7 @@ $renderServerRow = static function (LanguageServerMetadata $server): string {
 <?php endforeach; ?>
 </tbody></table></div>
 <?php if ($specializedServers !== []): ?>
-<h2 class="section">Function-specific PHP language servers</h2>
+<h2 class="section" id="function-specific-servers">Function-specific PHP language servers</h2>
 <p class="section-note">These servers serve one framework or feature &mdash; PHPUnit test cases, a formatter, a debugger &mdash; rather than PHP as a language, so they have nothing to answer the suite&rsquo;s typing probes with. They are listed for reference only and are never launched or measured; the claims in the cells above are the projects&rsquo; own, on the same terms as the general table.</p>
 <div class="table-scroll"><table class="analyzer-meta">
 <thead><tr>
@@ -125,7 +125,7 @@ $renderServerRow = static function (LanguageServerMetadata $server): string {
 </tbody></table></div>
 <?php endif; ?>
 <?php if ($historicalServers !== []): ?>
-<h2 class="section">Historical PHP language servers</h2>
+<h2 class="section" id="historical-servers">Historical PHP language servers</h2>
 <p class="section-note">Dead or superseded implementations, kept as a record of what came before &mdash; the parser each adopted and the PHP syntax line it reached. Like the function-specific table, they are listed for reference only and are never launched or measured; the latest release cell names the project&rsquo;s final release.</p>
 <div class="table-scroll"><table class="analyzer-meta">
 <thead><tr>

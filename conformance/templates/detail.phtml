@@ -29,12 +29,12 @@ if ($isStyle) {
 
 ?>
 <p class="crumb"><a href="<?= h($indexHref) ?>">&larr; All results</a></p>
-<h1><?= $titleHtml ?></h1>
+<h1 id="test-title"><?= $titleHtml ?></h1>
 <p class="meta"><?= implode(' &middot; ', $meta) ?></p>
 <?php if ($description !== ''): ?>
 <div class="doc"><?= h_inline($description) ?></div>
 <?php endif; ?>
-<h2>Analyzer results</h2>
+<h2 id="analyzer-results">Analyzer results</h2>
 <table class="detail-results">
 <thead><tr><th scope="col">Analyzer</th><th scope="col">Version</th><th scope="col">Result</th><th scope="col">Diagnostics</th></tr></thead><tbody>
 <?php foreach ($rows as $row): ?>
@@ -94,9 +94,9 @@ if ($isStyle) {
 ?></td></tr>
 <?php endforeach; ?>
 </tbody></table>
-<h2>Source</h2>
+<h2 id="source">Source</h2>
 <pre class="source"><code><?= h($source) ?></code></pre>
-<?php foreach ($supports as $support): ?>
-<h2>Support: <code><?= h($support['name']) ?></code></h2>
+<?php foreach ($supports as $supportIndex => $support): ?>
+<h2 id="support-<?= $supportIndex + 1 ?>">Support: <code><?= h($support['name']) ?></code></h2>
 <pre class="source"><code><?= h($support['code']) ?></code></pre>
 <?php endforeach; ?>

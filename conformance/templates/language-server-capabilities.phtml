@@ -36,7 +36,7 @@ declare(strict_types=1);
 <?php endforeach; ?>
 </tbody></table></div>
 
-<h3 class="section">Hover type conformance</h3>
+<h3 class="section" id="hover-conformance">Hover type conformance</h3>
 <p class="section-note">The typing question, asked over the protocol: hovering a variable whose type the annotation or the narrowing has already established, does the server show that type? <strong>Precise</strong> means the shown type matches the expected spelling; <strong>Widened / other</strong> means hover answered with something else &mdash; typically the declared type where the narrowed one was expected, or a widened fallback &mdash; and the cell&rsquo;s hover note quotes it verbatim.</p>
 <div class="table-scroll"><table class="analyzer-meta">
 <thead><tr><th scope="col">Feature</th><th scope="col">Expected type</th>
@@ -54,7 +54,7 @@ declare(strict_types=1);
 </tbody></table></div>
 <?php if ($navDefRows !== []): ?>
 
-<h3 class="section">Navigating a real project&rsquo;s dependency graph</h3>
+<h3 class="section" id="navigation">Navigating a real project&rsquo;s dependency graph</h3>
 <p class="section-note">The corpus is a real project &mdash; <code><?= h($navCorpus) ?></code> from the steins-survey checkout &mdash; and each row is one symbol in it, chosen per kind. <strong>Go to definition</strong> jumps from a use site and must land on the declaration; <strong>find references</strong> asks from the declaration and is scored against the complete, grep-verified set of code references, with only the two files involved in each probe opened &mdash; everything else must come out of the server&rsquo;s own index. A <em>+n</em> after the score counts locations beyond the expected set: the corpus contains same-name decoys (another <code>info()</code>, other <code>getAll()</code>s), so extras expose reference implementations that match by name rather than by symbol. The corpus defines no namespace-level constant that code references &mdash; true of much modern PHP &mdash; so that kind awaits a <code>define()</code>-era corpus.<?php if ($navFailures !== []): ?> Session notes: <?php $parts = []; foreach ($navFailures as $tool => $reason) { $parts[] = h($tool) . ' &mdash; ' . h($reason); } echo implode('; ', $parts); ?>.<?php endif; ?></p>
 <div class="table-scroll"><table class="analyzer-meta">
 <thead><tr><th scope="col">Go to definition&hellip;</th>

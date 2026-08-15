@@ -17,22 +17,22 @@ declare(strict_types=1);
  */
 
 ?>
-<h1>PHP Typing Conformance Results</h1>
+<h1 id="top">PHP Typing Conformance Results</h1>
 <p class="lead">Each row links to a per-test detail page with the source, expectations, and every analyzer&rsquo;s raw output.</p>
 <?php if ($updatedAt !== null): ?>
 <p class="updated" title="When the results on this page last changed -- analyzer diagnostics and language-server measurements alike. The pages themselves are rebuilt on every publish.">Results last updated: <time datetime="<?= h($updatedAt) ?>"><?= h($updatedAt) ?></time></p>
 <?php endif; ?>
 <?= $legend ?>
-<h2 class="section">Soundness &mdash; potential runtime type errors</h2>
+<h2 class="section" id="soundness">Soundness &mdash; potential runtime type errors</h2>
 <p class="section-note">Positives here flag code that can actually fail at runtime &mdash; type mismatches, null access, invalid arguments, uninitialized reads. <strong>Pass</strong> means the analyzer agrees with the expected diagnostic; rows whose test marks a declaration with <code>// T</code> instead report recognition and enforcement of the type spelling. See the legend above.</p>
 <?= $soundnessMatrix ?>
 <?php if ($styleMatrix !== ''): ?>
-<h2 class="section">Style &amp; opinionated rules &mdash; no runtime-safety impact</h2>
+<h2 class="section" id="style">Style &amp; opinionated rules &mdash; no runtime-safety impact</h2>
 <p class="section-note">Lint-style opinions and advisories (PHPStan strict-rules, deprecations, doc conventions) that do not change whether the code runs. Cells show whether each analyzer <em>opts into</em> reporting the rule &mdash; not a pass/fail verdict.</p>
 <?= $styleMatrix ?>
 <?php endif; ?>
 <?php if ($debugMatrix !== ''): ?>
-<h2 class="section">Debug features &mdash; type-inspection helpers</h2>
+<h2 class="section" id="debug-features">Debug features &mdash; type-inspection helpers</h2>
 <p class="section-note">Dump/trace APIs used while debugging inference (<code>PHPStan\dumpType()</code>, <code>@psalm-trace</code>, <code>@phan-debug-var</code>, <code>Mago\inspect()</code>, &hellip;). Cells use the same recognition/enforcement vocabulary as type-spelling rows: does the analyzer accept this helper, and does it emit a diagnostic that reveals the inferred type?</p>
 <?= $debugMatrix ?>
 <?php endif; ?>

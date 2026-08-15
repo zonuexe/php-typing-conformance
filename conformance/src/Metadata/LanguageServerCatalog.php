@@ -9,6 +9,7 @@ use Conformance\Metadata\LanguageServer\Intelephense;
 use Conformance\Metadata\LanguageServer\Phpactor;
 use Conformance\Metadata\LanguageServer\Phpantom;
 use Conformance\Metadata\LanguageServer\PhpLsp;
+use Conformance\Metadata\LanguageServer\PhpUnit;
 use Conformance\Metadata\LanguageServer\Psalm;
 use RuntimeException;
 use function sprintf;
@@ -35,6 +36,7 @@ final class LanguageServerCatalog
         'devsense-php-ls' => DevsensePhpLs::class,
         'phpantom' => Phpantom::class,
         'php-lsp' => PhpLsp::class,
+        'phpunit-language-server' => PhpUnit::class,
     ];
 
     /**

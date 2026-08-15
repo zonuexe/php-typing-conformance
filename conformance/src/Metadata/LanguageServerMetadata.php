@@ -77,6 +77,18 @@ abstract class LanguageServerMetadata
     /** The project's own name for itself. */
     abstract public function name(): string;
 
+    /**
+     * A function-specific server: it serves one framework or feature —
+     * PHPUnit test cases, a formatter, a debugger — rather than PHP as a
+     * language. Such a server has nothing to answer the suite's typing
+     * probes with, so it is never launched by run-lsp-probes and never
+     * measured; the report lists it for reference only, in its own table.
+     */
+    public function specialized(): bool
+    {
+        return false;
+    }
+
     /** Where the project documents *the server*, which is not always its home page. */
     abstract public function url(): string;
 

@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace Conformance\Metadata;
 
+use Conformance\Metadata\LanguageServer\Crane;
 use Conformance\Metadata\LanguageServer\DevsensePhpLs;
 use Conformance\Metadata\LanguageServer\Intelephense;
 use Conformance\Metadata\LanguageServer\Phpactor;
 use Conformance\Metadata\LanguageServer\Phpantom;
+use Conformance\Metadata\LanguageServer\PhpLanguageServer;
 use Conformance\Metadata\LanguageServer\PhpLsp;
 use Conformance\Metadata\LanguageServer\PhpUnit;
 use Conformance\Metadata\LanguageServer\Psalm;
+use Conformance\Metadata\LanguageServer\Serenata;
 use RuntimeException;
 use function sprintf;
 
@@ -37,6 +40,9 @@ final class LanguageServerCatalog
         'phpantom' => Phpantom::class,
         'php-lsp' => PhpLsp::class,
         'phpunit-language-server' => PhpUnit::class,
+        'php-language-server' => PhpLanguageServer::class,
+        'crane' => Crane::class,
+        'serenata' => Serenata::class,
     ];
 
     /**

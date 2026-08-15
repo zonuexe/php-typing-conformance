@@ -89,6 +89,16 @@ abstract class LanguageServerMetadata
         return false;
     }
 
+    /**
+     * A historical server: a dead or superseded implementation, kept in the
+     * report as a record of what came before. Like function-specific
+     * servers, it is never launched and never measured.
+     */
+    public function historical(): bool
+    {
+        return false;
+    }
+
     /** Where the project documents *the server*, which is not always its home page. */
     abstract public function url(): string;
 

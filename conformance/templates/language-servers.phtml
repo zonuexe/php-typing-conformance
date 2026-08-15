@@ -19,42 +19,35 @@ $headers = ['Language server', 'Diagnostics', 'Analyzers driven', 'Bundled with 
 
 $generalServers = array_values(array_filter(
     $servers,
-    static fn (LanguageServerMetadata $server): bool => !$server->specialized(),
+    static fn (LanguageServerMetadata $server): bool => !$server->specialized() && !$server->historical(),
 ));
 $specializedServers = array_values(array_filter(
     $servers,
     static fn (LanguageServerMetadata $server): bool => $server->specialized(),
 ));
+$historicalServers = array_values(array_filter(
+    $servers,
+    static fn (LanguageServerMetadata $server): bool => $server->historical(),
+));
 
+// One row renderer shared by the three tables below.
+$renderServerRow = static function (LanguageServerMetadata $server): string {
+    ob_start();
+    // A server that claims to drive none says so with a dash; php-lsp's own
+    // engine is marked so its record in the analyzer table is not read as a
+    // third-party integration.
+    $analyzers = $server->analyzersDriven() === []
+        ? '—'
+        : implode(', ', $server->analyzersDriven()) . ($server->analyzersAreInHouse() ? ' (in-house)' : '');
+    // An unstated fact is said outright rather than left blank, so a reader can
+    // tell it apart from one nobody has looked up yet.
+    $languages = $server->languages() === [] ? 'Not stated' : implode(', ', $server->languages());
+    $parser = $server->parser() ?? 'Not stated';
+    $organization = $server->organization();
+    $lead = $server->lead();
+    $release = $server->latestRelease;
+    $announcement = $server->announcement();
 ?>
-<h2 class="section">Language servers</h2>
-<p class="section-note"><strong>Every cell in this table records what the project claims about itself</strong> &mdash; from its README, docs, changelog, release notes, package metadata, or its maintainer&rsquo;s own blog &mdash; and no claim here has been verified by executing the tool. What <em>has</em> been measured lives elsewhere: Intelephense&rsquo;s and Psalm&rsquo;s diagnostics scores are in the matrix above, and the servers this machine can launch headless have their protocol behaviour recorded in the <a href="#language-server-capabilities">measured capability matrix below</a>. Cells read <em>Not stated</em> where the project simply does not say.</p>
-<p class="section-note">Four rows also appear in the analyzer table above. <strong>Intelephense</strong> and <strong>Psalm</strong> are in both as the same tool &mdash; Psalm&rsquo;s server runs the analyzer its CLI does, reached over the protocol instead of the command line. The other two are pairs: <strong>php-lsp</strong> drives <em>mir</em>, and <em>phpy</em> is the CLI frontend of <strong>devsense-php-ls</strong>. Each pair is versioned separately, so each artifact keeps its own row and its own dates. <a href="https://github.com/phan/phan" target="_blank" rel="noopener">Phan</a> ships a language server too and belongs here; it has simply not been researched yet.</p>
-<div class="table-scroll"><table class="analyzer-meta">
-<thead><tr>
-<?php foreach ($headers as $header): ?>
-<th scope="col"><?= h($header) ?></th>
-<?php endforeach; ?>
-</tr></thead><tbody>
-<?php
-    // One row renderer shared by the general and the function-specific tables.
-    $renderServerRow = static function (LanguageServerMetadata $server): string {
-        ob_start();
-        // A server that claims to drive none says so with a dash; php-lsp's own
-        // engine is marked so its record in the analyzer table is not read as a
-        // third-party integration.
-        $analyzers = $server->analyzersDriven() === []
-            ? '—'
-            : implode(', ', $server->analyzersDriven()) . ($server->analyzersAreInHouse() ? ' (in-house)' : '');
-        // An unstated fact is said outright rather than left blank, so a reader can
-        // tell it apart from one nobody has looked up yet.
-        $languages = $server->languages() === [] ? 'Not stated' : implode(', ', $server->languages());
-        $parser = $server->parser() ?? 'Not stated';
-        $organization = $server->organization();
-        $lead = $server->lead();
-        $release = $server->latestRelease;
-        $announcement = $server->announcement();
-    ?>
 <tr><th class="tool-name"><a href="<?= h($server->url()) ?>" target="_blank" rel="noopener"><?= h($server->name()) ?></a></th><td><?= h_noted($server->diagnostics()->label(), $server->diagnosticsNote() ?? '') ?></td><td><?= h_noted($analyzers, $server->analyzersDrivenNote() ?? '') ?></td><td><?= h_noted($server->bundled(), $server->bundledNote() ?? '') ?></td><td><?= h_noted($languages, $server->languagesNote() ?? '') ?></td><td><?php
     $names = [];
     foreach ($server->founders() as $founder) {
@@ -101,13 +94,22 @@ $specializedServers = array_values(array_filter(
     endif;
 ?></td></tr>
 <?php
-        return (string) ob_get_clean();
-    };
+    return (string) ob_get_clean();
+};
 ?>
-</tbody></table></div>
+<h2 class="section">Language servers</h2>
+<p class="section-note"><strong>Every cell in this table records what the project claims about itself</strong> &mdash; from its README, docs, changelog, release notes, package metadata, or its maintainer&rsquo;s own blog &mdash; and no claim here has been verified by executing the tool. What <em>has</em> been measured lives elsewhere: Intelephense&rsquo;s and Psalm&rsquo;s diagnostics scores are in the matrix above, and the servers this machine can launch headless have their protocol behaviour recorded in the <a href="#language-server-capabilities">measured capability matrix below</a>. Cells read <em>Not stated</em> where the project simply does not say.</p>
+<p class="section-note">Four rows also appear in the analyzer table above. <strong>Intelephense</strong> and <strong>Psalm</strong> are in both as the same tool &mdash; Psalm&rsquo;s server runs the analyzer its CLI does, reached over the protocol instead of the command line. The other two are pairs: <strong>php-lsp</strong> drives <em>mir</em>, and <em>phpy</em> is the CLI frontend of <strong>devsense-php-ls</strong>. Each pair is versioned separately, so each artifact keeps its own row and its own dates. <a href="https://github.com/phan/phan" target="_blank" rel="noopener">Phan</a> ships a language server too and belongs here; it has simply not been researched yet.</p>
+<div class="table-scroll"><table class="analyzer-meta">
+<thead><tr>
+<?php foreach ($headers as $header): ?>
+<th scope="col"><?= h($header) ?></th>
+<?php endforeach; ?>
+</tr></thead><tbody>
 <?php foreach ($generalServers as $server): ?>
 <?php echo $renderServerRow($server); ?>
 <?php endforeach; ?>
+</tbody></table></div>
 <?php if ($specializedServers !== []): ?>
 <h2 class="section">Function-specific PHP language servers</h2>
 <p class="section-note">These servers serve one framework or feature &mdash; PHPUnit test cases, a formatter, a debugger &mdash; rather than PHP as a language, so they have nothing to answer the suite&rsquo;s typing probes with. They are listed for reference only and are never launched or measured; the claims in the cells above are the projects&rsquo; own, on the same terms as the general table.</p>
@@ -118,6 +120,20 @@ $specializedServers = array_values(array_filter(
 <?php endforeach; ?>
 </tr></thead><tbody>
 <?php foreach ($specializedServers as $server): ?>
+<?php echo $renderServerRow($server); ?>
+<?php endforeach; ?>
+</tbody></table></div>
+<?php endif; ?>
+<?php if ($historicalServers !== []): ?>
+<h2 class="section">Historical PHP language servers</h2>
+<p class="section-note">Dead or superseded implementations, kept as a record of what came before &mdash; the parser each adopted and the PHP syntax line it reached. Like the function-specific table, they are listed for reference only and are never launched or measured; the latest release cell names the project&rsquo;s final release.</p>
+<div class="table-scroll"><table class="analyzer-meta">
+<thead><tr>
+<?php foreach ($headers as $header): ?>
+<th scope="col"><?= h($header) ?></th>
+<?php endforeach; ?>
+</tr></thead><tbody>
+<?php foreach ($historicalServers as $server): ?>
 <?php echo $renderServerRow($server); ?>
 <?php endforeach; ?>
 </tbody></table></div>

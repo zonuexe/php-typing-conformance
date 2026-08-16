@@ -167,12 +167,14 @@ $intelephenseChecker = new IntelephenseChecker(
     serverPath: $projectRoot . '/vendor-bin/intelephense/node_modules/intelephense/lib/intelephense.js',
     clientPath: __DIR__ . '/Checker/intelephense-client.mjs',
     packageJsonPath: $projectRoot . '/vendor-bin/intelephense/node_modules/intelephense/package.json',
+    testsDir: $testsDir,
 );
 $steinsChecker = new SteinsChecker(
     binaryPath: $projectRoot . '/vendor-bin/steins/vendor/bin/steins',
 );
 $pzoomChecker = new PzoomChecker(
     configPath: $psalmConfigPath,
+    testsDir: $testsDir,
 );
 $qodanaChecker = new QodanaChecker(
     projectRoot: $projectRoot,
@@ -180,6 +182,7 @@ $qodanaChecker = new QodanaChecker(
 $phpyChecker = new PhpyChecker(
     nodeBinary: 'node',
     cliPath: $projectRoot . '/vendor-bin/phpy/node_modules/phpy/dist/index.js',
+    testsDir: $testsDir,
 );
 $phpactorChecker = new PhpactorChecker(
     binaryPath: $projectRoot . '/vendor-bin/phpactor/vendor/bin/phpactor',

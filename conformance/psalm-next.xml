@@ -18,5 +18,19 @@
     <issueHandlers>
         <MissingPureAnnotation errorLevel="suppress" />
         <MissingAbstractPureAnnotation errorLevel="suppress" />
+        <!-- The corpus is analysed as one project, in a single run, rather than
+             one invocation per test file. That is the only reason this handler
+             has to exist: "this class is never extended" is a whole-project
+             fact, so the issue could never fire while each file was looked at
+             alone. It is an architecture rule and says nothing about type
+             conformance, so it is suppressed rather than measured. -->
+        <ClassMustBeFinal errorLevel="suppress" />
+        <!-- The immutability nags arrive with the whole-project run for the
+             same reason: "this class is never mutated" cannot be known from one
+             file. They are the annotation-completeness rules the two handlers
+             above already dismiss, so they are dismissed on the same grounds —
+             the corpus does not test mutation-free annotations. -->
+        <MissingImmutableAnnotation errorLevel="suppress" />
+        <MissingInterfaceImmutableAnnotation errorLevel="suppress" />
     </issueHandlers>
 </psalm>

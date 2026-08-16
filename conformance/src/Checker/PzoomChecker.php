@@ -17,6 +17,14 @@ use RuntimeException;
  * output. Each finding is a line of the form:
  *   `ERROR: <IssueType> - <relpath>:<line>:<col> - <message> (see <url>)`
  * followed by a source-snippet line, which is ignored.
+ *
+ * Like {@see PsalmChecker}, the corpus is analysed in one whole-directory run
+ * and the answer is sliced per test case. pzoom needs the directory spelled out
+ * — with no path argument it analyses the current working directory, which is
+ * the whole repository including `vendor/` — but given `tests/` it reproduces
+ * the per-file verdict exactly, for every case, and takes a quarter of a second
+ * instead of fifty. Unlike Psalm it grew no extra whole-project issues to
+ * suppress: pzoom implements neither the finality nor the immutability nag.
  */
 final class PzoomChecker implements Checker
 {
@@ -27,8 +35,18 @@ final class PzoomChecker implements Checker
 
     private readonly string $binaryPath;
 
+    /**
+     * Diagnostics for the whole corpus, keyed by file basename — pzoom reports
+     * paths relative to the config file, so basenames are what can be matched,
+     * and the corpus is one flat directory. Null until first asked for.
+     *
+     * @var array<string, array<int, list<string>>>|null
+     */
+    private ?array $report = null;
+
     public function __construct(
         private readonly string $configPath,
+        private readonly string $testsDir,
         ?string $binaryPath = null,
     ) {
         $override = getenv('PZOOM_BIN');
@@ -52,35 +70,44 @@ final class PzoomChecker implements Checker
      */
     public function analyse(TestCase $testCase): array
     {
-        $paths = array_map(
-            static fn (string $path): string => escapeshellarg($path),
-            [...$testCase->supportPaths, $testCase->path],
-        );
+        return $this->report()[$testCase->fileName] ?? [];
+    }
+
+    /**
+     * @return array<string, array<int, list<string>>>
+     */
+    private function report(): array
+    {
+        if ($this->report !== null) {
+            return $this->report;
+        }
 
         $command = sprintf(
             '%s --config=%s analyze %s 2>/dev/null',
             escapeshellarg($this->binaryPath),
             escapeshellarg($this->configPath),
-            implode(' ', $paths),
+            escapeshellarg($this->testsDir),
         );
 
         exec($command, $output, $exitCode);
 
-        // 0 = clean, 2 = issues found (Psalm-style). Anything else is a failure.
+        // 0 = clean, 2 = issues found (Psalm-style). Anything else is a failure,
+        // and because this is one run for the whole column, a failure here takes
+        // down every test rather than one.
         if ($exitCode !== 0 && $exitCode !== 1 && $exitCode !== 2) {
-            throw new RuntimeException(sprintf('pzoom invocation failed for %s (exit %d)', $testCase->fileName, $exitCode));
+            throw new RuntimeException(sprintf('pzoom invocation failed (exit %d)', $exitCode));
         }
 
-        return $this->parseOutput($testCase, $output);
+        return $this->report = $this->parseOutput($output);
     }
 
     /**
      * @param list<string> $output
-     * @return array<int, list<string>>
+     * @return array<string, array<int, list<string>>>
      */
-    private function parseOutput(TestCase $testCase, array $output): array
+    private function parseOutput(array $output): array
     {
-        $diagnostics = [];
+        $byFile = [];
 
         foreach ($output as $line) {
             if (!preg_match(
@@ -91,10 +118,7 @@ final class PzoomChecker implements Checker
                 continue;
             }
 
-            if (basename($matches['path']) !== $testCase->fileName) {
-                continue;
-            }
-
+            $fileName = basename($matches['path']);
             $lineNumber = (int) $matches['line'];
             $message = trim((string) preg_replace('/\s*\(see https?:\/\/\S+\)\s*$/', '', $matches['message']));
             $type = trim($matches['type']);
@@ -104,12 +128,14 @@ final class PzoomChecker implements Checker
             }
 
             $formatted = $type !== '' ? sprintf('%s [%s]', $message, $type) : $message;
-            $diagnostics[$lineNumber] ??= [];
-            $diagnostics[$lineNumber][] = $formatted;
+            $byFile[$fileName][$lineNumber] ??= [];
+            $byFile[$fileName][$lineNumber][] = $formatted;
         }
 
-        ksort($diagnostics);
+        foreach ($byFile as &$diagnostics) {
+            ksort($diagnostics);
+        }
 
-        return $diagnostics;
+        return $byFile;
     }
 }

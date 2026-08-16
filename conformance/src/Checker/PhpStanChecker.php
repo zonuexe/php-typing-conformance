@@ -19,19 +19,35 @@ use RuntimeException;
  *
  * Resolving a level means asking PHPStan again, and PHPStan spends its time
  * booting rather than analysing: one file and the whole suite both take about
- * 1.3 seconds. Walking the levels per test therefore cost ~585 invocations for
- * ~100 tests. The walk now happens once for the whole test set -- ten runs,
- * one per level, indexed by file and message -- while the authoritative pass
- * stays per test.
+ * 1.2 seconds. Every pass here is therefore run over the whole test set at
+ * once -- the authoritative one at max, and one per rung of the level ladder
+ * to place each message on it. Twelve invocations for the whole matrix column,
+ * where the per-test pass alone used to be 216.
  *
- * That split is deliberate. The per-test pass at max is what the matrix
- * measures, and analysing each test alone is what makes it a measurement of
- * that test; the shared walk only answers "at which level does this known
- * message first appear", which the level configs make scope-independent for
- * every rule that looks at one file. Rules that count across a project are the
- * exception -- "Trait X is used zero times" means something different when the
- * project is one file -- so a message the shared index has never seen falls
- * back to the old per-test walk rather than being guessed at.
+ * Batching the authoritative pass is the part worth justifying, because
+ * analysing each test alone is what makes the result a measurement of *that*
+ * test. Two mechanisms could break that when the corpus is analysed as one
+ * project: rules that count across a project ("Trait X is used zero times"
+ * means something else when the project is one file), and cross-file symbol
+ * resolution, which is live -- a class referenced but not analysed is a
+ * `class.notFound`, and putting its declaration in scope silently replaces
+ * that diagnostic with whatever the real type says.
+ *
+ * Neither fires here, and that was measured rather than assumed: one whole-
+ * corpus run per config, diffed line by line against a per-file sweep of all
+ * 216 test files, is byte-identical under both `phpstan-no-strict.neon` (303
+ * diagnostics) and `phpstan.dist.neon` (307), and matches every stored result.
+ * The reason it holds is a property of the corpus, not of PHPStan: each test
+ * is one file in its own `Conformance\Tests\<Name>` namespace, its support
+ * files are the `_<name>`-prefixed ones that the per-file pass already put in
+ * scope, and no test names another test's symbols. A test that broke that
+ * isolation would be measured with the other test's declarations in scope, so
+ * keep new tests self-contained.
+ *
+ * The level walk keeps its per-test fallback regardless. There, absence is
+ * recoverable -- a message the shared index has never seen can simply be
+ * asked about on its own -- which is not true of the authoritative pass, where
+ * absence is the answer.
  */
 final class PhpStanChecker implements Checker
 {
@@ -55,6 +71,13 @@ final class PhpStanChecker implements Checker
      * @var array<string, int>|null "file\tline\tmessage" => lowest level
      */
     private ?array $levelIndex = null;
+
+    /**
+     * The authoritative max-level pass, likewise built once.
+     *
+     * @var array<string, array<int, list<string>>>|null file name => diagnostics
+     */
+    private ?array $maxDiagnostics = null;
 
     public function name(): string
     {
@@ -80,7 +103,8 @@ final class PhpStanChecker implements Checker
     {
         $this->lineLevels = [];
 
-        $maxDiagnostics = $this->runAnalysis($testCase, 'max');
+        $this->maxDiagnostics ??= $this->runCorpusAnalysis('max');
+        $maxDiagnostics = $this->maxDiagnostics[$testCase->fileName] ?? [];
 
         if (!$this->resolveDiagnosticLevels || $maxDiagnostics === []) {
             return $maxDiagnostics;
@@ -143,39 +167,57 @@ final class PhpStanChecker implements Checker
      * so the first level that reports a message is the one that owns it and
      * later levels can be ignored for that message.
      *
+     * The ladder is walked all the way to {@see MAX_LEVEL} and not one rung
+     * short of it. A message that the top rung alone reports used to be missed
+     * here and then rediscovered by {@see walkLevels}, at ten invocations per
+     * test, only to be told the level the fallback would have assumed anyway.
+     * Asking the top rung the same way as the others costs one more run of the
+     * whole set. It does not make the fallback redundant: `--level=max` is
+     * resolved by PHPStan, not here, so a max pass that outruns this ladder
+     * still lands in the fallback rather than being silently mislabelled.
+     *
      * @return array<string, int> "file\tline\tmessage" => lowest level
      */
     private function buildLevelIndex(): array
     {
         $index = [];
 
-        for ($level = 0; $level < self::MAX_LEVEL; $level++) {
-            $command = sprintf(
-                '%s analyse -c %s --level=%d --no-progress --error-format=raw %s 2>&1',
-                escapeshellarg($this->binaryPath),
-                escapeshellarg($this->configPath),
-                $level,
-                escapeshellarg($this->testsDir),
-            );
-
-            $output = [];
-            exec($command, $output, $exitCode);
-
-            if ($exitCode !== 0 && $exitCode !== 1) {
-                throw new RuntimeException(sprintf('PHPStan invocation failed at level %d', $level));
-            }
-
-            foreach ($output as $line) {
-                if (preg_match('~^(?<path>\S.*\.php):(?<line>\d+):(?<message>.*)$~', trim($line), $matches) !== 1) {
-                    continue;
+        for ($level = 0; $level <= self::MAX_LEVEL; $level++) {
+            foreach ($this->runCorpusAnalysis((string) $level) as $fileName => $diagnostics) {
+                foreach ($diagnostics as $lineNumber => $messages) {
+                    foreach ($messages as $message) {
+                        $key = $fileName . "\t" . $this->messageKey($lineNumber, $message);
+                        $index[$key] ??= $level;
+                    }
                 }
-
-                $key = basename($matches['path']) . "\t" . $this->messageKey((int) $matches['line'], trim($matches['message']));
-                $index[$key] ??= $level;
             }
         }
 
         return $index;
+    }
+
+    /**
+     * One invocation over the whole test set.
+     *
+     * @return array<string, array<int, list<string>>> file name => diagnostics
+     */
+    private function runCorpusAnalysis(string $level): array
+    {
+        $command = sprintf(
+            '%s analyse -c %s --level=%s --no-progress --error-format=raw %s 2>&1',
+            escapeshellarg($this->binaryPath),
+            escapeshellarg($this->configPath),
+            escapeshellarg($level),
+            escapeshellarg($this->testsDir),
+        );
+
+        exec($command, $output, $exitCode);
+
+        if ($exitCode !== 0 && $exitCode !== 1) {
+            throw new RuntimeException(sprintf('PHPStan invocation failed at level %s', $level));
+        }
+
+        return $this->parseOutput($output);
     }
 
     /**
@@ -263,45 +305,35 @@ final class PhpStanChecker implements Checker
     }
 
     /**
+     * The `raw` error format is one `path:line:message` per line, with an
+     * advisory header that carries no line number and so falls out here.
+     *
      * @param list<string> $output
-     * @return array<int, list<string>>
+     * @return array<string, array<int, list<string>>> file name => diagnostics
      */
-    private function parseOutput(TestCase $testCase, array $output): array
+    private function parseOutput(array $output): array
     {
         $diagnostics = [];
 
         foreach ($output as $line) {
-            $line = trim($line);
-            if ($line === '') {
+            if (preg_match('~^(?<path>\S.*\.php):(?<line>\d+):(?<message>.*)$~', trim($line), $matches) !== 1) {
                 continue;
             }
 
-            $prefix = $testCase->path . ':';
-            if (!str_starts_with($line, $prefix)) {
-                continue;
-            }
-
-            $rest = substr($line, strlen($prefix));
-            if ($rest === false) {
-                continue;
-            }
-
-            [$lineNumberText, $message] = explode(':', $rest, 2) + [null, null];
-            if ($lineNumberText === null || $message === null) {
-                continue;
-            }
-
-            $lineNumber = (int) trim($lineNumberText);
-            $diagnostics[$lineNumber] ??= [];
-            $diagnostics[$lineNumber][] = trim($message);
+            $diagnostics[basename($matches['path'])][(int) $matches['line']][] = trim($matches['message']);
         }
 
-        ksort($diagnostics);
+        foreach (array_keys($diagnostics) as $fileName) {
+            ksort($diagnostics[$fileName]);
+        }
 
         return $diagnostics;
     }
 
     /**
+     * One invocation for one test, with the support files the corpus run would
+     * have supplied. Only the level walk still needs this.
+     *
      * @return array<int, list<string>>
      */
     private function runAnalysis(TestCase $testCase, string $level): array
@@ -325,6 +357,6 @@ final class PhpStanChecker implements Checker
             throw new RuntimeException(sprintf('PHPStan invocation failed for %s', $testCase->fileName));
         }
 
-        return $this->parseOutput($testCase, $output);
+        return $this->parseOutput($output)[$testCase->fileName] ?? [];
     }
 }

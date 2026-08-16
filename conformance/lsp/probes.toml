@@ -92,11 +92,21 @@ method = "workspace/symbol"
 file = "capabilities.php"
 query = "ProbeSubject"
 
+# Anchored at a property declaration, not at the file's deliberate type error.
+# The type error looks like the natural place to ask, but no server offers a fix
+# for it: Phpactor and php-lsp answer nothing there, and the two actions DEVSENSE
+# and PHPantom do offer are extract-refactors that have nothing to do with the
+# error. Phpactor's author explains why in issue #5 — its code actions are
+# coupled to its diagnostics, and core Phpactor publishes none for this file — so
+# asking at an error a server has no opinion about measures whether the server
+# publishes diagnostics, which is already its own row. A property declaration is
+# where the generate-accessor and promote-constructor families live, and all four
+# servers that advertise the capability answer there.
 [[capability]]
 id = "code-action"
 method = "textDocument/codeAction"
 file = "capabilities.php"
-at = "return 'not an int';"
+at = "private Greeter $greeter;"
 
 [[capability]]
 id = "rename"

@@ -73,7 +73,7 @@ probe = "answered"
 [capabilities.code-action]
 advertised = true
 via = "static"
-probe = "empty"
+probe = "answered"
 
 [capabilities.code-lens]
 advertised = false

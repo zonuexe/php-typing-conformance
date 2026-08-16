@@ -165,6 +165,22 @@ These cost real debugging time; each one is now load-bearing in the code.
   and a verdict is reached just as well in 5s — a 30s window records the
   identical timeouts. Recorded as measured; a per-layer failure only marks
   that layer, so its fixture results still stand.
+- **The code-action probe was asking where nobody had an answer.** It used
+  to anchor on the fixture's deliberate type error, which reads as the
+  obvious place to ask for a quickfix. No server offers one there. Phpactor
+  and php-lsp returned nothing at all, and the actions DEVSENSE and
+  PHPantom did return were extract-refactors unrelated to the error, so two
+  of the four advertising servers were recorded `empty` for a capability
+  they have. Phpactor's author supplied the explanation in
+  [#5](https://github.com/zonuexe/php-typing-conformance/issues/5): its code
+  actions are coupled to its diagnostics, and core Phpactor publishes none
+  for this file. Asking at an error the server has no opinion about
+  therefore measures whether it publishes diagnostics, which is already its
+  own row. The anchor is now the `private Greeter $greeter;` declaration,
+  where the generate-accessor and promote-constructor families live and all
+  four servers answer. Worth remembering when adding a capability probe: a
+  position that exercises the *capability* beats a position that looks
+  thematically right.
 
 ## Reading the results
 

@@ -7,8 +7,47 @@ namespace Conformance\Checker;
 use Conformance\Discovery\TestCase;
 use RuntimeException;
 
+/**
+ * Adapter for mir (https://github.com/miropen/mir-php).
+ *
+ * mir puts several judgements at `info` severity that its peers report as
+ * ordinary findings, and `--show-info` is all-or-nothing. This adapter used to
+ * ask for info only on `debug_*` files, where `@trace` needs it, and that
+ * quietly cost the column its most important signal: `UndefinedDocblockClass`
+ * (MIR1505) — mir's answer to "I do not know this spelling" — is info, so it
+ * never reached the evaluator. Twenty-one tests recorded mir as having
+ * *recognized* a type it had in fact rejected, among them most of the
+ * `phpdoc_advanced_fallback_*` shelf, whose entire subject is which spellings
+ * an analyzer knows. Reading silence as understanding is only sound when the
+ * tool was allowed to speak.
+ *
+ * So info is on everywhere and the noise is dropped by code instead, the way
+ * IntelephenseChecker drops P1003. Only `UnusedParam` qualifies: every other
+ * info code carries a judgement whose
+ * equivalent this suite already records from another column — mixed-type
+ * complaints from Mago, `PossiblyInvalidArgument` and `RedundantCondition`
+ * and `MissingConstructor` from Psalm, deprecation from Intelephense.
+ */
 final class MirChecker implements Checker
 {
+    /**
+     * Diagnostic codes dropped as non-type-conformance noise.
+     *
+     * - MIR0501 `UnusedParam` — these fixtures exist to exercise a signature,
+     *   not to consume every parameter, which is the rationale
+     *   IntelephenseChecker documents for dropping its P1003.
+     * - MIR1102 `MissingThrowsDocblock` — every occurrence in this corpus is
+     *   `Random\RandomException` from a `random_int()` call used to produce a
+     *   value the analyzer cannot fold, on a line that is about something
+     *   else, and mir is the only tool that checks `@throws` completeness at
+     *   all. It never fires on `exceptions_throws_docblock`, the test that
+     *   would actually want the answer — mir is silent there — so nothing is
+     *   lost today. Revisit this entry if that ever changes.
+     *
+     * @var list<string>
+     */
+    private const IGNORED_CODES = ['MIR0501', 'MIR1102'];
+
     private ?string $anchorPath = null;
 
     public function __construct(
@@ -49,15 +88,11 @@ final class MirChecker implements Checker
             [$this->anchorPath(), ...$testCase->supportPaths, $testCase->path],
         );
 
-        // Info-level issues (e.g. `@trace` → MIR0221) are off by default so
-        // ordinary tests stay free of UnusedParam noise. Debug-feature cases
-        // need them, and only those files are named `debug_*`.
-        $showInfo = str_starts_with($testCase->name, 'debug_') ? ' --show-info' : '';
-
+        // Info severity carries real findings here, not just `@trace`
+        // (MIR0221); see the class docblock. IGNORED_CODES drops the noise.
         $command = sprintf(
-            '%s --no-progress --no-cache --php-version 8.5%s %s 2>&1',
+            '%s --no-progress --no-cache --php-version 8.5 --show-info %s 2>&1',
             escapeshellarg($this->binaryPath),
-            $showInfo,
             implode(' ', $paths),
         );
 
@@ -99,6 +134,10 @@ final class MirChecker implements Checker
 
             $lineNumber = (int) $matches['line'];
             if ($lineNumber <= 0) {
+                continue;
+            }
+
+            if (in_array($matches['code'], self::IGNORED_CODES, true)) {
                 continue;
             }
 

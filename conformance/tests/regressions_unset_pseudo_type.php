@@ -26,7 +26,18 @@ namespace Conformance\Tests\RegressionsUnsetPseudoType;
  * diagnostic there means the reactions below are about a top-level variable
  * with no assignment, not about the `unset` member of the union.
  *
- * Source lead: PHPantom-dev/phpantom_lsp#366
+ * mir looked like the exception and is not one. Its source resolves `unset`
+ * the same way as the rest: the spelling is absent from the docblock keyword
+ * table, falls through to the catch-all named-object atom, and is flagged
+ * because it is not in the `is_pseudo_type` exemption list. That diagnostic
+ * is info severity, which this adapter used to ask for only on `debug_*`
+ * files — mir's apparent silence here was the harness's, and MirChecker now
+ * reads info everywhere. mir does carry a possibly-undefined concept, but it
+ * is set from control flow alone and no docblock type can reach it, so
+ * exempting the spelling would quiet the complaint without implementing any
+ * of the semantics above.
+ *
+ * Source lead: PHPantom-dev/phpantom_lsp#366. Tracked here in #7.
  */
 
 /** @var \DateTime $defined */

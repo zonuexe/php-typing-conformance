@@ -51,6 +51,37 @@ push diagnostics, which have no capability flag in the protocol at all — that
 row is behavioural observation alone (did the session ever publish diagnostics
 for the fixture holding the deliberate type error?).
 
+## What configuration the servers get
+
+A capability matrix is only as meaningful as the configuration behind it, and
+this one has a rule: **each server is launched with the settings that turn on
+its own features, and with nothing that delegates to another tool.**
+
+Turning a server's own feature on is fair game, because a user reaches it by
+editing a settings file. Phan's language server hides go-to-definition, hover
+and completion behind `--language-server-enable-*` flags, and the run passes all
+three. Phpactor's inlay hints are off until
+`language_server_worse_reflection.inlay_hints.enable` is set, and off for the
+type kind specifically until `.types` is set as well; the run sets both, since
+the inferred type at a binding is this suite's whole subject. Psalm's
+`--enable-*` switches all default to on, so it needs nothing.
+
+Installing an adapter to another analyzer is a different act, and the run does
+not do it. Phpactor bundles PHPStan, Psalm, Mago, php-cs-fixer and
+PHP_CodeSniffer integrations in core, each behind `language_server_<tool>.enabled`;
+PHPantom has its own PHPStan, PHPCS and Mago hooks. Enabling them would fill the
+diagnostics and formatting rows with a *different tool's* output under this
+server's name, and both of those tools already have columns of their own. The
+reference table records which analyzers each server can drive, which is the
+honest place for that fact.
+
+A licence is not configuration. Intelephense omits its paid capabilities from
+the handshake and DEVSENSE advertises then refuses with `-32803`; no setting
+reaches them, so they stay recorded as measured.
+
+The practical consequence: a `false` in the matrix means the server does not
+offer that capability by itself, not that nobody asked it nicely.
+
 ## Moving parts
 
 - `conformance/lsp/fixtures/` — the workspace the servers see: `lib.php` and

@@ -58,7 +58,19 @@ final class LspServerCatalog
             ),
             new LspServer(
                 tool: 'phpactor',
-                command: [$projectRoot . '/vendor-bin/phpactor/vendor/bin/phpactor', 'language-server'],
+                // Inlay hints are Phpactor's own, off by default, and turned on
+                // by configuration rather than by an extension, so the run asks
+                // for them. `types` stays off even once hints are enabled, and
+                // it is the kind this suite is about: the inferred type at a
+                // binding, the same information a completion list draws on.
+                command: [
+                    $projectRoot . '/vendor-bin/phpactor/vendor/bin/phpactor',
+                    'language-server',
+                    '--config-extra=' . json_encode([
+                        'language_server_worse_reflection.inlay_hints.enable' => true,
+                        'language_server_worse_reflection.inlay_hints.types' => true,
+                    ], JSON_THROW_ON_ERROR),
+                ],
                 versionCommand: [$projectRoot . '/vendor-bin/phpactor/vendor/bin/phpactor', '--version'],
             ),
             new LspServer(

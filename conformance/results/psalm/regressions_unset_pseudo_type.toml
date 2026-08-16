@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 5
+output = """
+regressions_unset_pseudo_type.php:37: Docblock-defined class, interface or enum named Conformance\\Tests\\RegressionsUnsetPseudoType\\unset does not exist [UndefinedDocblockClass]
+regressions_unset_pseudo_type.php:37: Docblock-defined class, interface or enum named Conformance\\Tests\\RegressionsUnsetPseudoType\\unset does not exist [UndefinedDocblockClass]
+regressions_unset_pseudo_type.php:40: Docblock-defined class, interface or enum named Conformance\\Tests\\RegressionsUnsetPseudoType\\unset does not exist [UndefinedDocblockClass]
+regressions_unset_pseudo_type.php:40: Argument 1 of date_format expects DateTimeInterface, but possibly different type Conformance\\Tests\\RegressionsUnsetPseudoType\\unset|DateTime provided [PossiblyInvalidArgument]
+regressions_unset_pseudo_type.php:43: Docblock-defined class, interface or enum named Conformance\\Tests\\RegressionsUnsetPseudoType\\unset does not exist [UndefinedDocblockClass]
+regressions_unset_pseudo_type.php:43: Docblock-defined type Conformance\\Tests\\RegressionsUnsetPseudoType\\unset|DateTime for $guarded is never null [RedundantConditionGivenDocblockType]
+regressions_unset_pseudo_type.php:44: Docblock-defined class, interface or enum named Conformance\\Tests\\RegressionsUnsetPseudoType\\unset does not exist [UndefinedDocblockClass]
+regressions_unset_pseudo_type.php:45: Argument 1 of date_format expects DateTimeInterface, but possibly different type Conformance\\Tests\\RegressionsUnsetPseudoType\\unset|DateTime provided [PossiblyInvalidArgument]"""
+errors_diff = """
+Line 43: Expected silence (quiet probe), got ["Docblock-defined class, interface or enum named Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset does not exist [UndefinedDocblockClass]","Docblock-defined type Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset|DateTime for $guarded is never null [RedundantConditionGivenDocblockType]"]
+Line 44: Expected silence (quiet probe), got ["Docblock-defined class, interface or enum named Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset does not exist [UndefinedDocblockClass]"]
+Line 45: Expected silence (quiet probe), got ["Argument 1 of date_format expects DateTimeInterface, but possibly different type Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset|DateTime provided [PossiblyInvalidArgument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "2/5"
+unrecognized_lines = [37, 40, 43]
+false_positive_lines = []
+over_rejected_lines = []

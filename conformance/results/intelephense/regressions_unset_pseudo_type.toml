@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+regressions_unset_pseudo_type.php:37: Expected type 'object'. Found 'DateTime|unset'. [P1006]
+regressions_unset_pseudo_type.php:40: Expected type 'DateTimeInterface'. Found 'DateTime|unset'. [P1006]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "5/5"
+unrecognized_lines = [37, 40]
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 5
+output = """
+regressions_unset_pseudo_type.php:36: Class or interface named \\Conformance\\Tests\\RegressionsUnsetPseudoType\\unset does not exist [undefinedClass]
+regressions_unset_pseudo_type.php:39: Class or interface named \\Conformance\\Tests\\RegressionsUnsetPseudoType\\unset does not exist [undefinedClass]
+regressions_unset_pseudo_type.php:40: potentially not safe call in function date_format signature of param object [notSafeCall]
+regressions_unset_pseudo_type.php:42: Class or interface named \\Conformance\\Tests\\RegressionsUnsetPseudoType\\unset does not exist [undefinedClass]
+regressions_unset_pseudo_type.php:45: potentially not safe call in function date_format signature of param object [notSafeCall]"""
+errors_diff = "Line 45: Expected silence (quiet probe), got [\"potentially not safe call in function date_format signature of param object [notSafeCall]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "3/5"
+unrecognized_lines = [36, 39, 40, 42]
+false_positive_lines = []
+over_rejected_lines = []

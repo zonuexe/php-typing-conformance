@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 5
+output = """
+regressions_unset_pseudo_type.php:33: Undefined variable "$defined"
+regressions_unset_pseudo_type.php:34: Undefined variable "$defined""""
+errors_diff = """
+Line 33: Expected valid value to be accepted, got ["Undefined variable \\"$defined\\""]
+Line 34: Expected valid value to be accepted, got ["Undefined variable \\"$defined\\""]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/5"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

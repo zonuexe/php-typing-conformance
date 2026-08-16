@@ -1,0 +1,26 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 5
+output = """
+regressions_unset_pseudo_type.php:36: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\RegressionsUnsetPseudoType\\unset`. [non-existent-class-like]
+regressions_unset_pseudo_type.php:37: Attempting to access a method on a non-object type (`unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`). [invalid-method-access]
+regressions_unset_pseudo_type.php:37: The first value for `echo` is too general. [mixed-argument]
+regressions_unset_pseudo_type.php:39: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\RegressionsUnsetPseudoType\\unset`. [non-existent-class-like]
+regressions_unset_pseudo_type.php:40: Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [possibly-invalid-argument]
+regressions_unset_pseudo_type.php:42: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\RegressionsUnsetPseudoType\\unset`. [non-existent-class-like]
+regressions_unset_pseudo_type.php:43: This condition (type `true`) will always evaluate to true. [redundant-condition]
+regressions_unset_pseudo_type.php:44: Attempting to access a method on a non-object type (`unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`). [invalid-method-access]
+regressions_unset_pseudo_type.php:44: The first value for `echo` is too general. [mixed-argument]
+regressions_unset_pseudo_type.php:45: Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [possibly-invalid-argument]"""
+errors_diff = """
+Line 43: Expected silence (quiet probe), got ["This condition (type `true`) will always evaluate to true. [redundant-condition]"]
+Line 44: Expected silence (quiet probe), got ["Attempting to access a method on a non-object type (`unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`). [invalid-method-access]","The first value for `echo` is too general. [mixed-argument]"]
+Line 45: Expected silence (quiet probe), got ["Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`. [possibly-invalid-argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "2/5"
+unrecognized_lines = [36, 37, 39, 40, 42, 43]
+false_positive_lines = []
+over_rejected_lines = []

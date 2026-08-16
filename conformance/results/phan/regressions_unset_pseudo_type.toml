@@ -1,0 +1,19 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 5
+output = """
+regressions_unset_pseudo_type.php:33: Global variable $defined is undeclared [PhanUndeclaredGlobalVariable]
+regressions_unset_pseudo_type.php:34: Global variable $defined is undeclared [PhanUndeclaredGlobalVariable]
+regressions_unset_pseudo_type.php:37: Global variable $read is undeclared [PhanUndeclaredGlobalVariable]
+regressions_unset_pseudo_type.php:40: Global variable $passed is undeclared [PhanUndeclaredGlobalVariable]"""
+errors_diff = """
+Line 33: Expected valid value to be accepted, got ["Global variable $defined is undeclared [PhanUndeclaredGlobalVariable]"]
+Line 34: Expected valid value to be accepted, got ["Global variable $defined is undeclared [PhanUndeclaredGlobalVariable]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "5/5"
+unrecognized_lines = [37, 40]
+false_positive_lines = []
+over_rejected_lines = []

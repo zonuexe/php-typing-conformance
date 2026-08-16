@@ -47,12 +47,12 @@ final class Phpactor extends LanguageServerMetadata
 
     public function analyzersDriven(): array
     {
-        return ['PHPStan', 'Psalm'];
+        return ['PHPStan', 'Psalm', 'Mago'];
     }
 
     public function analyzersDrivenNote(): ?string
     {
-        return 'Opt-in extension packages, not core: phpactor/language-server-phpstan-extension and phpactor/language-server-psalm-extension. php-cs-fixer and PHP_CodeSniffer integrate the same way, for formatting rather than type diagnostics.';
+        return 'Bundled in core (lib/Extension/LanguageServerPhpstan, LanguageServerPsalm, LanguageServerMago) rather than installed as separate packages, and off until language_server_<tool>.enabled is set; Phpactor offers to set it when it finds the analyzer in composer.json. php-cs-fixer and PHP_CodeSniffer are wired the same way, for formatting rather than type diagnostics.';
     }
 
     public function bundled(): string

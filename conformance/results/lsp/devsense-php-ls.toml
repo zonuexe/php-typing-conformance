@@ -218,3 +218,12 @@ refs_expected = 6
 refs_found = 6
 refs_extra = 0
 references = "all"
+
+[navigation.constructor]
+kind = "Constructor"
+name = "Psy\\ConfigPaths::__construct()"
+definition = "n/a"
+refs_expected = 15
+refs_found = 15
+refs_extra = 0
+references = "all"

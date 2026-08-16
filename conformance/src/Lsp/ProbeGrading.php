@@ -244,7 +244,11 @@ final class ProbeGrading
             $row = ['kind' => (string) $symbol['kind'], 'name' => (string) $symbol['name']];
 
             $definition = $probesById['nav-def:' . $id] ?? null;
-            if ($definition === null || ($definition['skipped'] ?? false) === true) {
+            if (($symbol['probe'] ?? null) === null) {
+                // The symbol declares no use site to jump from: its definition
+                // answer is not gradeable, and only its references are asked.
+                $row['definition'] = 'n/a';
+            } elseif ($definition === null || ($definition['skipped'] ?? false) === true) {
                 $row['definition'] = 'skipped';
             } elseif (($definition['ok'] ?? false) !== true) {
                 $row['definition'] = ($definition['error'] ?? '') === 'timeout' ? 'timeout' : 'error';

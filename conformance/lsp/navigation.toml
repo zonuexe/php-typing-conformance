@@ -151,3 +151,47 @@ refs = [
   { file = "src/Formatter/DocblockFormatter.php", line = 46 },
   { file = "src/Formatter/DocblockFormatter.php", line = 54 },
 ]
+
+# Find-references on a constructor, which answers "where is this class
+# instantiated?" — Phpactor's author named it as a workflow he relies on
+# (issue #5), and every server that advertises references resolves it.
+#
+# It is the layer's sharpest symbol-versus-name test, and it runs the opposite
+# way from the decoys above. `new ConfigPaths(...)` does not contain the text
+# `__construct` anywhere, so an implementation that matches references by name
+# scores zero rather than scoring extras; and since every class in the corpus
+# declares a `__construct`, one that matches by name alone returns hundreds of
+# them. Line 428 is a `new self()` inside the class, asking the same question
+# through a different spelling.
+#
+# No `probe` key, so no definition half. Go-to-definition from a `new`
+# expression is not gradeable here: servers answer with the class declaration,
+# the constructor, or both, and Phpactor returns one range spanning the whole
+# class — which contains the constructor line, so the containment rule would
+# score it correct without it having resolved the constructor at all.
+#
+# LSP requires none of this: nothing in the spec says references on
+# `__construct` must report `new` sites. It is a convention, and a server that
+# reports nothing here has chosen differently rather than failed.
+[[symbol]]
+id = "constructor"
+kind = "Constructor"
+name = "Psy\\ConfigPaths::__construct()"
+decl = { file = "src/ConfigPaths.php", line = 34, at = "__construct" }
+refs = [
+  { file = "src/ConfigPaths.php", line = 34 },
+  { file = "src/ConfigPaths.php", line = 428 },
+  { file = "src/Configuration.php", line = 206 },
+  { file = "test/ConfigPathsTest.php", line = 21 },
+  { file = "test/ConfigPathsTest.php", line = 55 },
+  { file = "test/ConfigPathsTest.php", line = 143 },
+  { file = "test/ConfigPathsTest.php", line = 173 },
+  { file = "test/ConfigPathsTest.php", line = 181 },
+  { file = "test/ConfigPathsTest.php", line = 191 },
+  { file = "test/ConfigPathsTest.php", line = 201 },
+  { file = "test/ConfigPathsTest.php", line = 210 },
+  { file = "test/ProjectTrustTest.php", line = 22 },
+  { file = "test/ProjectTrustTest.php", line = 234 },
+  { file = "test/ProjectTrustTest.php", line = 255 },
+  { file = "test/Configuration/ClipboardTest.php", line = 77 },
+]

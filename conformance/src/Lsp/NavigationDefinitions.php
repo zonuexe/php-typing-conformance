@@ -66,7 +66,13 @@ final class NavigationDefinitions
         $symbols = [];
         foreach ($data['symbol'] ?? [] as $symbol) {
             $symbol['decl'] = self::position($resolved, $symbol['decl'], (string) $symbol['id']);
-            $symbol['probe'] = self::position($resolved, $symbol['probe'], (string) $symbol['id']);
+            // `probe` — the use site go-to-definition jumps FROM — is optional.
+            // A symbol whose definition answer cannot be graded meaningfully
+            // declares references alone; see the constructor symbol in
+            // navigation.toml for the case that motivated it.
+            $symbol['probe'] = isset($symbol['probe'])
+                ? self::position($resolved, $symbol['probe'], (string) $symbol['id'])
+                : null;
             $symbols[] = $symbol;
         }
 

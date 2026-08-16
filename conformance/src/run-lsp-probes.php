@@ -72,11 +72,13 @@ $navigationProbes = [];
 $navigationOpen = [];
 if ($navigation !== null) {
     foreach ($navigation->symbols as $symbol) {
-        $navigationProbes[] = [
-            'id' => 'nav-def:' . $symbol['id'],
-            'method' => 'textDocument/definition',
-            ...$symbol['probe'],
-        ];
+        if ($symbol['probe'] !== null) {
+            $navigationProbes[] = [
+                'id' => 'nav-def:' . $symbol['id'],
+                'method' => 'textDocument/definition',
+                ...$symbol['probe'],
+            ];
+        }
         $navigationProbes[] = [
             'id' => 'nav-refs:' . $symbol['id'],
             'method' => 'textDocument/references',
@@ -85,7 +87,9 @@ if ($navigation !== null) {
         // Only the files probes are sent against get opened; the rest of the
         // reference set must be found through the server's own index, which
         // is the dependency-graph question this layer exists to ask.
-        $navigationOpen[] = (string) $symbol['probe']['file'];
+        if ($symbol['probe'] !== null) {
+            $navigationOpen[] = (string) $symbol['probe']['file'];
+        }
         $navigationOpen[] = (string) $symbol['decl']['file'];
     }
     $navigationOpen = array_values(array_unique($navigationOpen));

@@ -217,3 +217,12 @@ refs_expected = 6
 references = "timeout"
 refs_found = 0
 refs_extra = 0
+
+[navigation.constructor]
+kind = "Constructor"
+name = "Psy\\ConfigPaths::__construct()"
+definition = "n/a"
+refs_expected = 15
+references = "timeout"
+refs_found = 0
+refs_extra = 0

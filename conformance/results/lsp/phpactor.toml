@@ -221,3 +221,13 @@ refs_found = 4
 refs_extra = 0
 references = "partial"
 refs_missing = ["src/Formatter/DocblockFormatter.php:46", "src/Formatter/DocblockFormatter.php:54"]
+
+[navigation.constructor]
+kind = "Constructor"
+name = "Psy\\ConfigPaths::__construct()"
+definition = "n/a"
+refs_expected = 15
+refs_found = 14
+refs_extra = 0
+references = "partial"
+refs_missing = ["src/ConfigPaths.php:428"]

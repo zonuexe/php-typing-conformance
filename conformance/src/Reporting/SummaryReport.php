@@ -1124,7 +1124,12 @@ final class SummaryReport
                     $refCells[] = $this->lspNavigationReferencesCell($row);
                 }
                 $label = ['kind' => (string) ($symbol['kind'] ?? $symbolId), 'name' => (string) ($symbol['name'] ?? '')];
-                $navDefRows[] = [...$label, 'cells' => $defCells];
+                // A symbol may be measured for references alone; the constructor
+                // is, because go-to-definition from a `new` expression has no
+                // gradeable right answer. It gets no row in the definition table.
+                if (($symbol['definition'] ?? '') !== 'n/a') {
+                    $navDefRows[] = [...$label, 'cells' => $defCells];
+                }
                 $navRefRows[] = [...$label, 'cells' => $refCells];
             }
         }

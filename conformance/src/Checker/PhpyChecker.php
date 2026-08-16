@@ -14,19 +14,22 @@ use RuntimeException;
  * phpy indexes everything under its root directory (the current working
  * directory by default) rather than restricting itself to the paths given on
  * the command line -- run from an unrelated cwd it will happily walk that
- * whole tree and report on files never passed to it. The run therefore happens
- * in a private temp workspace, with that workspace as the invoked process's
- * cwd, mirroring IntelephenseChecker's private-workspace approach for the same
- * reason.
+ * whole tree and report on files never passed to it. Each test therefore runs
+ * in a private temp workspace containing only its own file(s), with that
+ * workspace as the invoked process's cwd, mirroring IntelephenseChecker's
+ * private-workspace approach for the same reason.
  *
- * That workspace holds the whole corpus and is checked in one invocation, the
- * way {@see QodanaChecker} reads one report. phpy indexed the directory on
- * every per-test invocation anyway, so the corpus was being walked 218 times
- * to report on one file at a time: ~1.4 seconds per test, ~306 for the column,
- * against 1.6 seconds for a single `--check .` over all of it. A per-file diff
- * against the stored results confirmed the shared workspace changes no
- * diagnostic -- every test file carries its own namespace, so nothing resolves
- * across them that did not resolve before.
+ * This is the one column that stays per test while the others moved to a
+ * single run over the corpus, and it is not for want of trying: `--check .`
+ * over all 218 files answers 0.9 seconds instead of 306, but it does not
+ * answer the same thing twice. Four identical runs returned 189, 180, 189 and
+ * 189 diagnostics, the short one silently dropping every finding for
+ * `phpdoc_advanced_fallback_static_pure_closure`, `_resource` and
+ * `_open_resource` -- exactly the kind of loss that reads as a clean file.
+ * The same three files measured one at a time are stable over six runs each.
+ * phpy is a language server behind a CLI and `--check` appears to race its own
+ * indexing, which a one-file workspace never gives it time to lose. A column
+ * that is wrong once in four runs is worth 305 seconds.
  *
  * phpy's diagnostics carry no code, only a message, so filtering relies on
  * matching message text against two patterns, both confirmed against every
@@ -47,17 +50,9 @@ final class PhpyChecker implements Checker
     /** Matches phpy's non-type-conformance noise; see class docblock. */
     private const IGNORED_MESSAGE_PATTERN = '/is assigned, but its value is never used$|should be called in global namespace to allow compiler optimization\.$/';
 
-    /**
-     * The whole corpus, keyed by file name. Built on the first analysis.
-     *
-     * @var array<string, array<int, list<string>>>|null
-     */
-    private ?array $report = null;
-
     public function __construct(
         private readonly string $nodeBinary,
         private readonly string $cliPath,
-        private readonly string $testsDir,
     ) {
     }
 
@@ -88,55 +83,47 @@ final class PhpyChecker implements Checker
      */
     public function analyse(TestCase $testCase): array
     {
-        return $this->report()[$testCase->fileName] ?? [];
-    }
-
-    /**
-     * @return array<string, array<int, list<string>>>
-     */
-    private function report(): array
-    {
-        if ($this->report !== null) {
-            return $this->report;
-        }
-
         $workspace = sys_get_temp_dir() . '/phpy-conformance-' . bin2hex(random_bytes(8));
         if (!mkdir($workspace, 0o700, true) && !is_dir($workspace)) {
-            throw new RuntimeException('Failed to create the phpy workspace.');
+            throw new RuntimeException(sprintf('Failed to create phpy workspace for %s', $testCase->fileName));
         }
 
         try {
-            foreach (glob($this->testsDir . '/*.php') ?: [] as $sourcePath) {
-                if (!copy($sourcePath, $workspace . '/' . basename($sourcePath))) {
-                    throw new RuntimeException(sprintf('Failed to copy %s into the phpy workspace', $sourcePath));
+            $targetPath = $workspace . '/' . $testCase->fileName;
+
+            foreach ([...$testCase->supportPaths, $testCase->path] as $sourcePath) {
+                $destPath = $workspace . '/' . basename($sourcePath);
+                if (!copy($sourcePath, $destPath)) {
+                    throw new RuntimeException(sprintf('Failed to copy %s into phpy workspace', $sourcePath));
                 }
             }
 
             $command = sprintf(
-                'cd %s && %s %s --check . 2>/dev/null',
+                'cd %s && %s %s --check %s 2>/dev/null',
                 escapeshellarg($workspace),
                 escapeshellarg($this->nodeBinary),
                 escapeshellarg($this->cliPath),
+                escapeshellarg($targetPath),
             );
 
             exec($command, $output, $exitCode);
 
             if ($exitCode !== 0) {
-                throw new RuntimeException('phpy invocation failed for the test corpus.');
+                throw new RuntimeException(sprintf('phpy invocation failed for %s', $testCase->fileName));
             }
 
-            return $this->report = $this->parseOutput(implode("\n", $output));
+            return $this->parseOutput($testCase, implode("\n", $output));
         } finally {
             $this->removeDirectory($workspace);
         }
     }
 
     /**
-     * @return array<string, array<int, list<string>>>
+     * @return array<int, list<string>>
      */
-    private function parseOutput(string $output): array
+    private function parseOutput(TestCase $testCase, string $output): array
     {
-        $report = [];
+        $diagnostics = [];
 
         foreach (explode("\n", $this->stripAnsi($output)) as $line) {
             $line = trim($line);
@@ -155,8 +142,10 @@ final class PhpyChecker implements Checker
 
             // phpy resolves symlinks in the paths it reports, so the temp
             // workspace path it prints may not equal the one we passed in
-            // byte-for-byte; key on the basename instead, as PzoomChecker does.
-            $fileName = basename($matches['path']);
+            // byte-for-byte; compare basenames instead, as PzoomChecker does.
+            if (basename($matches['path']) !== $testCase->fileName) {
+                continue;
+            }
 
             $message = trim($matches['message']);
             if ($message === '' || preg_match(self::IGNORED_MESSAGE_PATTERN, $message) === 1) {
@@ -168,15 +157,13 @@ final class PhpyChecker implements Checker
                 continue;
             }
 
-            $report[$fileName][$lineNumber] ??= [];
-            $report[$fileName][$lineNumber][] = $message;
+            $diagnostics[$lineNumber] ??= [];
+            $diagnostics[$lineNumber][] = $message;
         }
 
-        foreach ($report as &$diagnostics) {
-            ksort($diagnostics);
-        }
+        ksort($diagnostics);
 
-        return $report;
+        return $diagnostics;
     }
 
     private function stripAnsi(string $text): string

@@ -1,0 +1,30 @@
+# Fallback Laravel probes for machines without the Gate submodule.
+# env() reads .env from disk, so these run in the stub-artisan capability
+# session. When the submodule is present, corpus-probes.toml replaces this
+# file entirely (LspSurface already has the empty-env and missing-key cases).
+
+[[framework]]
+id = "env-hover"
+method = "textDocument/hover"
+file = "helpers.php"
+at = "APP_NAME"
+expected = "Conformance"
+
+[[framework]]
+id = "env-definition"
+method = "textDocument/definition"
+file = "helpers.php"
+at = "APP_NAME"
+
+[[framework]]
+id = "env-completion"
+method = "textDocument/completion"
+file = "helpers.php"
+at = "env('')"
+offset = 5
+
+[[framework]]
+id = "env-diagnostic"
+method = "push-diagnostics"
+file = "helpers.php"
+at = "MISSING_KEY"

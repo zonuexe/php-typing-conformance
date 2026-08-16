@@ -14,14 +14,18 @@ namespace Conformance\Lsp;
  * records what every known server claims about itself, this one lists the
  * servers this machine launches headless — every claims-table row plus
  * Phan, whose server has a measurement here before it has been researched
- * for the claims table.
+ * for the claims table, and Laravel LSP, which the claims table lists as
+ * function-specific and this catalog still launches against a Laravel-
+ * shaped workspace.
  *
- * How each of the last three is obtained: devsense-php-ls comes from npm
+ * How each of the last four is obtained: devsense-php-ls comes from npm
  * (its own vendor-bin namespace — phpy bundles a separately versioned copy
  * of the same engine and must not be reused for this). php-lsp and
  * phpantom ship as per-platform binaries on GitHub releases, fetched by
  * `make install-php-lsp` / `make install-phpantom` into
- * vendor-bin/<tool>/bin/; neither is on Packagist or npm.
+ * vendor-bin/<tool>/bin/; neither is on Packagist or npm. laravel-lsp is
+ * a Composer package (`laravel/lsp`) whose bin is the compiled
+ * `builds/laravel-lsp` binary.
  */
 final class LspServerCatalog
 {
@@ -89,6 +93,28 @@ final class LspServerCatalog
                 tool: 'php-lsp',
                 command: [$projectRoot . '/vendor-bin/php-lsp/bin/php-lsp'],
                 versionCommand: [$projectRoot . '/vendor-bin/php-lsp/bin/php-lsp', '--version'],
+            ),
+            new LspServer(
+                tool: 'laravel-lsp',
+                // Default command is `lsp` (stdio). The capability session
+                // still needs a stub artisan so initialize succeeds on the
+                // small fixtures. Framework probes against Gate are a
+                // second session in run-lsp-probes.php.
+                command: [$projectRoot . '/vendor-bin/laravel-lsp/vendor/bin/laravel-lsp'],
+                initializationOptions: [
+                    'phpEnvironment' => 'local',
+                    'phpCommand' => ['php'],
+                    'pestGenerateDocBlocks' => false,
+                ],
+                configFiles: [
+                    'artisan' => $lspDir . '/laravel/artisan',
+                    '.env' => $lspDir . '/laravel/.env',
+                    'helpers.php' => $lspDir . '/laravel/helpers.php',
+                ],
+                openExtra: ['helpers.php'],
+                skipNavigation: true,
+                frameworkProbesFile: $lspDir . '/laravel/probes.toml',
+                versionCommand: [$projectRoot . '/vendor-bin/laravel-lsp/vendor/bin/laravel-lsp', '--version'],
             ),
             new LspServer(
                 tool: 'phan',

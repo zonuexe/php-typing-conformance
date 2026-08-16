@@ -35,13 +35,16 @@ final class ProbeRunner
      * @param list<string>|null $open fixture basenames to didOpen; null opens all
      * @param string|null $sourceDir a directory to copy recursively as the
      *        workspace instead of the flat fixture files — the real-project
-     *        corpus for the navigation probes
+     *        corpus for the navigation probes, or the Gate Laravel app
      * @param array<string, string>|null $configFiles overrides the server's
      *        own configFiles; a corpus needs different psalm/phan configs
      *        than the fixtures do
      * @param array<string, mixed> $specOverrides extra spec fields for the
      *        client (indexTimeoutMs etc.) — a real project indexes slower
      *        than five fixture files
+     * @param bool $linkVendor when copying a Laravel app, skip vendor/ and
+     *        symlink the source tree's vendor so artisan tinker works
+     *        without duplicating hundreds of megabytes per run
      * @return array<string, mixed> the client's JSON output, decoded
      */
     public function run(
@@ -51,18 +54,14 @@ final class ProbeRunner
         ?string $sourceDir = null,
         ?array $configFiles = null,
         array $specOverrides = [],
+        bool $linkVendor = false,
     ): array {
         $workspace = $this->makeTempDir('lsp-ws-');
         $specFile = null;
 
         try {
             if ($sourceDir !== null) {
-                // cp -R of the corpus contents; trailing "/." copies contents
-                // rather than the directory itself.
-                exec(sprintf('cp -R %s %s 2>/dev/null', escapeshellarg($sourceDir . '/.'), escapeshellarg($workspace)), $ignored, $copyExit);
-                if ($copyExit !== 0) {
-                    throw new RuntimeException("Failed to copy corpus {$sourceDir} into {$workspace}");
-                }
+                $this->copyCorpus($sourceDir, $workspace, $linkVendor);
                 $open ??= [];
             } else {
                 $available = [];
@@ -73,11 +72,6 @@ final class ProbeRunner
                 }
                 $open ??= $available;
             }
-            // lib.php must be open before the files that reference it, and
-            // alphabetical order already guarantees that; sort to make the
-            // guarantee explicit rather than lucky.
-            sort($open);
-
             foreach ($configFiles ?? $server->configFiles as $relative => $source) {
                 $destination = $workspace . '/' . $relative;
                 $directory = dirname($destination);
@@ -86,6 +80,18 @@ final class ProbeRunner
                 }
                 copy($source, $destination);
             }
+            // openExtra is for the fixture session (Laravel's helpers.php).
+            // A corpus workspace that did not copy that file must not try
+            // to didOpen it — the client reads every path in `open`.
+            foreach ($server->openExtra as $extra) {
+                if (!in_array($extra, $open, true) && is_file($workspace . '/' . $extra)) {
+                    $open[] = $extra;
+                }
+            }
+            // lib.php must be open before the files that reference it, and
+            // alphabetical order already guarantees that; sort to make the
+            // guarantee explicit rather than lucky.
+            sort($open);
 
             $spec = [
                 'command' => $server->commandFor($workspace),
@@ -131,6 +137,29 @@ final class ProbeRunner
                 @unlink($specFile);
             }
             $this->removeDir($workspace);
+        }
+    }
+
+    private function copyCorpus(string $source, string $destination, bool $linkVendor): void
+    {
+        $exclude = $linkVendor
+            ? '--exclude .git --exclude vendor --exclude node_modules'
+            : '--exclude .git';
+        $command = sprintf(
+            'rsync -a %s %s %s',
+            $exclude,
+            escapeshellarg($source . '/'),
+            escapeshellarg($destination . '/'),
+        );
+        exec($command . ' 2>/dev/null', $ignored, $copyExit);
+        if ($copyExit !== 0) {
+            throw new RuntimeException("Failed to copy corpus {$source} into {$destination}");
+        }
+
+        if ($linkVendor && is_dir($source . '/vendor')) {
+            if (!@symlink($source . '/vendor', $destination . '/vendor')) {
+                throw new RuntimeException("Failed to link vendor from {$source} into {$destination}");
+            }
         }
     }
 

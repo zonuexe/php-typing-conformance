@@ -1,0 +1,7 @@
+#!/usr/bin/env php
+<?php
+
+// Presence-only stub. Laravel LSP's initialize handler refuses a workspace
+// that has no artisan file; env diagnostics read .env from disk and do not
+// boot this script. Routes/views/config still go through `artisan tinker`,
+// which this stub does not implement.

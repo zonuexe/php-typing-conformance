@@ -1,0 +1,268 @@
+tool = "laravel-lsp"
+version = "Laravel LSP v0.0.31"
+server_info = "Laravel LSP v0.0.31"
+dynamic_registrations = ["workspace/didChangeWatchedFiles"]
+raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":1},\"documentLinkProvider\":{\"resolveProvider\":false},\"completionProvider\":{\"triggerCharacters\":[\"\\\"\",\"'\",\".\",\"|\",\"x\",\"-\",\":\",\"@\"]},\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\"]},\"definitionProvider\":true,\"hoverProvider\":true}"
+framework_corpus = "rigortype/laravel-gate-image-board@939a805b8607"
+
+[capabilities.push-diagnostics]
+advertised = false
+via = "n/a"
+probe = "empty"
+
+[capabilities.pull-diagnostics]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.hover]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.completion]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.signature-help]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.definition]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.declaration]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.type-definition]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.implementation]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.references]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.document-highlight]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.document-symbol]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.workspace-symbol]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.code-action]
+advertised = true
+via = "static"
+probe = "empty"
+
+[capabilities.code-lens]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.rename]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.formatting]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.range-formatting]
+advertised = false
+via = "none"
+probe = "not-probed"
+
+[capabilities.folding-range]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.selection-range]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.semantic-tokens]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.inlay-hint]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.call-hierarchy]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[capabilities.type-hierarchy]
+advertised = false
+via = "none"
+probe = "skipped"
+
+[hover.native-return]
+feature = "Native return type"
+expected = "int"
+shown = ""
+verdict = "none"
+
+[hover.narrowed-union]
+feature = "Union narrowed by is_int()"
+expected = "int"
+shown = ""
+verdict = "none"
+
+[hover.array-shape]
+feature = "Array shape from @return"
+expected = "array{name: string, age: int}"
+shown = ""
+verdict = "none"
+
+[hover.int-range]
+feature = "Integer range from @var"
+expected = "int<1, 100>"
+shown = ""
+verdict = "none"
+
+[hover.generic-call]
+feature = "@template T resolved through a call"
+expected = "string"
+shown = ""
+verdict = "none"
+
+[framework.env-hover]
+feature = "env-hover"
+method = "textDocument/hover"
+expected = "Laravel"
+probe = "answered"
+shown = "`Laravel`"
+
+[framework.env-definition]
+feature = "env-definition"
+method = "textDocument/definition"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.env-completion]
+feature = "env-completion"
+method = "textDocument/completion"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.env-diagnostic]
+feature = "env-diagnostic"
+method = "push-diagnostics"
+expected = ""
+probe = "answered"
+shown = "Env [GATE_MISSING_KEY] not found."
+
+[framework.config-hover]
+feature = "config-hover"
+method = "textDocument/hover"
+expected = "Laravel"
+probe = "answered"
+shown = "`Laravel`\n\n[config/app.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/config/app.php#L16)"
+
+[framework.config-diagnostic]
+feature = "config-diagnostic"
+method = "push-diagnostics"
+expected = ""
+probe = "answered"
+shown = "Config [gate.missing] not found."
+
+[framework.route-hover]
+feature = "route-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "answered"
+shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/resources/views/folio/explore/index.blade.php)"
+
+[framework.route-definition]
+feature = "route-definition"
+method = "textDocument/definition"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.route-diagnostic]
+feature = "route-diagnostic"
+method = "push-diagnostics"
+expected = ""
+probe = "answered"
+shown = "Route [gate.missing] not found."
+
+[framework.route-blade-hover]
+feature = "route-blade-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "answered"
+shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/resources/views/folio/explore/index.blade.php)"
+
+[framework.view-hover]
+feature = "view-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "answered"
+shown = "[resources/views/welcome.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/resources/views/welcome.blade.php)"
+
+[framework.view-diagnostic]
+feature = "view-diagnostic"
+method = "push-diagnostics"
+expected = ""
+probe = "answered"
+shown = "View [missing.page] not found."
+
+[framework.trans-hover]
+feature = "trans-hover"
+method = "textDocument/hover"
+expected = "Explore"
+probe = "answered"
+shown = "`en`: Explore\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/lang/en/boards.php#L5)"
+
+[framework.trans-dotted-hover]
+feature = "trans-dotted-hover"
+method = "textDocument/hover"
+expected = "Public"
+probe = "answered"
+shown = "`en`: Public\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/lang/en/boards.php#L10)"
+
+[framework.trans-replace-hover]
+feature = "trans-replace-hover"
+method = "textDocument/hover"
+expected = "No public threads on :name."
+probe = "answered"
+shown = "`en`: No public threads on :name.\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/lang/en/boards.php#L8)"
+
+[framework.trans-diagnostic]
+feature = "trans-diagnostic"
+method = "push-diagnostics"
+expected = ""
+probe = "answered"
+shown = "Translation [boards.missing] not found."

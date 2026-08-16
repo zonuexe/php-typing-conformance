@@ -45,9 +45,10 @@ const LANGUAGE_SERVER_SECTION = '# Language servers.';
  * local checkout, and phpantom and php-lsp ship only as per-platform GitHub
  * release binaries (installed by `make install-phpantom` / `make
  * install-php-lsp`, which this script cannot version-track). devsense-php-ls
- * has an entry for the opposite reason: it is installed purely to be probed
- * over LSP. phpactor was installed for that reason too until its `worse:analyse`
- * command became a matrix column; one install now serves both axes.
+ * and laravel-lsp have entries for the opposite reason: they are installed
+ * purely to be probed over LSP. phpactor was installed for that reason too
+ * until its `worse:analyse` command became a matrix column; one install now
+ * serves both axes.
  *
  * qodana is the one entry that is measured without being installable: its
  * licence rules out shipping the linter, so its column comes from a PhpStorm
@@ -66,6 +67,7 @@ const INSTALLS = [
     'steins' => ['composer', 'steins', 'typedduck/steins'],
     'phpactor' => ['composer', 'phpactor', 'phpactor/phpactor'],
     'devsense-php-ls' => ['npm', 'devsense-php-ls', 'devsense-php-ls'],
+    'laravel-lsp' => ['composer', 'laravel-lsp', 'laravel/lsp'],
 ];
 
 $rootDir = dirname(__DIR__);

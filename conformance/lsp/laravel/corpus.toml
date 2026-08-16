@@ -1,0 +1,9 @@
+# The Gate imageboard — a real Laravel 13 app used as Laravel LSP's workspace
+# for framework probes (env, config, route, view, translation). Positions are
+# text-anchored in corpus-probes.toml and resolved against this checkout.
+# The commit is pinned so a `make pull-submodules` that moves HEAD fails
+# loudly until the probes are re-anchored.
+
+root = "references/laravel-gate-image-board"
+commit = "939a805b8607de59528938a8b81e1630e926dfe9"
+project = "rigortype/laravel-gate-image-board"

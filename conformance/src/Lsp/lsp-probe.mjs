@@ -318,7 +318,7 @@ async function main() {
     notify('textDocument/didOpen', {
       textDocument: {
         uri: uriFor(rel),
-        languageId: 'php',
+        languageId: rel.endsWith('.blade.php') ? 'blade' : 'php',
         version: 1,
         text: readFileSync(path.join(workspace, rel), 'utf8'),
       },

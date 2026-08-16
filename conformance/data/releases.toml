@@ -87,8 +87,13 @@ date = "2026-08-09"
 version = "0.24.1"
 date = "2026-08-11"
 
+[laravel-lsp]
+version = "0.0.31"
+date = "2026-08-14"
+
 # Reference-only: function-specific and historical servers are listed, not
-# measured.
+# measured. Laravel LSP is function-specific but still launched, so it sits
+# with the measured language servers above.
 
 [phpunit-language-server]
 version = "0.3.7"

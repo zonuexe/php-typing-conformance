@@ -112,7 +112,7 @@ $renderServerRow = static function (LanguageServerMetadata $server): string {
 </tbody></table></div>
 <?php if ($specializedServers !== []): ?>
 <h2 class="section" id="function-specific-servers">Function-specific PHP language servers</h2>
-<p class="section-note">These servers serve one framework or feature &mdash; PHPUnit test cases, a formatter, a debugger &mdash; rather than PHP as a language, so they have nothing to answer the suite&rsquo;s typing probes with. They are listed for reference only and are never launched or measured; the claims in the cells above are the projects&rsquo; own, on the same terms as the general table.</p>
+<p class="section-note">These servers serve one framework or feature &mdash; PHPUnit test cases, Laravel helpers &mdash; rather than PHP as a language. Most have nothing to answer the suite&rsquo;s typing probes with and are listed for reference only. <strong>Laravel LSP</strong> is the exception: it is launched against a Laravel-shaped workspace (an <code>artisan</code> file is required to initialize) and measured in the <a href="#language-server-capabilities">capability matrix</a> and the <a href="#framework-probes">framework-aware probes</a>. The claims in the cells below are still the projects&rsquo; own.</p>
 <div class="table-scroll"><table class="analyzer-meta">
 <thead><tr>
 <?php foreach ($headers as $header): ?>

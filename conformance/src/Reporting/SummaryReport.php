@@ -1018,7 +1018,7 @@ final class SummaryReport
      * the tools both tables carry. run-lsp-probes.php decides which servers
      * get measured; this list only decides who stands where.
      */
-    private const LSP_TOOL_ORDER = ['intelephense', 'phpactor', 'psalm', 'devsense-php-ls', 'phpantom', 'php-lsp', 'phan'];
+    private const LSP_TOOL_ORDER = ['intelephense', 'phpactor', 'psalm', 'devsense-php-ls', 'phpantom', 'php-lsp', 'phan', 'laravel-lsp'];
 
     /** Row labels of the capability matrix, in ProbeGrading::COLUMNS order. */
     private const LSP_CAPABILITY_LABELS = [
@@ -1139,15 +1139,63 @@ final class SummaryReport
             }
         }
 
+        $frameworkRows = [];
+        $frameworkIds = [];
+        foreach ($results as $data) {
+            foreach (array_keys($data['framework'] ?? []) as $id) {
+                $frameworkIds[$id] = true;
+            }
+        }
+        foreach (array_keys($frameworkIds) as $id) {
+            $cells = [];
+            $label = $id;
+            foreach ($results as $data) {
+                $row = $data['framework'][$id] ?? [];
+                if ($label === $id && ($row['feature'] ?? '') !== '') {
+                    $label = (string) $row['feature'];
+                }
+                $cells[] = $this->lspFrameworkCell($row);
+            }
+            $frameworkRows[] = ['label' => $label, 'cells' => $cells];
+        }
+
         return $this->render('language-server-capabilities.phtml', [
             'tools' => $tools,
             'capabilityRows' => $capabilityRows,
             'hoverRows' => $hoverRows,
+            'frameworkRows' => $frameworkRows,
             'navCorpus' => $navCorpus,
             'navFailures' => $navFailures,
             'navDefRows' => $navDefRows,
             'navRefRows' => $navRefRows,
         ]);
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     * @return array{class: string, text: string, note: string}
+     */
+    private function lspFrameworkCell(array $row): array
+    {
+        if ($row === []) {
+            return ['class' => 'not-supported', 'text' => '—', 'note' => 'This server was not asked this framework probe.'];
+        }
+
+        $shown = (string) ($row['shown'] ?? '');
+        $expected = (string) ($row['expected'] ?? '');
+        $note = $shown !== '' ? $shown : (string) ($row['note'] ?? '');
+        if ($expected !== '' && $shown !== '' && str_contains($shown, $expected)) {
+            return ['class' => 'pass', 'text' => 'Precise', 'note' => $note];
+        }
+
+        return match ((string) ($row['probe'] ?? '')) {
+            'answered' => ['class' => 'pass', 'text' => 'Answered', 'note' => $note],
+            'empty' => ['class' => 'fail', 'text' => 'No answer', 'note' => 'The request succeeded but the payload was empty.'],
+            'timeout' => ['class' => 'fail', 'text' => 'Timed out', 'note' => 'No response within the probe timeout.'],
+            'error' => ['class' => 'fail', 'text' => 'Error', 'note' => $note],
+            'not-probed', 'skipped' => ['class' => 'not-supported', 'text' => '—', 'note' => 'Not sent.'],
+            default => ['class' => 'unknown', 'text' => '?', 'note' => 'No measurement recorded.'],
+        };
     }
 
     /**

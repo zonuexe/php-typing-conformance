@@ -1,0 +1,81 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "6a6156bc3defa1332b3df66b7e2089a1",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "laravel/lsp",
+            "version": "v0.0.31",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/lsp.git",
+                "reference": "6739481f9c16aa628582c69014c083b9abf3987f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/lsp/zipball/6739481f9c16aa628582c69014c083b9abf3987f",
+                "reference": "6739481f9c16aa628582c69014c083b9abf3987f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2.0"
+            },
+            "require-dev": {
+                "amphp/amp": "^3.0",
+                "amphp/byte-stream": "^2.1",
+                "laravel-zero/framework": "^12.0",
+                "laravel/pint": "^1.15.2",
+                "microsoft/tolerant-php-parser": "^0.1.2",
+                "mockery/mockery": "^1.6.11",
+                "pestphp/pest": "^4.0",
+                "stillat/blade-parser": "^2.1"
+            },
+            "bin": [
+                "builds/laravel-lsp"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "App\\": "app/"
+                },
+                "exclude-from-classmap": [
+                    "app/Lsp/Data/Templates/global.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Laravel"
+                }
+            ],
+            "description": "The Laravel language server.",
+            "homepage": "https://github.com/laravel/lsp",
+            "keywords": [
+                "LSP",
+                "language-server",
+                "laravel",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/lsp/issues",
+                "source": "https://github.com/laravel/lsp"
+            },
+            "time": "2026-08-14T09:30:34+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
+}

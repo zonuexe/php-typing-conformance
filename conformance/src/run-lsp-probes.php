@@ -25,6 +25,7 @@ declare(strict_types=1);
  * only the write needed adding, not the accounting.
  */
 
+use Conformance\Lsp\LaravelCorpus;
 use Conformance\Lsp\LspResultFile;
 use Conformance\Lsp\LspServerCatalog;
 use Conformance\Lsp\NavigationDefinitions;
@@ -101,6 +102,13 @@ $navigationConfigs = [
     'phan' => ['.phan/config.php' => $lspDir . '/config/navigation/phan/config.php'],
 ];
 
+$laravelCorpus = LaravelCorpus::tryLoad($lspDir . '/laravel/corpus.toml', $projectRoot);
+if ($laravelCorpus === null) {
+    echo "note: Laravel corpus not found; framework probes use the stub artisan workspace\n";
+} elseif (!$laravelCorpus->hasVendor) {
+    echo "note: Laravel corpus has no vendor/; run `make install-laravel-corpus` for route/view/config probes\n";
+}
+
 $runner = new ProbeRunner(
     nodeBinary: 'node',
     clientPath: __DIR__ . '/Lsp/lsp-probe.mjs',
@@ -135,10 +143,55 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
         default => ['indexTimeoutMs' => 90000, 'timeoutMs' => 600000, 'probeTimeoutMs' => 30000],
     };
 
+    $frameworkDefs = [];
+    $frameworkRequests = [];
+    $corpusFrameworkDefs = [];
+    $corpusFrameworkRequests = [];
+    if ($server->frameworkProbesFile !== null) {
+        $frameworkDefs = ProbeDefinitions::loadFramework(
+            $server->frameworkProbesFile,
+            dirname($server->frameworkProbesFile),
+        );
+        $frameworkRequests = array_values(array_filter(
+            $frameworkDefs,
+            static fn (array $probe): bool => ($probe['method'] ?? '') !== 'push-diagnostics',
+        ));
+    }
+    $corpusProbesFile = $lspDir . '/laravel/corpus-probes.toml';
+    if ($server->tool === 'laravel-lsp' && $laravelCorpus !== null && is_file($corpusProbesFile)) {
+        $corpusFrameworkDefs = ProbeDefinitions::loadFramework($corpusProbesFile, $laravelCorpus->root);
+        $corpusFrameworkRequests = array_values(array_filter(
+            $corpusFrameworkDefs,
+            static fn (array $probe): bool => ($probe['method'] ?? '') !== 'push-diagnostics',
+        ));
+    }
+
     try {
-        $output = $runner->run($server, $capabilityProbes);
+        $capabilitySessionProbes = $capabilityProbes;
+        if ($corpusFrameworkDefs === []) {
+            $capabilitySessionProbes = [...$capabilityProbes, ...$frameworkRequests];
+        }
+        $output = $runner->run($server, $capabilitySessionProbes);
         $hoverOutput = $runner->run($server, $hoverProbes, $hoverFixtures);
-        $navigationOutput = $navigation === null ? null : $runner->run(
+        $frameworkOutput = null;
+        if ($corpusFrameworkDefs !== [] && $laravelCorpus !== null) {
+            $open = array_values(array_unique(array_map(
+                static fn (array $probe): string => (string) $probe['file'],
+                $corpusFrameworkDefs,
+            )));
+            $frameworkOutput = $runner->run(
+                $server,
+                $corpusFrameworkRequests,
+                $open,
+                sourceDir: $laravelCorpus->root,
+                configFiles: [
+                    '.env' => $lspDir . '/laravel/gate.env',
+                ],
+                specOverrides: ['indexTimeoutMs' => 90000, 'timeoutMs' => 180000, 'probeTimeoutMs' => 20000],
+                linkVendor: true,
+            );
+        }
+        $navigationOutput = ($navigation === null || $server->skipNavigation) ? null : $runner->run(
             $server,
             $navigationProbes,
             $navigationOpen,
@@ -163,6 +216,9 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
         $failures++;
         continue;
     }
+    if (isset($frameworkOutput['failure'])) {
+        fwrite(STDERR, "{$server->tool}: framework corpus session: {$frameworkOutput['failure']} (recorded, continuing)\n");
+    }
     if (isset($navigationOutput['failure'])) {
         fwrite(STDERR, "{$server->tool}: navigation session: {$navigationOutput['failure']} (recorded, continuing)\n");
     }
@@ -181,6 +237,17 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
         'capabilities' => $grading->capabilities($output),
         'hover' => $grading->hoverConformance($hoverOutput, $definitions->hoverProbes),
     ];
+    if ($corpusFrameworkDefs !== [] && $frameworkOutput !== null) {
+        $payload['framework'] = $grading->framework($frameworkOutput, $corpusFrameworkDefs);
+    } elseif ($frameworkDefs !== []) {
+        $payload['framework'] = $grading->framework($output, $frameworkDefs);
+    }
+    if ($laravelCorpus !== null && $server->tool === 'laravel-lsp') {
+        $payload['framework_corpus'] = "{$laravelCorpus->project}@" . substr($laravelCorpus->commit, 0, 12);
+        if (isset($frameworkOutput['failure'])) {
+            $payload['framework_failure'] = (string) $frameworkOutput['failure'];
+        }
+    }
     if ($navigation !== null && $navigationOutput !== null) {
         $payload['navigation_corpus'] = "{$navigation->project}@" . substr($navigation->commit, 0, 12);
         if (isset($navigationOutput['failure'])) {

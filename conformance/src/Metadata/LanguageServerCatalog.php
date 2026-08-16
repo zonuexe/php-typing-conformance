@@ -7,6 +7,7 @@ namespace Conformance\Metadata;
 use Conformance\Metadata\LanguageServer\Crane;
 use Conformance\Metadata\LanguageServer\DevsensePhpLs;
 use Conformance\Metadata\LanguageServer\Intelephense;
+use Conformance\Metadata\LanguageServer\LaravelLsp;
 use Conformance\Metadata\LanguageServer\Phpactor;
 use Conformance\Metadata\LanguageServer\Phpantom;
 use Conformance\Metadata\LanguageServer\PhpLanguageServer;
@@ -40,6 +41,7 @@ final class LanguageServerCatalog
         'phpantom' => Phpantom::class,
         'php-lsp' => PhpLsp::class,
         'phpunit-language-server' => PhpUnit::class,
+        'laravel-lsp' => LaravelLsp::class,
         'php-language-server' => PhpLanguageServer::class,
         'crane' => Crane::class,
         'serenata' => Serenata::class,

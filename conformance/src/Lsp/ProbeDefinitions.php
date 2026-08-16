@@ -58,6 +58,29 @@ final class ProbeDefinitions
     }
 
     /**
+     * Framework-specific probes (Laravel env/route/view, …) resolved against
+     * their own fixture directory. Same shape as a capability probe, plus
+     * an optional `expected` string used when grading hover text.
+     *
+     * @return list<array<string, mixed>>
+     */
+    public static function loadFramework(string $probesFile, string $fixturesDir): array
+    {
+        $contents = file_get_contents($probesFile);
+        if ($contents === false) {
+            throw new RuntimeException("Cannot read {$probesFile}");
+        }
+
+        $data = Toml::parseToArray($contents);
+        $probes = [];
+        foreach ($data['framework'] ?? [] as $entry) {
+            $probes[] = self::resolve($entry, $fixturesDir);
+        }
+
+        return $probes;
+    }
+
+    /**
      * @param array<string, mixed> $entry
      * @return array<string, mixed>
      */

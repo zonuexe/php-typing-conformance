@@ -24,6 +24,7 @@ final class LspServer
      * @param array<string, mixed> $initializationOptions
      * @param array<string, mixed>|null $settings null when the server takes no settings
      * @param array<string, string> $configFiles workspace-relative path => absolute source path
+     * @param list<string> $openExtra extra workspace-relative files to didOpen
      * @param list<string>|null $versionCommand argv printing the version, null when it comes from a package.json
      */
     public function __construct(
@@ -32,6 +33,9 @@ final class LspServer
         public readonly array $initializationOptions = [],
         public readonly ?array $settings = null,
         public readonly array $configFiles = [],
+        public readonly array $openExtra = [],
+        public readonly bool $skipNavigation = false,
+        public readonly ?string $frameworkProbesFile = null,
         public readonly ?array $versionCommand = null,
         public readonly ?string $packageJsonPath = null,
     ) {

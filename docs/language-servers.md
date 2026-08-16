@@ -105,15 +105,26 @@ offer that capability by itself, not that nobody asked it nicely.
   `conformance/results/lsp/`. Deliberately not part of `main.php`: a new probe
   or fixture changes these files and nothing else.
 
-Servers measured: all seven — Intelephense, Phpactor, Psalm, devsense-php-ls,
-PHPantom, php-lsp, and Phan. How the last three are obtained differs from the
-Composer/npm norm: devsense-php-ls is its own npm namespace
+Servers measured: all eight — Intelephense, Phpactor, Psalm, devsense-php-ls,
+PHPantom, php-lsp, Phan, and Laravel LSP. How the last four are obtained
+differs from the Composer/npm norm: devsense-php-ls is its own npm namespace
 (`make install-devsense-php-ls` — phpy bundles a separately versioned copy of
-the same engine, which is deliberately not reused), while php-lsp and
-PHPantom ship only as per-platform binaries on GitHub releases
+the same engine, which is deliberately not reused), php-lsp and PHPantom
+ship only as per-platform binaries on GitHub releases
 (`make install-php-lsp` / `make install-phpantom`; the binaries are
 git-ignored, and `update-tools` tracks their releases but cannot track what
-is installed).
+is installed), and Laravel LSP is `composer require laravel/lsp` into
+`vendor-bin/laravel-lsp/` (`make install-laravel-lsp`). Laravel LSP is
+function-specific — it will not initialize without an `artisan` file, and
+its hover/completion/definition answers are about env keys, routes,
+views and translations, not PHP types. Capability and PHP-type hover
+still run on the small fixtures (with a stub `artisan`). Framework
+probes run in a second session against the Gate imageboard submodule
+(`references/laravel-gate-image-board`, pinned in
+`conformance/lsp/laravel/corpus.toml`): the tree is copied without
+`vendor/`, then the checkout's `vendor/` is symlinked so `artisan tinker`
+works. `make install-laravel-corpus` installs that vendor tree. The
+psysh navigation layer is skipped.
 
 ## Traps that shaped the design
 
@@ -196,6 +207,18 @@ These cost real debugging time; each one is now load-bearing in the code.
   and a verdict is reached just as well in 5s — a 30s window records the
   identical timeouts. Recorded as measured; a per-layer failure only marks
   that layer, so its fixture results still stand.
+- **Laravel LSP will not initialize without `artisan`.** The handler returns
+  `-32602 Initialize request root URI must be a Laravel project` when that
+  file is missing. The capability session still uses a presence-only stub
+  so PHP-type probes have a workspace. Framework probes use the Gate
+  submodule instead: copy without `vendor/` / `node_modules` / `.git`,
+  symlink the checkout's `vendor/`, and overlay `gate.env` as `.env`
+  (Gate's own `.env` is gitignored). Helper keys live in
+  `app/Support/LspSurface.php`; unknown keys stay off HTTP paths. Pest
+  helper generation stays off. Navigation on psysh is skipped. If the
+  submodule is missing the stub session still records the helpers.php
+  env probes; if `vendor/` is missing, route/view/config/translation
+  probes run and come back empty (tinker cannot boot).
 - **The code-action probe was asking where nobody had an answer.** It used
   to anchor on the fixture's deliberate type error, which reads as the
   obvious place to ask for a quickfix. No server offers one there. Phpactor

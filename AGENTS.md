@@ -35,7 +35,8 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
 │   ├── phpDocumentor/
 │   ├── phpstan/
 │   ├── psalm/
-│   └── python-typing/
+│   ├── python-typing/
+│   └── laravel-gate-image-board/
 ├── vendor/
 │   ├── bin/
 │   └── bamarni/composer-bin-plugin
@@ -50,14 +51,15 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
     ├── phpantom/
     ├── php-lsp/
     ├── phpstan/
-    └── psalm/
+    ├── psalm/
+    └── laravel-lsp/
 ```
 
 ## What Lives Where
 
 - `conformance/tests/`: one PHP test case per file, with inline expectations.
 - `conformance/fixtures/`: support files loaded together with a primary test case.
-- `conformance/lsp/`: the language-server measurement's fixtures, probe definitions (`probes.toml`) and per-server workspace config; results land in `conformance/results/lsp/`.
+- `conformance/lsp/`: the language-server measurement's fixtures, probe definitions (`probes.toml`), Laravel extras (`laravel/`, including Gate corpus probes), and per-server workspace config; results land in `conformance/results/lsp/`.
 - `conformance/src/`: discovery, expectation parsing, checker adapters, result persistence, and report generation.
 - `conformance/results/`: per-tool TOML results and `version.toml` (committed), plus the generated `index.html`, `tests/*.html` and `report.css` (git-ignored; built by `make render-report-html` and by CI).
 - `docs/`: design and architecture documents, plus `analyzer-adapters.md`, which
@@ -85,6 +87,7 @@ Concrete paths currently used:
 - `vendor-bin/phpactor/vendor/bin/phpactor` (one install serving both axes — the `worse:analyse` matrix column and the LSP probes; its `composer.json` needs `minimum-stability: dev` + `prefer-stable` because phpactor requires `jetbrains/phpstorm-stubs dev-master`)
 - `vendor-bin/devsense-php-ls/node_modules/.bin/devsense-php-ls` (npm, `make install-devsense-php-ls`; separately versioned from the copy phpy bundles)
 - `vendor-bin/php-lsp/bin/php-lsp` and `vendor-bin/phpantom/bin/phpantom_lsp` (per-platform GitHub release binaries, git-ignored; `make install-php-lsp` / `make install-phpantom`)
+- `vendor-bin/laravel-lsp/vendor/bin/laravel-lsp` (Composer, `laravel/lsp`; `make install-laravel-lsp`). Framework-specific: initialize requires an `artisan` file in the workspace.
 
 Intelephense is a Node LSP server (not a CLI). Install it with `make install-intelephense` (npm), and it is driven through the LSP client at `conformance/src/Checker/intelephense-client.mjs`. Binary: `vendor-bin/intelephense/node_modules/.bin/intelephense`.
 
@@ -96,12 +99,15 @@ and — when `~/repo/php/steins-survey/psysh` exists — real-project
 definition/references navigation) and writes committed TOMLs to
 `conformance/results/lsp/`. Fixtures and probe definitions live in
 `conformance/lsp/` (`probes.toml` for fixtures, `navigation.toml` for the
-line-pinned corpus ground truth), the client and runner in
-`conformance/src/Lsp/`. Method and hard-won traps (macOS `/var` realpath,
-Psalm's open-file-sensitive hover and its NAN crash on psysh, index-timing
-and `$/progress` waiting, Intelephense's docblock-anchored definition
-ranges) are documented in `docs/language-servers.md` — read it before
-touching the probe flow.
+line-pinned corpus ground truth, `laravel/` for framework probes). The
+Gate imageboard (`references/laravel-gate-image-board`, pinned in
+`laravel/corpus.toml`) is Laravel LSP's real-project workspace: env,
+config, route, view and translation probes run against
+`app/Support/LspSurface.php` after `make install-laravel-corpus`.
+Without the submodule the stub artisan + helpers.php session still runs.
+Navigation on psysh is skipped for Laravel LSP. Method and hard-won traps
+are documented in `docs/language-servers.md` — read it before touching
+the probe flow.
 
 ## NoVerify Exception
 
@@ -139,6 +145,7 @@ Current external reference checkouts:
 - `references/psalm/`: Psalm source and docs
 - `references/phan.wiki/`: Phan wiki mirror
 - `references/noverify/`: NoVerify source and docs
+- `references/laravel-gate-image-board/`: Gate, a Laravel 13 imageboard used as Laravel LSP's framework corpus (`make install-laravel-corpus` installs its vendor/)
 
 These submodules are intentionally heavy upstream repositories. After cloning, initialize them with:
 

@@ -12,6 +12,7 @@ declare(strict_types=1);
  * @var list<array{name: string, version: string, versionFull: string}> $tools
  * @var list<array{label: string, cells: list<array{class: string, text: string, note: string}>}> $capabilityRows
  * @var list<array{feature: string, expected: string, cells: list<array{class: string, text: string, note: string}>}> $hoverRows
+ * @var list<array{label: string, cells: list<array{class: string, text: string, note: string}>}> $frameworkRows
  * @var string $navCorpus                e.g. "psy/psysh@0e8ec1af5990"; '' when no navigation run is committed
  * @var array<string, string> $navFailures tool => session failure reason
  * @var list<array{kind: string, name: string, cells: list<array{class: string, text: string, note: string}>}> $navDefRows
@@ -52,6 +53,25 @@ declare(strict_types=1);
 </tr>
 <?php endforeach; ?>
 </tbody></table></div>
+<?php if ($frameworkRows !== []): ?>
+
+<h3 class="section" id="framework-probes">Framework-aware probes</h3>
+<p class="section-note">These probes ask a framework-specific question &mdash; Laravel env, config, route, view, and translation helper keys, plus the missing-key diagnostics &mdash; against a real Laravel app (the Gate imageboard) when the submodule is present, or a stub <code>artisan</code> workspace otherwise. Columns without a measurement were not asked; Laravel LSP is the server this layer exists for.</p>
+<div class="table-scroll"><table class="analyzer-meta">
+<thead><tr><th scope="col">Probe</th>
+<?php foreach ($tools as $tool): ?>
+<th scope="col"><?= h($tool['name']) ?></th>
+<?php endforeach; ?>
+</tr></thead><tbody>
+<?php foreach ($frameworkRows as $row): ?>
+<tr><th class="tool-name" scope="row"><?= h($row['label']) ?></th>
+<?php foreach ($row['cells'] as $cell): ?>
+<td class="<?= h($cell['class']) ?> status-cell"><?= h_noted($cell['text'], $cell['note']) ?></td>
+<?php endforeach; ?>
+</tr>
+<?php endforeach; ?>
+</tbody></table></div>
+<?php endif; ?>
 <?php if ($navDefRows !== []): ?>
 
 <h3 class="section" id="navigation">Navigating a real project&rsquo;s dependency graph</h3>

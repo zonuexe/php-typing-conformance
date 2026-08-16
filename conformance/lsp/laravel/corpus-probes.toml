@@ -1,0 +1,112 @@
+# Framework probes against the Gate imageboard. Anchors resolve against the
+# corpus checkout (corpus.toml). Known and missing helper keys live together
+# in app/Support/LspSurface.php; one Blade route() call keeps a production
+# path in the matrix. helpers.php is only for machines without this submodule.
+
+[[framework]]
+id = "env-hover"
+method = "textDocument/hover"
+file = "app/Support/LspSurface.php"
+at = "APP_NAME"
+expected = "Laravel"
+
+[[framework]]
+id = "env-definition"
+method = "textDocument/definition"
+file = "app/Support/LspSurface.php"
+at = "APP_NAME"
+
+[[framework]]
+id = "env-completion"
+method = "textDocument/completion"
+file = "app/Support/LspSurface.php"
+at = "env('')"
+offset = 5
+
+[[framework]]
+id = "env-diagnostic"
+method = "push-diagnostics"
+file = "app/Support/LspSurface.php"
+at = "GATE_MISSING_KEY"
+
+[[framework]]
+id = "config-hover"
+method = "textDocument/hover"
+file = "app/Support/LspSurface.php"
+at = "app.name"
+expected = "Laravel"
+
+[[framework]]
+id = "config-diagnostic"
+method = "push-diagnostics"
+file = "app/Support/LspSurface.php"
+at = "config('gate.missing')"
+offset = 8
+
+[[framework]]
+id = "route-hover"
+method = "textDocument/hover"
+file = "app/Support/LspSurface.php"
+at = "'explore'"
+offset = 1
+
+[[framework]]
+id = "route-definition"
+method = "textDocument/definition"
+file = "app/Support/LspSurface.php"
+at = "'explore'"
+offset = 1
+
+[[framework]]
+id = "route-diagnostic"
+method = "push-diagnostics"
+file = "app/Support/LspSurface.php"
+at = "route('gate.missing')"
+offset = 7
+
+[[framework]]
+id = "route-blade-hover"
+method = "textDocument/hover"
+file = "resources/views/welcome.blade.php"
+at = "'explore'"
+offset = 1
+
+[[framework]]
+id = "view-hover"
+method = "textDocument/hover"
+file = "app/Support/LspSurface.php"
+at = "'welcome'"
+offset = 1
+
+[[framework]]
+id = "view-diagnostic"
+method = "push-diagnostics"
+file = "app/Support/LspSurface.php"
+at = "missing.page"
+
+[[framework]]
+id = "trans-hover"
+method = "textDocument/hover"
+file = "app/Support/LspSurface.php"
+at = "boards.explore"
+expected = "Explore"
+
+[[framework]]
+id = "trans-dotted-hover"
+method = "textDocument/hover"
+file = "app/Support/LspSurface.php"
+at = "boards.visibility.public"
+expected = "Public"
+
+[[framework]]
+id = "trans-replace-hover"
+method = "textDocument/hover"
+file = "app/Support/LspSurface.php"
+at = "boards.explore_empty_board"
+expected = "No public threads on :name."
+
+[[framework]]
+id = "trans-diagnostic"
+method = "push-diagnostics"
+file = "app/Support/LspSurface.php"
+at = "boards.missing"

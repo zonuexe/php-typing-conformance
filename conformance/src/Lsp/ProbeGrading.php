@@ -198,6 +198,69 @@ final class ProbeGrading
     }
 
     /**
+     * Framework-specific probes (env/route/view/translation). Graded like
+     * capability probes, with hover text kept when the method is hover.
+     * The push-diagnostics row looks at the published stream for that
+     * file rather than at a request, and when the definition has a line
+     * it keeps only the diagnostic that starts there so several missing
+     * keys in one file do not all report the first message.
+     *
+     * @param array<string, mixed> $clientOutput
+     * @param list<array<string, mixed>> $definitions
+     * @return array<string, array<string, mixed>>
+     */
+    public function framework(array $clientOutput, array $definitions): array
+    {
+        $probesById = [];
+        foreach ($clientOutput['probes'] ?? [] as $probe) {
+            $probesById[(string) $probe['id']] = $probe;
+        }
+
+        $rows = [];
+        foreach ($definitions as $definition) {
+            $id = (string) $definition['id'];
+            $method = (string) ($definition['method'] ?? '');
+            $row = [
+                'feature' => $id,
+                'method' => $method,
+                'expected' => (string) ($definition['expected'] ?? ''),
+            ];
+
+            if ($method === 'push-diagnostics') {
+                $file = (string) ($definition['file'] ?? '');
+                /** @var list<array<string, mixed>> $published */
+                $published = $clientOutput['diagnostics'][$file] ?? [];
+                $line = $definition['line'] ?? null;
+                if (is_int($line)) {
+                    $published = array_values(array_filter(
+                        $published,
+                        static fn (array $d): bool => (int) ($d['line'] ?? 0) === $line,
+                    ));
+                }
+                $row['probe'] = $published === [] ? 'empty' : 'answered';
+                $row['shown'] = $published === [] ? '' : (string) ($published[0]['message'] ?? '');
+                $rows[$id] = $row;
+                continue;
+            }
+
+            $probe = $probesById[$id] ?? null;
+            if ($probe === null) {
+                $row['probe'] = 'not-probed';
+                $row['shown'] = '';
+            } else {
+                $row = [...$row, ...$this->probeVerdict($probe)];
+                $row['shown'] = $method === 'textDocument/hover' && is_array($probe['result'] ?? null)
+                    ? $this->hoverText($probe['result'])
+                    : '';
+            }
+
+            $rows[$id] = $row;
+        }
+
+        return $rows;
+    }
+
+    /**
      * @param array<string, mixed> $definition
      */
     private function grade(string $shown, array $definition): string

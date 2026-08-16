@@ -30,3 +30,6 @@
 [submodule "references/intelephense.wiki"]
 	path = references/intelephense.wiki
 	url = https://github.com/bmewburn/vscode-intelephense.wiki.git
+[submodule "references/laravel-gate-image-board"]
+	path = references/laravel-gate-image-board
+	url = https://github.com/rigortype/laravel-gate-image-board.git

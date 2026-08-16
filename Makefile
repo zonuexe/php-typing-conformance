@@ -1,4 +1,4 @@
-.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom test-harness rescore
+.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom install-laravel-lsp install-laravel-corpus test-harness rescore
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
@@ -10,7 +10,8 @@ REFERENCE_SUBMODULES := \
 	references/psalm \
 	references/phpDocumentor \
 	references/noverify \
-	references/phan.wiki
+	references/phan.wiki \
+	references/laravel-gate-image-board
 
 init-submodules:
 	git submodule update --init --filter=blob:none references/python-typing
@@ -44,6 +45,7 @@ init-submodules:
 	git -C references/phan.wiki sparse-checkout init --cone
 	git -C references/phan.wiki sparse-checkout set scripts
 	git -C references/phan.wiki checkout
+	git submodule update --init --filter=blob:none references/laravel-gate-image-board
 
 pull-submodules: init-submodules
 	git submodule update --remote --merge $(REFERENCE_SUBMODULES)
@@ -79,6 +81,15 @@ install-phpantom:
 	gh release download $(PHPANTOM_VERSION) --repo phpantom-dev/phpantom_lsp \
 		-p 'phpantom_lsp-$(LSP_BIN_PLATFORM).tar.gz' -O - | tar xz -C vendor-bin/phpantom/bin
 	chmod +x vendor-bin/phpantom/bin/phpantom_lsp
+
+install-laravel-lsp:
+	composer bin laravel-lsp install --no-interaction --no-progress
+
+# Gate imageboard checkout: composer install so Laravel LSP can run
+# `artisan tinker` for route/view/config probes. vendor/ stays gitignored
+# inside the submodule.
+install-laravel-corpus:
+	cd references/laravel-gate-image-board && composer install --no-interaction --no-progress --prefer-dist
 
 test-harness:
 	php conformance/src/Expectation/self-test.php

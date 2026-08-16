@@ -104,7 +104,7 @@ make run-lsp-probes
 ```
 
 That launches every server headless — Intelephense, Phpactor, Psalm,
-devsense-php-ls, PHPantom, php-lsp, Phan — records what each `initialize`
+devsense-php-ls, PHPantom, php-lsp, Phan, Laravel LSP — records what each `initialize`
 handshake advertises,
 exercises one probe per advertised capability against a small fixture
 workspace, and asks the typing question over the protocol too: hovering a
@@ -118,6 +118,10 @@ own index? Results are committed as one TOML per server under
 strictly apart from the reference table of what each project claims about
 itself. php-lsp and PHPantom ship only as per-platform GitHub release
 binaries; `make install-php-lsp` and `make install-phpantom` fetch them.
+Laravel LSP's framework probes use the Gate imageboard submodule
+(`references/laravel-gate-image-board`); `make install-laravel-corpus`
+installs its `vendor/` so `artisan tinker` can index routes, views and
+translations.
 [`docs/language-servers.md`](docs/language-servers.md) documents the method
 and the traps.
 

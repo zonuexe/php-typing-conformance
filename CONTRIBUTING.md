@@ -30,6 +30,7 @@ Current reference repositories covered by this target:
 - `references/phpDocumentor/`
 - `references/noverify/`
 - `references/phan.wiki/`
+- `references/laravel-gate-image-board/` (full checkout — a Laravel app, not sparse; `make install-laravel-corpus` afterwards for `vendor/`)
 
 ## Development Notes
 

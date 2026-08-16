@@ -2,15 +2,16 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
+phpdoc_advanced_fallback_static_pure_closure.php:27: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure' does not exist [MIR1505]
 phpdoc_advanced_fallback_static_pure_closure.php:47: InvalidArgument: Argument $value of acceptsStaticPureClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure', got 'Closure(int): int' [MIR0201]
 phpdoc_advanced_fallback_static_pure_closure.php:50: InvalidArgument: Argument $value of acceptsStaticPureClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure', got 'Closure(int): int' [MIR0201]
 phpdoc_advanced_fallback_static_pure_closure.php:56: InvalidArgument: Argument $value of acceptsStaticPureClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure', got 'Closure(): void' [MIR0201]"""
 errors_diff = "Line 47: Expected valid value to be accepted, got [\"InvalidArgument: Argument $value of acceptsStaticPureClosure() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\static-pure-closure', got 'Closure(int): int' [MIR0201]\"]"
 notes = ""
 ignore_errors = []
-recognition = "recognized"
+recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
-unrecognized_lines = []
+unrecognized_lines = [27]
 false_positive_lines = []
 over_rejected_lines = [47]

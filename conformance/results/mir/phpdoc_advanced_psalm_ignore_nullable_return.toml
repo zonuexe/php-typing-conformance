@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = "phpdoc_advanced_psalm_ignore_nullable_return.php:39: NullArgument: Argument $item of takesItem() cannot be null [MIR0100]"
+output = """
+phpdoc_advanced_psalm_ignore_nullable_return.php:36: PossiblyNullArgument: Argument $item of takesItem() might be null [MIR0104]
+phpdoc_advanced_psalm_ignore_nullable_return.php:39: NullArgument: Argument $item of takesItem() cannot be null [MIR0100]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

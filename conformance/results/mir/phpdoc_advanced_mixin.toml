@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 9
-output = ""
+output = "phpdoc_advanced_mixin.php:61: MixedArgument: Argument $value of takesInt() is mixed [MIR1200]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

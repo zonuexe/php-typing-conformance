@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_vendor_prefixed_output_reference_phan.php:43: PossiblyNullArgument: Argument $value of takesString() might be null [MIR0104]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

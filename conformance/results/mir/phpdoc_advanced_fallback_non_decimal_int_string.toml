@@ -2,6 +2,7 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
+phpdoc_advanced_fallback_non_decimal_int_string.php:24: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackNonDecimalIntString\\non-decimal-int-string' does not exist [MIR1505]
 phpdoc_advanced_fallback_non_decimal_int_string.php:41: InvalidArgument: Argument $value of acceptsString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedFallbackNonDecimalIntString\\non-decimal-int-string' [MIR0201]
 phpdoc_advanced_fallback_non_decimal_int_string.php:45: InvalidArgument: Argument $value of acceptsNonDecimalIntString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonDecimalIntString\\non-decimal-int-string', got '"00"' [MIR0201]
 phpdoc_advanced_fallback_non_decimal_int_string.php:46: InvalidArgument: Argument $value of acceptsNonDecimalIntString() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonDecimalIntString\\non-decimal-int-string', got '"1.2"' [MIR0201]
@@ -15,9 +16,9 @@ Line 46: Expected valid value to be accepted, got ["InvalidArgument: Argument $v
 Line 47: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonDecimalIntString() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonDecimalIntString\\\\non-decimal-int-string', got '\\"foo\\"' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
-recognition = "recognized"
+recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
-unrecognized_lines = []
+unrecognized_lines = [24]
 false_positive_lines = []
 over_rejected_lines = [41, 45, 46, 47]

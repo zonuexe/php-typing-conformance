@@ -1,8 +1,8 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = ""
+output = "phpdoc_advanced_vendor_prefixed_assert_negated_psalm.php:43: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]"
+errors_diff = "Line 43: Expected valid value to be accepted, got [\"PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"

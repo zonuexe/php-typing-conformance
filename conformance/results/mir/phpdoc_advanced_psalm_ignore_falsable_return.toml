@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = "phpdoc_advanced_psalm_ignore_falsable_return.php:35: InvalidArgument: Argument $value of takesString() expects 'string', got 'false' [MIR0201]"
+output = """
+phpdoc_advanced_psalm_ignore_falsable_return.php:32: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'string|false' provided [MIR0105]
+phpdoc_advanced_psalm_ignore_falsable_return.php:35: InvalidArgument: Argument $value of takesString() expects 'string', got 'false' [MIR0201]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

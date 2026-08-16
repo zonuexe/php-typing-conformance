@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
+output = "phpdoc_advanced_return_never_returns.php:42: UnreachableCode: Unreachable code detected [MIR0502]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/2"
+enforcement = "partial"
+enforced_lines = "1/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

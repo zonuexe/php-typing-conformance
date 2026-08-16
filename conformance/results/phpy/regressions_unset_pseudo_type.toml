@@ -2,15 +2,15 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-regressions_unset_pseudo_type.php:36: Use of unknown class: 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset'
-regressions_unset_pseudo_type.php:39: Use of unknown class: 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset'
-regressions_unset_pseudo_type.php:42: Use of unknown class: 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset'"""
+regressions_unset_pseudo_type.php:47: Use of unknown class: 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset'
+regressions_unset_pseudo_type.php:50: Use of unknown class: 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset'
+regressions_unset_pseudo_type.php:53: Use of unknown class: 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset'"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "partial"
 enforced_lines = "3/5"
-unrecognized_lines = [36, 39, 42]
+unrecognized_lines = [47, 50, 53]
 false_positive_lines = []
 over_rejected_lines = []

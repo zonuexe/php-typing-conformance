@@ -2,24 +2,24 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 5
 output = """
-regressions_unset_pseudo_type.php:37: Call to method format() on an unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
-regressions_unset_pseudo_type.php:37: PHPDoc tag @var for variable $read contains unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
-regressions_unset_pseudo_type.php:40: PHPDoc tag @var for variable $passed contains unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
-regressions_unset_pseudo_type.php:40: Parameter #1 $object of function date_format expects DateTimeInterface, Conformance\\Tests\\RegressionsUnsetPseudoType\\unset|DateTime given. [identifier=argument.type] [reported-from-level=7]
-regressions_unset_pseudo_type.php:43: PHPDoc tag @var for variable $guarded contains unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
-regressions_unset_pseudo_type.php:43: Variable $guarded in isset() always exists and is not nullable. [identifier=isset.variable] [reported-from-level=1]
-regressions_unset_pseudo_type.php:44: Call to method format() on an unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
-regressions_unset_pseudo_type.php:45: Parameter #1 $object of function date_format expects DateTimeInterface, Conformance\\Tests\\RegressionsUnsetPseudoType\\unset|DateTime given. [identifier=argument.type] [reported-from-level=7]"""
+regressions_unset_pseudo_type.php:48: Call to method format() on an unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
+regressions_unset_pseudo_type.php:48: PHPDoc tag @var for variable $read contains unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
+regressions_unset_pseudo_type.php:51: PHPDoc tag @var for variable $passed contains unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
+regressions_unset_pseudo_type.php:51: Parameter #1 $object of function date_format expects DateTimeInterface, Conformance\\Tests\\RegressionsUnsetPseudoType\\unset|DateTime given. [identifier=argument.type] [reported-from-level=7]
+regressions_unset_pseudo_type.php:54: PHPDoc tag @var for variable $guarded contains unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
+regressions_unset_pseudo_type.php:54: Variable $guarded in isset() always exists and is not nullable. [identifier=isset.variable] [reported-from-level=1]
+regressions_unset_pseudo_type.php:55: Call to method format() on an unknown class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset. [identifier=class.notFound] [reported-from-level=2]
+regressions_unset_pseudo_type.php:56: Parameter #1 $object of function date_format expects DateTimeInterface, Conformance\\Tests\\RegressionsUnsetPseudoType\\unset|DateTime given. [identifier=argument.type] [reported-from-level=7]"""
 errors_diff = """
-Line 43: Expected silence (quiet probe), got ["PHPDoc tag @var for variable $guarded contains unknown class Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset. [identifier=class.notFound] [reported-from-level=2]","Variable $guarded in isset() always exists and is not nullable. [identifier=isset.variable] [reported-from-level=1]"]
-Line 44: Expected silence (quiet probe), got ["Call to method format() on an unknown class Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset. [identifier=class.notFound] [reported-from-level=2]"]
-Line 45: Expected silence (quiet probe), got ["Parameter #1 $object of function date_format expects DateTimeInterface, Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset|DateTime given. [identifier=argument.type] [reported-from-level=7]"]"""
+Line 54: Expected silence (quiet probe), got ["PHPDoc tag @var for variable $guarded contains unknown class Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset. [identifier=class.notFound] [reported-from-level=2]","Variable $guarded in isset() always exists and is not nullable. [identifier=isset.variable] [reported-from-level=1]"]
+Line 55: Expected silence (quiet probe), got ["Call to method format() on an unknown class Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset. [identifier=class.notFound] [reported-from-level=2]"]
+Line 56: Expected silence (quiet probe), got ["Parameter #1 $object of function date_format expects DateTimeInterface, Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset|DateTime given. [identifier=argument.type] [reported-from-level=7]"]"""
 notes = ""
 ignore_errors = []
 expected_diagnostic_level = 1
 recognition = "unrecognized"
 enforcement = "partial"
 enforced_lines = "2/5"
-unrecognized_lines = [37, 40, 43]
+unrecognized_lines = [48, 51, 54]
 false_positive_lines = []
 over_rejected_lines = []

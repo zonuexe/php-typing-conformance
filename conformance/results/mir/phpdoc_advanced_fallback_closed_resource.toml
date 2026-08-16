@@ -1,13 +1,21 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_fallback_closed_resource.php:35: InvalidArgument: Argument $value of acceptsClosedResource() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\closed-resource', got '\"not a resource\"' [MIR0201]"
-errors_diff = ""
+output = """
+phpdoc_advanced_fallback_closed_resource.php:27: MixedAssignment: Variable $closed is assigned a mixed type [MIR1201]
+phpdoc_advanced_fallback_closed_resource.php:32: MixedArgument: Argument $value of acceptsClosedResource() is mixed [MIR1200]
+phpdoc_advanced_fallback_closed_resource.php:35: InvalidArgument: Argument $value of acceptsClosedResource() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackClosedResource\\closed-resource', got '"not a resource"' [MIR0201]
+phpdoc_advanced_fallback_closed_resource.php:37: MixedAssignment: Variable $open is assigned a mixed type [MIR1201]
+phpdoc_advanced_fallback_closed_resource.php:41: MixedArgument: Argument $value of acceptsClosedResource() is mixed [MIR1200]"""
+errors_diff = """
+Line 32: Expected valid value to be accepted, got ["MixedArgument: Argument $value of acceptsClosedResource() is mixed [MIR1200]"]
+Line 27: Unexpected errors ["MixedAssignment: Variable $closed is assigned a mixed type [MIR1201]"]
+Line 37: Unexpected errors ["MixedAssignment: Variable $open is assigned a mixed type [MIR1201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [27, 37]
 over_rejected_lines = []

@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
-errors_diff = "Lines 15, 18: Expected error (tag param_mismatch)"
+output = "phpdoc_advanced_param_typehint_nullable_mismatch.php:18: MismatchingDocblockParamType: Docblock type 'string' for $name does not match inferred 'string|null' [MIR0210]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

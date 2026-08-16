@@ -1,8 +1,10 @@
 status = "Falls back"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 3
-output = ""
-errors_diff = ""
+output = """
+phpdoc_advanced_psalm_arraylike_object.php:47: MixedAssignment: Variable $value is assigned a mixed type [MIR1201]
+phpdoc_advanced_psalm_arraylike_object.php:48: MixedArgument: Argument $value of takesInt() is mixed [MIR1200]"""
+errors_diff = "Line 47: Expected silence (quiet probe), got [\"MixedAssignment: Variable $value is assigned a mixed type [MIR1201]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"

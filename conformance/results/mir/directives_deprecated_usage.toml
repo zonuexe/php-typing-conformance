@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
+output = """
+directives_deprecated_usage.php:17: DeprecatedCall: Call to deprecated function Conformance\\Tests\\DirectivesDeprecatedUsage\\oldMessage: Use newMessage() instead. [MIR1000]
+directives_deprecated_usage.php:18: DeprecatedClass: Class Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter is deprecated: Use ModernFormatter instead. [MIR1003]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -2,14 +2,15 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
+phpdoc_advanced_psalm_class_string_map.php:21: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPsalmClassStringMap\\T' does not exist [MIR1505]
 phpdoc_advanced_psalm_class_string_map.php:26: InvalidArgument: Argument $map of acceptsThrowableMap() expects 'array<class-string, Conformance\\Tests\\PhpdocAdvancedPsalmClassStringMap\\T>', got 'array<class-string<RuntimeException>, RuntimeException>' [MIR0201]
 phpdoc_advanced_psalm_class_string_map.php:29: InvalidArgument: Argument $map of acceptsThrowableMap() expects 'array<class-string, Conformance\\Tests\\PhpdocAdvancedPsalmClassStringMap\\T>', got 'array<class-string<RuntimeException>, LogicException>' [MIR0201]"""
 errors_diff = "Line 26: Expected valid value to be accepted, got [\"InvalidArgument: Argument $map of acceptsThrowableMap() expects 'array<class-string, Conformance\\\\Tests\\\\PhpdocAdvancedPsalmClassStringMap\\\\T>', got 'array<class-string<RuntimeException>, RuntimeException>' [MIR0201]\"]"
 notes = ""
 ignore_errors = []
-recognition = "recognized"
+recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
-unrecognized_lines = []
+unrecognized_lines = [21]
 false_positive_lines = []
 over_rejected_lines = [26]

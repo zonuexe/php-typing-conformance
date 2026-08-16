@@ -1,13 +1,20 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = ""
+output = """
+phpdoc_advanced_fallback_key_of_template.php:30: MixedAssignment: Variable $_ is assigned a mixed type [MIR1201]
+phpdoc_advanced_fallback_key_of_template.php:56: MixedArgument: Argument $value of acceptsString() is mixed [MIR1200]
+phpdoc_advanced_fallback_key_of_template.php:60: MixedArgument: Argument $flag of acceptsFlagName() is mixed [MIR1200]
+phpdoc_advanced_fallback_key_of_template.php:63: MixedArgument: Argument $value of acceptsInt() is mixed [MIR1200]"""
+errors_diff = """
+Line 56: Expected valid value to be accepted, got ["MixedArgument: Argument $value of acceptsString() is mixed [MIR1200]"]
+Line 60: Expected valid value to be accepted, got ["MixedArgument: Argument $flag of acceptsFlagName() is mixed [MIR1200]"]
+Line 30: Unexpected errors ["MixedAssignment: Variable $_ is assigned a mixed type [MIR1201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [30]
 over_rejected_lines = []

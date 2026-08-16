@@ -2,15 +2,15 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-regressions_unset_pseudo_type.php:36: Undefined class 'unset' [PhpUndefinedClassInspection]
-regressions_unset_pseudo_type.php:39: Undefined class 'unset' [PhpUndefinedClassInspection]
-regressions_unset_pseudo_type.php:42: Undefined class 'unset' [PhpUndefinedClassInspection]"""
+regressions_unset_pseudo_type.php:47: Undefined class 'unset' [PhpUndefinedClassInspection]
+regressions_unset_pseudo_type.php:50: Undefined class 'unset' [PhpUndefinedClassInspection]
+regressions_unset_pseudo_type.php:53: Undefined class 'unset' [PhpUndefinedClassInspection]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "partial"
 enforced_lines = "3/5"
-unrecognized_lines = [36, 39, 42]
+unrecognized_lines = [47, 50, 53]
 false_positive_lines = []
 over_rejected_lines = []

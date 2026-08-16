@@ -2,11 +2,14 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
+arrays_shape_discriminant_match.php:32: MixedReturnStatement: Cannot return a mixed type from function with declared return type 'string' [MIR1212]
 arrays_shape_discriminant_match.php:33: NonExistentArrayOffset: Array offset 'image_url' does not exist [MIR0301]
 arrays_shape_discriminant_match.php:34: NonExistentArrayOffset: Array offset 'cover_url' does not exist [MIR0301]
+arrays_shape_discriminant_match.php:45: MixedReturnStatement: Cannot return a mixed type from function with declared return type 'string' [MIR1212]
 arrays_shape_discriminant_match.php:46: NonExistentArrayOffset: Array offset 'cover_url' does not exist [MIR0301]
 arrays_shape_discriminant_match.php:47: NonExistentArrayOffset: Array offset 'image_url' does not exist [MIR0301]"""
 errors_diff = """
+Line 32: Unexpected errors ["MixedReturnStatement: Cannot return a mixed type from function with declared return type 'string' [MIR1212]"]
 Line 33: Unexpected errors ["NonExistentArrayOffset: Array offset 'image_url' does not exist [MIR0301]"]
 Line 34: Unexpected errors ["NonExistentArrayOffset: Array offset 'cover_url' does not exist [MIR0301]"]"""
 notes = ""

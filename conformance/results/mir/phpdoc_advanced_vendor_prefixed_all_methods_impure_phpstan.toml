@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = ""
+output = "phpdoc_advanced_vendor_prefixed_all_methods_impure_phpstan.php:44: PossiblyNullArgument: Argument $string of strlen() might be null [MIR0104]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

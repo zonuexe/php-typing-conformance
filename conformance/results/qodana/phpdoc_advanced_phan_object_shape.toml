@@ -5,7 +5,7 @@ output = """
 phpdoc_advanced_phan_object_shape.php:27: Argument type does not match the declared [PhpDocSignatureInspection]
 phpdoc_advanced_phan_object_shape.php:27: Undefined class 'stdClass' [PhpUndefinedClassInspection]"""
 errors_diff = ""
-notes = "phpdoc_advanced_phan_object_shape.php changed after the Qodana report was produced, so the report cannot answer for it. Run Inspect Code in PhpStorm and re-run this tool."
+notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "none"

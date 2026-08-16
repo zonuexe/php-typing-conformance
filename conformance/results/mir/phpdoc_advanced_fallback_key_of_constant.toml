@@ -1,8 +1,8 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = ""
+output = "phpdoc_advanced_fallback_key_of_constant.php:46: MixedArgument: Argument $value of acceptsString() is mixed [MIR1200]"
+errors_diff = "Line 46: Expected valid value to be accepted, got [\"MixedArgument: Argument $value of acceptsString() is mixed [MIR1200]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"

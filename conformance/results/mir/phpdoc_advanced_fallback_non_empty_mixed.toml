@@ -2,6 +2,7 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 4
 output = """
+phpdoc_advanced_fallback_non_empty_mixed.php:22: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\non-empty-mixed' does not exist [MIR1505]
 phpdoc_advanced_fallback_non_empty_mixed.php:42: InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\non-empty-mixed', got '1' [MIR0201]
 phpdoc_advanced_fallback_non_empty_mixed.php:43: InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\non-empty-mixed', got '"x"' [MIR0201]
 phpdoc_advanced_fallback_non_empty_mixed.php:44: InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyMixed\\non-empty-mixed', got 'array{0: 1}' [MIR0201]
@@ -15,9 +16,9 @@ Line 43: Expected valid value to be accepted, got ["InvalidArgument: Argument $v
 Line 44: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonEmptyMixed() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyMixed\\\\non-empty-mixed', got 'array{0: 1}' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
-recognition = "recognized"
+recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "4/4"
-unrecognized_lines = []
+unrecognized_lines = [22]
 false_positive_lines = []
 over_rejected_lines = [42, 43, 44]

@@ -2,14 +2,18 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
+phpdoc_advanced_phpstan_template_type.php:34: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type' does not exist [MIR1505]
+phpdoc_advanced_phpstan_template_type.php:36: MixedReturnStatement: Cannot return a mixed type from function with declared return type 'Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<T>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, "T">' [MIR1212]
 phpdoc_advanced_phpstan_template_type.php:44: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<string>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, "T">' [MIR0201]
 phpdoc_advanced_phpstan_template_type.php:47: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\template-type<Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box<int>, Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\Box, "T">' [MIR0201]"""
-errors_diff = "Line 44: Expected valid value to be accepted, got [\"InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<string>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, \\\"T\\\">' [MIR0201]\"]"
+errors_diff = """
+Line 36: Expected valid value to be accepted, got ["MixedReturnStatement: Cannot return a mixed type from function with declared return type 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<T>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, \\"T\\">' [MIR1212]"]
+Line 44: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\template-type<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box<string>, Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanTemplateType\\\\Box, \\"T\\">' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
-recognition = "recognized"
+recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
-unrecognized_lines = []
+unrecognized_lines = [34]
 false_positive_lines = []
 over_rejected_lines = [44]

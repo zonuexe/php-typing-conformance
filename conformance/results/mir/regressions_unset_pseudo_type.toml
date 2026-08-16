@@ -1,13 +1,17 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 5
-output = ""
-errors_diff = ""
+output = """
+regressions_unset_pseudo_type.php:48: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' does not exist [MIR1505]
+regressions_unset_pseudo_type.php:51: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' does not exist [MIR1505]
+regressions_unset_pseudo_type.php:54: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' does not exist [MIR1505]
+regressions_unset_pseudo_type.php:54: RedundantCondition: Condition is always true/false for type 'bool' [MIR0400]"""
+errors_diff = "Line 54: Expected silence (quiet probe), got [\"UndefinedDocblockClass: Docblock type 'Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset' does not exist [MIR1505]\",\"RedundantCondition: Condition is always true/false for type 'bool' [MIR0400]\"]"
 notes = ""
 ignore_errors = []
-recognition = "recognized"
+recognition = "unrecognized"
 enforcement = "partial"
-enforced_lines = "3/5"
-unrecognized_lines = []
+enforced_lines = "4/5"
+unrecognized_lines = [48, 51, 54]
 false_positive_lines = []
 over_rejected_lines = []

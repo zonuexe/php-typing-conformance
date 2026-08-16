@@ -1,13 +1,28 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 3
-output = ""
-errors_diff = ""
+output = """
+phpdoc_advanced_psalm_arraylike_object.php:25: Docblock class Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\ArrayAccess does not exist [UndefinedDocblockClass]
+phpdoc_advanced_psalm_arraylike_object.php:25: Docblock class Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable does not exist [UndefinedDocblockClass]
+phpdoc_advanced_psalm_arraylike_object.php:25: Docblock class Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Traversable does not exist [UndefinedDocblockClass]
+phpdoc_advanced_psalm_arraylike_object.php:30: Argument 1 of acceptsArrayLike expects Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\ArrayAccess<string, int>&Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable&Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Traversable<string, int>, but ArrayObject<`_0, `_1> provided [InvalidArgument]
+phpdoc_advanced_psalm_arraylike_object.php:33: Argument 1 of acceptsArrayLike expects Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\ArrayAccess<string, int>&Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable&Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Traversable<string, int>, but stdClass provided [InvalidArgument]
+phpdoc_advanced_psalm_arraylike_object.php:42: Docblock class Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\ArrayAccess does not exist [UndefinedDocblockClass]
+phpdoc_advanced_psalm_arraylike_object.php:42: Docblock class Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable does not exist [UndefinedDocblockClass]
+phpdoc_advanced_psalm_arraylike_object.php:42: Docblock class Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Traversable does not exist [UndefinedDocblockClass]
+phpdoc_advanced_psalm_arraylike_object.php:47: Unable to determine the type that $value is being assigned to [MixedAssignment]
+phpdoc_advanced_psalm_arraylike_object.php:48: Argument 1 of takesInt cannot be mixed|null, expecting int [MixedArgument]
+phpdoc_advanced_psalm_arraylike_object.php:48: Argument 1 of takesInt expects int, but possibly different type mixed|null provided [PossiblyNullArgument]
+phpdoc_advanced_psalm_arraylike_object.php:51: Argument 1 of readsElement expects Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\ArrayAccess<string, int>&Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable&Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Traversable<string, int>, but ArrayObject<`_0, `_1> provided [InvalidArgument]"""
+errors_diff = """
+Line 47: Expected silence (quiet probe), got ["Unable to determine the type that $value is being assigned to [MixedAssignment]"]
+Line 30: Expected valid value to be accepted, got ["Argument 1 of acceptsArrayLike expects Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\ArrayAccess<string, int>&Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\Countable&Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\Traversable<string, int>, but ArrayObject<`_0, `_1> provided [InvalidArgument]"]
+Line 51: Unexpected errors ["Argument 1 of readsElement expects Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\ArrayAccess<string, int>&Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\Countable&Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\Traversable<string, int>, but ArrayObject<`_0, `_1> provided [InvalidArgument]"]"""
 notes = ""
 ignore_errors = []
-recognition = "recognized"
+recognition = "unrecognized"
 enforcement = "partial"
-enforced_lines = "1/3"
-unrecognized_lines = []
-false_positive_lines = []
-over_rejected_lines = []
+enforced_lines = "2/3"
+unrecognized_lines = [25, 42]
+false_positive_lines = [51]
+over_rejected_lines = [30, 51]

@@ -1,8 +1,8 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = ""
+output = "phpdoc_advanced_vendor_prefixed_assert_true_condition_phan.php:34: Argument 1 of takesInt cannot be mixed, expecting int [MixedArgument]"
+errors_diff = "Line 34: Expected valid value to be accepted, got [\"Argument 1 of takesInt cannot be mixed, expecting int [MixedArgument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"

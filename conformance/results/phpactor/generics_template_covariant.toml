@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = "generics_template_covariant.php:26: Missing generic tag `@extends Animal<mixed>`"
+errors_diff = "Line 26: Unexpected errors [\"Missing generic tag `@extends Animal<mixed>`\"]"
+notes = ""
+ignore_errors = []

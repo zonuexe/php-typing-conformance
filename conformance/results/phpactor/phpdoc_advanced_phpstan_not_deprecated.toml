@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phpstan_not_deprecated.php:28: Call to deprecated class "Conformance\\Tests\\PhpdocAdvancedPhpstanNotDeprecated\\Base": ` on a parent method is inherited. `
+phpdoc_advanced_phpstan_not_deprecated.php:43: Call to deprecated method "run": Use child instead
+phpdoc_advanced_phpstan_not_deprecated.php:43: Call to deprecated class "Conformance\\Tests\\PhpdocAdvancedPhpstanNotDeprecated\\Base": ` on a parent method is inherited. `"""
+errors_diff = "Line 28: Unexpected errors [\"Call to deprecated class \\\"Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNotDeprecated\\\\Base\\\": ` on a parent method is inherited. `\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "no-probes"
+enforced_lines = "0/0"
+unrecognized_lines = []
+false_positive_lines = [28]
+over_rejected_lines = []

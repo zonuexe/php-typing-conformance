@@ -33,13 +33,13 @@ final class Report
      * their own: the report merges the first into phpstan and the second into
      * psalm.
      *
-     * qodana sits next to intelephense because the two answer the same way:
-     * both are the analysis an editor performs while you type, rather than a
+     * qodana and phpactor sit next to intelephense because the three answer the
+     * same way: the analysis an editor performs while you type, rather than a
      * checker a pipeline invokes.
      *
      * @var list<string>
      */
-    public const DISPLAY_TOOLS = ['phan', 'phpstan', 'psalm', 'mago', 'mir', 'phpantom', 'intelephense', 'phpy', 'qodana', 'noverify', 'steins'];
+    public const DISPLAY_TOOLS = ['phan', 'phpstan', 'psalm', 'mago', 'mir', 'phpantom', 'intelephense', 'phpy', 'qodana', 'phpactor', 'noverify', 'steins'];
 
     /**
      * @param array<string, \Conformance\TestGroup\TestGroup> $testGroups

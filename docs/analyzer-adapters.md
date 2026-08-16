@@ -73,6 +73,7 @@ single meaningful line out of the tool and stop there.
 | phpy | `--version` | bare `0.2.0` | prefixed with `phpy ` |
 | Intelephense | *(nothing)* | — | read from `node_modules/intelephense/package.json` |
 | pzoom | *(nothing)* | — | pinned to the announced release in the adapter |
+| Phpactor | `--version` | `Phpactor 2026.07.22.0` | none |
 
 Two of these are worth naming as anti-patterns for tool authors. A CLI that
 answers only to a `version` **subcommand** breaks every caller that reaches for
@@ -104,6 +105,7 @@ to 8.5 — see [the README](../README.md) for the policy and
 | NoVerify | — | only `--php7`, a boolean |
 | phpy | — | no option |
 | Steins | — | no option (and unknown flags are ignored) |
+| Phpactor | — | no option |
 
 Psalm deserves a warning of its own. With no `phpVersion` in the config it infers
 one from `require.php` in the nearest `composer.json`, walking a candidate list
@@ -257,6 +259,33 @@ contract-layer findings many cases assert on. `--format json` yields
 use and reports progress on stderr, so stderr is dropped everywhere in this
 adapter — it must never reach the parsed output. `STEINS_BIN` points the suite at
 a local build.
+
+### Phpactor — a position given in bytes, not in lines
+
+`worse:analyse --format=json` pays a fixed Worse Reflection bootstrap cost per
+invocation, so `PhpactorChecker` runs the corpus once, the same reasoning
+`PhpStanChecker` applies to its level ladder. The output is one JSON object per
+line rather than a JSON array, and the progress banner shares the stream with
+them, so anything that does not decode to an object is skipped.
+
+The position is the part worth naming. Every other adapter here is handed a
+line number, or at worst an LSP-style 0-based one; Phpactor hands over
+`range.start`, a **byte offset into the file**. Worse Reflection works in
+`ByteOffset` from parse to diagnostic and the JSON formatter prints it raw, so
+the adapter is the only one in the suite that has to read the source back to
+learn which line a diagnostic landed on. Counting newlines up to the offset is
+enough — the offset is in bytes, so no multibyte handling is needed — but a
+parser that assumes a `line` field gets `0` from every diagnostic and records a
+silent tool, which is a failure mode that looks exactly like a clean run.
+
+Two smaller notes. `severity` is encoded from an object with no JSON
+representation and always arrives as `{}`, so it cannot be recovered from this
+format and every diagnostic is recorded unfiltered; the table format carries a
+readable severity but truncates the message at 60 columns, which loses more
+than it gains. And paths come back relative to the *invoking* working directory
+rather than to `--working-dir`, so matching is by basename — the same
+accommodation `PzoomChecker` already makes for a tool that does not control its
+own path formatting. Exit codes 0 (clean) and 1 (issues found) are both normal.
 
 ### Qodana — a report to read, not a tool to run
 

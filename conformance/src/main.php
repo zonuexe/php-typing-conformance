@@ -14,6 +14,7 @@ use Conformance\Checker\PhpantomChecker;
 use Conformance\Checker\MirChecker;
 use Conformance\Checker\IntelephenseChecker;
 use Conformance\Checker\NoVerifyChecker;
+use Conformance\Checker\PhpactorChecker;
 use Conformance\Checker\PhpyChecker;
 use Conformance\Checker\PzoomChecker;
 use Conformance\Checker\SteinsChecker;
@@ -180,7 +181,12 @@ $phpyChecker = new PhpyChecker(
     nodeBinary: 'node',
     cliPath: $projectRoot . '/vendor-bin/phpy/node_modules/phpy/dist/index.js',
 );
-$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $phpantomChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker];
+$phpactorChecker = new PhpactorChecker(
+    binaryPath: $projectRoot . '/vendor-bin/phpactor/vendor/bin/phpactor',
+    workspacePath: $rootDir,
+    testsDir: $testsDir,
+);
+$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $phpantomChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker, $phpactorChecker];
 
 // Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
 // selected checker(s), leaving every other tool's results untouched. Accepts a

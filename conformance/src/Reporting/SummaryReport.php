@@ -155,7 +155,9 @@ final class SummaryReport
 
             $toolColumns[] = [
                 'name' => $tool,
-                'versionHtml' => $this->versionCell($resultsRoot, $tool),
+                // The header shows only the column's own version; configuration
+                // lines (psalm-next) stay on the detail pages.
+                'versionHtml' => $this->versionCell($resultsRoot, $tool, false),
             ];
         }
 
@@ -907,7 +909,7 @@ final class SummaryReport
         return implode(',', $keys);
     }
 
-    private function versionCell(string $resultsRoot, string $tool): string
+    private function versionCell(string $resultsRoot, string $tool, bool $withConfigurations = true): string
     {
         $analyzer = $this->analyzers->find($tool);
         $fullVersion = $this->loadVersion($resultsRoot, $tool);
@@ -938,24 +940,27 @@ final class SummaryReport
         // psalm — is named on its own line in the base column's version cell,
         // so the folded line stays visible where the column is. A
         // configuration that reuses the same binary (phpstan-strict) has the
-        // same version and adds nothing.
-        foreach ($this->analyzers->configurationsOf($tool) as $configuration) {
-            $configShort = $configuration['release']->version;
-            if ($configShort === $shortVersion) {
-                continue;
-            }
+        // same version and adds nothing. The matrix header does not show the
+        // line; the detail pages do.
+        if ($withConfigurations) {
+            foreach ($this->analyzers->configurationsOf($tool) as $configuration) {
+                $configShort = $configuration['release']->version;
+                if ($configShort === $shortVersion) {
+                    continue;
+                }
 
-            $configUrl = $analyzer?->releaseUrl($configShort);
-            $configHtml = htmlspecialchars($configShort);
-            if ($configUrl !== null) {
-                $configHtml = sprintf(
-                    '<a href="%s" target="_blank" rel="noopener">%s</a>',
-                    htmlspecialchars($configUrl),
-                    $configHtml,
-                );
-            }
+                $configUrl = $analyzer?->releaseUrl($configShort);
+                $configHtml = htmlspecialchars($configShort);
+                if ($configUrl !== null) {
+                    $configHtml = sprintf(
+                        '<a href="%s" target="_blank" rel="noopener">%s</a>',
+                        htmlspecialchars($configUrl),
+                        $configHtml,
+                    );
+                }
 
-            $card .= sprintf('<br>next: %s', $configHtml);
+                $card .= sprintf('<br>next: %s', $configHtml);
+            }
         }
 
         return $card;

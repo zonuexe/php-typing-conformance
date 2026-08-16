@@ -9,6 +9,7 @@ use Conformance\Metadata\Analyzer\Mago;
 use Conformance\Metadata\Analyzer\Mir;
 use Conformance\Metadata\Analyzer\NoVerify;
 use Conformance\Metadata\Analyzer\Phan;
+use Conformance\Metadata\Analyzer\Phpactor;
 use Conformance\Metadata\Analyzer\Phpantom;
 use Conformance\Metadata\Analyzer\Phpy;
 use Conformance\Metadata\Analyzer\PhpStan;
@@ -37,6 +38,7 @@ final class AnalyzerCatalog
         'psalm' => Psalm::class,
         'phpstan' => PhpStan::class,
         'intelephense' => Intelephense::class,
+        'phpactor' => Phpactor::class,
         'noverify' => NoVerify::class,
         'qodana' => Qodana::class,
         'mago' => Mago::class,

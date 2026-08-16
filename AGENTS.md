@@ -82,7 +82,7 @@ Concrete paths currently used:
 - `vendor-bin/phan/vendor/bin/phan`
 - `vendor-bin/mago/vendor/bin/mago`
 - `vendor-bin/mir/vendor/bin/mir`
-- `vendor-bin/phpactor/vendor/bin/phpactor` (installed only to be probed over LSP; its `composer.json` needs `minimum-stability: dev` + `prefer-stable` because phpactor requires `jetbrains/phpstorm-stubs dev-master`)
+- `vendor-bin/phpactor/vendor/bin/phpactor` (one install serving both axes — the `worse:analyse` matrix column and the LSP probes; its `composer.json` needs `minimum-stability: dev` + `prefer-stable` because phpactor requires `jetbrains/phpstorm-stubs dev-master`)
 - `vendor-bin/devsense-php-ls/node_modules/.bin/devsense-php-ls` (npm, `make install-devsense-php-ls`; separately versioned from the copy phpy bundles)
 - `vendor-bin/php-lsp/bin/php-lsp` and `vendor-bin/phpantom/bin/phpantom_lsp` (per-platform GitHub release binaries, git-ignored; `make install-php-lsp` / `make install-phpantom`)
 
@@ -167,6 +167,7 @@ Current checker columns in the report, in display order:
 - `intelephense`
 - `phpy`
 - `qodana`
+- `phpactor`
 - `noverify`
 - `steins`
 

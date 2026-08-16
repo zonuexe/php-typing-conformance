@@ -79,10 +79,10 @@ abstract class LanguageServerMetadata
 
     /**
      * A function-specific server: it serves one framework or feature —
-     * PHPUnit test cases, Laravel helpers, a formatter — rather than PHP as
-     * a language. Most such servers have nothing to answer the suite's
-     * typing probes with and are never launched; Laravel LSP is the
-     * exception, launched against a Laravel-shaped workspace so its
+     * PHPUnit test cases, Laravel helpers, Symfony integrations — rather
+     * than PHP as a language. Most such servers have nothing to answer the
+     * suite's typing probes with and are never launched; Laravel LSP is
+     * the exception, launched against a Laravel-shaped workspace so its
      * framework features can be asked. The report still lists the row in
      * the function-specific table.
      */

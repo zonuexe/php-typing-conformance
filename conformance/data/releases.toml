@@ -99,6 +99,10 @@ date = "2026-08-14"
 version = "0.3.7"
 date = "2018-04-25"
 
+[symfony-lsp]
+version = "0.8.6"
+date = "2026-08-15"
+
 [php-language-server]
 version = "5.4.6"
 date = "2018-11-13"

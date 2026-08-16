@@ -15,6 +15,7 @@ use Conformance\Metadata\LanguageServer\PhpLsp;
 use Conformance\Metadata\LanguageServer\PhpUnit;
 use Conformance\Metadata\LanguageServer\Psalm;
 use Conformance\Metadata\LanguageServer\Serenata;
+use Conformance\Metadata\LanguageServer\SymfonyLanguageTools;
 use RuntimeException;
 use function sprintf;
 
@@ -42,6 +43,7 @@ final class LanguageServerCatalog
         'php-lsp' => PhpLsp::class,
         'phpunit-language-server' => PhpUnit::class,
         'laravel-lsp' => LaravelLsp::class,
+        'symfony-lsp' => SymfonyLanguageTools::class,
         'php-language-server' => PhpLanguageServer::class,
         'crane' => Crane::class,
         'serenata' => Serenata::class,

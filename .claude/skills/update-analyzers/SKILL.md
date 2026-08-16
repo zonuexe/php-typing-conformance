@@ -1,6 +1,6 @@
 ---
 name: update-analyzers
-description: Update the analyzers and language servers this conformance suite tracks, re-measure whatever moved, and rebuild the report. Use whenever the user wants tool versions bumped or checked in php-typing-conformance — "update the analyzers", "check for new releases", "re-run mago on the new version", "アナライザを最新にして", "ツールのバージョン上げて", "依存を更新して", "新しい版で測り直して" — and also when they mention update-tools, releases.toml, vendor-bin, or say the report's version numbers look stale. Reach for it even when the request sounds like a plain `composer update`: in this repository updating a tool changes measurements, so it is never just an install.
+description: Update the analyzers and language servers this conformance suite tracks, re-measure whatever moved, and rebuild the report. Use whenever the user wants tool versions bumped or checked in php-typing-conformance — "update the analyzers", "check for new releases", "re-run mago on the new version", "アナライザを最新にして", "ツールのバージョン上げて", "依存を更新して", "新しい版で測り直して" — and also when they mention update-tools, releases.toml, vendor-bin, or say the report's version numbers look stale. Reach for it even when the request sounds like a plain `composer update` — in this repository updating a tool changes measurements, so it is never just an install.
 metadata:
   internal: true
 ---

@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_phpstan_param_immediately_invoked_callable.php:46: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanParamImmediatelyInvokedCallable\\takesString expects string, string|null given. [identifier=argument.type]"
+output = "phpdoc_advanced_phpstan_param_immediately_invoked_callable.php:51: Function Conformance\\Tests\\PhpdocAdvancedPhpstanParamImmediatelyInvokedCallable\\callsImmediate() throws exception Conformance\\Tests\\PhpdocAdvancedPhpstanParamImmediatelyInvokedCallable\\Boom but the PHPDoc contains @throws void."
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "no-probes"
-enforced_lines = "0/0"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

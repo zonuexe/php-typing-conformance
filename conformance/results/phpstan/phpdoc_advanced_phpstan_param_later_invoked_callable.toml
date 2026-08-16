@@ -1,14 +1,14 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_phpstan_param_later_invoked_callable.php:44: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanParamLaterInvokedCallable\\takesString expects string, string|null given. [identifier=argument.type] [reported-from-level=8]"
+output = "phpdoc_advanced_phpstan_param_later_invoked_callable.php:48: Dead catch - Conformance\\Tests\\PhpdocAdvancedPhpstanParamLaterInvokedCallable\\Boom is never thrown in the try block. [reported-from-level=4]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
-expected_diagnostic_level = 8
+expected_diagnostic_level = 4
 recognition = "recognized"
-enforcement = "no-probes"
-enforced_lines = "0/0"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

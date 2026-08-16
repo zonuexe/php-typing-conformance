@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_phpstan_param_immediately_invoked_callable.php:46: not null safety call in function Conformance\\Tests\\PhpdocAdvancedPhpstanParamImmediatelyInvokedCallable\\takesString signature of param value [notNullSafetyFunctionArgumentVariable]"
+output = ""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "no-probes"
-enforced_lines = "0/0"
+enforcement = "none"
+enforced_lines = "0/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

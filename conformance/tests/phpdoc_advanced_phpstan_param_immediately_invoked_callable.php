@@ -7,41 +7,54 @@ namespace Conformance\Tests\PhpdocAdvancedPhpstanParamImmediatelyInvokedCallable
 /**
  * Cross-tool handling of `@param-immediately-invoked-callable`.
  *
- * Free functions default to immediately-invoked; object methods default to
- * later. This tag overrides a method parameter to the immediate schedule.
+ * Object methods default to later-invoked. The tag overrides a method
+ * parameter so a callable argument is treated as run before the next
+ * statement. That makes exceptions thrown inside the callback part of
+ * the caller's `@throws` (PHPStan `throws.void` when the caller claims
+ * to throw nothing).
+ *
+ * By-ref narrowing is not this tag's job: PHPStan still infers
+ * `'Ada'|null` after a callback that assigns through a reference,
+ * whether or not the callable is immediately invoked.
  *
  * References:
  * - PHPStan phpdocs-basics: Callables
  * - PHPStan 1.11 release notes
  */
 
+final class Boom extends \RuntimeException
+{
+}
+
 final class Runner
 {
     /**
+     * @param callable $callback
      * @param-immediately-invoked-callable $callback
      */
     public function runNow(callable $callback): void // T: @param-immediately-invoked-callable
     {
         $callback();
     }
+
+    /** @param callable $callback */
+    public function runLater(callable $callback): void
+    {
+    }
 }
 
-function takesString(string $value): void
+/**
+ * @phpstan-throws void
+ */
+function callsImmediate(Runner $runner): void
 {
+    $runner->runNow(static function (): void { throw new Boom('now'); }); // E?: immediately-invoked callback throw contradicts @throws void
 }
 
-function example(Runner $runner): void
+/**
+ * @phpstan-throws void
+ */
+function callsLater(Runner $runner): void
 {
-    $name = null;
-    $runner->runNow(static function () use (&$name): void {
-        $name = 'Ada';
-    });
-
-    // NOTE: the invocation-timing tags govern checked-exception propagation
-    // (@throws / try-catch), not by-ref narrowing. PHPStan infers `'Ada'|null`
-    // for $name whether or not the callable is immediately invoked, so this
-    // diagnostic fires independently of the tag and must not be scored as tag
-    // enforcement. The checked-exceptions rule that the tag actually feeds is
-    // not enabled in this harness, so there is no enforcement probe to make.
-    takesString($name); // E?[noise]: string|null argument, independent of the tag
+    $runner->runLater(static function (): void { throw new Boom('later'); }); // V: default later-invoked, so @throws void still holds
 }

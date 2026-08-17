@@ -14,6 +14,11 @@ use Conformance\Metadata\Person;
 use Conformance\Metadata\ReleaseFeed;
 use function sprintf;
 
+/**
+ * Fast CLI linter with its own inference. Filed as an inferring linter
+ * rather than a type checker: the engine exists so a rule catalogue can
+ * see types, not so the product can be a type-correctness oracle.
+ */
 final class NoVerify extends AnalyzerMetadata
 {
     public function name(): string
@@ -28,7 +33,7 @@ final class NoVerify extends AnalyzerMetadata
 
     public function analysis(): AnalysisKind
     {
-        return AnalysisKind::TypeAwareLinter;
+        return AnalysisKind::InferringLinter;
     }
 
     public function interfaces(): array

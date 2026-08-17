@@ -20,7 +20,7 @@ $headers = ['Analyzer', 'Analysis', 'Interface', 'Bundled with it', 'Language', 
 
 ?>
 <h2 class="section" id="analyzers">Analyzers</h2>
-<p class="section-note">Reference metadata for each analyzer compared above; versions are those pinned by this suite. <strong>Analysis</strong> is the one column whose values are coined here rather than read off the project: a <em>type checker</em> aims at type correctness, a <em>type-aware linter</em> at a rule catalogue that inference sharpens, and <em>code intelligence</em> infers types mainly to drive completion and navigation, with diagnostics one feature among many.</p>
+<p class="section-note">Reference metadata for each analyzer compared above; versions are those pinned by this suite. <strong>Analysis</strong> is the one column whose values are coined here rather than read off the project: a <em>type checker</em> aims at type correctness; an <em>inferring linter</em> aims at a rule catalogue, using its own (usually simpler) type engine; and <em>code intelligence</em> infers types mainly to drive completion and navigation, with diagnostics one feature among many.</p>
 <div class="table-scroll"><table class="analyzer-meta">
 <thead><tr>
 <?php foreach ($headers as $header): ?>

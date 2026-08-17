@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 /**
- * The index page body: the legend, one matrix per test kind, and the two
- * reference tables.
+ * The index page body: a short history of the tools, the legend, one
+ * matrix per test kind, and the two reference tables.
  *
  * @var string|null $updatedAt ISO 8601 stamp of when the results data last changed
  * @var string $legend
@@ -22,6 +22,13 @@ declare(strict_types=1);
 <?php if ($updatedAt !== null): ?>
 <p class="updated" title="When the results on this page last changed -- analyzer diagnostics and language-server measurements alike. The pages themselves are rebuilt on every publish.">Results last updated: <time datetime="<?= h($updatedAt) ?>"><?= h($updatedAt) ?></time></p>
 <?php endif; ?>
+<h2 class="section" id="about-the-tools">The tools this page covers</h2>
+<div class="overview">
+<p>PHP has long had tools called static analyzers or linters. For years that name meant a catalogue of heuristic rules &mdash; PHPMD is the familiar example. As PHP became an industrial language, checking that call arguments match and completing method names on the right type became more important, and people began trying real parsing and type analysis.</p>
+<p>PhpStorm is the polished, integrated success of that turn. Phan, Psalm and PHPStan then specialized in type checking, and a new generation of static analysis had its foundation. What separates the two generations is a much stronger parser, a much stronger account of variable scope, and type inference.</p>
+<p>This page compares that later generation, split by aim. A <em>type checker</em> exists to decide whether types are correct. An <em>inferring linter</em> carries its own, usually simpler, type engine so a rule catalogue can see types &mdash; and often so it can complete names or check a call&rsquo;s arguments. <em>Code intelligence</em> infers types mainly to drive completion and navigation.</p>
+<p>The well-known PHP quality tools more broadly are listed at <a href="https://phpqa.io/" target="_blank" rel="noopener">PHP Quality Assurance</a>.</p>
+</div>
 <?= $legend ?>
 <h2 class="section" id="soundness">Soundness &mdash; potential runtime type errors</h2>
 <p class="section-note">Positives here flag code that can actually fail at runtime &mdash; type mismatches, null access, invalid arguments, uninitialized reads. <strong>Pass</strong> means the analyzer agrees with the expected diagnostic; rows whose test marks a declaration with <code>// T</code> instead report recognition and enforcement of the type spelling. See the legend above.</p>

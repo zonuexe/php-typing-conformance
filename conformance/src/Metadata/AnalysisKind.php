@@ -17,8 +17,11 @@ enum AnalysisKind: string
     /** Aims at type correctness. */
     case TypeChecker = 'Type checker';
 
-    /** Aims at a rule catalogue that inference sharpens. */
-    case TypeAwareLinter = 'Type-aware linter';
+    /**
+     * Aims at a rule catalogue, powered by the tool's own (usually
+     * simpler) type inference.
+     */
+    case InferringLinter = 'Inferring linter';
 
     /** Infers types mainly to drive completion and navigation. */
     case CodeIntelligence = 'Code intelligence';

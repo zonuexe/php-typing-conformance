@@ -131,6 +131,7 @@ li { text-wrap: pretty; }
 p.lead,
 p.section-note,
 p.legend-intro,
+.overview,
 .legend-facets,
 .facets,
 .legend-list dd { max-width: var(--measure); }
@@ -151,6 +152,8 @@ p.updated {
   font-size: var(--text-ui);
   margin: -0.4em 0 1.2em;
 }
+
+.overview { margin-bottom: 1.5em; }
 
 p.crumb {
   margin: 0 0 0.75rem;

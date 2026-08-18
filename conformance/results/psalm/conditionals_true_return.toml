@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+conditionals_true_return.php:40: Argument 1 of Conformance\\Tests\\ConditionalsTrueReturn\\takesString expects string, but float provided [InvalidScalarArgument]
+conditionals_true_return.php:41: Argument 1 of Conformance\\Tests\\ConditionalsTrueReturn\\takesFloat expects float, but string provided [InvalidScalarArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+conditionals_nested_return.php:48: Expected type 'int'. Found 'float'. [P1006]
+conditionals_nested_return.php:49: Expected type 'int'. Found 'float'. [P1006]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

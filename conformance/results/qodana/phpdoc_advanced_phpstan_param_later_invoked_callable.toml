@@ -1,7 +1,13 @@
 status = "Unknown"
-conformance_automated = "Not measured"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = "phpdoc_advanced_phpstan_param_later_invoked_callable.php changed after the Qodana report of 2026-08-16T02:13:54.826761Z was produced, so the report cannot answer for it. Run Inspect Code in PhpStorm and re-run this tool."
+notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

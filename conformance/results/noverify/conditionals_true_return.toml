@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "conditionals_true_return.php:12: Class or interface named \\Conformance\\Tests\\ConditionalsTrueReturn\\$asFloat does not exist [undefinedClass]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

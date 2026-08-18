@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+conditionals_true_return.php:40: Invalid argument type for argument #1 of `Conformance\\Tests\\ConditionalsTrueReturn\\takesString`: expected `string`, but found `float`. [invalid-argument]
+conditionals_true_return.php:41: Invalid argument type for argument #1 of `Conformance\\Tests\\ConditionalsTrueReturn\\takesFloat`: expected `float`, but found `string`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

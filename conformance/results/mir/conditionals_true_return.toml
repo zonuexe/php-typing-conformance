@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+conditionals_true_return.php:40: InvalidArgument: Argument $value of takesString() expects 'string', got 'float' [MIR0201]
+conditionals_true_return.php:41: InvalidArgument: Argument $value of takesFloat() expects 'float', got 'string' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

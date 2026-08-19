@@ -807,10 +807,18 @@ final class SummaryReport
      * switched on before the analyzer speaks up — never how well a type is
      * modelled.
      *
+     * Omitted when the spelling was not resolved. Recognition is
+     * level-independent, and the stored level on those rows is usually the
+     * mixed-fallout diagnostic, not the unresolvable-type one.
+     *
      * @param array<string, mixed> $result
      */
     private function levelSuffix(array $result): string
     {
+        if (($result['recognition'] ?? null) === 'unrecognized') {
+            return '';
+        }
+
         $level = $result['expected_diagnostic_level'] ?? null;
         if (!is_int($level)) {
             return '';

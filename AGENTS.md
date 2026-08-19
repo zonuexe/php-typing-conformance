@@ -251,8 +251,10 @@ The report reflects that:
 - `expected_diagnostic_level` in the result TOML is the lowest level on a line
   the test actually expects a diagnostic on. Unexpected noise elsewhere in the
   file does not set it, so `Fail` rows generally carry no level at all.
-- The cell tag reads `reported from level N`, and the report legend states that
-  levels gate rules rather than inference.
+- The cell tag reads `reported Lv.N+` (`Lv.max` at 10), and the report legend
+  states that levels gate rules rather than inference. Unrecognized cells omit
+  the tag: recognition is level-independent, and the stored level on those
+  rows is usually mixed-fallout, not the unresolvable-type diagnostic.
 
 ### Cell Vocabularies
 

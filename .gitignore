@@ -3,6 +3,9 @@ conformance/vendor/*
 vendor-bin/*/vendor/*
 vendor-bin/*/node_modules/
 
+# sonar-scanner working directory (local Community Build uploads)
+conformance/.scannerwork/
+
 # Per-platform GitHub-release binaries, fetched by make install-php-lsp /
 # install-phpantom; too large and too platform-bound to commit.
 vendor-bin/php-lsp/bin/

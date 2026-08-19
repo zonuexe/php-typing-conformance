@@ -9,6 +9,7 @@ use Conformance\Checker\PhanChecker;
 use Conformance\Checker\PhpStanChecker;
 use Conformance\Checker\PsalmChecker;
 use Conformance\Checker\QodanaChecker;
+use Conformance\Checker\SonarQubeChecker;
 use Conformance\Checker\MagoChecker;
 use Conformance\Checker\PhpantomChecker;
 use Conformance\Checker\MirChecker;
@@ -188,7 +189,22 @@ $phpactorChecker = new PhpactorChecker(
     workspacePath: $rootDir,
     testsDir: $testsDir,
 );
+$sonarQubeChecker = new SonarQubeChecker(
+    scannerPath: (($scanner = getenv('SONAR_SCANNER')) !== false && $scanner !== '')
+        ? $scanner
+        : 'sonar-scanner',
+    workspacePath: $rootDir,
+    hostUrl: (($host = getenv('SONAR_HOST_URL')) !== false && $host !== '')
+        ? $host
+        : 'http://127.0.0.1:9000',
+    token: (string) (getenv('SONAR_TOKEN') ?: ''),
+);
 $checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $phpantomChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker, $phpactorChecker];
+if ($sonarQubeChecker->available()) {
+    $checkers[] = $sonarQubeChecker;
+} else {
+    fwrite(STDERR, "sonarqube: skipped (set SONAR_TOKEN; Community Build at SONAR_HOST_URL, default http://127.0.0.1:9000)\n");
+}
 
 // Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
 // selected checker(s), leaving every other tool's results untouched. Accepts a
@@ -218,6 +234,11 @@ if ($toolFilter !== null) {
     ));
 
     if ($checkers === []) {
+        if (in_array('sonarqube', $selected, true) && !$sonarQubeChecker->available()) {
+            fwrite(STDERR, "sonarqube: SONAR_TOKEN unset or server not UP at SONAR_HOST_URL (default http://127.0.0.1:9000)\n");
+            exit(1);
+        }
+
         fwrite(STDERR, sprintf("No checker matched --tool filter '%s'\n", $toolFilter));
         exit(1);
     }

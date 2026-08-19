@@ -25,6 +25,10 @@
 
 # Analyzers.
 
+[sonarqube]
+version = "3.60.0.16641"
+date = "2026-08-03"
+
 [phan]
 version = "6.0.7"
 date = "2026-06-22"

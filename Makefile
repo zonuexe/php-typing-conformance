@@ -1,4 +1,4 @@
-.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom install-laravel-lsp install-laravel-corpus test-harness rescore
+.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes run-sonarqube serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom install-laravel-lsp install-laravel-corpus test-harness rescore
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
@@ -90,6 +90,14 @@ install-laravel-lsp:
 # inside the submodule.
 install-laravel-corpus:
 	cd references/laravel-gate-image-board && composer install --no-interaction --no-progress --prefer-dist
+
+# Local SonarQube Community Build for the sonarqube column. The scanner is
+# assumed to be on PATH (`brew install sonar-scanner`). After the server is
+# UP, change the admin password, mint a user token, and:
+#   SONAR_TOKEN=… php conformance/src/main.php --tool=sonarqube
+run-sonarqube:
+	docker run -d --name sonarqube -p 9000:9000 \
+		-e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true sonarqube:community
 
 test-harness:
 	php conformance/src/Expectation/self-test.php

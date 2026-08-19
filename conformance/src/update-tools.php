@@ -50,10 +50,12 @@ const LANGUAGE_SERVER_SECTION = '# Language servers.';
  * until its `worse:analyse` command became a matrix column; one install now
  * serves both axes.
  *
- * qodana is the one entry that is measured without being installable: its
- * licence rules out shipping the linter, so its column comes from a PhpStorm
- * report produced by hand. A new release still shows up here, but acting on
- * it means updating the IDE and re-running Inspect Code.
+ * qodana is measured without being installable: its licence rules out
+ * shipping the linter, so its column comes from a PhpStorm report produced
+ * by hand. sonarqube is the same shape from the other side — Community
+ * Build in Docker plus `sonar-scanner` on PATH, not a vendor-bin pin. A
+ * new sonar-php release still shows up here; acting on it means restarting
+ * the server (or waiting for the bundled plugin to move) and re-scanning.
  */
 const INSTALLS = [
     'phan' => ['composer', 'phan', 'phan/phan'],

@@ -74,6 +74,7 @@ single meaningful line out of the tool and stop there.
 | Intelephense | *(nothing)* | — | read from `node_modules/intelephense/package.json` |
 | pzoom | *(nothing)* | — | pinned to the announced release in the adapter |
 | Phpactor | `--version` | `Phpactor 2026.07.22.0` | none |
+| SonarQube | Web API `/api/system/status` + `/api/plugins/installed` | `26.8.0.126808` and `php 3.59.0.16496` | joined as `SonarQube <server> (php <plugin>)` |
 
 Two of these are worth naming as anti-patterns for tool authors. A CLI that
 answers only to a `version` **subcommand** breaks every caller that reaches for
@@ -106,6 +107,7 @@ to 8.5 — see [the README](../README.md) for the policy and
 | phpy | — | no option |
 | Steins | — | no option (and unknown flags are ignored) |
 | Phpactor | — | no option |
+| SonarQube | — | sonar-php 3.59 documents support through 8.4 |
 
 Psalm deserves a warning of its own. With no `phpVersion` in the config it infers
 one from `require.php` in the nearest `composer.json`, walking a candidate list
@@ -346,6 +348,38 @@ than the declaration below it, which the corpus already accommodates:
 `ExpectationParser::docblockAbove()` extends each `// T` marker over the
 docblock above it, so an "undefined class `non-empty-string`" on the tag line
 records as unrecognized rather than as a false positive.
+
+### SonarQube — a server, then the scanner, then the Web API
+
+sonar-scanner cannot analyse offline. It downloads the bundled sonar-php
+plugin and the "Sonar way" profile from a SonarQube server, uploads a
+report, and the issues exist only on that server afterwards. This suite
+talks to a local Community Build (`SONAR_HOST_URL`, default
+`http://127.0.0.1:9000`) with `SONAR_TOKEN`. When either is missing the
+checker is omitted from the run, so committed results are not overwritten
+with empty passes.
+
+One corpus scan per process, sliced by basename. The tests sit under a
+directory named `tests/`, which makes the text/secrets sensor skip them
+as test files; the PHP sensor still runs, and that is the one we read.
+
+sonar-php is a rule catalogue, not a PHPDoc type checker. A scan of this
+corpus produced no argument-type or return-type findings. The empty-function
+(`php:S1186`) and unused-parameter (`php:S1172`) rules fire on every typed
+sink stub, so they are dropped — they are the fixture shape. `rand()` /
+generic-`Exception` / PSR-2 modifier-order findings are dropped for the
+same reason. Silence on a `// T` row is the measurement.
+
+There is no PHP-version knob. sonar-php 3.59 documents support through 8.4.
+The version banner is `SonarQube <server> (php <plugin>)`; the plugin
+version is what the column measures.
+
+```sh
+docker run -d --name sonarqube -p 9000:9000 \
+  -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true sonarqube:community
+export SONAR_TOKEN=…   # from the server's user-token page
+php conformance/src/main.php --tool=sonarqube
+```
 
 ## What the suite wants from a CLI
 

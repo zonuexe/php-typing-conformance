@@ -16,6 +16,7 @@ use Conformance\Metadata\Analyzer\PhpStan;
 use Conformance\Metadata\Analyzer\Psalm;
 use Conformance\Metadata\Analyzer\Pzoom;
 use Conformance\Metadata\Analyzer\Qodana;
+use Conformance\Metadata\Analyzer\SonarQube;
 use Conformance\Metadata\Analyzer\Steins;
 use RuntimeException;
 use function sprintf;
@@ -34,6 +35,7 @@ final class AnalyzerCatalog
      * @var array<string, class-string<AnalyzerMetadata>>
      */
     private const ANALYZERS = [
+        'sonarqube' => SonarQube::class,
         'phan' => Phan::class,
         'psalm' => Psalm::class,
         'phpstan' => PhpStan::class,

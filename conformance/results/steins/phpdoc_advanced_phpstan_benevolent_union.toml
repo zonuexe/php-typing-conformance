@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to int|string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 9
 output = "phpdoc_advanced_phpstan_benevolent_union.php:63: argument 1.5 to acceptsBenevolent() violates declared @param (int | string) $value — declared contract violation [phpdoc.param-mismatch]"
 errors_diff = ""
-notes = "Parses the wrapper as inbound `int|string`. Reverse assignment is silent, as it is for `array-key` in this column."
+notes = "The float rejection is ordinary `int|string`, not the wrapper. Reverse assignment is silent because a callee `@return` never reaches a bare call-expression argument in this column, as on `array-key`."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"

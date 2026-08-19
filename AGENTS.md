@@ -310,7 +310,9 @@ the evaluator; that does not re-run the analyzers.
 Only the reason a *recognized* type goes unenforced stays hand-curated in
 `status`, because the harness cannot derive it:
 
-- `Falls back to X` — renders as `Widened to X`
+- `Falls back to X` — renders as `Widened to X`, including when leftover
+  probes of the base type still fire (phpantom rejecting a float after
+  reading `__benevolent<int|string>` as ordinary `int|string`)
 - `By design` — renders as `Not enforced (by design)` when nothing is
   rejected, or `Unsound (by design, n/m)` when some probes fire and the rest
   are a documented hole (PHPStan's benevolent union on `array-key`). Link the

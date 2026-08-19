@@ -689,6 +689,13 @@ final class SummaryReport
 
         $status = (string) ($result['status'] ?? 'Unknown');
 
+        // Hits that remain after a curated widening are the base type, not
+        // the spelling: phpantom rejecting a float for `__benevolent<int|string>`
+        // is ordinary `int|string`, not the wrapper.
+        if (str_starts_with($status, 'Falls back to ')) {
+            return ['Widened to ' . substr($status, strlen('Falls back to ')), 'falls-back'];
+        }
+
         if ($enforcement === 'enforced') {
             return ['Enforced', 'pass'];
         }
@@ -716,11 +723,6 @@ final class SummaryReport
         // enforcement. Saying "Not enforced" here would read as a miss.
         if ($enforcement === 'no-probes') {
             return ['Recognized (no probes)', 'no-probes'];
-        }
-
-        // "Falls back to <base>" carries the base type name, so match by prefix.
-        if (str_starts_with($status, 'Falls back to ')) {
-            return ['Widened to ' . substr($status, strlen('Falls back to ')), 'falls-back'];
         }
 
         if ($status === 'By design') {

@@ -45,7 +45,8 @@ Only two values are still meaningful, both explaining something the harness
 cannot derive:
 
 - `Falls back to X` — the analyzer resolved the spelling but widened it to `X`.
-  Renders as `Widened to X`.
+  Renders as `Widened to X`, including when leftover probes of the base type
+  still fire.
 - `By design` — the analyzer could report and deliberately does not. Renders
   as `Not enforced (by design)` when nothing is rejected, or
   `Unsound (by design, n/m)` when some probes fire (PHPStan's benevolent

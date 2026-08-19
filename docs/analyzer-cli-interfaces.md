@@ -30,7 +30,6 @@ comparison exercised.
 | Intelephense | bmewburn/intelephense | Node | LSP server over stdio — no CLI at all |
 | phpy | DEVSENSE/phpy | Node (wraps a native engine) | CLI |
 | Steins | rigortype/steins | Rust, via a PHP launcher | CLI binary, subcommand-only |
-| SonarQube | SonarSource/sonar-php, via sonar-scanner | Java | CLI that uploads to a server; no offline analyse |
 
 Two shapes stand out against the other eight. Intelephense has no
 argv-driven "analyze this and print" mode; the only way to get a diagnostic out

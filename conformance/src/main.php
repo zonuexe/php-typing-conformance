@@ -200,11 +200,6 @@ $sonarQubeChecker = new SonarQubeChecker(
     token: (string) (getenv('SONAR_TOKEN') ?: ''),
 );
 $checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $phpantomChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker, $phpactorChecker];
-if ($sonarQubeChecker->available()) {
-    $checkers[] = $sonarQubeChecker;
-} else {
-    fwrite(STDERR, "sonarqube: skipped (set SONAR_TOKEN; Community Build at SONAR_HOST_URL, default http://127.0.0.1:9000)\n");
-}
 
 // Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
 // selected checker(s), leaving every other tool's results untouched. Accepts a
@@ -228,17 +223,21 @@ for ($i = 1, $argc = count($argvValues); $i < $argc; $i++) {
 $reportFilterActive = false;
 if ($toolFilter !== null) {
     $selected = array_values(array_filter(array_map('trim', explode(',', $toolFilter)), static fn (string $n): bool => $n !== ''));
+    if (in_array('sonarqube', $selected, true)) {
+        if (!$sonarQubeChecker->available()) {
+            fwrite(STDERR, "sonarqube: SONAR_TOKEN unset or server not UP at SONAR_HOST_URL (default http://127.0.0.1:9000)\n");
+            exit(1);
+        }
+
+        $checkers[] = $sonarQubeChecker;
+    }
+
     $checkers = array_values(array_filter(
         $checkers,
         static fn (Checker $checker): bool => in_array($checker->name(), $selected, true),
     ));
 
     if ($checkers === []) {
-        if (in_array('sonarqube', $selected, true) && !$sonarQubeChecker->available()) {
-            fwrite(STDERR, "sonarqube: SONAR_TOKEN unset or server not UP at SONAR_HOST_URL (default http://127.0.0.1:9000)\n");
-            exit(1);
-        }
-
         fwrite(STDERR, sprintf("No checker matched --tool filter '%s'\n", $toolFilter));
         exit(1);
     }

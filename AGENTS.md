@@ -175,7 +175,6 @@ Current checker columns in the report, in display order:
 - `phpactor`
 - `phpy`
 - `qodana`
-- `sonarqube`
 - `noverify`
 - `steins`
 
@@ -201,12 +200,11 @@ newer than that report is recorded as `Not measured` instead of passing, so a
 newly added test case shows the gap in the matrix until the inspection is
 re-run.
 
-`sonarqube` is the bundled sonar-php plugin, reached through `sonar-scanner`
-talking to a local Community Build (`make run-sonarqube`, then
-`SONAR_TOKEN=… php conformance/src/main.php --tool=sonarqube`). Without a
-token or a live server the checker is omitted, so committed results are not
-overwritten with empty passes. There is no PHP-version knob. The scanner is
-assumed to be on PATH (`brew install sonar-scanner`).
+SonarQube / sonar-php was evaluated and declined (#10): it is a rule
+catalogue, not a type checker. The adapter is kept for a repeat
+measurement (`make run-sonarqube`, then
+`SONAR_TOKEN=… php conformance/src/main.php --tool=sonarqube`) but it
+is not a column of the index matrix or the analyzer reference table.
 
 PHPStan handling is intentionally split:
 
@@ -233,7 +231,6 @@ reports parse noise instead of the type behavior under test.
 | mir | `--php-version 8.5` |
 | Intelephense | `environment.phpVersion` in `intelephense-client.mjs` |
 | Qodana | `php.version: 8.5` in `qodana.yaml`, and the IDE's own PHP language level |
-| SonarQube | — (sonar-php 3.59 documents support through 8.4; no knob) |
 
 NoVerify (only `--php7`), phpy and Steins expose nothing to set. Steins accepts
 any unknown flag silently, so do not "set" a version there and assume it took.

@@ -35,11 +35,11 @@ final class Report
      *
      * After the type checkers, the remaining columns are editors and
      * catalogues in this order: intelephense, phpactor, phpy, qodana,
-     * sonarqube, noverify, steins.
+     * noverify, steins.
      *
      * @var list<string>
      */
-    public const DISPLAY_TOOLS = ['phan', 'phpstan', 'psalm', 'mago', 'mir', 'phpantom', 'intelephense', 'phpactor', 'phpy', 'qodana', 'sonarqube', 'noverify', 'steins'];
+    public const DISPLAY_TOOLS = ['phan', 'phpstan', 'psalm', 'mago', 'mir', 'phpantom', 'intelephense', 'phpactor', 'phpy', 'qodana', 'noverify', 'steins'];
 
     /**
      * @param array<string, \Conformance\TestGroup\TestGroup> $testGroups

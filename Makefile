@@ -91,9 +91,10 @@ install-laravel-lsp:
 install-laravel-corpus:
 	cd references/laravel-gate-image-board && composer install --no-interaction --no-progress --prefer-dist
 
-# Local SonarQube Community Build for the sonarqube column. The scanner is
-# assumed to be on PATH (`brew install sonar-scanner`). After the server is
-# UP, change the admin password, mint a user token, and:
+# Local SonarQube Community Build for a repeat measurement of sonar-php
+# (not a report column; see #10). The scanner is assumed to be on PATH
+# (`brew install sonar-scanner`). After the server is UP, change the
+# admin password, mint a user token, and:
 #   SONAR_TOKEN=… php conformance/src/main.php --tool=sonarqube
 run-sonarqube:
 	docker run -d --name sonarqube -p 9000:9000 \

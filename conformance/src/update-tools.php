@@ -52,10 +52,7 @@ const LANGUAGE_SERVER_SECTION = '# Language servers.';
  *
  * qodana is measured without being installable: its licence rules out
  * shipping the linter, so its column comes from a PhpStorm report produced
- * by hand. sonarqube is the same shape from the other side — Community
- * Build in Docker plus `sonar-scanner` on PATH, not a vendor-bin pin. A
- * new sonar-php release still shows up here; acting on it means restarting
- * the server (or waiting for the bundled plugin to move) and re-scanning.
+ * by hand.
  */
 const INSTALLS = [
     'phan' => ['composer', 'phan', 'phan/phan'],

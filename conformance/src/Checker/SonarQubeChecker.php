@@ -15,8 +15,8 @@ use RuntimeException;
  * and the quality profile from SonarQube, uploads the report, and the issues
  * are then read back from the Web API. This suite talks to a local Community
  * Build (`SONAR_HOST_URL`, default http://127.0.0.1:9000) with `SONAR_TOKEN`.
- * When either is missing the checker is not added to the run, so committed
- * results are not overwritten with empty passes.
+ * When either is missing `--tool=sonarqube` exits rather than writing empty
+ * passes. Not a matrix column (#10); only runs when asked.
  *
  * One corpus scan per process, like PHPStan's max-level pass: sonar-php
  * indexes the project as a whole, and per-file scans would re-upload 200

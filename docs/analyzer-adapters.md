@@ -74,7 +74,6 @@ single meaningful line out of the tool and stop there.
 | Intelephense | *(nothing)* | — | read from `node_modules/intelephense/package.json` |
 | pzoom | *(nothing)* | — | pinned to the announced release in the adapter |
 | Phpactor | `--version` | `Phpactor 2026.07.22.0` | none |
-| SonarQube | Web API `/api/system/status` + `/api/plugins/installed` | `26.8.0.126808` and `php 3.59.0.16496` | joined as `SonarQube <server> (php <plugin>)` |
 
 Two of these are worth naming as anti-patterns for tool authors. A CLI that
 answers only to a `version` **subcommand** breaks every caller that reaches for
@@ -107,7 +106,6 @@ to 8.5 — see [the README](../README.md) for the policy and
 | phpy | — | no option |
 | Steins | — | no option (and unknown flags are ignored) |
 | Phpactor | — | no option |
-| SonarQube | — | sonar-php 3.59 documents support through 8.4 |
 
 Psalm deserves a warning of its own. With no `phpVersion` in the config it infers
 one from `require.php` in the nearest `composer.json`, walking a candidate list
@@ -349,7 +347,9 @@ than the declaration below it, which the corpus already accommodates:
 docblock above it, so an "undefined class `non-empty-string`" on the tag line
 records as unrecognized rather than as a false positive.
 
-### SonarQube — a server, then the scanner, then the Web API
+### SonarQube — evaluated, not a report column
+
+Not a matrix or reference-table column. The evaluation is [#10](https://github.com/zonuexe/php-typing-conformance/issues/10); `--tool=sonarqube` remains so the scan can be repeated.
 
 sonar-scanner cannot analyse offline. It downloads the bundled sonar-php
 plugin and the "Sonar way" profile from a SonarQube server, uploads a

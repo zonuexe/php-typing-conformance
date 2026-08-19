@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 9
+output = """
+phpdoc_advanced_phpstan_benevolent_union.php:36: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent'
+phpdoc_advanced_phpstan_benevolent_union.php:40: Return value of Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\returnsBenevolent() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent, int|string returned
+phpdoc_advanced_phpstan_benevolent_union.php:52: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent'
+phpdoc_advanced_phpstan_benevolent_union.php:59: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\acceptsBenevolent() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent, int given
+phpdoc_advanced_phpstan_benevolent_union.php:60: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\acceptsBenevolent() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent, string given
+phpdoc_advanced_phpstan_benevolent_union.php:63: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\acceptsBenevolent() is expected to be of type Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent, float given
+phpdoc_advanced_phpstan_benevolent_union.php:66: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\takesInt() is expected to be of type int, Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent given
+phpdoc_advanced_phpstan_benevolent_union.php:67: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\takesString() is expected to be of type string, Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent given"""
+errors_diff = """
+Line 40: Expected valid value to be accepted, got ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\returnsBenevolent() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent, int|string returned"]
+Line 59: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\acceptsBenevolent() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent, int given"]
+Line 60: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\acceptsBenevolent() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent, string given"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [36, 52]
+false_positive_lines = []
+over_rejected_lines = []

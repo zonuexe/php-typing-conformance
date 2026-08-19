@@ -687,11 +687,25 @@ final class SummaryReport
             ];
         }
 
+        $status = (string) ($result['status'] ?? 'Unknown');
+
         if ($enforcement === 'enforced') {
             return ['Enforced', 'pass'];
         }
 
         if ($enforcement === 'partial') {
+            // Some probes fire and the rest are a documented hole — PHPStan's
+            // benevolent union on `array-key` is the case: inbound int|string
+            // is enforced, assigning to either member is silent by design.
+            if ($status === 'By design') {
+                $ratio = (string) ($result['enforced_lines'] ?? '');
+
+                return [
+                    $ratio !== '' ? sprintf('Unsound (by design, %s)', $ratio) : 'Unsound (by design)',
+                    'by-design',
+                ];
+            }
+
             return [
                 sprintf('Partly enforced (%s)', (string) ($result['enforced_lines'] ?? '')),
                 'partial',
@@ -703,8 +717,6 @@ final class SummaryReport
         if ($enforcement === 'no-probes') {
             return ['Recognized (no probes)', 'no-probes'];
         }
-
-        $status = (string) ($result['status'] ?? 'Unknown');
 
         // "Falls back to <base>" carries the base type name, so match by prefix.
         if (str_starts_with($status, 'Falls back to ')) {

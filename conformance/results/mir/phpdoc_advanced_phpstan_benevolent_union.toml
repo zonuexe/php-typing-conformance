@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 9
+output = """
+phpdoc_advanced_phpstan_benevolent_union.php:38: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent' does not exist [MIR1505]
+phpdoc_advanced_phpstan_benevolent_union.php:54: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent' does not exist [MIR1505]
+phpdoc_advanced_phpstan_benevolent_union.php:59: InvalidArgument: Argument $value of acceptsBenevolent() expects 'Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string>', got '1' [MIR0201]
+phpdoc_advanced_phpstan_benevolent_union.php:60: InvalidArgument: Argument $value of acceptsBenevolent() expects 'Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string>', got '"key"' [MIR0201]
+phpdoc_advanced_phpstan_benevolent_union.php:63: InvalidArgument: Argument $value of acceptsBenevolent() expects 'Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string>', got '1.5' [MIR0201]
+phpdoc_advanced_phpstan_benevolent_union.php:66: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string>' [MIR0201]
+phpdoc_advanced_phpstan_benevolent_union.php:67: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string>' [MIR0201]
+phpdoc_advanced_phpstan_benevolent_union.php:72: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]
+phpdoc_advanced_phpstan_benevolent_union.php:73: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]"""
+errors_diff = """
+Line 59: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsBenevolent() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent<int|string>', got '1' [MIR0201]"]
+Line 60: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsBenevolent() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent<int|string>', got '\\"key\\"' [MIR0201]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [38, 54]
+false_positive_lines = []
+over_rejected_lines = [59, 60]

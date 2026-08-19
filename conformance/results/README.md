@@ -46,8 +46,10 @@ cannot derive:
 
 - `Falls back to X` — the analyzer resolved the spelling but widened it to `X`.
   Renders as `Widened to X`.
-- `By design` — the analyzer could report and deliberately does not. Put the
-  upstream issue link in `notes`.
+- `By design` — the analyzer could report and deliberately does not. Renders
+  as `Not enforced (by design)` when nothing is rejected, or
+  `Unsound (by design, n/m)` when some probes fire (PHPStan's benevolent
+  union on `array-key`). Put the upstream write-up in `notes`.
 
 `Full support` and `Not supported` were retired: recognition and enforcement are
 now derived from `// T` and `// E` markers, and a single word could not say

@@ -1,0 +1,26 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 9
+output = """
+phpdoc_advanced_phpstan_benevolent_union.php:36: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent`. [non-existent-class-like]
+phpdoc_advanced_phpstan_benevolent_union.php:40: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\returnsBenevolent`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent)`, but found `int(1)|string('key')`. [invalid-return-statement]
+phpdoc_advanced_phpstan_benevolent_union.php:52: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent`. [non-existent-class-like]
+phpdoc_advanced_phpstan_benevolent_union.php:59: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\acceptsBenevolent`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent)`, but found `int(1)`. [invalid-argument]
+phpdoc_advanced_phpstan_benevolent_union.php:60: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\acceptsBenevolent`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent)`, but found `string('key')`. [invalid-argument]
+phpdoc_advanced_phpstan_benevolent_union.php:63: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\acceptsBenevolent`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent)`, but found `float(1.5)`. [invalid-argument]
+phpdoc_advanced_phpstan_benevolent_union.php:66: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\takesInt`: expected `int`, but found `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent)`. [invalid-argument]
+phpdoc_advanced_phpstan_benevolent_union.php:67: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\takesString`: expected `string`, but found `unknown-ref(Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent)`. [invalid-argument]
+phpdoc_advanced_phpstan_benevolent_union.php:72: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]
+phpdoc_advanced_phpstan_benevolent_union.php:73: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\takesString`: expected `string`, but possibly received `int|string`. [possibly-invalid-argument]"""
+errors_diff = """
+Line 40: Expected valid value to be accepted, got ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\returnsBenevolent`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent)`, but found `int(1)|string('key')`. [invalid-return-statement]"]
+Line 59: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\acceptsBenevolent`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent)`, but found `int(1)`. [invalid-argument]"]
+Line 60: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\acceptsBenevolent`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent)`, but found `string('key')`. [invalid-argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [36, 52]
+false_positive_lines = []
+over_rejected_lines = [40, 59, 60]

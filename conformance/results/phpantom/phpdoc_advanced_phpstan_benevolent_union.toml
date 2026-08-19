@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = "phpdoc_advanced_phpstan_benevolent_union.php:63: Argument 1 ($value) expects int|string, got 1.5 [type_mismatch_argument]"
+errors_diff = ""
+notes = "Parses `__benevolent<int|string>` as inbound `int|string`. Reverse assignment is silent here; the same column rejects `array-key` at the equivalent calls, so this is not the benevolent constructor."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,26 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 9
+output = """
+phpdoc_advanced_phpstan_benevolent_union.php:36: Docblock class Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent does not exist [UndefinedDocblockClass]
+phpdoc_advanced_phpstan_benevolent_union.php:40: The type 'key'|1 does not match the declared return type Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string> [InvalidReturnStatement]
+phpdoc_advanced_phpstan_benevolent_union.php:54: Docblock class Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent does not exist [UndefinedDocblockClass]
+phpdoc_advanced_phpstan_benevolent_union.php:59: Argument 1 of acceptsBenevolent expects Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string>, but 1 provided [InvalidArgument]
+phpdoc_advanced_phpstan_benevolent_union.php:60: Argument 1 of acceptsBenevolent expects Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string>, but 'key' provided [InvalidArgument]
+phpdoc_advanced_phpstan_benevolent_union.php:63: Argument 1 of acceptsBenevolent expects Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string>, but 1.5 provided [InvalidArgument]
+phpdoc_advanced_phpstan_benevolent_union.php:66: Argument 1 of takesInt expects int, but Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string> provided [InvalidArgument]
+phpdoc_advanced_phpstan_benevolent_union.php:67: Argument 1 of takesString expects string, but Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\__benevolent<int|string> provided [InvalidArgument]
+phpdoc_advanced_phpstan_benevolent_union.php:72: Argument 1 of takesInt expects int, but possibly different type int|string provided [PossiblyInvalidArgument]
+phpdoc_advanced_phpstan_benevolent_union.php:73: Argument 1 of takesString expects string, but possibly different type int|string provided [PossiblyInvalidArgument]"""
+errors_diff = """
+Line 40: Expected valid value to be accepted, got ["The type 'key'|1 does not match the declared return type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent<int|string> [InvalidReturnStatement]"]
+Line 59: Expected valid value to be accepted, got ["Argument 1 of acceptsBenevolent expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent<int|string>, but 1 provided [InvalidArgument]"]
+Line 60: Expected valid value to be accepted, got ["Argument 1 of acceptsBenevolent expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanBenevolentUnion\\\\__benevolent<int|string>, but 'key' provided [InvalidArgument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [36, 54]
+false_positive_lines = []
+over_rejected_lines = [40, 59, 60]

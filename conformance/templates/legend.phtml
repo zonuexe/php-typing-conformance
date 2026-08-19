@@ -30,6 +30,7 @@ $handling = [
     ['falls-back', 'Not enforced', 'Resolved, nothing rejected, and the base type it widened to has not been pinned down yet.'],
     ['no-probes', 'Recognized (no probes)', 'The spelling resolves; this test has no rejection probes, so enforcement is not measured.'],
     ['by-design', 'Not enforced (by design)', 'Resolved and reportable, but the analyzer deliberately declines; the upstream issue is in the cell notes.'],
+    ['by-design', 'Unsound (by design)', 'Resolved, and some excluded values are rejected, but the analyzer deliberately accepts the rest. PHPStan&rsquo;s benevolent union is the case: <code>array-key</code> is not a sound <code>int|string</code>. Hand-curated <code>status = By design</code> on a partial row; the upstream write-up is in the cell notes.'],
 ];
 
 ?>

@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 9
+output = """
+phpdoc_advanced_phpstan_benevolent_union.php:63: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\acceptsBenevolent expects (int|string), float given.
+phpdoc_advanced_phpstan_benevolent_union.php:72: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\takesInt expects int, int|string given.
+phpdoc_advanced_phpstan_benevolent_union.php:73: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanBenevolentUnion\\takesString expects string, int|string given."""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

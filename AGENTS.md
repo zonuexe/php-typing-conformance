@@ -311,8 +311,10 @@ Only the reason a *recognized* type goes unenforced stays hand-curated in
 `status`, because the harness cannot derive it:
 
 - `Falls back to X` — renders as `Widened to X`
-- `By design` — renders as `Not enforced (by design)`; link the upstream issue
-  in `notes`
+- `By design` — renders as `Not enforced (by design)` when nothing is
+  rejected, or `Unsound (by design, n/m)` when some probes fire and the rest
+  are a documented hole (PHPStan's benevolent union on `array-key`). Link the
+  upstream write-up in `notes`
 
 Do not reintroduce `Full support` or `Not supported` as `status` values.
 

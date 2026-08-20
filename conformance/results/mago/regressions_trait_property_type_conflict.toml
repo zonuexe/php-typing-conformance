@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = "regressions_trait_property_type_conflict.php:31: Property `$prop` is defined differently in `Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\LeftTrait` and `Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\RightTrait` used by `conformance\\tests\\regressionstraitpropertytypeconflict\\composed`: type declaration differs (TUnion { types: [Scalar(String(TString { literal: None, is_numeric: false, is_truthy: false, is_non_empty: false, is_callable: false, casing: Unspecified }))], flags: UnionFlags(0) } vs TUnion { types: [Scalar(Integer(Unspecified))], flags: UnionFlags(0) }) [incompatible-property-type]"
+output = "regressions_trait_property_type_conflict.php:31: Property `$prop` is defined differently in `Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\LeftTrait` and `Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\RightTrait` used by `conformance\\tests\\regressionstraitpropertytypeconflict\\composed`: type declaration differs (string vs int) [incompatible-property-type]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

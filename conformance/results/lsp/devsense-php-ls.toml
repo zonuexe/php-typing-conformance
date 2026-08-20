@@ -1,5 +1,5 @@
 tool = "devsense-php-ls"
-version = "devsense-php-ls 1.0.19148"
+version = "devsense-php-ls 1.0.19173"
 server_info = ""
 dynamic_registrations = ["workspace/didChangeConfiguration", "workspace/didChangeWatchedFiles"]
 raw_capabilities = "{\"selfProfiler\":false,\"textDocumentSync\":{\"openClose\":true,\"change\":2},\"hoverProvider\":true,\"completionProvider\":{\"triggerCharacters\":[\">\",\":\",\"$\",\"\\\\\",\"@\",\" \",\"'\",\"/\",\"[\",\"<\"],\"completionItem\":{\"labelDetailsSupport\":true},\"resolveProvider\":true},\"implementationProvider\":true,\"referencesProvider\":true,\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"\",\"source\",\"source.organizeImports\",\"source.sortImports\",\"source.sortAndRemoveImports\",\"quickfix\",\"refactor\"],\"resolveProvider\":false},\"codeLensProvider\":{\"resolveProvider\":true},\"renameProvider\":{\"prepareProvider\":true},\"documentHighlightProvider\":true,\"documentFormattingProvider\":false,\"documentRangeFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\";\",\"moreTriggerCharacter\":[\"}\",\":\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"]},\"selectionRangeProvider\":true,\"inlayHintProvider\":{\"resolveProvider\":true},\"linkedEditingRangeProvider\":true,\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"type\",\"class\",\"enum\",\"interface\",\"struct\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"enumMember\",\"event\",\"function\",\"method\",\"macro\",\"keyword\",\"modifier\",\"comment\",\"string\",\"number\",\"regexp\",\"operator\",\"decorator\"],\"tokenModifiers\":[\"declaration\",\"definition\",\"readonly\",\"static\",\"deprecated\",\"abstract\",\"async\",\"modification\",\"documentation\",\"defaultLibrary\"]},\"range\":true,\"full\":true},\"typeHierarchyProvider\":true,\"foldingRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"devsense:implementabstracts\",\"devsense:implementgettersetter\",\"devsense:implementctor\",\"devsense:organizeUses\",\"devsense:peekReferences\",\"devsense:peekImplementations\",\"devsense:peekTraitUses\",\"devsense:peekBaseImplementation\",\"devsense:adddocblock\",\"devsense:formatCode\",\"devsense:executeBladeSwitchViewClass\",\"devsense:extractfn\",\"devsense:showMessage\"]},\"workspace\":{\"workspaceFolders\":{\"supported\":true,\"changeNotifications\":true}}}"
@@ -213,7 +213,7 @@ references = "all"
 [navigation.static-property]
 kind = "Static property"
 name = "Psy\\Util\\Docblock::$vectors"
-definition = "empty"
+definition = "correct"
 refs_expected = 6
 refs_found = 6
 refs_extra = 0

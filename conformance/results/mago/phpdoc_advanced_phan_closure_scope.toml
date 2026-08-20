@@ -7,10 +7,7 @@ phpdoc_advanced_phan_closure_scope.php:33: Attempting to access a property on a 
 phpdoc_advanced_phan_closure_scope.php:33: The first value for `echo` is too general. [mixed-argument]
 phpdoc_advanced_phan_closure_scope.php:37: Undefined variable: `$this`. [undefined-variable]
 phpdoc_advanced_phan_closure_scope.php:37: Attempting to access a property on a non-object type (`mixed`). [mixed-property-access]
-phpdoc_advanced_phan_closure_scope.php:37: The first value for `echo` is too general. [mixed-argument]
-phpdoc_advanced_phan_closure_scope.php:42: Attempting to access a method on a non-object type (`(closure(...mixed): mixed)`). [invalid-method-access]
-phpdoc_advanced_phan_closure_scope.php:42: Assigning `mixed` type to a variable may lead to unexpected behavior. [mixed-assignment]
-phpdoc_advanced_phan_closure_scope.php:44: Expression of type `nonnull` cannot be called as a function or method. [invalid-callable]"""
+phpdoc_advanced_phan_closure_scope.php:37: The first value for `echo` is too general. [mixed-argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

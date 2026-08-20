@@ -1,9 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 11
-output = """
-phpdoc_advanced_phpstan_param_closure_this.php:30: Attempting to access a method on a non-object type (`(closure(...mixed=): mixed)`). [invalid-method-access]
-phpdoc_advanced_phpstan_param_closure_this.php:43: Property `$missing` does not exist on class `Conformance\\Tests\\PhpdocAdvancedPhpstanParamClosureThis\\Host`. [non-existent-property]"""
+output = "phpdoc_advanced_phpstan_param_closure_this.php:43: Property `$missing` does not exist on class `Conformance\\Tests\\PhpdocAdvancedPhpstanParamClosureThis\\Host`. [non-existent-property]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

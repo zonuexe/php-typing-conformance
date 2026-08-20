@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 6
+output = "phpdoc_advanced_member_tag_undefined_type.php:45: Docblock-defined class Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMixin does not exist [UndefinedDocblockClass]"
+errors_diff = """
+Lines 65, 66: Expected error (tag property)
+Lines 86, 87: Expected error (tag method)"""
+notes = ""
+ignore_errors = []

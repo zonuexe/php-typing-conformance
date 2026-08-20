@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+properties_promoted_property_hook_body.php:33: Invalid argument type for argument #1 of `Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString`: expected `string`, but found `int`. [invalid-argument]
+properties_promoted_property_hook_body.php:44: Invalid argument type for argument #1 of `Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString`: expected `string`, but found `int`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+assertions_array_key_exists_key_narrowing.php:40: Argument 1 of Conformance\\Tests\\AssertionsArrayKeyExistsKeyNarrowing\\takesString expects string, but int|string provided [InvalidScalarArgument]
+assertions_array_key_exists_key_narrowing.php:43: Argument 1 of Conformance\\Tests\\AssertionsArrayKeyExistsKeyNarrowing\\takesString expects string, but int|string provided [InvalidScalarArgument]
+assertions_array_key_exists_key_narrowing.php:64: Argument 1 of Conformance\\Tests\\AssertionsArrayKeyExistsKeyNarrowing\\takesAB expects 'a'|'b', but parent type string provided [ArgumentTypeCoercion]"""
+errors_diff = "Line 40: Expected silence (quiet probe), got [\"Argument 1 of Conformance\\\\Tests\\\\AssertionsArrayKeyExistsKeyNarrowing\\\\takesString expects string, but int|string provided [InvalidScalarArgument]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_member_tag_undefined_type.php:44: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMixin'. [P1133]
+phpdoc_advanced_member_tag_undefined_type.php:65: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingProperty'. [P1133]
+phpdoc_advanced_member_tag_undefined_type.php:86: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMethod'. [P1133]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

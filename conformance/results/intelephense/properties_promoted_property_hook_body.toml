@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+properties_promoted_property_hook_body.php:33: Expected type 'string'. Found 'int'. [P1006]
+properties_promoted_property_hook_body.php:44: Expected type 'string'. Found 'int'. [P1006]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

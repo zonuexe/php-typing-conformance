@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 6
+output = ""
+errors_diff = """
+Lines 44, 45: Expected error (tag mixin)
+Lines 65, 66: Expected error (tag property)
+Lines 86, 87: Expected error (tag method)"""
+notes = ""
+ignore_errors = []

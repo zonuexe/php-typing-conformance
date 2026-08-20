@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+properties_promoted_property_hook_body.php:32: Function "set" not found
+properties_promoted_property_hook_body.php:54: Function "set" not found"""
+errors_diff = """
+Line 33: Expected 1 error(s)
+Line 44: Expected 1 error(s)
+Line 32: Unexpected errors ["Function \\"set\\" not found"]
+Line 54: Unexpected errors ["Function \\"set\\" not found"]"""
+notes = ""
+ignore_errors = []

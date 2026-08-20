@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_member_tag_undefined_type.php:45: Attempting to use a mixin of invalid or missing type \\Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMixin [PhanInvalidMixin]
+phpdoc_advanced_member_tag_undefined_type.php:65: Property \\Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\UnknownProperty->count has undeclared type \\Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingProperty [PhanUndeclaredTypeProperty]
+phpdoc_advanced_member_tag_undefined_type.php:86: Return type of find() is undeclared type \\Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMethod [PhanUndeclaredTypeReturnType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

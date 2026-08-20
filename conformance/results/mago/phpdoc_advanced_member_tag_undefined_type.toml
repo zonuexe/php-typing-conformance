@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_member_tag_undefined_type.php:44: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMixin`. [non-existent-class-like]
+phpdoc_advanced_member_tag_undefined_type.php:65: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingProperty`. [non-existent-class-like]
+phpdoc_advanced_member_tag_undefined_type.php:86: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMethod`. [non-existent-class-like]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

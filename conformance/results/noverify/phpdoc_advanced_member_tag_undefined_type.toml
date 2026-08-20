@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 10
+output = """
+phpdoc_advanced_member_tag_undefined_type.php:38: param $arguments miss matched with phpdoc type <<list<mixed>>> [funcParamTypeMissMatch]
+phpdoc_advanced_member_tag_undefined_type.php:44: @mixin tag refers to unknown class \\Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMixin [invalidDocblockRef]
+phpdoc_advanced_member_tag_undefined_type.php:50: param $arguments miss matched with phpdoc type <<list<mixed>>> [funcParamTypeMissMatch]
+phpdoc_advanced_member_tag_undefined_type.php:80: param $arguments miss matched with phpdoc type <<list<mixed>>> [funcParamTypeMissMatch]
+phpdoc_advanced_member_tag_undefined_type.php:92: param $arguments miss matched with phpdoc type <<list<mixed>>> [funcParamTypeMissMatch]"""
+errors_diff = """
+Lines 65, 66: Expected error (tag property)
+Lines 86, 87: Expected error (tag method)"""
+notes = ""
+ignore_errors = []

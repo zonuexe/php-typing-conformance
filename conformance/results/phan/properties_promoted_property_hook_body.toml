@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+properties_promoted_property_hook_body.php:33: Argument 1 ($value) is $value of type int but \\Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/properties_promoted_property_hook_body.php:20 [PhanTypeMismatchArgumentReal]
+properties_promoted_property_hook_body.php:44: Argument 1 ($value) is $value of type int but \\Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/properties_promoted_property_hook_body.php:20 [PhanTypeMismatchArgumentReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+properties_promoted_property_hook_body.php:33: Parameter #1 $value of function Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString expects string, int given.
+properties_promoted_property_hook_body.php:44: Parameter #1 $value of function Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString expects string, int given."""
+errors_diff = ""
+notes = ""
+ignore_errors = []

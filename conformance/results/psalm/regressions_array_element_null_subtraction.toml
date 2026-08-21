@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 4
-output = "regressions_array_element_null_subtraction.php:35: Argument 1 of Conformance\\Tests\\RegressionsArrayElementNullSubtraction\\takesStringList expects list{string}, but parent type list{null|string} provided [ArgumentTypeCoercion]"
+expected_diagnostic_count = 8
+output = """
+regressions_array_element_null_subtraction.php:35: Argument 1 of Conformance\\Tests\\RegressionsArrayElementNullSubtraction\\takesStringList expects list{string}, but parent type list{null|string} provided [ArgumentTypeCoercion]
+regressions_array_element_null_subtraction.php:41: Argument 1 of Conformance\\Tests\\RegressionsArrayElementNullSubtraction\\takesStringList expects list{string}, but parent type list{null|string} provided [ArgumentTypeCoercion]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

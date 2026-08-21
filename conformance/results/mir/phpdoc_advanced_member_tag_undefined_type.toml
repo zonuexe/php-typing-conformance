@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 6
+expected_diagnostic_count = 10
 output = """
 phpdoc_advanced_member_tag_undefined_type.php:44: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMixin' does not exist [MIR1505]
 phpdoc_advanced_member_tag_undefined_type.php:65: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingProperty' does not exist [MIR1505]

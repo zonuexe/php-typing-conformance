@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 4
+expected_diagnostic_count = 7
 output = """
 assertions_array_key_exists_key_narrowing.php:43: Parameter #1 $value of function Conformance\\Tests\\AssertionsArrayKeyExistsKeyNarrowing\\takesString expects string, int|string given.
 assertions_array_key_exists_key_narrowing.php:64: Parameter #1 $key of function Conformance\\Tests\\AssertionsArrayKeyExistsKeyNarrowing\\takesAB expects 'a'|'b', string given."""

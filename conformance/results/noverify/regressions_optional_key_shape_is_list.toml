@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 12
+expected_diagnostic_count = 11
 output = """
 regressions_optional_key_shape_is_list.php:26: param $a miss matched with phpdoc type <<array{a?: string}>> [funcParamTypeMissMatch]
 regressions_optional_key_shape_is_list.php:34: param $a miss matched with phpdoc type <<array{a?: string}>> [funcParamTypeMissMatch]"""

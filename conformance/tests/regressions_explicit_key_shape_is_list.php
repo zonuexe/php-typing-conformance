@@ -24,7 +24,7 @@ function takesList(array $list): void // E<noverify>: NoVerify cannot evaluate t
 /** @param array{0: string, 1: string} $shape */
 function fromExplicitKeys(array $shape): void // E<noverify>: NoVerify cannot evaluate the array shape param type
 {
-    takesList($shape); // E<psalm>: Psalm treats the explicit-key shape array{0: string, 1: string} as not directly list<string> and reports ArgumentTypeCoercion. PHPStan, Mago, and Phan accept it (#14939)
+    takesList($shape); // E<psalm>: Psalm treats the explicit-key shape array{0: string, 1: string} as not directly list<string> and reports ArgumentTypeCoercion // E<pzoom>: same ArgumentTypeCoercion as Psalm. PHPStan, Mago, and Phan accept it (#14939)
 }
 
 /** @param array{string, string} $shape */

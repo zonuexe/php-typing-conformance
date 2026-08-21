@@ -1,9 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
-expected_diagnostic_count = 8
+conformance_automated = "Fail"
+expected_diagnostic_count = 10
 output = """
 regressions_object_property_discriminant_narrowing.php:34: RedundantCondition: Condition is always true/false for type 'bool' [MIR0400]
 regressions_object_property_discriminant_narrowing.php:38: UnreachableCode: Unreachable code detected [MIR0502]"""
-errors_diff = ""
+errors_diff = "Line 43: Expected 1 error(s)"
 notes = ""
 ignore_errors = []

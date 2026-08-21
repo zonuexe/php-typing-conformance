@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Fail"
-expected_diagnostic_count = 4
+expected_diagnostic_count = 7
 output = """
 assertions_array_key_exists_key_narrowing.php:40: Argument 1 of Conformance\\Tests\\AssertionsArrayKeyExistsKeyNarrowing\\takesString expects string, but int|string provided [InvalidScalarArgument]
 assertions_array_key_exists_key_narrowing.php:43: Argument 1 of Conformance\\Tests\\AssertionsArrayKeyExistsKeyNarrowing\\takesString expects string, but int|string provided [InvalidScalarArgument]

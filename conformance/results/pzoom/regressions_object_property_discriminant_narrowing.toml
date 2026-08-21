@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 6
-output = "regressions_object_property_discriminant_narrowing.php:35: The type Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox does not match the declared return type Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox [InvalidReturnStatement]"
+expected_diagnostic_count = 10
+output = """
+regressions_object_property_discriminant_narrowing.php:35: The type Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox does not match the declared return type Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox [InvalidReturnStatement]
+regressions_object_property_discriminant_narrowing.php:43: The type Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox does not match the declared return type Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox [InvalidReturnStatement]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

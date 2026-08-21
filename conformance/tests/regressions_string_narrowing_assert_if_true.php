@@ -34,6 +34,11 @@ function takesNonEmpty(string $s): void // E<noverify>: NoVerify cannot evaluate
 function caller(string $s): void
 {
     if (isNonEmpty($s)) {
-        takesNonEmpty($s); // E<phpstan>: does not narrow $s to non-empty-string through the bare @assert-if-true predicate, so reports argument.type // E<phpstan-strict>: same coercion under strict rules // E<psalm>: reports ArgumentTypeCoercion; parent type stays string. Mago and Phan honor the assertion and stay clean
+        takesNonEmpty($s); // E<phpstan>: does not narrow $s to non-empty-string through the bare @assert-if-true predicate, so reports argument.type // E<phpstan-strict>: same coercion under strict rules // E<psalm>: reports ArgumentTypeCoercion; parent type stays string. Mago and pzoom honor the assertion and stay clean. Phan is silent on the unguarded call too, so it never checked
     }
+}
+
+function unguarded(string $s): void
+{
+    takesNonEmpty($s); // E: string is not non-empty-string
 }

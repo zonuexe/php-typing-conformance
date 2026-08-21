@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 6
+expected_diagnostic_count = 10
 output = """
 phpdoc_advanced_member_tag_undefined_type.php:45: PHPDoc tag @mixin contains unknown class Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMixin.
 phpdoc_advanced_member_tag_undefined_type.php:66: PHPDoc tag @property for property Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\UnknownProperty::$count contains unknown class Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingProperty.

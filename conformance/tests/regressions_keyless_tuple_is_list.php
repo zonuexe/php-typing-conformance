@@ -19,7 +19,7 @@ namespace Conformance\Tests\RegressionsKeylessTupleIsList;
 /** @param array{int, string} $t */
 function keylessTupleIsList(array $t): void // E<noverify>: NoVerify does not parse array shape syntax and flags the annotation itself
 {
-    if (array_is_list($t)) { // E<phpstan>: correctly always-true — keyless tuple is a list (function.alreadyNarrowedType) // E<phpstan-strict>: same always-true verdict // E<psalm>: RedundantCondition — always a list // E<mago>: redundant-condition — always true. Phan alone emits no redundancy note. Contrast with the always-false optional-key bug
+    if (array_is_list($t)) { // E<phpstan>: correctly always-true — keyless tuple is a list (function.alreadyNarrowedType) // E<phpstan-strict>: same always-true verdict // E<psalm>: RedundantCondition — always a list // E<mago>: redundant-condition — always true // E<mir>: RedundantCondition. Phan emits no redundancy note. Contrast with the always-false optional-key bug
         echo "always reached — a keyless tuple is a list\n";
     }
 }

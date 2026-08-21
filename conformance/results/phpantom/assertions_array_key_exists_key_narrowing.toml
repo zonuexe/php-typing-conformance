@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Fail"
-expected_diagnostic_count = 4
+expected_diagnostic_count = 7
 output = """
 assertions_array_key_exists_key_narrowing.php:61: Argument 1 ($key) expects 'a'|'b', got string [type_mismatch_argument]
 assertions_array_key_exists_key_narrowing.php:64: Argument 1 ($key) expects 'a'|'b', got string [type_mismatch_argument]"""

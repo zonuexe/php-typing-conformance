@@ -1,9 +1,11 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 6
+expected_diagnostic_count = 10
 output = """
 regressions_object_property_discriminant_narrowing.php:32: The declared return type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' for Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\pick is incorrect, got 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' [InvalidReturnType]
-regressions_object_property_discriminant_narrowing.php:35: The inferred type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' does not match the declared return type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' for Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\pick [InvalidReturnStatement]"""
+regressions_object_property_discriminant_narrowing.php:35: The inferred type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' does not match the declared return type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' for Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\pick [InvalidReturnStatement]
+regressions_object_property_discriminant_narrowing.php:41: The declared return type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' for Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\stillUnion is incorrect, got 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' [InvalidReturnType]
+regressions_object_property_discriminant_narrowing.php:43: The inferred type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' does not match the declared return type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' for Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\stillUnion [InvalidReturnStatement]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 4
-output = ""
+expected_diagnostic_count = 5
+output = "regressions_string_narrowing_assert_if_true.php:43: Argument 1 of takesNonEmpty expects non-empty-string, but parent type string provided [ArgumentTypeCoercion]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

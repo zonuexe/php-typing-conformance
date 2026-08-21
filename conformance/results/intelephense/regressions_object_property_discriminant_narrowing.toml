@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 6
-output = "regressions_object_property_discriminant_narrowing.php:35: Expected type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox'. Found 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox'. [P1006]"
+expected_diagnostic_count = 10
+output = """
+regressions_object_property_discriminant_narrowing.php:35: Expected type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox'. Found 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox'. [P1006]
+regressions_object_property_discriminant_narrowing.php:43: Expected type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox'. Found 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox'. [P1006]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

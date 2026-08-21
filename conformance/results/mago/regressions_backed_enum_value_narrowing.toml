@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 7
-output = "regressions_backed_enum_value_narrowing.php:33: Non-exhaustive `match` expression: subject of type `enum(Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit)` is not fully handled. [match-not-exhaustive]"
+expected_diagnostic_count = 12
+output = """
+regressions_backed_enum_value_narrowing.php:33: Non-exhaustive `match` expression: subject of type `enum(Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit)` is not fully handled. [match-not-exhaustive]
+regressions_backed_enum_value_narrowing.php:40: Non-exhaustive `match` expression: subject of type `enum(Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit)` is not fully handled. [match-not-exhaustive]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 6
-output = ""
+expected_diagnostic_count = 10
+output = "regressions_object_property_discriminant_narrowing.php:43: Invalid return type for function `Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\stillUnion`: expected `Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox`, but found `Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox`. [invalid-return-statement]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

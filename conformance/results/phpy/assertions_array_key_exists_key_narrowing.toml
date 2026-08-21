@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Fail"
-expected_diagnostic_count = 4
+expected_diagnostic_count = 7
 output = ""
 errors_diff = "Line 43: Expected 1 error(s)"
 notes = ""

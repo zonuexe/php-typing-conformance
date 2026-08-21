@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Fail"
-expected_diagnostic_count = 6
+expected_diagnostic_count = 10
 output = """
 phpdoc_advanced_member_tag_undefined_type.php:44: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingMixin'
 phpdoc_advanced_member_tag_undefined_type.php:65: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedMemberTagUndefinedType\\MissingProperty'"""

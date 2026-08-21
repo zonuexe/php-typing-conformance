@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 6
-output = "regressions_class_string_negative_narrowing.php:30: Expected type 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B'. Found 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\A|Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B'. [P1006]"
+expected_diagnostic_count = 8
+output = """
+regressions_class_string_negative_narrowing.php:30: Expected type 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B'. Found 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\A|Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B'. [P1006]
+regressions_class_string_negative_narrowing.php:35: Expected type 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B'. Found 'Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\A|Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B'. [P1006]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 4
+expected_diagnostic_count = 5
 output = "regressions_explicit_key_shape_is_list.php:27: Argument 1 of Conformance\\Tests\\RegressionsExplicitKeyShapeIsList\\takesList expects list<string>, but parent type array{0: string, 1: string} provided [ArgumentTypeCoercion]"
 errors_diff = ""
 notes = ""

@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 4
+expected_diagnostic_count = 7
 output = """
 assertions_array_key_exists_key_narrowing.php:43: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsArrayKeyExistsKeyNarrowing\\takesString`: expected `string`, but possibly received `int|string`. [possibly-invalid-argument]
 assertions_array_key_exists_key_narrowing.php:64: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsArrayKeyExistsKeyNarrowing\\takesAB`: expected `string('a')|string('b')`, but possibly received `string`. [possibly-invalid-argument]"""

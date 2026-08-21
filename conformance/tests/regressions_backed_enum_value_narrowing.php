@@ -30,7 +30,14 @@ function describe(Suit $s): string // E<noverify>: NoVerify 0.5.5 does not suppo
         return 'hearts';
     }
 
-    return match ($s) { // E<phpstan>: $s not narrowed by ->value === 'H', so match is seen as non-exhaustive (Suit::Hearts unhandled) // E<phpstan-strict>: same // E<psalm>: UnhandledMatchCondition // E<mago>: match-not-exhaustive. Phan alone treats it as exhaustive
+    return match ($s) { // E<phpstan>: $s not narrowed by ->value === 'H', so match is seen as non-exhaustive (Suit::Hearts unhandled) // E<phpstan-strict>: same // E<psalm>: UnhandledMatchCondition // E<mago>: match-not-exhaustive // E<pzoom>: same UnhandledMatchCondition as Psalm // E<qodana>: PhpUncoveredEnumCasesInspection. Phan is silent on the unguarded match too, so it never checked exhaustiveness
         Suit::Spades => 'spades', // E<noverify>: enum case constant Suit::Spades unresolved
+    };
+}
+
+function stillFullSuit(Suit $s): string // E<noverify>: Suit unresolved, same as describe()
+{
+    return match ($s) { // E: Hearts is unhandled unless ->value already narrowed the subject
+        Suit::Spades => 'spades', // E<noverify>: enum case constant unresolved
     };
 }

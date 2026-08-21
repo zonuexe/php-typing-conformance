@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
-expected_diagnostic_count = 7
-output = "regressions_backed_enum_value_narrowing.php:33: This match expression is not exhaustive - consider values Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit::Hearts [UnhandledMatchCondition]"
-errors_diff = "Line 33: Unexpected errors [\"This match expression is not exhaustive - consider values Conformance\\\\Tests\\\\RegressionsBackedEnumValueNarrowing\\\\Suit::Hearts [UnhandledMatchCondition]\"]"
+conformance_automated = "Pass"
+expected_diagnostic_count = 12
+output = """
+regressions_backed_enum_value_narrowing.php:33: This match expression is not exhaustive - consider values Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit::Hearts [UnhandledMatchCondition]
+regressions_backed_enum_value_narrowing.php:40: This match expression is not exhaustive - consider values Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit::Hearts [UnhandledMatchCondition]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

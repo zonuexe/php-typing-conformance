@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 12
+expected_diagnostic_count = 11
 output = """
 regressions_optional_key_shape_is_list.php:28: Type array{a?: string} for $a is never list<V:array_is_list as mixed> [TypeDoesNotContainType]
 regressions_optional_key_shape_is_list.php:36: Type array{a?: string} for $a is never list<V:array_is_list as mixed> [TypeDoesNotContainType]"""

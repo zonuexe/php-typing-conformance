@@ -27,5 +27,5 @@ function fromClassString(A|B $x): B // E<psalm>: declares the return invalid bec
         throw new \LogicException('not A');
     }
 
-    return $x; // E<phpstan>: negative branch of ::class === keeps A|B (final A not subtracted), so return.type fires // E<phpstan-strict>: same // E<psalm>: InvalidReturnStatement, $x stays A|B. Mago and Phan narrow to B and stay clean
+    return $x; // E<phpstan>: negative branch of ::class === keeps A|B (final A not subtracted), so return.type fires // E<phpstan-strict>: same // E<psalm>: InvalidReturnStatement, $x stays A|B // E<pzoom>: same return-type mismatch as Psalm // E<intelephense>: same A|B on the return. Mago and Phan narrow to B and stay clean
 }

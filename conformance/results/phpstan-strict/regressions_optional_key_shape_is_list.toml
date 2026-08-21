@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 10
+expected_diagnostic_count = 11
 output = """
 regressions_optional_key_shape_is_list.php:28: Call to function array_is_list() with array{a?: string} will always evaluate to false. [identifier=function.impossibleType]
 regressions_optional_key_shape_is_list.php:36: Call to function array_is_list() with array{a?: string} will always evaluate to false. [identifier=function.impossibleType]

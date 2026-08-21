@@ -31,9 +31,9 @@ final class IntBox
 
 function pick(StrBox|IntBox $b): StrBox // E<psalm>: declares the return invalid because $b is not narrowed to StrBox (InvalidReturnType)
 {
-    if (is_string($b->v)) {
-        return $b; // E<phpstan>: does not narrow the object union from is_string($b->v), so keeps StrBox|IntBox and reports return.type // E<phpstan-strict>: same // E<psalm>: InvalidReturnStatement. Mago and Phan narrow to StrBox and stay clean
+    if (is_string($b->v)) { // E<mir>: over-narrows, so the discriminator is redundant
+        return $b; // E<phpstan>: does not narrow the object union from is_string($b->v), so keeps StrBox|IntBox and reports return.type // E<phpstan-strict>: same // E<psalm>: InvalidReturnStatement // E<pzoom>: same return-type mismatch as Psalm // E<intelephense>: same StrBox|IntBox on the return. Mago and Phan narrow to StrBox and stay clean
     }
 
-    throw new \LogicException('not a StrBox');
+    throw new \LogicException('not a StrBox'); // E?<mir>: unreachable after the over-narrowing
 }

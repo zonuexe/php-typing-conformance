@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
-expected_diagnostic_count = 1
-output = "properties_uninitialized_read.php:15: MissingConstructor: Class Conformance\\Tests\\PropertiesUninitializedRead\\User has uninitialized properties but no constructor [MIR1507]"
-errors_diff = "Line 15: Unexpected errors [\"MissingConstructor: Class Conformance\\\\Tests\\\\PropertiesUninitializedRead\\\\User has uninitialized properties but no constructor [MIR1507]\"]"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = "properties_uninitialized_read.php:19: MissingConstructor: Class Conformance\\Tests\\PropertiesUninitializedRead\\User has uninitialized properties but no constructor [MIR1507]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

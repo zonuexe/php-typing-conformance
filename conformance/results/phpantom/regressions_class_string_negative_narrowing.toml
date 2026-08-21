@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 4
+expected_diagnostic_count = 6
 output = ""
 errors_diff = ""
 notes = ""

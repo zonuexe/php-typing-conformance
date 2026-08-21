@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
-expected_diagnostic_count = 4
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
 output = "regressions_class_string_negative_narrowing.php:30: The type Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\A|Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B does not match the declared return type Conformance\\Tests\\RegressionsClassStringNegativeNarrowing\\B [InvalidReturnStatement]"
-errors_diff = "Line 30: Unexpected errors [\"The type Conformance\\\\Tests\\\\RegressionsClassStringNegativeNarrowing\\\\A|Conformance\\\\Tests\\\\RegressionsClassStringNegativeNarrowing\\\\B does not match the declared return type Conformance\\\\Tests\\\\RegressionsClassStringNegativeNarrowing\\\\B [InvalidReturnStatement]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -25,7 +25,7 @@ namespace Conformance\Tests\RegressionsOptionalKeyShapeIsList;
 /** @param array{a?: string} $a */
 function optionalStringKeyIsList(array $a): void // E<noverify>: NoVerify does not parse array shape syntax and flags the annotation itself, not the list narrowing
 {
-    if (array_is_list($a)) { // E<phpstan>: array{a?: string} admits [], so the check is maybe-true not always-false (#14938) // E<phpstan-strict>: same always-false verdict under strict rules // E<psalm>: TypeDoesNotContainType, reported as never list<mixed> (#11905) // E<mago>: impossible-type-comparison in 1.19, fixed in 1.43 (#2073)
+    if (array_is_list($a)) { // E<phpstan>: array{a?: string} admits [], so the check is maybe-true not always-false (#14938) // E<phpstan-strict>: same always-false verdict under strict rules // E<psalm>: TypeDoesNotContainType, reported as never list<mixed> (#11905) // E<pzoom>: same TypeDoesNotContainType as Psalm // E<mir>: RedundantCondition — collapses the check. Mago reported impossible-type-comparison in 1.19 and is silent since 1.43 (#2073), which is the runtime-correct verdict
         echo "reached at runtime when \$a === []\n";
     }
 }
@@ -33,7 +33,7 @@ function optionalStringKeyIsList(array $a): void // E<noverify>: NoVerify does n
 /** @param array{a?: string} $a */
 function optionalStringKeyAssertList(array $a): void // E<noverify>: NoVerify does not parse array shape syntax and flags the annotation itself, not the list narrowing
 {
-    assert(array_is_list($a)); // E<phpstan>: assert collapses to always-false on the optional-key shape (#14938) // E<phpstan-strict>: same always-false verdict under strict rules // E<psalm>: TypeDoesNotContainType, reported as never list<mixed> (#11905) // E<mago>: impossible-type-comparison in 1.19, fixed in 1.43 (#2073)
+    assert(array_is_list($a)); // E<phpstan>: assert collapses to always-false on the optional-key shape (#14938) // E<phpstan-strict>: same always-false verdict under strict rules // E<psalm>: TypeDoesNotContainType, reported as never list<mixed> (#11905) // E<pzoom>: same TypeDoesNotContainType as Psalm. Mago is silent since 1.43 (#2073)
 }
 
 optionalStringKeyIsList([]);

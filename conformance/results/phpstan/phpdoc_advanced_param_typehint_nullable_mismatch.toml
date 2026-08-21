@@ -3,5 +3,5 @@ conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = "Lines 15, 18: Expected error (tag param_mismatch)"
-notes = "Intentionally unsupported in PHPStan. See https://github.com/phpstan/phpstan/issues/7572"
+notes = "Does not require @param to replicate native nullability (still rejects @param string on int). Missing |null is CS, not a type error. See https://github.com/phpstan/phpstan/discussions/6016"
 ignore_errors = []

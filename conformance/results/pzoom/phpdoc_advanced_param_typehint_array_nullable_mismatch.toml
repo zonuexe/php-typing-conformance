@@ -1,7 +1,7 @@
-status = "Unknown"
+status = "By design"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = "Lines 15, 18: Expected error (tag array_param_mismatch)"
-notes = ""
+notes = "Same as Psalm: missing |null is CS, not a type error (https://github.com/vimeo/psalm/issues/3785). Does not require PHPDoc to replicate native nullability."
 ignore_errors = []

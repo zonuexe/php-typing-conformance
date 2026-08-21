@@ -3,5 +3,5 @@ conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = "Lines 15, 18: Expected error (tag param_mismatch)"
-notes = "Intentionally not reported in Psalm by design. See https://github.com/vimeo/psalm/issues/3785"
+notes = "orklah: missing |null is more suited to a CS tool (https://github.com/vimeo/psalm/issues/3785). Psalm still reports MismatchingDocblockParamType for @param int vs string $b; it does not require PHPDoc to replicate native nullability."
 ignore_errors = []

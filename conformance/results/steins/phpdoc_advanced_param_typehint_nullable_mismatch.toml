@@ -3,5 +3,5 @@ conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = "Lines 15, 18: Expected error (tag param_mismatch)"
-notes = "Declaration-coherence lint refused: the code is type-safe, and the proof layer speaks on proven value breaks, not declaration style (Steins divergence registry, conformance entry 2; PHPStan shares this refusal, https://github.com/phpstan/phpstan/issues/7572)."
+notes = "Does not require PHPDoc to replicate native nullability. A value-level contradiction (int vs string) is in scope; missing |null is documentation style (Steins divergence registry, conformance entry 2)."
 ignore_errors = []

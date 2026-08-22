@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
-expected_diagnostic_count = 12
-output = ""
-errors_diff = "Line 53: Expected 1 error(s)"
+conformance_automated = "Pass"
+expected_diagnostic_count = 13
+output = """
+assertions_this_out_self_out.php:53: Argument 1 ($box) expects Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string>, got Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int> [type_mismatch_argument]
+assertions_this_out_self_out.php:58: Argument 1 ($box) expects Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int>, got Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string> [type_mismatch_argument]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

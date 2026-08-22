@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = ""
+output = """
+arrays_unsealed_shape.php:37: Argument 1 ($shape) expects array{foo: int}, got array{} (missing required key 'foo') [type_mismatch_argument]
+arrays_unsealed_shape.php:38: Argument 1 ($shape) expects array{foo: int}, got array{buz: 42.0} (missing required key 'foo') [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/3"
+enforcement = "partial"
+enforced_lines = "2/3"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

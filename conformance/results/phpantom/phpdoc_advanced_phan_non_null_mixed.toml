@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_phan_non_null_mixed.php:19: Class 'Conformance\\Tests\\PhpdocAdvancedPhanNonNullMixed\\non-null-mixed' not found [unknown_class]"
+output = ""
 errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "none"
 enforced_lines = "0/1"
-unrecognized_lines = [19]
+unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

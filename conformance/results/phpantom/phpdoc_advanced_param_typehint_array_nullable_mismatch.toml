@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
-errors_diff = "Lines 15, 18: Expected error (tag array_param_mismatch)"
+output = "phpdoc_advanced_param_typehint_array_nullable_mismatch.php:28: Documented type 'list<int>' for $items does not accept null, but the native type hint '?array' does [docblock_native_mismatch]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

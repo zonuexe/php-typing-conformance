@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
-errors_diff = "Line 36: Expected 1 error(s)"
+output = "regressions_union_of_arrays_vs_array_of_unions.php:36: Argument 1 ($values) expects array<int>|array<string>, got array{1, 'b', 3} [type_mismatch_argument]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

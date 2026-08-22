@@ -55,5 +55,5 @@ function inspectReplacement(string $next): void
     $box->replace($next);
 
     takesStringBox($box); // E<mago>: Mago intentionally does not honor self-out / this-out // E<phan>: Phan does not support self-out / this-out template updates
-    takesIntBox($box); // E<phpstan>: replacement should update MutableBox<int> to MutableBox<string> // E<phpstan-strict>: replacement should update MutableBox<int> to MutableBox<string> // E<psalm>: replacement should update MutableBox<int> to MutableBox<string>
+    takesIntBox($box); // E<phpstan>: replacement should update MutableBox<int> to MutableBox<string> // E<phpstan-strict>: replacement should update MutableBox<int> to MutableBox<string> // E<psalm>: replacement should update MutableBox<int> to MutableBox<string> // E<phpantom>: replacement should update MutableBox<int> to MutableBox<string>
 }

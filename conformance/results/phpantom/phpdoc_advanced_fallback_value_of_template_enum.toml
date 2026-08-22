@@ -1,20 +1,13 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-phpdoc_advanced_fallback_value_of_template_enum.php:39: Return type string is incompatible with declared return type value-of<T> [type_mismatch_return]
-phpdoc_advanced_fallback_value_of_template_enum.php:58: Argument 1 ($value) expects string, got value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit> [type_mismatch_argument]
-phpdoc_advanced_fallback_value_of_template_enum.php:62: Argument 1 ($value) expects 'hearts', got value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit> [type_mismatch_argument]
-phpdoc_advanced_fallback_value_of_template_enum.php:65: Argument 1 ($value) expects int, got value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\Suit> [type_mismatch_argument]"""
-errors_diff = """
-Line 39: Expected valid value to be accepted, got ["Return type string is incompatible with declared return type value-of<T> [type_mismatch_return]"]
-Line 58: Expected valid value to be accepted, got ["Argument 1 ($value) expects string, got value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit> [type_mismatch_argument]"]
-Line 62: Expected valid value to be accepted, got ["Argument 1 ($value) expects 'hearts', got value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\Suit> [type_mismatch_argument]"]"""
+output = ""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "none"
+enforced_lines = "0/1"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [39, 58, 62]
+over_rejected_lines = []

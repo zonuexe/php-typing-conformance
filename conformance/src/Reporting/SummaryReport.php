@@ -1137,7 +1137,9 @@ final class SummaryReport
             $first = (array) reset($withNavigation);
             $navCorpus = (string) ($first['navigation_corpus'] ?? '');
             foreach ($results as $tool => $data) {
-                if (isset($data['navigation_failure'])) {
+                if (($data['navigation_stale'] ?? false) === true) {
+                    $navFailures[$tool] = 'not re-measured this run; rows kept from the last run that had the corpus checkout';
+                } elseif (isset($data['navigation_failure'])) {
                     $navFailures[$tool] = (string) $data['navigation_failure'];
                 }
             }
@@ -1213,6 +1215,11 @@ final class SummaryReport
         return match ((string) ($row['probe'] ?? '')) {
             'answered' => ['class' => 'pass', 'text' => 'Answered', 'note' => $note],
             'empty' => ['class' => 'fail', 'text' => 'No answer', 'note' => 'The request succeeded but the payload was empty.'],
+            // A diagnostic landed on the probed line, but it does not say
+            // what this probe is checking for, so it is not evidence the
+            // feature works — it may be an unrelated complaint (e.g. a
+            // vendor-less fixture's undefined-function error).
+            'unrecognized' => ['class' => 'fail', 'text' => 'Unrelated diagnostic', 'note' => $note],
             'timeout' => ['class' => 'fail', 'text' => 'Timed out', 'note' => 'No response within the probe timeout.'],
             'error' => ['class' => 'fail', 'text' => 'Error', 'note' => $note],
             'not-probed', 'skipped' => ['class' => 'not-supported', 'text' => '—', 'note' => 'Not sent.'],

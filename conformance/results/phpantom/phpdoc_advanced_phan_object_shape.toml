@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_phan_object_shape.php:27: Class 'Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\stdClass{name: string}' not found [unknown_class]"
+output = "phpdoc_advanced_phan_object_shape.php:27: Class 'Conformance\\Tests\\PhpdocAdvancedPhanObjectShape\\stdClass' not found [unknown_class]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,8 +1,9 @@
 tool = "phpantom"
-version = "phpantom_lsp 0.9.0"
-server_info = "PHPantom 0.9.0"
+version = "phpantom_lsp 0.10.0"
+server_info = "PHPantom 0.10.0"
 dynamic_registrations = ["workspace/didChangeWatchedFiles"]
-raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":2,\"save\":{\"includeText\":false}},\"selectionRangeProvider\":true,\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"@\",\"'\",\"\\\"\",\"[\",\"\\\\\",\"/\",\"*\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"],\"retriggerCharacters\":[\",\",\")\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":false},\"documentFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"\\n\"},\"renameProvider\":{\"prepareProvider\":true},\"documentLinkProvider\":{\"resolveProvider\":false},\"foldingRangeProvider\":true,\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"enum\",\"type\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"function\",\"method\",\"decorator\",\"enumMember\",\"keyword\",\"comment\"],\"tokenModifiers\":[\"declaration\",\"static\",\"readonly\",\"deprecated\",\"abstract\",\"definition\",\"defaultLibrary\"]},\"range\":false,\"full\":true},\"linkedEditingRangeProvider\":true,\"inlayHintProvider\":true}"
+raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":2,\"save\":{\"includeText\":false}},\"selectionRangeProvider\":true,\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"@\",\"'\",\"\\\"\",\"[\",\"\\\\\",\"/\",\"*\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"],\"retriggerCharacters\":[\",\",\")\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":false},\"documentFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"\\n\"},\"renameProvider\":{\"prepareProvider\":true},\"documentLinkProvider\":{\"resolveProvider\":false},\"foldingRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"phpantom.navigateToPrototype\"]},\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"enum\",\"type\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"function\",\"method\",\"decorator\",\"enumMember\",\"keyword\",\"comment\"],\"tokenModifiers\":[\"declaration\",\"static\",\"readonly\",\"deprecated\",\"abstract\",\"definition\",\"defaultLibrary\"]},\"range\":false,\"full\":true},\"inlayHintProvider\":true}"
+framework_corpus = "rigortype/laravel-gate-image-board@5cd1e3064ebd"
 navigation_corpus = "psy/psysh@0e8ec1af5990"
 
 [capabilities.push-diagnostics]
@@ -128,7 +129,7 @@ probe = "skipped"
 [hover.native-return]
 feature = "Native return type"
 expected = "int"
-shown = "```php\n<?php\n$length = int<0..max>\n```"
+shown = "```php\n<?php\n$length = int<0, max>\n```"
 verdict = "precise"
 
 [hover.narrowed-union]
@@ -146,7 +147,7 @@ verdict = "precise"
 [hover.int-range]
 feature = "Integer range from @var"
 expected = "int<1, 100>"
-shown = "```php\n<?php\n$percent = int<1..100>\n```"
+shown = "```php\n<?php\n$percent = int<1, 100>\n```"
 verdict = "precise"
 
 [hover.generic-call]
@@ -154,6 +155,118 @@ feature = "@template T resolved through a call"
 expected = "string"
 shown = "```php\n<?php\n$firstName = string\n```"
 verdict = "precise"
+
+[framework.env-hover]
+feature = "env-hover"
+method = "textDocument/hover"
+expected = "Laravel"
+probe = "answered"
+shown = "**Env** `APP_NAME`\n\n`Laravel`\n\nDeclared in `.env`"
+
+[framework.env-definition]
+feature = "env-definition"
+method = "textDocument/definition"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.env-completion]
+feature = "env-completion"
+method = "textDocument/completion"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.env-diagnostic]
+feature = "env-diagnostic"
+method = "push-diagnostics"
+expected = "GATE_MISSING_KEY"
+probe = "empty"
+shown = ""
+
+[framework.config-hover]
+feature = "config-hover"
+method = "textDocument/hover"
+expected = "Laravel"
+probe = "answered"
+shown = "**Config** `app.name`\n\nDefined in `config/app.php`"
+
+[framework.config-diagnostic]
+feature = "config-diagnostic"
+method = "push-diagnostics"
+expected = "app.missing_key"
+probe = "answered"
+shown = "Unknown config key: 'app.missing_key'"
+
+[framework.route-hover]
+feature = "route-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "answered"
+shown = "**Route** `explore`\n\nDefined in `resources/views/folio/explore/index.blade.php`"
+
+[framework.route-definition]
+feature = "route-definition"
+method = "textDocument/definition"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.route-diagnostic]
+feature = "route-diagnostic"
+method = "push-diagnostics"
+expected = "gate.missing"
+probe = "answered"
+shown = "Unknown route: 'gate.missing'"
+
+[framework.route-blade-hover]
+feature = "route-blade-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "answered"
+shown = "**Route** `explore`\n\nDefined in `resources/views/folio/explore/index.blade.php`"
+
+[framework.view-hover]
+feature = "view-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "answered"
+shown = "**View** `welcome`\n\n`resources/views/welcome.blade.php`"
+
+[framework.view-diagnostic]
+feature = "view-diagnostic"
+method = "push-diagnostics"
+expected = "missing.page"
+probe = "answered"
+shown = "Unknown view: 'missing.page'"
+
+[framework.trans-hover]
+feature = "trans-hover"
+method = "textDocument/hover"
+expected = "Explore"
+probe = "answered"
+shown = "**Trans** `boards.explore`\n\n`Explore`\n\nDefined in `lang/en/boards.php`"
+
+[framework.trans-dotted-hover]
+feature = "trans-dotted-hover"
+method = "textDocument/hover"
+expected = "Public"
+probe = "answered"
+shown = "**Trans** `boards.visibility.public`\n\n`Public`\n\nDefined in `lang/en/boards.php`"
+
+[framework.trans-replace-hover]
+feature = "trans-replace-hover"
+method = "textDocument/hover"
+expected = "No public threads on :name."
+probe = "answered"
+shown = "**Trans** `boards.explore_empty_board`\n\n`No public threads on :name.`\n\nDefined in `lang/en/boards.php`"
+
+[framework.trans-diagnostic]
+feature = "trans-diagnostic"
+method = "push-diagnostics"
+expected = "boards.missing"
+probe = "answered"
+shown = "Unknown translation key: 'boards.missing'"
 
 [navigation.function]
 kind = "Function"
@@ -170,7 +283,7 @@ name = "Psy\\Context::getAll()"
 definition = "correct"
 refs_expected = 10
 refs_found = 10
-refs_extra = 3
+refs_extra = 0
 references = "all"
 
 [navigation.static-method]
@@ -196,9 +309,10 @@ kind = "Class constant"
 name = "Psy\\Shell::VERSION"
 definition = "correct"
 refs_expected = 21
-refs_found = 21
+refs_found = 20
 refs_extra = 0
-references = "all"
+references = "partial"
+refs_missing = ["src/functions.php:383"]
 
 [navigation.instance-property]
 kind = "Instance property"
@@ -223,7 +337,6 @@ kind = "Constructor"
 name = "Psy\\ConfigPaths::__construct()"
 definition = "n/a"
 refs_expected = 15
-refs_found = 14
+refs_found = 15
 refs_extra = 0
-references = "partial"
-refs_missing = ["src/ConfigPaths.php:428"]
+references = "all"

@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "objects_static_return_mismatch.php:23: Return type Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder is incompatible with declared return type Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder [type_mismatch_return]"
+output = "objects_static_return_mismatch.php:23: Return type Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder is incompatible with declared return type static(Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder) [type_mismatch_return]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -66,7 +66,7 @@ install-devsense-php-ls:
 # php-lsp and PHPantom ship only as per-platform binaries on GitHub releases
 # (no Packagist/npm package), so they are fetched by tag. Keep the versions in
 # step with conformance/data/releases.toml when bumping.
-PHP_LSP_VERSION := 0.25.0
+PHP_LSP_VERSION := 0.25.1
 PHPANTOM_VERSION := 0.10.0
 LSP_BIN_PLATFORM := aarch64-apple-darwin
 

@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 11
-output = "regressions_optional_key_shape_is_list.php:28: RedundantCondition: Condition is always true/false for type 'bool' [MIR0400]"
+expected_diagnostic_count = 7
+output = "regressions_optional_key_shape_is_list.php:29: RedundantCondition: Condition is always true/false for type 'bool' [MIR0400]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,9 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 11
+expected_diagnostic_count = 7
 output = """
-regressions_optional_key_shape_is_list.php:28: Type array{a?: string} for $a is never list<mixed> [TypeDoesNotContainType]
-regressions_optional_key_shape_is_list.php:36: Type array{a?: string} for $a is never list<mixed> [TypeDoesNotContainType]"""
+regressions_optional_key_shape_is_list.php:29: Type array{a?: string} for $a is never list<mixed> [TypeDoesNotContainType]
+regressions_optional_key_shape_is_list.php:37: Type array{a?: string} for $a is never list<mixed> [TypeDoesNotContainType]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

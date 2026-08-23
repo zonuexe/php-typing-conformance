@@ -21,7 +21,7 @@ namespace Conformance\Tests\RegressionsOptionalExtraKeyIsList;
 /** @param array{0: int, a?: string} $b */
 function optionalExtraKeyIsList(array $b): void // E<noverify>: NoVerify does not parse array shape syntax and flags the annotation itself
 {
-    if (array_is_list($b)) { // E<phpstan>: [0 => 1] satisfies the shape and is a list, so the check is maybe-true not always-false (#14938) // E<phpstan-strict>: same always-false verdict // E<psalm>: TypeDoesNotContainType, reported as never list // E<pzoom>: same TypeDoesNotContainType as Psalm // E<mir>: RedundantCondition — collapses the check. Mago reported impossible-type-comparison in 1.19 and is silent since 1.43
+    if (array_is_list($b)) { // E<psalm>: TypeDoesNotContainType, reported as never list // E<pzoom>: same TypeDoesNotContainType as Psalm // E<mir>: RedundantCondition — collapses the check. PHPStan reported always-false through 2.2.8 (#14938) and is silent since 2.2.9. Mago reported impossible-type-comparison in 1.19 and is silent since 1.43
         echo "reached at runtime when \$b === [0 => 1]\n";
     }
 }

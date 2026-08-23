@@ -2,6 +2,6 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = ""
-errors_diff = "Lines 15, 18: Expected error (tag array_param_mismatch)"
+errors_diff = "Lines 25, 28: Expected error (tag array_param_mismatch)"
 notes = ""
 ignore_errors = []

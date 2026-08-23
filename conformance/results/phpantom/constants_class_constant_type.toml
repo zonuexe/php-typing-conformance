@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "constants_class_constant_type.php:24: Argument 1 ($value) expects string, got int [type_mismatch_argument]"
+output = "constants_class_constant_type.php:24: Argument 1 ($value) expects string, got 200 [type_mismatch_argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

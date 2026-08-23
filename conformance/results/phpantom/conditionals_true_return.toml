@@ -1,15 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-conditionals_true_return.php:38: Argument 1 ($value) expects float, got string [type_mismatch_argument]
+conditionals_true_return.php:40: Argument 1 ($value) expects string, got float [type_mismatch_argument]
 conditionals_true_return.php:41: Argument 1 ($value) expects float, got string [type_mismatch_argument]"""
-errors_diff = "Line 38: Expected valid value to be accepted, got [\"Argument 1 ($value) expects float, got string [type_mismatch_argument]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [38]
+over_rejected_lines = []

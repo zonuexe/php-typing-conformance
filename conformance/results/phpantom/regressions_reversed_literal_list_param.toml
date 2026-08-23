@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = ""
-errors_diff = "Lines 23, 32: Expected error (tag reversed_literal)"
+output = "regressions_reversed_literal_list_param.php:32: Argument 1 ($list) expects list{string, string}, got array{1: 'x', 0: 'y'} (keys are not in list order) [type_mismatch_argument]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

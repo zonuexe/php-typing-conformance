@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_phpstan_new_object_type_constant_map.php:40: Class 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES' not found [unknown_class]"
+output = ""
 errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "none"
 enforced_lines = "0/2"
-unrecognized_lines = [40]
+unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

@@ -62,8 +62,8 @@ version = "1.0.18519"
 date = "2026-02-19"
 
 [phpantom]
-version = "0.9.0"
-date = "2026-07-19"
+version = "0.10.0"
+date = "2026-08-20"
 
 [mir]
 version = "0.72.0"

@@ -28,6 +28,7 @@ id = "env-diagnostic"
 method = "push-diagnostics"
 file = "app/Support/LspSurface.php"
 at = "GATE_MISSING_KEY"
+expected = "GATE_MISSING_KEY"
 
 [[framework]]
 id = "config-hover"
@@ -40,8 +41,9 @@ expected = "Laravel"
 id = "config-diagnostic"
 method = "push-diagnostics"
 file = "app/Support/LspSurface.php"
-at = "config('gate.missing')"
+at = "config('app.missing_key')"
 offset = 8
+expected = "app.missing_key"
 
 [[framework]]
 id = "route-hover"
@@ -63,6 +65,7 @@ method = "push-diagnostics"
 file = "app/Support/LspSurface.php"
 at = "route('gate.missing')"
 offset = 7
+expected = "gate.missing"
 
 [[framework]]
 id = "route-blade-hover"
@@ -83,6 +86,7 @@ id = "view-diagnostic"
 method = "push-diagnostics"
 file = "app/Support/LspSurface.php"
 at = "missing.page"
+expected = "missing.page"
 
 [[framework]]
 id = "trans-hover"
@@ -110,3 +114,4 @@ id = "trans-diagnostic"
 method = "push-diagnostics"
 file = "app/Support/LspSurface.php"
 at = "boards.missing"
+expected = "boards.missing"

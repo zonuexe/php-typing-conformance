@@ -1,14 +1,10 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_numeric.php:41: Argument 1 ($value) expects numeric, got '123' [type_mismatch_argument]
-phpdoc_advanced_fallback_numeric.php:42: Argument 1 ($value) expects numeric, got '1.5e3' [type_mismatch_argument]
 phpdoc_advanced_fallback_numeric.php:45: Argument 1 ($value) expects numeric, got 'abc' [type_mismatch_argument]
-phpdoc_advanced_fallback_numeric.php:48: Argument 1 ($value) expects numeric, got bool [type_mismatch_argument]"""
-errors_diff = """
-Line 41: Expected valid value to be accepted, got ["Argument 1 ($value) expects numeric, got '123' [type_mismatch_argument]"]
-Line 42: Expected valid value to be accepted, got ["Argument 1 ($value) expects numeric, got '1.5e3' [type_mismatch_argument]"]"""
+phpdoc_advanced_fallback_numeric.php:48: Argument 1 ($value) expects numeric, got true [type_mismatch_argument]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
@@ -16,4 +12,4 @@ enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [41, 42]
+over_rejected_lines = []

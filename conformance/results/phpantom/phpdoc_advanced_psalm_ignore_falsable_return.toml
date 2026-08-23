@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = "phpdoc_advanced_psalm_ignore_falsable_return.php:35: Argument 1 ($value) expects string, got bool [type_mismatch_argument]"
+output = """
+phpdoc_advanced_psalm_ignore_falsable_return.php:32: Argument 1 ($value) expects string, got string|false (false does not satisfy string) [type_mismatch_argument]
+phpdoc_advanced_psalm_ignore_falsable_return.php:35: Argument 1 ($value) expects string, got false [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

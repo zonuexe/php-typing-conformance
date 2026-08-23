@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-directives_deprecated_usage.php:17: Function 'oldMessage' not found [unknown_function]
-directives_deprecated_usage.php:18: Class 'Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter' not found [unknown_class]"""
+directives_deprecated_usage.php:17: 'oldMessage' is deprecated: Use newMessage() instead. [deprecated_usage]
+directives_deprecated_usage.php:18: 'Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter' is deprecated: Use ModernFormatter instead. [deprecated_usage]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

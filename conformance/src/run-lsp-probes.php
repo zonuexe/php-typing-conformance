@@ -33,6 +33,7 @@ use Conformance\Lsp\ProbeDefinitions;
 use Conformance\Lsp\ProbeGrading;
 use Conformance\Lsp\ProbeRunner;
 use Conformance\Result\ResultsUpdate;
+use Internal\Toml\Toml;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -158,7 +159,7 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
         ));
     }
     $corpusProbesFile = $lspDir . '/laravel/corpus-probes.toml';
-    if ($server->tool === 'laravel-lsp' && $laravelCorpus !== null && is_file($corpusProbesFile)) {
+    if ($server->frameworkProbesFile !== null && $laravelCorpus !== null && is_file($corpusProbesFile)) {
         $corpusFrameworkDefs = ProbeDefinitions::loadFramework($corpusProbesFile, $laravelCorpus->root);
         $corpusFrameworkRequests = array_values(array_filter(
             $corpusFrameworkDefs,
@@ -242,21 +243,32 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
     } elseif ($frameworkDefs !== []) {
         $payload['framework'] = $grading->framework($output, $frameworkDefs);
     }
-    if ($laravelCorpus !== null && $server->tool === 'laravel-lsp') {
+    if ($laravelCorpus !== null && $server->frameworkProbesFile !== null) {
         $payload['framework_corpus'] = "{$laravelCorpus->project}@" . substr($laravelCorpus->commit, 0, 12);
         if (isset($frameworkOutput['failure'])) {
             $payload['framework_failure'] = (string) $frameworkOutput['failure'];
         }
     }
+    $path = "{$resultsDir}/{$server->tool}.toml";
     if ($navigation !== null && $navigationOutput !== null) {
         $payload['navigation_corpus'] = "{$navigation->project}@" . substr($navigation->commit, 0, 12);
         if (isset($navigationOutput['failure'])) {
             $payload['navigation_failure'] = (string) $navigationOutput['failure'];
         }
         $payload['navigation'] = $grading->navigation($navigationOutput, $navigation->symbols);
+    } elseif (is_file($path)) {
+        // This run skipped the layer entirely (no local corpus checkout, or
+        // the server opts out), rather than running it and getting nothing.
+        // A run-death mid-session already keeps whatever it managed to grade
+        // (see navigation_failure above); a skip deserves the same
+        // treatment instead of deleting rows nobody re-measured.
+        $previous = Toml::parseToArray((string) file_get_contents($path));
+        if (isset($previous['navigation'])) {
+            $payload['navigation_corpus'] = (string) ($previous['navigation_corpus'] ?? '');
+            $payload['navigation_stale'] = true;
+            $payload['navigation'] = $previous['navigation'];
+        }
     }
-
-    $path = "{$resultsDir}/{$server->tool}.toml";
     if (file_put_contents($path, LspResultFile::encode($payload)) === false) {
         fwrite(STDERR, "Cannot write {$path}\n");
         $failures++;

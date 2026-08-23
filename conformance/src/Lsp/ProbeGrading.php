@@ -237,8 +237,32 @@ final class ProbeGrading
                         static fn (array $d): bool => (int) ($d['line'] ?? 0) === $line,
                     ));
                 }
-                $row['probe'] = $published === [] ? 'empty' : 'answered';
-                $row['shown'] = $published === [] ? '' : (string) ($published[0]['message'] ?? '');
+
+                if ($published === []) {
+                    $row['probe'] = 'empty';
+                    $row['shown'] = '';
+                    $rows[$id] = $row;
+                    continue;
+                }
+
+                // Any diagnostic on the line used to count as an answer, so a
+                // type checker that flags something unrelated (e.g. the
+                // undefined-function complaint about a vendor-less env()) got
+                // credited for a feature it does not implement. When the
+                // probe declares what the diagnostic should say, only a
+                // message that says it counts; a probe with no expected text
+                // yet cannot tell relevance from noise, so it is recorded as
+                // unrecognized rather than defaulting to a pass.
+                $expected = $row['expected'];
+                $matching = $expected !== ''
+                    ? array_values(array_filter(
+                        $published,
+                        static fn (array $d): bool => str_contains((string) ($d['message'] ?? ''), $expected),
+                    ))
+                    : [];
+                $row['probe'] = $matching !== [] ? 'answered' : 'unrecognized';
+                $shownFrom = $matching !== [] ? $matching : $published;
+                $row['shown'] = (string) ($shownFrom[0]['message'] ?? '');
                 $rows[$id] = $row;
                 continue;
             }

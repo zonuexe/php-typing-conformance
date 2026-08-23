@@ -97,8 +97,8 @@ register_shutdown_function(static function () use ($STG): void {
 });
 
 $checkers = [
-    new PhpStanChecker('phpstan', $repo . '/vendor-bin/phpstan/vendor/bin/phpstan', $STG . '/phpstan-no-strict.neon', false),
-    new PhpStanChecker('phpstan-strict', $repo . '/vendor-bin/phpstan/vendor/bin/phpstan', $STG . '/phpstan.dist.neon', false),
+    new PhpStanChecker('phpstan', $repo . '/vendor-bin/phpstan/vendor/bin/phpstan', $STG . '/phpstan-no-strict.neon', $STG . '/tests', false),
+    new PhpStanChecker('phpstan-strict', $repo . '/vendor-bin/phpstan/vendor/bin/phpstan', $STG . '/phpstan.dist.neon', $STG . '/tests', false),
     new PsalmChecker($STG, $repo . '/vendor-bin/psalm/vendor/bin/psalm', $STG . '/psalm.xml'),
     new MagoChecker($repo . '/vendor-bin/mago/vendor/bin/mago', $STG),
     new PhanChecker($repo . '/vendor-bin/phan/vendor/bin/phan', $STG . '/tests'),

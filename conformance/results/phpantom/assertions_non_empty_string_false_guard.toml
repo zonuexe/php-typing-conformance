@@ -2,14 +2,15 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-assertions_non_empty_string_false_guard.php:37: Argument 1 ($value) expects non-falsy-string, got non-empty-string|false [type_mismatch_argument]
-assertions_non_empty_string_false_guard.php:42: Argument 1 ($value) expects non-falsy-string, got non-empty-string|false [type_mismatch_argument]"""
+assertions_non_empty_string_false_guard.php:37: Argument 1 ($value) expects non-falsy-string, got non-empty-string [type_mismatch_argument]
+assertions_non_empty_string_false_guard.php:41: Argument 1 ($value) expects non-empty-string, got false [type_mismatch_argument]
+assertions_non_empty_string_false_guard.php:42: Argument 1 ($value) expects non-falsy-string, got false [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "2/3"
+enforcement = "enforced"
+enforced_lines = "3/3"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

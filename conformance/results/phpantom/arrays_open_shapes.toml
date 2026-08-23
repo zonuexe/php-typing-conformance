@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = ""
+output = "arrays_open_shapes.php:33: Argument 1 ($options) expects array{name: string}, got array{extra: 123} (missing required key 'name') [type_mismatch_argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/5"
+enforcement = "partial"
+enforced_lines = "1/5"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

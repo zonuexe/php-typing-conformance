@@ -1,17 +1,8 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-phpdoc_advanced_fallback_key_of_constant.php:31: Return type string is incompatible with declared return type key-of<Config::MAP> [type_mismatch_return]
-phpdoc_advanced_fallback_key_of_constant.php:46: Argument 1 ($value) expects string, got key-of<Config::MAP> [type_mismatch_argument]
-phpdoc_advanced_fallback_key_of_constant.php:49: Argument 1 ($key) expects key-of<Config::MAP>, got 'debug' [type_mismatch_argument]
-phpdoc_advanced_fallback_key_of_constant.php:50: Argument 1 ($key) expects key-of<Config::MAP>, got 'verbose' [type_mismatch_argument]
-phpdoc_advanced_fallback_key_of_constant.php:53: Argument 1 ($key) expects key-of<Config::MAP>, got 'missing' [type_mismatch_argument]"""
-errors_diff = """
-Line 31: Expected valid value to be accepted, got ["Return type string is incompatible with declared return type key-of<Config::MAP> [type_mismatch_return]"]
-Line 46: Expected valid value to be accepted, got ["Argument 1 ($value) expects string, got key-of<Config::MAP> [type_mismatch_argument]"]
-Line 49: Expected valid value to be accepted, got ["Argument 1 ($key) expects key-of<Config::MAP>, got 'debug' [type_mismatch_argument]"]
-Line 50: Expected valid value to be accepted, got ["Argument 1 ($key) expects key-of<Config::MAP>, got 'verbose' [type_mismatch_argument]"]"""
+output = "phpdoc_advanced_fallback_key_of_constant.php:53: Argument 1 ($key) expects 'debug'|'verbose', got 'missing' [type_mismatch_argument]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
@@ -19,4 +10,4 @@ enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [31, 46, 49, 50]
+over_rejected_lines = []

@@ -87,6 +87,17 @@ final class LspServerCatalog
             new LspServer(
                 tool: 'phpantom',
                 command: [$projectRoot . '/vendor-bin/phpantom/bin/phpantom_lsp', '--stdio'],
+                // Laravel-aware by design, so it takes the framework probes
+                // too. Its env provider reads .env off disk the same way
+                // Laravel LSP's does, and the artisan stub is what marks the
+                // workspace as a Laravel project in the first place.
+                configFiles: [
+                    'artisan' => $lspDir . '/laravel/artisan',
+                    '.env' => $lspDir . '/laravel/.env',
+                    'helpers.php' => $lspDir . '/laravel/helpers.php',
+                ],
+                openExtra: ['helpers.php'],
+                frameworkProbesFile: $lspDir . '/laravel/probes.toml',
                 versionCommand: [$projectRoot . '/vendor-bin/phpantom/bin/phpantom_lsp', '--version'],
             ),
             new LspServer(

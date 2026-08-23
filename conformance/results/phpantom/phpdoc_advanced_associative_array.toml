@@ -1,15 +1,13 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-phpdoc_advanced_associative_array.php:28: Argument 1 ($map) expects associative-array<int, string>, got array{5: string, 9: string} [type_mismatch_argument]
-phpdoc_advanced_associative_array.php:32: Argument 1 ($map) expects associative-array<int, string>, got list<string> [type_mismatch_argument]"""
-errors_diff = "Line 28: Expected valid value to be accepted, got [\"Argument 1 ($map) expects associative-array<int, string>, got array{5: string, 9: string} [type_mismatch_argument]\"]"
+output = ""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "none"
+enforced_lines = "0/1"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [28]
+over_rejected_lines = []

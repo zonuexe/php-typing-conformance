@@ -2,14 +2,14 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_constant_offset_template_key.php:42: Class 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE' not found [unknown_class]
-phpdoc_advanced_fallback_constant_offset_template_key.php:44: Class 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE' not found [unknown_class]"""
+phpdoc_advanced_fallback_constant_offset_template_key.php:57: Argument 1 ($value) expects string, got 1 [type_mismatch_argument]
+phpdoc_advanced_fallback_constant_offset_template_key.php:58: Argument 1 ($value) expects int, got 'two' [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
-enforcement = "none"
-enforced_lines = "0/2"
-unrecognized_lines = [42, 44]
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

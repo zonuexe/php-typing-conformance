@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_return_never_returns.php:35: Return type int is incompatible with declared return type never [type_mismatch_return]"
+output = "phpdoc_advanced_return_never_returns.php:35: Return type 1 is incompatible with declared return type never [type_mismatch_return]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,13 +1,8 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-phpdoc_advanced_fallback_value_of_template.php:55: Argument 1 ($value) expects int, got value-of<array> [type_mismatch_argument]
-phpdoc_advanced_fallback_value_of_template.php:59: Argument 1 ($level) expects 1|10, got value-of<array> [type_mismatch_argument]
-phpdoc_advanced_fallback_value_of_template.php:62: Argument 1 ($value) expects string, got value-of<array> [type_mismatch_argument]"""
-errors_diff = """
-Line 55: Expected valid value to be accepted, got ["Argument 1 ($value) expects int, got value-of<array> [type_mismatch_argument]"]
-Line 59: Expected valid value to be accepted, got ["Argument 1 ($level) expects 1|10, got value-of<array> [type_mismatch_argument]"]"""
+output = "phpdoc_advanced_fallback_value_of_template.php:62: Argument 1 ($value) expects string, got 1|10 [type_mismatch_argument]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
@@ -15,4 +10,4 @@ enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [55, 59]
+over_rejected_lines = []

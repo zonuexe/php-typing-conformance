@@ -3,7 +3,7 @@ version = "phpantom_lsp 0.10.0"
 server_info = "PHPantom 0.10.0"
 dynamic_registrations = ["workspace/didChangeWatchedFiles"]
 raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":2,\"save\":{\"includeText\":false}},\"selectionRangeProvider\":true,\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"@\",\"'\",\"\\\"\",\"[\",\"\\\\\",\"/\",\"*\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"],\"retriggerCharacters\":[\",\",\")\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":false},\"documentFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"\\n\"},\"renameProvider\":{\"prepareProvider\":true},\"documentLinkProvider\":{\"resolveProvider\":false},\"foldingRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"phpantom.navigateToPrototype\"]},\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"enum\",\"type\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"function\",\"method\",\"decorator\",\"enumMember\",\"keyword\",\"comment\"],\"tokenModifiers\":[\"declaration\",\"static\",\"readonly\",\"deprecated\",\"abstract\",\"definition\",\"defaultLibrary\"]},\"range\":false,\"full\":true},\"inlayHintProvider\":true}"
-framework_corpus = "rigortype/laravel-gate-image-board@5cd1e3064ebd"
+framework_corpus = "rigortype/laravel-gate-image-board@939a805b8607"
 navigation_corpus = "psy/psysh@0e8ec1af5990"
 
 [capabilities.push-diagnostics]
@@ -194,9 +194,9 @@ shown = "**Config** `app.name`\n\nDefined in `config/app.php`"
 [framework.config-diagnostic]
 feature = "config-diagnostic"
 method = "push-diagnostics"
-expected = "app.missing_key"
-probe = "answered"
-shown = "Unknown config key: 'app.missing_key'"
+expected = "gate.missing"
+probe = "empty"
+shown = ""
 
 [framework.route-hover]
 feature = "route-hover"

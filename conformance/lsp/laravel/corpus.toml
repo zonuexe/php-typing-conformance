@@ -5,5 +5,5 @@
 # loudly until the probes are re-anchored.
 
 root = "references/laravel-gate-image-board"
-commit = "5cd1e3064ebdb432e543b4f4f313036bd0afcd8a"
+commit = "939a805b8607de59528938a8b81e1630e926dfe9"
 project = "rigortype/laravel-gate-image-board"

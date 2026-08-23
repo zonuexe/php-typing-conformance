@@ -1,5 +1,5 @@
 tool = "php-lsp"
-version = "php-lsp 0.25.0"
+version = "php-lsp 0.25.1"
 server_info = ""
 dynamic_registrations = ["workspace/didChangeConfiguration", "workspace/didChangeWatchedFiles"]
 raw_capabilities = "{\"callHierarchyProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":true},\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"(\",\"[\",\"\\\\\"]},\"declarationProvider\":true,\"definitionProvider\":true,\"diagnosticProvider\":{\"interFileDependencies\":true,\"workspaceDiagnostics\":true},\"documentFormattingProvider\":true,\"documentHighlightProvider\":true,\"documentLinkProvider\":{\"resolveProvider\":false},\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"}\",\"moreTriggerCharacter\":[\"\\n\"]},\"documentRangeFormattingProvider\":true,\"documentSymbolProvider\":true,\"executeCommandProvider\":{\"commands\":[\"php-lsp.runTest\"]},\"foldingRangeProvider\":true,\"hoverProvider\":true,\"implementationProvider\":true,\"inlayHintProvider\":{\"resolveProvider\":true},\"inlineValueProvider\":[],\"linkedEditingRangeProvider\":true,\"monikerProvider\":true,\"referencesProvider\":true,\"renameProvider\":{\"prepareProvider\":true},\"selectionRangeProvider\":true,\"semanticTokensProvider\":{\"full\":{\"delta\":true},\"legend\":{\"tokenModifiers\":[\"declaration\",\"static\",\"abstract\",\"readonly\",\"deprecated\"],\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"function\",\"method\",\"property\",\"variable\",\"parameter\",\"type\",\"string\",\"number\",\"comment\",\"enumMember\"]},\"range\":true},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"]},\"textDocumentSync\":{\"change\":2,\"openClose\":true,\"save\":{\"includeText\":false},\"willSave\":true,\"willSaveWaitUntil\":true},\"typeDefinitionProvider\":true,\"workspace\":{\"fileOperations\":{\"didCreate\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"didDelete\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"didRename\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willCreate\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willDelete\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willRename\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]}},\"workspaceFolders\":{\"changeNotifications\":true,\"supported\":true}},\"workspaceSymbolProvider\":{\"resolveProvider\":true}}"
@@ -158,71 +158,74 @@ verdict = "precise"
 [navigation.function]
 kind = "Function"
 name = "Psy\\info()"
-definition = "timeout"
+definition = "empty"
 refs_expected = 13
-references = "timeout"
-refs_found = 0
+refs_found = 13
 refs_extra = 0
+references = "all"
 
 [navigation.instance-method]
 kind = "Instance method"
 name = "Psy\\Context::getAll()"
-definition = "timeout"
+definition = "correct"
 refs_expected = 10
-references = "timeout"
-refs_found = 0
+refs_found = 9
 refs_extra = 0
+references = "partial"
+refs_missing = ["src/Command/ListCommand/VariableEnumerator.php:81"]
 
 [navigation.static-method]
 kind = "Static method"
 name = "Psy\\Util\\Str::unvis()"
-definition = "timeout"
+definition = "correct"
 refs_expected = 4
-references = "timeout"
-refs_found = 0
+refs_found = 3
 refs_extra = 0
+references = "partial"
+refs_missing = ["src/Util/Str.php:60"]
 
 [navigation.local-variable]
 kind = "Local variable"
 name = "$output in Str::unvis()"
-definition = "timeout"
+definition = "correct"
 refs_expected = 2
-references = "timeout"
-refs_found = 0
+refs_found = 2
 refs_extra = 0
+references = "all"
 
 [navigation.class-constant]
 kind = "Class constant"
 name = "Psy\\Shell::VERSION"
-definition = "timeout"
+definition = "correct"
 refs_expected = 21
-references = "timeout"
-refs_found = 0
+refs_found = 20
 refs_extra = 0
+references = "partial"
+refs_missing = ["src/functions.php:383"]
 
 [navigation.instance-property]
 kind = "Instance property"
 name = "Psy\\Context::$scopeVariables"
-definition = "timeout"
+definition = "correct"
 refs_expected = 5
-references = "timeout"
-refs_found = 0
+refs_found = 5
 refs_extra = 0
+references = "all"
 
 [navigation.static-property]
 kind = "Static property"
 name = "Psy\\Util\\Docblock::$vectors"
-definition = "timeout"
+definition = "correct"
 refs_expected = 6
-references = "timeout"
-refs_found = 0
+refs_found = 6
 refs_extra = 0
+references = "all"
 
 [navigation.constructor]
 kind = "Constructor"
 name = "Psy\\ConfigPaths::__construct()"
 definition = "n/a"
 refs_expected = 15
-references = "timeout"
-refs_found = 0
+refs_found = 15
 refs_extra = 0
+references = "all"

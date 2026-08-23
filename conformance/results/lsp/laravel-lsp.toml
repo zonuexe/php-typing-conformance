@@ -179,7 +179,7 @@ shown = ""
 [framework.env-diagnostic]
 feature = "env-diagnostic"
 method = "push-diagnostics"
-expected = ""
+expected = "GATE_MISSING_KEY"
 probe = "answered"
 shown = "Env [GATE_MISSING_KEY] not found."
 
@@ -188,12 +188,12 @@ feature = "config-hover"
 method = "textDocument/hover"
 expected = "Laravel"
 probe = "answered"
-shown = "`Laravel`\n\n[config/app.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/config/app.php#L16)"
+shown = "`Laravel`\n\n[config/app.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/config/app.php#L16)"
 
 [framework.config-diagnostic]
 feature = "config-diagnostic"
 method = "push-diagnostics"
-expected = ""
+expected = "gate.missing"
 probe = "answered"
 shown = "Config [gate.missing] not found."
 
@@ -202,7 +202,7 @@ feature = "route-hover"
 method = "textDocument/hover"
 expected = ""
 probe = "answered"
-shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/resources/views/folio/explore/index.blade.php)"
+shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/resources/views/folio/explore/index.blade.php)"
 
 [framework.route-definition]
 feature = "route-definition"
@@ -214,7 +214,7 @@ shown = ""
 [framework.route-diagnostic]
 feature = "route-diagnostic"
 method = "push-diagnostics"
-expected = ""
+expected = "gate.missing"
 probe = "answered"
 shown = "Route [gate.missing] not found."
 
@@ -223,19 +223,19 @@ feature = "route-blade-hover"
 method = "textDocument/hover"
 expected = ""
 probe = "answered"
-shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/resources/views/folio/explore/index.blade.php)"
+shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/resources/views/folio/explore/index.blade.php)"
 
 [framework.view-hover]
 feature = "view-hover"
 method = "textDocument/hover"
 expected = ""
 probe = "answered"
-shown = "[resources/views/welcome.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/resources/views/welcome.blade.php)"
+shown = "[resources/views/welcome.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/resources/views/welcome.blade.php)"
 
 [framework.view-diagnostic]
 feature = "view-diagnostic"
 method = "push-diagnostics"
-expected = ""
+expected = "missing.page"
 probe = "answered"
 shown = "View [missing.page] not found."
 
@@ -244,25 +244,25 @@ feature = "trans-hover"
 method = "textDocument/hover"
 expected = "Explore"
 probe = "answered"
-shown = "`en`: Explore\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/lang/en/boards.php#L5)"
+shown = "`en`: Explore\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/lang/en/boards.php#L5)"
 
 [framework.trans-dotted-hover]
 feature = "trans-dotted-hover"
 method = "textDocument/hover"
 expected = "Public"
 probe = "answered"
-shown = "`en`: Public\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/lang/en/boards.php#L10)"
+shown = "`en`: Public\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/lang/en/boards.php#L10)"
 
 [framework.trans-replace-hover]
 feature = "trans-replace-hover"
 method = "textDocument/hover"
 expected = "No public threads on :name."
 probe = "answered"
-shown = "`en`: No public threads on :name.\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8243a7bc8797.09671678/lang/en/boards.php#L8)"
+shown = "`en`: No public threads on :name.\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/lang/en/boards.php#L8)"
 
 [framework.trans-diagnostic]
 feature = "trans-diagnostic"
 method = "push-diagnostics"
-expected = ""
+expected = "boards.missing"
 probe = "answered"
 shown = "Translation [boards.missing] not found."

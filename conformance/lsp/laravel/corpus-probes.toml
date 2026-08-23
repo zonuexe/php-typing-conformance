@@ -41,9 +41,9 @@ expected = "Laravel"
 id = "config-diagnostic"
 method = "push-diagnostics"
 file = "app/Support/LspSurface.php"
-at = "config('app.missing_key')"
+at = "config('gate.missing')"
 offset = 8
-expected = "app.missing_key"
+expected = "gate.missing"
 
 [[framework]]
 id = "route-hover"

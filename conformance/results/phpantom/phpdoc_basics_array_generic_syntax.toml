@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_basics_array_generic_syntax.php:53: Argument 1 ($values) expects array<string>, got array{1} [type_mismatch_argument]
+phpdoc_basics_array_generic_syntax.php:54: Argument 1 ($values) expects array<string>, got array{1} [type_mismatch_argument]
+phpdoc_basics_array_generic_syntax.php:56: Argument 1 ($values) expects list<string>, got array{1} [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

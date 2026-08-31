@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_generic_class_string.php:49: Argument 1 ($class) expects class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>, got class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Unrelated> [type_mismatch_argument]
+phpdoc_advanced_generic_class_string.php:50: Argument 1 ($interface) expects interface-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>, got class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Implementation> [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

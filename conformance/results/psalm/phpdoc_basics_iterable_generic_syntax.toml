@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_basics_iterable_generic_syntax.php:32: Argument 1 of Conformance\\Tests\\PhpdocBasicsIterableGenericSyntax\\takesStringIterable expects iterable<mixed, string>, but list{1} provided [InvalidArgument]
+phpdoc_basics_iterable_generic_syntax.php:33: Argument 1 of Conformance\\Tests\\PhpdocBasicsIterableGenericSyntax\\takesIntegerStringIterable expects iterable<int, string>, but array{one: 'one'} provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

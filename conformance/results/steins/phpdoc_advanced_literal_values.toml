@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "phpdoc_advanced_literal_values.php:48: argument 2.5 to takesLiteralFloat() violates declared @param 1.5 $value — declared contract violation [phpdoc.param-mismatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

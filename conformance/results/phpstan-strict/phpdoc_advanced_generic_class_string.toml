@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_generic_class_string.php:49: Parameter #1 $class of function Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractClassString expects class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>, string given.
+phpdoc_advanced_generic_class_string.php:51: Parameter #1 $class of function Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractClassString expects class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>, string given."""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

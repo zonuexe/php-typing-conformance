@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_literal_values.php:30: Saw possibly unextractable annotation for a fragment of comment '* @param Status::ACTIVE $value': after Status, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_literal_values.php:30: Saw a token Phan may have failed to parse after '* @param Status::ACTIVE $value': after Status, saw ':' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_literal_values.php:37: Saw possibly unextractable annotation for a fragment of comment '* @param Status::* $value': after Status, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+phpdoc_advanced_literal_values.php:37: Saw a token Phan may have failed to parse after '* @param Status::* $value': after Status, saw ':' [PhanUnextractableAnnotationSuffix]
+phpdoc_advanced_literal_values.php:48: Argument 1 ($value) is 2.5 of type float (value: 2.5) but \\Conformance\\Tests\\PhpdocAdvancedLiteralValues\\takesLiteralFloat() takes float (value: 1.5) (real type float) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_literal_values.php:25 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/3"
+unrecognized_lines = [30, 37]
+false_positive_lines = []
+over_rejected_lines = []

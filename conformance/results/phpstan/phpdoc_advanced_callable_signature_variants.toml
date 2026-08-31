@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_callable_signature_variants.php:67: Parameter #1 $callback of function Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\takesOptionalArgumentCallable expects callable(int, int=): string, Closure(string): string given. [reported-from-level=5]
+phpdoc_advanced_callable_signature_variants.php:69: Parameter #1 $callback of function Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\takesVariadicCallable expects callable(float ...): (int|null), Closure(float): 1 given. [reported-from-level=5]
+phpdoc_advanced_callable_signature_variants.php:70: Parameter #1 $callback of function Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\takesClosureSignature expects Closure(int, int): string, Closure(string, string): string given. [reported-from-level=5]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

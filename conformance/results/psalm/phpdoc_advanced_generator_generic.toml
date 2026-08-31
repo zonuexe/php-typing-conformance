@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_generator_generic.php:48: Argument 1 of Conformance\\Tests\\PhpdocAdvancedGeneratorGeneric\\takesStringGenerator expects Generator<int, string, void, bool>, but Generator<int, int, void, bool> provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_literal_values.php:48: Argument 1 of Conformance\\Tests\\PhpdocAdvancedLiteralValues\\takesLiteralFloat expects float(1.5), but float(2.5) provided [InvalidArgument]
+phpdoc_advanced_literal_values.php:49: Argument 1 of Conformance\\Tests\\PhpdocAdvancedLiteralValues\\takesActiveStatus expects 'active', but 'inactive' provided [InvalidArgument]
+phpdoc_advanced_literal_values.php:50: Argument 1 of Conformance\\Tests\\PhpdocAdvancedLiteralValues\\takesAnyStatus expects 'active'|'inactive', but 'unknown' provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

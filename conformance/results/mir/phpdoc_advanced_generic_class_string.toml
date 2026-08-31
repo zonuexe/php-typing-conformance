@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_generic_class_string.php:49: InvalidArgument: Argument $class of takesContractClassString() expects 'class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>', got 'class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Unrelated>' [MIR0201]
+phpdoc_advanced_generic_class_string.php:50: InvalidArgument: Argument $interface of takesContractInterfaceString() expects 'interface-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>', got 'class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Implementation>' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

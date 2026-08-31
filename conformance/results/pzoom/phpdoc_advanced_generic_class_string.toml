@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_generic_class_string.php:49: Argument 1 of takesContractClassString expects class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>, but Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Unrelated::class provided [InvalidArgument]
+phpdoc_advanced_generic_class_string.php:51: Argument 1 of takesContractClassString expects class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>, but parent type 'not a class name' provided [ArgumentTypeCoercion]
+phpdoc_advanced_generic_class_string.php:51: Class not a class name does not exist [UndefinedClass]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

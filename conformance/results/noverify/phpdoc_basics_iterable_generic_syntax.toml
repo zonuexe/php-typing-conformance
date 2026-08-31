@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_basics_iterable_generic_syntax.php:18: param $values miss matched with phpdoc type <<iterable<string>>> [funcParamTypeMissMatch]
+phpdoc_basics_iterable_generic_syntax.php:25: param $values miss matched with phpdoc type <<iterable<int, string>>> [funcParamTypeMissMatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [18, 25]
+false_positive_lines = []
+over_rejected_lines = []

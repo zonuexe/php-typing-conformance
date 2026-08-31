@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_generic_class_string.php:49: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractClassString`: expected `class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>`, but found `class-string('Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Unrelated')`. [invalid-argument]
+phpdoc_advanced_generic_class_string.php:51: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractClassString`: expected `class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>`, but possibly received `string('not a class name')`. [possibly-invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_basics_array_generic_syntax.php:30: param $values miss matched with phpdoc type <<array<string>>> [funcParamTypeMissMatch]
+phpdoc_basics_array_generic_syntax.php:37: param $values miss matched with phpdoc type <<array<int, string>>> [funcParamTypeMissMatch]
+phpdoc_basics_array_generic_syntax.php:44: param $values miss matched with phpdoc type <<list<string>>> [funcParamTypeMissMatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/4"
+unrecognized_lines = [30, 37, 44]
+false_positive_lines = []
+over_rejected_lines = []

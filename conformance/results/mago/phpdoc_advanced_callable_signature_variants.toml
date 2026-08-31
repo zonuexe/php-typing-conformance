@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_callable_signature_variants.php:67: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\takesOptionalArgumentCallable`: expected `(callable(int, int=): string)`, but found `(closure(string): string)`. [invalid-argument]
+phpdoc_advanced_callable_signature_variants.php:70: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\takesClosureSignature`: expected `(closure(int, int): string)`, but found `(closure(string, string): string)`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

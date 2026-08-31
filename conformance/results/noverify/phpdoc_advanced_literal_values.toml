@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_literal_values.php:32: param $value miss matched with phpdoc type <<Status::ACTIVE>> [funcParamTypeMissMatch]
+phpdoc_advanced_literal_values.php:39: param $value miss matched with phpdoc type <<Status::*>> [funcParamTypeMissMatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/3"
+unrecognized_lines = [32, 39]
+false_positive_lines = []
+over_rejected_lines = []

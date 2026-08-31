@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_static_this_return.php:52: Argument 1 ($value) is $base->copyAsStatic() of type \\Conformance\\Tests\\PhpdocAdvancedStaticThisReturn\\Base but \\Conformance\\Tests\\PhpdocAdvancedStaticThisReturn\\takesChild() takes \\Conformance\\Tests\\PhpdocAdvancedStaticThisReturn\\Child defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_static_this_return.php:43 (expected type to be the same or a subtype, but saw a supertype instead) [PhanTypeMismatchArgumentSuperType]
+phpdoc_advanced_static_this_return.php:53: Argument 1 ($value) is $base->copyAsThis() of type \\Conformance\\Tests\\PhpdocAdvancedStaticThisReturn\\Base but \\Conformance\\Tests\\PhpdocAdvancedStaticThisReturn\\takesChild() takes \\Conformance\\Tests\\PhpdocAdvancedStaticThisReturn\\Child defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_static_this_return.php:43 (expected type to be the same or a subtype, but saw a supertype instead) [PhanTypeMismatchArgumentSuperType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

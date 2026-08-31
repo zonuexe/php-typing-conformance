@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_object_shape_variants.php:55: Parameter #1 $shape of function Conformance\\Tests\\PhpdocAdvancedObjectShapeVariants\\takesOptionalObjectShape expects object{foo: int, bar?: string}, Conformance\\Tests\\PhpdocAdvancedObjectShapeVariants\\WrongFooType given.
+phpdoc_advanced_object_shape_variants.php:56: Parameter #1 $shape of function Conformance\\Tests\\PhpdocAdvancedObjectShapeVariants\\takesWritableObjectShape expects object{foo: int}&stdClass, object{foo: string}&stdClass given."""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

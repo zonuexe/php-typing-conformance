@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_callable_signature_variants.php:67: Argument 1 of takesOptionalArgumentCallable expects callable(int, int=):string, but pure-Closure(string):string provided [PossiblyInvalidArgument]
+phpdoc_advanced_callable_signature_variants.php:70: Argument 1 of takesClosureSignature expects Closure(int, int):string, but pure-Closure(string, string):string provided [InvalidScalarArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

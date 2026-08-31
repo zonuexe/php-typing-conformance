@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_callable_signature_variants.php:27: Invalid type '$value' in docblock for Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\takesByReferenceCallable [InvalidDocblock]
+phpdoc_advanced_callable_signature_variants.php:67: Argument 1 of Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\takesOptionalArgumentCallable expects callable(int, int=):string, but pure-Closure(string):string provided [InvalidScalarArgument]
+phpdoc_advanced_callable_signature_variants.php:70: Argument 1 of Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\takesClosureSignature expects Closure(int, int):string, but pure-Closure(string, string):string provided [InvalidScalarArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = [27]
+false_positive_lines = []
+over_rejected_lines = []

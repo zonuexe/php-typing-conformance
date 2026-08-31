@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_callable_signature_variants.php:57: InvalidArgument: Argument $callback of takesByReferenceCallable() expects 'callable whose parameter #1 accepts Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\string &', got 'callable whose parameter #1 only accepts string' [MIR0201]
+phpdoc_advanced_callable_signature_variants.php:67: InvalidArgument: Argument $callback of takesOptionalArgumentCallable() expects 'callable whose parameter #1 accepts int', got 'callable whose parameter #1 only accepts string' [MIR0201]
+phpdoc_advanced_callable_signature_variants.php:68: InvalidArgument: Argument $callback of takesByReferenceCallable() expects 'callable whose parameter #1 accepts Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\string &', got 'callable whose parameter #1 only accepts string' [MIR0201]
+phpdoc_advanced_callable_signature_variants.php:69: InvalidArgument: Argument $callback of takesVariadicCallable() expects 'callable whose parameter #1 accepts Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\float ...', got 'callable whose parameter #1 only accepts float' [MIR0201]
+phpdoc_advanced_callable_signature_variants.php:70: InvalidArgument: Argument $callback of takesClosureSignature() expects 'callable whose parameter #1 accepts int', got 'callable whose parameter #1 only accepts string' [MIR0201]"""
+errors_diff = "Line 57: Expected valid value to be accepted, got [\"InvalidArgument: Argument $callback of takesByReferenceCallable() expects 'callable whose parameter #1 accepts Conformance\\\\Tests\\\\PhpdocAdvancedCallableSignatureVariants\\\\string &', got 'callable whose parameter #1 only accepts string' [MIR0201]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "4/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = [57]

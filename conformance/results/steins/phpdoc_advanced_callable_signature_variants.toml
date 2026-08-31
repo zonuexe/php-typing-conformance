@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_callable_signature_variants.php:67: callable argument to takesOptionalArgumentCallable() violates declared @param callable(int, int=): string $callback — parameter #1 type is incompatible (callable parameter contravariance) [phpdoc.param-mismatch]
+phpdoc_advanced_callable_signature_variants.php:70: callable argument to takesClosureSignature() violates declared @param \\Closure(int, int): string $callback — parameter #1 type is incompatible (callable parameter contravariance) [phpdoc.param-mismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

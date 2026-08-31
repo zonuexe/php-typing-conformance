@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_callable_signature_variants.php:65: not null safety call in function Conformance\\Tests\\PhpdocAdvancedCallableSignatureVariants\\takesClosureSignature signature of param callback [notNullSafetyFunctionArgumentVariable]"
+errors_diff = "Line 65: Expected valid value to be accepted, got [\"not null safety call in function Conformance\\\\Tests\\\\PhpdocAdvancedCallableSignatureVariants\\\\takesClosureSignature signature of param callback [notNullSafetyFunctionArgumentVariable]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

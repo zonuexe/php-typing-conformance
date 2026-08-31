@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_basics_array_generic_syntax.php:53: InvalidArgument: Argument $values of takesStringArray() expects 'array<int|string, string>', got 'array{0: 1}' [MIR0201]
+phpdoc_basics_array_generic_syntax.php:54: InvalidArgument: Argument $values of takesGenericStringArray() expects 'array<int|string, string>', got 'array{0: 1}' [MIR0201]
+phpdoc_basics_array_generic_syntax.php:56: InvalidArgument: Argument $values of takesStringList() expects 'list<string>', got 'array{0: 1}' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

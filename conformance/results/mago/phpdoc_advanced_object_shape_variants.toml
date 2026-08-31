@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_object_shape_variants.php:44: Could not resolve the type for the @param tag. [invalid-param-tag]
+phpdoc_advanced_object_shape_variants.php:55: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedObjectShapeVariants\\takesOptionalObjectShape`: expected `object{bar?: string, foo: int}`, but found `Conformance\\Tests\\PhpdocAdvancedObjectShapeVariants\\WrongFooType`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [44]
+false_positive_lines = []
+over_rejected_lines = []

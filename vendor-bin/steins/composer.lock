@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "acc6be8f4132b4ee2a5fcce17d11bd5e",
+    "content-hash": "6bf93d96771cd5c80220cd7982f67d43",
     "packages": [],
     "packages-dev": [
         {
             "name": "typedduck/steins",
-            "version": "v0.1.5",
+            "version": "v0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rigortype/steins.git",
-                "reference": "39b4cc1185ce3693fa4683ae68965e173e7b3a79"
+                "reference": "c13b4c7d74e56a1b72c97dec944aed35a5291047"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rigortype/steins/zipball/39b4cc1185ce3693fa4683ae68965e173e7b3a79",
-                "reference": "39b4cc1185ce3693fa4683ae68965e173e7b3a79",
+                "url": "https://api.github.com/repos/rigortype/steins/zipball/c13b4c7d74e56a1b72c97dec944aed35a5291047",
+                "reference": "c13b4c7d74e56a1b72c97dec944aed35a5291047",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "issues": "https://github.com/rigortype/steins/issues",
                 "source": "https://github.com/rigortype/steins"
             },
-            "time": "2026-08-12T19:24:57+00:00"
+            "time": "2026-08-25T11:38:56+00:00"
         },
         {
             "name": "typedduck/steins-attributes",

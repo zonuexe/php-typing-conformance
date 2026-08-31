@@ -1,5 +1,5 @@
 {
     "require-dev": {
-        "carthage-software/mago": "^1.47.3"
+        "carthage-software/mago": "^1.47.4"
     }
 }

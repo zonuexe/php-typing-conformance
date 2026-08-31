@@ -1,13 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 7
 output = """
-regressions_optional_key_shape_is_list.php:26: param $a miss matched with phpdoc type <<array{a?: string}>> [funcParamTypeMissMatch]
-regressions_optional_key_shape_is_list.php:34: param $a miss matched with phpdoc type <<array{a?: string}>> [funcParamTypeMissMatch]"""
-errors_diff = """
-Line 27: Expected 1 error(s)
-Line 35: Expected 1 error(s)
-Line 26: Unexpected errors ["param $a miss matched with phpdoc type <<array{a?: string}>> [funcParamTypeMissMatch]"]
-Line 34: Unexpected errors ["param $a miss matched with phpdoc type <<array{a?: string}>> [funcParamTypeMissMatch]"]"""
+regressions_optional_key_shape_is_list.php:27: param $a miss matched with phpdoc type <<array{a?: string}>> [funcParamTypeMissMatch]
+regressions_optional_key_shape_is_list.php:35: param $a miss matched with phpdoc type <<array{a?: string}>> [funcParamTypeMissMatch]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

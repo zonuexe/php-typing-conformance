@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_generic_class_string.php:39: Undefined class 'interface-string' [PhpUndefinedClassInspection]
+phpdoc_advanced_generic_class_string.php:47: Parameter 'Contract::class' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_generic_class_string.php:50: Parameter 'Implementation::class' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = "Line 47: Expected valid value to be accepted, got [\"Parameter 'Contract::class' type is not compatible with declaration [PhpParamsInspection]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/3"
+unrecognized_lines = [39]
+false_positive_lines = []
+over_rejected_lines = [47]

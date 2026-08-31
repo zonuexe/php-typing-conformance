@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "debug_phpstan_assert_super_type.php:26: Expected subtype of string, actual: int [identifier=phpstan.superType] [reported-from-level=0]"
+output = "debug_phpstan_assert_super_type.php:26: Expected subtype of string, actual: int [reported-from-level=0]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

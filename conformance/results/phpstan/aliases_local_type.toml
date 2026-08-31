@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "aliases_local_type.php:40: Parameter #1 $address of method Conformance\\Tests\\AliasesLocalType\\User::setAddress() expects array{street: string, city: string, zip: string}, array{street: '1 Main St', city: 'Town'} given. [identifier=argument.type] [reported-from-level=5]"
+output = "aliases_local_type.php:40: Parameter #1 $address of method Conformance\\Tests\\AliasesLocalType\\User::setAddress() expects array{street: string, city: string, zip: string}, array{street: '1 Main St', city: 'Town'} given. [reported-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "arrays_non_empty_list.php:23: Parameter #1 $values of function Conformance\\Tests\\ArraysNonEmptyList\\takesNonEmptyList expects non-empty-list<int>, array{} given. [identifier=argument.type]"
+output = "arrays_non_empty_list.php:23: Parameter #1 $values of function Conformance\\Tests\\ArraysNonEmptyList\\takesNonEmptyList expects non-empty-list<int>, array{} given."
 errors_diff = ""
 notes = ""
 ignore_errors = []

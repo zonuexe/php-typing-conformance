@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = ""
+output = """
+regressions_unset_pseudo_type.php:48: $read is declared \\DateTime|unset and may be undefined at this read — guard it with isset($read) or give it a default [phpdoc.maybe-undefined]
+regressions_unset_pseudo_type.php:51: $passed is declared \\DateTime|unset and may be undefined at this read — guard it with isset($passed) or give it a default [phpdoc.maybe-undefined]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "3/5"
-unrecognized_lines = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "5/5"
+unrecognized_lines = [48, 51]
 false_positive_lines = []
 over_rejected_lines = []

@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-regressions_string_narrowing_assert_if_true.php:37: Parameter #1 $s of function Conformance\\Tests\\RegressionsStringNarrowingAssertIfTrue\\takesNonEmpty expects non-empty-string, string given. [identifier=argument.type]
-regressions_string_narrowing_assert_if_true.php:43: Parameter #1 $s of function Conformance\\Tests\\RegressionsStringNarrowingAssertIfTrue\\takesNonEmpty expects non-empty-string, string given. [identifier=argument.type]"""
+regressions_string_narrowing_assert_if_true.php:37: Parameter #1 $s of function Conformance\\Tests\\RegressionsStringNarrowingAssertIfTrue\\takesNonEmpty expects non-empty-string, string given.
+regressions_string_narrowing_assert_if_true.php:43: Parameter #1 $s of function Conformance\\Tests\\RegressionsStringNarrowingAssertIfTrue\\takesNonEmpty expects non-empty-string, string given."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_output_reference_phan.php:43: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedVendorPrefixedOutputReferencePhan\\takesString expects string, string|null given. [identifier=argument.type] [reported-from-level=8]"
+output = "phpdoc_advanced_vendor_prefixed_output_reference_phan.php:43: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedVendorPrefixedOutputReferencePhan\\takesString expects string, string|null given. [reported-from-level=8]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

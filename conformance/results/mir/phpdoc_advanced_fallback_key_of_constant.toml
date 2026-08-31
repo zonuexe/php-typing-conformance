@@ -1,13 +1,22 @@
 status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_fallback_key_of_constant.php:46: MixedArgument: Argument $value of acceptsString() is mixed [MIR1200]"
-errors_diff = "Line 46: Expected valid value to be accepted, got [\"MixedArgument: Argument $value of acceptsString() is mixed [MIR1200]\"]"
+output = """
+phpdoc_advanced_fallback_key_of_constant.php:31: InvalidReturnType: Return type '"debug"|"verbose"' is not compatible with declared 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfConstant\\Config::MAP>' [MIR0200]
+phpdoc_advanced_fallback_key_of_constant.php:46: InvalidArgument: Argument $value of acceptsString() expects 'string', got 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfConstant\\Config::MAP>' [MIR0201]
+phpdoc_advanced_fallback_key_of_constant.php:49: InvalidArgument: Argument $key of acceptsConfigKey() expects 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfConstant\\Config::MAP>', got '"debug"' [MIR0201]
+phpdoc_advanced_fallback_key_of_constant.php:50: InvalidArgument: Argument $key of acceptsConfigKey() expects 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfConstant\\Config::MAP>', got '"verbose"' [MIR0201]
+phpdoc_advanced_fallback_key_of_constant.php:53: InvalidArgument: Argument $key of acceptsConfigKey() expects 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfConstant\\Config::MAP>', got '"missing"' [MIR0201]"""
+errors_diff = """
+Line 31: Expected valid value to be accepted, got ["InvalidReturnType: Return type '\\"debug\\"|\\"verbose\\"' is not compatible with declared 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackKeyOfConstant\\\\Config::MAP>' [MIR0200]"]
+Line 46: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsString() expects 'string', got 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackKeyOfConstant\\\\Config::MAP>' [MIR0201]"]
+Line 49: Expected valid value to be accepted, got ["InvalidArgument: Argument $key of acceptsConfigKey() expects 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackKeyOfConstant\\\\Config::MAP>', got '\\"debug\\"' [MIR0201]"]
+Line 50: Expected valid value to be accepted, got ["InvalidArgument: Argument $key of acceptsConfigKey() expects 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackKeyOfConstant\\\\Config::MAP>', got '\\"verbose\\"' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = []
+over_rejected_lines = [46, 49, 50]

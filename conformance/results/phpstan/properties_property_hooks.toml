@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 8
-output = "properties_property_hooks.php:29: Property Conformance\\Tests\\PropertiesPropertyHooks\\HookedName::$name (string) does not accept int. [identifier=assign.propertyType] [reported-from-level=3]"
+output = "properties_property_hooks.php:29: Property Conformance\\Tests\\PropertiesPropertyHooks\\HookedName::$name (string) does not accept int. [reported-from-level=3]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

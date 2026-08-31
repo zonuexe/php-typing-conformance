@@ -1,7 +1,10 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 9
-output = "psr_phpdoc_param_return.php:44: argument 42 to encodeMessage() violates declared @param string $message — declared contract violation [phpdoc.param-mismatch]"
-errors_diff = ""
+output = """
+psr_phpdoc_param_return.php:29: argument 42 (from $message, bound at encodeMessage(42) call on line 44) to strlen() cannot become string $string — proven TypeError (strict mode) [type.argument-mismatch]
+psr_phpdoc_param_return.php:29: argument 1 (from $message, bound at encodeMessage(1) call on line 47) to strlen() cannot become string $string — proven TypeError (strict mode) [type.argument-mismatch]
+psr_phpdoc_param_return.php:44: argument 42 to encodeMessage() violates declared @param string $message — declared contract violation [phpdoc.param-mismatch]"""
+errors_diff = "Line 29: Unexpected errors [\"argument 42 (from $message, bound at encodeMessage(42) call on line 44) to strlen() cannot become string $string — proven TypeError (strict mode) [type.argument-mismatch]\",\"argument 1 (from $message, bound at encodeMessage(1) call on line 47) to strlen() cannot become string $string — proven TypeError (strict mode) [type.argument-mismatch]\"]"
 notes = ""
 ignore_errors = []

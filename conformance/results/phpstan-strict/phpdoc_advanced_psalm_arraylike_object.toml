@@ -2,13 +2,13 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_psalm_arraylike_object.php:25: Function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike() has parameter $obj with no type specified. [identifier=missingType.parameter]
-phpdoc_advanced_psalm_arraylike_object.php:25: PHPDoc tag @param for parameter $obj contains unresolvable type. [identifier=parameter.unresolvableType]
-phpdoc_advanced_psalm_arraylike_object.php:42: Function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\readsElement() has parameter $obj with no type specified. [identifier=missingType.parameter]
-phpdoc_advanced_psalm_arraylike_object.php:42: PHPDoc tag @param for parameter $obj contains unresolvable type. [identifier=parameter.unresolvableType]
-phpdoc_advanced_psalm_arraylike_object.php:47: Cannot access offset 'key' on mixed. [identifier=offsetAccess.nonOffsetAccessible]
-phpdoc_advanced_psalm_arraylike_object.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\takesInt expects int, mixed given. [identifier=argument.type]"""
-errors_diff = "Line 47: Expected silence (quiet probe), got [\"Cannot access offset 'key' on mixed. [identifier=offsetAccess.nonOffsetAccessible]\"]"
+phpdoc_advanced_psalm_arraylike_object.php:25: Function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike() has parameter $obj with no type specified.
+phpdoc_advanced_psalm_arraylike_object.php:25: PHPDoc tag @param for parameter $obj contains unresolvable type.
+phpdoc_advanced_psalm_arraylike_object.php:42: Function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\readsElement() has parameter $obj with no type specified.
+phpdoc_advanced_psalm_arraylike_object.php:42: PHPDoc tag @param for parameter $obj contains unresolvable type.
+phpdoc_advanced_psalm_arraylike_object.php:47: Cannot access offset 'key' on mixed.
+phpdoc_advanced_psalm_arraylike_object.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\takesInt expects int, mixed given."""
+errors_diff = "Line 47: Expected silence (quiet probe), got [\"Cannot access offset 'key' on mixed.\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"

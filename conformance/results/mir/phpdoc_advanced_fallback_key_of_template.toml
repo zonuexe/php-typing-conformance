@@ -2,19 +2,19 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_fallback_key_of_template.php:30: MixedAssignment: Variable $_ is assigned a mixed type [MIR1201]
-phpdoc_advanced_fallback_key_of_template.php:56: MixedArgument: Argument $value of acceptsString() is mixed [MIR1200]
-phpdoc_advanced_fallback_key_of_template.php:60: MixedArgument: Argument $flag of acceptsFlagName() is mixed [MIR1200]
-phpdoc_advanced_fallback_key_of_template.php:63: MixedArgument: Argument $value of acceptsInt() is mixed [MIR1200]"""
+phpdoc_advanced_fallback_key_of_template.php:34: InvalidReturnType: Return type 'key-of<T>' is not compatible with declared 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfTemplate\\T>' [MIR0200]
+phpdoc_advanced_fallback_key_of_template.php:56: InvalidArgument: Argument $value of acceptsString() expects 'string', got 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfTemplate\\T>' [MIR0201]
+phpdoc_advanced_fallback_key_of_template.php:60: InvalidArgument: Argument $flag of acceptsFlagName() expects '"debug"|"verbose"', got 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfTemplate\\T>' [MIR0201]
+phpdoc_advanced_fallback_key_of_template.php:63: InvalidArgument: Argument $value of acceptsInt() expects 'int', got 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfTemplate\\T>' [MIR0201]"""
 errors_diff = """
-Line 56: Expected valid value to be accepted, got ["MixedArgument: Argument $value of acceptsString() is mixed [MIR1200]"]
-Line 60: Expected valid value to be accepted, got ["MixedArgument: Argument $flag of acceptsFlagName() is mixed [MIR1200]"]
-Line 30: Unexpected errors ["MixedAssignment: Variable $_ is assigned a mixed type [MIR1201]"]"""
+Line 34: Expected valid value to be accepted, got ["InvalidReturnType: Return type 'key-of<T>' is not compatible with declared 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackKeyOfTemplate\\\\T>' [MIR0200]"]
+Line 56: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsString() expects 'string', got 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackKeyOfTemplate\\\\T>' [MIR0201]"]
+Line 60: Expected valid value to be accepted, got ["InvalidArgument: Argument $flag of acceptsFlagName() expects '\\"debug\\"|\\"verbose\\"', got 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackKeyOfTemplate\\\\T>' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
-false_positive_lines = [30]
-over_rejected_lines = []
+false_positive_lines = []
+over_rejected_lines = [56, 60]

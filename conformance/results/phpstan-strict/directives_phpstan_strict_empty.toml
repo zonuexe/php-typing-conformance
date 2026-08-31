@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "directives_phpstan_strict_empty.php:22: Construct empty() is not allowed. Use more strict comparison. [identifier=empty.notAllowed]"
+output = "directives_phpstan_strict_empty.php:22: Construct empty() is not allowed. Use more strict comparison."
 errors_diff = ""
 notes = ""
 ignore_errors = []

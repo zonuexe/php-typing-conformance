@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_literal_string.php:52: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\acceptsLiteralString expects literal-string, string given. [identifier=argument.type] [reported-from-level=7]
-phpdoc_advanced_fallback_literal_string.php:55: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\acceptsLiteralString expects literal-string, non-falsy-string given. [identifier=argument.type] [reported-from-level=7]"""
+phpdoc_advanced_fallback_literal_string.php:52: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\acceptsLiteralString expects literal-string, string given. [reported-from-level=7]
+phpdoc_advanced_fallback_literal_string.php:55: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackLiteralString\\acceptsLiteralString expects literal-string, non-falsy-string given. [reported-from-level=7]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

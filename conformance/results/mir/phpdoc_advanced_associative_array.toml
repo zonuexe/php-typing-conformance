@@ -1,15 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_associative_array.php:28: InvalidArgument: Argument $map of acceptsAssoc() expects 'Conformance\\Tests\\PhpdocAdvancedAssociativeArray\\associative-array<int, string>', got 'array{5: "a", 9: "b"}' [MIR0201]
-phpdoc_advanced_associative_array.php:32: InvalidArgument: Argument $map of acceptsAssoc() expects 'Conformance\\Tests\\PhpdocAdvancedAssociativeArray\\associative-array<int, string>', got 'array{0: "a", 1: "b", 2: "c"}' [MIR0201]"""
-errors_diff = "Line 28: Expected valid value to be accepted, got [\"InvalidArgument: Argument $map of acceptsAssoc() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedAssociativeArray\\\\associative-array<int, string>', got 'array{5: \\\"a\\\", 9: \\\"b\\\"}' [MIR0201]\"]"
+phpdoc_advanced_associative_array.php:23: MismatchingDocblockParamType: Docblock type 'array<int, string>&array{}' for $map does not match inferred 'array' [MIR0210]
+phpdoc_advanced_associative_array.php:32: InvalidArgument: Argument $map of acceptsAssoc() expects 'array<int, string>&array{}', got 'array{0: "a", 1: "b", 2: "c"}' [MIR0201]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "recognized"
+recognition = "unrecognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
-unrecognized_lines = []
+unrecognized_lines = [23]
 false_positive_lines = []
-over_rejected_lines = [28]
+over_rejected_lines = []

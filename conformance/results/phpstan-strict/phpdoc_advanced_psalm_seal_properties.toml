@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
-phpdoc_advanced_psalm_seal_properties.php:75: Access to an undefined property Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\SealedBag::$extra. [identifier=property.notFound]
-phpdoc_advanced_psalm_seal_properties.php:84: Access to an undefined property Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\UnsealedBag::$extra. [identifier=property.notFound]"""
+phpdoc_advanced_psalm_seal_properties.php:75: Access to an undefined property Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\SealedBag::$extra.
+phpdoc_advanced_psalm_seal_properties.php:84: Access to an undefined property Conformance\\Tests\\PhpdocAdvancedPsalmSealProperties\\UnsealedBag::$extra."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

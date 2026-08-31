@@ -1,13 +1,23 @@
 status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_fallback_value_of_constant.php:46: MixedArgument: Argument $value of acceptsInt() is mixed [MIR1200]"
-errors_diff = "Line 46: Expected valid value to be accepted, got [\"MixedArgument: Argument $value of acceptsInt() is mixed [MIR1200]\"]"
+output = """
+phpdoc_advanced_fallback_value_of_constant.php:31: InvalidReturnType: Return type '1|10' is not compatible with declared 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\Levels::MAP>' [MIR0200]
+phpdoc_advanced_fallback_value_of_constant.php:46: InvalidArgument: Argument $value of acceptsInt() expects 'int', got 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\Levels::MAP>' [MIR0201]
+phpdoc_advanced_fallback_value_of_constant.php:49: InvalidArgument: Argument $value of acceptsLevel() expects 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\Levels::MAP>', got '1' [MIR0201]
+phpdoc_advanced_fallback_value_of_constant.php:50: InvalidArgument: Argument $value of acceptsLevel() expects 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\Levels::MAP>', got '10' [MIR0201]
+phpdoc_advanced_fallback_value_of_constant.php:54: InvalidArgument: Argument $value of acceptsLevel() expects 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\Levels::MAP>', got '5' [MIR0201]
+phpdoc_advanced_fallback_value_of_constant.php:57: InvalidArgument: Argument $value of acceptsLevel() expects 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\Levels::MAP>', got '"low"' [MIR0201]"""
+errors_diff = """
+Line 31: Expected valid value to be accepted, got ["InvalidReturnType: Return type '1|10' is not compatible with declared 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfConstant\\\\Levels::MAP>' [MIR0200]"]
+Line 46: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsInt() expects 'int', got 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfConstant\\\\Levels::MAP>' [MIR0201]"]
+Line 49: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsLevel() expects 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfConstant\\\\Levels::MAP>', got '1' [MIR0201]"]
+Line 50: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsLevel() expects 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfConstant\\\\Levels::MAP>', got '10' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = []
+over_rejected_lines = [46, 49, 50]

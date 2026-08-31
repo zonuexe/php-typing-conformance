@@ -3,7 +3,7 @@ conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
 phpdoc_advanced_phpstan_allow_private_mutation.php:28: Cannot modify a readonly property. [invalid-property-write]
-phpdoc_advanced_phpstan_allow_private_mutation.php:34: Cannot write to protected property `$value` on class `Conformance\\Tests\\PhpdocAdvancedPhpstanAllowPrivateMutation\\Counter`. [invalid-property-write]"""
+phpdoc_advanced_phpstan_allow_private_mutation.php:34: Cannot initialize readonly property `Conformance\\Tests\\PhpdocAdvancedPhpstanAllowPrivateMutation\\Counter::$value` from the global scope. [invalid-property-write]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

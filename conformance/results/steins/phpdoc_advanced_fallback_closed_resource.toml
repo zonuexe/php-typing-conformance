@@ -1,13 +1,13 @@
 status = "Falls back to a nonexistent-class reference"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
+output = "phpdoc_advanced_fallback_closed_resource.php:35: argument \"not a resource\" to acceptsClosedResource() violates declared @param closed-resource $value — declared contract violation [phpdoc.param-mismatch]"
 errors_diff = ""
 notes = "`closed-resource` lowers to `ContractTy::Class(\"closed-resource\")` (no `lower_identifier` entry), the same non-existent-class treatment as `resource` (divergence-registry.md entry 4) — open/closed handle state is not modeled."
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/2"
+enforcement = "partial"
+enforced_lines = "1/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

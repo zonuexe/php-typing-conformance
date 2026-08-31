@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_number.php:40: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\acceptsNumber expects float|int, string given. [identifier=argument.type] [reported-from-level=5]
-phpdoc_advanced_fallback_number.php:43: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\acceptsNumber expects float|int, true given. [identifier=argument.type] [reported-from-level=5]"""
+phpdoc_advanced_fallback_number.php:40: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\acceptsNumber expects float|int, string given. [reported-from-level=5]
+phpdoc_advanced_fallback_number.php:43: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\acceptsNumber expects float|int, true given. [reported-from-level=5]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -2,13 +2,13 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_psalm_arraylike_object.php:25: Function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike() has parameter $obj with no type specified. [identifier=missingType.parameter] [reported-from-level=6]
-phpdoc_advanced_psalm_arraylike_object.php:25: PHPDoc tag @param for parameter $obj contains unresolvable type. [identifier=parameter.unresolvableType] [reported-from-level=2]
-phpdoc_advanced_psalm_arraylike_object.php:42: Function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\readsElement() has parameter $obj with no type specified. [identifier=missingType.parameter] [reported-from-level=6]
-phpdoc_advanced_psalm_arraylike_object.php:42: PHPDoc tag @param for parameter $obj contains unresolvable type. [identifier=parameter.unresolvableType] [reported-from-level=2]
-phpdoc_advanced_psalm_arraylike_object.php:47: Cannot access offset 'key' on mixed. [identifier=offsetAccess.nonOffsetAccessible] [reported-from-level=10]
-phpdoc_advanced_psalm_arraylike_object.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\takesInt expects int, mixed given. [identifier=argument.type] [reported-from-level=10]"""
-errors_diff = "Line 47: Expected silence (quiet probe), got [\"Cannot access offset 'key' on mixed. [identifier=offsetAccess.nonOffsetAccessible] [reported-from-level=10]\"]"
+phpdoc_advanced_psalm_arraylike_object.php:25: Function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\acceptsArrayLike() has parameter $obj with no type specified. [reported-from-level=6]
+phpdoc_advanced_psalm_arraylike_object.php:25: PHPDoc tag @param for parameter $obj contains unresolvable type. [reported-from-level=2]
+phpdoc_advanced_psalm_arraylike_object.php:42: Function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\readsElement() has parameter $obj with no type specified. [reported-from-level=6]
+phpdoc_advanced_psalm_arraylike_object.php:42: PHPDoc tag @param for parameter $obj contains unresolvable type. [reported-from-level=2]
+phpdoc_advanced_psalm_arraylike_object.php:47: Cannot access offset 'key' on mixed. [reported-from-level=10]
+phpdoc_advanced_psalm_arraylike_object.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\takesInt expects int, mixed given. [reported-from-level=10]"""
+errors_diff = "Line 47: Expected silence (quiet probe), got [\"Cannot access offset 'key' on mixed. [reported-from-level=10]\"]"
 notes = ""
 ignore_errors = []
 expected_diagnostic_level = 10

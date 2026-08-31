@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_value_of_constant.php:54: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\acceptsLevel expects 1|10, 5 given. [identifier=argument.type]
-phpdoc_advanced_fallback_value_of_constant.php:57: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\acceptsLevel expects 1|10, 'low' given. [identifier=argument.type]"""
+phpdoc_advanced_fallback_value_of_constant.php:54: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\acceptsLevel expects 1|10, 5 given.
+phpdoc_advanced_fallback_value_of_constant.php:57: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackValueOfConstant\\acceptsLevel expects 1|10, 'low' given."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

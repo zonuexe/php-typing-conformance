@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_return_never_returns.php:35: Function Conformance\\Tests\\PhpdocAdvancedReturnNeverReturns\\claimsNeverButReturns() should never return but return statement found. [identifier=return.never]
-phpdoc_advanced_return_never_returns.php:42: Unreachable statement - code above always terminates. [identifier=deadCode.unreachable]"""
+phpdoc_advanced_return_never_returns.php:35: Function Conformance\\Tests\\PhpdocAdvancedReturnNeverReturns\\claimsNeverButReturns() should never return but return statement found.
+phpdoc_advanced_return_never_returns.php:42: Unreachable statement - code above always terminates."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

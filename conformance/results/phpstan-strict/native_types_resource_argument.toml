@@ -2,11 +2,11 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-native_types_resource_argument.php:16: Parameter $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesResource() has invalid type Conformance\\Tests\\NativeTypesResourceArgument\\resource. [identifier=class.notFound]
-native_types_resource_argument.php:37: Parameter #1 $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesResource expects Conformance\\Tests\\NativeTypesResourceArgument\\resource, resource given. [identifier=argument.type]
-native_types_resource_argument.php:38: Parameter #1 $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesString expects string, resource given. [identifier=argument.type]
-native_types_resource_argument.php:39: Parameter #1 $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesInt expects int, resource given. [identifier=argument.type]
-native_types_resource_argument.php:40: Parameter #1 $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesBool expects bool, resource given. [identifier=argument.type]"""
+native_types_resource_argument.php:16: Parameter $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesResource() has invalid type Conformance\\Tests\\NativeTypesResourceArgument\\resource.
+native_types_resource_argument.php:37: Parameter #1 $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesResource expects Conformance\\Tests\\NativeTypesResourceArgument\\resource, resource given.
+native_types_resource_argument.php:38: Parameter #1 $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesString expects string, resource given.
+native_types_resource_argument.php:39: Parameter #1 $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesInt expects int, resource given.
+native_types_resource_argument.php:40: Parameter #1 $value of function Conformance\\Tests\\NativeTypesResourceArgument\\takesBool expects bool, resource given."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

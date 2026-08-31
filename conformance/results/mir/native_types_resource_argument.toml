@@ -2,12 +2,12 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 5
 output = """
-native_types_resource_argument.php:16: UndefinedClass: Class Conformance\\Tests\\NativeTypesResourceArgument\\resource does not exist [MIR0005]
 native_types_resource_argument.php:32: MixedAssignment: Variable $handle is assigned a mixed type [MIR1201]
-native_types_resource_argument.php:37: MixedArgument: Argument $value of takesResource() is mixed [MIR1200]
 native_types_resource_argument.php:38: MixedArgument: Argument $value of takesString() is mixed [MIR1200]
 native_types_resource_argument.php:39: MixedArgument: Argument $value of takesInt() is mixed [MIR1200]
 native_types_resource_argument.php:40: MixedArgument: Argument $value of takesBool() is mixed [MIR1200]"""
-errors_diff = "Line 32: Unexpected errors [\"MixedAssignment: Variable $handle is assigned a mixed type [MIR1201]\"]"
+errors_diff = """
+Line 16: Expected 1 error(s)
+Line 32: Unexpected errors ["MixedAssignment: Variable $handle is assigned a mixed type [MIR1201]"]"""
 notes = ""
 ignore_errors = []

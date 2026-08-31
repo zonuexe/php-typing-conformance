@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_callable_array.php:56: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray expects non-empty-list&callable(): mixed, array{Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\Greeter, 'missing'} given. [identifier=argument.type]
-phpdoc_advanced_fallback_callable_array.php:59: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray expects non-empty-list&callable(): mixed, array{1, 2} given. [identifier=argument.type]"""
+phpdoc_advanced_fallback_callable_array.php:56: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray expects non-empty-list&callable(): mixed, array{Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\Greeter, 'missing'} given.
+phpdoc_advanced_fallback_callable_array.php:59: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray expects non-empty-list&callable(): mixed, array{1, 2} given."""
 errors_diff = ""
 notes = "Tracked upstream. See https://github.com/phpstan/phpstan/issues/13114"
 ignore_errors = []

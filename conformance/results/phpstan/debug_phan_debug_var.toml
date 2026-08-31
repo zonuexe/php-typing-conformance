@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "debug_phan_debug_var.php:29: Expression \"'@phan-debug-var $value'\" on a separate line does not do anything. [identifier=expr.resultUnused] [reported-from-level=4]"
+output = "debug_phan_debug_var.php:29: Expression \"'@phan-debug-var $value'\" on a separate line does not do anything. [reported-from-level=4]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 9
 output = """
-phpdoc_advanced_mixin.php:61: Call to an undefined method Conformance\\Tests\\PhpdocAdvancedMixin\\Facade::missing(). [identifier=method.notFound]
-phpdoc_advanced_mixin.php:61: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedMixin\\takesInt expects int, mixed given. [identifier=argument.type]"""
+phpdoc_advanced_mixin.php:61: Call to an undefined method Conformance\\Tests\\PhpdocAdvancedMixin\\Facade::missing().
+phpdoc_advanced_mixin.php:61: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedMixin\\takesInt expects int, mixed given."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

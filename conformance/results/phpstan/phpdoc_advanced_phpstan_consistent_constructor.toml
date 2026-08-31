@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_phpstan_consistent_constructor.php:39: Constructor of class Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor has an unused parameter $id. [identifier=constructor.unusedParameter] [reported-from-level=1]
-phpdoc_advanced_phpstan_consistent_constructor.php:39: Parameter #1 $id (int) of method Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor::__construct() is not contravariant with parameter #1 $name (string) of method Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ParentWithCtor::__construct(). [identifier=method.childParameterType] [reported-from-level=0]"""
+phpdoc_advanced_phpstan_consistent_constructor.php:39: Constructor of class Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor has an unused parameter $id. [reported-from-level=1]
+phpdoc_advanced_phpstan_consistent_constructor.php:39: Parameter #1 $id (int) of method Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ChildWithDifferentCtor::__construct() is not contravariant with parameter #1 $name (string) of method Conformance\\Tests\\PhpdocAdvancedPhpstanConsistentConstructor\\ParentWithCtor::__construct(). [reported-from-level=0]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

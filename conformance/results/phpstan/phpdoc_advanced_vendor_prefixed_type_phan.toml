@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_vendor_prefixed_type_phan.php:38: Parameter #1 $row of method Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\Repository::save() expects array{id: int, name: string}, array{id: 1} given. [identifier=argument.type] [reported-from-level=5]"
+output = "phpdoc_advanced_vendor_prefixed_type_phan.php:38: Parameter #1 $row of method Conformance\\Tests\\PhpdocAdvancedVendorPrefixedTypePhan\\Repository::save() expects array{id: int, name: string}, array{id: 1} given. [reported-from-level=5]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

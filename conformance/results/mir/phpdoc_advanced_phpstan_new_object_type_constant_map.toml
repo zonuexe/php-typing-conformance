@@ -4,14 +4,20 @@ expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new' does not exist [MIR1505]
 phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES[T]' does not exist [MIR1505]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:46: MixedArrayOffset: Mixed type used as array offset [MIR1210]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:46: MixedArrayAccess: Array access on mixed type [MIR1209]"""
-errors_diff = "Line 46: Expected valid value to be accepted, got [\"MixedArrayOffset: Mixed type used as array offset [MIR1210]\",\"MixedArrayAccess: Array access on mixed type [MIR1209]\"]"
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:46: MixedArrayAccess: Array access on mixed type [MIR1209]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:51: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES>' [MIR0900]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:52: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES>' [MIR0900]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES>' [MIR0900]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES>' [MIR0900]"""
+errors_diff = """
+Line 46: Expected valid value to be accepted, got ["MixedArrayAccess: Array access on mixed type [MIR1209]"]
+Line 51: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"immutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\DATETIME_CLASSES>' [MIR0900]"]
+Line 52: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"mutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\DATETIME_CLASSES>' [MIR0900]"]"""
 notes = "Silent everywhere, probes included. The native `DateTimeInterface` alone would have made the three correct calls fail, so this is not a widening to it either."
 ignore_errors = []
 recognition = "unrecognized"
-enforcement = "none"
-enforced_lines = "0/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = [44]
 false_positive_lines = []
 over_rejected_lines = []

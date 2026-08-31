@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "debug_phpstan_assert_variable_certainty.php:27: Expected variable $value certainty Maybe, actual: Yes [identifier=phpstan.variable]"
+output = "debug_phpstan_assert_variable_certainty.php:27: Expected variable $value certainty Maybe, actual: Yes"
 errors_diff = ""
 notes = ""
 ignore_errors = []

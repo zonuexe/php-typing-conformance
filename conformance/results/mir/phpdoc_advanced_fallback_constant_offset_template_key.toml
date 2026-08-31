@@ -3,19 +3,22 @@ conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_fallback_constant_offset_template_key.php:46: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' does not exist [MIR1505]
-phpdoc_advanced_fallback_constant_offset_template_key.php:48: MixedArrayOffset: Mixed type used as array offset [MIR1210]
 phpdoc_advanced_fallback_constant_offset_template_key.php:48: MixedArrayAccess: Array access on mixed type [MIR1209]
 phpdoc_advanced_fallback_constant_offset_template_key.php:48: MixedReturnStatement: Cannot return a mixed type from function with declared return type 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR1212]
 phpdoc_advanced_fallback_constant_offset_template_key.php:52: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]
+phpdoc_advanced_fallback_constant_offset_template_key.php:53: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
 phpdoc_advanced_fallback_constant_offset_template_key.php:53: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]
+phpdoc_advanced_fallback_constant_offset_template_key.php:54: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
 phpdoc_advanced_fallback_constant_offset_template_key.php:54: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]
+phpdoc_advanced_fallback_constant_offset_template_key.php:57: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
 phpdoc_advanced_fallback_constant_offset_template_key.php:57: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]
+phpdoc_advanced_fallback_constant_offset_template_key.php:58: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
 phpdoc_advanced_fallback_constant_offset_template_key.php:58: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]"""
 errors_diff = """
-Line 48: Expected valid value to be accepted, got ["MixedArrayOffset: Mixed type used as array offset [MIR1210]","MixedArrayAccess: Array access on mixed type [MIR1209]","MixedReturnStatement: Cannot return a mixed type from function with declared return type 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR1212]"]
+Line 48: Expected valid value to be accepted, got ["MixedArrayAccess: Array access on mixed type [MIR1209]","MixedReturnStatement: Cannot return a mixed type from function with declared return type 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR1212]"]
 Line 52: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR0201]"]
-Line 53: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR0201]"]
-Line 54: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR0201]"]"""
+Line 53: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"immutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE>' [MIR0900]","InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR0201]"]
+Line 54: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"mutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE>' [MIR0900]","InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR0201]"]"""
 notes = "Accepts the spelling and then carries `ID_TABLE[T]` around unevaluated, handing it to every call site: all five calls are rejected, the three correct ones included."
 ignore_errors = []
 recognition = "unrecognized"

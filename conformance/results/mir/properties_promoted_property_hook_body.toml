@@ -1,9 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
-errors_diff = """
-Line 33: Expected 1 error(s)
-Line 44: Expected 1 error(s)"""
+output = """
+properties_promoted_property_hook_body.php:33: InvalidArgument: Argument $value of takesString() expects 'string', got 'int' [MIR0201]
+properties_promoted_property_hook_body.php:44: InvalidArgument: Argument $value of takesString() expects 'string', got 'int' [MIR0201]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

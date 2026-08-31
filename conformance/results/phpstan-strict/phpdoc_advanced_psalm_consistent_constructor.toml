@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_psalm_consistent_constructor.php:38: Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ChildWithDifferentCtor::__construct() does not call parent constructor from Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ParentWithCtor. [identifier=constructor.missingParentCall]
-phpdoc_advanced_psalm_consistent_constructor.php:38: Parameter #1 $id (int) of method Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ChildWithDifferentCtor::__construct() is not contravariant with parameter #1 $name (string) of method Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ParentWithCtor::__construct(). [identifier=method.childParameterType]"""
+phpdoc_advanced_psalm_consistent_constructor.php:38: Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ChildWithDifferentCtor::__construct() does not call parent constructor from Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ParentWithCtor.
+phpdoc_advanced_psalm_consistent_constructor.php:38: Parameter #1 $id (int) of method Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ChildWithDifferentCtor::__construct() is not contravariant with parameter #1 $name (string) of method Conformance\\Tests\\PhpdocAdvancedPsalmConsistentConstructor\\ParentWithCtor::__construct()."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

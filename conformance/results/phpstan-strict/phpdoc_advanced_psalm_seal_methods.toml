@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 6
 output = """
-phpdoc_advanced_psalm_seal_methods.php:72: Call to an undefined method Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Sealed::wave(). [identifier=method.notFound]
-phpdoc_advanced_psalm_seal_methods.php:81: Call to an undefined method Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Unsealed::wave(). [identifier=method.notFound]"""
+phpdoc_advanced_psalm_seal_methods.php:72: Call to an undefined method Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Sealed::wave().
+phpdoc_advanced_psalm_seal_methods.php:81: Call to an undefined method Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Unsealed::wave()."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

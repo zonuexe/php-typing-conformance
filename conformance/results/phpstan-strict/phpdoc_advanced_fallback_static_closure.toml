@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_static_closure.php:45: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure expects static-Closure, Closure(): 1 given. [identifier=argument.type]
-phpdoc_advanced_fallback_static_closure.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure expects static-Closure, 'strlen' given. [identifier=argument.type]"""
+phpdoc_advanced_fallback_static_closure.php:45: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure expects static-Closure, Closure(): 1 given.
+phpdoc_advanced_fallback_static_closure.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure expects static-Closure, 'strlen' given."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

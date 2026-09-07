@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_closure_signature_return_union.php:50: Argument 1 of Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesBare expects impure-Closure(int|string):int|string, but pure-Closure(int|string):string provided [InvalidArgument]
+phpdoc_advanced_closure_signature_return_union.php:51: Argument 1 of Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesWrapped expects impure-Closure(int|string):int|string, but pure-Closure(int|string):string provided [InvalidArgument]
+phpdoc_advanced_closure_signature_return_union.php:56: Argument 1 of Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesReturnWrapped expects impure-Closure(int|string):(int|string), but 'hello' provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_closure_signature_return_union.php:50: Argument 1 ($foo) expects (Closure(int|string): int)|string, got Closure(int|string): string [type_mismatch_argument]
+phpdoc_advanced_closure_signature_return_union.php:51: Argument 1 ($bar) expects (Closure(int|string): int)|string, got Closure(int|string): string [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

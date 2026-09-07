@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_closure_signature_return_union.php:50: Parameter #1 $foo of function Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesBare expects (Closure(int|string): int)|string, Closure(int|string): string given. [reported-from-level=5]
+phpdoc_advanced_closure_signature_return_union.php:51: Parameter #1 $bar of function Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesWrapped expects (Closure(int|string): int)|string, Closure(int|string): string given. [reported-from-level=5]
+phpdoc_advanced_closure_signature_return_union.php:56: Parameter #1 $baz of function Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesReturnWrapped expects Closure(int|string): (int|string), 'hello' given. [reported-from-level=5]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

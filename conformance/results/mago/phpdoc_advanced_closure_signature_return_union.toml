@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_closure_signature_return_union.php:50: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesBare`: expected `(closure(int|string): int)|string`, but possibly received `(closure(int|string): string)`. [possibly-invalid-argument]
+phpdoc_advanced_closure_signature_return_union.php:51: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesWrapped`: expected `(closure(int|string): int)|string`, but possibly received `(closure(int|string): string)`. [possibly-invalid-argument]
+phpdoc_advanced_closure_signature_return_union.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesReturnWrapped`: expected `(closure(int|string): int|string)`, but found `string('hello')`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

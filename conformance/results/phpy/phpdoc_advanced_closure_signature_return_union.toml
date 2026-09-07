@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_closure_signature_return_union.php:54: Call to unknown function: 'hello'
+phpdoc_advanced_closure_signature_return_union.php:55: Call to unknown function: 'hello'
+phpdoc_advanced_closure_signature_return_union.php:56: Call to unknown function: 'hello'"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

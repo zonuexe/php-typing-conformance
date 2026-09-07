@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_closure_signature_return_union.php:50: Argument 1 ($foo) is (fn) of type Closure(int|string):string but \\Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesBare() takes Closure(int|string):int|string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_closure_signature_return_union.php:28 (expected type to be the same or a subtype, but saw a supertype instead) [PhanTypeMismatchArgumentSuperType]
+phpdoc_advanced_closure_signature_return_union.php:51: Argument 1 ($bar) is (fn) of type Closure(int|string):string but \\Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesWrapped() takes Closure(int|string):int|string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_closure_signature_return_union.php:35 (expected type to be the same or a subtype, but saw a supertype instead) [PhanTypeMismatchArgumentSuperType]
+phpdoc_advanced_closure_signature_return_union.php:56: Argument 1 ($baz) is 'hello' of type string but \\Conformance\\Tests\\PhpdocAdvancedClosureSignatureReturnUnion\\takesReturnWrapped() takes Closure(int|string):(int|string) (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_closure_signature_return_union.php:42 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

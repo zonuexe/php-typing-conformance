@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_closure_signature_return_union.php:50: InvalidArgument: Argument $foo of takesBare() expects 'callable returning int', got 'callable returning string' [MIR0201]
+phpdoc_advanced_closure_signature_return_union.php:51: InvalidArgument: Argument $bar of takesWrapped() expects 'callable returning int', got 'callable returning string' [MIR0201]
+phpdoc_advanced_closure_signature_return_union.php:56: InvalidArgument: Argument $baz of takesReturnWrapped() expects 'Closure(int|string): int|string', got '"hello"' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,13 +1,13 @@
-status = "Falls back to string"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_fallback_class_string.php:46: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackClassString\\acceptsClassString`: expected `class-string`, but possibly received `string('not a class name')`. [possibly-invalid-argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

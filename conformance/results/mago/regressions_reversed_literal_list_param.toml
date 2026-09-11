@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = ""
-errors_diff = "Lines 23, 32: Expected error (tag reversed_literal)"
+output = "regressions_reversed_literal_list_param.php:32: Invalid argument type for argument #1 of `Conformance\\Tests\\RegressionsReversedLiteralListParam\\takesTwoList`: expected `list{string, string}`, but found `array{0: string('y'), 1: string('x')}`. [invalid-argument]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

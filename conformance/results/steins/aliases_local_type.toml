@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "aliases_local_type.php:40: argument ['street' => '1 Main St', 'city' => 'Town'] to User::setAddress() violates declared @param array{street: string, city: string, zip: string} $address — declared contract violation [phpdoc.param-mismatch]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

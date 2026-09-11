@@ -2,20 +2,18 @@ status = "Falls back"
 conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_psalm_arraylike_object.php:25: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable' does not exist [MIR1505]
-phpdoc_advanced_psalm_arraylike_object.php:30: InvalidArgument: Argument $obj of acceptsArrayLike() expects 'ArrayAccess<string, int>&Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable&Traversable<string, int>', got 'ArrayObject' [MIR0201]
-phpdoc_advanced_psalm_arraylike_object.php:33: InvalidArgument: Argument $obj of acceptsArrayLike() expects 'ArrayAccess<string, int>&Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable&Traversable<string, int>', got 'stdClass' [MIR0201]
-phpdoc_advanced_psalm_arraylike_object.php:42: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable' does not exist [MIR1505]
+phpdoc_advanced_psalm_arraylike_object.php:30: InvalidArgument: Argument $obj of acceptsArrayLike() expects 'ArrayAccess<string, int>&Countable&Traversable<string, int>', got 'ArrayObject' [MIR0201]
+phpdoc_advanced_psalm_arraylike_object.php:33: InvalidArgument: Argument $obj of acceptsArrayLike() expects 'ArrayAccess<string, int>&Countable&Traversable<string, int>', got 'stdClass' [MIR0201]
 phpdoc_advanced_psalm_arraylike_object.php:48: PossiblyNullArgument: Argument $value of takesInt() might be null [MIR0104]
-phpdoc_advanced_psalm_arraylike_object.php:51: InvalidArgument: Argument $obj of readsElement() expects 'ArrayAccess<string, int>&Conformance\\Tests\\PhpdocAdvancedPsalmArraylikeObject\\Countable&Traversable<string, int>', got 'ArrayObject' [MIR0201]"""
+phpdoc_advanced_psalm_arraylike_object.php:51: InvalidArgument: Argument $obj of readsElement() expects 'ArrayAccess<string, int>&Countable&Traversable<string, int>', got 'ArrayObject' [MIR0201]"""
 errors_diff = """
-Line 30: Expected valid value to be accepted, got ["InvalidArgument: Argument $obj of acceptsArrayLike() expects 'ArrayAccess<string, int>&Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\Countable&Traversable<string, int>', got 'ArrayObject' [MIR0201]"]
-Line 51: Unexpected errors ["InvalidArgument: Argument $obj of readsElement() expects 'ArrayAccess<string, int>&Conformance\\\\Tests\\\\PhpdocAdvancedPsalmArraylikeObject\\\\Countable&Traversable<string, int>', got 'ArrayObject' [MIR0201]"]"""
+Line 30: Expected valid value to be accepted, got ["InvalidArgument: Argument $obj of acceptsArrayLike() expects 'ArrayAccess<string, int>&Countable&Traversable<string, int>', got 'ArrayObject' [MIR0201]"]
+Line 51: Unexpected errors ["InvalidArgument: Argument $obj of readsElement() expects 'ArrayAccess<string, int>&Countable&Traversable<string, int>', got 'ArrayObject' [MIR0201]"]"""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "3/3"
-unrecognized_lines = [25, 42]
+unrecognized_lines = []
 false_positive_lines = [51]
 over_rejected_lines = [30, 51]

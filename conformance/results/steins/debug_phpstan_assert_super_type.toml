@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-debug_phpstan_assert_super_type.php:23: call to undefined function PHPStan\\Testing\\assertSuperType() — not defined in the project, not on PHP 8.5.9 (70 extensions) [call.undefined-function]
-debug_phpstan_assert_super_type.php:26: call to undefined function PHPStan\\Testing\\assertSuperType() — not defined in the project, not on PHP 8.5.9 (70 extensions) [call.undefined-function]"""
+debug_phpstan_assert_super_type.php:23: call to undefined function PHPStan\\Testing\\assertSuperType() — not defined in the project, not on PHP 8.5.10 (70 extensions) [call.undefined-function]
+debug_phpstan_assert_super_type.php:26: call to undefined function PHPStan\\Testing\\assertSuperType() — not defined in the project, not on PHP 8.5.10 (70 extensions) [call.undefined-function]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = ""
+output = """
+conditionals_true_return.php:40: argument 0.0 (returned from asTime()) to takesString() cannot become string $value — proven TypeError (strict mode) [type.argument-mismatch]
+conditionals_true_return.php:41: argument "0" (returned from asTime()) to takesFloat() cannot become float $value — proven TypeError (strict mode) [type.argument-mismatch]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

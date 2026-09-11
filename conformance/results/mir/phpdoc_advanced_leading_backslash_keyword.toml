@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_leading_backslash_keyword.php:26: InvalidDocblockType: Invalid docblock type: @param backslash-qualified non-class type '\\int' is not a fully qualified name [MIR1107]
+phpdoc_advanced_leading_backslash_keyword.php:48: InvalidArgument: Argument $value of takesInt() expects 'int', got '"x"' [MIR0201]
+phpdoc_advanced_leading_backslash_keyword.php:55: InvalidArgument: Argument $value of takesBackslashInt() expects 'int', got '"x"' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [26]
+false_positive_lines = []
+over_rejected_lines = []

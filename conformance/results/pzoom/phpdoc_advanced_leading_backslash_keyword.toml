@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_leading_backslash_keyword.php:28: Docblock class int does not exist [UndefinedDocblockClass]
+phpdoc_advanced_leading_backslash_keyword.php:48: Argument 1 of takesInt expects int, but 'x' provided [InvalidArgument]
+phpdoc_advanced_leading_backslash_keyword.php:52: Argument 1 of takesBackslashInt expects int, but 1 provided [InvalidArgument]
+phpdoc_advanced_leading_backslash_keyword.php:55: Argument 1 of takesBackslashInt expects int, but 'x' provided [InvalidArgument]"""
+errors_diff = "Line 52: Expected valid value to be accepted, got [\"Argument 1 of takesBackslashInt expects int, but 1 provided [InvalidArgument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [28]
+false_positive_lines = []
+over_rejected_lines = [52]

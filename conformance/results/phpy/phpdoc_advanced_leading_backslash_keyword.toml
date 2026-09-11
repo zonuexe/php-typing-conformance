@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_leading_backslash_keyword.php:26: Name '{0}' can be simplified with '{1}'.
+phpdoc_advanced_leading_backslash_keyword.php:48: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesInt() is expected to be of type int, string given
+phpdoc_advanced_leading_backslash_keyword.php:55: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt() is expected to be of type int, string given"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [26]
+false_positive_lines = []
+over_rejected_lines = []

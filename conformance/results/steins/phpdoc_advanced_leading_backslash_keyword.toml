@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_leading_backslash_keyword.php:48: argument "x" to takesInt() violates declared @param int $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_leading_backslash_keyword.php:55: argument "x" to takesBackslashInt() violates declared @param \\int $value — declared contract violation [phpdoc.param-mismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

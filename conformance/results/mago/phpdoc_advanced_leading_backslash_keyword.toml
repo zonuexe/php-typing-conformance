@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_leading_backslash_keyword.php:26: Cannot find class, interface, enum, or type alias `int`. [non-existent-class-like]
+phpdoc_advanced_leading_backslash_keyword.php:48: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesInt`: expected `int`, but found `string('x')`. [invalid-argument]
+phpdoc_advanced_leading_backslash_keyword.php:52: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt`: expected `unknown-ref(int)`, but found `int(1)`. [invalid-argument]
+phpdoc_advanced_leading_backslash_keyword.php:55: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt`: expected `unknown-ref(int)`, but found `string('x')`. [invalid-argument]"""
+errors_diff = "Line 52: Expected valid value to be accepted, got [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedLeadingBackslashKeyword\\\\takesBackslashInt`: expected `unknown-ref(int)`, but found `int(1)`. [invalid-argument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [26]
+false_positive_lines = []
+over_rejected_lines = [52]

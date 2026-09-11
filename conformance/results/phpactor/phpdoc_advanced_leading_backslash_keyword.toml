@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = ""
+errors_diff = """
+Line 48: Expected 1 error(s)
+Line 55: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

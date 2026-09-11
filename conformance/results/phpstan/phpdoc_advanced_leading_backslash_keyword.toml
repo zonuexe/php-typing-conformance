@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_leading_backslash_keyword.php:28: Parameter $value of function Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt() has invalid type int. [reported-from-level=2]
+phpdoc_advanced_leading_backslash_keyword.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesInt expects int, string given. [reported-from-level=5]
+phpdoc_advanced_leading_backslash_keyword.php:52: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt expects int, int given. [reported-from-level=5]
+phpdoc_advanced_leading_backslash_keyword.php:55: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt expects int, string given. [reported-from-level=5]"""
+errors_diff = "Line 52: Expected valid value to be accepted, got [\"Parameter #1 $value of function Conformance\\\\Tests\\\\PhpdocAdvancedLeadingBackslashKeyword\\\\takesBackslashInt expects int, int given. [reported-from-level=5]\"]"
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [28]
+false_positive_lines = []
+over_rejected_lines = [52]

@@ -196,5 +196,6 @@ references = [
   "https://github.com/phpstan/phpstan/issues/14938",
   "https://github.com/phpstan/phpstan/issues/8963",
   "https://github.com/vimeo/psalm/issues/11905",
+  "https://github.com/vimeo/psalm/issues/11931",
   "https://github.com/carthage-software/mago/issues/2073",
 ]

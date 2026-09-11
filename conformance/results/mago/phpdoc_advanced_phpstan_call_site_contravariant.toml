@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_phpstan_call_site_contravariant.php:121: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\takesDog`: expected `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Dog`, but found `mixed`. [mixed-argument]
+phpdoc_advanced_phpstan_call_site_contravariant.php:142: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\takesContravariant`: expected `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Dog>`, but found `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Cat>`. [invalid-argument]
+phpdoc_advanced_phpstan_call_site_contravariant.php:148: Argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\takesInvariant`: expected `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Dog>`, but provided type `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Animal>` is less specific. [less-specific-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

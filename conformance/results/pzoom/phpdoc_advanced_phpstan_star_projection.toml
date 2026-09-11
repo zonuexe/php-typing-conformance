@@ -1,0 +1,23 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_star_projection.php:80: Docblock class Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\* does not exist [UndefinedDocblockClass]
+phpdoc_advanced_phpstan_star_projection.php:88: Docblock class Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\* does not exist [UndefinedDocblockClass]
+phpdoc_advanced_phpstan_star_projection.php:90: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection::add expects Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\*, but 1 provided [InvalidArgument]
+phpdoc_advanced_phpstan_star_projection.php:108: Argument 1 of printSize expects Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\*>, but Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<int> provided [InvalidArgument]
+phpdoc_advanced_phpstan_star_projection.php:109: Argument 1 of printSize expects Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\*>, but Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<string> provided [InvalidArgument]
+phpdoc_advanced_phpstan_star_projection.php:110: Argument 1 of writeStar expects Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\*>, but Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<int> provided [InvalidArgument]
+phpdoc_advanced_phpstan_star_projection.php:115: Argument 1 of takesMixed expects Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<mixed>, but Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<int> provided [InvalidArgument]"""
+errors_diff = """
+Line 108: Expected valid value to be accepted, got ["Argument 1 of printSize expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanStarProjection\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanStarProjection\\\\*>, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanStarProjection\\\\Collection<int> provided [InvalidArgument]"]
+Line 109: Expected valid value to be accepted, got ["Argument 1 of printSize expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanStarProjection\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanStarProjection\\\\*>, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanStarProjection\\\\Collection<string> provided [InvalidArgument]"]
+Line 110: Expected valid value to be accepted, got ["Argument 1 of writeStar expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanStarProjection\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanStarProjection\\\\*>, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanStarProjection\\\\Collection<int> provided [InvalidArgument]"]"""
+notes = "Reads `*` as a class name in the current namespace (`Collection<*>` is Collection of that class), so Collection<int> and Collection<string> are rejected on the valid calls. The add() hit expects that class, not never — incidental."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [80, 88]
+false_positive_lines = []
+over_rejected_lines = [108, 109, 110]

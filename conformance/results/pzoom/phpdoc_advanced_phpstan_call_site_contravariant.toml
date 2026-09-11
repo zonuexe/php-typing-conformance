@@ -1,0 +1,21 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_phpstan_call_site_contravariant.php:140: Argument 1 of takesContravariant expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Dog>, but parent type Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Animal> provided [ArgumentTypeCoercion]
+phpdoc_advanced_phpstan_call_site_contravariant.php:141: Argument 1 of takesContravariant expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Dog>, but parent type Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<mixed> provided [MixedArgumentTypeCoercion]
+phpdoc_advanced_phpstan_call_site_contravariant.php:142: Argument 1 of takesContravariant expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Dog>, but Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Cat> provided [InvalidArgument]
+phpdoc_advanced_phpstan_call_site_contravariant.php:143: Argument 1 of writeContravariant expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Dog>, but parent type Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Animal> provided [ArgumentTypeCoercion]
+phpdoc_advanced_phpstan_call_site_contravariant.php:148: Argument 1 of takesInvariant expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Dog>, but parent type Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Animal> provided [ArgumentTypeCoercion]"""
+errors_diff = """
+Line 140: Expected valid value to be accepted, got ["Argument 1 of takesContravariant expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Dog>, but parent type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Animal> provided [ArgumentTypeCoercion]"]
+Line 141: Expected valid value to be accepted, got ["Argument 1 of takesContravariant expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Dog>, but parent type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Collection<mixed> provided [MixedArgumentTypeCoercion]"]
+Line 143: Expected valid value to be accepted, got ["Argument 1 of writeContravariant expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Dog>, but parent type Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteContravariant\\\\Animal> provided [ArgumentTypeCoercion]"]"""
+notes = "Same as Psalm 6: the keyword is ignored, so Collection<Animal> is rejected as Collection<Dog>."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

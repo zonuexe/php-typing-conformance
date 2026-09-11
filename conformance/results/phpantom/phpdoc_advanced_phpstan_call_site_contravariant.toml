@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "phpdoc_advanced_phpstan_call_site_contravariant.php:142: Argument 1 ($collection) expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Dog>, got Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\Cat> [type_mismatch_argument]"
+errors_diff = ""
+notes = "Rejects Collection<Cat> (which invariant Collection<Dog> also does) but accepts Collection<Animal> and Collection<mixed>, and does not treat get() as mixed. Subtyping in the contravariant direction without the read restriction."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+regressions_star_projection_union_template.php:66: Invalid type 'Conformance\\Tests\\RegressionsStarProjectionUnionTemplate\\*' in docblock for Conformance\\Tests\\RegressionsStarProjectionUnionTemplate\\Factory::make [InvalidDocblock]
+regressions_star_projection_union_template.php:100: All possible types for this argument were invalidated - This may be dead code [NoValue]"""
+errors_diff = "Line 100: Expected valid value to be accepted, got [\"All possible types for this argument were invalidated - This may be dead code [NoValue]\"]"
+notes = "Same as Psalm 6/7: InvalidDocblock on `*` leaves T unbound, get() is never, takesInt is NoValue. vimeo/psalm#11931."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [66]
+false_positive_lines = []
+over_rejected_lines = []

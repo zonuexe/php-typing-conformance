@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_star_projection.php:78: Invalid type 'Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\*' in docblock for Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\printSize [InvalidDocblock]
+phpdoc_advanced_phpstan_star_projection.php:86: Invalid type 'Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\*' in docblock for Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\writeStar [InvalidDocblock]
+phpdoc_advanced_phpstan_star_projection.php:115: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\takesMixed expects Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<mixed>, but Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<int> provided [InvalidArgument]"""
+errors_diff = ""
+notes = "Rejects `*` as InvalidDocblock and discards the whole `@param`, so Collection is untyped: the valid Collection<int>/Collection<string> calls stay silent and add() is not restricted. The contrast Collection<mixed> line still fires because that annotation does not use `*`."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [78, 86]
+false_positive_lines = []
+over_rejected_lines = []

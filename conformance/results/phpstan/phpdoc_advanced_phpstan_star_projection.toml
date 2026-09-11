@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_star_projection.php:90: Parameter #1 $item of method Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<*>::add() expects never, int given. [reported-from-level=5]
+phpdoc_advanced_phpstan_star_projection.php:115: Parameter #1 $collection of function Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\takesMixed expects Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<mixed>, Conformance\\Tests\\PhpdocAdvancedPhpstanStarProjection\\Collection<int> given. [reported-from-level=9]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_phpstan_call_site_covariant.php:91: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\covariant'. [P1133]
+phpdoc_advanced_phpstan_call_site_covariant.php:98: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\covariant'. [P1133]"""
+errors_diff = ""
+notes = "Reports an undefined type `covariant` and does not apply call-site covariance."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [91, 98]
+false_positive_lines = []
+over_rejected_lines = []

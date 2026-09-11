@@ -1,0 +1,19 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_phpstan_call_site_covariant.php:121: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\takesCovariant expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Animal>, but Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Cat> provided [InvalidArgument]
+phpdoc_advanced_phpstan_call_site_covariant.php:122: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\takesCovariant expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Animal>, but parent type Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<mixed> provided [MixedArgumentTypeCoercion]
+phpdoc_advanced_phpstan_call_site_covariant.php:123: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\writeCovariant expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Animal>, but Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Cat> provided [InvalidArgument]
+phpdoc_advanced_phpstan_call_site_covariant.php:127: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\takesInvariant expects Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Animal>, but Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Cat> provided [InvalidArgument]"""
+errors_diff = """
+Line 121: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\takesCovariant expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\Animal>, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\Cat> provided [InvalidArgument]"]
+Line 123: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\writeCovariant expects Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\Animal>, but Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\Collection<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanCallSiteCovariant\\\\Cat> provided [InvalidArgument]"]"""
+notes = "Ignores the `covariant` keyword and treats the parameter as invariant Collection<Animal>. Collection<Cat> is rejected on the valid calls; the mixed rejection is the leftover invariant check, not call-site covariance."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = [121, 123]

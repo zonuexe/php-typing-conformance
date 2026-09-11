@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_phpstan_call_site_contravariant.php:102: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\contravariant'. [P1133]
+phpdoc_advanced_phpstan_call_site_contravariant.php:109: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\contravariant'. [P1133]
+phpdoc_advanced_phpstan_call_site_contravariant.php:117: PHPDoc undefined type 'Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteContravariant\\contravariant'. [P1133]"""
+errors_diff = ""
+notes = "Reports an undefined type `contravariant` and does not apply call-site contravariance."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [102, 109, 117]
+false_positive_lines = []
+over_rejected_lines = []

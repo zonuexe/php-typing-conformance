@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_phpstan_call_site_covariant.php:102: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection::add`: expected `never`, but possibly received `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Dog`. [possibly-invalid-argument]
+phpdoc_advanced_phpstan_call_site_covariant.php:122: Argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\takesCovariant`: expected `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Animal>`, but provided type `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<mixed>` is less specific. [less-specific-nested-argument-type]
+phpdoc_advanced_phpstan_call_site_covariant.php:127: Argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\takesInvariant`: expected `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Animal>`, but provided type `Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Collection<Conformance\\Tests\\PhpdocAdvancedPhpstanCallSiteCovariant\\Cat>` is less specific. [less-specific-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+regressions_star_projection_union_template.php:66: Saw possibly unextractable annotation for a fragment of comment '* @param Box<T>|Pair<T, *> $subject': after Box<T>|Pair, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+regressions_star_projection_union_template.php:66: Saw a token Phan may have failed to parse after '* @param Box<T>|Pair<T, *> $subject': after Box<T>|Pair, saw '<' [PhanUnextractableAnnotationSuffix]
+regressions_star_projection_union_template.php:69: Template type T not declared in parameters of function/method make() (or Phan can't extract template types for this use case) [PhanTemplateTypeNotDeclaredInFunctionParams]"""
+errors_diff = ""
+notes = "Cannot parse `*` in Pair<T, *>, but T still binds from the Box arm and the caller is not marked dead."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [66, 69]
+false_positive_lines = []
+over_rejected_lines = []

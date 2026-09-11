@@ -6,6 +6,10 @@ vendor-bin/*/node_modules/
 # sonar-scanner working directory (local Community Build uploads)
 conformance/.scannerwork/
 
+# Steins 0.1.7+ writes its analysis cache here when the runner's
+# workspace is conformance/.
+conformance/.steins/
+
 # Per-platform GitHub-release binaries, fetched by make install-php-lsp /
 # install-phpantom; too large and too platform-bound to commit.
 vendor-bin/php-lsp/bin/

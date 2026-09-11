@@ -54,8 +54,8 @@ version = "262.10315.130"
 date = "2026-09-03"
 
 [mago]
-version = "1.48.0"
-date = "2026-09-10"
+version = "1.48.1"
+date = "2026-09-11"
 
 [phpy]
 version = "1.0.19264"
@@ -66,16 +66,16 @@ version = "0.10.0"
 date = "2026-08-20"
 
 [mir]
-version = "0.72.1"
-date = "2026-08-30"
+version = "0.73.0"
+date = "2026-09-11"
 
 [pzoom]
 version = "unversioned"
 date = "2026-06-24"
 
 [steins]
-version = "0.1.6"
-date = "2026-08-25"
+version = "0.1.7"
+date = "2026-09-11"
 
 # Language servers.
 
@@ -84,8 +84,8 @@ version = "1.0.19264"
 date = "2026-09-10"
 
 [php-lsp]
-version = "0.25.1"
-date = "2026-08-23"
+version = "0.25.3"
+date = "2026-09-11"
 
 [laravel-lsp]
 version = "0.0.31"
@@ -100,8 +100,8 @@ version = "0.3.7"
 date = "2018-04-25"
 
 [symfony-lsp]
-version = "0.20.0"
-date = "2026-09-08"
+version = "0.20.1"
+date = "2026-09-10"
 
 [php-language-server]
 version = "5.4.6"

@@ -1,13 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 13
 output = """
-assertions_this_out_self_out.php:50: Type 1 should be a subtype of string [IncompatibleTypeParameters]
-assertions_this_out_self_out.php:52: Type int should be a subtype of string [IncompatibleTypeParameters]
-assertions_this_out_self_out.php:53: Type string should be a subtype of int [IncompatibleTypeParameters]
+assertions_this_out_self_out.php:53: Type 1 should be a subtype of string [IncompatibleTypeParameters]
 assertions_this_out_self_out.php:58: Argument 1 of Conformance\\Tests\\AssertionsThisOutSelfOut\\takesIntBox expects Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<int>, but Conformance\\Tests\\AssertionsThisOutSelfOut\\MutableBox<string> provided [InvalidArgument]"""
-errors_diff = """
-Line 50: Unexpected errors ["Type 1 should be a subtype of string [IncompatibleTypeParameters]"]
-Line 52: Unexpected errors ["Type int should be a subtype of string [IncompatibleTypeParameters]"]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

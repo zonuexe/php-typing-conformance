@@ -34,16 +34,16 @@ version = "6.17.1"
 date = "2026-09-12"
 
 [phpstan]
-version = "2.2.13"
-date = "2026-09-03"
+version = "2.2.14"
+date = "2026-09-12"
 
 [intelephense]
 version = "1.18.5"
 date = "2026-06-21"
 
 [phpactor]
-version = "2026.07.22.0"
-date = "2026-07-22"
+version = "2026.06.23.0"
+date = "2026-08-15"
 
 [noverify]
 version = "0.5.5"
@@ -58,8 +58,8 @@ version = "1.48.1"
 date = "2026-09-11"
 
 [phpy]
-version = "1.0.19264"
-date = "2026-09-10"
+version = "1.0.19274"
+date = "2026-09-13"
 
 [phpantom]
 version = "0.10.0"
@@ -99,8 +99,8 @@ version = "0.0.31"
 date = "2026-08-14"
 
 [symfony-lsp]
-version = "0.20.1"
-date = "2026-09-10"
+version = "0.20.2"
+date = "2026-09-13"
 
 [php-language-server]
 version = "5.4.6"

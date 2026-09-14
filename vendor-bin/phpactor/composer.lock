@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26c4e63c6b7625b768efd9c51bd53d9a",
+    "content-hash": "78f389e7b1b97ea3b51e851cf2bf1514",
     "packages": [],
     "packages-dev": [
         {
@@ -1961,16 +1961,16 @@
         },
         {
             "name": "phpactor/phpactor",
-            "version": "2026.07.22.0",
+            "version": "2026.06.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpactor/phpactor.git",
-                "reference": "1b3b0f3abfce8771d7cbc04eb73bf89294329994"
+                "reference": "f67b7753b966c874735a064978dd89837a369f59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpactor/phpactor/zipball/1b3b0f3abfce8771d7cbc04eb73bf89294329994",
-                "reference": "1b3b0f3abfce8771d7cbc04eb73bf89294329994",
+                "url": "https://api.github.com/repos/phpactor/phpactor/zipball/f67b7753b966c874735a064978dd89837a369f59",
+                "reference": "f67b7753b966c874735a064978dd89837a369f59",
                 "shasum": ""
             },
             "require": {
@@ -2076,7 +2076,7 @@
             "description": "PHP refactoring and intellisense tool for text editors",
             "support": {
                 "issues": "https://github.com/phpactor/phpactor/issues",
-                "source": "https://github.com/phpactor/phpactor/tree/2026.07.22.0"
+                "source": "https://github.com/phpactor/phpactor/tree/2026.06.23.0"
             },
             "funding": [
                 {
@@ -2084,7 +2084,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-22T20:41:58+00:00"
+            "time": "2026-08-15T11:52:59+00:00"
         },
         {
             "name": "phpactor/tolerant-php-parser",

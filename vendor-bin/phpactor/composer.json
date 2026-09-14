@@ -1,6 +1,6 @@
 {
     "require-dev": {
-        "phpactor/phpactor": "^2026.07"
+        "phpactor/phpactor": "2026.06.23.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

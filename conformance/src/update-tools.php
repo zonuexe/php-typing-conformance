@@ -48,7 +48,10 @@ const LANGUAGE_SERVER_SECTION = '# Language servers.';
  * and laravel-lsp have entries for the opposite reason: they are installed
  * purely to be probed over LSP. phpactor was installed for that reason too
  * until its `worse:analyse` command became a matrix column; one install now
- * serves both axes.
+ * serves both axes. Its GitHub Latest can be a lower date-version than an
+ * earlier tag (2026.06.23.0 shipped after 2026.07.22.0), so it is pinned to
+ * the feed's tag exactly — a caret would let Composer walk to the higher
+ * number.
  *
  * qodana is measured without being installable: its licence rules out
  * shipping the linter, so its column comes from a PhpStorm report produced
@@ -64,7 +67,7 @@ const INSTALLS = [
     'phpy' => ['npm', 'phpy', 'phpy'],
     'mir' => ['composer', 'mir', 'miropen/mir-php'],
     'steins' => ['composer', 'steins', 'typedduck/steins'],
-    'phpactor' => ['composer', 'phpactor', 'phpactor/phpactor'],
+    'phpactor' => ['composer', 'phpactor', 'phpactor/phpactor', 'exact'],
     'devsense-php-ls' => ['npm', 'devsense-php-ls', 'devsense-php-ls'],
     'laravel-lsp' => ['composer', 'laravel-lsp', 'laravel/lsp'],
 ];
@@ -140,13 +143,14 @@ foreach ($outdated as $tool => $version) {
     }
 
     [$manager, $namespace, $package] = INSTALLS[$tool];
+    $constraint = (INSTALLS[$tool][3] ?? '') === 'exact' ? $version : '^' . $version;
 
     $command = $manager === 'composer'
         ? sprintf(
-            'composer bin %s require --dev --no-interaction --no-progress %s:^%s',
+            'composer bin %s require --dev --no-interaction --no-progress %s:%s',
             escapeshellarg($namespace),
             escapeshellarg($package),
-            $version,
+            $constraint,
         )
         : sprintf(
             'npm install --silent --prefix %s %s@%s',
@@ -232,6 +236,13 @@ function installableVersion(string $projectRoot, string $tool, ?string $upstream
     [$manager, $namespace, $package] = INSTALLS[$tool];
 
     if ($manager !== 'composer') {
+        return $upstream;
+    }
+
+    // Date-versioned tags that GitHub marks Latest can sit below an earlier
+    // higher number. Composer outdated would walk to that number; pin to the
+    // feed instead.
+    if ((INSTALLS[$tool][3] ?? '') === 'exact') {
         return $upstream;
     }
 

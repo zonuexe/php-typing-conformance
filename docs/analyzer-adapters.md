@@ -260,32 +260,29 @@ use and reports progress on stderr, so stderr is dropped everywhere in this
 adapter — it must never reach the parsed output. `STEINS_BIN` points the suite at
 a local build.
 
-### Phpactor — a position given in bytes, not in lines
+### Phpactor — JSON that used to speak in bytes
 
 `worse:analyse --format=json` pays a fixed Worse Reflection bootstrap cost per
 invocation, so `PhpactorChecker` runs the corpus once, the same reasoning
 `PhpStanChecker` applies to its level ladder. The output is one JSON object per
-line rather than a JSON array, and the progress banner shares the stream with
-them, so anything that does not decode to an object is skipped.
+line rather than a JSON array. Progress shared that stream until 2026.06.23.0,
+which moved it to STDERR; anything that does not decode to an object is still
+skipped.
 
-The position is the part worth naming. Every other adapter here is handed a
-line number, or at worst an LSP-style 0-based one; Phpactor hands over
-`range.start`, a **byte offset into the file**. Worse Reflection works in
-`ByteOffset` from parse to diagnostic and the JSON formatter prints it raw, so
-the adapter is the only one in the suite that has to read the source back to
-learn which line a diagnostic landed on. Counting newlines up to the offset is
-enough — the offset is in bytes, so no multibyte handling is needed — but a
-parser that assumes a `line` field gets `0` from every diagnostic and records a
-silent tool, which is a failure mode that looks exactly like a clean run.
+Until that release the position was `range.start`, a **byte offset into the
+file**. Worse Reflection works in `ByteOffset` from parse to diagnostic and
+the formatter printed it raw, so the adapter was the only one in the suite
+that had to read the source back to learn which line a diagnostic landed on.
+2026.06.23.0 added `line`, `col`, `code`, and a readable `severity` string
+(`severity` had been `{}`). The adapter prefers `line` and still falls back
+to counting newlines up to the offset — a parser that assumed a `line` field
+on the older format got `0` from every diagnostic and recorded a silent
+tool, which looks exactly like a clean run.
 
-Two smaller notes. `severity` is encoded from an object with no JSON
-representation and always arrives as `{}`, so it cannot be recovered from this
-format and every diagnostic is recorded unfiltered; the table format carries a
-readable severity but truncates the message at 60 columns, which loses more
-than it gains. And paths come back relative to the *invoking* working directory
-rather than to `--working-dir`, so matching is by basename — the same
-accommodation `PzoomChecker` already makes for a tool that does not control its
-own path formatting. Exit codes 0 (clean) and 1 (issues found) are both normal.
+Paths come back relative to the *invoking* working directory rather than to
+`--working-dir`, so matching is by basename — the same accommodation
+`PzoomChecker` already makes for a tool that does not control its own path
+formatting. Exit codes 0 (clean) and 1 (issues found) are both normal.
 
 ### Qodana — a report to read, not a tool to run
 

@@ -16,20 +16,13 @@ use RuntimeException;
  * multiply that ~215 times for no benefit.
  *
  * `worse:analyse --format=json` prints one JSON object per line (not a JSON
- * array), interleaved with a plain-text progress banner on the same stream;
- * anything that is not a JSON object is skipped. Two things about that object
- * shape the adapter:
- *
- * - The position is `range.start`, a **byte offset into the file**, not a line
- *   number. Phpactor's Worse Reflection works in `ByteOffset` throughout and
- *   the JSON formatter prints it raw, so the adapter resolves the offset
- *   against the file itself. This is the one adapter in the suite that has to
- *   read the source to learn where a diagnostic landed.
- * - `severity` is encoded from an object with no JSON representation and
- *   always arrives as `{}`, so severity cannot be recovered from this format
- *   and every diagnostic is recorded unfiltered. The table format carries a
- *   readable severity but truncates the message at 60 columns, which loses
- *   more than it gains.
+ * array). Progress went to the same stream until 2026.06.23.0, which moved
+ * it to STDERR; anything that is not a JSON object is still skipped. From
+ * that release the object also carries `line`, `col`, `code`, and a
+ * readable `severity` string — previously `range.start` was a raw byte
+ * offset and `severity` was always `{}`. The adapter prefers `line` and
+ * falls back to resolving the offset against the file, which is still the
+ * one case in the suite that has to read the source to place a diagnostic.
  *
  * Paths come back relative to the *invoking* working directory rather than to
  * `--working-dir`, so matching is by basename, the same accommodation
@@ -141,27 +134,39 @@ final class PhpactorChecker implements Checker
             /** @var mixed $entry */
             $entry = json_decode($line, true);
             if (!is_array($entry)) {
-                // The progress banner shares stdout with the diagnostics.
+                // Progress used to share stdout; skip any leftover chatter.
                 continue;
             }
 
             $path = (string) ($entry['file'] ?? '');
             $message = trim((string) ($entry['message'] ?? ''));
+            $code = trim((string) ($entry['code'] ?? ''));
+            $lineNumber = is_int($entry['line'] ?? null) ? $entry['line'] : 0;
             $range = $entry['range'] ?? null;
             $offset = is_array($range) ? (int) ($range['start'] ?? -1) : -1;
 
-            if ($path === '' || $message === '' || $offset < 0) {
+            if ($path === '' || $message === '') {
                 continue;
             }
 
             $file = basename($path);
-            $lineNumber = $this->lineAtOffset($file, $offset);
-            if ($lineNumber === null) {
+            if (!is_file($this->testsDir . '/' . $file)) {
                 continue;
             }
 
+            if ($lineNumber < 1) {
+                if ($offset < 0) {
+                    continue;
+                }
+
+                $lineNumber = $this->lineAtOffset($file, $offset);
+                if ($lineNumber === null) {
+                    continue;
+                }
+            }
+
             $byFile[$file][$lineNumber] ??= [];
-            $byFile[$file][$lineNumber][] = $message;
+            $byFile[$file][$lineNumber][] = $code === '' ? $message : sprintf('%s [%s]', $message, $code);
         }
 
         foreach ($byFile as $file => $diagnostics) {

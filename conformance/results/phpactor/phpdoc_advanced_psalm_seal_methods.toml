@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 6
 output = """
-phpdoc_advanced_psalm_seal_methods.php:72: Method "wave" does not exist on class "Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Sealed"
-phpdoc_advanced_psalm_seal_methods.php:81: Method "wave" does not exist on class "Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Unsealed""""
+phpdoc_advanced_psalm_seal_methods.php:72: Method "wave" does not exist on class "Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Sealed" [missing_member]
+phpdoc_advanced_psalm_seal_methods.php:81: Method "wave" does not exist on class "Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Unsealed" [missing_member]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

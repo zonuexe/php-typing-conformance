@@ -2,10 +2,10 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-debug_phpstan_assert_variable_certainty.php:23: Function "assertVariableCertainty" not found
-debug_phpstan_assert_variable_certainty.php:23: Class "TrinaryLogic" not found
-debug_phpstan_assert_variable_certainty.php:27: Function "assertVariableCertainty" not found
-debug_phpstan_assert_variable_certainty.php:27: Class "TrinaryLogic" not found"""
+debug_phpstan_assert_variable_certainty.php:23: Function "assertVariableCertainty" not found [unresolved_name]
+debug_phpstan_assert_variable_certainty.php:23: Class "TrinaryLogic" not found [unresolved_name]
+debug_phpstan_assert_variable_certainty.php:27: Function "assertVariableCertainty" not found [unresolved_name]
+debug_phpstan_assert_variable_certainty.php:27: Class "TrinaryLogic" not found [unresolved_name]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

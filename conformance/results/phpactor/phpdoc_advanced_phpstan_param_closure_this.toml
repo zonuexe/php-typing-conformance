@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 11
 output = """
-phpdoc_advanced_phpstan_param_closure_this.php:39: Undefined variable "$this"
-phpdoc_advanced_phpstan_param_closure_this.php:43: Undefined variable "$this""""
+phpdoc_advanced_phpstan_param_closure_this.php:39: Undefined variable "$this" [undefined_variable]
+phpdoc_advanced_phpstan_param_closure_this.php:43: Undefined variable "$this" [undefined_variable]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

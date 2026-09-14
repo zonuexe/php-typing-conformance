@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-debug_phpstan_assert_native_type.php:25: Function "assertNativeType" not found
-debug_phpstan_assert_native_type.php:28: Function "assertNativeType" not found"""
+debug_phpstan_assert_native_type.php:25: Function "assertNativeType" not found [unresolved_name]
+debug_phpstan_assert_native_type.php:28: Function "assertNativeType" not found [unresolved_name]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

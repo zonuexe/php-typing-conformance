@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-debug_phpstan_assert_super_type.php:23: Function "assertSuperType" not found
-debug_phpstan_assert_super_type.php:26: Function "assertSuperType" not found"""
+debug_phpstan_assert_super_type.php:23: Function "assertSuperType" not found [unresolved_name]
+debug_phpstan_assert_super_type.php:26: Function "assertSuperType" not found [unresolved_name]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

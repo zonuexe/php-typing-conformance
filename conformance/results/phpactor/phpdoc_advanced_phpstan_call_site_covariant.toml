@@ -1,17 +1,13 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = """
-phpdoc_advanced_phpstan_call_site_covariant.php:27: Missing generic tag `@extends Animal<mixed>`
-phpdoc_advanced_phpstan_call_site_covariant.php:31: Missing generic tag `@extends Animal<mixed>`"""
-errors_diff = """
-Line 27: Unexpected errors ["Missing generic tag `@extends Animal<mixed>`"]
-Line 31: Unexpected errors ["Missing generic tag `@extends Animal<mixed>`"]"""
-notes = "Treats `covariant Animal` as making Animal generic, so Cat and Dog are missing `@extends Animal<mixed>`. The probes themselves are silent."
+output = ""
+errors_diff = ""
+notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"
 enforced_lines = "0/2"
 unrecognized_lines = []
-false_positive_lines = [27, 31]
+false_positive_lines = []
 over_rejected_lines = []

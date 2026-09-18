@@ -1,5 +1,5 @@
 {
     "require-dev": {
-        "laravel/lsp": "^0.0.31"
+        "laravel/lsp": "^0.0.32"
     }
 }

@@ -30,8 +30,8 @@ version = "6.0.7"
 date = "2026-06-22"
 
 [psalm]
-version = "6.17.1"
-date = "2026-09-12"
+version = "6.17.2"
+date = "2026-09-15"
 
 [phpstan]
 version = "2.2.14"
@@ -50,12 +50,12 @@ version = "0.5.5"
 date = "2025-04-22"
 
 [qodana]
-version = "262.10315.130"
-date = "2026-09-03"
+version = "262.10968.76"
+date = "2026-09-17"
 
 [mago]
-version = "1.48.1"
-date = "2026-09-11"
+version = "1.49.0"
+date = "2026-09-16"
 
 [phpy]
 version = "1.0.19274"
@@ -66,8 +66,8 @@ version = "0.10.0"
 date = "2026-08-20"
 
 [mir]
-version = "0.73.0"
-date = "2026-09-11"
+version = "0.76.0"
+date = "2026-09-17"
 
 [pzoom]
 version = "unversioned"
@@ -95,12 +95,12 @@ version = "0.3.7"
 date = "2018-04-25"
 
 [laravel-lsp]
-version = "0.0.31"
-date = "2026-08-14"
+version = "0.0.32"
+date = "2026-09-15"
 
 [symfony-lsp]
-version = "0.20.2"
-date = "2026-09-13"
+version = "0.20.3"
+date = "2026-09-15"
 
 [php-language-server]
 version = "5.4.6"

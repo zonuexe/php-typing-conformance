@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a6156bc3defa1332b3df66b7e2089a1",
+    "content-hash": "2a2b08374183a12a4578ebb5ef7d13dc",
     "packages": [],
     "packages-dev": [
         {
             "name": "laravel/lsp",
-            "version": "v0.0.31",
+            "version": "v0.0.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/lsp.git",
-                "reference": "6739481f9c16aa628582c69014c083b9abf3987f"
+                "reference": "557d8c9596162e28f80df7debf3ad9f45f5255cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/lsp/zipball/6739481f9c16aa628582c69014c083b9abf3987f",
-                "reference": "6739481f9c16aa628582c69014c083b9abf3987f",
+                "url": "https://api.github.com/repos/laravel/lsp/zipball/557d8c9596162e28f80df7debf3ad9f45f5255cc",
+                "reference": "557d8c9596162e28f80df7debf3ad9f45f5255cc",
                 "shasum": ""
             },
             "require": {
@@ -67,7 +67,7 @@
                 "issues": "https://github.com/laravel/lsp/issues",
                 "source": "https://github.com/laravel/lsp"
             },
-            "time": "2026-08-14T09:30:34+00:00"
+            "time": "2026-09-15T12:51:19+00:00"
         }
     ],
     "aliases": [],

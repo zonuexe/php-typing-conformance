@@ -1,6 +1,6 @@
 tool = "laravel-lsp"
-version = "Laravel LSP v0.0.31"
-server_info = "Laravel LSP v0.0.31"
+version = "Laravel LSP v0.0.32"
+server_info = "Laravel LSP v0.0.32"
 dynamic_registrations = ["workspace/didChangeWatchedFiles"]
 raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":1},\"documentLinkProvider\":{\"resolveProvider\":false},\"completionProvider\":{\"triggerCharacters\":[\"\\\"\",\"'\",\".\",\"|\",\"x\",\"-\",\":\",\"@\"]},\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\"]},\"definitionProvider\":true,\"hoverProvider\":true}"
 framework_corpus = "rigortype/laravel-gate-image-board@939a805b8607"
@@ -188,7 +188,7 @@ feature = "config-hover"
 method = "textDocument/hover"
 expected = "Laravel"
 probe = "answered"
-shown = "`Laravel`\n\n[config/app.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/config/app.php#L16)"
+shown = "`Laravel`\n\n[config/app.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6aad72d73ca621.67895502/config/app.php#L16)"
 
 [framework.config-diagnostic]
 feature = "config-diagnostic"
@@ -202,7 +202,7 @@ feature = "route-hover"
 method = "textDocument/hover"
 expected = ""
 probe = "answered"
-shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/resources/views/folio/explore/index.blade.php)"
+shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6aad72d73ca621.67895502/resources/views/folio/explore/index.blade.php)"
 
 [framework.route-definition]
 feature = "route-definition"
@@ -223,14 +223,14 @@ feature = "route-blade-hover"
 method = "textDocument/hover"
 expected = ""
 probe = "answered"
-shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/resources/views/folio/explore/index.blade.php)"
+shown = "[resources/views/folio/explore/index.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6aad72d73ca621.67895502/resources/views/folio/explore/index.blade.php)"
 
 [framework.view-hover]
 feature = "view-hover"
 method = "textDocument/hover"
 expected = ""
 probe = "answered"
-shown = "[resources/views/welcome.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/resources/views/welcome.blade.php)"
+shown = "[resources/views/welcome.blade.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6aad72d73ca621.67895502/resources/views/welcome.blade.php)"
 
 [framework.view-diagnostic]
 feature = "view-diagnostic"
@@ -244,21 +244,21 @@ feature = "trans-hover"
 method = "textDocument/hover"
 expected = "Explore"
 probe = "answered"
-shown = "`en`: Explore\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/lang/en/boards.php#L5)"
+shown = "`en`: Explore\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6aad72d73ca621.67895502/lang/en/boards.php#L5)"
 
 [framework.trans-dotted-hover]
 feature = "trans-dotted-hover"
 method = "textDocument/hover"
 expected = "Public"
 probe = "answered"
-shown = "`en`: Public\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/lang/en/boards.php#L10)"
+shown = "`en`: Public\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6aad72d73ca621.67895502/lang/en/boards.php#L10)"
 
 [framework.trans-replace-hover]
 feature = "trans-replace-hover"
 method = "textDocument/hover"
 expected = "No public threads on :name."
 probe = "answered"
-shown = "`en`: No public threads on :name.\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6a8b74e38c1d19.96086336/lang/en/boards.php#L8)"
+shown = "`en`: No public threads on :name.\n\n[lang/en/boards.php](file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6aad72d73ca621.67895502/lang/en/boards.php#L8)"
 
 [framework.trans-diagnostic]
 feature = "trans-diagnostic"

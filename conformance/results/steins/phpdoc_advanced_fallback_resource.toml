@@ -1,15 +1,16 @@
-status = "Falls back to a nonexistent-class reference"
+status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
 phpdoc_advanced_fallback_resource.php:33: argument 123 to acceptsResource() violates declared @param resource $value — declared contract violation [phpdoc.param-mismatch]
-phpdoc_advanced_fallback_resource.php:34: argument "php://memory" to acceptsResource() violates declared @param resource $value — declared contract violation [phpdoc.param-mismatch]"""
+phpdoc_advanced_fallback_resource.php:34: argument "php://memory" to acceptsResource() violates declared @param resource $value — declared contract violation [phpdoc.param-mismatch]
+phpdoc_advanced_fallback_resource.php:35: argument new stdClass() to acceptsResource() violates declared @param resource $value — declared contract violation [phpdoc.param-mismatch]"""
 errors_diff = ""
-notes = "`resource` is not a native type and has no `lower_identifier` entry, so it lowers to `ContractTy::Class(\"resource\")` and is treated as a reference to a non-existent class (divergence-registry.md entry 4) — no resource-value modeling exists to check against."
+notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "2/3"
+enforcement = "enforced"
+enforced_lines = "3/3"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

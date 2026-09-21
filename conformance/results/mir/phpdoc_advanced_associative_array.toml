@@ -1,15 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-phpdoc_advanced_associative_array.php:23: MismatchingDocblockParamType: Docblock type 'array<int, string>&array{}' for $map does not match inferred 'array' [MIR0210]
-phpdoc_advanced_associative_array.php:32: InvalidArgument: Argument $map of acceptsAssoc() expects 'array<int, string>&array{}', got 'array{0: "a", 1: "b", 2: "c"}' [MIR0201]"""
+output = "phpdoc_advanced_associative_array.php:23: MismatchingDocblockParamType: Docblock type 'array<int, string>&array{}' for $map does not match inferred 'array' [MIR0210]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
+enforcement = "none"
+enforced_lines = "0/1"
 unrecognized_lines = [23]
 false_positive_lines = []
 over_rejected_lines = []

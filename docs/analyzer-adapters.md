@@ -142,16 +142,16 @@ issues were found and is treated as success.
 ### psalm-next — the 7.x line, folded into the psalm column
 
 A second Psalm installation (`vendor-bin/psalm-next`, currently
-`7.0.0-beta21`) run through the same adapter with a config of its own
+`7.0.0-beta22`) run through the same adapter with a config of its own
 (`conformance/psalm-next.xml` — a copy of `psalm.xml` plus the 7.x-only
 purity suppresses, which Psalm 6's schema rejects). It is a configuration
 of the psalm column's metadata: the reference and release tables describe
 Psalm once, the index matrix does not give it a column of its own (the
-psalm version cell names it on a second line — `6.17.2 / next:
-7.0.0-beta21`), and the detail pages show it as a full row. Only the CLI is
+psalm version cell names it on a second line — `6.18.0 / next:
+7.0.0-beta22`), and the detail pages show it as a full row. Only the CLI is
 measured — no LSP probe for the next line. The 7.x-only purity findings
 (`MissingPureAnnotation`, `MissingAbstractPureAnnotation`) are suppressed
-in `psalm-next.xml`; and the version banner reads `Psalm 7.0.0-beta21@…`,
+in `psalm-next.xml`; and the version banner reads `Psalm 7.0.0-beta22@…`,
 which the version pattern now parses with its prerelease suffix so the
 cell links to the tag that exists.
 

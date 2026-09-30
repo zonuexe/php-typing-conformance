@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "directives_nodiscard_return.php:41: Call to function Conformance\\Tests\\DirectivesNodiscardReturn\\mintId() on a separate line discards return value. [reported-from-level=0]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 0

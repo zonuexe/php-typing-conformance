@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = "regressions_dynamic_name_stringable.php:62: Expected type 'string|Stringable'. Found 'Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable'. [P1006]"
+errors_diff = """
+Line 72: Expected 1 error(s)
+Line 77: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []

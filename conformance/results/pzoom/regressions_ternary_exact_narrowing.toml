@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+regressions_ternary_exact_narrowing.php:35: Argument 1 of takesFalse expects false, but bool provided [InvalidArgument]
+regressions_ternary_exact_narrowing.php:38: Argument 1 of takesFalse expects false, but bool provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

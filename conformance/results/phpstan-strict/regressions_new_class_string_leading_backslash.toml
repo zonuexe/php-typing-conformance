@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_new_class_string_leading_backslash.php:41: Cannot instantiate interface Countable.
+regressions_new_class_string_leading_backslash.php:47: Cannot instantiate interface Countable."""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_dynamic_name_stringable.php:57: Saw a dynamic usage of an instance property with a name of type \\Conformance\\Tests\\RegressionsDynamicNameStringable\\Name but expected the name to be a string [PhanTypeInvalidPropertyName]
+regressions_dynamic_name_stringable.php:62: Saw a dynamic usage of an instance property with a name of type \\Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable but expected the name to be a string [PhanTypeInvalidPropertyName]
+regressions_dynamic_name_stringable.php:72: Instance method name must be a string, got \\Conformance\\Tests\\RegressionsDynamicNameStringable\\Name [PhanTypeInvalidMethodName]
+regressions_dynamic_name_stringable.php:77: Instance method name must be a string, got \\Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable [PhanTypeInvalidMethodName]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

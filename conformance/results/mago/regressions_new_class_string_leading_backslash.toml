@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_new_class_string_leading_backslash.php:35: Class `\\DateTimeImmutable` not found. [non-existent-class]
+regressions_new_class_string_leading_backslash.php:35: Argument #1 passed to function `Conformance\\Tests\\RegressionsNewClassStringLeadingBackslash\\takesImmutable` has type `never`, meaning it cannot produce a value. [no-value]
+regressions_new_class_string_leading_backslash.php:41: Class `\\Countable` not found. [non-existent-class]
+regressions_new_class_string_leading_backslash.php:47: Interface `Countable` cannot be instantiated with `new`. [interface-instantiation]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

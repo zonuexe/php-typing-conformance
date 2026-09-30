@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+regressions_error_get_last_trace.php:52: Invalid array offset type: 'trace' [InvalidArrayOffset]
+regressions_error_get_last_trace.php:53: Invalid array offset type: 'nope' [InvalidArrayOffset]"""
+errors_diff = "Line 52: Expected silence (quiet probe), got [\"Invalid array offset type: 'trace' [InvalidArrayOffset]\"]"
+notes = ""
+ignore_errors = []

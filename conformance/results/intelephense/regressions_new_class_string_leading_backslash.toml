@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+regressions_new_class_string_leading_backslash.php:29: Expected type 'DateTimeImmutable'. Found 'object'. [P1006]
+regressions_new_class_string_leading_backslash.php:35: Expected type 'DateTimeImmutable'. Found 'object'. [P1006]"""
+errors_diff = """
+Line 41: Expected 1 error(s)
+Line 47: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []

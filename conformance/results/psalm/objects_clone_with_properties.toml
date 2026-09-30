@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+objects_clone_with_properties.php:49: Instance property Conformance\\Tests\\ObjectsCloneWithProperties\\Point::$nope is not defined [UndefinedPropertyAssignment]
+objects_clone_with_properties.php:50: Conformance\\Tests\\ObjectsCloneWithProperties\\Point::$x with declared type 'int' cannot be assigned type ''str'' [InvalidPropertyAssignmentValue]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+objects_clone_with_properties.php:46: Argument 1 of Conformance\\Tests\\ObjectsCloneWithProperties\\takesPoint expects Conformance\\Tests\\ObjectsCloneWithProperties\\Point, but parent type object provided [ArgumentTypeCoercion]
+objects_clone_with_properties.php:47: Argument 1 of Conformance\\Tests\\ObjectsCloneWithProperties\\takesInt cannot be mixed, expecting int [MixedArgument]"""
+errors_diff = """
+Line 49: Expected 1 error(s)
+Line 50: Expected 1 error(s)
+Line 46: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\ObjectsCloneWithProperties\\\\takesPoint expects Conformance\\\\Tests\\\\ObjectsCloneWithProperties\\\\Point, but parent type object provided [ArgumentTypeCoercion]"]
+Line 47: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\ObjectsCloneWithProperties\\\\takesInt cannot be mixed, expecting int [MixedArgument]"]"""
+notes = ""
+ignore_errors = []

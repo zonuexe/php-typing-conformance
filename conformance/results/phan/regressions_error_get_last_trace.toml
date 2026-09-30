@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "regressions_error_get_last_trace.php:53: Invalid offset \"nope\" of $error of array type array{type:int,message:string,file:string,line:int} [PhanTypeInvalidDimOffset]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

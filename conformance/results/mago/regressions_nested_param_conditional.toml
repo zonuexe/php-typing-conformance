@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 7
+output = """
+regressions_nested_param_conditional.php:66: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\RegressionsNestedParamConditional\\takesUserOrNull`: expected `Conformance\\Tests\\RegressionsNestedParamConditional\\User|null`, but possibly received `Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<Conformance\\Tests\\RegressionsNestedParamConditional\\User>|Conformance\\Tests\\RegressionsNestedParamConditional\\User|null`. [possibly-invalid-argument]
+regressions_nested_param_conditional.php:75: Invalid argument type for argument #1 of `Conformance\\Tests\\RegressionsNestedParamConditional\\takesUserOrNull`: expected `Conformance\\Tests\\RegressionsNestedParamConditional\\User|null`, but found `Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<Conformance\\Tests\\RegressionsNestedParamConditional\\User>`. [invalid-argument]"""
+errors_diff = "Line 66: Expected silence (quiet probe), got [\"Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\RegressionsNestedParamConditional\\\\takesUserOrNull`: expected `Conformance\\\\Tests\\\\RegressionsNestedParamConditional\\\\User|null`, but possibly received `Conformance\\\\Tests\\\\RegressionsNestedParamConditional\\\\Collection<Conformance\\\\Tests\\\\RegressionsNestedParamConditional\\\\User>|Conformance\\\\Tests\\\\RegressionsNestedParamConditional\\\\User|null`. [possibly-invalid-argument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

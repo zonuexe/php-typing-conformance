@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+properties_override_attribute.php:51: Saw an @override annotation for property \\Conformance\\Tests\\PropertiesOverrideAttribute\\MissingParentProperty::other, but could not find an overridden property [PhanCommentOverrideOnNonOverrideProperty]
+properties_override_attribute.php:56: Saw use of attribute \\Override declared at internal:0 which supports being declared on \\Attribute::TARGET_PROPERTY|\\Attribute::TARGET_METHOD but it was declared on public const FLAG which requires an attribute declared to support \\Attribute::TARGET_CLASS_CONSTANT [PhanAttributeWrongTarget]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

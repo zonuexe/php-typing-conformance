@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+regressions_variable_class_static_property.php:43: Expected type 'int'. Found 'mixed'. [P1006]
+regressions_variable_class_static_property.php:60: Expected type 'int'. Found 'mixed'. [P1006]
+regressions_variable_class_static_property.php:60: Cannot access private property Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder::$secret from global scope. [P1080]
+regressions_variable_class_static_property.php:66: Expected type 'int'. Found 'mixed'. [P1006]"""
+errors_diff = """
+Line 52: Expected 1 error(s)
+Line 43: Expected silence (quiet probe), got ["Expected type 'int'. Found 'mixed'. [P1006]"]
+Line 66: Expected silence (quiet probe), got ["Expected type 'int'. Found 'mixed'. [P1006]"]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

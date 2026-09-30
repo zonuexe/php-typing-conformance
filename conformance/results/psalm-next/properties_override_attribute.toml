@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+properties_override_attribute.php:35: Attribute Override cannot be used on a property [InvalidAttribute]
+properties_override_attribute.php:50: Attribute Override cannot be used on a property [InvalidAttribute]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "regressions_error_get_last_trace.php:53: Cannot access value on variable $error using offset value of 'nope', expecting 'file', 'line', 'message', 'trace' or 'type' [InvalidArrayOffset]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

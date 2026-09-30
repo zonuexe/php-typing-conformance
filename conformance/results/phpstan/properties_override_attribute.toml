@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = "properties_override_attribute.php:51: Property Conformance\\Tests\\PropertiesOverrideAttribute\\MissingParentProperty::$other has #[\\Override] attribute but does not override any property. [reported-from-level=0]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 0

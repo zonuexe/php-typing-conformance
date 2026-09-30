@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = "regressions_nested_param_conditional.php:42: Saw unextractable annotation for comment '* @return ($key is Model ? TModel|null : ($key is (Arrayable|array<mixed>) ? static : TModel|null))' [PhanUnextractableAnnotation]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = [42]
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "regressions_is_callable_array_narrowing.php:47: Trying to invoke array<mixed>|(callable(): mixed) but it might not be a callable. [reported-from-level=7]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 7

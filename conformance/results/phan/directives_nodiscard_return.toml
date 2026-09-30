@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "directives_nodiscard_return.php:41: Return value of \\Conformance\\Tests\\DirectivesNodiscardReturn\\mintId() with #[\\NoDiscard] attribute is discarded - use (void) cast to suppress this warning [PhanNoDiscardReturnValueIgnored]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

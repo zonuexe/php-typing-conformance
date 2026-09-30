@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+objects_clone_with_properties.php:49: Access to an undefined property Conformance\\Tests\\ObjectsCloneWithProperties\\Point::$nope.
+objects_clone_with_properties.php:50: Property Conformance\\Tests\\ObjectsCloneWithProperties\\Point::$x (int) does not accept string."""
+errors_diff = ""
+notes = ""
+ignore_errors = []

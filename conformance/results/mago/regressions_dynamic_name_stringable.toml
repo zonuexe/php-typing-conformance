@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_dynamic_name_stringable.php:57: This member selector uses a non-literal string type (`string`); its specific value cannot be statically determined. [string-member-selector]
+regressions_dynamic_name_stringable.php:62: Cannot cast object of type `Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable` to `string` because it does not implement `Stringable`. [invalid-type-cast]
+regressions_dynamic_name_stringable.php:62: This member selector uses a non-literal string type (`string`); its specific value cannot be statically determined. [string-member-selector]
+regressions_dynamic_name_stringable.php:72: Invalid type `Conformance\\Tests\\RegressionsDynamicNameStringable\\Name` used as a member selector; a string is expected. [invalid-member-selector]
+regressions_dynamic_name_stringable.php:77: Invalid type `Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable` used as a member selector; a string is expected. [invalid-member-selector]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_new_class_string_leading_backslash.php:41: Unused result of new object creation expression in new $class() (this may be called for the side effects of the non-empty constructor or destructor) [PhanNoopNew]
+regressions_new_class_string_leading_backslash.php:41: Instantiation of abstract class \\Countable [PhanTypeInstantiateAbstract]
+regressions_new_class_string_leading_backslash.php:47: Unused result of new object creation expression in new $class() (this may be called for the side effects of the non-empty constructor or destructor) [PhanNoopNew]
+regressions_new_class_string_leading_backslash.php:47: Instantiation of abstract class \\Countable [PhanTypeInstantiateAbstract]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

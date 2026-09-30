@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_dynamic_name_stringable.php:62: Property name for Conformance\\Tests\\RegressionsDynamicNameStringable\\Target must be a string, but Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable was given. [reported-from-level=2]
+regressions_dynamic_name_stringable.php:72: Method name for Conformance\\Tests\\RegressionsDynamicNameStringable\\Target must be a string, but Conformance\\Tests\\RegressionsDynamicNameStringable\\Name was given. [reported-from-level=2]
+regressions_dynamic_name_stringable.php:77: Method name for Conformance\\Tests\\RegressionsDynamicNameStringable\\Target must be a string, but Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable was given. [reported-from-level=2]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 2

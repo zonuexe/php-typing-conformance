@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_variable_class_static_property.php:52: Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder::$count with declared type 'int' cannot be assigned type ''no'' [InvalidPropertyAssignmentValue]
+regressions_variable_class_static_property.php:60: Cannot access private property Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder::$secret [InaccessibleProperty]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "4/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

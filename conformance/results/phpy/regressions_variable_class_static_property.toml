@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_variable_class_static_property.php:52: Cannot implicitly convert 'string' to 'int'
+regressions_variable_class_static_property.php:60: Member has private visibility and is not accessible from the current context."""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "4/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+regressions_ternary_exact_narrowing.php:35: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\RegressionsTernaryExactNarrowing\\takesFalse`: expected `false`, but possibly received `bool`. [possibly-invalid-argument]
+regressions_ternary_exact_narrowing.php:38: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\RegressionsTernaryExactNarrowing\\takesFalse`: expected `false`, but possibly received `bool`. [possibly-invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+regressions_dynamic_name_stringable.php:72: Illegal function name of type 'Conformance\\Tests\\RegressionsDynamicNameStringable\\Name', name must be of type string
+regressions_dynamic_name_stringable.php:77: Illegal function name of type 'Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable', name must be of type string"""
+errors_diff = "Line 62: Expected 1 error(s)"
+notes = ""
+ignore_errors = []

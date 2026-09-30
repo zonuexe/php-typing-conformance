@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+regressions_variable_class_static_property.php:41: param $class miss matched with phpdoc type <<class-string<Holder>>> [funcParamTypeMissMatch]
+regressions_variable_class_static_property.php:49: param $class miss matched with phpdoc type <<class-string<Holder>>> [funcParamTypeMissMatch]
+regressions_variable_class_static_property.php:58: param $class miss matched with phpdoc type <<class-string<Holder>>> [funcParamTypeMissMatch]"""
+errors_diff = """
+Line 52: Expected 1 error(s)
+Line 60: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = [41, 49, 58]
+false_positive_lines = []
+over_rejected_lines = []

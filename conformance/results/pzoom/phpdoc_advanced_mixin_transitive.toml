@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 16
+output = """
+phpdoc_advanced_mixin_transitive.php:73: Argument 1 of takesInt cannot be mixed, expecting int [MixedArgument]
+phpdoc_advanced_mixin_transitive.php:73: Magic method Conformance\\Tests\\PhpdocAdvancedMixinTransitive\\Outer::answer does not exist [UndefinedMagicMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

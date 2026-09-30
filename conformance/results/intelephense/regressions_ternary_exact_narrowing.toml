@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+regressions_ternary_exact_narrowing.php:35: Expected type 'false'. Found 'bool'. [P1006]
+regressions_ternary_exact_narrowing.php:38: Expected type 'false'. Found 'bool'. [P1006]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

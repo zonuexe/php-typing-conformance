@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+regressions_variable_class_static_property.php:52: Invalid property assignment value [invalid-property-assignment-value]
+regressions_variable_class_static_property.php:60: Cannot read private property `$secret` from class `Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder`. [invalid-property-read]
+regressions_variable_class_static_property.php:60: Argument #1 passed to function `Conformance\\Tests\\RegressionsVariableClassStaticProperty\\takesInt` has type `never`, meaning it cannot produce a value. [no-value]
+regressions_variable_class_static_property.php:66: Invalid argument type for argument #1 of `Conformance\\Tests\\RegressionsVariableClassStaticProperty\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]"""
+errors_diff = "Line 66: Expected silence (quiet probe), got [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\RegressionsVariableClassStaticProperty\\\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

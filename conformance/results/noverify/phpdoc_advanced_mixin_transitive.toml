@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 16
+output = """
+phpdoc_advanced_mixin_transitive.php:37: param $arguments miss matched with phpdoc type <<list<mixed>>> [funcParamTypeMissMatch]
+phpdoc_advanced_mixin_transitive.php:55: param $arguments miss matched with phpdoc type <<list<mixed>>> [funcParamTypeMissMatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "no-probes"
+enforced_lines = "0/0"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

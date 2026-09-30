@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "regressions_ternary_exact_narrowing.php:38: Parameter #1 $value of function Conformance\\Tests\\RegressionsTernaryExactNarrowing\\takesFalse expects false, bool given. [reported-from-level=5]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5

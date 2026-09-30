@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+regressions_error_get_last_trace.php:52: Impossible `isset` check on key `'trace'` accessed on `array{'file': string, 'line': int, 'message': string, 'type': int}`. [impossible-nonnull-entry-check]
+regressions_error_get_last_trace.php:52: Redundant null coalesce: left-hand side is always `null`. [redundant-null-coalesce]
+regressions_error_get_last_trace.php:53: Undefined array key 'nope' accessed on `array{'file': string, 'line': int, 'message': string, 'type': int}`. [undefined-string-array-index]"""
+errors_diff = "Line 52: Expected silence (quiet probe), got [\"Impossible `isset` check on key `'trace'` accessed on `array{'file': string, 'line': int, 'message': string, 'type': int}`. [impossible-nonnull-entry-check]\",\"Redundant null coalesce: left-hand side is always `null`. [redundant-null-coalesce]\"]"
+notes = ""
+ignore_errors = []

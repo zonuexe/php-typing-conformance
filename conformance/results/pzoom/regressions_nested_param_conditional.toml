@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+regressions_nested_param_conditional.php:74: Argument 1 of takesCollection expects Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<Conformance\\Tests\\RegressionsNestedParamConditional\\User>, but parent type Conformance\\Tests\\RegressionsNestedParamConditional\\Collection provided [ArgumentTypeCoercion]
+regressions_nested_param_conditional.php:75: Argument 1 of takesUserOrNull expects Conformance\\Tests\\RegressionsNestedParamConditional\\User|null, but Conformance\\Tests\\RegressionsNestedParamConditional\\Collection provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

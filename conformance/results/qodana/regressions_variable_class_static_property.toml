@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = "regressions_variable_class_static_property.php:52: Property must be of type 'int', 'string' provided [PhpStrictTypeCheckingInspection]"
+errors_diff = "Line 60: Expected 1 error(s)"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "3/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

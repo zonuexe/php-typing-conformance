@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "regressions_error_get_last_trace.php:53: Offset 'nope' does not exist on array{type: int, message: string, file: string, line: int, trace?: list<array{function: string, line?: int, file?: string, class?: class-string, type?: '->'|'::', args?: list<mixed>, object?: object}>}. [reported-from-level=3]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 3

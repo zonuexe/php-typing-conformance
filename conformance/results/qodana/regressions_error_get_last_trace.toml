@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+regressions_error_get_last_trace.php:52: Value should be one of: "type", "message", "file", "line" [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+regressions_error_get_last_trace.php:53: Value should be one of: "type", "message", "file", "line" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"""
+errors_diff = "Line 52: Expected silence (quiet probe), got [\"Value should be one of: \\\"type\\\", \\\"message\\\", \\\"file\\\", \\\"line\\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_string_pseudo_intersection.php:41: InvalidArgument: Argument $value of acceptsIntersection() expects 'non-empty-string&string', got '"abc"' [MIR0201]
+phpdoc_advanced_string_pseudo_intersection.php:44: InvalidArgument: Argument $value of acceptsIntersection() expects 'non-empty-string&string', got '""' [MIR0201]
+phpdoc_advanced_string_pseudo_intersection.php:45: InvalidArgument: Argument $value of acceptsIntersection() expects 'non-empty-string&string', got '"ABC"' [MIR0201]"""
+errors_diff = "Line 41: Expected valid value to be accepted, got [\"InvalidArgument: Argument $value of acceptsIntersection() expects 'non-empty-string&string', got '\\\"abc\\\"' [MIR0201]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = [41]

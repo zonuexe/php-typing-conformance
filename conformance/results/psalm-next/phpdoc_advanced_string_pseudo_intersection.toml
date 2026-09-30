@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_string_pseudo_intersection.php:28: Intersection types must be all objects, Psalm\\Type\\Atomic\\TNonEmptyString provided in docblock for Conformance\\Tests\\PhpdocAdvancedStringPseudoIntersection\\acceptsIntersection [InvalidDocblock]
+phpdoc_advanced_string_pseudo_intersection.php:30: Parameter $value has no provided type [MissingParamType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [28, 30]
+false_positive_lines = []
+over_rejected_lines = []

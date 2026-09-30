@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+regressions_variable_class_static_property.php:60: Cannot access private property Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder::$secret [InaccessibleProperty]
+regressions_variable_class_static_property.php:66: Cannot access property $count on class-string<Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder> [InvalidPropertyFetch]
+regressions_variable_class_static_property.php:66: Argument 1 of takesInt cannot be mixed, expecting int [MixedArgument]"""
+errors_diff = """
+Line 52: Expected 1 error(s)
+Line 66: Expected silence (quiet probe), got ["Cannot access property $count on class-string<Conformance\\\\Tests\\\\RegressionsVariableClassStaticProperty\\\\Holder> [InvalidPropertyFetch]","Argument 1 of takesInt cannot be mixed, expecting int [MixedArgument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

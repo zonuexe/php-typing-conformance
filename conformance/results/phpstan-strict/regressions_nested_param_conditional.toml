@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+regressions_nested_param_conditional.php:44: Method Conformance\\Tests\\RegressionsNestedParamConditional\\Collection::find() never returns Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<TModel of Conformance\\Tests\\RegressionsNestedParamConditional\\Model> so it can be removed from the return type.
+regressions_nested_param_conditional.php:44: Method Conformance\\Tests\\RegressionsNestedParamConditional\\Collection::find() never returns TModel of Conformance\\Tests\\RegressionsNestedParamConditional\\Model so it can be removed from the return type.
+regressions_nested_param_conditional.php:75: Parameter #1 $user of function Conformance\\Tests\\RegressionsNestedParamConditional\\takesUserOrNull expects Conformance\\Tests\\RegressionsNestedParamConditional\\User|null, Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<Conformance\\Tests\\RegressionsNestedParamConditional\\User> given."""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = [44]
+false_positive_lines = []
+over_rejected_lines = []

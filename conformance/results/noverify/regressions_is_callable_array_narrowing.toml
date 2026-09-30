@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+regressions_is_callable_array_narrowing.php:37: not null safety call in function Conformance\\Tests\\RegressionsIsCallableArrayNarrowing\\takesClosure signature of param callback when calling function [notNullSafetyFunctionArgumentFunctionCall]
+regressions_is_callable_array_narrowing.php:38: not null safety call in function fromCallable signature of param callback [notNullSafetyFunctionArgumentVariable]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

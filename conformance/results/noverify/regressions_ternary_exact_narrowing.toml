@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+regressions_ternary_exact_narrowing.php:35: potentially not safe call in function Conformance\\Tests\\RegressionsTernaryExactNarrowing\\takesFalse signature of param value [notSafeCall]
+regressions_ternary_exact_narrowing.php:38: potentially not safe call in function Conformance\\Tests\\RegressionsTernaryExactNarrowing\\takesFalse signature of param value [notSafeCall]
+regressions_ternary_exact_narrowing.php:39: potentially not safe call in function Conformance\\Tests\\RegressionsTernaryExactNarrowing\\takesBool signature of param value [notSafeCall]"""
+errors_diff = "Line 39: Expected valid value to be accepted, got [\"potentially not safe call in function Conformance\\\\Tests\\\\RegressionsTernaryExactNarrowing\\\\takesBool signature of param value [notSafeCall]\"]"
+notes = ""
+ignore_errors = []

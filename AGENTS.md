@@ -185,7 +185,7 @@ tables, and the evaluator makes `// E<psalm>` expectations apply to it too —
 where the 7.x line diverges, that shows up as a missed or unexpected
 diagnostic rather than a marker the column never saw. It is not a column of
 the index matrix; the psalm version cell names the next line on its second
-line (`6.18.0 / next: 7.0.0-beta22`), and the detail pages carry it as a
+line (`6.19.1 / next: 7.0.0-beta22`), and the detail pages carry it as a
 full row. Only the CLI is measured; there is no LSP probe for the next line.
 The 7.x-only purity findings (`MissingPureAnnotation`,
 `MissingAbstractPureAnnotation`) are suppressed in

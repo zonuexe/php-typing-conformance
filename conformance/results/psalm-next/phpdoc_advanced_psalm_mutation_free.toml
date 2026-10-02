@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_psalm_mutation_free.php:34: The context allows only reading instance state but property assignment to Conformance\\Tests\\PhpdocAdvancedPsalmMutationFree\\Counter::$value is mutating instance state [ImpurePropertyAssignment]"
+output = "phpdoc_advanced_psalm_mutation_free.php:34: The context is read-props but property assignment to Conformance\\Tests\\PhpdocAdvancedPsalmMutationFree\\Counter::$value requires write-this-props [ImpurePropertyAssignment]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

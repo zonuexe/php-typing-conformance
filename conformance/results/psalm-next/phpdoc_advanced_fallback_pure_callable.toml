@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_fallback_pure_callable.php:55: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable expects pure-callable, but parent type impure-Closure():void provided [ArgumentTypeCoercion]
-phpdoc_advanced_fallback_pure_callable.php:58: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable expects pure-callable, but parent type impure-Closure():int provided [ArgumentTypeCoercion]
-phpdoc_advanced_fallback_pure_callable.php:61: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable expects pure-callable, but 1 provided [InvalidArgument]"""
+phpdoc_advanced_fallback_pure_callable.php:55: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable expects callable[pure], but parent type Closure[io]():void provided [ArgumentTypeCoercion]
+phpdoc_advanced_fallback_pure_callable.php:58: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable expects callable[pure], but parent type Closure[impure]():int provided [ArgumentTypeCoercion]
+phpdoc_advanced_fallback_pure_callable.php:61: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackPureCallable\\acceptsPureCallable expects callable[pure], but 1 provided [InvalidArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

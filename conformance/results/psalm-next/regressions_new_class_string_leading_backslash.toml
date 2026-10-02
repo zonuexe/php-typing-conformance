@@ -5,6 +5,7 @@ output = """
 regressions_new_class_string_leading_backslash.php:29: String cannot be used as a class [InvalidStringClass]
 regressions_new_class_string_leading_backslash.php:35: String cannot be used as a class [InvalidStringClass]
 regressions_new_class_string_leading_backslash.php:41: String cannot be used as a class [InvalidStringClass]
+regressions_new_class_string_leading_backslash.php:41: Interface Countable cannot be instantiated [InterfaceInstantiation]
 regressions_new_class_string_leading_backslash.php:47: String cannot be used as a class [InvalidStringClass]
 regressions_new_class_string_leading_backslash.php:47: Interface Countable cannot be instantiated [InterfaceInstantiation]"""
 errors_diff = ""

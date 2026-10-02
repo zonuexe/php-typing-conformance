@@ -1,9 +1,7 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 5
-output = """
-properties_override_attribute.php:35: Attribute Override cannot be used on a property [InvalidAttribute]
-properties_override_attribute.php:50: Attribute Override cannot be used on a property [InvalidAttribute]"""
-errors_diff = ""
+output = ""
+errors_diff = "Lines 50, 51: Expected error (tag missing)"
 notes = ""
 ignore_errors = []

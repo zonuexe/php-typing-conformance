@@ -3,11 +3,11 @@ conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_fallback_static_pure_closure.php:27: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\returnsStaticPureClosure [InvalidDocblock]
-phpdoc_advanced_fallback_static_pure_closure.php:27: Method Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\returnsStaticPureClosure does not have a return type, expecting pure-Closure(int):int [MissingReturnType]
+phpdoc_advanced_fallback_static_pure_closure.php:27: Method Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\returnsStaticPureClosure does not have a return type, expecting Closure[pure](int):int [MissingReturnType]
 phpdoc_advanced_fallback_static_pure_closure.php:37: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\static-pure-closure in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsStaticPureClosure [InvalidDocblock]
 phpdoc_advanced_fallback_static_pure_closure.php:39: Parameter $value has no provided type [MissingParamType]
-phpdoc_advanced_fallback_static_pure_closure.php:44: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsClosure cannot be mixed, expecting impure-Closure [MixedArgument]"""
-errors_diff = "Line 44: Expected valid value to be accepted, got [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\acceptsClosure cannot be mixed, expecting impure-Closure [MixedArgument]\"]"
+phpdoc_advanced_fallback_static_pure_closure.php:44: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackStaticPureClosure\\acceptsClosure cannot be mixed, expecting Closure[impure] [MixedArgument]"""
+errors_diff = "Line 44: Expected valid value to be accepted, got [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticPureClosure\\\\acceptsClosure cannot be mixed, expecting Closure[impure] [MixedArgument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"

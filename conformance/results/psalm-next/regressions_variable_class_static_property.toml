@@ -1,18 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
-regressions_variable_class_static_property.php:60: Cannot access private property Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder::$secret from context [InaccessibleProperty]
-regressions_variable_class_static_property.php:66: Cannot fetch property on non-object $__fake_var_1571 of type class-string<Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder> [InvalidPropertyFetch]
-regressions_variable_class_static_property.php:66: Argument 1 of Conformance\\Tests\\RegressionsVariableClassStaticProperty\\takesInt cannot be mixed, expecting int [MixedArgument]"""
-errors_diff = """
-Line 52: Expected 1 error(s)
-Line 66: Expected silence (quiet probe), got ["Cannot fetch property on non-object $__fake_var_1571 of type class-string<Conformance\\\\Tests\\\\RegressionsVariableClassStaticProperty\\\\Holder> [InvalidPropertyFetch]","Argument 1 of Conformance\\\\Tests\\\\RegressionsVariableClassStaticProperty\\\\takesInt cannot be mixed, expecting int [MixedArgument]"]"""
+regressions_variable_class_static_property.php:52: Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder::$count with declared type 'int' cannot be assigned type ''no'' [InvalidPropertyAssignmentValue]
+regressions_variable_class_static_property.php:60: Cannot access private property Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder::$secret [InaccessibleProperty]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "2/4"
+enforcement = "enforced"
+enforced_lines = "4/4"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

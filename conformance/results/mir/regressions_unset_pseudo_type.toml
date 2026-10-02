@@ -5,8 +5,8 @@ output = """
 regressions_unset_pseudo_type.php:48: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' does not exist [MIR1505]
 regressions_unset_pseudo_type.php:51: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' does not exist [MIR1505]
 regressions_unset_pseudo_type.php:54: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' does not exist [MIR1505]
-regressions_unset_pseudo_type.php:54: RedundantCondition: Condition is always true/false for type 'bool' [MIR0400]"""
-errors_diff = "Line 54: Expected silence (quiet probe), got [\"UndefinedDocblockClass: Docblock type 'Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset' does not exist [MIR1505]\",\"RedundantCondition: Condition is always true/false for type 'bool' [MIR0400]\"]"
+regressions_unset_pseudo_type.php:54: RedundantCondition: Condition is always true, so the check is redundant [MIR0400]"""
+errors_diff = "Line 54: Expected silence (quiet probe), got [\"UndefinedDocblockClass: Docblock type 'Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset' does not exist [MIR1505]\",\"RedundantCondition: Condition is always true, so the check is redundant [MIR0400]\"]"
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"

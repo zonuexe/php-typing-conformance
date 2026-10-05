@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6fb0bc0c0e75b9f60b577fd2a089bfe",
+    "content-hash": "8e8af18b5abaf28977578d10920cd700",
     "packages": [],
     "packages-dev": [
         {
@@ -902,16 +902,16 @@
         },
         {
             "name": "composer/semver",
-            "version": "3.5.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "f7a296f4c4cf8cb8bb83e35d6951a406bb11afa5"
+                "reference": "528948210cc46f967a4b98e83b19e76f2b504993"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/f7a296f4c4cf8cb8bb83e35d6951a406bb11afa5",
-                "reference": "f7a296f4c4cf8cb8bb83e35d6951a406bb11afa5",
+                "url": "https://api.github.com/repos/composer/semver/zipball/528948210cc46f967a4b98e83b19e76f2b504993",
+                "reference": "528948210cc46f967a4b98e83b19e76f2b504993",
                 "shasum": ""
             },
             "require": {
@@ -963,7 +963,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.5.0"
+                "source": "https://github.com/composer/semver/tree/3.5.1"
             },
             "funding": [
                 {
@@ -975,7 +975,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-24T14:38:51+00:00"
+            "time": "2026-10-05T13:12:12+00:00"
         },
         {
             "name": "composer/xdebug-handler",
@@ -3299,16 +3299,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "7.0.0-beta24",
+            "version": "7.0.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "dd176fea31111bd265da61b56595277324eee515"
+                "reference": "b50750343db2deaac1051f8ca65132281b9a2191"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/dd176fea31111bd265da61b56595277324eee515",
-                "reference": "dd176fea31111bd265da61b56595277324eee515",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/b50750343db2deaac1051f8ca65132281b9a2191",
+                "reference": "b50750343db2deaac1051f8ca65132281b9a2191",
                 "shasum": ""
             },
             "require": {
@@ -3414,7 +3414,7 @@
                 "issues": "https://github.com/vimeo/psalm/issues",
                 "source": "https://github.com/vimeo/psalm"
             },
-            "time": "2026-10-02T13:07:52+00:00"
+            "time": "2026-10-05T12:44:57+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -3486,7 +3486,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "vimeo/psalm": 10
+        "vimeo/psalm": 5
     },
     "prefer-stable": false,
     "prefer-lowest": false,

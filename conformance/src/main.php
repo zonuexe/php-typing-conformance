@@ -141,6 +141,7 @@ $magoChecker = new MagoChecker(
 );
 $phpantomChecker = new PhpantomChecker(
     binaryPath: $projectRoot . '/vendor-bin/phpantom/bin/phpantom_lsp',
+    workspacePath: $rootDir,
 );
 $mirChecker = new MirChecker(
     binaryPath: $projectRoot . '/vendor-bin/mir/vendor/bin/mir',

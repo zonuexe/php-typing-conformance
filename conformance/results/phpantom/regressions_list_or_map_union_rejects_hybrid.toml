@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
-errors_diff = "Line 37: Expected 1 error(s)"
+output = "regressions_list_or_map_union_rejects_hybrid.php:37: Argument 1 ($values) expects list<string>|array<string, bool|string|int>, got array{'disabled', href: 'https://example.com'} [type_mismatch_argument]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

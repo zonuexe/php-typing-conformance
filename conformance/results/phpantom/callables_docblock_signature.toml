@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = "Line 27: Expected 1 error(s)"
+output = "callables_docblock_signature.php:27: Argument 1 ($callback) expects callable(int): string, got Closure(string): string (parameter 1 accepts string, but is passed int) [type_mismatch_argument]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

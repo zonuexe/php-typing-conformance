@@ -203,15 +203,23 @@ and formatted as `message [check_name]`. Exit code 2 means issues were found.
 ### PHPantom — the analyze CLI, one file at a time
 
 The `analyze` subcommand of the same binary the LSP probes launch
-(`phpantom_lsp analyze --format json --no-colour <file>`), so the CLI and
-LSP columns measure one engine two ways. It takes exactly one path, which
-is fine for this corpus: no test loads fixture support files. Exit code 1
-means findings were made and is treated as success (Psalm's exit-2 rule);
-syntax errors arrive as ordinary `syntax_error` diagnostics rather than on
-a separate channel. The JSON keys files by the path as given, so the
-adapter passes the absolute test path and matches by basename. No PHP
-version knob is set: the Mago parser accepts the corpus's 8.4/8.5 syntax
-regardless of `php.version`, like the tools that expose nothing to set.
+(`phpantom_lsp analyze --format json --no-colour --project-root conformance
+<file>`), so the CLI and LSP columns measure one engine two ways. It takes
+exactly one path, which is fine for this corpus: no test loads fixture
+support files. Exit code 1 means findings were made and is treated as
+success (Psalm's exit-2 rule); syntax errors arrive as ordinary
+`syntax_error` diagnostics rather than on a separate channel. The JSON keys
+files by the path as given, so the adapter passes the absolute test path
+and matches by basename. No PHP version knob is set: the Mago parser
+accepts the corpus's 8.4/8.5 syntax regardless of `php.version`, like the
+tools that expose nothing to set.
+
+`--project-root` pins the root to `conformance/` rather than the current
+directory, because that is where PHPantom reads `.phpantom.toml`. The copy
+there turns on the diagnostics PHPantom leaves off by default
+(`unresolved-member-access`, `extra-arguments`, `report-magic-properties`),
+since every other column runs at its strictest setting. The LSP probes copy
+the same file into each PHPantom workspace.
 
 ### Intelephense — a language server, not a CLI
 

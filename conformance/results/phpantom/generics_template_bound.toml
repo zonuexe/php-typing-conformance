@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "generics_template_bound.php:56: Argument 1 ($box) expects Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\User>, got Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser> [type_mismatch_argument]"
+output = """
+generics_template_bound.php:56: Argument 1 ($box) expects Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\User>, got Conformance\\Tests\\GenericsTemplateBound\\NamedBox<Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser> [type_mismatch_argument]
+generics_template_bound.php:56: Argument 1 ($value) expects Conformance\\Tests\\GenericsTemplateBound\\HasName, got Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

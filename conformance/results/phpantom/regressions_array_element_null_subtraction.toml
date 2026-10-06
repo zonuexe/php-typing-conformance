@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 8
-output = ""
-errors_diff = "Line 41: Expected 1 error(s)"
+output = """
+regressions_array_element_null_subtraction.php:35: Argument 1 ($arr) expects list{string}, got array{string|null} [type_mismatch_argument]
+regressions_array_element_null_subtraction.php:41: Argument 1 ($arr) expects list{string}, got array{string|null} [type_mismatch_argument]"""
+errors_diff = "Line 35: Unexpected errors [\"Argument 1 ($arr) expects list{string}, got array{string|null} [type_mismatch_argument]\"]"
 notes = ""
 ignore_errors = []

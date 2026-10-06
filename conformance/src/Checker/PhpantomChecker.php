@@ -16,11 +16,16 @@ use RuntimeException;
  * identifier as a machine tag; exit code 1 means findings were made and is
  * treated as success, like Psalm's exit 2. Parse errors are ordinary
  * diagnostics (`syntax_error`) rather than a separate channel.
+ *
+ * The project root is pinned to the workspace rather than left to the
+ * current directory, because that is where PHPantom reads `.phpantom.toml`:
+ * the workspace's copy turns on the checks PHPantom leaves off by default.
  */
 final class PhpantomChecker implements Checker
 {
     public function __construct(
         private readonly string $binaryPath,
+        private readonly string $workspacePath,
     ) {
     }
 
@@ -47,8 +52,9 @@ final class PhpantomChecker implements Checker
     public function analyse(TestCase $testCase): array
     {
         $command = sprintf(
-            '%s analyze --format json --no-colour %s',
+            '%s analyze --format json --no-colour --project-root %s %s',
             escapeshellarg($this->binaryPath),
+            escapeshellarg($this->workspacePath),
             escapeshellarg($testCase->path),
         );
 

@@ -3,19 +3,13 @@ conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_fallback_constant_offset_template_key.php:46: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' does not exist [MIR1505]
-phpdoc_advanced_fallback_constant_offset_template_key.php:52: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]
 phpdoc_advanced_fallback_constant_offset_template_key.php:53: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
-phpdoc_advanced_fallback_constant_offset_template_key.php:53: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]
 phpdoc_advanced_fallback_constant_offset_template_key.php:54: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
-phpdoc_advanced_fallback_constant_offset_template_key.php:54: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]
 phpdoc_advanced_fallback_constant_offset_template_key.php:57: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
-phpdoc_advanced_fallback_constant_offset_template_key.php:57: InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]
-phpdoc_advanced_fallback_constant_offset_template_key.php:58: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
-phpdoc_advanced_fallback_constant_offset_template_key.php:58: InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' [MIR0201]"""
+phpdoc_advanced_fallback_constant_offset_template_key.php:58: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]"""
 errors_diff = """
-Line 52: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR0201]"]
-Line 53: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"immutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE>' [MIR0900]","InvalidArgument: Argument $value of takesInt() expects 'int', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR0201]"]
-Line 54: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"mutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE>' [MIR0900]","InvalidArgument: Argument $value of takesString() expects 'string', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE[T]' [MIR0201]"]"""
+Line 53: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"immutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE>' [MIR0900]"]
+Line 54: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"mutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE>' [MIR0900]"]"""
 notes = "Accepts the spelling and then carries `ID_TABLE[T]` around unevaluated, handing it to every call site: all five calls are rejected, the three correct ones included."
 ignore_errors = []
 recognition = "unrecognized"
@@ -23,4 +17,4 @@ enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = [46]
 false_positive_lines = []
-over_rejected_lines = [52, 53, 54]
+over_rejected_lines = []

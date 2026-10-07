@@ -3,12 +3,10 @@ conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
 phpdoc_advanced_fallback_non_zero_int.php:23: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\non-zero-int' does not exist [MIR1505]
-phpdoc_advanced_fallback_non_zero_int.php:40: InvalidArgument: Argument $value of acceptsInt() expects 'int', got 'Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\non-zero-int' [MIR0201]
 phpdoc_advanced_fallback_non_zero_int.php:43: InvalidArgument: Argument $value of acceptsNonZeroInt() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\non-zero-int', got '1' [MIR0201]
 phpdoc_advanced_fallback_non_zero_int.php:44: InvalidArgument: Argument $value of acceptsNonZeroInt() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\non-zero-int', got '-1' [MIR0201]
 phpdoc_advanced_fallback_non_zero_int.php:47: InvalidArgument: Argument $value of acceptsNonZeroInt() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonZeroInt\\non-zero-int', got '0' [MIR0201]"""
 errors_diff = """
-Line 40: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsInt() expects 'int', got 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int' [MIR0201]"]
 Line 43: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonZeroInt() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int', got '1' [MIR0201]"]
 Line 44: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonZeroInt() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonZeroInt\\\\non-zero-int', got '-1' [MIR0201]"]"""
 notes = ""
@@ -18,4 +16,4 @@ enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = [23]
 false_positive_lines = []
-over_rejected_lines = [40, 43, 44]
+over_rejected_lines = [43, 44]

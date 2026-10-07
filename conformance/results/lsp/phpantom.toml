@@ -1,6 +1,6 @@
 tool = "phpantom"
-version = "phpantom_lsp 0.11.0"
-server_info = "PHPantom 0.11.0"
+version = "phpantom_lsp 0.11.1"
+server_info = "PHPantom 0.11.1"
 dynamic_registrations = ["workspace/didChangeWatchedFiles"]
 raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":2,\"save\":{\"includeText\":false}},\"selectionRangeProvider\":true,\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"@\",\"'\",\"\\\"\",\"[\",\"\\\\\",\"/\",\"*\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"],\"retriggerCharacters\":[\",\",\")\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":true},\"documentFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"\\n\"},\"renameProvider\":{\"prepareProvider\":true},\"documentLinkProvider\":{\"resolveProvider\":false},\"foldingRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"phpantom.navigateToPrototype\"]},\"callHierarchyProvider\":true,\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"enum\",\"type\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"function\",\"method\",\"decorator\",\"enumMember\",\"keyword\",\"comment\"],\"tokenModifiers\":[\"declaration\",\"static\",\"readonly\",\"deprecated\",\"abstract\",\"definition\",\"defaultLibrary\"]},\"range\":false,\"full\":true},\"inlayHintProvider\":true}"
 framework_corpus = "rigortype/laravel-gate-image-board@939a805b8607"
@@ -74,7 +74,7 @@ probe = "answered"
 [capabilities.code-action]
 advertised = true
 via = "static"
-probe = "empty"
+probe = "answered"
 
 [capabilities.code-lens]
 advertised = true
@@ -246,21 +246,21 @@ feature = "trans-hover"
 method = "textDocument/hover"
 expected = "Explore"
 probe = "answered"
-shown = "**Trans** `boards.explore`\n\n`Explore`\n\nDefined in `lang/en/boards.php`"
+shown = "**Trans** `boards.explore`\n\n`en`: `Explore`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ac69f168c4856.27723037/lang/en/boards.php#L5>)"
 
 [framework.trans-dotted-hover]
 feature = "trans-dotted-hover"
 method = "textDocument/hover"
 expected = "Public"
 probe = "answered"
-shown = "**Trans** `boards.visibility.public`\n\n`Public`\n\nDefined in `lang/en/boards.php`"
+shown = "**Trans** `boards.visibility.public`\n\n`en`: `Public`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ac69f168c4856.27723037/lang/en/boards.php#L10>)"
 
 [framework.trans-replace-hover]
 feature = "trans-replace-hover"
 method = "textDocument/hover"
 expected = "No public threads on :name."
 probe = "answered"
-shown = "**Trans** `boards.explore_empty_board`\n\n`No public threads on :name.`\n\nDefined in `lang/en/boards.php`"
+shown = "**Trans** `boards.explore_empty_board`\n\n`en`: `No public threads on :name.`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ac69f168c4856.27723037/lang/en/boards.php#L8>)"
 
 [framework.trans-diagnostic]
 feature = "trans-diagnostic"

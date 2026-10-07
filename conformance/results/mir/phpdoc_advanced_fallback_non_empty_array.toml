@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = "phpdoc_advanced_fallback_non_empty_array.php:49: InvalidArgument: Argument $value of acceptsNonEmptyArray() expects 'non-empty-array', got 'array{}' [MIR0201]"
+output = "phpdoc_advanced_fallback_non_empty_array.php:49: ArgumentTypeCoercion: Argument $value of acceptsNonEmptyArray() expects 'non-empty-array', got 'array{}' — coercion may fail at runtime [MIR0225]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

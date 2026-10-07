@@ -147,7 +147,7 @@ A second Psalm installation (`vendor-bin/psalm-next`, currently
 purity suppresses, which Psalm 6's schema rejects). It is a configuration
 of the psalm column's metadata: the reference and release tables describe
 Psalm once, the index matrix does not give it a column of its own (the
-psalm version cell names it on a second line — `6.19.1 / next:
+psalm version cell names it on a second line — `6.19.2 / next:
 7.0.0-rc1`), and the detail pages show it as a full row. Only the CLI is
 measured — no LSP probe for the next line. The 7.x-only purity findings
 (`MissingPureAnnotation`, `MissingAbstractPureAnnotation`) are suppressed

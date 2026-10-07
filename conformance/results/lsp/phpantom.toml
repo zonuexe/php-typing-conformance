@@ -1,8 +1,8 @@
 tool = "phpantom"
-version = "phpantom_lsp 0.10.0"
-server_info = "PHPantom 0.10.0"
+version = "phpantom_lsp 0.11.0"
+server_info = "PHPantom 0.11.0"
 dynamic_registrations = ["workspace/didChangeWatchedFiles"]
-raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":2,\"save\":{\"includeText\":false}},\"selectionRangeProvider\":true,\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"@\",\"'\",\"\\\"\",\"[\",\"\\\\\",\"/\",\"*\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"],\"retriggerCharacters\":[\",\",\")\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":false},\"documentFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"\\n\"},\"renameProvider\":{\"prepareProvider\":true},\"documentLinkProvider\":{\"resolveProvider\":false},\"foldingRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"phpantom.navigateToPrototype\"]},\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"enum\",\"type\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"function\",\"method\",\"decorator\",\"enumMember\",\"keyword\",\"comment\"],\"tokenModifiers\":[\"declaration\",\"static\",\"readonly\",\"deprecated\",\"abstract\",\"definition\",\"defaultLibrary\"]},\"range\":false,\"full\":true},\"inlayHintProvider\":true}"
+raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":2,\"save\":{\"includeText\":false}},\"selectionRangeProvider\":true,\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"@\",\"'\",\"\\\"\",\"[\",\"\\\\\",\"/\",\"*\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"],\"retriggerCharacters\":[\",\",\")\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":true},\"documentFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"\\n\"},\"renameProvider\":{\"prepareProvider\":true},\"documentLinkProvider\":{\"resolveProvider\":false},\"foldingRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"phpantom.navigateToPrototype\"]},\"callHierarchyProvider\":true,\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"enum\",\"type\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"function\",\"method\",\"decorator\",\"enumMember\",\"keyword\",\"comment\"],\"tokenModifiers\":[\"declaration\",\"static\",\"readonly\",\"deprecated\",\"abstract\",\"definition\",\"defaultLibrary\"]},\"range\":false,\"full\":true},\"inlayHintProvider\":true}"
 framework_corpus = "rigortype/laravel-gate-image-board@939a805b8607"
 navigation_corpus = "psy/psysh@0e8ec1af5990"
 
@@ -74,7 +74,7 @@ probe = "answered"
 [capabilities.code-action]
 advertised = true
 via = "static"
-probe = "answered"
+probe = "empty"
 
 [capabilities.code-lens]
 advertised = true
@@ -117,9 +117,9 @@ via = "static"
 probe = "answered"
 
 [capabilities.call-hierarchy]
-advertised = false
-via = "none"
-probe = "skipped"
+advertised = true
+via = "static"
+probe = "answered"
 
 [capabilities.type-hierarchy]
 advertised = false
@@ -129,7 +129,7 @@ probe = "skipped"
 [hover.native-return]
 feature = "Native return type"
 expected = "int"
-shown = "```php\n<?php\n$length = int<0, max>\n```"
+shown = "```php\n<?php\n$length = 7\n```"
 verdict = "precise"
 
 [hover.narrowed-union]
@@ -181,8 +181,9 @@ shown = ""
 feature = "env-diagnostic"
 method = "push-diagnostics"
 expected = "GATE_MISSING_KEY"
-probe = "empty"
+probe = "by-design"
 shown = ""
+note = "Not flagged by design: .env files are commonly partial or empty on dev/CI/staging, and IDE tooling is never run against production values (which may themselves be legitimate defaults rather than present keys)."
 
 [framework.config-hover]
 feature = "config-hover"
@@ -309,10 +310,9 @@ kind = "Class constant"
 name = "Psy\\Shell::VERSION"
 definition = "correct"
 refs_expected = 21
-refs_found = 20
+refs_found = 21
 refs_extra = 0
-references = "partial"
-refs_missing = ["src/functions.php:383"]
+references = "all"
 
 [navigation.instance-property]
 kind = "Instance property"

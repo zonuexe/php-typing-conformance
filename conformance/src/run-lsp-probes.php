@@ -101,6 +101,7 @@ if ($navigation !== null) {
 $navigationConfigs = [
     'psalm' => ['psalm.xml' => $lspDir . '/config/navigation/psalm.xml'],
     'phan' => ['.phan/config.php' => $lspDir . '/config/navigation/phan/config.php'],
+    'phpantom' => ['.phpantom.toml' => $rootDir . '/.phpantom.toml'],
 ];
 
 $laravelCorpus = LaravelCorpus::tryLoad($lspDir . '/laravel/corpus.toml', $projectRoot);
@@ -116,6 +117,18 @@ $runner = new ProbeRunner(
     fixturesDir: $lspDir . '/fixtures',
 );
 $grading = new ProbeGrading();
+
+// Known cases where a framework probe reading as a miss is actually a
+// deliberate design choice, confirmed with the analyzer's own maintainer
+// rather than inferred from behaviour. phpantom does not flag a missing
+// .env key: .env files are routinely partial or empty on dev/CI/staging,
+// and the IDE never runs against production values anyway (which can
+// legitimately be defaults rather than present keys).
+$frameworkByDesign = [
+    'phpantom' => [
+        'env-diagnostic' => 'Not flagged by design: .env files are commonly partial or empty on dev/CI/staging, and IDE tooling is never run against production values (which may themselves be legitimate defaults rather than present keys).',
+    ],
+];
 
 if (!is_dir($resultsDir) && !mkdir($resultsDir, 0777, true) && !is_dir($resultsDir)) {
     fwrite(STDERR, "Cannot create {$resultsDir}\n");
@@ -187,6 +200,7 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
                 sourceDir: $laravelCorpus->root,
                 configFiles: [
                     '.env' => $lspDir . '/laravel/gate.env',
+                    ...array_intersect_key($server->configFiles, ['.phpantom.toml' => true]),
                 ],
                 specOverrides: ['indexTimeoutMs' => 90000, 'timeoutMs' => 180000, 'probeTimeoutMs' => 20000],
                 linkVendor: true,
@@ -242,6 +256,12 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
         $payload['framework'] = $grading->framework($frameworkOutput, $corpusFrameworkDefs);
     } elseif ($frameworkDefs !== []) {
         $payload['framework'] = $grading->framework($output, $frameworkDefs);
+    }
+    foreach ($frameworkByDesign[$server->tool] ?? [] as $probeId => $note) {
+        if (isset($payload['framework'][$probeId])) {
+            $payload['framework'][$probeId]['probe'] = 'by-design';
+            $payload['framework'][$probeId]['note'] = $note;
+        }
     }
     if ($laravelCorpus !== null && $server->frameworkProbesFile !== null) {
         $payload['framework_corpus'] = "{$laravelCorpus->project}@" . substr($laravelCorpus->commit, 0, 12);

@@ -1215,6 +1215,9 @@ final class SummaryReport
         return match ((string) ($row['probe'] ?? '')) {
             'answered' => ['class' => 'pass', 'text' => 'Answered', 'note' => $note],
             'empty' => ['class' => 'fail', 'text' => 'No answer', 'note' => 'The request succeeded but the payload was empty.'],
+            // Hand-confirmed with the analyzer's own maintainer: this
+            // particular empty answer is a deliberate choice, not a miss.
+            'by-design' => ['class' => 'by-design', 'text' => 'Not flagged (by design)', 'note' => $note],
             // A diagnostic landed on the probed line, but it does not say
             // what this probe is checking for, so it is not evidence the
             // feature works — it may be an unrelated complaint (e.g. a

@@ -91,7 +91,10 @@ final class LspServerCatalog
                 // too. Its env provider reads .env off disk the same way
                 // Laravel LSP's does, and the artisan stub is what marks the
                 // workspace as a Laravel project in the first place.
+                // .phpantom.toml turns on the checks PHPantom leaves off by
+                // default, as the CLI run does.
                 configFiles: [
+                    '.phpantom.toml' => dirname($lspDir) . '/.phpantom.toml',
                     'artisan' => $lspDir . '/laravel/artisan',
                     '.env' => $lspDir . '/laravel/.env',
                     'helpers.php' => $lspDir . '/laravel/helpers.php',

@@ -63,8 +63,12 @@ and completion behind `--language-server-enable-*` flags, and the run passes all
 three. Phpactor's inlay hints are off until
 `language_server_worse_reflection.inlay_hints.enable` is set, and off for the
 type kind specifically until `.types` is set as well; the run sets both, since
-the inferred type at a binding is this suite's whole subject. Psalm's
-`--enable-*` switches all default to on, so it needs nothing.
+the inferred type at a binding is this suite's whole subject. PHPantom leaves
+`unresolved-member-access`, `extra-arguments` and `report-magic-properties`
+off until `.phpantom.toml` turns them on; every PHPantom workspace (fixtures,
+the Gate corpus, psysh) gets a copy of `conformance/.phpantom.toml`, the file
+its CLI column reads too. Psalm's `--enable-*` switches all default to on, so
+it needs nothing.
 
 Installing an adapter to another analyzer is a different act, and the run does
 not do it. Phpactor bundles PHPStan, Psalm, Mago, php-cs-fixer and
@@ -93,7 +97,8 @@ offer that capability by itself, not that nobody asked it nicely.
   the run loudly. Never silently.
 - `conformance/lsp/config/` — per-server config copied into the workspace
   (`psalm.xml`, `.phan/config.php`), pinning each server to the same PHP line
-  the rest of the suite measures.
+  the rest of the suite measures. PHPantom's `.phpantom.toml` is copied from
+  `conformance/` instead, because the CLI column reads the same file.
 - `conformance/src/Lsp/lsp-probe.mjs` — dependency-free Node LSP client. Takes
   a spec JSON (command, workspace, files to open, probes), performs the
   handshake, waits out indexing, runs the probes sequentially, prints one JSON

@@ -1,0 +1,16 @@
+# PHPantom leaves its more pedantic checks off by default, since they are
+# noisy on codebases without thorough annotations. Every other column here
+# runs at its strictest setting (PHPStan at max, Psalm at level 1), so the
+# suite turns them on too rather than measure PHPantom with checks disabled.
+#
+# Read by `phpantom_lsp analyze --project-root conformance/` (PhpantomChecker)
+# and copied into every LSP probe workspace (run-lsp-probes.php).
+[diagnostics]
+# `$x->foo()` where `$x` is `mixed` or of a type PHPantom could not work out
+# (PHPStan's level-9 `mixed` rules, Psalm's `MixedMethodCall`).
+unresolved-member-access = true
+# More arguments than a user-defined function declares.
+extra-arguments = true
+# Unknown properties on a class with `__get` that also declares
+# `@property` tags (PHPStan's `reportMagicProperties`).
+report-magic-properties = true

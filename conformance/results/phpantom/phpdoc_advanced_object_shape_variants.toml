@@ -1,11 +1,10 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_object_shape_variants.php:53: Argument 1 ($shape) expects object{foo: int}&stdClass, got object{foo: int} [type_mismatch_argument]
 phpdoc_advanced_object_shape_variants.php:55: Argument 1 ($shape) expects object{foo: int, bar?: string}, got Conformance\\Tests\\PhpdocAdvancedObjectShapeVariants\\WrongFooType [type_mismatch_argument]
-phpdoc_advanced_object_shape_variants.php:56: Argument 1 ($shape) expects object{foo: int}&stdClass, got object{foo: string} [type_mismatch_argument]"""
-errors_diff = "Line 53: Expected valid value to be accepted, got [\"Argument 1 ($shape) expects object{foo: int}&stdClass, got object{foo: int} [type_mismatch_argument]\"]"
+phpdoc_advanced_object_shape_variants.php:56: Argument 1 ($shape) expects object{foo: int}&stdClass, got object{foo: string}&stdClass [type_mismatch_argument]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
@@ -13,4 +12,4 @@ enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [53]
+over_rejected_lines = []

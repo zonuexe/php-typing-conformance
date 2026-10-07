@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = ""
+output = """
+phpdoc_advanced_callable_signature_variants.php:67: Argument 1 ($callback) expects callable(int, int=): string, got Closure(string): string (parameter 1 accepts string, but is passed int) [type_mismatch_argument]
+phpdoc_advanced_callable_signature_variants.php:70: Argument 1 ($callback) expects Closure(int, int): string, got Closure(string, string): string (parameter 1 accepts string, but is passed int) [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/4"
+enforcement = "partial"
+enforced_lines = "2/4"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

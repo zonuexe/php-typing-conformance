@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = "arrays_unsealed_shape_typed_remainder.php:51: Expected type 'string'. Found 'Conformance\\Tests\\ArraysUnsealedShapeTypedRemainder\\Foo'. [P1006]"
+errors_diff = ""
+notes = "Remainder values are Foo on offset access (`Found 'Foo'` on takesString), but inbound extra keys are not checked against the shape — the same argument-checking hole as arrays_unsealed_shape / arrays_shape_required_keys."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

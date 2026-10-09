@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = ""
+errors_diff = ""
+notes = "Not specific to `...<Foo>`: phpy does not check arguments against array shapes at all. The 1/6 is the quiet extraction probe, which silent tools honour vacuously."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+arrays_unsealed_shape_typed_remainder.php:38: param $row miss matched with phpdoc type <<array{name: string, age: int, ...<Foo>}>> [funcParamTypeMissMatch]
+arrays_unsealed_shape_typed_remainder.php:45: param $row miss matched with phpdoc type <<array{name: string, age: int, ...<Foo>}>> [funcParamTypeMissMatch]
+arrays_unsealed_shape_typed_remainder.php:50: potential null array access in parameter value of function Conformance\\Tests\\ArraysUnsealedShapeTypedRemainder\\takesFoo [notNullSafetyFunctionArgumentArrayDimFetch]
+arrays_unsealed_shape_typed_remainder.php:51: potential null array access in parameter value of function Conformance\\Tests\\ArraysUnsealedShapeTypedRemainder\\takesString [notNullSafetyFunctionArgumentArrayDimFetch]"""
+errors_diff = ""
+notes = "Reports a phpdoc/native mismatch on the declaration (`funcParamTypeMissMatch`) and does not check extras or listed keys at the call site. The extraction hits are null-safety on the dim-fetch, not the remainder type."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/6"
+unrecognized_lines = [38, 45]
+false_positive_lines = []
+over_rejected_lines = []

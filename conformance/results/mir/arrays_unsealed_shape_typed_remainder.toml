@@ -1,0 +1,18 @@
+status = "Falls back to array{name: string, age: int}"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+arrays_unsealed_shape_typed_remainder.php:50: MixedArgument: Argument $value of takesFoo() is mixed [MIR1200]
+arrays_unsealed_shape_typed_remainder.php:51: MixedArgument: Argument $value of takesString() is mixed [MIR1200]
+arrays_unsealed_shape_typed_remainder.php:69: InvalidArgument: Argument $row of acceptsRow() expects 'array{'name': string, 'age': int}', got 'array{'name': "Ada"}' [MIR0201]
+arrays_unsealed_shape_typed_remainder.php:70: InvalidArgument: Argument $row of acceptsRow() expects 'array{'name': string, 'age': int}', got 'array{'extra': Conformance\\Tests\\ArraysUnsealedShapeTypedRemainder\\Foo}' [MIR0201]
+arrays_unsealed_shape_typed_remainder.php:71: InvalidArgument: Argument $row of acceptsRow() expects 'array{'name': string, 'age': int}', got 'array{'name': 1, 'age': 36}' [MIR0201]"""
+errors_diff = ""
+notes = "Drops `...<Foo>` from the type it prints and from checking: extra Foo and extra string both go through, extra-key reads are mixed. The listed keys stay required and typed."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "4/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

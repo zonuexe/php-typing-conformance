@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+arrays_unsealed_shape_typed_remainder.php:36: Saw possibly unextractable annotation for a fragment of comment '* @param array{name: string, age: int, ...<Foo>} $row': after array, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+arrays_unsealed_shape_typed_remainder.php:36: Saw a token Phan may have failed to parse after '* @param array{name: string, age: int, ...<Foo>} $row': after array, saw '{' [PhanUnextractableAnnotationSuffix]
+arrays_unsealed_shape_typed_remainder.php:43: Saw possibly unextractable annotation for a fragment of comment '* @param array{name: string, age: int, ...<Foo>} $row': after array, did not see an element name (will guess based on comment order) [PhanUnextractableAnnotationElementName]
+arrays_unsealed_shape_typed_remainder.php:43: Saw a token Phan may have failed to parse after '* @param array{name: string, age: int, ...<Foo>} $row': after array, saw '{' [PhanUnextractableAnnotationSuffix]"""
+errors_diff = ""
+notes = "Same annotation-extraction failure as the bare unsealed shape: the trailing `...` makes the whole `@param` unextractable, so the parameter falls back to `array` and neither the remainder type nor the listed keys are checked."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/6"
+unrecognized_lines = [36, 43]
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+arrays_unsealed_shape_typed_remainder.php:36: Must have exactly two extra fields! in docblock for Conformance\\Tests\\ArraysUnsealedShapeTypedRemainder\\acceptsRow [InvalidDocblock]
+arrays_unsealed_shape_typed_remainder.php:43: Must have exactly two extra fields! in docblock for Conformance\\Tests\\ArraysUnsealedShapeTypedRemainder\\inspectRow [InvalidDocblock]
+arrays_unsealed_shape_typed_remainder.php:50: Argument 1 of Conformance\\Tests\\ArraysUnsealedShapeTypedRemainder\\takesFoo cannot be mixed, expecting Conformance\\Tests\\ArraysUnsealedShapeTypedRemainder\\Foo [MixedArgument]
+arrays_unsealed_shape_typed_remainder.php:51: Argument 1 of Conformance\\Tests\\ArraysUnsealedShapeTypedRemainder\\takesString cannot be mixed, expecting string [MixedArgument]"""
+errors_diff = ""
+notes = "Same InvalidDocblock as Psalm 6: \"Must have exactly two extra fields!\". The 7.x line still requires `...<TKey, TValue>` and does not accept the single-type `...<Foo>` form."
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/6"
+unrecognized_lines = [36, 43]
+false_positive_lines = []
+over_rejected_lines = []

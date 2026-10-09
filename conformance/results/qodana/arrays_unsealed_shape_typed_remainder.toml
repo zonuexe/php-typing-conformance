@@ -1,0 +1,32 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 6
+output = """
+arrays_unsealed_shape_typed_remainder.php:56: Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_typed_remainder.php:59: Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_typed_remainder.php:59: Value should be one of: "name", "age", "..." [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_unsealed_shape_typed_remainder.php:60: Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_typed_remainder.php:60: Value should be one of: "name", "age", "..." [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_unsealed_shape_typed_remainder.php:60: Value should be one of: "name", "age", "..." [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_unsealed_shape_typed_remainder.php:61: Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_typed_remainder.php:61: Value should be one of: "name", "age", "..." [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_unsealed_shape_typed_remainder.php:66: Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_typed_remainder.php:66: Value should be one of: "name", "age", "..." [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_unsealed_shape_typed_remainder.php:69: Incomplete array according to shape declaration. Missing key(s): age, ... [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_typed_remainder.php:70: Incomplete array according to shape declaration. Missing key(s): name, age, ... [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_typed_remainder.php:70: Value should be one of: "name", "age", "..." [PhpArrayKeyDoesNotMatchArrayShapeInspection]
+arrays_unsealed_shape_typed_remainder.php:71: Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]
+arrays_unsealed_shape_typed_remainder.php:71: Expected parameter of type 'string', 'int' provided [PhpParamsInspection]"""
+errors_diff = """
+Line 56: Expected valid value to be accepted, got ["Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]"]
+Line 59: Expected valid value to be accepted, got ["Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]","Value should be one of: \\"name\\", \\"age\\", \\"...\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"]
+Line 60: Expected valid value to be accepted, got ["Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]","Value should be one of: \\"name\\", \\"age\\", \\"...\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]","Value should be one of: \\"name\\", \\"age\\", \\"...\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"]
+Line 61: Expected valid value to be accepted, got ["Incomplete array according to shape declaration. Missing key(s): ... [PhpMissingArrayKeyInspection]","Value should be one of: \\"name\\", \\"age\\", \\"...\\" [PhpArrayKeyDoesNotMatchArrayShapeInspection]"]"""
+notes = "Reads `...` as a required literal key named `\"...\"` (`Value should be one of: \"name\", \"age\", \"...\"`, `Missing key(s): ...`). `<Foo>` is dropped, so extra Foo values are rejected and even the known-keys-only payload is incomplete. The extra-key read is untyped. Bare `...` in arrays_unsealed_shape is dropped instead; the `...<T>` form is what becomes a key name."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "5/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = [56, 59, 60, 61]

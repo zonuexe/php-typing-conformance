@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+arrays_unsealed_shape_typed_remainder.php:66: argument ['name' => 'Ada', 'age' => 36, 'extra' => 'nope'] to acceptsRow() violates declared @param array{name: string, age: int, ...<Foo>} $row — declared contract violation [phpdoc.param-mismatch]
+arrays_unsealed_shape_typed_remainder.php:69: argument ['name' => 'Ada'] to acceptsRow() violates declared @param array{name: string, age: int, ...<Foo>} $row — declared contract violation [phpdoc.param-mismatch]
+arrays_unsealed_shape_typed_remainder.php:70: argument ['extra' => <expr>] to acceptsRow() violates declared @param array{name: string, age: int, ...<Foo>} $row — declared contract violation [phpdoc.param-mismatch]
+arrays_unsealed_shape_typed_remainder.php:71: argument ['name' => 1, 'age' => 36] to acceptsRow() violates declared @param array{name: string, age: int, ...<Foo>} $row — declared contract violation [phpdoc.param-mismatch]"""
+errors_diff = ""
+notes = "Inbound remainder is enforced (extra `'nope'` is a contract violation). The extra-key read is not typed as Foo: both takesFoo and takesString stay silent."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "5/6"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

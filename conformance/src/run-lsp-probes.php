@@ -202,7 +202,16 @@ foreach (LspServerCatalog::all($projectRoot, $lspDir) as $server) {
                     '.env' => $lspDir . '/laravel/gate.env',
                     ...array_intersect_key($server->configFiles, ['.phpantom.toml' => true]),
                 ],
-                specOverrides: ['indexTimeoutMs' => 90000, 'timeoutMs' => 180000, 'probeTimeoutMs' => 20000],
+                // DEVSENSE goes quiet (diagnostics settled, no $/progress)
+                // before its Laravel index is built: with the default 2s
+                // warmup every framework probe comes back empty, 8s is
+                // partial, 15s is complete. 30s leaves headroom.
+                specOverrides: [
+                    'indexTimeoutMs' => 90000,
+                    'timeoutMs' => 180000,
+                    'probeTimeoutMs' => 20000,
+                    ...($server->tool === 'devsense-php-ls' ? ['warmupMs' => 30000] : []),
+                ],
                 linkVendor: true,
             );
         }

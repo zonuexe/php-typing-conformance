@@ -3,6 +3,7 @@ version = "php-lsp 0.26.0"
 server_info = ""
 dynamic_registrations = ["workspace/didChangeConfiguration", "workspace/didChangeWatchedFiles"]
 raw_capabilities = "{\"callHierarchyProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":true},\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"(\",\"[\",\"\\\\\"]},\"declarationProvider\":true,\"definitionProvider\":true,\"diagnosticProvider\":{\"interFileDependencies\":true,\"workspaceDiagnostics\":true},\"documentFormattingProvider\":true,\"documentHighlightProvider\":true,\"documentLinkProvider\":{\"resolveProvider\":false},\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"}\",\"moreTriggerCharacter\":[\"\\n\"]},\"documentRangeFormattingProvider\":true,\"documentSymbolProvider\":true,\"executeCommandProvider\":{\"commands\":[\"php-lsp.runTest\"]},\"foldingRangeProvider\":true,\"hoverProvider\":true,\"implementationProvider\":true,\"inlayHintProvider\":{\"resolveProvider\":true},\"inlineValueProvider\":[],\"linkedEditingRangeProvider\":true,\"monikerProvider\":true,\"referencesProvider\":true,\"renameProvider\":{\"prepareProvider\":true},\"selectionRangeProvider\":true,\"semanticTokensProvider\":{\"full\":{\"delta\":true},\"legend\":{\"tokenModifiers\":[\"declaration\",\"static\",\"abstract\",\"readonly\",\"deprecated\"],\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"function\",\"method\",\"property\",\"variable\",\"parameter\",\"type\",\"string\",\"number\",\"comment\",\"enumMember\"]},\"range\":true},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"]},\"textDocumentSync\":{\"change\":2,\"openClose\":true,\"save\":{\"includeText\":false},\"willSave\":true,\"willSaveWaitUntil\":true},\"typeDefinitionProvider\":true,\"workspace\":{\"fileOperations\":{\"didCreate\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"didDelete\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"didRename\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willCreate\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willDelete\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]},\"willRename\":{\"filters\":[{\"pattern\":{\"glob\":\"**/*.php\",\"matches\":\"file\"},\"scheme\":\"file\"}]}},\"workspaceFolders\":{\"changeNotifications\":true,\"supported\":true}},\"workspaceSymbolProvider\":{\"resolveProvider\":true}}"
+framework_corpus = "rigortype/laravel-gate-image-board@939a805b8607"
 navigation_corpus = "psy/psysh@0e8ec1af5990"
 
 [capabilities.push-diagnostics]
@@ -154,6 +155,118 @@ feature = "@template T resolved through a call"
 expected = "string"
 shown = "`$firstName` `string`"
 verdict = "precise"
+
+[framework.env-hover]
+feature = "env-hover"
+method = "textDocument/hover"
+expected = "Laravel"
+probe = "answered"
+shown = "**env('APP_NAME')**\n\n```properties\nAPP_NAME=Laravel\n```\n\n`.env`"
+
+[framework.env-definition]
+feature = "env-definition"
+method = "textDocument/definition"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.env-completion]
+feature = "env-completion"
+method = "textDocument/completion"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.env-diagnostic]
+feature = "env-diagnostic"
+method = "push-diagnostics"
+expected = "GATE_MISSING_KEY"
+probe = "unrecognized"
+shown = "Function env() is not defined"
+
+[framework.config-hover]
+feature = "config-hover"
+method = "textDocument/hover"
+expected = "Laravel"
+probe = "answered"
+shown = "**config('app.name')**\n\n```php\n'name' => env('APP_NAME', 'Laravel'),\n```\n\n`config/app.php`"
+
+[framework.config-diagnostic]
+feature = "config-diagnostic"
+method = "push-diagnostics"
+expected = "gate.missing"
+probe = "unrecognized"
+shown = "Function config() is not defined"
+
+[framework.route-hover]
+feature = "route-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "empty"
+shown = ""
+
+[framework.route-definition]
+feature = "route-definition"
+method = "textDocument/definition"
+expected = ""
+probe = "empty"
+shown = ""
+
+[framework.route-diagnostic]
+feature = "route-diagnostic"
+method = "push-diagnostics"
+expected = "gate.missing"
+probe = "unrecognized"
+shown = "Function route() is not defined"
+
+[framework.route-blade-hover]
+feature = "route-blade-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "empty"
+shown = ""
+
+[framework.view-hover]
+feature = "view-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "answered"
+shown = "**view('welcome')**\n\n`resources/views/welcome.blade.php`"
+
+[framework.view-diagnostic]
+feature = "view-diagnostic"
+method = "push-diagnostics"
+expected = "missing.page"
+probe = "unrecognized"
+shown = "Function view() is not defined"
+
+[framework.trans-hover]
+feature = "trans-hover"
+method = "textDocument/hover"
+expected = "Explore"
+probe = "answered"
+shown = "**trans('boards.explore')**\n\n```php\n'explore' => 'Explore',\n```\n\n`lang/en/boards.php`"
+
+[framework.trans-dotted-hover]
+feature = "trans-dotted-hover"
+method = "textDocument/hover"
+expected = "Public"
+probe = "answered"
+shown = "**trans('boards.visibility.public')**\n\n```php\n'public' => 'Public',\n```\n\n`lang/en/boards.php`"
+
+[framework.trans-replace-hover]
+feature = "trans-replace-hover"
+method = "textDocument/hover"
+expected = "No public threads on :name."
+probe = "answered"
+shown = "**trans('boards.explore_empty_board')**\n\n```php\n'explore_empty_board' => 'No public threads on :name.',\n```\n\n`lang/en/boards.php`"
+
+[framework.trans-diagnostic]
+feature = "trans-diagnostic"
+method = "push-diagnostics"
+expected = "boards.missing"
+probe = "unrecognized"
+shown = "Function __() is not defined"
 
 [navigation.function]
 kind = "Function"

@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+arrays_function_return_types.php:35: Call to unknown method: Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing()
+arrays_function_return_types.php:47: Call to unknown method: Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing()
+arrays_function_return_types.php:60: Call to unknown method: Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing()
+arrays_function_return_types.php:70: Call to unknown method: Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing()"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

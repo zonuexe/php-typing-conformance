@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+callables_array_callable_invocation.php:37: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+callables_array_callable_invocation.php:37: Expected type 'object'. Found 'mixed'. [P1006]
+callables_array_callable_invocation.php:39: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+callables_array_callable_invocation.php:39: Expected type 'object'. Found 'mixed'. [P1006]"""
+errors_diff = "Line 37: Expected valid value to be accepted, got [\"Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]\",\"Expected type 'object'. Found 'mixed'. [P1006]\"]"
+notes = ""
+ignore_errors = []

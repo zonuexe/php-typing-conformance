@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+callables_pipe_operator_result.php:40: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+callables_pipe_operator_result.php:40: Undefined method 'missing'. [P1013]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

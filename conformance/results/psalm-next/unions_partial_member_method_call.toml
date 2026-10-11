@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+unions_partial_member_method_call.php:48: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+unions_partial_member_method_call.php:48: Method Conformance\\Tests\\UnionsPartialMemberMethodCall\\Guest::name does not exist [PossiblyUndefinedMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

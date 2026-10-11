@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_keyed_destructuring.php:47: UndefinedMethod: Method Conformance\\Tests\\ArraysKeyedDestructuring\\User::total() does not exist [MIR0004]
+arrays_keyed_destructuring.php:49: UndefinedMethod: Method Conformance\\Tests\\ArraysKeyedDestructuring\\Order::name() does not exist [MIR0004]
+arrays_keyed_destructuring.php:55: UndefinedMethod: Method Conformance\\Tests\\ArraysKeyedDestructuring\\User::missing() does not exist [MIR0004]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

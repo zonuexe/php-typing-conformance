@@ -156,6 +156,60 @@ expected = "string"
 shown = "```php\n<?php \n(local variable) string $firstName\n```"
 verdict = "precise"
 
+[hover.in-array-narrowing]
+feature = "Nullable needle narrowed by strict in_array()"
+expected = "Customer"
+shown = "```php\n<?php \n(parameter) Customer|null $candidate\n```"
+verdict = "other"
+
+[hover.array-map-callback-param]
+feature = "Untyped closure parameter from array_map()"
+expected = "Customer"
+shown = "```php\n<?php \n(parameter) $mapped\n```"
+verdict = "other"
+
+[hover.template-callback-param]
+feature = "Untyped closure parameter from callable(T)"
+expected = "Customer"
+shown = "```php\n<?php \n(parameter) Customer $member\n```"
+verdict = "precise"
+
+[hover.array-merge]
+feature = "Element type through array_merge()"
+expected = "list<Customer>"
+shown = "```php\n<?php \n(local variable) Customer[] $merged\n```"
+verdict = "precise"
+
+[hover.new-from-class-constant]
+feature = "new $object::class"
+expected = "Customer"
+shown = "```php\n<?php \n(local variable) object $copy\n```"
+verdict = "other"
+
+[hover.pipe-result]
+feature = "PHP 8.5 pipe operator result"
+expected = "int"
+shown = "```php\n<?php \n(local variable) int $piped\n```"
+verdict = "precise"
+
+[hover.inferred-return]
+feature = "Return type inferred from an untyped body"
+expected = "Receipt"
+shown = "```php\n<?php \n(local variable) Receipt $inferred\n```"
+verdict = "precise"
+
+[hover.generator-return]
+feature = "Generator TReturn through getReturn()"
+expected = "Receipt"
+shown = "```php\n<?php \n(local variable) Receipt $returned\n```"
+verdict = "precise"
+
+[hover.list-key]
+feature = "foreach key over a list"
+expected = "int"
+shown = "```php\n<?php \n(local variable) $position\n```"
+verdict = "other"
+
 [framework.env-hover]
 feature = "env-hover"
 method = "textDocument/hover"

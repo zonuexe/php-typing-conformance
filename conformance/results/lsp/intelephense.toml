@@ -155,6 +155,60 @@ expected = "string"
 shown = "_@var_ `string $firstName`"
 verdict = "precise"
 
+[hover.in-array-narrowing]
+feature = "Nullable needle narrowed by strict in_array()"
+expected = "Customer"
+shown = "_@param_ `null|\\Conformance\\LspFixture\\Customer $candidate`"
+verdict = "other"
+
+[hover.array-map-callback-param]
+feature = "Untyped closure parameter from array_map()"
+expected = "Customer"
+shown = "_@param_ `\\Conformance\\LspFixture\\Customer $mapped`"
+verdict = "precise"
+
+[hover.template-callback-param]
+feature = "Untyped closure parameter from callable(T)"
+expected = "Customer"
+shown = "_@param_ `\\Conformance\\LspFixture\\Customer $member`"
+verdict = "precise"
+
+[hover.array-merge]
+feature = "Element type through array_merge()"
+expected = "list<Customer>"
+shown = "_@var_ `array $merged`"
+verdict = "other"
+
+[hover.new-from-class-constant]
+feature = "new $object::class"
+expected = "Customer"
+shown = "_@var_ `\\Conformance\\LspFixture\\Customer $copy`"
+verdict = "precise"
+
+[hover.pipe-result]
+feature = "PHP 8.5 pipe operator result"
+expected = "int"
+shown = "_@var_ `int $piped`"
+verdict = "precise"
+
+[hover.inferred-return]
+feature = "Return type inferred from an untyped body"
+expected = "Receipt"
+shown = "_@var_ `\\Conformance\\LspFixture\\Receipt $inferred`"
+verdict = "precise"
+
+[hover.generator-return]
+feature = "Generator TReturn through getReturn()"
+expected = "Receipt"
+shown = "_@var_ `\\Conformance\\LspFixture\\Receipt $returned`"
+verdict = "precise"
+
+[hover.list-key]
+feature = "foreach key over a list"
+expected = "int"
+shown = "_@var_ `int $position`"
+verdict = "precise"
+
 [navigation.function]
 kind = "Function"
 name = "Psy\\info()"

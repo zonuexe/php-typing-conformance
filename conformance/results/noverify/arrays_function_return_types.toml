@@ -1,0 +1,22 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+arrays_function_return_types.php:27: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+arrays_function_return_types.php:33: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+arrays_function_return_types.php:39: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+arrays_function_return_types.php:47: Call to undefined method {\\Conformance\\Tests\\ArraysFunctionReturnTypes\\User|mixed}->missing() [undefinedMethod]
+arrays_function_return_types.php:55: param $left miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+arrays_function_return_types.php:55: param $right miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+arrays_function_return_types.php:60: Call to undefined method {\\Conformance\\Tests\\ArraysFunctionReturnTypes\\User|mixed}->missing() [undefinedMethod]
+arrays_function_return_types.php:64: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+arrays_function_return_types.php:70: Call to undefined method {\\Conformance\\Tests\\ArraysFunctionReturnTypes\\User|mixed}->missing() [undefinedMethod]"""
+errors_diff = """
+Line 35: Expected 1 error(s)
+Line 27: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
+Line 33: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
+Line 39: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
+Line 55: Unexpected errors ["param $left miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]","param $right miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
+Line 64: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

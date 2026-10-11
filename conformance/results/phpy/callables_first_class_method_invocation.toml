@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+callables_first_class_method_invocation.php:44: Call to unknown method: Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User::missing()
+callables_first_class_method_invocation.php:52: Call to unknown method: Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User::missing()"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

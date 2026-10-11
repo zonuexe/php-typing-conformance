@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+intersections_instanceof_unknown_method.php:48: Call to undefined method {\\Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Named}->id() [undefinedMethod]
+intersections_instanceof_unknown_method.php:55: Call to undefined method {\\Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Named}->missing() [undefinedMethod]"""
+errors_diff = "Line 48: Expected valid value to be accepted, got [\"Call to undefined method {\\\\Conformance\\\\Tests\\\\IntersectionsInstanceofUnknownMethod\\\\Named}->id() [undefinedMethod]\"]"
+notes = ""
+ignore_errors = []

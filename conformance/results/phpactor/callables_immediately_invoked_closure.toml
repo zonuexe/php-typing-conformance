@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = "callables_immediately_invoked_closure.php:31: Method \"missing\" does not exist on class \"Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User\" [missing_member]"
+errors_diff = """
+Line 39: Expected 1 error(s)
+Line 47: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []

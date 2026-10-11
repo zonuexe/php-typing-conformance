@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+callables_pipe_operator_result.php:40: Method `missing` does not exist on type `Conformance\\Tests\\CallablesPipeOperatorResult\\Slug`. [non-existent-method]
+callables_pipe_operator_result.php:40: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

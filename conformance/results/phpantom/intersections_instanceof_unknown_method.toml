@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "intersections_instanceof_unknown_method.php:55: Method 'missing' not found on any of the 2 possible types (Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Account, Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Named) [unknown_member]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

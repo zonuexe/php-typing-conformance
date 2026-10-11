@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_keyed_destructuring.php:47: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+arrays_keyed_destructuring.php:47: Undefined method 'total'. [P1013]
+arrays_keyed_destructuring.php:49: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+arrays_keyed_destructuring.php:49: Undefined method 'name'. [P1013]
+arrays_keyed_destructuring.php:55: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+arrays_keyed_destructuring.php:55: Undefined method 'missing'. [P1013]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

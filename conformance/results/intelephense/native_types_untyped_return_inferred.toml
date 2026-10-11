@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+native_types_untyped_return_inferred.php:45: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+native_types_untyped_return_inferred.php:45: Undefined method 'missing'. [P1013]
+native_types_untyped_return_inferred.php:50: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+native_types_untyped_return_inferred.php:50: Undefined method 'missing'. [P1013]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

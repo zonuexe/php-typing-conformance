@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+intersections_instanceof_unknown_method.php:55: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+intersections_instanceof_unknown_method.php:55: Method (Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Account&Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Named)::missing does not exist [UndefinedMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

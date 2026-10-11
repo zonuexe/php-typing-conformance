@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_generator_get_return.php:53: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+generics_generator_get_return.php:53: Undefined method 'count'. [P1013]
+generics_generator_get_return.php:55: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+generics_generator_get_return.php:55: Undefined method 'label'. [P1013]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

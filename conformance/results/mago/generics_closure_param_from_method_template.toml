@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_closure_param_from_method_template.php:80: Method `missing` does not exist on type `Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\User`. [non-existent-method]
+generics_closure_param_from_method_template.php:80: The first value for `echo` is too general. [mixed-argument]
+generics_closure_param_from_method_template.php:90: Method `name` does not exist on type `Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\Order`. [non-existent-method]
+generics_closure_param_from_method_template.php:90: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

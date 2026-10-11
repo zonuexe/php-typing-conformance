@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_closure_param_from_method_template.php:80: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+generics_closure_param_from_method_template.php:80: Undefined method 'missing'. [P1013]
+generics_closure_param_from_method_template.php:90: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+generics_closure_param_from_method_template.php:90: Undefined method 'name'. [P1013]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

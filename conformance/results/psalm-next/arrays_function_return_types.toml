@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+arrays_function_return_types.php:35: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+arrays_function_return_types.php:35: Method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing does not exist [UndefinedMethod]
+arrays_function_return_types.php:47: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+arrays_function_return_types.php:47: Method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing does not exist [UndefinedMethod]
+arrays_function_return_types.php:60: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+arrays_function_return_types.php:60: Method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing does not exist [UndefinedMethod]
+arrays_function_return_types.php:70: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+arrays_function_return_types.php:70: Method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing does not exist [UndefinedMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

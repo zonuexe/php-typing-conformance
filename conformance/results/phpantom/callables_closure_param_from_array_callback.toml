@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_closure_param_from_array_callback.php:34: Method 'missing' not found on class 'Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User' [unknown_member]
+callables_closure_param_from_array_callback.php:41: Method 'missing' not found on class 'Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User' [unknown_member]
+callables_closure_param_from_array_callback.php:48: Method 'missing' not found on class 'Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User' [unknown_member]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

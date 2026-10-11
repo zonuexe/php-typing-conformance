@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+native_types_untyped_return_inferred.php:45: Attempting to access a method on a non-object type (`mixed`). [mixed-method-access]
+native_types_untyped_return_inferred.php:45: The first value for `echo` is too general. [mixed-argument]
+native_types_untyped_return_inferred.php:50: Attempting to access a method on a non-object type (`mixed`). [mixed-method-access]
+native_types_untyped_return_inferred.php:50: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

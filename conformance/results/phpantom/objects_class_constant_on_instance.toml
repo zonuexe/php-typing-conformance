@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+objects_class_constant_on_instance.php:30: Cannot verify method 'name' — type of '$class' could not be resolved [unresolved_member_access]
+objects_class_constant_on_instance.php:32: Cannot verify method 'missing' — type of '$sameClass' could not be resolved [unresolved_member_access]"""
+errors_diff = "Line 30: Expected valid value to be accepted, got [\"Cannot verify method 'name' — type of '$class' could not be resolved [unresolved_member_access]\"]"
+notes = ""
+ignore_errors = []

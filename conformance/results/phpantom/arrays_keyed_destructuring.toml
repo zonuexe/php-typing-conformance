@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_keyed_destructuring.php:47: Method 'total' not found on class 'Conformance\\Tests\\ArraysKeyedDestructuring\\User' [unknown_member]
+arrays_keyed_destructuring.php:49: Method 'name' not found on class 'Conformance\\Tests\\ArraysKeyedDestructuring\\Order' [unknown_member]
+arrays_keyed_destructuring.php:55: Method 'missing' not found on class 'Conformance\\Tests\\ArraysKeyedDestructuring\\User' [unknown_member]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

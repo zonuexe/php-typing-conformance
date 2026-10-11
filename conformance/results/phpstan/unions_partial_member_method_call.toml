@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "unions_partial_member_method_call.php:48: Call to an undefined method Conformance\\Tests\\UnionsPartialMemberMethodCall\\Guest|Conformance\\Tests\\UnionsPartialMemberMethodCall\\User::name(). [identifier=method.notFound] [reported-from-level=7]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 7

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_closure_param_from_method_template.php:80: Method 'missing' not found on class 'Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\User' [unknown_member]
+generics_closure_param_from_method_template.php:90: Method 'name' not found on class 'Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\Order' [unknown_member]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

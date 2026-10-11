@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "callables_array_callable_invocation.php:39: Call to undeclared method \\Conformance\\Tests\\CallablesArrayCallableInvocation\\User::missing [PhanUndeclaredMethod]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

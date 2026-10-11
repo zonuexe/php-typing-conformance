@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_immediately_invoked_closure.php:31: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+callables_immediately_invoked_closure.php:31: Method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing does not exist [UndefinedMethod]
+callables_immediately_invoked_closure.php:39: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+callables_immediately_invoked_closure.php:39: Method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing does not exist [UndefinedMethod]
+callables_immediately_invoked_closure.php:47: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+callables_immediately_invoked_closure.php:47: Method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing does not exist [UndefinedMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

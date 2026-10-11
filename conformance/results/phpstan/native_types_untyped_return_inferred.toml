@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+native_types_untyped_return_inferred.php:30: Function Conformance\\Tests\\NativeTypesUntypedReturnInferred\\makeUser() has no return type specified. [identifier=missingType.return] [reported-from-level=6]
+native_types_untyped_return_inferred.php:37: Method Conformance\\Tests\\NativeTypesUntypedReturnInferred\\Repository::find() has no return type specified. [identifier=missingType.return] [reported-from-level=6]
+native_types_untyped_return_inferred.php:45: Cannot call method missing() on mixed. [identifier=method.nonObject] [reported-from-level=10]
+native_types_untyped_return_inferred.php:45: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]
+native_types_untyped_return_inferred.php:50: Cannot call method missing() on mixed. [identifier=method.nonObject] [reported-from-level=10]
+native_types_untyped_return_inferred.php:50: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 6

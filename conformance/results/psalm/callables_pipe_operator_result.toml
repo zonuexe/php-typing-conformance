@@ -1,0 +1,21 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+callables_pipe_operator_result.php:37: Unable to determine the type that $slug is being assigned to [MixedAssignment]
+callables_pipe_operator_result.php:38: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+callables_pipe_operator_result.php:38: Cannot determine the type of $slug when calling method value [MixedMethodCall]
+callables_pipe_operator_result.php:39: Unable to determine the type that $piped is being assigned to [MixedAssignment]
+callables_pipe_operator_result.php:40: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+callables_pipe_operator_result.php:40: Cannot determine the type of $piped when calling method missing [MixedMethodCall]
+callables_pipe_operator_result.php:45: Unable to determine the type that $length is being assigned to [MixedAssignment]
+callables_pipe_operator_result.php:46: Left operand cannot be mixed [MixedOperand]
+callables_pipe_operator_result.php:46: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]"""
+errors_diff = """
+Line 38: Expected valid value to be accepted, got ["Argument 1 of echo cannot be mixed, expecting string [MixedArgument]","Cannot determine the type of $slug when calling method value [MixedMethodCall]"]
+Line 46: Expected valid value to be accepted, got ["Left operand cannot be mixed [MixedOperand]","Argument 1 of echo cannot be mixed, expecting string [MixedArgument]"]
+Line 37: Unexpected errors ["Unable to determine the type that $slug is being assigned to [MixedAssignment]"]
+Line 39: Unexpected errors ["Unable to determine the type that $piped is being assigned to [MixedAssignment]"]
+Line 45: Unexpected errors ["Unable to determine the type that $length is being assigned to [MixedAssignment]"]"""
+notes = ""
+ignore_errors = []

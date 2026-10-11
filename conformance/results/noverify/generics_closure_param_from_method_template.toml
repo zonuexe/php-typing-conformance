@@ -1,0 +1,19 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+generics_closure_param_from_method_template.php:44: param $items miss matched with phpdoc type <<list<T>>> [funcParamTypeMissMatch]
+generics_closure_param_from_method_template.php:52: potentially not safe call in function Closure$(T):void signature of param closure param #0 [notSafeCall]
+generics_closure_param_from_method_template.php:74: param $users miss matched with phpdoc type <<Collection<User>>> [funcParamTypeMissMatch]
+generics_closure_param_from_method_template.php:85: param $users miss matched with phpdoc type <<Collection<User>>> [funcParamTypeMissMatch]
+generics_closure_param_from_method_template.php:88: Call to undefined method {\\Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\T|mixed}->total() [undefinedMethod]
+generics_closure_param_from_method_template.php:90: Call to undefined method {\\Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\T|mixed}->name() [undefinedMethod]"""
+errors_diff = """
+Line 80: Expected 1 error(s)
+Line 88: Expected valid value to be accepted, got ["Call to undefined method {\\\\Conformance\\\\Tests\\\\GenericsClosureParamFromMethodTemplate\\\\T|mixed}->total() [undefinedMethod]"]
+Line 44: Unexpected errors ["param $items miss matched with phpdoc type <<list<T>>> [funcParamTypeMissMatch]"]
+Line 52: Unexpected errors ["potentially not safe call in function Closure$(T):void signature of param closure param #0 [notSafeCall]"]
+Line 74: Unexpected errors ["param $users miss matched with phpdoc type <<Collection<User>>> [funcParamTypeMissMatch]"]
+Line 85: Unexpected errors ["param $users miss matched with phpdoc type <<Collection<User>>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

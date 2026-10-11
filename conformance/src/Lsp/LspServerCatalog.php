@@ -82,6 +82,16 @@ final class LspServerCatalog
                 // Plain stdio with no transport flag; the .bin shim is a JS
                 // wrapper around the native per-platform binary.
                 command: ['node', $projectRoot . '/vendor-bin/devsense-php-ls/node_modules/.bin/devsense-php-ls'],
+                // Ships Laravel support (routes, views, Blade components), so
+                // it takes the framework probes too, in the same stub-artisan
+                // workspace as the other Laravel-aware servers.
+                configFiles: [
+                    'artisan' => $lspDir . '/laravel/artisan',
+                    '.env' => $lspDir . '/laravel/.env',
+                    'helpers.php' => $lspDir . '/laravel/helpers.php',
+                ],
+                openExtra: ['helpers.php'],
+                frameworkProbesFile: $lspDir . '/laravel/probes.toml',
                 packageJsonPath: $projectRoot . '/vendor-bin/devsense-php-ls/node_modules/devsense-php-ls/package.json',
             ),
             new LspServer(
@@ -106,6 +116,16 @@ final class LspServerCatalog
             new LspServer(
                 tool: 'php-lsp',
                 command: [$projectRoot . '/vendor-bin/php-lsp/bin/php-lsp'],
+                // Ships a Laravel module (route/view/config indexes, Blade
+                // completions) switched on by artisan or laravel/framework,
+                // so it takes the framework probes too.
+                configFiles: [
+                    'artisan' => $lspDir . '/laravel/artisan',
+                    '.env' => $lspDir . '/laravel/.env',
+                    'helpers.php' => $lspDir . '/laravel/helpers.php',
+                ],
+                openExtra: ['helpers.php'],
+                frameworkProbesFile: $lspDir . '/laravel/probes.toml',
                 versionCommand: [$projectRoot . '/vendor-bin/php-lsp/bin/php-lsp', '--version'],
             ),
             new LspServer(

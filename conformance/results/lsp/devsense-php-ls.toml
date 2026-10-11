@@ -3,6 +3,7 @@ version = "devsense-php-ls 1.0.19377"
 server_info = ""
 dynamic_registrations = ["workspace/didChangeConfiguration", "workspace/didChangeWatchedFiles"]
 raw_capabilities = "{\"selfProfiler\":false,\"textDocumentSync\":{\"openClose\":true,\"change\":2},\"hoverProvider\":true,\"completionProvider\":{\"triggerCharacters\":[\">\",\":\",\"$\",\"\\\\\",\"@\",\" \",\"'\",\"/\",\"[\",\"<\"],\"completionItem\":{\"labelDetailsSupport\":true},\"resolveProvider\":true},\"inlineCompletionProvider\":[],\"implementationProvider\":true,\"referencesProvider\":true,\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"callHierarchyProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"\",\"source\",\"source.organizeImports\",\"source.sortImports\",\"source.sortAndRemoveImports\",\"quickfix\",\"refactor\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":true},\"renameProvider\":{\"prepareProvider\":true},\"documentHighlightProvider\":true,\"documentFormattingProvider\":false,\"documentRangeFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\";\",\"moreTriggerCharacter\":[\"}\",\":\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"]},\"selectionRangeProvider\":true,\"inlayHintProvider\":{\"resolveProvider\":true},\"linkedEditingRangeProvider\":true,\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"type\",\"class\",\"enum\",\"interface\",\"struct\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"enumMember\",\"event\",\"function\",\"method\",\"macro\",\"keyword\",\"modifier\",\"comment\",\"string\",\"number\",\"regexp\",\"operator\",\"decorator\"],\"tokenModifiers\":[\"declaration\",\"definition\",\"readonly\",\"static\",\"deprecated\",\"abstract\",\"async\",\"modification\",\"documentation\",\"defaultLibrary\"]},\"range\":true,\"full\":true},\"typeHierarchyProvider\":true,\"foldingRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"devsense:implementabstracts\",\"devsense:implementgettersetter\",\"devsense:implementctor\",\"devsense:organizeUses\",\"devsense:peekReferences\",\"devsense:peekImplementations\",\"devsense:peekTraitUses\",\"devsense:peekBaseImplementation\",\"devsense:adddocblock\",\"devsense:formatCode\",\"devsense:executeBladeSwitchViewClass\",\"devsense:extractfn\",\"devsense:showMessage\"]},\"workspace\":{\"workspaceFolders\":{\"supported\":true,\"changeNotifications\":true}}}"
+framework_corpus = "rigortype/laravel-gate-image-board@939a805b8607"
 navigation_corpus = "psy/psysh@0e8ec1af5990"
 
 [capabilities.push-diagnostics]
@@ -154,6 +155,118 @@ feature = "@template T resolved through a call"
 expected = "string"
 shown = "```php\n<?php \n(local variable) string $firstName\n```"
 verdict = "precise"
+
+[framework.env-hover]
+feature = "env-hover"
+method = "textDocument/hover"
+expected = "Laravel"
+probe = "answered"
+shown = "```php\n<?php \n(Environment Variable) 'APP_NAME'\n```\nAPP_NAME=Laravel"
+
+[framework.env-definition]
+feature = "env-definition"
+method = "textDocument/definition"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.env-completion]
+feature = "env-completion"
+method = "textDocument/completion"
+expected = ""
+probe = "answered"
+shown = ""
+
+[framework.env-diagnostic]
+feature = "env-diagnostic"
+method = "push-diagnostics"
+expected = "GATE_MISSING_KEY"
+probe = "empty"
+shown = ""
+
+[framework.config-hover]
+feature = "config-hover"
+method = "textDocument/hover"
+expected = "Laravel"
+probe = "answered"
+shown = "```php\n<?php \n(value) 'app.name'\n```"
+
+[framework.config-diagnostic]
+feature = "config-diagnostic"
+method = "push-diagnostics"
+expected = "gate.missing"
+probe = "empty"
+shown = ""
+
+[framework.route-hover]
+feature = "route-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "empty"
+shown = ""
+
+[framework.route-definition]
+feature = "route-definition"
+method = "textDocument/definition"
+expected = ""
+probe = "empty"
+shown = ""
+
+[framework.route-diagnostic]
+feature = "route-diagnostic"
+method = "push-diagnostics"
+expected = "gate.missing"
+probe = "empty"
+shown = ""
+
+[framework.route-blade-hover]
+feature = "route-blade-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "empty"
+shown = ""
+
+[framework.view-hover]
+feature = "view-hover"
+method = "textDocument/hover"
+expected = ""
+probe = "empty"
+shown = ""
+
+[framework.view-diagnostic]
+feature = "view-diagnostic"
+method = "push-diagnostics"
+expected = "missing.page"
+probe = "empty"
+shown = ""
+
+[framework.trans-hover]
+feature = "trans-hover"
+method = "textDocument/hover"
+expected = "Explore"
+probe = "answered"
+shown = "```php\n<?php \n(value) 'boards.explore'\n```\n'boards.explore' = 'Explore'"
+
+[framework.trans-dotted-hover]
+feature = "trans-dotted-hover"
+method = "textDocument/hover"
+expected = "Public"
+probe = "answered"
+shown = "```php\n<?php \n(value) 'boards.visibility.public'\n```\n'boards.visibility.public' = 'Public'"
+
+[framework.trans-replace-hover]
+feature = "trans-replace-hover"
+method = "textDocument/hover"
+expected = "No public threads on :name."
+probe = "answered"
+shown = "```php\n<?php \n(value) 'boards.explore_empty_board'\n```\n'boards.explore_empty_board' = 'No public threads on :name.'"
+
+[framework.trans-diagnostic]
+feature = "trans-diagnostic"
+method = "push-diagnostics"
+expected = "boards.missing"
+probe = "empty"
+shown = ""
 
 [navigation.function]
 kind = "Function"

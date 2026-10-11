@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_immediately_invoked_closure.php:31: Method 'missing' not found on class 'Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User' [unknown_member]
+callables_immediately_invoked_closure.php:39: Method 'missing' not found on class 'Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User' [unknown_member]
+callables_immediately_invoked_closure.php:47: Method 'missing' not found on class 'Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User' [unknown_member]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

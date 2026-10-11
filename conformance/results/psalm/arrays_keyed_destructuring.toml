@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_keyed_destructuring.php:47: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+arrays_keyed_destructuring.php:47: Method Conformance\\Tests\\ArraysKeyedDestructuring\\User::total does not exist [UndefinedMethod]
+arrays_keyed_destructuring.php:49: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+arrays_keyed_destructuring.php:49: Method Conformance\\Tests\\ArraysKeyedDestructuring\\Order::name does not exist [UndefinedMethod]
+arrays_keyed_destructuring.php:55: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+arrays_keyed_destructuring.php:55: Method Conformance\\Tests\\ArraysKeyedDestructuring\\User::missing does not exist [UndefinedMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

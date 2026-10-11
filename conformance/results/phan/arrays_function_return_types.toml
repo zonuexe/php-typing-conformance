@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+arrays_function_return_types.php:35: Call to undeclared method \\Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing [PhanUndeclaredMethod]
+arrays_function_return_types.php:47: Call to undeclared method \\Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing [PhanUndeclaredMethod]
+arrays_function_return_types.php:60: Call to undeclared method \\Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing [PhanUndeclaredMethod]
+arrays_function_return_types.php:70: Call to undeclared method \\Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing [PhanUndeclaredMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

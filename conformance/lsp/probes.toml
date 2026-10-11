@@ -212,3 +212,97 @@ feature = "@template T resolved through a call"
 expected = "string"
 precise = ['\bstring\b']
 reject = ['\bmixed\b', '\bT\b']
+
+[[hover]]
+id = "in-array-narrowing"
+file = "hover-types.php"
+at = "$candidate; // hover expects Customer"
+offset = 1
+feature = "Nullable needle narrowed by strict in_array()"
+expected = "Customer"
+precise = ['\bCustomer\b']
+reject = ['\bnull\b']
+
+[[hover]]
+id = "array-map-callback-param"
+file = "hover-types.php"
+at = "$mapped; // hover expects Customer"
+offset = 1
+feature = "Untyped closure parameter from array_map()"
+expected = "Customer"
+precise = ['\bCustomer\b']
+reject = ['\bmixed\b']
+
+[[hover]]
+id = "template-callback-param"
+file = "hover-types.php"
+at = "$member; // hover expects Customer"
+offset = 1
+feature = "Untyped closure parameter from callable(T)"
+expected = "Customer"
+precise = ['\bCustomer\b']
+reject = ['\bmixed\b', '\bT\b']
+
+[[hover]]
+id = "array-merge"
+file = "hover-types.php"
+at = "$merged; // hover expects list<Customer>"
+offset = 1
+feature = "Element type through array_merge()"
+expected = "list<Customer>"
+# Any spelling that keeps the element type counts: list<Customer>,
+# array<int, Customer>, Customer[].
+precise = ['\bCustomer\b']
+reject = ['\bmixed\b', 'missing']
+
+[[hover]]
+id = "new-from-class-constant"
+file = "hover-types.php"
+at = "$copy; // hover expects Customer"
+offset = 1
+feature = "new $object::class"
+expected = "Customer"
+precise = ['\bCustomer\b']
+reject = ['\bobject\b', '\bmixed\b']
+
+[[hover]]
+id = "pipe-result"
+file = "hover-types.php"
+at = "$piped; // hover expects int"
+offset = 1
+feature = "PHP 8.5 pipe operator result"
+expected = "int"
+precise = ['\bint\b']
+reject = ['Closure', '\bmixed\b']
+
+[[hover]]
+id = "inferred-return"
+file = "hover-types.php"
+at = "$inferred; // hover expects Receipt"
+offset = 1
+feature = "Return type inferred from an untyped body"
+expected = "Receipt"
+# Reading the untyped return as mixed is legitimate (PHPStan does); the
+# probe asks whether the server goes further and infers it.
+precise = ['\bReceipt\b']
+reject = ['\bmixed\b']
+
+[[hover]]
+id = "generator-return"
+file = "hover-types.php"
+at = "$returned; // hover expects Receipt"
+offset = 1
+feature = "Generator TReturn through getReturn()"
+expected = "Receipt"
+precise = ['\bReceipt\b']
+reject = ['\bmixed\b', '\bTReturn\b']
+
+[[hover]]
+id = "list-key"
+file = "hover-types.php"
+at = "$position; // hover expects int"
+offset = 1
+feature = "foreach key over a list"
+expected = "int"
+precise = ['\bint\b']
+reject = ['\bmixed\b', '\bstring\b']

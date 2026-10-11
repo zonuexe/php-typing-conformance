@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_immediately_invoked_closure.php:31: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+callables_immediately_invoked_closure.php:31: Undefined method 'missing'. [P1013]
+callables_immediately_invoked_closure.php:39: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+callables_immediately_invoked_closure.php:39: Undefined method 'missing'. [P1013]
+callables_immediately_invoked_closure.php:47: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+callables_immediately_invoked_closure.php:47: Undefined method 'missing'. [P1013]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

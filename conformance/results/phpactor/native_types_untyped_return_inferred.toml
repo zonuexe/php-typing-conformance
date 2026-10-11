@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+native_types_untyped_return_inferred.php:37: Method "find" is missing docblock return type: Conformance\\Tests\\NativeTypesUntypedReturnInferred\\User [docblock_missing_return_type]
+native_types_untyped_return_inferred.php:37: Missing return type `Conformance\\Tests\\NativeTypesUntypedReturnInferred\\User` [missing_return_type]"""
+errors_diff = """
+Line 45: Expected 1 error(s)
+Line 50: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []

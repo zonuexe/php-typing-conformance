@@ -61,3 +61,108 @@ function genericCall(): void
     $firstName = firstItem($names);
     $firstName; // hover expects string, the resolved T
 }
+
+final class Customer
+{
+    public function name(): string
+    {
+        return 'customer';
+    }
+}
+
+final class Receipt
+{
+    public function total(): int
+    {
+        return 1;
+    }
+}
+
+/** @param list<Customer> $customers */
+function inArrayNeedle(?Customer $candidate, array $customers): void
+{
+    if (in_array($candidate, $customers, true)) {
+        $candidate; // hover expects Customer, null ruled out by the strict search
+    }
+}
+
+/** @param list<Customer> $customers */
+function arrayMapCallback(array $customers): void
+{
+    array_map(function ($mapped) {
+        return $mapped; // hover expects Customer, from array_map's callable signature
+    }, $customers);
+}
+
+/** @template T */
+final class Batch
+{
+    /** @param callable(T): void $callback */
+    public function each(callable $callback): void
+    {
+    }
+}
+
+/** @param Batch<Customer> $batch */
+function templateCallback(Batch $batch): void
+{
+    $batch->each(function ($member): void {
+        $member; // hover expects Customer, T bound from Batch<Customer>
+    });
+}
+
+/**
+ * @param list<Customer> $left
+ * @param list<Customer> $right
+ */
+function mergedLists(array $left, array $right): void
+{
+    $merged = array_merge($left, $right);
+    $merged; // hover expects list<Customer>, the element type carried through
+}
+
+function newFromClassConstant(Customer $customer): void
+{
+    $class = $customer::class;
+    $copy = new $class();
+    $copy; // hover expects Customer, from the object's ::class
+}
+
+function pipeResult(): void
+{
+    $piped = 'Hello' |> strlen(...);
+    $piped; // hover expects int, the callable's result rather than the callable
+}
+
+function untypedFactory()
+{
+    return new Receipt();
+}
+
+function inferredReturn(): void
+{
+    $inferred = untypedFactory();
+    $inferred; // hover expects Receipt, inferred from the body
+}
+
+/** @return \Generator<int, Customer, mixed, Receipt> */
+function receiptGenerator(): \Generator
+{
+    yield new Customer();
+
+    return new Receipt();
+}
+
+function generatorReturn(): void
+{
+    $returned = receiptGenerator()->getReturn();
+    $returned; // hover expects Receipt, the Generator's TReturn
+}
+
+/** @param list<Customer> $customers */
+function listKey(array $customers): void
+{
+    foreach ($customers as $position => $customer) {
+        $position; // hover expects int, the key of a list
+    }
+}

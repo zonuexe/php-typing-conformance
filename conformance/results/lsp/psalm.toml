@@ -155,6 +155,60 @@ expected = "string"
 shown = "```php\n<?php declare(strict_types=1);\nstring\n```"
 verdict = "precise"
 
+[hover.in-array-narrowing]
+feature = "Nullable needle narrowed by strict in_array()"
+expected = "Customer"
+shown = "```php\n<?php declare(strict_types=1);\nConformance\\LspFixture\\Customer\n```"
+verdict = "precise"
+
+[hover.array-map-callback-param]
+feature = "Untyped closure parameter from array_map()"
+expected = "Customer"
+shown = "```php\n<?php declare(strict_types=1);\nConformance\\LspFixture\\Customer\n```"
+verdict = "precise"
+
+[hover.template-callback-param]
+feature = "Untyped closure parameter from callable(T)"
+expected = "Customer"
+shown = "```php\n<?php declare(strict_types=1);\nConformance\\LspFixture\\Customer\n```"
+verdict = "precise"
+
+[hover.array-merge]
+feature = "Element type through array_merge()"
+expected = "list<Customer>"
+shown = "```php\n<?php declare(strict_types=1);\nlist<Conformance\\LspFixture\\Customer>\n```"
+verdict = "precise"
+
+[hover.new-from-class-constant]
+feature = "new $object::class"
+expected = "Customer"
+shown = "```php\n<?php declare(strict_types=1);\nConformance\\LspFixture\\Customer\n```"
+verdict = "precise"
+
+[hover.pipe-result]
+feature = "PHP 8.5 pipe operator result"
+expected = "int"
+shown = "```php\n<?php declare(strict_types=1);\nmixed\n```"
+verdict = "other"
+
+[hover.inferred-return]
+feature = "Return type inferred from an untyped body"
+expected = "Receipt"
+shown = "```php\n<?php declare(strict_types=1);\nmixed\n```"
+verdict = "other"
+
+[hover.generator-return]
+feature = "Generator TReturn through getReturn()"
+expected = "Receipt"
+shown = "```php\n<?php declare(strict_types=1);\nConformance\\LspFixture\\Receipt\n```"
+verdict = "precise"
+
+[hover.list-key]
+feature = "foreach key over a list"
+expected = "int"
+shown = "```php\n<?php declare(strict_types=1);\nint<0, max>\n```"
+verdict = "precise"
+
 [navigation.function]
 kind = "Function"
 name = "Psy\\info()"

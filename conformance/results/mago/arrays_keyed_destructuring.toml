@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_keyed_destructuring.php:47: Method `total` does not exist on type `Conformance\\Tests\\ArraysKeyedDestructuring\\User`. [non-existent-method]
+arrays_keyed_destructuring.php:47: The first value for `echo` is too general. [mixed-argument]
+arrays_keyed_destructuring.php:49: Method `name` does not exist on type `Conformance\\Tests\\ArraysKeyedDestructuring\\Order`. [non-existent-method]
+arrays_keyed_destructuring.php:49: The first value for `echo` is too general. [mixed-argument]
+arrays_keyed_destructuring.php:55: Method `missing` does not exist on type `Conformance\\Tests\\ArraysKeyedDestructuring\\User`. [non-existent-method]
+arrays_keyed_destructuring.php:55: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

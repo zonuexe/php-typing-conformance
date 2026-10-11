@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+arrays_function_return_types.php:35: Method 'missing' not found on class 'Conformance\\Tests\\ArraysFunctionReturnTypes\\User' [unknown_member]
+arrays_function_return_types.php:47: Method 'missing' not found on class 'Conformance\\Tests\\ArraysFunctionReturnTypes\\User' [unknown_member]
+arrays_function_return_types.php:60: Method 'missing' not found on class 'Conformance\\Tests\\ArraysFunctionReturnTypes\\User' [unknown_member]
+arrays_function_return_types.php:70: Method 'missing' not found on class 'Conformance\\Tests\\ArraysFunctionReturnTypes\\User' [unknown_member]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

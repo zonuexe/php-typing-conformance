@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_immediately_invoked_closure.php:31: Method `missing` does not exist on type `Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User`. [non-existent-method]
+callables_immediately_invoked_closure.php:31: The first value for `echo` is too general. [mixed-argument]
+callables_immediately_invoked_closure.php:39: Method `missing` does not exist on type `Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User`. [non-existent-method]
+callables_immediately_invoked_closure.php:39: The first value for `echo` is too general. [mixed-argument]
+callables_immediately_invoked_closure.php:47: Method `missing` does not exist on type `Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User`. [non-existent-method]
+callables_immediately_invoked_closure.php:47: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

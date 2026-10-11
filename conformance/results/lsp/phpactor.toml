@@ -155,6 +155,60 @@ expected = "string"
 shown = "variable firstName: `T`"
 verdict = "other"
 
+[hover.in-array-narrowing]
+feature = "Nullable needle narrowed by strict in_array()"
+expected = "Customer"
+shown = "variable candidate: `?Customer`"
+verdict = "precise"
+
+[hover.array-map-callback-param]
+feature = "Untyped closure parameter from array_map()"
+expected = "Customer"
+shown = "variable mapped"
+verdict = "other"
+
+[hover.template-callback-param]
+feature = "Untyped closure parameter from callable(T)"
+expected = "Customer"
+shown = "variable member"
+verdict = "other"
+
+[hover.array-merge]
+feature = "Element type through array_merge()"
+expected = "list<Customer>"
+shown = "variable merged: `array<int,Customer>`"
+verdict = "precise"
+
+[hover.new-from-class-constant]
+feature = "new $object::class"
+expected = "Customer"
+shown = "variable copy: `Customer`"
+verdict = "precise"
+
+[hover.pipe-result]
+feature = "PHP 8.5 pipe operator result"
+expected = "int"
+shown = "variable piped: `int`"
+verdict = "precise"
+
+[hover.inferred-return]
+feature = "Return type inferred from an untyped body"
+expected = "Receipt"
+shown = "variable inferred"
+verdict = "other"
+
+[hover.generator-return]
+feature = "Generator TReturn through getReturn()"
+expected = "Receipt"
+shown = "variable returned: `TReturn`"
+verdict = "other"
+
+[hover.list-key]
+feature = "foreach key over a list"
+expected = "int"
+shown = "variable position: `int`"
+verdict = "precise"
+
 [navigation.function]
 kind = "Function"
 name = "Psy\\info()"

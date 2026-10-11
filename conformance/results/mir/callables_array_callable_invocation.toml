@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+callables_array_callable_invocation.php:37: MixedMethodCall: Method name() called on mixed type [MIR1202]
+callables_array_callable_invocation.php:39: MixedMethodCall: Method missing() called on mixed type [MIR1202]"""
+errors_diff = "Line 37: Expected valid value to be accepted, got [\"MixedMethodCall: Method name() called on mixed type [MIR1202]\"]"
+notes = ""
+ignore_errors = []

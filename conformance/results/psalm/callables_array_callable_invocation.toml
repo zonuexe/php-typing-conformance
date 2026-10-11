@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+callables_array_callable_invocation.php:37: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+callables_array_callable_invocation.php:37: Cannot determine the type of the object on the left hand side of this expression [MixedMethodCall]
+callables_array_callable_invocation.php:39: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+callables_array_callable_invocation.php:39: Cannot determine the type of the object on the left hand side of this expression [MixedMethodCall]"""
+errors_diff = "Line 37: Expected valid value to be accepted, got [\"Argument 1 of echo cannot be mixed, expecting string [MixedArgument]\",\"Cannot determine the type of the object on the left hand side of this expression [MixedMethodCall]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_closure_param_from_method_template.php:80: Call to unknown method: Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\User::missing()
+generics_closure_param_from_method_template.php:90: Call to unknown method: Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\Order::name()"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

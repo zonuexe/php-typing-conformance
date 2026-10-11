@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_keyed_destructuring.php:47: Call to undeclared method \\Conformance\\Tests\\ArraysKeyedDestructuring\\User::total [PhanUndeclaredMethod]
+arrays_keyed_destructuring.php:49: Call to undeclared method \\Conformance\\Tests\\ArraysKeyedDestructuring\\Order::name [PhanUndeclaredMethod]
+arrays_keyed_destructuring.php:55: Call to undeclared method \\Conformance\\Tests\\ArraysKeyedDestructuring\\User::missing [PhanUndeclaredMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

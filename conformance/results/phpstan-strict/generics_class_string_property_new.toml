@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+generics_class_string_property_new.php:39: Call to an undefined method Conformance\\Tests\\GenericsClassStringPropertyNew\\User::missing(). [identifier=method.notFound]
+generics_class_string_property_new.php:39: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

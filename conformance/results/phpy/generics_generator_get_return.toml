@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_generator_get_return.php:53: Call to unknown method: Conformance\\Tests\\GenericsGeneratorGetReturn\\Item::count()
+generics_generator_get_return.php:55: Call to unknown method: Conformance\\Tests\\GenericsGeneratorGetReturn\\Summary::label()"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

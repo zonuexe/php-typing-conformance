@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "callables_pipe_operator_result.php:40: Method \"missing\" does not exist on class \"Conformance\\Tests\\CallablesPipeOperatorResult\\Slug\" [missing_member]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

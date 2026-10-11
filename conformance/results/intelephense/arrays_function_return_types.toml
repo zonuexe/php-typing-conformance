@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+arrays_function_return_types.php:35: Undefined method 'missing'. [P1013]
+arrays_function_return_types.php:47: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+arrays_function_return_types.php:47: Undefined method 'missing'. [P1013]
+arrays_function_return_types.php:58: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+arrays_function_return_types.php:58: Expected type 'object'. Found 'mixed'. [P1006]
+arrays_function_return_types.php:60: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+arrays_function_return_types.php:60: Expected type 'object'. Found 'mixed'. [P1006]
+arrays_function_return_types.php:70: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+arrays_function_return_types.php:70: Undefined method 'missing'. [P1013]"""
+errors_diff = "Line 58: Expected valid value to be accepted, got [\"Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]\",\"Expected type 'object'. Found 'mixed'. [P1006]\"]"
+notes = ""
+ignore_errors = []

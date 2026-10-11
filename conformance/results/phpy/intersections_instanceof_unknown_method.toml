@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "intersections_instanceof_unknown_method.php:55: Call to unknown method: Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Account|Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Named::missing()"
+errors_diff = ""
+notes = ""
+ignore_errors = []

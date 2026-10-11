@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_generator_get_return.php:53: UndefinedMethod: Method Conformance\\Tests\\GenericsGeneratorGetReturn\\Item::count() does not exist [MIR0004]
+generics_generator_get_return.php:55: UndefinedMethod: Method Conformance\\Tests\\GenericsGeneratorGetReturn\\Summary::label() does not exist [MIR0004]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

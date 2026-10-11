@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "unions_partial_member_method_call.php:48: UndefinedMethod: Method Conformance\\Tests\\UnionsPartialMemberMethodCall\\Guest::name() does not exist [MIR0004]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

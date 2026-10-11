@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+arrays_function_return_types.php:35: Method `missing` does not exist on type `Conformance\\Tests\\ArraysFunctionReturnTypes\\User`. [non-existent-method]
+arrays_function_return_types.php:35: The first value for `echo` is too general. [mixed-argument]
+arrays_function_return_types.php:47: Method `missing` does not exist on type `Conformance\\Tests\\ArraysFunctionReturnTypes\\User`. [non-existent-method]
+arrays_function_return_types.php:47: The first value for `echo` is too general. [mixed-argument]
+arrays_function_return_types.php:60: Method `missing` does not exist on type `Conformance\\Tests\\ArraysFunctionReturnTypes\\User`. [non-existent-method]
+arrays_function_return_types.php:60: The first value for `echo` is too general. [mixed-argument]
+arrays_function_return_types.php:70: Method `missing` does not exist on type `Conformance\\Tests\\ArraysFunctionReturnTypes\\User`. [non-existent-method]
+arrays_function_return_types.php:70: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

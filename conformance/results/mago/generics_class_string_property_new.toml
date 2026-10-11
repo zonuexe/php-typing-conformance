@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+generics_class_string_property_new.php:39: Method `missing` does not exist on type `Conformance\\Tests\\GenericsClassStringPropertyNew\\User`. [non-existent-method]
+generics_class_string_property_new.php:39: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

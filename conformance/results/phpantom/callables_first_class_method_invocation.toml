@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+callables_first_class_method_invocation.php:44: Method 'missing' not found on class 'Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User' [unknown_member]
+callables_first_class_method_invocation.php:52: Method 'missing' not found on class 'Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User' [unknown_member]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

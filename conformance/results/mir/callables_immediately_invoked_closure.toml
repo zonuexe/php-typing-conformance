@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_immediately_invoked_closure.php:31: UndefinedMethod: Method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing() does not exist [MIR0004]
+callables_immediately_invoked_closure.php:39: UndefinedMethod: Method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing() does not exist [MIR0004]
+callables_immediately_invoked_closure.php:47: UndefinedMethod: Method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing() does not exist [MIR0004]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

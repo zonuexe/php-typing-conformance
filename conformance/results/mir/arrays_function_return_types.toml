@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+arrays_function_return_types.php:35: UndefinedMethod: Method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing() does not exist [MIR0004]
+arrays_function_return_types.php:45: MixedAssignment: Variable $head is assigned a mixed type [MIR1201]
+arrays_function_return_types.php:47: MixedMethodCall: Method missing() called on mixed type [MIR1202]
+arrays_function_return_types.php:60: UndefinedMethod: Method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing() does not exist [MIR0004]
+arrays_function_return_types.php:70: UndefinedMethod: Method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing() does not exist [MIR0004]"""
+errors_diff = "Line 45: Unexpected errors [\"MixedAssignment: Variable $head is assigned a mixed type [MIR1201]\"]"
+notes = ""
+ignore_errors = []

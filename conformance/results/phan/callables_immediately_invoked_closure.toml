@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_immediately_invoked_closure.php:31: Call to undeclared method \\Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing [PhanUndeclaredMethod]
+callables_immediately_invoked_closure.php:39: Call to undeclared method \\Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing [PhanUndeclaredMethod]
+callables_immediately_invoked_closure.php:47: Call to undeclared method \\Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing [PhanUndeclaredMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

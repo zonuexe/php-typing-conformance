@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "objects_class_constant_on_instance.php:32: Call to undeclared method \\Conformance\\Tests\\ObjectsClassConstantOnInstance\\User::missing [PhanUndeclaredMethod]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

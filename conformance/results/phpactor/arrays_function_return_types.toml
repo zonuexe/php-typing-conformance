@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+arrays_function_return_types.php:35: Method "missing" does not exist on class "Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User" [missing_member]
+arrays_function_return_types.php:60: Method "missing" does not exist on class "Conformance\\Tests\\ArraysFunctionReturnTypes\\User" [missing_member]"""
+errors_diff = """
+Line 47: Expected 1 error(s)
+Line 70: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []

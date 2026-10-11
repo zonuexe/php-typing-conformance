@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+callables_array_callable_invocation.php:39: Call to an undefined method Conformance\\Tests\\CallablesArrayCallableInvocation\\User::missing(). [identifier=method.notFound]
+callables_array_callable_invocation.php:39: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

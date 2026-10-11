@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+callables_closure_param_from_array_callback.php:31: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+callables_closure_param_from_array_callback.php:38: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+callables_closure_param_from_array_callback.php:45: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+callables_closure_param_from_array_callback.php:48: Call to undefined method {\\Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User|mixed}->missing() [undefinedMethod]"""
+errors_diff = """
+Line 34: Expected 1 error(s)
+Line 41: Expected 1 error(s)
+Line 31: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
+Line 38: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
+Line 45: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

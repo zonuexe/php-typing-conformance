@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+callables_first_class_method_invocation.php:44: Method `missing` does not exist on type `Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User`. [non-existent-method]
+callables_first_class_method_invocation.php:44: The first value for `echo` is too general. [mixed-argument]
+callables_first_class_method_invocation.php:52: Method `missing` does not exist on type `Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User`. [non-existent-method]
+callables_first_class_method_invocation.php:52: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

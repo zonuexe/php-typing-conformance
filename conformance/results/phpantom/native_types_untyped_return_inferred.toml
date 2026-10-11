@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+native_types_untyped_return_inferred.php:45: Cannot verify method 'missing' — type of 'makeUser()' could not be resolved [unresolved_member_access]
+native_types_untyped_return_inferred.php:50: Method 'missing' not found on class 'Conformance\\Tests\\NativeTypesUntypedReturnInferred\\User' [unknown_member]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

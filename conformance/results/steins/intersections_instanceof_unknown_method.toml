@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "intersections_instanceof_unknown_method.php:55: call to undefined method Account::missing() — declared receiver $account narrowed to {Account}, hierarchy and descendants fully enumerated, no __call, no @method/@property/@mixin [call.undefined-method]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

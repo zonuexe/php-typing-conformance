@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+callables_pipe_operator_result.php:38: UndefinedMethod: Method Closure::value() does not exist [MIR0004]
+callables_pipe_operator_result.php:40: UndefinedMethod: Method Closure::missing() does not exist [MIR0004]
+callables_pipe_operator_result.php:46: InvalidOperand: Operator '+' not supported between 'Closure(string): int<0, max>' and '1' [MIR0208]"""
+errors_diff = """
+Line 38: Expected valid value to be accepted, got ["UndefinedMethod: Method Closure::value() does not exist [MIR0004]"]
+Line 46: Expected valid value to be accepted, got ["InvalidOperand: Operator '+' not supported between 'Closure(string): int<0, max>' and '1' [MIR0208]"]"""
+notes = ""
+ignore_errors = []

@@ -144,12 +144,13 @@ final class Qodana extends AnalyzerMetadata
 
     /**
      * The banner is the product name and an IDE build number: "Qodana
-     * 262.8665.325", which is PhpStorm 2026.2.0.1. Three components like a
-     * semantic version, but it is a build number and does not shorten
-     * further.
+     * 262.8665.325", which is PhpStorm 2026.2.0.1, or "PhpStorm 262.10968.76"
+     * when the measurement came from the headless command-line inspector
+     * instead. Three components like a semantic version, but it is a build
+     * number and does not shorten further.
      */
     protected function versionPattern(): ?string
     {
-        return '/qodana\s+(\d+\.\d+\.\d+)/i';
+        return '/(?:qodana|phpstorm)\s+(\d+\.\d+\.\d+)/i';
     }
 }

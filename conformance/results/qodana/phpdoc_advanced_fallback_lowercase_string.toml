@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Checked as plain `string`: a wrong type is reported as \"Expected parameter of type 'string'\", and `'ABC'` and `'abC'` pass, exactly as for `@param string`. Quick Documentation still shows `lowercase-string`, so the spelling is recognised and only the refinement is dropped."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

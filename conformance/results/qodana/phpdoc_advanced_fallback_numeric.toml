@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to int|float|string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = "phpdoc_advanced_fallback_numeric.php:48: Parameter 'true' type is not compatible with declaration when using strict type matching [PhpParamsInspection]"
 errors_diff = ""
-notes = ""
+notes = "Checked as `int|float|string` (its messages expect 'float|int|string'): `'abc'` passes as a string, and the `true` rejection is a bool failing that union, not `numeric` being evaluated."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"

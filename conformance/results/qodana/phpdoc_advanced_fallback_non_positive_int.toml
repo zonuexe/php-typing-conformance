@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to int"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Checked as plain `int`: a wrong type is reported as \"Expected parameter of type 'int'\", and `1` passes, exactly as for `@param int`. Quick Documentation still shows `non-positive-int`, so the spelling is recognised and only the refinement is dropped."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

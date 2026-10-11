@@ -178,8 +178,13 @@ $pzoomChecker = new PzoomChecker(
     configPath: $psalmConfigPath,
     testsDir: $testsDir,
 );
+// PHPSTORM names a PhpStorm launcher to run the inspection headless; unset,
+// the column is read from the newest report "Run Qodana in the IDE" left.
 $qodanaChecker = new QodanaChecker(
     projectRoot: $projectRoot,
+    phpStormLauncher: (($phpStorm = getenv('PHPSTORM')) !== false && $phpStorm !== '')
+        ? $phpStorm
+        : null,
 );
 $phpyChecker = new PhpyChecker(
     nodeBinary: 'node',

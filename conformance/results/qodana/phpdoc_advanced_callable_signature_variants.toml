@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to callable / Closure"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Each signature is checked as its bare kind: the three `callable(...)` spellings as `callable`, `\\Closure(int, int): string` as `Closure`. Closures with the wrong parameter or return types pass, and a non-callable is rejected."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

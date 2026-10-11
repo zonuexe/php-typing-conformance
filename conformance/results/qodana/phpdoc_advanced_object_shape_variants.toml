@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to object / stdClass"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Each spelling is checked as its class part alone: `object{foo: int, bar?: string}` as `object`, `object{foo: int}&\\stdClass` as `stdClass` (its messages expect 'object&stdClass'). No property is compared, so a `foo` of the wrong type passes."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Keeps the name — its messages expect 'class-string', and it types `::class` arguments as `class-string` — but any string satisfies it: `'not a class name'` passes, while an int or an array is rejected. What is checked is that the argument is a string."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

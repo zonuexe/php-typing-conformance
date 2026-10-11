@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to mixed"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = ""
 errors_diff = ""
-notes = ""
+notes = "PhpStorm drops `non-empty-string&lowercase-string` altogether: Quick Documentation shows the parameter untyped, and an int or an array passes it. The fused `non-empty-lowercase-string` is checked as plain `string`. The probes are on the intersection."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

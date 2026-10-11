@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = "phpdoc_advanced_fallback_value_of_enum.php:58: Parameter 'Suit::Hearts' type is not compatible with declaration [PhpParamsInspection]"
 errors_diff = ""
-notes = ""
+notes = "Checked as plain `string`, the enum's backing type: `'clubs'` passes, and the `Suit::Hearts` rejection is a case object failing `string` (\"Expected parameter of type 'string'\"), not `value-of` being evaluated."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"

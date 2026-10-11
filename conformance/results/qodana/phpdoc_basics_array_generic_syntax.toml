@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to array"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = ""
 errors_diff = ""
-notes = ""
+notes = "PhpStorm keeps the element type in the name — its messages expect `string[]` — but does not compare it: `[1]`, an `int[]`, passes, as does a string-keyed array for `array<int, string>`. Only arrayness is checked."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

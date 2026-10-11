@@ -1038,9 +1038,11 @@ final class SummaryReport
     /**
      * Columns of the measured capability matrix, in claims-table order for
      * the tools both tables carry. run-lsp-probes.php decides which servers
-     * get measured; this list only decides who stands where.
+     * get measured; this list only decides who stands where. PhpStorm comes
+     * last: it is not a language server, and run-phpstorm-probes.php measures
+     * it through the IDE's MCP server instead.
      */
-    private const LSP_TOOL_ORDER = ['intelephense', 'phpactor', 'psalm', 'devsense-php-ls', 'phpantom', 'php-lsp', 'phan', 'laravel-lsp'];
+    private const LSP_TOOL_ORDER = ['intelephense', 'phpactor', 'psalm', 'devsense-php-ls', 'phpantom', 'php-lsp', 'phan', 'laravel-lsp', 'phpstorm'];
 
     /** Row labels of the capability matrix, in ProbeGrading::COLUMNS order. */
     private const LSP_CAPABILITY_LABELS = [
@@ -1092,19 +1094,33 @@ final class SummaryReport
             return '';
         }
 
-        $tools = [];
-        foreach ($results as $tool => $data) {
-            // "Psalm 6.16.1@f1f5de..." carries the commit for provenance; the
-            // column header wants the human half, the title keeps it whole.
-            $version = (string) ($data['version'] ?? self::UNKNOWN_VERSION);
-            $short = explode('@', $version, 2)[0];
-            $tools[] = ['name' => $tool, 'version' => $short, 'versionFull' => $version];
-        }
+        // A column per tool that has the section. The language servers keep
+        // a column everywhere, dashed where they were not asked; PhpStorm,
+        // measured through MCP rather than LSP, only appears in the tables its
+        // MCP tools can answer faithfully (hover and navigation), since a
+        // dash in the others would claim the IDE lacks features it has.
+        $section = static fn (string $key): array => array_filter(
+            $results,
+            static fn (array $data): bool => isset($data[$key]) || ($data['interface'] ?? '') !== 'mcp',
+        );
+        $headers = static function (array $subset): array {
+            $tools = [];
+            foreach ($subset as $tool => $data) {
+                // "Psalm 6.16.1@f1f5de..." carries the commit for provenance; the
+                // column header wants the human half, the title keeps it whole.
+                $version = (string) ($data['version'] ?? self::UNKNOWN_VERSION);
+                $short = explode('@', $version, 2)[0];
+                $tools[] = ['name' => $tool, 'version' => $short, 'versionFull' => $version, 'mcp' => ($data['interface'] ?? '') === 'mcp'];
+            }
 
+            return $tools;
+        };
+
+        $capabilityResults = $section('capabilities');
         $capabilityRows = [];
         foreach (array_keys(ProbeGrading::COLUMNS) as $column) {
             $cells = [];
-            foreach ($results as $data) {
+            foreach ($capabilityResults as $data) {
                 $cells[] = $this->lspCapabilityCell($column, $data['capabilities'][$column] ?? []);
             }
             $capabilityRows[] = [
@@ -1113,12 +1129,13 @@ final class SummaryReport
             ];
         }
 
+        $hoverResults = $section('hover');
         $hoverRows = [];
-        $caseIds = array_keys(((array) reset($results))['hover'] ?? []);
+        $caseIds = array_keys(((array) reset($hoverResults))['hover'] ?? []);
         foreach ($caseIds as $caseId) {
-            $first = reset($results)['hover'][$caseId];
+            $first = reset($hoverResults)['hover'][$caseId];
             $cells = [];
-            foreach ($results as $data) {
+            foreach ($hoverResults as $data) {
                 $cells[] = $this->lspHoverCell($data['hover'][$caseId] ?? []);
             }
             $hoverRows[] = [
@@ -1132,11 +1149,12 @@ final class SummaryReport
         $navFailures = [];
         $navDefRows = [];
         $navRefRows = [];
+        $navResults = $section('navigation');
         $withNavigation = array_filter($results, static fn (array $data): bool => isset($data['navigation']));
         if ($withNavigation !== []) {
             $first = (array) reset($withNavigation);
             $navCorpus = (string) ($first['navigation_corpus'] ?? '');
-            foreach ($results as $tool => $data) {
+            foreach ($navResults as $tool => $data) {
                 if (($data['navigation_stale'] ?? false) === true) {
                     $navFailures[$tool] = 'not re-measured this run; rows kept from the last run that had the corpus checkout';
                 } elseif (isset($data['navigation_failure'])) {
@@ -1147,7 +1165,7 @@ final class SummaryReport
                 $symbol = $first['navigation'][$symbolId];
                 $defCells = [];
                 $refCells = [];
-                foreach ($results as $data) {
+                foreach ($navResults as $data) {
                     $row = $data['navigation'][$symbolId] ?? [];
                     $defCells[] = $this->lspNavigationDefinitionCell($row);
                     $refCells[] = $this->lspNavigationReferencesCell($row);
@@ -1163,9 +1181,10 @@ final class SummaryReport
             }
         }
 
+        $frameworkResults = $section('framework');
         $frameworkRows = [];
         $frameworkIds = [];
-        foreach ($results as $data) {
+        foreach ($frameworkResults as $data) {
             foreach (array_keys($data['framework'] ?? []) as $id) {
                 $frameworkIds[$id] = true;
             }
@@ -1173,7 +1192,7 @@ final class SummaryReport
         foreach (array_keys($frameworkIds) as $id) {
             $cells = [];
             $label = $id;
-            foreach ($results as $data) {
+            foreach ($frameworkResults as $data) {
                 $row = $data['framework'][$id] ?? [];
                 if ($label === $id && ($row['feature'] ?? '') !== '') {
                     $label = (string) $row['feature'];
@@ -1184,7 +1203,10 @@ final class SummaryReport
         }
 
         return $this->render('language-server-capabilities.phtml', [
-            'tools' => $tools,
+            'capabilityTools' => $headers($capabilityResults),
+            'hoverTools' => $headers($hoverResults),
+            'frameworkTools' => $headers($frameworkResults),
+            'navTools' => $headers($navResults),
             'capabilityRows' => $capabilityRows,
             'hoverRows' => $hoverRows,
             'frameworkRows' => $frameworkRows,
@@ -1284,7 +1306,6 @@ final class SummaryReport
     private function lspCapabilityCell(string $column, array $row): array
     {
         $probe = (string) ($row['probe'] ?? 'not-probed');
-
         if ($column === 'push-diagnostics') {
             // The push model has no capability flag to advertise, so this row
             // is behaviour alone: did the session ever carry diagnostics for

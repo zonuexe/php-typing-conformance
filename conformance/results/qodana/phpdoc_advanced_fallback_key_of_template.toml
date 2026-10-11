@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to int|string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "The call's result is inferred as `int|string`, the key type of `T`'s bound `array<array-key, mixed>`, rather than the argument's keys, and that union passes the `int` parameter because PhpStorm accepts a union wherever one of its members fits."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

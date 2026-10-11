@@ -25,6 +25,12 @@ things are deliberately outside it:
 - **The four language servers nothing installs** (phpactor, devsense-php-ls,
   phpantom, php-lsp) are described by the report but never run. `--apply`
   records their new releases; there is nothing to re-measure.
+- **Qodana** is a licensed PhpStorm, not something `vendor-bin/` installs.
+  When its upstream build moves, the matrix keeps the old build until someone
+  with a licence re-measures: with PhpStorm updated and closed,
+  `make run-qodana PHPSTORM=…` for the matrix column and
+  `make run-phpstorm-probes PHPSTORM=…` for its language-server column.
+  Without a licence at hand, report the new build and leave both.
 
 The runner's own dependencies (`conformance/composer.json`) and the
 `references/` submodules are separate concerns. Leave them unless asked.

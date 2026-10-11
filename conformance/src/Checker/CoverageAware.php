@@ -10,9 +10,9 @@ use Conformance\Discovery\TestCase;
  * A checker whose results can be out of date with the corpus.
  *
  * Every {@see Checker} that runs a binary answers for the test file as it is
- * on disk right now, so the question never arises. {@see QodanaChecker} does
- * not run anything — it reads a report someone produced by hand at some point
- * in the past — and a test written after that point was never looked at.
+ * on disk right now, so the question never arises. {@see QodanaChecker} may
+ * instead read a report someone produced by hand at some point in the past,
+ * and a test written after that point was never looked at.
  *
  * Without this the two cases are indistinguishable: an analyzer that inspected
  * a file and found nothing, and an analyzer that never saw the file, both

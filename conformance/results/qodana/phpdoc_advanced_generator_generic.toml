@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to Generator"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = ""
 errors_diff = ""
-notes = ""
+notes = "Checked as plain `Generator`: a generator of ints passes where `\\Generator<int, string, void, bool>` is required, and anything that is not a generator is rejected."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

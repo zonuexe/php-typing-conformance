@@ -163,7 +163,10 @@ Two things to know:
 - **Qodana is hand-run** and its report can lie about freshness. Before
   importing, check the line numbers it reports for your file against the
   current source; a new `startTimeUtc` does not mean the IDE re-read the file.
-  The `QodanaChecker` and `QodanaSarifReport` docblocks explain why.
+  The `QodanaChecker` and `QodanaSarifReport` docblocks explain why. With a
+  licensed PhpStorm that is not running, `make run-qodana PHPSTORM=…` measures
+  it headless instead, from an IDE started fresh on the files as they are on
+  disk.
 
 ## 4. Read the verdicts
 

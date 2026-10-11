@@ -5,7 +5,7 @@ output = """
 phpdoc_advanced_fallback_array_key.php:58: Parameter '1.5' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
 phpdoc_advanced_fallback_array_key.php:59: Parameter 'true' type is not compatible with declaration when using strict type matching [PhpParamsInspection]"""
 errors_diff = ""
-notes = ""
+notes = "Modelled exactly as `int|string`: `1.5` and `true` are rejected. `null` passes because PhpStorm accepts `null` for a PHPDoc type that contains `string`, and the `array-key` result passes the `int` and `string` parameters because PhpStorm accepts a union wherever one of its members fits."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"

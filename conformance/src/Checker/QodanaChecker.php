@@ -11,31 +11,36 @@ use RuntimeException;
  * Adapter for Qodana (https://www.jetbrains.com/qodana/), the analysis engine
  * behind PhpStorm's inspections.
  *
- * The one column this suite does not run. Qodana is proprietary and cannot be
- * shipped here, so the measurement is performed by hand from PhpStorm — the
- * IDE's own "Run Qodana in the IDE" action, described at
- * https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide
- * — and this class reads the `qodana.sarif.json` it leaves behind rather than
- * invoking anything.
+ * Qodana is proprietary and cannot be shipped here, so the column is measured
+ * through a PhpStorm installation someone holds a licence for, in one of two
+ * ways that run the same inspections:
  *
- * It is worth being explicit that this is *not*
+ * - By hand, with the IDE's own "Run Qodana in the IDE" action, described at
+ *   https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide.
+ *   This class then reads the `qodana.sarif.json` it leaves behind.
+ * - Headless, when constructed with a PhpStorm launcher: the checker runs
+ *   PhpStorm's command-line inspector itself and reads its JSON output — see
+ *   {@see PhpStormInspectionReport}. The inspector refuses to start while
+ *   another PhpStorm instance is running, so the IDE has to be closed.
+ *
+ * It is worth being explicit that neither is
  * https://github.com/JetBrains/qodana-cli. That is a separate artifact with
  * its own versioning and its own Qodana Cloud licensing, and the version it
  * pins in qodana.yaml's `linter:` field describes a CI container that never
  * runs here.
  *
- * Everything else follows from having no binary to invoke: there is no
- * artifact to pin, so the configuration is pinned instead, in
- * `qodana.yaml` and `.idea/inspectionProfiles/Project_Default.xml` — see
+ * Everything else follows from having no artifact to install: there is
+ * nothing to pin, so the configuration is pinned instead, in `qodana.yaml`
+ * and `.idea/inspectionProfiles/Project_Default.xml` — see
  * {@see QodanaSarifReport::TYPE_RULES} for which inspections are measured and
  * why those.
  *
  * A report is a snapshot of one working tree at one moment, which is the one
  * thing every other checker gets for free and this one has to assert. A test
- * file touched after the report was produced was never looked at, and SARIF
- * carries no list of what was analysed, so silence about it cannot be read as
- * a clean result. {@see covers()} draws that line; see {@see CoverageAware}
- * for why it has to exist at all.
+ * file touched after the report was produced was never looked at, and neither
+ * output carries a list of what was analysed, so silence about it cannot be
+ * read as a clean result. {@see covers()} draws that line; see
+ * {@see CoverageAware} for why it has to exist at all.
  *
  * Support files are not passed separately the way the CLI checkers pass them:
  * PhpStorm indexes the entire project, so a `_`-prefixed helper is always in
@@ -43,18 +48,24 @@ use RuntimeException;
  */
 final class QodanaChecker implements CoverageAware
 {
-    private ?QodanaSarifReport $report = null;
+    private QodanaSarifReport|PhpStormInspectionReport|null $report = null;
 
     private bool $stalenessReported = false;
 
     /**
-     * @param string|null $reportPath null resolves the newest report at the
-     *                                moment of the first analysis
+     * @param string|null $reportPath      null resolves the newest report at the
+     *                                     moment of the first analysis
+     * @param string|null $phpStormLauncher PhpStorm's launcher (`phpstorm`, or
+     *                                     `phpstorm.sh` in the install's bin/);
+     *                                     when given, the checker runs the
+     *                                     inspection itself instead of reading
+     *                                     a report produced by hand
      */
     public function __construct(
         private readonly string $projectRoot,
         private readonly ?string $reportPath = null,
         private readonly ?string $searchDirectory = null,
+        private readonly ?string $phpStormLauncher = null,
     ) {
     }
 
@@ -67,8 +78,9 @@ final class QodanaChecker implements CoverageAware
     {
         $report = $this->report();
 
-        // The IDE build number, which is what the report states — 262.8665.325
-        // for PhpStorm 2026.2. There is no separate Qodana version to read.
+        // The IDE build number, which is what either report states —
+        // 262.8665.325 for PhpStorm 2026.2. There is no separate Qodana version
+        // to read. The name says which of the two took the measurement.
         return trim(sprintf('%s %s', $report->toolName, $report->toolVersion));
     }
 
@@ -93,7 +105,7 @@ final class QodanaChecker implements CoverageAware
         }
 
         return sprintf(
-            '%s changed after the Qodana report of %s was produced, so the report cannot answer for it. Run Inspect Code in PhpStorm and re-run this tool.',
+            '%s changed after the Qodana report of %s was produced, so the report cannot answer for it. Run Qodana in PhpStorm, or set PHPSTORM to run the inspection headless, and re-run this tool.',
             basename($stale),
             $this->report()->startedAt ?? 'unknown date',
         );
@@ -146,18 +158,82 @@ final class QodanaChecker implements CoverageAware
         return $timestamp !== false ? $timestamp : null;
     }
 
-    private function report(): QodanaSarifReport
+    private function report(): QodanaSarifReport|PhpStormInspectionReport
     {
         if ($this->report !== null) {
             return $this->report;
         }
 
-        $path = $this->reportPath ?? QodanaSarifReport::locateLatest($this->searchDirectory);
-        $report = QodanaSarifReport::fromFile($path);
+        if ($this->phpStormLauncher !== null) {
+            ['directory' => $path, 'startedAt' => $startedAt] = $this->inspect($this->phpStormLauncher);
+            $report = PhpStormInspectionReport::fromDirectory($path, $startedAt);
+        } else {
+            $path = $this->reportPath ?? QodanaSarifReport::locateLatest($this->searchDirectory);
+            $report = QodanaSarifReport::fromFile($path);
+        }
 
         $this->warnIfLocalised($report, $path);
 
         return $this->report = $report;
+    }
+
+    /**
+     * Run PhpStorm's command-line inspector over the corpus, once.
+     *
+     * The profile is the pinned project profile, passed explicitly, so the
+     * set of inspections does not depend on whatever the IDE was last told.
+     * The scope is the test directory alone; the whole project is still
+     * indexed, which is what keeps the `_`-prefixed support files in scope.
+     *
+     * Before inspecting, PhpStorm's PHP project configurator runs
+     * `composer install` for any composer.json whose vendor directory is
+     * missing. At this repository's root that install is forwarded by the
+     * bin plugin into every vendor-bin namespace, which drops a `{}`
+     * composer.json into the npm-installed ones. Requiring the root vendor
+     * directory up front keeps the inspector from touching the tree.
+     *
+     * @return array{directory: string, startedAt: string}
+     */
+    private function inspect(string $launcher): array
+    {
+        $root = rtrim($this->projectRoot, '/');
+        if (!is_dir($root . '/vendor')) {
+            throw new RuntimeException(sprintf(
+                'Run composer install in %s first: without a vendor directory, PhpStorm runs it itself before inspecting.',
+                $root,
+            ));
+        }
+
+        $directory = sprintf('%s/phpstorm_inspect_%s', rtrim(sys_get_temp_dir(), '/'), bin2hex(random_bytes(4)));
+        if (!mkdir($directory, 0777, true)) {
+            throw new RuntimeException(sprintf('Unable to create %s', $directory));
+        }
+
+        $command = sprintf(
+            '%s inspect %s %s %s -format json -v0 -d %s 2>&1',
+            escapeshellarg($launcher),
+            escapeshellarg($root),
+            escapeshellarg($root . '/.idea/inspectionProfiles/Project_Default.xml'),
+            escapeshellarg($directory),
+            escapeshellarg($root . '/conformance/tests'),
+        );
+
+        fwrite(STDERR, sprintf("qodana: running PhpStorm's command-line inspector into %s\n", $directory));
+
+        // Recorded before the launch: a test file saved while the inspector
+        // was reading must not be counted as covered.
+        $startedAt = gmdate('Y-m-d\TH:i:s\Z');
+        exec($command, $output, $exitCode);
+
+        if ($exitCode !== 0 || !is_file($directory . '/.descriptions.json')) {
+            throw new RuntimeException(sprintf(
+                "PhpStorm's inspector failed (exit %d). It does not start while another PhpStorm instance is running. Last output:\n%s",
+                $exitCode,
+                implode("\n", array_slice($output, -10)),
+            ));
+        }
+
+        return ['directory' => $directory, 'startedAt' => $startedAt];
     }
 
     /**
@@ -170,7 +246,7 @@ final class QodanaChecker implements CoverageAware
      * the same question per test case and lands the answer in the matrix,
      * where it is actually read.
      */
-    private function warnIfLocalised(QodanaSarifReport $report, string $path): void
+    private function warnIfLocalised(QodanaSarifReport|PhpStormInspectionReport $report, string $path): void
     {
         if ($this->stalenessReported || !$report->localised) {
             return;

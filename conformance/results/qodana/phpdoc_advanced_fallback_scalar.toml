@@ -5,7 +5,7 @@ output = """
 phpdoc_advanced_fallback_scalar.php:47: Parameter '[1, 2]' type is not compatible with declaration [PhpParamsInspection]
 phpdoc_advanced_fallback_scalar.php:48: Parameter 'new \\stdClass()' type is not compatible with declaration [PhpParamsInspection]"""
 errors_diff = ""
-notes = ""
+notes = "Modelled exactly — its messages expect 'bool|float|int|string' — so the array and the object are rejected. `null` passes because PhpStorm accepts `null` for a PHPDoc type that contains `string`, not because `scalar` is widened."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"

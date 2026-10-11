@@ -292,13 +292,21 @@ Paths come back relative to the *invoking* working directory rather than to
 `PzoomChecker` already makes for a tool that does not control its own path
 formatting. Exit codes 0 (clean) and 1 (issues found) are both normal.
 
-### Qodana — a report to read, not a tool to run
+### Qodana — a report to read, or PhpStorm run headless
 
-The only adapter that runs nothing. Qodana is proprietary and cannot be
-shipped here, so the column is measured by hand from PhpStorm, using the IDE's
-[Run Qodana in the IDE](https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide)
-action; `QodanaChecker` reads the `qodana.sarif.json` the IDE leaves in a
-temporary directory, and `QodanaSarifReport` normalises it.
+Qodana is proprietary and cannot be shipped here, so the column is measured
+through a PhpStorm installation someone holds a licence for. There are two ways
+in, and they run the same inspections:
+
+- By hand, with the IDE's
+  [Run Qodana in the IDE](https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide)
+  action; `QodanaChecker` reads the `qodana.sarif.json` the IDE leaves in a
+  temporary directory, and `QodanaSarifReport` normalises it.
+- Headless, when `PHPSTORM` names the IDE's launcher (`make run-qodana`):
+  `QodanaChecker` runs PhpStorm's
+  [command-line inspector](https://www.jetbrains.com/help/phpstorm/command-line-code-inspector.html)
+  itself and `PhpStormInspectionReport` reads its output. Its particulars are
+  at the end of this section.
 
 This is deliberately not [qodana-cli](https://github.com/JetBrains/qodana-cli),
 which is a separate artifact with its own versioning and its own Qodana Cloud
@@ -351,6 +359,56 @@ than the declaration below it, which the corpus already accommodates:
 `ExpectationParser::docblockAbove()` extends each `// T` marker over the
 docblock above it, so an "undefined class `non-empty-string`" on the tag line
 records as unrecognized rather than as a false positive.
+
+The headless route, `phpstorm inspect <project> <profile> <output> -format
+json -d conformance/tests`, has particulars of its own:
+
+- It writes one `<InspectionId>.json` per inspection, each a `problems` list,
+  plus `.descriptions.json`, which records the profile and every inspection's
+  plugin, build and enabled state. The pinned project profile is passed
+  explicitly, so the effective set is that profile alone rather than its
+  intersection with `qodana.yaml`; every `TYPE_RULES` inspection is enabled
+  there, and the reader refuses output in which one is not, since it would
+  read as a clean result. Messages match the SARIF ones byte for byte.
+- It is PhpStorm itself, so an ordinary PhpStorm licence runs it. The
+  `qodana` app starter in the same installation does not: it relaunches the
+  IDE as "Qodana for PHP" (`QDPHP-<build>`) and exits with "No valid license
+  found".
+- It does not start while another PhpStorm instance is running.
+- Before inspecting, PhpStorm's PHP project configurator runs
+  `composer install` for any composer.json whose vendor directory is
+  missing. At this repository's root the bin plugin forwards that install into
+  every vendor-bin namespace, and drops `{}` composer.json/composer.lock stubs
+  into the npm-installed ones. The checker therefore refuses to start until
+  the root `vendor/` exists.
+- The output records no time, so the checker records when it launched the
+  inspector, and coverage is judged against that.
+- The version banner reads `PhpStorm <build>` instead of `Qodana <build>`:
+  the same build number, naming what actually ran.
+
+Measured against PhpStorm 2026.2.3 (262.10968.76) and the corpus the committed
+results were taken from, 244 of the 248 results came out byte-identical. The
+other four are `debug_*` rows that call PHPStan's and Mago's debug functions:
+that run's IDE did not resolve the `PHPStan` and `Mago` namespaces from
+`vendor-bin/` and added an "Undefined namespace" line to each, with every
+verdict unchanged. Which namespaces resolve depends on what the IDE indexes,
+not on the build.
+
+The `Falls back to …` statuses in this column were curated against PhpStorm
+2026.2.3, from PhpStorm's own account rather than from the corpus probes
+alone. Each spelling was declared on a PHPDoc-only parameter and called with
+the same set of values as a parameter of its candidate base type, through the
+headless MCP server (`get_file_problems`, see `docs/language-servers.md`).
+There the parameter inspection names the type it checks against — "Expected
+parameter of type 'int', 'string' provided" — and a spelling counts as widened
+only when it is checked under the base type's name and rejects exactly what
+the base type rejects. For returns, Quick Documentation of the call's result
+gave the inferred type. Spellings PhpStorm models exactly (`scalar`,
+`array-key`, `true`, `false`) are left as partly enforced, with notes on the
+two leniencies behind their misses: `null` passes a PHPDoc type containing
+`string`, and a union passes wherever one of its members fits. A new PhpStorm
+build can change any of this, so the curation needs re-checking when the
+column is re-measured on one.
 
 ### SonarQube — evaluated, not a report column
 

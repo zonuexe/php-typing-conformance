@@ -54,8 +54,8 @@ const LANGUAGE_SERVER_SECTION = '# Language servers.';
  * number.
  *
  * qodana is measured without being installable: its licence rules out
- * shipping the linter, so its column comes from a PhpStorm report produced
- * by hand.
+ * shipping the linter, so its column comes from a PhpStorm installation
+ * someone holds a licence for, run by hand or headless (`make run-qodana`).
  */
 const INSTALLS = [
     'phan' => ['composer', 'phan', 'phan/phan'],

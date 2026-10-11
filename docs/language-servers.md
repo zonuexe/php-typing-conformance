@@ -224,6 +224,9 @@ These cost real debugging time; each one is now load-bearing in the code.
   submodule is missing the stub session still records the helpers.php
   env probes; if `vendor/` is missing, route/view/config/translation
   probes run and come back empty (tinker cannot boot).
+- **PhpStorm's column is not a language server's.** It is asked through the
+  IDE's MCP server instead, for hover and navigation only, with its own runner
+  and its own traps; see the next section.
 - **The code-action probe was asking where nobody had an answer.** It used
   to anchor on the fixture's deliberate type error, which reads as the
   obvious place to ask for a quickfix. No server offers one there. Phpactor
@@ -241,10 +244,87 @@ These cost real debugging time; each one is now load-bearing in the code.
   position that exercises the *capability* beats a position that looks
   thematically right.
 
+## PhpStorm, through its MCP server
+
+PhpStorm is not a language server and answers no LSP request, but it has the
+one thing two of the layers need: a machine interface that resolves positions.
+The MCP server bundled with the IDE exposes `get_symbol_info`, which returns
+Quick Documentation for a position plus the declaration it resolves to.
+`make run-phpstorm-probes PHPSTORM=/path/to/phpstorm`
+(`conformance/src/run-phpstorm-probes.php`) asks the hover and navigation
+probes at the same anchors through it, grades them with the same
+`ProbeGrading`, and writes `conformance/results/lsp/phpstorm.toml`. The report
+gives PhpStorm a column, marked "via MCP", in the hover table and the two
+navigation tables only. It needs a licensed PhpStorm that is not running: each
+session launches it headless on a scratch copy under `<temp>/phpstorm-probes/`
+and stops it afterwards.
+
+| Layer | What stands in for the LSP request |
+| --- | --- |
+| Hover | Quick Documentation for the position |
+| Go to definition | the declaration that position resolves to |
+| Find references | every occurrence of the name, resolved; the ones landing on the declaration |
+
+The capability matrix and the framework probes are deliberately left out, after
+a first version measured them too. MCP has no request for completion, signature
+help, folding, inlay hints and most of the rest, so those cells could only be
+dashes, which read as features PhpStorm lacks when it plainly has them; and
+`get_symbol_info` resolves none of Laravel Idea's route, config, env or
+translation keys, so the framework definitions read as "no answer" for the same
+reason. A cell has to measure the IDE, not the limits of the interface used to
+reach it. `PhpStormProbeRunner::TOOLS` still maps the other probes onto MCP
+tools (`get_file_problems`, `search_symbol`, `rename_refactoring`,
+`reformat_file`, `analyze_calls`), which is useful for one-off investigations
+but not published.
+
+Traps, each now handled in `PhpStormProbeRunner` or `PhpStormMcpClient`:
+
+- **The headless starter is internal.** The bundled MCP plugin registers
+  `phpstorm mcpServer` with `internal="true"`; the runner calls it as
+  `mcpServer --project=<dir> --port=<n> --allowed-tools=* --invocation-mode=DIRECT`.
+  Without `--project` it opens the working directory as the project. Without
+  `--allowed-tools` it exposes only the four search tools. Without
+  `--invocation-mode=DIRECT` the tools sit behind the `execute_tool` router.
+  Given `--port=0` it binds a free port and reports "port 0", so the runner
+  picks the port. It prints "MCP Server started on port N" only once indexing
+  is done, which is the readiness signal. A later build may move any of this.
+- **One project per instance.** Given several `--project=` arguments, each
+  project opened disposes the one before, and the starter then waits forever
+  for the disposed one to finish indexing. Opening a project in the GUI from
+  the command line replaces the open one the same way. Each session therefore
+  gets its own instance.
+- **Sessions are tied to the connection.** The server forgets an
+  `mcp-session-id` once the connection that opened it closes. The client keeps
+  one curl handle alive and re-handshakes once if a request comes back 404.
+- **Quick Documentation renders through HTML.** `int<1,&nbsp;100>` arrives
+  with a non-breaking space. It is normalised to a space, so the hover
+  patterns need not know PhpStorm's renderer.
+- **Find references is assembled, not asked.** No tool finds references, so
+  the runner does what Find Usages does: every textual occurrence of the
+  declared name is resolved through `get_symbol_info`, and the sites that
+  resolve to the declaration are the answer, declaration included. For a
+  constructor the candidates are the class name, `self`, `static` and
+  `parent` as well, since `new self()` is a constructor reference. The
+  reading is strict: `$shell::VERSION` on a `mixed` `$shell` does not
+  resolve, so it is not counted, where the IDE's own Find Usages would list
+  it under "Dynamic usages". The extras it does count are real IDE
+  references: a `function_exists('Psy\\info')` callable string, `@see` tags in
+  docblocks.
+- **Laravel keys mostly do not resolve.** On the Gate corpus, Quick
+  Documentation on an `env()`, `config()`, `route()` or `__()` key describes
+  the helper function, and only view names resolve to a declaration (the
+  Blade file). This is why the framework probes are not asked.
+- **`run_inspection_kts` compiles nothing in PhpStorm.** Even JetBrains' own
+  template comes back "No inspection created after compilation", presumably
+  because the Kotlin plugin it compiles with is not part of PhpStorm. It was
+  the obvious route to running the platform's `ReferencesSearch` directly.
+
 ## Reading the results
 
 Each `conformance/results/lsp/<tool>.toml` stores the graded rows *and* the
 raw handshake JSON (`raw_capabilities`), so any cell can be re-audited without
 re-running the server. `version` is what the binary reports; `server_info` is
 what the server said about itself over the protocol (often empty — only Psalm
-and Phpactor fill it).
+and Phpactor fill it). `phpstorm.toml` carries `interface = "mcp"` and the MCP
+tool list in place of the handshake, and only the `hover` and `navigation`
+sections.

@@ -1,4 +1,4 @@
-.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes run-sonarqube serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom install-laravel-lsp install-laravel-corpus test-harness rescore
+.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes run-phpstorm-probes run-qodana run-sonarqube serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom install-laravel-lsp install-laravel-corpus test-harness rescore
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
@@ -116,6 +116,20 @@ render-report-html:
 # then re-render the report to publish the new measurements.
 run-lsp-probes:
 	php conformance/src/run-lsp-probes.php
+
+# PhpStorm's launcher, for the two targets below. Both run it headless, so
+# the installation needs a licence and must not be running.
+PHPSTORM ?= phpstorm
+
+# Re-measure the qodana column through PhpStorm's command-line inspector
+# instead of "Run Qodana in the IDE". Needs composer install at the root.
+run-qodana:
+	PHPSTORM=$(PHPSTORM) php conformance/src/main.php --tool=qodana
+
+# PhpStorm's column in the hover and navigation tables, asked through the MCP
+# server built into the IDE, on scratch projects under <temp>/phpstorm-probes/.
+run-phpstorm-probes:
+	PHPSTORM=$(PHPSTORM) php conformance/src/run-phpstorm-probes.php
 
 # Report which tracked tools have a newer release. `make update-tools APPLY=1`
 # installs them and records the new releases; re-run the suite afterwards.

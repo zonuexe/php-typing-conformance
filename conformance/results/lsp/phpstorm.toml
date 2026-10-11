@@ -1,0 +1,110 @@
+tool = "phpstorm"
+version = "PhpStorm 2026.2.3"
+server_info = "PhpStorm MCP Server 2026.2.3"
+interface = "mcp"
+dynamic_registrations = []
+raw_capabilities = "{\"tools\":[\"analyze_calls\",\"apply_patch\",\"apply_quick_fix\",\"build_project\",\"cancel_sql_query\",\"create_database_connection\",\"create_new_file\",\"edit_database_connection\",\"execute_run_configuration\",\"execute_sql_query\",\"execute_terminal_command\",\"execute_tool\",\"fetch_query_result\",\"generate_inspection_kts_api\",\"generate_inspection_kts_examples\",\"generate_psi_tree\",\"get_all_open_file_paths\",\"get_composer_dependencies\",\"get_database_object_description\",\"get_file_problems\",\"get_inspections\",\"get_php_project_config\",\"get_project_dependencies\",\"get_project_modules\",\"get_repositories\",\"get_run_configurations\",\"get_structural_patterns\",\"get_symbol_info\",\"git_status\",\"introspect_schema\",\"invoke_ide_action\",\"laravel_idea_generate_helper_code\",\"laravel_idea_get_blade_component\",\"laravel_idea_get_eloquent_model\",\"laravel_idea_get_routes\",\"laravel_idea_get_view_meta\",\"lint_files\",\"list_database_connections\",\"list_database_schemas\",\"list_directory_tree\",\"list_recent_sql_queries\",\"list_schema_object_kinds\",\"list_schema_objects\",\"open_file_in_editor\",\"preview_table_data\",\"read_file\",\"reformat_file\",\"rename_refactoring\",\"run_inspection_kts\",\"search_file\",\"search_ide_actions\",\"search_regex\",\"search_structural\",\"search_symbol\",\"search_text\",\"test_database_connection\",\"xdebug_control_session\",\"xdebug_evaluate_expression\",\"xdebug_get_debugger_status\",\"xdebug_get_frame_values\",\"xdebug_get_stack\",\"xdebug_get_threads\",\"xdebug_get_value_by_path\",\"xdebug_list_breakpoints\",\"xdebug_remove_breakpoint\",\"xdebug_run_to_line\",\"xdebug_set_breakpoint\",\"xdebug_set_variable\",\"xdebug_start_debugger_session\"]}"
+navigation_corpus = "psy/psysh@0e8ec1af5990"
+
+[hover.native-return]
+feature = "Native return type"
+expected = "int"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$length: int\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "precise"
+
+[hover.narrowed-union]
+feature = "Union narrowed by is_int()"
+expected = "int"
+shown = "$value: int|string\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "other"
+
+[hover.array-shape]
+feature = "Array shape from @return"
+expected = "array{name: string, age: int}"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$user: array\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "other"
+
+[hover.int-range]
+feature = "Integer range from @var"
+expected = "int<1, 100>"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$percent: \n```\n```\nint<1, 100>\n```\n```\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "precise"
+
+[hover.generic-call]
+feature = "@template T resolved through a call"
+expected = "string"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$firstName: _mixed|string_\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "other"
+
+[navigation.function]
+kind = "Function"
+name = "Psy\\info()"
+definition = "correct"
+refs_expected = 13
+refs_found = 13
+refs_extra = 1
+references = "all"
+
+[navigation.instance-method]
+kind = "Instance method"
+name = "Psy\\Context::getAll()"
+definition = "correct"
+refs_expected = 10
+refs_found = 10
+refs_extra = 0
+references = "all"
+
+[navigation.static-method]
+kind = "Static method"
+name = "Psy\\Util\\Str::unvis()"
+definition = "correct"
+refs_expected = 4
+refs_found = 4
+refs_extra = 0
+references = "all"
+
+[navigation.local-variable]
+kind = "Local variable"
+name = "$output in Str::unvis()"
+definition = "correct"
+refs_expected = 2
+refs_found = 2
+refs_extra = 0
+references = "all"
+
+[navigation.class-constant]
+kind = "Class constant"
+name = "Psy\\Shell::VERSION"
+definition = "correct"
+refs_expected = 21
+refs_found = 20
+refs_extra = 0
+references = "partial"
+refs_missing = ["src/functions.php:383"]
+
+[navigation.instance-property]
+kind = "Instance property"
+name = "Psy\\Context::$scopeVariables"
+definition = "correct"
+refs_expected = 5
+refs_found = 5
+refs_extra = 0
+references = "all"
+
+[navigation.static-property]
+kind = "Static property"
+name = "Psy\\Util\\Docblock::$vectors"
+definition = "correct"
+refs_expected = 6
+refs_found = 6
+refs_extra = 3
+references = "all"
+
+[navigation.constructor]
+kind = "Constructor"
+name = "Psy\\ConfigPaths::__construct()"
+definition = "n/a"
+refs_expected = 15
+refs_found = 15
+refs_extra = 0
+references = "all"

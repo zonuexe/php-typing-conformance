@@ -1,9 +1,9 @@
-status = "Unknown"
+status = "Falls back to int|float"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = ""
 errors_diff = ""
-notes = ""
+notes = "The conditional is not evaluated: `add(1, 2)` and `add(1, 1.5)` are both inferred as `float|int`, the union of its branches, and that union passes the `int` parameter because PhpStorm accepts a union wherever one of its members fits."
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"

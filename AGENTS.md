@@ -109,6 +109,16 @@ Navigation on psysh is skipped for Laravel LSP. Method and hard-won traps
 are documented in `docs/language-servers.md` — read it before touching
 the probe flow.
 
+PhpStorm is not a language server, but it gets a column in the hover and
+navigation tables: `make run-phpstorm-probes PHPSTORM=/path/to/phpstorm` asks
+it those probes through the MCP server built into the IDE, launching it
+headless once per project (it must not already be running), and writes
+`conformance/results/lsp/phpstorm.toml`. Find-references is assembled from
+`get_symbol_info` resolutions. It is kept out of the capability matrix and
+the framework probes on purpose: MCP cannot ask for completion and most other
+capabilities, and dashes there would misreport the IDE.
+`docs/language-servers.md` has the details.
+
 ## NoVerify Exception
 
 NoVerify is bootstrapped differently.
@@ -193,12 +203,26 @@ The 7.x-only purity findings (`MissingPureAnnotation`,
 handlers, since Psalm 6's schema rejects the elements — because the corpus
 does not test mutation-free annotations.
 
-`qodana` is measured by hand: run Qodana from PhpStorm (Code | Analyze Code |
-Run Qodana in the IDE), then `php conformance/src/main.php --tool=qodana`,
-which reads the newest report out of the system temp directory. Any test file
-newer than that report is recorded as `Not measured` instead of passing, so a
-newly added test case shows the gap in the matrix until the inspection is
-re-run.
+`qodana` is measured through a licensed PhpStorm, in one of two ways that run
+the same inspections:
+
+- By hand: run Qodana from PhpStorm (Code | Analyze Code | Run Qodana in the
+  IDE), then `php conformance/src/main.php --tool=qodana`, which reads the
+  newest report out of the system temp directory.
+- Headless: with PhpStorm closed and `composer install` done at the root,
+  `make run-qodana PHPSTORM=/path/to/phpstorm` runs PhpStorm's command-line
+  inspector (`phpstorm inspect`) with the pinned project profile and reads its
+  JSON output. Against the build and corpus the committed results came from,
+  it reproduced 244 of 248 results byte for byte; the other four are `debug_*`
+  rows that gained an "Undefined namespace" line for the PHPStan and Mago
+  debug functions, verdicts unchanged — whether those namespaces resolve
+  depends on what the IDE indexes from `vendor-bin/`, not on the build.
+  Qodana's own headless starter (`phpstorm qodana`) is no substitute: it
+  relaunches the IDE as "Qodana for PHP" and wants a Qodana licence.
+
+Any test file newer than the report is recorded as `Not measured` instead of
+passing, so a newly added test case shows the gap in the matrix until the
+inspection is re-run.
 
 SonarQube / sonar-php was evaluated and declined (#10): it is a rule
 catalogue, not a type checker. The adapter is kept for a repeat

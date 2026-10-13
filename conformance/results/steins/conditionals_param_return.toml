@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 3
+expected_diagnostic_count = 2
 output = "conditionals_param_return.php:36: argument 1 (returned from identify()) to takesString() cannot become string $value — proven TypeError (strict mode) [type.argument-mismatch]"
 errors_diff = ""
 notes = ""

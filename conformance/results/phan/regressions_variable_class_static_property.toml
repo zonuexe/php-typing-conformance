@@ -1,15 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = ""
-errors_diff = """
-Line 52: Expected 1 error(s)
-Line 60: Expected 1 error(s)"""
+output = """
+regressions_variable_class_static_property.php:52: Assigning 'no' of type string to property but \\Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder::$count is int [PhanTypeMismatchPropertyReal]
+regressions_variable_class_static_property.php:60: Cannot access private property \\Conformance\\Tests\\RegressionsVariableClassStaticProperty\\Holder::$secret defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/regressions_variable_class_static_property.php:26 [PhanAccessPropertyPrivate]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "2/4"
+enforcement = "enforced"
+enforced_lines = "4/4"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

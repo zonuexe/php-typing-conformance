@@ -179,19 +179,22 @@ Current checker columns in the report, in display order:
 - `steins`
 
 `psalm-next` is a second Psalm installation running the next major line
-(`vendor-bin/psalm-next`, currently 7.0.0-rc1) through the same adapter
+(`vendor-bin/psalm-next`, currently 7.0.0-rc2) through the same adapter
 and config. It is a configuration of `psalm` for the metadata and release
 tables, and the evaluator makes `// E<psalm>` expectations apply to it too —
 where the 7.x line diverges, that shows up as a missed or unexpected
 diagnostic rather than a marker the column never saw. It is not a column of
 the index matrix; the psalm version cell names the next line on its second
-line (`6.19.2 / next: 7.0.0-rc1`), and the detail pages carry it as a
+line (`6.20.0 / next: 7.0.0-rc2`), and the detail pages carry it as a
 full row. Only the CLI is measured; there is no LSP probe for the next line.
 The 7.x-only purity findings (`MissingPureAnnotation`,
 `MissingAbstractPureAnnotation`) are suppressed in
 `conformance/psalm-next.xml` — a copy of `psalm.xml` with the 7.x-only
 handlers, since Psalm 6's schema rejects the elements — because the corpus
-does not test mutation-free annotations.
+does not test mutation-free annotations. From 7.0.0-rc2, `TaintedHtml` and
+`TaintedTextWithQuotes` are suppressed there too: exception messages are
+taint sources even without `--taint-analysis`, and the corpus does not
+measure taint.
 
 `qodana` is measured by hand: run Qodana from PhpStorm (Code | Analyze Code |
 Run Qodana in the IDE), then `php conformance/src/main.php --tool=qodana`,

@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+native_types_overloaded_number_operators.php:42: Cannot perform a numeric operation with a non-numeric type BcMath\\Number [InvalidOperand]
+native_types_overloaded_number_operators.php:42: Argument 1 of Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesNumber expects BcMath\\Number, but float|int provided [InvalidArgument]
+native_types_overloaded_number_operators.php:47: Cannot perform a numeric operation with non-numeric types BcMath\\Number and BcMath\\Number [InvalidOperand]
+native_types_overloaded_number_operators.php:47: Argument 1 of Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesNumber expects BcMath\\Number, but float|int provided [InvalidArgument]
+native_types_overloaded_number_operators.php:62: Cannot perform a numeric operation with a non-numeric type BcMath\\Number [InvalidOperand]
+native_types_overloaded_number_operators.php:62: Argument 1 of Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesInt expects int, but float|int provided [InvalidScalarArgument]
+native_types_overloaded_number_operators.php:67: Argument 1 of Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesInt expects int, but GMP provided [InvalidArgument]
+native_types_overloaded_number_operators.php:72: Cannot perform a numeric operation with non-numeric types BcMath\\Number and 'abc' [InvalidOperand]
+native_types_overloaded_number_operators.php:72: Argument 1 of Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesNumber expects BcMath\\Number, but float|int provided [InvalidArgument]
+native_types_overloaded_number_operators.php:77: Argument 1 of Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesNumber cannot be mixed, expecting BcMath\\Number [MixedArgument]
+native_types_overloaded_number_operators.php:77: Right operand cannot be null [NullOperand]"""
+errors_diff = """
+Line 42: Expected valid value to be accepted, got ["Cannot perform a numeric operation with a non-numeric type BcMath\\\\Number [InvalidOperand]","Argument 1 of Conformance\\\\Tests\\\\NativeTypesOverloadedNumberOperators\\\\takesNumber expects BcMath\\\\Number, but float|int provided [InvalidArgument]"]
+Line 47: Expected valid value to be accepted, got ["Cannot perform a numeric operation with non-numeric types BcMath\\\\Number and BcMath\\\\Number [InvalidOperand]","Argument 1 of Conformance\\\\Tests\\\\NativeTypesOverloadedNumberOperators\\\\takesNumber expects BcMath\\\\Number, but float|int provided [InvalidArgument]"]"""
+notes = ""
+ignore_errors = []

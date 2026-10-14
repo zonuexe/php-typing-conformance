@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+native_types_overloaded_number_operators.php:62: Parameter #1 $value of function Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesInt expects int, BcMath\\Number given. [reported-from-level=5]
+native_types_overloaded_number_operators.php:67: Parameter #1 $value of function Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesInt expects int, GMP given. [reported-from-level=5]
+native_types_overloaded_number_operators.php:72: Binary operation "+" between BcMath\\Number and 'abc' results in an error. [reported-from-level=2]
+native_types_overloaded_number_operators.php:72: Parameter #1 $value of function Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesNumber expects BcMath\\Number, mixed given. [reported-from-level=10]
+native_types_overloaded_number_operators.php:77: Binary operation "+" between BcMath\\Number and null results in an error. [reported-from-level=2]
+native_types_overloaded_number_operators.php:77: Parameter #1 $value of function Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesNumber expects BcMath\\Number, mixed given. [reported-from-level=10]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 2

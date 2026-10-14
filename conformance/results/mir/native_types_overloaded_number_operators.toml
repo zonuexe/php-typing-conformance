@@ -1,0 +1,25 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+native_types_overloaded_number_operators.php:42: InvalidOperand: Operator '*' not supported between 'BcMath\\Number' and 'int' [MIR0208]
+native_types_overloaded_number_operators.php:42: InvalidArgument: Argument $value of takesNumber() expects 'BcMath\\Number', got 'int|float' [MIR0201]
+native_types_overloaded_number_operators.php:47: InvalidOperand: Operator '+' not supported between 'BcMath\\Number' and 'BcMath\\Number' [MIR0208]
+native_types_overloaded_number_operators.php:47: InvalidArgument: Argument $value of takesNumber() expects 'BcMath\\Number', got 'int|float' [MIR0201]
+native_types_overloaded_number_operators.php:52: InvalidOperand: Operator '+' not supported between 'GMP' and 'GMP' [MIR0208]
+native_types_overloaded_number_operators.php:52: InvalidArgument: Argument $value of takesGmp() expects 'GMP', got 'int|float' [MIR0201]
+native_types_overloaded_number_operators.php:57: InvalidOperand: Operator '*' not supported between 'GMP' and 'int' [MIR0208]
+native_types_overloaded_number_operators.php:57: InvalidArgument: Argument $value of takesGmp() expects 'GMP', got 'int|float' [MIR0201]
+native_types_overloaded_number_operators.php:62: InvalidOperand: Operator '*' not supported between 'BcMath\\Number' and '2' [MIR0208]
+native_types_overloaded_number_operators.php:67: InvalidOperand: Operator '+' not supported between 'GMP' and 'GMP' [MIR0208]
+native_types_overloaded_number_operators.php:72: InvalidOperand: Operator '+' not supported between 'BcMath\\Number' and '"abc"' [MIR0208]
+native_types_overloaded_number_operators.php:72: InvalidArgument: Argument $value of takesNumber() expects 'BcMath\\Number', got 'int|float' [MIR0201]
+native_types_overloaded_number_operators.php:77: InvalidOperand: Operator '+' not supported between 'BcMath\\Number' and 'null' [MIR0208]
+native_types_overloaded_number_operators.php:77: InvalidArgument: Argument $value of takesNumber() expects 'BcMath\\Number', got 'int|float' [MIR0201]"""
+errors_diff = """
+Line 42: Expected valid value to be accepted, got ["InvalidOperand: Operator '*' not supported between 'BcMath\\\\Number' and 'int' [MIR0208]","InvalidArgument: Argument $value of takesNumber() expects 'BcMath\\\\Number', got 'int|float' [MIR0201]"]
+Line 47: Expected valid value to be accepted, got ["InvalidOperand: Operator '+' not supported between 'BcMath\\\\Number' and 'BcMath\\\\Number' [MIR0208]","InvalidArgument: Argument $value of takesNumber() expects 'BcMath\\\\Number', got 'int|float' [MIR0201]"]
+Line 52: Expected valid value to be accepted, got ["InvalidOperand: Operator '+' not supported between 'GMP' and 'GMP' [MIR0208]","InvalidArgument: Argument $value of takesGmp() expects 'GMP', got 'int|float' [MIR0201]"]
+Line 57: Expected valid value to be accepted, got ["InvalidOperand: Operator '*' not supported between 'GMP' and 'int' [MIR0208]","InvalidArgument: Argument $value of takesGmp() expects 'GMP', got 'int|float' [MIR0201]"]"""
+notes = ""
+ignore_errors = []

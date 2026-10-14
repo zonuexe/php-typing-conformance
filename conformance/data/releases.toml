@@ -54,8 +54,8 @@ version = "262.10968.76"
 date = "2026-09-17"
 
 [mago]
-version = "1.56.3"
-date = "2026-10-12"
+version = "1.57.0"
+date = "2026-10-14"
 
 [phpy]
 version = "1.0.19409"

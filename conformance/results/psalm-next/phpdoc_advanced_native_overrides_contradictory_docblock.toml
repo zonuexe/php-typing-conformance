@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_native_overrides_contradictory_docblock.php:33: Docblock has incorrect return type 'bool', should be 'Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query' [MismatchingDocblockReturnType]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:50: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:50: Cannot call method on bool variable [InvalidMethodCall]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:55: Argument 1 of Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\takesQuery expects Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query, but bool provided [InvalidArgument]"""
+errors_diff = """
+Line 60: Expected 1 error(s)
+Line 50: Expected valid value to be accepted, got ["Argument 1 of echo cannot be mixed, expecting string [MixedArgument]","Cannot call method on bool variable [InvalidMethodCall]"]
+Line 55: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\\\takesQuery expects Conformance\\\\Tests\\\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\\\Query, but bool provided [InvalidArgument]"]"""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_native_overrides_contradictory_docblock.php:50: potentially not safe call in \\Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\load when accessing method [notSafeCall]"
+errors_diff = """
+Line 60: Expected 1 error(s)
+Line 50: Expected valid value to be accepted, got ["potentially not safe call in \\\\Conformance\\\\Tests\\\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\\\load when accessing method [notSafeCall]"]"""
+notes = ""
+ignore_errors = []

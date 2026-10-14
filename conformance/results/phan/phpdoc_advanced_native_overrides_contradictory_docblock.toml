@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_native_overrides_contradictory_docblock.php:33: Doc-block of load contains declared return type bool which is incompatible with the return type \\Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query declared in the signature [PhanTypeMismatchDeclaredReturn]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:60: Argument 1 ($value) is load() of type \\Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query|bool (real type \\Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query) but \\Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\takesBool() takes bool defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/phpdoc_advanced_native_overrides_contradictory_docblock.php:40 [PhanTypeMismatchArgumentReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

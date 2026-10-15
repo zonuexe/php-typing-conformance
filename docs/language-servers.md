@@ -224,6 +224,10 @@ These cost real debugging time; each one is now load-bearing in the code.
   submodule is missing the stub session still records the helpers.php
   env probes; if `vendor/` is missing, route/view/config/translation
   probes run and come back empty (tinker cannot boot).
+- **DEVSENSE settles before its Laravel index exists.** Diagnostics and
+  `$/progress` go quiet while the Gate workspace is still unindexed, so the
+  default 2s warmup records every framework probe empty (8s is partial, 15s
+  is complete). The catalog sets `warmupMs` 30s on that session only.
 - **PhpStorm's column is not a language server's.** It is asked through the
   IDE's MCP server instead, for hover and navigation only, with its own runner
   and its own traps; see the next section.
@@ -328,3 +332,9 @@ what the server said about itself over the protocol (often empty — only Psalm
 and Phpactor fill it). `phpstorm.toml` carries `interface = "mcp"` and the MCP
 tool list in place of the handshake, and only the `hover` and `navigation`
 sections.
+
+A framework hover cell is Precise only when `shown` contains the `expected`
+string (the env, config or translation value). A non-empty hover that never
+mentions that value still renders as Answered: DEVSENSE `config-hover` is
+ordinary string-literal hover of `'app.name'`, not config resolution. The
+`shown` field is the audit trail; leave it as measured.

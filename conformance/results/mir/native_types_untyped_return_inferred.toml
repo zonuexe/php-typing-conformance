@@ -3,8 +3,8 @@ conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
 native_types_untyped_return_inferred.php:30: MissingReturnType: Function makeUser() has no return type annotation [MIR1100]
-native_types_untyped_return_inferred.php:45: UndefinedMethod: Method Conformance\\Tests\\NativeTypesUntypedReturnInferred\\User::missing() does not exist [MIR0004]
-native_types_untyped_return_inferred.php:50: UndefinedMethod: Method Conformance\\Tests\\NativeTypesUntypedReturnInferred\\User::missing() does not exist [MIR0004]"""
+native_types_untyped_return_inferred.php:46: UndefinedMethod: Method Conformance\\Tests\\NativeTypesUntypedReturnInferred\\User::missing() does not exist [MIR0004]
+native_types_untyped_return_inferred.php:52: UndefinedMethod: Method Conformance\\Tests\\NativeTypesUntypedReturnInferred\\User::missing() does not exist [MIR0004]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

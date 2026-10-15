@@ -2,12 +2,12 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-callables_immediately_invoked_closure.php:31: Call to an undefined method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing(). [identifier=method.notFound]
-callables_immediately_invoked_closure.php:31: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-callables_immediately_invoked_closure.php:39: Call to an undefined method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing(). [identifier=method.notFound]
-callables_immediately_invoked_closure.php:39: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-callables_immediately_invoked_closure.php:47: Call to an undefined method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing(). [identifier=method.notFound]
-callables_immediately_invoked_closure.php:47: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+callables_immediately_invoked_closure.php:31: Call to an undefined method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing().
+callables_immediately_invoked_closure.php:31: Parameter #1 (mixed) of echo cannot be converted to string.
+callables_immediately_invoked_closure.php:39: Call to an undefined method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing().
+callables_immediately_invoked_closure.php:39: Parameter #1 (mixed) of echo cannot be converted to string.
+callables_immediately_invoked_closure.php:47: Call to an undefined method Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User::missing().
+callables_immediately_invoked_closure.php:47: Parameter #1 (mixed) of echo cannot be converted to string."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

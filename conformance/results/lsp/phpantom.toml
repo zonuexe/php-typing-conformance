@@ -300,21 +300,21 @@ feature = "trans-hover"
 method = "textDocument/hover"
 expected = "Explore"
 probe = "answered"
-shown = "**Trans** `boards.explore`\n\n`en`: `Explore`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ac69f168c4856.27723037/lang/en/boards.php#L5>)"
+shown = "**Trans** `boards.explore`\n\n`en`: `Explore`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ad089370211e0.32188620/lang/en/boards.php#L5>)"
 
 [framework.trans-dotted-hover]
 feature = "trans-dotted-hover"
 method = "textDocument/hover"
 expected = "Public"
 probe = "answered"
-shown = "**Trans** `boards.visibility.public`\n\n`en`: `Public`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ac69f168c4856.27723037/lang/en/boards.php#L10>)"
+shown = "**Trans** `boards.visibility.public`\n\n`en`: `Public`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ad089370211e0.32188620/lang/en/boards.php#L10>)"
 
 [framework.trans-replace-hover]
 feature = "trans-replace-hover"
 method = "textDocument/hover"
 expected = "No public threads on :name."
 probe = "answered"
-shown = "**Trans** `boards.explore_empty_board`\n\n`en`: `No public threads on :name.`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ac69f168c4856.27723037/lang/en/boards.php#L8>)"
+shown = "**Trans** `boards.explore_empty_board`\n\n`en`: `No public threads on :name.`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ad089370211e0.32188620/lang/en/boards.php#L8>)"
 
 [framework.trans-diagnostic]
 feature = "trans-diagnostic"

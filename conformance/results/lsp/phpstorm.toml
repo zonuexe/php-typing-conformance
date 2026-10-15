@@ -36,75 +36,128 @@ expected = "string"
 shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$firstName: _mixed|string_\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
 verdict = "other"
 
+[hover.in-array-narrowing]
+feature = "Nullable needle narrowed by strict in_array()"
+expected = "Customer"
+shown = "$candidate: [Customer](psi_element://\\Conformance\\LspFixture\\Customer)|null\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "other"
+
+[hover.array-map-callback-param]
+feature = "Untyped closure parameter from array_map()"
+expected = "Customer"
+shown = "$mapped: [Customer](psi_element://\\Conformance\\LspFixture\\Customer)\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "precise"
+
+[hover.template-callback-param]
+feature = "Untyped closure parameter from callable(T)"
+expected = "Customer"
+shown = "$member: [Customer](psi_element://\\Conformance\\LspFixture\\Customer)\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "precise"
+
+[hover.array-merge]
+feature = "Element type through array_merge()"
+expected = "list<Customer>"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$merged: [Customer[]](psi_element://\\Conformance\\LspFixture\\Customer[])\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "precise"
+
+[hover.new-from-class-constant]
+feature = "new $object::class"
+expected = "Customer"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$copy: mixed\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "other"
+
+[hover.pipe-result]
+feature = "PHP 8.5 pipe operator result"
+expected = "int"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$piped\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "other"
+
+[hover.inferred-return]
+feature = "Return type inferred from an untyped body"
+expected = "Receipt"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$inferred: [Receipt](psi_element://\\Conformance\\LspFixture\\Receipt)\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "precise"
+
+[hover.generator-return]
+feature = "Generator TReturn through getReturn()"
+expected = "Receipt"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$returned: [Receipt](psi_element://\\Conformance\\LspFixture\\Receipt)|mixed\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "other"
+
+[hover.list-key]
+feature = "foreach key over a list"
+expected = "int"
+shown = "`[LspFixture](psi_element://\\Conformance\\LspFixture\\)`\n$position: int\n\n| \nSource:\n | .../hover-types.php |\n| --- | --- |"
+verdict = "precise"
+
 [navigation.function]
 kind = "Function"
 name = "Psy\\info()"
 definition = "correct"
 refs_expected = 13
-refs_found = 13
-refs_extra = 1
-references = "all"
+references = "error"
+refs_found = 0
+refs_extra = 0
 
 [navigation.instance-method]
 kind = "Instance method"
 name = "Psy\\Context::getAll()"
-definition = "correct"
+definition = "error"
 refs_expected = 10
-refs_found = 10
+references = "error"
+refs_found = 0
 refs_extra = 0
-references = "all"
 
 [navigation.static-method]
 kind = "Static method"
 name = "Psy\\Util\\Str::unvis()"
-definition = "correct"
+definition = "error"
 refs_expected = 4
-refs_found = 4
+references = "error"
+refs_found = 0
 refs_extra = 0
-references = "all"
 
 [navigation.local-variable]
 kind = "Local variable"
 name = "$output in Str::unvis()"
-definition = "correct"
+definition = "error"
 refs_expected = 2
-refs_found = 2
+references = "error"
+refs_found = 0
 refs_extra = 0
-references = "all"
 
 [navigation.class-constant]
 kind = "Class constant"
 name = "Psy\\Shell::VERSION"
-definition = "correct"
+definition = "error"
 refs_expected = 21
-refs_found = 20
+references = "error"
+refs_found = 0
 refs_extra = 0
-references = "partial"
-refs_missing = ["src/functions.php:383"]
 
 [navigation.instance-property]
 kind = "Instance property"
 name = "Psy\\Context::$scopeVariables"
-definition = "correct"
+definition = "error"
 refs_expected = 5
-refs_found = 5
+references = "error"
+refs_found = 0
 refs_extra = 0
-references = "all"
 
 [navigation.static-property]
 kind = "Static property"
 name = "Psy\\Util\\Docblock::$vectors"
-definition = "correct"
+definition = "error"
 refs_expected = 6
-refs_found = 6
-refs_extra = 3
-references = "all"
+references = "error"
+refs_found = 0
+refs_extra = 0
 
 [navigation.constructor]
 kind = "Constructor"
 name = "Psy\\ConfigPaths::__construct()"
 definition = "n/a"
 refs_expected = 15
-refs_found = 15
+references = "error"
+refs_found = 0
 refs_extra = 0
-references = "all"

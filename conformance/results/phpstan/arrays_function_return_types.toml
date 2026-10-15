@@ -2,14 +2,14 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
-arrays_function_return_types.php:35: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [identifier=method.notFound] [reported-from-level=2]
-arrays_function_return_types.php:35: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]
-arrays_function_return_types.php:47: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [identifier=method.notFound] [reported-from-level=2]
-arrays_function_return_types.php:47: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]
-arrays_function_return_types.php:60: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [identifier=method.notFound] [reported-from-level=2]
-arrays_function_return_types.php:60: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]
-arrays_function_return_types.php:70: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [identifier=method.notFound] [reported-from-level=2]
-arrays_function_return_types.php:70: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]"""
+arrays_function_return_types.php:35: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [reported-from-level=2]
+arrays_function_return_types.php:35: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]
+arrays_function_return_types.php:47: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [reported-from-level=2]
+arrays_function_return_types.php:47: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]
+arrays_function_return_types.php:60: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [reported-from-level=2]
+arrays_function_return_types.php:60: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]
+arrays_function_return_types.php:70: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [reported-from-level=2]
+arrays_function_return_types.php:70: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

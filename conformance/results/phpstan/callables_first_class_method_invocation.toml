@@ -2,10 +2,10 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-callables_first_class_method_invocation.php:44: Call to an undefined method Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User::missing(). [identifier=method.notFound] [reported-from-level=2]
-callables_first_class_method_invocation.php:44: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]
-callables_first_class_method_invocation.php:52: Call to an undefined method Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User::missing(). [identifier=method.notFound] [reported-from-level=2]
-callables_first_class_method_invocation.php:52: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString] [reported-from-level=10]"""
+callables_first_class_method_invocation.php:44: Call to an undefined method Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User::missing(). [reported-from-level=2]
+callables_first_class_method_invocation.php:44: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]
+callables_first_class_method_invocation.php:52: Call to an undefined method Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User::missing(). [reported-from-level=2]
+callables_first_class_method_invocation.php:52: Parameter #1 (mixed) of echo cannot be converted to string. [reported-from-level=10]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

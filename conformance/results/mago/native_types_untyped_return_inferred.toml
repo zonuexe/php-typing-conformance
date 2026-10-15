@@ -1,11 +1,17 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
 output = """
 native_types_untyped_return_inferred.php:45: Attempting to access a method on a non-object type (`mixed`). [mixed-method-access]
 native_types_untyped_return_inferred.php:45: The first value for `echo` is too general. [mixed-argument]
-native_types_untyped_return_inferred.php:50: Attempting to access a method on a non-object type (`mixed`). [mixed-method-access]
-native_types_untyped_return_inferred.php:50: The first value for `echo` is too general. [mixed-argument]"""
-errors_diff = ""
+native_types_untyped_return_inferred.php:46: Attempting to access a method on a non-object type (`mixed`). [mixed-method-access]
+native_types_untyped_return_inferred.php:46: The first value for `echo` is too general. [mixed-argument]
+native_types_untyped_return_inferred.php:51: Attempting to access a method on a non-object type (`mixed`). [mixed-method-access]
+native_types_untyped_return_inferred.php:51: The first value for `echo` is too general. [mixed-argument]
+native_types_untyped_return_inferred.php:52: Attempting to access a method on a non-object type (`mixed`). [mixed-method-access]
+native_types_untyped_return_inferred.php:52: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = """
+Line 45: Expected valid value to be accepted, got ["Attempting to access a method on a non-object type (`mixed`). [mixed-method-access]","The first value for `echo` is too general. [mixed-argument]"]
+Line 51: Expected valid value to be accepted, got ["Attempting to access a method on a non-object type (`mixed`). [mixed-method-access]","The first value for `echo` is too general. [mixed-argument]"]"""
 notes = ""
 ignore_errors = []

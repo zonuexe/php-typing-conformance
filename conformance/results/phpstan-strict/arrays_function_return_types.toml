@@ -2,14 +2,14 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
-arrays_function_return_types.php:35: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [identifier=method.notFound]
-arrays_function_return_types.php:35: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-arrays_function_return_types.php:47: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [identifier=method.notFound]
-arrays_function_return_types.php:47: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-arrays_function_return_types.php:60: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [identifier=method.notFound]
-arrays_function_return_types.php:60: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-arrays_function_return_types.php:70: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing(). [identifier=method.notFound]
-arrays_function_return_types.php:70: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+arrays_function_return_types.php:35: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing().
+arrays_function_return_types.php:35: Parameter #1 (mixed) of echo cannot be converted to string.
+arrays_function_return_types.php:47: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing().
+arrays_function_return_types.php:47: Parameter #1 (mixed) of echo cannot be converted to string.
+arrays_function_return_types.php:60: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing().
+arrays_function_return_types.php:60: Parameter #1 (mixed) of echo cannot be converted to string.
+arrays_function_return_types.php:70: Call to an undefined method Conformance\\Tests\\ArraysFunctionReturnTypes\\User::missing().
+arrays_function_return_types.php:70: Parameter #1 (mixed) of echo cannot be converted to string."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

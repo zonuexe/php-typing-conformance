@@ -2,10 +2,10 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-generics_closure_param_from_method_template.php:80: Call to an undefined method Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\User::missing(). [identifier=method.notFound]
-generics_closure_param_from_method_template.php:80: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-generics_closure_param_from_method_template.php:90: Call to an undefined method Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\Order::name(). [identifier=method.notFound]
-generics_closure_param_from_method_template.php:90: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+generics_closure_param_from_method_template.php:80: Call to an undefined method Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\User::missing().
+generics_closure_param_from_method_template.php:80: Parameter #1 (mixed) of echo cannot be converted to string.
+generics_closure_param_from_method_template.php:90: Call to an undefined method Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\Order::name().
+generics_closure_param_from_method_template.php:90: Parameter #1 (mixed) of echo cannot be converted to string."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

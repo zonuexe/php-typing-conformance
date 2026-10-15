@@ -1,9 +1,10 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
 output = """
-native_types_untyped_return_inferred.php:45: Cannot verify method 'missing' — type of 'makeUser()' could not be resolved [unresolved_member_access]
-native_types_untyped_return_inferred.php:50: Method 'missing' not found on class 'Conformance\\Tests\\NativeTypesUntypedReturnInferred\\User' [unknown_member]"""
-errors_diff = ""
+native_types_untyped_return_inferred.php:45: Cannot verify method 'name' — type of 'makeUser()' could not be resolved [unresolved_member_access]
+native_types_untyped_return_inferred.php:46: Cannot verify method 'missing' — type of 'makeUser()' could not be resolved [unresolved_member_access]
+native_types_untyped_return_inferred.php:52: Method 'missing' not found on class 'Conformance\\Tests\\NativeTypesUntypedReturnInferred\\User' [unknown_member]"""
+errors_diff = "Line 45: Expected valid value to be accepted, got [\"Cannot verify method 'name' — type of 'makeUser()' could not be resolved [unresolved_member_access]\"]"
 notes = ""
 ignore_errors = []

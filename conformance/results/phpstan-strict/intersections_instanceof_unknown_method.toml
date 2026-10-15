@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-intersections_instanceof_unknown_method.php:55: Call to an undefined method Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Account&Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Named::missing(). [identifier=method.notFound]
-intersections_instanceof_unknown_method.php:55: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+intersections_instanceof_unknown_method.php:55: Call to an undefined method Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Account&Conformance\\Tests\\IntersectionsInstanceofUnknownMethod\\Named::missing().
+intersections_instanceof_unknown_method.php:55: Parameter #1 (mixed) of echo cannot be converted to string."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -2,10 +2,16 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-generics_generator_get_return.php:53: Call to an undefined method Conformance\\Tests\\GenericsGeneratorGetReturn\\Item::count(). [identifier=method.notFound]
-generics_generator_get_return.php:53: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-generics_generator_get_return.php:55: Call to an undefined method Conformance\\Tests\\GenericsGeneratorGetReturn\\Summary::label(). [identifier=method.notFound]
-generics_generator_get_return.php:55: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+generics_generator_get_return.php:53: Call to an undefined method Conformance\\Tests\\GenericsGeneratorGetReturn\\Item::count().
+generics_generator_get_return.php:53: Parameter #1 (mixed) of echo cannot be converted to string.
+generics_generator_get_return.php:55: Call to an undefined method Conformance\\Tests\\GenericsGeneratorGetReturn\\Summary::label().
+generics_generator_get_return.php:55: Parameter #1 (mixed) of echo cannot be converted to string."""
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

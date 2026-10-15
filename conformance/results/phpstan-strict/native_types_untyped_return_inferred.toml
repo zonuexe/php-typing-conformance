@@ -1,13 +1,19 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
 output = """
-native_types_untyped_return_inferred.php:30: Function Conformance\\Tests\\NativeTypesUntypedReturnInferred\\makeUser() has no return type specified. [identifier=missingType.return]
-native_types_untyped_return_inferred.php:37: Method Conformance\\Tests\\NativeTypesUntypedReturnInferred\\Repository::find() has no return type specified. [identifier=missingType.return]
-native_types_untyped_return_inferred.php:45: Cannot call method missing() on mixed. [identifier=method.nonObject]
-native_types_untyped_return_inferred.php:45: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-native_types_untyped_return_inferred.php:50: Cannot call method missing() on mixed. [identifier=method.nonObject]
-native_types_untyped_return_inferred.php:50: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
-errors_diff = ""
+native_types_untyped_return_inferred.php:30: Function Conformance\\Tests\\NativeTypesUntypedReturnInferred\\makeUser() has no return type specified.
+native_types_untyped_return_inferred.php:37: Method Conformance\\Tests\\NativeTypesUntypedReturnInferred\\Repository::find() has no return type specified.
+native_types_untyped_return_inferred.php:45: Cannot call method name() on mixed.
+native_types_untyped_return_inferred.php:45: Parameter #1 (mixed) of echo cannot be converted to string.
+native_types_untyped_return_inferred.php:46: Cannot call method missing() on mixed.
+native_types_untyped_return_inferred.php:46: Parameter #1 (mixed) of echo cannot be converted to string.
+native_types_untyped_return_inferred.php:51: Cannot call method name() on mixed.
+native_types_untyped_return_inferred.php:51: Parameter #1 (mixed) of echo cannot be converted to string.
+native_types_untyped_return_inferred.php:52: Cannot call method missing() on mixed.
+native_types_untyped_return_inferred.php:52: Parameter #1 (mixed) of echo cannot be converted to string."""
+errors_diff = """
+Line 45: Expected valid value to be accepted, got ["Cannot call method name() on mixed.","Parameter #1 (mixed) of echo cannot be converted to string."]
+Line 51: Expected valid value to be accepted, got ["Cannot call method name() on mixed.","Parameter #1 (mixed) of echo cannot be converted to string."]"""
 notes = ""
 ignore_errors = []

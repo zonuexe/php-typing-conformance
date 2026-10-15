@@ -1,9 +1,15 @@
 status = "Unknown"
 conformance_automated = "Fail"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 3
 output = """
 generics_class_string_property_new.php:37: Cannot verify method 'name' — type of '$user' could not be resolved [unresolved_member_access]
 generics_class_string_property_new.php:39: Cannot verify method 'missing' — type of '$made' could not be resolved [unresolved_member_access]"""
 errors_diff = "Line 37: Expected valid value to be accepted, got [\"Cannot verify method 'name' — type of '$user' could not be resolved [unresolved_member_access]\"]"
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

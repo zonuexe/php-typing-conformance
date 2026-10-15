@@ -12,8 +12,10 @@ namespace Conformance\Tests\AssertionsInArrayStrictNarrowing;
  * `list<User>` is a User inside the branch. A tool that does not narrow on
  * `in_array` reports a possibly-null method call on a valid line.
  *
- * The loose comparison does not narrow (`null == ''` style coercions), so it
- * stays a plain control of the un-narrowed type.
+ * Honour is silence on the narrowed `name()` call. A tool that does not
+ * narrow reports a possibly-null method call there. The loose comparison
+ * (`null == ''` style coercions) is not a control: an unsound nullable
+ * reading would fail it for a reason that is not `in_array`.
  *
  * References:
  * - PHPStan InArrayFunctionTypeSpecifyingExtension
@@ -32,7 +34,7 @@ final class User
 function strictNeedle(?User $candidate, array $users): void
 {
     if (in_array($candidate, $users, true)) {
-        echo $candidate->name(); // V: the needle is a User here
+        echo $candidate->name(); // Q: the needle is a User here
     }
 }
 

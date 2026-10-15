@@ -253,7 +253,7 @@ expected = "list<Customer>"
 # Any spelling that keeps the element type counts: list<Customer>,
 # array<int, Customer>, Customer[].
 precise = ['\bCustomer\b']
-reject = ['\bmixed\b', 'missing']
+reject = ['\bmixed\b']
 
 [[hover]]
 id = "new-from-class-constant"

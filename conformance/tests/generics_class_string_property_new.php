@@ -28,13 +28,13 @@ final class User
 final class Factory
 {
     /** @var class-string<User> */
-    public string $class = User::class;
+    public string $class = User::class; // T: class-string<User>
 }
 
 function instantiates(Factory $factory): void
 {
-    $user = new ($factory->class)();
+    $user = new ($factory->class)(); // E?[noise]: UnsafeInstantiation
     echo $user->name(); // V
-    $made = new ($factory->class)();
+    $made = new ($factory->class)(); // E?[noise]: UnsafeInstantiation
     echo $made->missing(); // E: the instance is a User
 }

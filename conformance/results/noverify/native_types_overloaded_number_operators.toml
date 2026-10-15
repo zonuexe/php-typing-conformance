@@ -1,0 +1,22 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+native_types_overloaded_number_operators.php:28: Class or interface named \\BcMath\\Number does not exist [undefinedClass]
+native_types_overloaded_number_operators.php:40: Class or interface named \\BcMath\\Number does not exist [undefinedClass]
+native_types_overloaded_number_operators.php:45: Class or interface named \\BcMath\\Number does not exist [undefinedClass]
+native_types_overloaded_number_operators.php:45: Class or interface named \\BcMath\\Number does not exist [undefinedClass]
+native_types_overloaded_number_operators.php:60: Class or interface named \\BcMath\\Number does not exist [undefinedClass]
+native_types_overloaded_number_operators.php:70: Class or interface named \\BcMath\\Number does not exist [undefinedClass]
+native_types_overloaded_number_operators.php:75: Class or interface named \\BcMath\\Number does not exist [undefinedClass]"""
+errors_diff = """
+Line 62: Expected 1 error(s)
+Line 67: Expected 1 error(s)
+Line 28: Unexpected errors ["Class or interface named \\\\BcMath\\\\Number does not exist [undefinedClass]"]
+Line 40: Unexpected errors ["Class or interface named \\\\BcMath\\\\Number does not exist [undefinedClass]"]
+Line 45: Unexpected errors ["Class or interface named \\\\BcMath\\\\Number does not exist [undefinedClass]","Class or interface named \\\\BcMath\\\\Number does not exist [undefinedClass]"]
+Line 60: Unexpected errors ["Class or interface named \\\\BcMath\\\\Number does not exist [undefinedClass]"]
+Line 70: Unexpected errors ["Class or interface named \\\\BcMath\\\\Number does not exist [undefinedClass]"]
+Line 75: Unexpected errors ["Class or interface named \\\\BcMath\\\\Number does not exist [undefinedClass]"]"""
+notes = ""
+ignore_errors = []

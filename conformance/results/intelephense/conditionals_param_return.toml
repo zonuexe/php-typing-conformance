@@ -1,6 +1,6 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 3
+expected_diagnostic_count = 2
 output = "conditionals_param_return.php:36: Expected type 'string'. Found 'int'. [P1006]"
 errors_diff = ""
 notes = ""

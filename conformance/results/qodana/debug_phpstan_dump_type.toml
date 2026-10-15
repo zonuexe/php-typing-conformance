@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "debug_phpstan_dump_type.php:24: Undefined namespace 'PHPStan' [PhpUndefinedNamespaceInspection]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

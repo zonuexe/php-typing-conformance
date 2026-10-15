@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_native_overrides_contradictory_docblock.php:60: Argument 1 ($value) expects bool, got Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query [type_mismatch_argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

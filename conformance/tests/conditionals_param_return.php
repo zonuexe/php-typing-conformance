@@ -18,7 +18,7 @@ namespace Conformance\Tests\ConditionalsParamReturn;
 
 /**
  * @param string|int $value
- * @return ($value is string ? string : int) // E<phan>: Phan cannot extract conditional return annotations
+ * @return ($value is string ? string : int)
  */
 function identify(string|int $value): string|int
 {

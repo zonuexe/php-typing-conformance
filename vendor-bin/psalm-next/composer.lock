@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e8af18b5abaf28977578d10920cd700",
+    "content-hash": "d58920bfd0c63d79abbb3c6039d6bf4c",
     "packages": [],
     "packages-dev": [
         {
@@ -3299,16 +3299,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "7.0.0-rc1",
+            "version": "7.0.0-rc2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "b50750343db2deaac1051f8ca65132281b9a2191"
+                "reference": "20339e3fe5b8d03bcd8061030eb2a83ad50e5783"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/b50750343db2deaac1051f8ca65132281b9a2191",
-                "reference": "b50750343db2deaac1051f8ca65132281b9a2191",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/20339e3fe5b8d03bcd8061030eb2a83ad50e5783",
+                "reference": "20339e3fe5b8d03bcd8061030eb2a83ad50e5783",
                 "shasum": ""
             },
             "require": {
@@ -3414,20 +3414,20 @@
                 "issues": "https://github.com/vimeo/psalm/issues",
                 "source": "https://github.com/vimeo/psalm"
             },
-            "time": "2026-10-05T12:44:57+00:00"
+            "time": "2026-10-09T15:20:31+00:00"
         },
         {
             "name": "webmozart/assert",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "2ccb7c2e821038c03a3e6e1700c570c158c55f70"
+                "reference": "8a163706bbcac613733dba03f51e13b5eb1bb819"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/2ccb7c2e821038c03a3e6e1700c570c158c55f70",
-                "reference": "2ccb7c2e821038c03a3e6e1700c570c158c55f70",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/8a163706bbcac613733dba03f51e13b5eb1bb819",
+                "reference": "8a163706bbcac613733dba03f51e13b5eb1bb819",
                 "shasum": ""
             },
             "require": {
@@ -3478,9 +3478,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/2.4.1"
+                "source": "https://github.com/webmozarts/assert/tree/2.5.0"
             },
-            "time": "2026-06-15T15:31:57+00:00"
+            "time": "2026-10-05T23:14:19+00:00"
         }
     ],
     "aliases": [],

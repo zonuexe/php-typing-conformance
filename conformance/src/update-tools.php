@@ -147,7 +147,7 @@ foreach ($outdated as $tool => $version) {
 
     $command = $manager === 'composer'
         ? sprintf(
-            'composer bin %s require --dev --no-interaction --no-progress %s:%s',
+            'composer bin %s require --dev --no-interaction --no-progress --with-all-dependencies %s:%s',
             escapeshellarg($namespace),
             escapeshellarg($package),
             $constraint,

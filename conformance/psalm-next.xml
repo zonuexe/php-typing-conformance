@@ -32,5 +32,10 @@
              the corpus does not test mutation-free annotations. -->
         <MissingImmutableAnnotation errorLevel="suppress" />
         <MissingInterfaceImmutableAnnotation errorLevel="suppress" />
+        <!-- 7.0.0-rc2 treats exception messages and catch variables as taint
+             sources, so echo of getMessage() is TaintedHtml even without the
+             taint-analysis flag. This corpus does not measure taint. -->
+        <TaintedHtml errorLevel="suppress" />
+        <TaintedTextWithQuotes errorLevel="suppress" />
     </issueHandlers>
 </psalm>

@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8f34bb3c2e2d8c3a31a6c427382b2eb",
+    "content-hash": "3349bd3afe63e69016a3f5652b00b0db",
     "packages": [],
     "packages-dev": [
         {
             "name": "miropen/mir-php",
-            "version": "v0.86.0",
+            "version": "v0.87.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jorgsowa/mir.git",
-                "reference": "9b89f56d14c071d424926ae61aa7bd3890ea05e3"
+                "reference": "db2feab7360c02f3eea9da87c932ac0fe32e6809"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jorgsowa/mir/zipball/9b89f56d14c071d424926ae61aa7bd3890ea05e3",
-                "reference": "9b89f56d14c071d424926ae61aa7bd3890ea05e3",
+                "url": "https://api.github.com/repos/jorgsowa/mir/zipball/db2feab7360c02f3eea9da87c932ac0fe32e6809",
+                "reference": "db2feab7360c02f3eea9da87c932ac0fe32e6809",
                 "shasum": ""
             },
             "require": {
@@ -57,7 +57,7 @@
                 "issues": "https://github.com/jorgsowa/mir/issues",
                 "source": "https://github.com/jorgsowa/mir"
             },
-            "time": "2026-10-06T06:04:14+00:00"
+            "time": "2026-10-12T08:45:51+00:00"
         }
     ],
     "aliases": [],

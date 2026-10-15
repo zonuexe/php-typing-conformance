@@ -119,7 +119,9 @@ run-lsp-probes:
 
 # PhpStorm's launcher, for the two targets below. Both run it headless, so
 # the installation needs a licence and must not be running.
-PHPSTORM ?= phpstorm
+# Toolbox's `phpstorm` on macOS PATH is `open -na` and cannot run inspect or
+# mcpServer; prefer the app binary when it is installed.
+PHPSTORM ?= $(firstword $(wildcard $(HOME)/Applications/PhpStorm.app/Contents/MacOS/phpstorm /Applications/PhpStorm.app/Contents/MacOS/phpstorm) phpstorm)
 
 # Re-measure the qodana column through PhpStorm's command-line inspector
 # instead of "Run Qodana in the IDE". Needs composer install at the root.

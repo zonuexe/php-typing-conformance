@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_native_overrides_contradictory_docblock.php:33: Documented type is not compatible with the declared type. [P1131]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:50: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:50: Expected type 'object'. Found 'bool'. [P1006]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:55: Expected type 'Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query'. Found 'bool'. [P1006]"""
+errors_diff = """
+Line 60: Expected 1 error(s)
+Line 50: Expected valid value to be accepted, got ["Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]","Expected type 'object'. Found 'bool'. [P1006]"]
+Line 55: Expected valid value to be accepted, got ["Expected type 'Conformance\\\\Tests\\\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\\\Query'. Found 'bool'. [P1006]"]"""
+notes = ""
+ignore_errors = []

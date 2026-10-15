@@ -1,5 +1,5 @@
 tool = "phan"
-version = "Phan 6.0.7"
+version = "Phan 6.0.10"
 server_info = ""
 dynamic_registrations = []
 raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":1,\"willSave\":null,\"willSaveWaitUntil\":null,\"save\":{\"includeText\":true}},\"completionProvider\":{\"resolveProvider\":false,\"triggerCharacters\":[\"$\",\">\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"hoverProvider\":true}"

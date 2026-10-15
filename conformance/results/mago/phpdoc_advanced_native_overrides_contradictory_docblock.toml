@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_native_overrides_contradictory_docblock.php:35: Docblock return type `bool` is incompatible with native return type `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query`. [docblock-type-mismatch]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:37: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\load`: expected `bool`, but found `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query`. [invalid-return-statement]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:60: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\takesBool`: expected `bool`, but found `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+native_types_overloaded_number_operators.php:57: Argument '1' passed to Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesGmp() is expected to be of type GMP, int given
+native_types_overloaded_number_operators.php:62: Argument '1' passed to Conformance\\Tests\\NativeTypesOverloadedNumberOperators\\takesInt() is expected to be of type int, BcMath\\Number given"""
+errors_diff = """
+Line 67: Expected 1 error(s)
+Line 57: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\NativeTypesOverloadedNumberOperators\\\\takesGmp() is expected to be of type GMP, int given"]"""
+notes = ""
+ignore_errors = []

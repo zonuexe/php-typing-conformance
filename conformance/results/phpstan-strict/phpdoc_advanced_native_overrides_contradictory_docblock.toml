@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_native_overrides_contradictory_docblock.php:35: PHPDoc tag @return with type bool is incompatible with native type Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query.
+phpdoc_advanced_native_overrides_contradictory_docblock.php:60: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\takesBool expects bool, Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query given."""
+errors_diff = ""
+notes = ""
+ignore_errors = []

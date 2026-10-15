@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
 output = """
-callables_pipe_operator_result.php:40: Call to an undefined method Conformance\\Tests\\CallablesPipeOperatorResult\\Slug::missing(). [identifier=method.notFound]
-callables_pipe_operator_result.php:40: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+callables_pipe_operator_result.php:40: Call to an undefined method Conformance\\Tests\\CallablesPipeOperatorResult\\Slug::missing().
+callables_pipe_operator_result.php:40: Parameter #1 (mixed) of echo cannot be converted to string."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

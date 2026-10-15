@@ -1,17 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-generics_closure_param_from_method_template.php:77: MixedMethodCall: Method name() called on mixed type [MIR1202]
-generics_closure_param_from_method_template.php:80: MixedMethodCall: Method missing() called on mixed type [MIR1202]
-generics_closure_param_from_method_template.php:87: MixedMethodCall: Method name() called on mixed type [MIR1202]
-generics_closure_param_from_method_template.php:87: MixedArgument: Argument $customer of Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\Order::__construct() is mixed [MIR1200]
-generics_closure_param_from_method_template.php:89: MixedMethodCall: Method name() called on mixed type [MIR1202]
-generics_closure_param_from_method_template.php:89: MixedArgument: Argument $customer of Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\Order::__construct() is mixed [MIR1200]
+generics_closure_param_from_method_template.php:80: UndefinedMethod: Method Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\User::missing() does not exist [MIR0004]
 generics_closure_param_from_method_template.php:90: UndefinedMethod: Method Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\Order::name() does not exist [MIR0004]"""
-errors_diff = """
-Line 77: Expected valid value to be accepted, got ["MixedMethodCall: Method name() called on mixed type [MIR1202]"]
-Line 87: Unexpected errors ["MixedMethodCall: Method name() called on mixed type [MIR1202]","MixedArgument: Argument $customer of Conformance\\\\Tests\\\\GenericsClosureParamFromMethodTemplate\\\\Order::__construct() is mixed [MIR1200]"]
-Line 89: Unexpected errors ["MixedMethodCall: Method name() called on mixed type [MIR1202]","MixedArgument: Argument $customer of Conformance\\\\Tests\\\\GenericsClosureParamFromMethodTemplate\\\\Order::__construct() is mixed [MIR1200]"]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

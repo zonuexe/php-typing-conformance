@@ -2,10 +2,10 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-callables_closure_param_from_array_callback.php:34: Call to an undefined method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing(). [identifier=method.notFound]
-callables_closure_param_from_array_callback.php:41: Call to an undefined method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing(). [identifier=method.notFound]
-callables_closure_param_from_array_callback.php:48: Anonymous function should return string but returns mixed. [identifier=return.type]
-callables_closure_param_from_array_callback.php:48: Call to an undefined method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing(). [identifier=method.notFound]"""
+callables_closure_param_from_array_callback.php:34: Call to an undefined method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing().
+callables_closure_param_from_array_callback.php:41: Call to an undefined method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing().
+callables_closure_param_from_array_callback.php:48: Anonymous function should return string but returns mixed.
+callables_closure_param_from_array_callback.php:48: Call to an undefined method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing()."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

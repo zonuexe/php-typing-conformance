@@ -5,7 +5,7 @@ output = """
 native_types_untyped_return_inferred.php:30: makeUser() has no return type — no native return type and no `@return` [untyped.return]
 native_types_untyped_return_inferred.php:37: Repository::find() has no return type — no native return type and no `@return` [untyped.return]"""
 errors_diff = """
-Line 45: Expected 1 error(s)
-Line 50: Expected 1 error(s)"""
+Line 46: Expected 1 error(s)
+Line 52: Expected 1 error(s)"""
 notes = ""
 ignore_errors = []

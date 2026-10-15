@@ -1,7 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 3
 output = "generics_class_string_property_new.php:39: Call to undeclared method \\Conformance\\Tests\\GenericsClassStringPropertyNew\\User::missing [PhanUndeclaredMethod]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,15 +1,11 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-callables_closure_param_from_array_callback.php:33: MixedMethodCall: Method name() called on mixed type [MIR1202]
-callables_closure_param_from_array_callback.php:34: MixedMethodCall: Method missing() called on mixed type [MIR1202]
-callables_closure_param_from_array_callback.php:40: MixedMethodCall: Method name() called on mixed type [MIR1202]
-callables_closure_param_from_array_callback.php:41: MixedMethodCall: Method missing() called on mixed type [MIR1202]
-callables_closure_param_from_array_callback.php:48: MixedMethodCall: Method missing() called on mixed type [MIR1202]
+callables_closure_param_from_array_callback.php:34: UndefinedMethod: Method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing() does not exist [MIR0004]
+callables_closure_param_from_array_callback.php:41: UndefinedMethod: Method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing() does not exist [MIR0004]
+callables_closure_param_from_array_callback.php:48: UndefinedMethod: Method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing() does not exist [MIR0004]
 callables_closure_param_from_array_callback.php:48: MixedReturnStatement: Cannot return a mixed type from function with declared return type 'string' [MIR1212]"""
-errors_diff = """
-Line 33: Expected valid value to be accepted, got ["MixedMethodCall: Method name() called on mixed type [MIR1202]"]
-Line 40: Expected valid value to be accepted, got ["MixedMethodCall: Method name() called on mixed type [MIR1202]"]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

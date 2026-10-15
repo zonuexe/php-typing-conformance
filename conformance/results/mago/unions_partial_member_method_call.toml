@@ -1,9 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-unions_partial_member_method_call.php:48: Method `name` does not exist on type `Conformance\\Tests\\UnionsPartialMemberMethodCall\\Guest`. [non-existent-method]
-unions_partial_member_method_call.php:48: The first value for `echo` is too general. [mixed-argument]"""
+output = "unions_partial_member_method_call.php:48: Method `name` does not exist on type `Conformance\\Tests\\UnionsPartialMemberMethodCall\\Guest`. [non-existent-method]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

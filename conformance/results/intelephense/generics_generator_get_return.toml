@@ -9,3 +9,9 @@ generics_generator_get_return.php:55: Undefined method 'label'. [P1013]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,9 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 2
 output = """
-assertions_in_array_strict_narrowing.php:43: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
-assertions_in_array_strict_narrowing.php:43: Method Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User::missing does not exist [UndefinedMethod]"""
+assertions_in_array_strict_narrowing.php:45: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+assertions_in_array_strict_narrowing.php:45: Method Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User::missing does not exist [UndefinedMethod]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -2,12 +2,12 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-arrays_keyed_destructuring.php:47: Call to an undefined method Conformance\\Tests\\ArraysKeyedDestructuring\\User::total(). [identifier=method.notFound]
-arrays_keyed_destructuring.php:47: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-arrays_keyed_destructuring.php:49: Call to an undefined method Conformance\\Tests\\ArraysKeyedDestructuring\\Order::name(). [identifier=method.notFound]
-arrays_keyed_destructuring.php:49: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]
-arrays_keyed_destructuring.php:55: Call to an undefined method Conformance\\Tests\\ArraysKeyedDestructuring\\User::missing(). [identifier=method.notFound]
-arrays_keyed_destructuring.php:55: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+arrays_keyed_destructuring.php:47: Call to an undefined method Conformance\\Tests\\ArraysKeyedDestructuring\\User::total().
+arrays_keyed_destructuring.php:47: Parameter #1 (mixed) of echo cannot be converted to string.
+arrays_keyed_destructuring.php:49: Call to an undefined method Conformance\\Tests\\ArraysKeyedDestructuring\\Order::name().
+arrays_keyed_destructuring.php:49: Parameter #1 (mixed) of echo cannot be converted to string.
+arrays_keyed_destructuring.php:55: Call to an undefined method Conformance\\Tests\\ArraysKeyedDestructuring\\User::missing().
+arrays_keyed_destructuring.php:55: Parameter #1 (mixed) of echo cannot be converted to string."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,9 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 2
 output = """
-assertions_in_array_strict_narrowing.php:43: Method `missing` does not exist on type `Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User`. [non-existent-method]
-assertions_in_array_strict_narrowing.php:43: The first value for `echo` is too general. [mixed-argument]"""
+assertions_in_array_strict_narrowing.php:45: Method `missing` does not exist on type `Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User`. [non-existent-method]
+assertions_in_array_strict_narrowing.php:45: The first value for `echo` is too general. [mixed-argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

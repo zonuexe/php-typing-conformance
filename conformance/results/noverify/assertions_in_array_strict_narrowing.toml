@@ -1,17 +1,17 @@
 status = "Unknown"
 conformance_automated = "Fail"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 2
 output = """
-assertions_in_array_strict_narrowing.php:32: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
-assertions_in_array_strict_narrowing.php:35: potential null dereference in candidate when accessing method [notNullSafetyVariable]
-assertions_in_array_strict_narrowing.php:40: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
-assertions_in_array_strict_narrowing.php:43: Call to undefined method {\\Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User|null}->missing() [undefinedMethod]
-assertions_in_array_strict_narrowing.php:43: potential null dereference in candidate when accessing method [notNullSafetyVariable]
-assertions_in_array_strict_narrowing.php:48: param $status miss matched with phpdoc type <<'draft'|'published'>> [funcParamTypeMissMatch]"""
+assertions_in_array_strict_narrowing.php:34: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+assertions_in_array_strict_narrowing.php:37: potential null dereference in candidate when accessing method [notNullSafetyVariable]
+assertions_in_array_strict_narrowing.php:42: param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]
+assertions_in_array_strict_narrowing.php:45: Call to undefined method {\\Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User|null}->missing() [undefinedMethod]
+assertions_in_array_strict_narrowing.php:45: potential null dereference in candidate when accessing method [notNullSafetyVariable]
+assertions_in_array_strict_narrowing.php:50: param $status miss matched with phpdoc type <<'draft'|'published'>> [funcParamTypeMissMatch]"""
 errors_diff = """
-Line 35: Expected valid value to be accepted, got ["potential null dereference in candidate when accessing method [notNullSafetyVariable]"]
-Line 32: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
-Line 40: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
-Line 48: Unexpected errors ["param $status miss matched with phpdoc type <<'draft'|'published'>> [funcParamTypeMissMatch]"]"""
+Line 37: Expected silence (quiet probe), got ["potential null dereference in candidate when accessing method [notNullSafetyVariable]"]
+Line 34: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
+Line 42: Unexpected errors ["param $users miss matched with phpdoc type <<list<User>>> [funcParamTypeMissMatch]"]
+Line 50: Unexpected errors ["param $status miss matched with phpdoc type <<'draft'|'published'>> [funcParamTypeMissMatch]"]"""
 notes = ""
 ignore_errors = []

@@ -1,9 +1,9 @@
 status = "Unknown"
 conformance_automated = "Pass"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 2
 output = """
-assertions_in_array_strict_narrowing.php:43: Call to an undefined method Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User::missing(). [identifier=method.notFound]
-assertions_in_array_strict_narrowing.php:43: Parameter #1 (mixed) of echo cannot be converted to string. [identifier=echo.nonString]"""
+assertions_in_array_strict_narrowing.php:45: Call to an undefined method Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User::missing().
+assertions_in_array_strict_narrowing.php:45: Parameter #1 (mixed) of echo cannot be converted to string."""
 errors_diff = ""
 notes = ""
 ignore_errors = []

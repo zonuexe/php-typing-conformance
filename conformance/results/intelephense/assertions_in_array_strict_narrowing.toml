@@ -1,11 +1,11 @@
 status = "Unknown"
 conformance_automated = "Fail"
-expected_diagnostic_count = 1
+expected_diagnostic_count = 2
 output = """
-assertions_in_array_strict_narrowing.php:35: Expected type 'object'. Found 'null|Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User'. [P1006]
-assertions_in_array_strict_narrowing.php:43: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
-assertions_in_array_strict_narrowing.php:43: Expected type 'object'. Found 'null|Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User'. [P1006]
-assertions_in_array_strict_narrowing.php:43: Undefined method 'missing'. [P1013]"""
-errors_diff = "Line 35: Expected valid value to be accepted, got [\"Expected type 'object'. Found 'null|Conformance\\\\Tests\\\\AssertionsInArrayStrictNarrowing\\\\User'. [P1006]\"]"
+assertions_in_array_strict_narrowing.php:37: Expected type 'object'. Found 'null|Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User'. [P1006]
+assertions_in_array_strict_narrowing.php:45: Expected type 'string|Stringable|null'. Found 'mixed'. [P1006]
+assertions_in_array_strict_narrowing.php:45: Expected type 'object'. Found 'null|Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User'. [P1006]
+assertions_in_array_strict_narrowing.php:45: Undefined method 'missing'. [P1013]"""
+errors_diff = "Line 37: Expected silence (quiet probe), got [\"Expected type 'object'. Found 'null|Conformance\\\\Tests\\\\AssertionsInArrayStrictNarrowing\\\\User'. [P1006]\"]"
 notes = ""
 ignore_errors = []

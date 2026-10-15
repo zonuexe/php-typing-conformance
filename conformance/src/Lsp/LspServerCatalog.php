@@ -82,9 +82,12 @@ final class LspServerCatalog
                 // Plain stdio with no transport flag; the .bin shim is a JS
                 // wrapper around the native per-platform binary.
                 command: ['node', $projectRoot . '/vendor-bin/devsense-php-ls/node_modules/.bin/devsense-php-ls'],
-                // Ships Laravel support (routes, views, Blade components), so
-                // it takes the framework probes too, in the same stub-artisan
-                // workspace as the other Laravel-aware servers.
+                // Ships Laravel support (routes, views, Blade), so it takes
+                // the framework probes too. artisan/helpers mark the fixture
+                // session as Laravel; Gate is a second session. Diagnostics
+                // and $/progress go quiet before that index exists: 2s warmup
+                // records every framework probe empty, 8s is partial, 15s is
+                // complete. 30s leaves headroom.
                 configFiles: [
                     'artisan' => $lspDir . '/laravel/artisan',
                     '.env' => $lspDir . '/laravel/.env',
@@ -92,6 +95,7 @@ final class LspServerCatalog
                 ],
                 openExtra: ['helpers.php'],
                 frameworkProbesFile: $lspDir . '/laravel/probes.toml',
+                frameworkSpecOverrides: ['warmupMs' => 30000],
                 packageJsonPath: $projectRoot . '/vendor-bin/devsense-php-ls/node_modules/devsense-php-ls/package.json',
             ),
             new LspServer(

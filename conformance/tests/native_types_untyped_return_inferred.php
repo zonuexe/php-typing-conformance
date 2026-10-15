@@ -42,10 +42,12 @@ final class Repository
 
 function callsFunction(): void
 {
+    echo makeUser()->name(); // V
     echo makeUser()->missing(); // E: the body only returns a User
 }
 
 function callsMethod(Repository $repository): void
 {
+    echo $repository->find()->name(); // V
     echo $repository->find()->missing(); // E: the body only returns a User
 }

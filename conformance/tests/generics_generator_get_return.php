@@ -33,7 +33,7 @@ final class Summary
 }
 
 /** @return \Generator<int, Item, mixed, Summary> */
-function produce(): \Generator
+function produce(): \Generator // T: \Generator<int, Item, mixed, Summary>
 {
     yield new Item();
 

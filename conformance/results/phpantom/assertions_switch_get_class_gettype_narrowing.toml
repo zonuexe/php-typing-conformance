@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 7
+output = """
+assertions_switch_get_class_gettype_narrowing.php:86: Argument 1 ($value) expects int, got int|string (string does not satisfy int) [type_mismatch_argument]
+assertions_switch_get_class_gettype_narrowing.php:93: Argument 1 ($value) expects int, got int|string (string does not satisfy int) [type_mismatch_argument]"""
+errors_diff = """
+Line 65: Expected 1 error(s)
+Line 72: Expected 1 error(s)
+Line 100: Expected 1 error(s)
+Line 86: Expected silence (quiet probe), got ["Argument 1 ($value) expects int, got int|string (string does not satisfy int) [type_mismatch_argument]"]"""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,22 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 7
+output = """
+assertions_switch_get_class_gettype_narrowing.php:53: potentially not safe call in function get_class signature of param object [notSafeCall]
+assertions_switch_get_class_gettype_narrowing.php:70: potentially not safe call in function get_class signature of param object [notSafeCall]
+assertions_switch_get_class_gettype_narrowing.php:70: Switch can be rewritten into an 'if' statement to increase readability [switchSimplify]
+assertions_switch_get_class_gettype_narrowing.php:84: Switch can be rewritten into an 'if' statement to increase readability [switchSimplify]
+assertions_switch_get_class_gettype_narrowing.php:86: potentially not safe call in function Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt signature of param value [notSafeCall]
+assertions_switch_get_class_gettype_narrowing.php:93: potentially not safe call in function Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt signature of param value [notSafeCall]
+assertions_switch_get_class_gettype_narrowing.php:98: Switch can be rewritten into an 'if' statement to increase readability [switchSimplify]"""
+errors_diff = """
+Line 65: Expected 1 error(s)
+Line 72: Expected 1 error(s)
+Line 100: Expected 1 error(s)
+Line 86: Expected silence (quiet probe), got ["potentially not safe call in function Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\takesInt signature of param value [notSafeCall]"]
+Line 53: Unexpected errors ["potentially not safe call in function get_class signature of param object [notSafeCall]"]
+Line 70: Unexpected errors ["potentially not safe call in function get_class signature of param object [notSafeCall]","Switch can be rewritten into an 'if' statement to increase readability [switchSimplify]"]
+Line 84: Unexpected errors ["Switch can be rewritten into an 'if' statement to increase readability [switchSimplify]"]
+Line 98: Unexpected errors ["Switch can be rewritten into an 'if' statement to increase readability [switchSimplify]"]"""
+notes = ""
+ignore_errors = []

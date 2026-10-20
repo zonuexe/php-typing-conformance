@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+assertions_switch_get_class_gettype_narrowing.php:65: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+assertions_switch_get_class_gettype_narrowing.php:65: Method Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar::fooOnly does not exist [PossiblyUndefinedMethod]
+assertions_switch_get_class_gettype_narrowing.php:72: Cannot resolve types for $impossible - Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Foo does not contain Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar [TypeDoesNotContainType]
+assertions_switch_get_class_gettype_narrowing.php:93: Argument 1 of Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt expects int, but int|string provided [InvalidScalarArgument]
+assertions_switch_get_class_gettype_narrowing.php:100: Type int for $impossible is never string [TypeDoesNotContainType]
+assertions_switch_get_class_gettype_narrowing.php:100: Type int for $impossible is never string [RedundantCondition]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

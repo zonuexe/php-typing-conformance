@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 7
+output = """
+assertions_switch_get_class_gettype_narrowing.php:65: Call to an undefined method Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar|Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Foo::fooOnly(). [reported-from-level=7]
+assertions_switch_get_class_gettype_narrowing.php:72: Instanceof between Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Foo and Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar will always evaluate to false. [reported-from-level=4]
+assertions_switch_get_class_gettype_narrowing.php:93: Parameter #1 $value of function Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt expects int, int|string given. [reported-from-level=7]
+assertions_switch_get_class_gettype_narrowing.php:100: Call to function is_string() with int will always evaluate to false. [reported-from-level=4]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 4

@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 7
+output = """
+assertions_switch_get_class_gettype_narrowing.php:55: Method `fooOnly` does not exist on type `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar`. [non-existent-method]
+assertions_switch_get_class_gettype_narrowing.php:58: Method `barOnly` does not exist on type `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Foo`. [non-existent-method]
+assertions_switch_get_class_gettype_narrowing.php:65: Method `fooOnly` does not exist on type `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar`. [non-existent-method]
+assertions_switch_get_class_gettype_narrowing.php:86: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]
+assertions_switch_get_class_gettype_narrowing.php:93: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]"""
+errors_diff = """
+Line 72: Expected 1 error(s)
+Line 100: Expected 1 error(s)
+Line 55: Expected silence (quiet probe), got ["Method `fooOnly` does not exist on type `Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\Bar`. [non-existent-method]"]
+Line 58: Expected silence (quiet probe), got ["Method `barOnly` does not exist on type `Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\Foo`. [non-existent-method]"]
+Line 86: Expected silence (quiet probe), got ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]"]"""
+notes = "Measured on Mago 1.57.0; the narrowing landed in 1.58.0 (carthage-software/mago#2558), so this row is expected to flip when the pin moves."
+ignore_errors = []

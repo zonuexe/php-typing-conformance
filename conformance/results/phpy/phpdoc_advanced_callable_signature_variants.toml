@@ -1,13 +1,16 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = ""
+output = """
+phpdoc_advanced_callable_signature_variants.php:67: Callable parameter $value type 'string' is incompatible. Expected 'int'.
+phpdoc_advanced_callable_signature_variants.php:70: Callable parameter $first type 'string' is incompatible. Expected 'int'.
+phpdoc_advanced_callable_signature_variants.php:70: Callable parameter $second type 'string' is incompatible. Expected 'int'."""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/4"
+enforcement = "partial"
+enforced_lines = "2/4"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

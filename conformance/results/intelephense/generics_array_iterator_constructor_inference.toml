@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+generics_array_iterator_constructor_inference.php:34: Expected type 'null|int'. Found 'mixed'. [P1006]
+generics_array_iterator_constructor_inference.php:35: Expected type 'null|string'. Found 'mixed'. [P1006]
+generics_array_iterator_constructor_inference.php:36: Expected type 'null|int'. Found 'string|int|null'. [P1006]
+generics_array_iterator_constructor_inference.php:42: Expected type 'null|string'. Found 'mixed'. [P1006]
+generics_array_iterator_constructor_inference.php:43: Expected type 'null|int'. Found 'mixed'. [P1006]"""
+errors_diff = """
+Line 34: Expected valid value to be accepted, got ["Expected type 'null|int'. Found 'mixed'. [P1006]"]
+Line 36: Expected valid value to be accepted, got ["Expected type 'null|int'. Found 'string|int|null'. [P1006]"]
+Line 42: Expected valid value to be accepted, got ["Expected type 'null|string'. Found 'mixed'. [P1006]"]"""
+notes = ""
+ignore_errors = []

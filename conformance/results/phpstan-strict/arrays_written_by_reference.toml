@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "arrays_written_by_reference.php:40: Parameter #1 $ints of function Conformance\\Tests\\ArraysWrittenByReference\\takesIntList expects list<int>, list<'x'|int> given."
+errors_diff = ""
+notes = ""
+ignore_errors = []

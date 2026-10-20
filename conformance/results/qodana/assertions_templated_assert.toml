@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = "assertions_templated_assert.php:8: Undefined class 'T' [PhpUndefinedClassInspection]"
+errors_diff = "Line 8: Unexpected errors [\"Undefined class 'T' [PhpUndefinedClassInspection]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = []
+false_positive_lines = [8]
+over_rejected_lines = []

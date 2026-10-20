@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+native_types_str_split_length.php:27: Parameter #2 $length of function str_split expects int<1, max>, -1 given. [reported-from-level=5]
+native_types_str_split_length.php:28: Parameter #2 $length of function str_split expects int<1, max>, 0 given. [reported-from-level=5]
+native_types_str_split_length.php:32: Call to function mb_str_split() on a separate line has no effect. [reported-from-level=4]
+native_types_str_split_length.php:32: Parameter #2 $length of function mb_str_split expects int<1, max>, -1 given. [reported-from-level=5]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 4

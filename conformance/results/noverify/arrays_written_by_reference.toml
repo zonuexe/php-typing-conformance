@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+arrays_written_by_reference.php:23: param $ints miss matched with phpdoc type <<list<int>>> [funcParamTypeMissMatch]
+arrays_written_by_reference.php:30: param $ints miss matched with phpdoc type <<list<int>>> [funcParamTypeMissMatch]"""
+errors_diff = """
+Line 40: Expected 1 error(s)
+Line 23: Unexpected errors ["param $ints miss matched with phpdoc type <<list<int>>> [funcParamTypeMissMatch]"]
+Line 30: Unexpected errors ["param $ints miss matched with phpdoc type <<list<int>>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

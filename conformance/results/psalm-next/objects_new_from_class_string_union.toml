@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+objects_new_from_class_string_union.php:47: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+objects_new_from_class_string_union.php:47: Method Conformance\\Tests\\ObjectsNewFromClassStringUnion\\User::missing does not exist [UndefinedMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

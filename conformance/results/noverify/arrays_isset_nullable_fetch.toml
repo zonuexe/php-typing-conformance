@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+arrays_isset_nullable_fetch.php:26: param $array miss matched with phpdoc type <<array<string, int|null>>> [funcParamTypeMissMatch]
+arrays_isset_nullable_fetch.php:29: potential null array access in parameter value of function Conformance\\Tests\\ArraysIssetNullableFetch\\takesInt [notNullSafetyFunctionArgumentArrayDimFetch]
+arrays_isset_nullable_fetch.php:37: param $array miss matched with phpdoc type <<array<string, int>>> [funcParamTypeMissMatch]
+arrays_isset_nullable_fetch.php:40: potential null array access in parameter value of function Conformance\\Tests\\ArraysIssetNullableFetch\\takesInt [notNullSafetyFunctionArgumentArrayDimFetch]"""
+errors_diff = """
+Line 29: Expected silence (quiet probe), got ["potential null array access in parameter value of function Conformance\\\\Tests\\\\ArraysIssetNullableFetch\\\\takesInt [notNullSafetyFunctionArgumentArrayDimFetch]"]
+Line 40: Expected valid value to be accepted, got ["potential null array access in parameter value of function Conformance\\\\Tests\\\\ArraysIssetNullableFetch\\\\takesInt [notNullSafetyFunctionArgumentArrayDimFetch]"]
+Line 26: Unexpected errors ["param $array miss matched with phpdoc type <<array<string, int|null>>> [funcParamTypeMissMatch]"]
+Line 37: Unexpected errors ["param $array miss matched with phpdoc type <<array<string, int>>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

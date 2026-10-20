@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_array_iterator_constructor_inference.php:35: Argument 1 of Conformance\\Tests\\GenericsArrayIteratorConstructorInference\\takesNullableString expects null|string, but 1|2|3|null provided [InvalidScalarArgument]
+generics_array_iterator_constructor_inference.php:43: Argument 1 of Conformance\\Tests\\GenericsArrayIteratorConstructorInference\\takesNullableInt expects int|null, but 'a'|'b'|null provided [InvalidScalarArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

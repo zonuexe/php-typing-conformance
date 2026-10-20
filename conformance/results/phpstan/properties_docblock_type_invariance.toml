@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+properties_docblock_type_invariance.php:46: PHPDoc type Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ParentInterface|null of property Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$widened is not the same as PHPDoc type Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ChildInterface|null of overridden property Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Base::$widened. [reported-from-level=3]
+properties_docblock_type_invariance.php:49: PHPDoc type Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ChildInterface|null of property Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$narrowed is not the same as PHPDoc type Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ParentInterface|null of overridden property Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Base::$narrowed. [reported-from-level=3]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 3

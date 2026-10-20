@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_iterator_to_array.php:44: Parameter #1 $list of function Conformance\\Tests\\GenericsIteratorToArray\\takesStringList expects list<string>, array<int, int> given. [reported-from-level=5]
+generics_iterator_to_array.php:54: Parameter #1 $array of function Conformance\\Tests\\GenericsIteratorToArray\\takesIntMap expects array<int, int>, list<string> given. [reported-from-level=5]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5

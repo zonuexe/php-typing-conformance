@@ -9,7 +9,9 @@ namespace Conformance\Tests\ArraysFunctionReturnTypes;
  *
  * The array functions carry the element type of their argument through:
  * `array_shift`, `reset`, `array_merge` and `array_filter` on a `list<User>`
- * all yield Users, not mixed. A method User lacks is then an error.
+ * all yield Users, not mixed. `array_map` yields the callback's return type.
+ * `array_fill` yields `array<int, T>` of the filled value. A method the
+ * element type lacks is then an error.
  *
  * References:
  * - PHPStan / Psalm function maps for the array_* functions
@@ -69,4 +71,19 @@ function filters(array $users): void
     foreach (array_filter($users, fn (User $user): bool => $user->name() !== '') as $remaining) {
         echo $remaining->missing(); // E: array_filter() keeps the User element type
     }
+}
+
+/** @param list<User> $users */
+function maps(array $users): void
+{
+    $names = array_map(fn (User $user): string => $user->name(), $users);
+    echo $names[0]; // V: array_map yields list<string>
+    echo $names[0]->missing(); // E: array_map yields strings, not Users
+}
+
+function fills(): void
+{
+    $strings = array_fill(0, 3, 'value');
+    echo $strings[0]; // V: array_fill yields array<int, string>
+    echo $strings[0]->missing(); // E: array_fill of a string is not an object array
 }

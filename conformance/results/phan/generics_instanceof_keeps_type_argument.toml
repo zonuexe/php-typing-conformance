@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+generics_instanceof_keeps_type_argument.php:34: Class \\Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Box must substitute all 1 template parameters when inheriting \\Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Container (found 0) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_instanceof_keeps_type_argument.php:23 (use @extends or @inherit) [PhanGenericMissingParameters]
+generics_instanceof_keeps_type_argument.php:64: Intersection type \\Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Box&\\Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Container<string> contains part \\Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Container<string> which cannot cast to the declared type \\Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Box [PhanImpossibleIntersectionType]"""
+errors_diff = "Line 34: Unexpected errors [\"Class \\\\Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\Box must substitute all 1 template parameters when inheriting \\\\Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\Container (found 0) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_instanceof_keeps_type_argument.php:23 (use @extends or @inherit) [PhanGenericMissingParameters]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [64]
+false_positive_lines = [34]
+over_rejected_lines = []

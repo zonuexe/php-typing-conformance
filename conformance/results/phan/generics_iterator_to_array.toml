@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_iterator_to_array.php:44: Argument 1 ($list) is iterator_to_array($wrong) of type int[] but \\Conformance\\Tests\\GenericsIteratorToArray\\takesStringList() takes list<string> defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_iterator_to_array.php:33 [PhanTypeMismatchArgument]
+generics_iterator_to_array.php:54: Argument 1 ($array) is iterator_to_array($wrong, preserve_keys: false) of type list<string> but \\Conformance\\Tests\\GenericsIteratorToArray\\takesIntMap() takes array<int,int> defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/generics_iterator_to_array.php:26 [PhanTypeMismatchArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

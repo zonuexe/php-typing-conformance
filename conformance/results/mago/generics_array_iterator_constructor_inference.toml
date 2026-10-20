@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_array_iterator_constructor_inference.php:35: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\GenericsArrayIteratorConstructorInference\\takesNullableString`: expected `null|string`, but possibly received `int|null`. [possibly-invalid-argument]
+generics_array_iterator_constructor_inference.php:43: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\GenericsArrayIteratorConstructorInference\\takesNullableInt`: expected `int|null`, but possibly received `null|string`. [possibly-invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

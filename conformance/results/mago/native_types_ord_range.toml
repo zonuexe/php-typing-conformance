@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "native_types_ord_range.php:36: Invalid argument type for argument #1 of `Conformance\\Tests\\NativeTypesOrdRange\\takesAboveByte`: expected `int<256, max>`, but found `int<0, 255>`. [invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

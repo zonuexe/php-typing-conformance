@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_iterator_to_array.php:44: Argument 1 ($list) expects list<string>, got array<int, int> [type_mismatch_argument]
+generics_iterator_to_array.php:54: Argument 1 ($array) expects array<int, int>, got list<string> [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

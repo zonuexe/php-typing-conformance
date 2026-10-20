@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "generics_property_docblock_type_argument.php:57: Parameter #1 $value of function Conformance\\Tests\\GenericsPropertyDocblockTypeArgument\\takesString expects string, int given. [reported-from-level=5]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5

@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_closure_param_from_method_template.php:80: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+generics_closure_param_from_method_template.php:80: Method Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\User::missing does not exist [UndefinedMethod]
+generics_closure_param_from_method_template.php:90: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+generics_closure_param_from_method_template.php:90: Method Conformance\\Tests\\GenericsClosureParamFromMethodTemplate\\Order::name does not exist [UndefinedMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

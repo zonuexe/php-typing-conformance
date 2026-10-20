@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "objects_implicit_stringable.php:42: Argument 1 of Conformance\\Tests\\ObjectsImplicitStringable\\takesStringable expects Stringable, but Conformance\\Tests\\ObjectsImplicitStringable\\NotStringable provided [InvalidArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

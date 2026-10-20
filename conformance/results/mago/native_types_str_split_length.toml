@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+native_types_str_split_length.php:27: Invalid argument type for argument #2 of `str_split`: expected `positive-int`, but found `int(-1)`. [invalid-argument]
+native_types_str_split_length.php:27: Expression has no effect as a statement [unused-statement]
+native_types_str_split_length.php:28: Invalid argument type for argument #2 of `str_split`: expected `positive-int`, but found `int(0)`. [invalid-argument]
+native_types_str_split_length.php:28: Expression has no effect as a statement [unused-statement]
+native_types_str_split_length.php:32: Expression has no effect as a statement [unused-statement]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

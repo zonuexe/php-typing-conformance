@@ -1,0 +1,19 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+generics_iterator_to_array.php:26: param $array miss matched with phpdoc type <<array<int, int>>> [funcParamTypeMissMatch]
+generics_iterator_to_array.php:33: param $list miss matched with phpdoc type <<list<string>>> [funcParamTypeMissMatch]
+generics_iterator_to_array.php:41: param $ok miss matched with phpdoc type <<\\Iterator<int, int>>> [funcParamTypeMissMatch]
+generics_iterator_to_array.php:41: param $wrong miss matched with phpdoc type <<\\Iterator<int, int>>> [funcParamTypeMissMatch]
+generics_iterator_to_array.php:51: param $ok miss matched with phpdoc type <<\\Iterator<int, string>>> [funcParamTypeMissMatch]
+generics_iterator_to_array.php:51: param $wrong miss matched with phpdoc type <<\\Iterator<int, string>>> [funcParamTypeMissMatch]"""
+errors_diff = """
+Line 44: Expected 1 error(s)
+Line 54: Expected 1 error(s)
+Line 26: Unexpected errors ["param $array miss matched with phpdoc type <<array<int, int>>> [funcParamTypeMissMatch]"]
+Line 33: Unexpected errors ["param $list miss matched with phpdoc type <<list<string>>> [funcParamTypeMissMatch]"]
+Line 41: Unexpected errors ["param $ok miss matched with phpdoc type <<\\\\Iterator<int, int>>> [funcParamTypeMissMatch]","param $wrong miss matched with phpdoc type <<\\\\Iterator<int, int>>> [funcParamTypeMissMatch]"]
+Line 51: Unexpected errors ["param $ok miss matched with phpdoc type <<\\\\Iterator<int, string>>> [funcParamTypeMissMatch]","param $wrong miss matched with phpdoc type <<\\\\Iterator<int, string>>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

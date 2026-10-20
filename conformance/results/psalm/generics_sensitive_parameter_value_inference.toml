@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_sensitive_parameter_value_inference.php:31: Argument 1 of Conformance\\Tests\\GenericsSensitiveParameterValueInference\\takesInt expects int, but 'secret' provided [InvalidScalarArgument]
+generics_sensitive_parameter_value_inference.php:35: Argument 1 of Conformance\\Tests\\GenericsSensitiveParameterValueInference\\takesString expects string, but 1 provided [InvalidScalarArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

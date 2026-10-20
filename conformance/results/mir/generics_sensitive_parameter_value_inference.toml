@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+generics_sensitive_parameter_value_inference.php:30: MixedArgument: Argument $value of takesString() is mixed [MIR1200]
+generics_sensitive_parameter_value_inference.php:31: MixedArgument: Argument $value of takesInt() is mixed [MIR1200]
+generics_sensitive_parameter_value_inference.php:34: MixedArgument: Argument $value of takesInt() is mixed [MIR1200]
+generics_sensitive_parameter_value_inference.php:35: MixedArgument: Argument $value of takesString() is mixed [MIR1200]"""
+errors_diff = """
+Line 30: Expected valid value to be accepted, got ["MixedArgument: Argument $value of takesString() is mixed [MIR1200]"]
+Line 34: Expected valid value to be accepted, got ["MixedArgument: Argument $value of takesInt() is mixed [MIR1200]"]"""
+notes = ""
+ignore_errors = []

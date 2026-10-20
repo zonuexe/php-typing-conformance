@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+native_types_str_split_length.php:27: Argument 2 of str_split expects int<1, max>, but -1 provided [InvalidArgument]
+native_types_str_split_length.php:28: Argument 2 of str_split expects int<1, max>, but 0 provided [InvalidArgument]
+native_types_str_split_length.php:32: Argument 2 of mb_str_split expects int<1, max>, but -1 provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

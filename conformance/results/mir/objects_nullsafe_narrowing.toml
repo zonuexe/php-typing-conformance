@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+objects_nullsafe_narrowing.php:43: PossiblyNullPropertyFetch: Cannot access property $name on possibly null value [MIR0106]
+objects_nullsafe_narrowing.php:43: PossiblyNullArgument: Argument $value of takesString() might be null [MIR0104]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

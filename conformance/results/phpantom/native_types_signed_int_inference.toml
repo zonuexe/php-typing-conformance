@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+native_types_signed_int_inference.php:36: Argument 1 ($value) expects positive-int, got -5 [type_mismatch_argument]
+native_types_signed_int_inference.php:38: Argument 1 ($value) expects negative-int, got 15 [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

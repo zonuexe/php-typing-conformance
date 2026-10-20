@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+objects_nullsafe_narrowing.php:37: Cannot get property on possibly null variable $user of type Conformance\\Tests\\ObjectsNullsafeNarrowing\\User|null [PossiblyNullPropertyFetch]
+objects_nullsafe_narrowing.php:37: Argument 1 of Conformance\\Tests\\ObjectsNullsafeNarrowing\\takesString cannot be null, possibly null value provided [PossiblyNullArgument]
+objects_nullsafe_narrowing.php:43: Cannot get property on possibly null variable $user of type Conformance\\Tests\\ObjectsNullsafeNarrowing\\User|null [PossiblyNullPropertyFetch]
+objects_nullsafe_narrowing.php:43: Argument 1 of Conformance\\Tests\\ObjectsNullsafeNarrowing\\takesString cannot be null, possibly null value provided [PossiblyNullArgument]"""
+errors_diff = "Line 37: Expected silence (quiet probe), got [\"Cannot get property on possibly null variable $user of type Conformance\\\\Tests\\\\ObjectsNullsafeNarrowing\\\\User|null [PossiblyNullPropertyFetch]\",\"Argument 1 of Conformance\\\\Tests\\\\ObjectsNullsafeNarrowing\\\\takesString cannot be null, possibly null value provided [PossiblyNullArgument]\"]"
+notes = ""
+ignore_errors = []

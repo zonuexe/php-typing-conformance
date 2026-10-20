@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+objects_new_from_class_string_union.php:43: Ambiguous instantiation: the expression used with `new` can resolve to multiple different classes. [ambiguous-instantiation-target]
+objects_new_from_class_string_union.php:43: Unsafe `new $class_name`: constructor of `Conformance\\Tests\\ObjectsNewFromClassStringUnion\\User` is not final and its signature might change in child classes, potentially leading to runtime errors. [unsafe-instantiation]
+objects_new_from_class_string_union.php:46: Ambiguous instantiation: the expression used with `new` can resolve to multiple different classes. [ambiguous-instantiation-target]
+objects_new_from_class_string_union.php:46: Unsafe `new $class_name`: constructor of `Conformance\\Tests\\ObjectsNewFromClassStringUnion\\User` is not final and its signature might change in child classes, potentially leading to runtime errors. [unsafe-instantiation]
+objects_new_from_class_string_union.php:47: Method `missing` does not exist on type `Conformance\\Tests\\ObjectsNewFromClassStringUnion\\User`. [non-existent-method]
+objects_new_from_class_string_union.php:47: Method `missing` does not exist on type `Conformance\\Tests\\ObjectsNewFromClassStringUnion\\Admin`. [non-existent-method]
+objects_new_from_class_string_union.php:47: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

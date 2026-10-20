@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_array_iterator_constructor_inference.php:35: Type 1 should be a subtype of null|string [IncompatibleTypeParameters]
+generics_array_iterator_constructor_inference.php:35: Type 2 should be a subtype of null|string [IncompatibleTypeParameters]
+generics_array_iterator_constructor_inference.php:35: Type 3 should be a subtype of null|string [IncompatibleTypeParameters]
+generics_array_iterator_constructor_inference.php:43: Type 'a' should be a subtype of int|null [IncompatibleTypeParameters]
+generics_array_iterator_constructor_inference.php:43: Type 'b' should be a subtype of int|null [IncompatibleTypeParameters]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

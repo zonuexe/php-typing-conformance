@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_array_iterator_constructor_inference.php:35: Argument 1 ($value) expects ?string, got int [type_mismatch_argument]
+generics_array_iterator_constructor_inference.php:43: Argument 1 ($value) expects ?int, got string [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

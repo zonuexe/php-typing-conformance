@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+enums_backed_enum_values.php:40: InvalidArgument: Argument $value of takesInt() expects 'int', got '"active"' [MIR0201]
+enums_backed_enum_values.php:42: InvalidArgument: Argument $value of takesString() expects 'string', got '3' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

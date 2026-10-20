@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "aliases_shape_inline_comments.php:33: Doc-block of $user in take contains phpdoc param type \\Conformance\\Tests\\AliasesShapeInlineComments\\UserShape which is incompatible with the param type array declared in the signature [PhanTypeMismatchDeclaredParam]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [33]
+false_positive_lines = []
+over_rejected_lines = []

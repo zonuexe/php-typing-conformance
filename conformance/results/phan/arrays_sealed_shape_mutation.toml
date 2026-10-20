@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_sealed_shape_mutation.php:44: Argument 1 ($shape) is $shape of type array{foo:'x'} but \\Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo() takes array{foo:int} defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/arrays_sealed_shape_mutation.php:25 [PhanTypeMismatchArgument]
+arrays_sealed_shape_mutation.php:62: Argument 1 ($shape) is $shape of type array{} but \\Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo() takes array{foo:int} defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/arrays_sealed_shape_mutation.php:25 [PhanTypeMismatchArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

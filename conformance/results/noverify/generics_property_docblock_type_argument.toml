@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+generics_property_docblock_type_argument.php:29: param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]
+generics_property_docblock_type_argument.php:56: potential null dereference when accessing property 'value' [notNullSafetyFunctionArgumentPropertyFetch]
+generics_property_docblock_type_argument.php:57: potential null dereference when accessing property 'value' [notNullSafetyFunctionArgumentPropertyFetch]"""
+errors_diff = """
+Line 56: Expected valid value to be accepted, got ["potential null dereference when accessing property 'value' [notNullSafetyFunctionArgumentPropertyFetch]"]
+Line 29: Unexpected errors ["param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]"]"""
+notes = ""
+ignore_errors = []

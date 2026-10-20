@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_isset_nullable_fetch.php:30: Redundant `===` comparison: left-hand side is never identical to right-hand side. [redundant-comparison]
+arrays_isset_nullable_fetch.php:30: Redundant ternary operator: condition is always falsy. [impossible-condition]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

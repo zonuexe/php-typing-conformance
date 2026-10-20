@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+generics_instanceof_keeps_type_argument.php:34: Too few template arguments for `Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Container`: expected at least 1, but found 0. [missing-template-parameter]
+generics_instanceof_keeps_type_argument.php:66: This condition (type `true`) will always evaluate to true. [redundant-condition]
+generics_instanceof_keeps_type_argument.php:67: Argument type mismatch for argument #1 of `Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\takesString`: expected `string`, but provided type `('T.conformance\\tests\\genericsinstanceofkeepstypeargument\\box extends mixed)` is less specific. [less-specific-nested-argument-type]
+generics_instanceof_keeps_type_argument.php:68: Argument type mismatch for argument #1 of `Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\takesInt`: expected `int`, but provided type `('T.conformance\\tests\\genericsinstanceofkeepstypeargument\\box extends mixed)` is less specific. [less-specific-nested-argument-type]"""
+errors_diff = """
+Line 67: Expected valid value to be accepted, got ["Argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\takesString`: expected `string`, but provided type `('T.conformance\\\\tests\\\\genericsinstanceofkeepstypeargument\\\\box extends mixed)` is less specific. [less-specific-nested-argument-type]"]
+Line 34: Unexpected errors ["Too few template arguments for `Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\Container`: expected at least 1, but found 0. [missing-template-parameter]"]
+Line 66: Unexpected errors ["This condition (type `true`) will always evaluate to true. [redundant-condition]"]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = [34, 66]
+over_rejected_lines = [34]

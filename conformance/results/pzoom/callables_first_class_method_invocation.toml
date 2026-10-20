@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+callables_first_class_method_invocation.php:44: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+callables_first_class_method_invocation.php:44: Method Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User::missing does not exist [UndefinedMethod]
+callables_first_class_method_invocation.php:52: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+callables_first_class_method_invocation.php:52: Method Conformance\\Tests\\CallablesFirstClassMethodInvocation\\User::missing does not exist [UndefinedMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

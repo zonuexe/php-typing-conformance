@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+generics_sensitive_parameter_value_inference.php:30: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsSensitiveParameterValueInference\\takesString`: expected `string`, but found `mixed`. [mixed-argument]
+generics_sensitive_parameter_value_inference.php:31: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsSensitiveParameterValueInference\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]
+generics_sensitive_parameter_value_inference.php:34: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsSensitiveParameterValueInference\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]
+generics_sensitive_parameter_value_inference.php:35: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsSensitiveParameterValueInference\\takesString`: expected `string`, but found `mixed`. [mixed-argument]"""
+errors_diff = """
+Line 30: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\GenericsSensitiveParameterValueInference\\\\takesString`: expected `string`, but found `mixed`. [mixed-argument]"]
+Line 34: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\GenericsSensitiveParameterValueInference\\\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]"]"""
+notes = ""
+ignore_errors = []

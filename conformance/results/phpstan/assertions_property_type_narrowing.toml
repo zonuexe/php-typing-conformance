@@ -1,0 +1,8 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "assertions_property_type_narrowing.php:42: Parameter #1 $value of function Conformance\\Tests\\AssertionsPropertyTypeNarrowing\\takesString expects string, string|null given. [reported-from-level=8]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 8

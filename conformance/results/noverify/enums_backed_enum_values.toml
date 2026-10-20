@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+enums_backed_enum_values.php:39: Class constant \\Conformance\\Tests\\EnumsBackedEnumValues\\Status::Active does not exist [undefinedConstant]
+enums_backed_enum_values.php:40: Class constant \\Conformance\\Tests\\EnumsBackedEnumValues\\Status::Active does not exist [undefinedConstant]
+enums_backed_enum_values.php:41: Class constant \\Conformance\\Tests\\EnumsBackedEnumValues\\Priority::High does not exist [undefinedConstant]
+enums_backed_enum_values.php:42: Class constant \\Conformance\\Tests\\EnumsBackedEnumValues\\Priority::High does not exist [undefinedConstant]"""
+errors_diff = """
+Line 39: Expected valid value to be accepted, got ["Class constant \\\\Conformance\\\\Tests\\\\EnumsBackedEnumValues\\\\Status::Active does not exist [undefinedConstant]"]
+Line 41: Expected valid value to be accepted, got ["Class constant \\\\Conformance\\\\Tests\\\\EnumsBackedEnumValues\\\\Priority::High does not exist [undefinedConstant]"]"""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_sealed_shape_mutation.php:44: Argument 1 of Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo expects array{foo: int}, but array{foo: 'x'} provided [InvalidArgument]
+arrays_sealed_shape_mutation.php:53: Argument 1 of Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo expects array{foo: int}, but array{extra: 'x', foo: int} with additional array shape fields (extra) was provided [InvalidArgument]
+arrays_sealed_shape_mutation.php:62: Argument 1 of Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo expects array{foo: int}, but array<never, never> provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

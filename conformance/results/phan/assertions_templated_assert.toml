@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "assertions_templated_assert.php:25: Template type T not used in return value of function/method assertSame() [PhanTemplateTypeNotUsedInFunctionReturn]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

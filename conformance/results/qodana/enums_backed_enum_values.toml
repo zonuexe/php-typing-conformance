@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+enums_backed_enum_values.php:40: Parameter 'Status::Active->value' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+enums_backed_enum_values.php:40: Parameter 'Status::Active->value' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+enums_backed_enum_values.php:42: Parameter 'Priority::High->value' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+enums_backed_enum_values.php:42: Parameter 'Priority::High->value' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

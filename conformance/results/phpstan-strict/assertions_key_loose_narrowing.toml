@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+assertions_key_loose_narrowing.php:40: Loose comparison via "==" between int|string and string is not allowed.
+assertions_key_loose_narrowing.php:41: Parameter #1 $value of function Conformance\\Tests\\AssertionsKeyLooseNarrowing\\takesFoo expects 'foo', 'bar'|'foo'|int given.
+assertions_key_loose_narrowing.php:51: Loose comparison via "==" between int|string and string is not allowed.
+assertions_key_loose_narrowing.php:51: Loose comparison via "==" between int|string and string is not allowed.
+assertions_key_loose_narrowing.php:55: Parameter #1 $value of function Conformance\\Tests\\AssertionsKeyLooseNarrowing\\takesInt expects int, int|string given.
+assertions_key_loose_narrowing.php:56: Parameter #1 $value of function Conformance\\Tests\\AssertionsKeyLooseNarrowing\\takesFoo expects 'foo', 'bar'|'foo'|int given."""
+errors_diff = """
+Line 41: Expected silence (quiet probe), got ["Parameter #1 $value of function Conformance\\\\Tests\\\\AssertionsKeyLooseNarrowing\\\\takesFoo expects 'foo', 'bar'|'foo'|int given."]
+Line 55: Expected silence (quiet probe), got ["Parameter #1 $value of function Conformance\\\\Tests\\\\AssertionsKeyLooseNarrowing\\\\takesInt expects int, int|string given."]
+Line 40: Unexpected errors ["Loose comparison via \\"==\\" between int|string and string is not allowed."]
+Line 51: Unexpected errors ["Loose comparison via \\"==\\" between int|string and string is not allowed.","Loose comparison via \\"==\\" between int|string and string is not allowed."]"""
+notes = ""
+ignore_errors = []

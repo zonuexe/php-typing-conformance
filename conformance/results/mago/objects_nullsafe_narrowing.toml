@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+objects_nullsafe_narrowing.php:43: Attempting to access a property on a possibly `null` value. [possibly-null-property-access]
+objects_nullsafe_narrowing.php:43: Argument #1 of function `Conformance\\Tests\\ObjectsNullsafeNarrowing\\takesString` is possibly `null`, but parameter type `string` does not accept it. [possibly-null-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

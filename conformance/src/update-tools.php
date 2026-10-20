@@ -28,13 +28,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
  *   the report's "Latest release" column shows.
  * - upstream: what the release feed says now.
  *
- * --apply installs the newest release of everything installable and rewrites
- * data/releases.toml. It deliberately does not re-run the analyzers: that is a
+ * --apply installs the newest release of everything installable and updates
+ * the version and date values in data/releases.toml, leaving its comments and
+ * layout alone. It deliberately does not re-run the analyzers: that is a
  * separate, slower step, and the results only change when someone runs it.
  */
-
-const ANALYZER_SECTION = '# Analyzers.';
-const LANGUAGE_SERVER_SECTION = '# Language servers.';
 
 /**
  * How this repository installs each tool, if it does.
@@ -309,7 +307,7 @@ function status(array $row, array &$outdated): string
 }
 
 /**
- * Rewrite the release table, keeping its header and its two sections.
+ * Record the latest releases in the release table, in place.
  *
  * @param list<\Conformance\Metadata\AnalyzerMetadata> $analyzers
  * @param list<\Conformance\Metadata\LanguageServerMetadata> $servers
@@ -317,35 +315,19 @@ function status(array $row, array &$outdated): string
  */
 function writeReleases(string $path, array $analyzers, array $servers, array $latest): void
 {
-    $contents = (string) file_get_contents($path);
-    // Everything above the first entry is prose about the file; keep it.
-    $header = substr($contents, 0, (int) strpos($contents, ANALYZER_SECTION));
+    $releases = [];
 
-    $sections = [ANALYZER_SECTION => $analyzers, LANGUAGE_SERVER_SECTION => $servers];
-    $written = [];
-    $out = rtrim($header) . "\n";
-
-    foreach ($sections as $title => $tools) {
-        $out .= "\n" . $title . "\n";
-
-        foreach ($tools as $tool) {
-            // Intelephense and Psalm are one artifact in two tables, one entry.
-            if (isset($written[$tool->tool])) {
-                continue;
-            }
-
-            $written[$tool->tool] = true;
-            $release = $latest[$tool->tool];
-            $out .= sprintf(
-                "\n[%s]\nversion = \"%s\"\ndate = \"%s\"\n",
-                $tool->tool,
-                $release->version,
-                $release->date,
-            );
-        }
+    foreach ([...$analyzers, ...$servers] as $tool) {
+        // Intelephense and Psalm are one artifact in two tables, one entry.
+        $releases[$tool->tool] = $latest[$tool->tool];
     }
 
-    if (file_put_contents($path, $out) === false) {
+    $contents = file_get_contents($path);
+    if ($contents === false) {
+        throw new RuntimeException(sprintf('Failed to read the release table: %s', $path));
+    }
+
+    if (file_put_contents($path, ReleaseTable::rewrite($contents, $releases)) === false) {
         throw new RuntimeException(sprintf('Failed to write the release table: %s', $path));
     }
 }

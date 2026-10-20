@@ -102,6 +102,7 @@ run-sonarqube:
 
 test-harness:
 	php conformance/src/Expectation/self-test.php
+	php conformance/src/Metadata/self-test.php
 
 # Re-derive Pass/Fail and recognition/enforcement from stored analyzer output
 # without re-running the tools. Use after evaluator or marker changes.

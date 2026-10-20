@@ -1,17 +1,12 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 7
 output = """
-assertions_switch_get_class_gettype_narrowing.php:55: Method `fooOnly` does not exist on type `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar`. [non-existent-method]
-assertions_switch_get_class_gettype_narrowing.php:58: Method `barOnly` does not exist on type `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Foo`. [non-existent-method]
 assertions_switch_get_class_gettype_narrowing.php:65: Method `fooOnly` does not exist on type `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar`. [non-existent-method]
-assertions_switch_get_class_gettype_narrowing.php:86: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]
-assertions_switch_get_class_gettype_narrowing.php:93: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]"""
-errors_diff = """
-Line 72: Expected 1 error(s)
-Line 100: Expected 1 error(s)
-Line 55: Expected silence (quiet probe), got ["Method `fooOnly` does not exist on type `Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\Bar`. [non-existent-method]"]
-Line 58: Expected silence (quiet probe), got ["Method `barOnly` does not exist on type `Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\Foo`. [non-existent-method]"]
-Line 86: Expected silence (quiet probe), got ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]"]"""
-notes = "Measured on Mago 1.57.0; the narrowing landed in 1.58.0 (carthage-software/mago#2558), so this row is expected to flip when the pin moves."
+assertions_switch_get_class_gettype_narrowing.php:72: Redundant ternary operator: condition is always falsy. [impossible-condition]
+assertions_switch_get_class_gettype_narrowing.php:93: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]
+assertions_switch_get_class_gettype_narrowing.php:100: Impossible type assertion: `$impossible` of type `int` can never be `string`. [impossible-type-comparison]
+assertions_switch_get_class_gettype_narrowing.php:100: Redundant ternary operator: condition is always falsy. [impossible-condition]"""
+errors_diff = ""
+notes = "Pass on Mago 1.58.2. get_class()/gettype() switch narrowing landed in 1.58.0 (carthage-software/mago#2558): quiet probes stay silent, the unguarded references fire, and the in-branch impossible checks fire as always-falsy."
 ignore_errors = []

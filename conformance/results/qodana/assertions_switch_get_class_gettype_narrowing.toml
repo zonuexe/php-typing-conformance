@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 7
+output = "assertions_switch_get_class_gettype_narrowing.php:72: Condition is always 'false' because 'Foo::class' is already 'true' at this point [PhpConditionAlreadyCheckedInspection]"
+errors_diff = """
+Line 65: Expected 1 error(s)
+Line 93: Expected 1 error(s)
+Line 100: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []

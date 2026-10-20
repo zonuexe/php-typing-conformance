@@ -1,11 +1,10 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
-assertions_key_loose_narrowing.php:41: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsKeyLooseNarrowing\\takesFoo`: expected `string('foo')`, but possibly received `int|string('foo')`. [possibly-invalid-argument]
 assertions_key_loose_narrowing.php:42: Redundant `===` comparison: left-hand side is never identical to right-hand side. [redundant-comparison]
 assertions_key_loose_narrowing.php:42: Redundant ternary operator: condition is always falsy. [impossible-condition]
 assertions_key_loose_narrowing.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\AssertionsKeyLooseNarrowing\\takesFoo`: expected `string('foo')`, but found `int`. [invalid-argument]"""
-errors_diff = "Line 41: Expected silence (quiet probe), got [\"Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\AssertionsKeyLooseNarrowing\\\\takesFoo`: expected `string('foo')`, but possibly received `int|string('foo')`. [possibly-invalid-argument]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

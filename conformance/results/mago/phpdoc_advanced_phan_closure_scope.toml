@@ -3,10 +3,10 @@ conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
 phpdoc_advanced_phan_closure_scope.php:33: Undefined variable: `$this`. [undefined-variable]
-phpdoc_advanced_phan_closure_scope.php:33: Attempting to access a property on a non-object type (`mixed`). [mixed-property-access]
+phpdoc_advanced_phan_closure_scope.php:33: Attempting to access property `$label` on a non-object type (`mixed`). [mixed-property-access]
 phpdoc_advanced_phan_closure_scope.php:33: The first value for `echo` is too general. [mixed-argument]
 phpdoc_advanced_phan_closure_scope.php:37: Undefined variable: `$this`. [undefined-variable]
-phpdoc_advanced_phan_closure_scope.php:37: Attempting to access a property on a non-object type (`mixed`). [mixed-property-access]
+phpdoc_advanced_phan_closure_scope.php:37: Attempting to access property `$missing` on a non-object type (`mixed`). [mixed-property-access]
 phpdoc_advanced_phan_closure_scope.php:37: The first value for `echo` is too general. [mixed-argument]"""
 errors_diff = ""
 notes = ""

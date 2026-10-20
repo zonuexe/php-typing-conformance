@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = ""
+output = "phpdoc_advanced_phpstan_call_site_contravariant.php:142: Type 'Collection<Cat>' does not satisfy 'Collection<Dog>'"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/2"
+enforcement = "partial"
+enforced_lines = "1/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

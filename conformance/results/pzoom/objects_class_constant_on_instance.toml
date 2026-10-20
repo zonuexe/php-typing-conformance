@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+objects_class_constant_on_instance.php:30: Cannot safely instantiate class Conformance\\Tests\\ObjectsClassConstantOnInstance\\User with "new $class_name" as its constructor might change in child classes [UnsafeInstantiation]
+objects_class_constant_on_instance.php:32: Argument 1 of echo cannot be mixed, expecting string [MixedArgument]
+objects_class_constant_on_instance.php:32: Method Conformance\\Tests\\ObjectsClassConstantOnInstance\\User::missing does not exist [UndefinedMethod]
+objects_class_constant_on_instance.php:32: Cannot safely instantiate class Conformance\\Tests\\ObjectsClassConstantOnInstance\\User with "new $class_name" as its constructor might change in child classes [UnsafeInstantiation]"""
+errors_diff = "Line 30: Expected valid value to be accepted, got [\"Cannot safely instantiate class Conformance\\\\Tests\\\\ObjectsClassConstantOnInstance\\\\User with \\\"new $class_name\\\" as its constructor might change in child classes [UnsafeInstantiation]\"]"
+notes = ""
+ignore_errors = []

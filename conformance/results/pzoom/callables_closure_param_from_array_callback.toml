@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+callables_closure_param_from_array_callback.php:34: Method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing does not exist [UndefinedMethod]
+callables_closure_param_from_array_callback.php:41: Method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing does not exist [UndefinedMethod]
+callables_closure_param_from_array_callback.php:47: Could not infer a return type due to mixed return values [MixedReturnStatement]
+callables_closure_param_from_array_callback.php:48: Could not infer a return type [MixedReturnStatement]
+callables_closure_param_from_array_callback.php:48: Method Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing does not exist [UndefinedMethod]"""
+errors_diff = "Line 47: Unexpected errors [\"Could not infer a return type due to mixed return values [MixedReturnStatement]\"]"
+notes = ""
+ignore_errors = []

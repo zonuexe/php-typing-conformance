@@ -26,8 +26,8 @@
 # Analyzers.
 
 [phan]
-version = "6.0.10"
-date = "2026-10-12"
+version = "6.0.11"
+date = "2026-10-15"
 
 [psalm]
 version = "6.20.0"
@@ -54,20 +54,20 @@ version = "262.10968.76"
 date = "2026-09-17"
 
 [mago]
-version = "1.57.0"
-date = "2026-10-14"
+version = "1.58.2"
+date = "2026-10-19"
 
 [phpy]
-version = "1.0.19409"
-date = "2026-10-12"
+version = "1.0.19439"
+date = "2026-10-19"
 
 [phpantom]
 version = "0.11.1"
 date = "2026-10-07"
 
 [mir]
-version = "0.87.0"
-date = "2026-10-12"
+version = "0.88.0"
+date = "2026-10-17"
 
 [pzoom]
 version = "unversioned"
@@ -80,8 +80,8 @@ date = "2026-09-21"
 # Language servers.
 
 [devsense-php-ls]
-version = "1.0.19409"
-date = "2026-10-12"
+version = "1.0.19439"
+date = "2026-10-19"
 
 [php-lsp]
 version = "0.26.0"
@@ -99,8 +99,8 @@ version = "0.0.32"
 date = "2026-09-15"
 
 [symfony-lsp]
-version = "0.23.0"
-date = "2026-09-26"
+version = "0.24.0"
+date = "2026-10-17"
 
 [php-language-server]
 version = "5.4.6"

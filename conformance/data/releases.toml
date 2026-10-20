@@ -6,8 +6,8 @@
 # judgement hardcoded in src/Metadata/Analyzer/<Tool>.php or
 # src/Metadata/LanguageServer/<Tool>.php, and only changes when the project
 # itself does. These two fields go stale on their own, so they live here where
-# a script can rewrite the file wholesale from upstream release feeds without
-# touching any curation.
+# a script can update their values from upstream release feeds without
+# touching any curation or any comment in this file.
 #
 # Intelephense, Psalm and PHPantom have one entry apiece, read by both
 # tables: each is the same artifact reached two ways, so a single release

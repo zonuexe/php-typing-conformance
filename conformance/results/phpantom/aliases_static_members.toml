@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+aliases_static_members.php:65: Argument 1 ($value) expects string, got int [type_mismatch_argument]
+aliases_static_members.php:67: Argument 1 ($value) expects int, got string [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

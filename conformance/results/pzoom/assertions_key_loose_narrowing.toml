@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+assertions_key_loose_narrowing.php:42: 'foo' cannot be compared to 'bar' [DocblockTypeContradiction]
+assertions_key_loose_narrowing.php:42: Operand of type false is always falsy [TypeDoesNotContainType]
+assertions_key_loose_narrowing.php:56: Argument 1 of takesFoo expects 'foo', but int provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

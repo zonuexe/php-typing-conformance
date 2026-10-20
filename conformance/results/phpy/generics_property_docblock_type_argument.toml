@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "generics_property_docblock_type_argument.php:57: Argument '1' passed to Conformance\\Tests\\GenericsPropertyDocblockTypeArgument\\takesString() is expected to be of type string, int given"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_sensitive_parameter_value_inference.php:31: Parameter #1 $value of function Conformance\\Tests\\GenericsSensitiveParameterValueInference\\takesInt expects int, string given.
+generics_sensitive_parameter_value_inference.php:35: Parameter #1 $value of function Conformance\\Tests\\GenericsSensitiveParameterValueInference\\takesString expects string, int given."""
+errors_diff = ""
+notes = ""
+ignore_errors = []

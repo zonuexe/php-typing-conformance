@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_array_element_signature.php:32: Argument 1 ($value) expects int, got string [type_mismatch_argument]
+callables_array_element_signature.php:42: Argument 1 ($value) expects string, got int [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

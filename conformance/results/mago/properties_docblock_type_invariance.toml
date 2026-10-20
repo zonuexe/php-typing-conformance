@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+properties_docblock_type_invariance.php:45: Property `Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$widened` has an incompatible type declaration from docblock. [incompatible-property-type]
+properties_docblock_type_invariance.php:48: Property `Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$narrowed` has an incompatible type declaration from docblock. [incompatible-property-type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

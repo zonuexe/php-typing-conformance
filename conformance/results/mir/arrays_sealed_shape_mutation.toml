@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_sealed_shape_mutation.php:44: InvalidArgument: Argument $shape of takesFoo() expects 'array{'foo': int}', got 'array{'foo': "x"}' [MIR0201]
+arrays_sealed_shape_mutation.php:62: InvalidArgument: Argument $shape of takesFoo() expects 'array{'foo': int}', got 'array{}' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

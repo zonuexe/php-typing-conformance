@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+enums_backed_enum_values.php:40: Invalid argument type for argument #1 of `Conformance\\Tests\\EnumsBackedEnumValues\\takesInt`: expected `int`, but found `string('active')`. [invalid-argument]
+enums_backed_enum_values.php:42: Invalid argument type for argument #1 of `Conformance\\Tests\\EnumsBackedEnumValues\\takesString`: expected `string`, but found `int(3)`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

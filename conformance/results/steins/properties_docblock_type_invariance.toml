@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+properties_docblock_type_invariance.php:46: property Child::$widened has no type — no native type and no `@var` [untyped.property]
+properties_docblock_type_invariance.php:49: property Child::$narrowed has no type — no native type and no `@var` [untyped.property]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

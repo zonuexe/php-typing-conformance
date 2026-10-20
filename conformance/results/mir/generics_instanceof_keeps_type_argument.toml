@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+generics_instanceof_keeps_type_argument.php:66: RedundantCondition: Condition is always true, so the check is redundant [MIR0400]
+generics_instanceof_keeps_type_argument.php:67: MixedArgument: Argument $value of takesString() is mixed [MIR1200]
+generics_instanceof_keeps_type_argument.php:68: MixedArgument: Argument $value of takesInt() is mixed [MIR1200]"""
+errors_diff = """
+Line 67: Expected valid value to be accepted, got ["MixedArgument: Argument $value of takesString() is mixed [MIR1200]"]
+Line 66: Unexpected errors ["RedundantCondition: Condition is always true, so the check is redundant [MIR0400]"]"""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = [66]
+over_rejected_lines = []

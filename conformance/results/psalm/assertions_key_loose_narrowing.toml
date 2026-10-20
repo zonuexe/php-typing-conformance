@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+assertions_key_loose_narrowing.php:42: 'bar' does not contain 'foo' [DocblockTypeContradiction]
+assertions_key_loose_narrowing.php:42: Docblock-defined type 'foo' for $key is never =string(bar) [DocblockTypeContradiction]
+assertions_key_loose_narrowing.php:42: Docblock-defined type 'foo' for $key is never =string(bar) [RedundantConditionGivenDocblockType]
+assertions_key_loose_narrowing.php:56: Argument 1 of Conformance\\Tests\\AssertionsKeyLooseNarrowing\\takesFoo expects 'foo', but int provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

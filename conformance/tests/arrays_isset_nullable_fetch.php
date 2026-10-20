@@ -26,7 +26,7 @@ function takesInt(int $value): void
 function afterIsset(array $array): void
 {
     if (isset($array['key'])) {
-        takesInt($array['key']); // V: isset excludes null
+        takesInt($array['key']); // Q: isset excludes null
         echo $array['key'] === null ? 'null' : 'int'; // E?: after isset, === null is always false
     }
 }

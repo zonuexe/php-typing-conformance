@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_sealed_shape_mutation.php:44: argument a value of type array{foo: 'x'} to takesFoo() violates declared @param array{foo: int} $shape — declared contract violation [phpdoc.param-mismatch]
+arrays_sealed_shape_mutation.php:53: argument a value of type non-empty-array{extra: 'x', foo: int, ...} to takesFoo() violates declared @param array{foo: int} $shape — declared contract violation [phpdoc.param-mismatch]
+arrays_sealed_shape_mutation.php:62: argument a value of type array{} to takesFoo() violates declared @param array{foo: int} $shape — declared contract violation [phpdoc.param-mismatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

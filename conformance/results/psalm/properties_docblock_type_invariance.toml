@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+properties_docblock_type_invariance.php:46: Property Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$widened has type Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ParentInterface|null, not invariant with Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Base::$widened of type Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ChildInterface|null [NonInvariantDocblockPropertyType]
+properties_docblock_type_invariance.php:49: Property Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$narrowed has type Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ChildInterface|null, not invariant with Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Base::$narrowed of type Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ParentInterface|null [NonInvariantDocblockPropertyType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,25 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+aliases_static_members.php:32: Default value for \\Conformance\\Tests\\AliasesStaticMembers\\UserId $nextId can't be 1 of type int based on phpdoc types [PhanTypeMismatchPropertyDefault]
+aliases_static_members.php:32: Property \\Conformance\\Tests\\AliasesStaticMembers\\User::$nextId has undeclared type \\Conformance\\Tests\\AliasesStaticMembers\\UserId (Did you mean class \\Conformance\\Tests\\AliasesStaticMembers\\User) [PhanUndeclaredTypeProperty]
+aliases_static_members.php:37: Default value for \\Conformance\\Tests\\AliasesStaticMembers\\UserName $defaultName can't be 'guest' of type string based on phpdoc types [PhanTypeMismatchPropertyDefault]
+aliases_static_members.php:37: Property \\Conformance\\Tests\\AliasesStaticMembers\\User::$defaultName has undeclared type \\Conformance\\Tests\\AliasesStaticMembers\\UserName [PhanUndeclaredTypeProperty]
+aliases_static_members.php:42: Return type of getNextId() is undeclared type \\Conformance\\Tests\\AliasesStaticMembers\\UserId (Did you mean class \\Conformance\\Tests\\AliasesStaticMembers\\User) [PhanUndeclaredTypeReturnType]
+aliases_static_members.php:50: Return type of getDefaultName() is undeclared type \\Conformance\\Tests\\AliasesStaticMembers\\UserName [PhanUndeclaredTypeReturnType]
+aliases_static_members.php:64: Argument 1 ($value) is User::getNextId() of type \\Conformance\\Tests\\AliasesStaticMembers\\UserId but \\Conformance\\Tests\\AliasesStaticMembers\\takesInt() takes int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_static_members.php:56 [PhanTypeMismatchArgument]
+aliases_static_members.php:65: Argument 1 ($value) is User::getNextId() of type \\Conformance\\Tests\\AliasesStaticMembers\\UserId but \\Conformance\\Tests\\AliasesStaticMembers\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_static_members.php:60 [PhanTypeMismatchArgument]
+aliases_static_members.php:66: Argument 1 ($value) is User::getDefaultName() of type \\Conformance\\Tests\\AliasesStaticMembers\\UserName but \\Conformance\\Tests\\AliasesStaticMembers\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_static_members.php:60 [PhanTypeMismatchArgument]
+aliases_static_members.php:67: Argument 1 ($value) is User::getDefaultName() of type \\Conformance\\Tests\\AliasesStaticMembers\\UserName but \\Conformance\\Tests\\AliasesStaticMembers\\takesInt() takes int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_static_members.php:56 [PhanTypeMismatchArgument]"""
+errors_diff = """
+Line 64: Expected valid value to be accepted, got ["Argument 1 ($value) is User::getNextId() of type \\\\Conformance\\\\Tests\\\\AliasesStaticMembers\\\\UserId but \\\\Conformance\\\\Tests\\\\AliasesStaticMembers\\\\takesInt() takes int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_static_members.php:56 [PhanTypeMismatchArgument]"]
+Line 66: Expected valid value to be accepted, got ["Argument 1 ($value) is User::getDefaultName() of type \\\\Conformance\\\\Tests\\\\AliasesStaticMembers\\\\UserName but \\\\Conformance\\\\Tests\\\\AliasesStaticMembers\\\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_static_members.php:60 [PhanTypeMismatchArgument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [32, 37, 42, 50]
+false_positive_lines = []
+over_rejected_lines = [64, 66]

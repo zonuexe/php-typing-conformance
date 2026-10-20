@@ -37,13 +37,13 @@ function takesString(string $value): void
 function fromIntLiteral(mixed $value): void
 {
     assertSame(1, $value);
-    takesInt($value); // V: template assertion pins $value to int
+    takesInt($value); // Q: the template assertion pins $value to int
     echo \is_string($value) ? 'string' : 'int'; // E?: after assert int, is_string() is always false
 }
 
 function fromStringLiteral(mixed $value): void
 {
     assertSame('x', $value);
-    takesString($value); // V
+    takesString($value); // Q: the template assertion pins $value to string
     echo \is_int($value) ? 'int' : 'string'; // E?: after assert string, is_int() is always false
 }

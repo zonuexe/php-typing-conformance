@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_iterator_to_array.php:44: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsIteratorToArray\\takesStringList`: expected `list<string>`, but found `array<int, int>`. [invalid-argument]
+generics_iterator_to_array.php:54: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsIteratorToArray\\takesIntMap`: expected `array<int, int>`, but found `list<string>`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

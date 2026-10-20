@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "arrays_isset_nullable_fetch.php:30: Strict comparison using === between int and null will always evaluate to false."
+errors_diff = ""
+notes = ""
+ignore_errors = []

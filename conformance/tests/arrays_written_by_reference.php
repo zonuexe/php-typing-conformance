@@ -20,14 +20,14 @@ namespace Conformance\Tests\ArraysWrittenByReference;
 /**
  * @param list<int> $ints
  */
-function takesIntList(array $ints): void // T: list<int>
+function takesIntList(array $ints): void
 {
 }
 
 /**
  * @param list<int> $ints
  */
-function writesStringThroughReference(array $ints): void // T: list<int>
+function writesStringThroughReference(array $ints): void
 {
     $before = $ints;
     takesIntList($before); // V
@@ -37,18 +37,6 @@ function writesStringThroughReference(array $ints): void // T: list<int>
     }
     unset($item);
 
-    takesIntList($ints); // E?: the array now holds strings
+    takesIntList($ints); // E: the array now holds strings
 }
 
-/**
- * @param list<string> $strings
- */
-function writesIntThroughReference(array $strings): void // T: list<string>
-{
-    foreach ($strings as &$item) {
-        $item = 1;
-    }
-    unset($item);
-
-    takesIntList($strings); // V: the array now holds ints
-}

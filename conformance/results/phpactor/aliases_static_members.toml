@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+aliases_static_members.php:42: Method "getNextId" is missing return type and the type could not be determined [missing_return_type]
+aliases_static_members.php:50: Method "getDefaultName" is missing return type and the type could not be determined [missing_return_type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [42, 50]
+false_positive_lines = []
+over_rejected_lines = []

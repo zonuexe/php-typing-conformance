@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "objects_nullsafe_narrowing.php:43: Cannot access property $name on Conformance\\Tests\\ObjectsNullsafeNarrowing\\User|null."
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,12 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+assertions_key_loose_narrowing.php:41: PossiblyInvalidArgument: Argument $value of takesFoo() expects '"foo"', possibly different type '"foo"|"bar"|int' provided [MIR0105]
+assertions_key_loose_narrowing.php:55: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type '"foo"|"bar"|int' provided [MIR0105]
+assertions_key_loose_narrowing.php:56: PossiblyInvalidArgument: Argument $value of takesFoo() expects '"foo"', possibly different type '"foo"|"bar"|int' provided [MIR0105]"""
+errors_diff = """
+Line 41: Expected silence (quiet probe), got ["PossiblyInvalidArgument: Argument $value of takesFoo() expects '\\"foo\\"', possibly different type '\\"foo\\"|\\"bar\\"|int' provided [MIR0105]"]
+Line 55: Expected silence (quiet probe), got ["PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type '\\"foo\\"|\\"bar\\"|int' provided [MIR0105]"]"""
+notes = ""
+ignore_errors = []

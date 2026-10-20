@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+objects_nullsafe_narrowing.php:43: Argument 1 of takesString expects string, but possibly different type null|string provided [PossiblyNullArgument]
+objects_nullsafe_narrowing.php:43: Cannot access property $name on possibly null type [PossiblyNullPropertyFetch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

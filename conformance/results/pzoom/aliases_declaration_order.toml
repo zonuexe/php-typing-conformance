@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+aliases_declaration_order.php:39: Docblock-defined class, interface or enum named ReverseId does not exist [UndefinedDocblockClass]
+aliases_declaration_order.php:39: Docblock-defined class, interface or enum named ReverseUser does not exist [UndefinedDocblockClass]
+aliases_declaration_order.php:61: Argument 1 of Conformance\\Tests\\AliasesDeclarationOrder\\Forward::takeUsers expects list<array{id: int, name: string}>, but list{array{id: 'x', name: 'a'}} provided [InvalidArgument]
+aliases_declaration_order.php:64: Argument 1 of Conformance\\Tests\\AliasesDeclarationOrder\\Reverse::takeUsers expects list<array{id: Conformance\\Tests\\AliasesDeclarationOrder\\ReverseId, name: string}>, but list{array{id: 1, name: 'a'}} provided [InvalidArgument]
+aliases_declaration_order.php:65: Argument 1 of Conformance\\Tests\\AliasesDeclarationOrder\\Reverse::takeUsers expects list<array{id: Conformance\\Tests\\AliasesDeclarationOrder\\ReverseId, name: string}>, but list{array{id: 'x', name: 'a'}} provided [InvalidArgument]"""
+errors_diff = "Line 64: Expected valid value to be accepted, got [\"Argument 1 of Conformance\\\\Tests\\\\AliasesDeclarationOrder\\\\Reverse::takeUsers expects list<array{id: Conformance\\\\Tests\\\\AliasesDeclarationOrder\\\\ReverseId, name: string}>, but list{array{id: 1, name: 'a'}} provided [InvalidArgument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [39]
+false_positive_lines = []
+over_rejected_lines = [64]

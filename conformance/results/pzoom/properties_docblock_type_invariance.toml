@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+properties_docblock_type_invariance.php:46: Property Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$widened has non-invariant type [NonInvariantDocblockPropertyType]
+properties_docblock_type_invariance.php:49: Property Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$narrowed has non-invariant type [NonInvariantDocblockPropertyType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

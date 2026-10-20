@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_method_parenthesized_union.php:39: Argument 1 of Conformance\\Tests\\PhpdocAdvancedMethodParenthesizedUnion\\Magic::takeUnion expects int|string, but true provided [InvalidArgument]
+phpdoc_advanced_method_parenthesized_union.php:41: Argument 1 of Conformance\\Tests\\PhpdocAdvancedMethodParenthesizedUnion\\Magic::takeInt expects int, but 'x' provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

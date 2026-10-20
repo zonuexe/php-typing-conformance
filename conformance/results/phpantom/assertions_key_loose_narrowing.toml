@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+assertions_key_loose_narrowing.php:41: Argument 1 ($value) expects 'foo', got 'foo'|int (int does not satisfy 'foo') [type_mismatch_argument]
+assertions_key_loose_narrowing.php:56: Argument 1 ($value) expects 'foo', got int [type_mismatch_argument]"""
+errors_diff = "Line 41: Expected silence (quiet probe), got [\"Argument 1 ($value) expects 'foo', got 'foo'|int (int does not satisfy 'foo') [type_mismatch_argument]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+objects_nullsafe_narrowing.php:37: potential null dereference when accessing variable 'user' [notSafeCall]
+objects_nullsafe_narrowing.php:37: potential attempt to access property through null [notNullSafetyPropertyFetch]
+objects_nullsafe_narrowing.php:43: potential null dereference when accessing variable 'user' [notSafeCall]
+objects_nullsafe_narrowing.php:43: potential attempt to access property through null [notNullSafetyPropertyFetch]"""
+errors_diff = "Line 37: Expected silence (quiet probe), got [\"potential null dereference when accessing variable 'user' [notSafeCall]\",\"potential attempt to access property through null [notNullSafetyPropertyFetch]\"]"
+notes = ""
+ignore_errors = []

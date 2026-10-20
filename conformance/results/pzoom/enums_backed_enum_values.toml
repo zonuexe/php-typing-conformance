@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+enums_backed_enum_values.php:40: Argument 1 of takesInt expects int, but 'active' provided [InvalidArgument]
+enums_backed_enum_values.php:42: Argument 1 of takesString expects string, but 3 provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

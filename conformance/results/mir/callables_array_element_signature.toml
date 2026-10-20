@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_array_element_signature.php:32: InvalidArgument: Argument $value of takesInt() expects 'int', got 'string' [MIR0201]
+callables_array_element_signature.php:33: InvalidArgument: Argument $arg0 of callable() expects 'string', got '1' [MIR0201]
+callables_array_element_signature.php:42: InvalidArgument: Argument $value of takesString() expects 'string', got 'int' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+objects_implicit_stringable.php:37: Argument '1' passed to Conformance\\Tests\\ObjectsImplicitStringable\\takesStringable() is expected to be of type Stringable, Conformance\\Tests\\ObjectsImplicitStringable\\CustomStringable given
+objects_implicit_stringable.php:42: Argument '1' passed to Conformance\\Tests\\ObjectsImplicitStringable\\takesStringable() is expected to be of type Stringable, Conformance\\Tests\\ObjectsImplicitStringable\\NotStringable given"""
+errors_diff = "Line 37: Expected valid value to be accepted, got [\"Argument '1' passed to Conformance\\\\Tests\\\\ObjectsImplicitStringable\\\\takesStringable() is expected to be of type Stringable, Conformance\\\\Tests\\\\ObjectsImplicitStringable\\\\CustomStringable given\"]"
+notes = ""
+ignore_errors = []

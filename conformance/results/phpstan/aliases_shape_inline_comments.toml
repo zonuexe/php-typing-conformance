@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+aliases_shape_inline_comments.php:42: Parameter #1 $user of method Conformance\\Tests\\AliasesShapeInlineComments\\User::take() expects array{id: int, name: string}, array{id: 1} given. [reported-from-level=5]
+aliases_shape_inline_comments.php:43: Parameter #1 $user of method Conformance\\Tests\\AliasesShapeInlineComments\\User::take() expects array{id: int, name: string}, array{id: 1, name: 2} given. [reported-from-level=5]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 5
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

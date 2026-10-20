@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_iterator_to_array.php:44: InvalidArgument: Argument $list of takesStringList() expects 'list<string>', got 'array<int, int>' [MIR0201]
+generics_iterator_to_array.php:54: InvalidArgument: Argument $array of takesIntMap() expects 'array<int, int>', got 'list<string>' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+aliases_static_members.php:65: InvalidArgument: Argument $value of takesString() expects 'string', got 'int' [MIR0201]
+aliases_static_members.php:67: InvalidArgument: Argument $value of takesInt() expects 'int', got 'string' [MIR0201]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

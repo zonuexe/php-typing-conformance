@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+generics_sensitive_parameter_value_inference.php:30: Expected type 'string'. Found 'mixed'. [P1006]
+generics_sensitive_parameter_value_inference.php:31: Expected type 'int'. Found 'mixed'. [P1006]
+generics_sensitive_parameter_value_inference.php:34: Expected type 'int'. Found 'mixed'. [P1006]
+generics_sensitive_parameter_value_inference.php:35: Expected type 'string'. Found 'mixed'. [P1006]"""
+errors_diff = """
+Line 30: Expected valid value to be accepted, got ["Expected type 'string'. Found 'mixed'. [P1006]"]
+Line 34: Expected valid value to be accepted, got ["Expected type 'int'. Found 'mixed'. [P1006]"]"""
+notes = ""
+ignore_errors = []

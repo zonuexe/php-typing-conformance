@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = "native_types_str_split_length.php:27: Argument #2 of this call to \\str_split is typically a literal or constant but isn't, but argument #1 (which is typically a variable) is a literal or constant. The arguments may be in the wrong order. [PhanParamSuspiciousOrder]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

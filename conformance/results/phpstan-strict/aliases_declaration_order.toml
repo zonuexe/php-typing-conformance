@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+aliases_declaration_order.php:61: Parameter #1 $users of method Conformance\\Tests\\AliasesDeclarationOrder\\Forward::takeUsers() expects list<array{id: int, name: string}>, array{array{id: 'x', name: 'a'}} given.
+aliases_declaration_order.php:65: Parameter #1 $users of method Conformance\\Tests\\AliasesDeclarationOrder\\Reverse::takeUsers() expects list<array{id: int, name: string}>, array{array{id: 'x', name: 'a'}} given."""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

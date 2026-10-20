@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+assertions_property_type_narrowing.php:35: potential null dereference when accessing property 'name' [notNullSafetyFunctionArgumentPropertyFetch]
+assertions_property_type_narrowing.php:42: potential null dereference when accessing property 'name' [notNullSafetyFunctionArgumentPropertyFetch]"""
+errors_diff = "Line 35: Expected silence (quiet probe), got [\"potential null dereference when accessing property 'name' [notNullSafetyFunctionArgumentPropertyFetch]\"]"
+notes = ""
+ignore_errors = []

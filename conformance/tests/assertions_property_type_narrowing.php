@@ -9,9 +9,9 @@ namespace Conformance\Tests\AssertionsPropertyTypeNarrowing;
  *
  * After `is_string($this->name)`, `$this->name` is `string` for the rest of
  * the branch. A tool that only narrows variables still sees `string|null` on
- * the property and rejects `takesString`. `resource` is not a native type
- * (`native_types_resource_argument`); this uses `string|null` so the file
- * parses.
+ * the property and rejects `takesString`, so honour is silence on the guarded
+ * call. The unguarded call shows the tool reports `string|null` to `string`
+ * at all; without it, silence on the guarded call would prove nothing.
  *
  * Source: PHPantom-dev/phpantom_lsp#466 (0.11.1).
  *
@@ -32,17 +32,14 @@ final class Named
             return '';
         }
 
-        takesString($this->name); // V: the property is string in this branch
-        takesInt($this->name); // E: string is not int
+        takesString($this->name); // Q: the property is string in this branch
 
         return $this->name;
     }
 
-    public function unguarded(): string
+    public function unguarded(): void
     {
-        takesString($this->name); // E?: string|null is not string without the guard
-
-        return $this->name ?? '';
+        takesString($this->name); // E: string|null is not string without the guard
     }
 }
 

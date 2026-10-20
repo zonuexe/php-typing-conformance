@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+enums_backed_enum_values.php:40: Argument 1 ($value) is Status::Active->value of type string but \\Conformance\\Tests\\EnumsBackedEnumValues\\takesInt() takes int defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/enums_backed_enum_values.php:35 [PhanTypeMismatchArgumentReal]
+enums_backed_enum_values.php:42: Argument 1 ($value) is Priority::High->value of type int but \\Conformance\\Tests\\EnumsBackedEnumValues\\takesString() takes string defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/enums_backed_enum_values.php:31 [PhanTypeMismatchArgumentReal]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

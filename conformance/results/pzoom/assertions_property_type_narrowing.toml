@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "assertions_property_type_narrowing.php:42: Argument 1 of takesString expects string, but possibly different type null|string provided [PossiblyNullArgument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

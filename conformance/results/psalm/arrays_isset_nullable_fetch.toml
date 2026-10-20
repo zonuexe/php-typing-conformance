@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_isset_nullable_fetch.php:30: int does not contain null [DocblockTypeContradiction]
+arrays_isset_nullable_fetch.php:30: Docblock-defined type int for $array['key'] is never null [RedundantConditionGivenDocblockType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

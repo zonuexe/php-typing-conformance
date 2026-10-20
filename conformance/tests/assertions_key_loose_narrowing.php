@@ -38,7 +38,7 @@ function takesInt($value): void
 function afterLooseFoo(string|int $key): void
 {
     if ($key == 'foo') {
-        takesFoo($key); // V
+        takesFoo($key); // Q: == 'foo' narrows the union to 'foo'
         echo $key === 'bar' ? 'bar' : 'foo'; // E?: after == 'foo', === 'bar' is always false
     }
 }
@@ -52,6 +52,6 @@ function remainingIsInt(string|int $key): void
         return;
     }
 
-    takesInt($key); // V: the remaining case is int
+    takesInt($key); // Q: the remaining case is int
     takesFoo($key); // E?: int is not 'foo'
 }

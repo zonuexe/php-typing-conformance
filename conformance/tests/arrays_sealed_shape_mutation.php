@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Conformance\Tests\ArraysSealedShapeMutation;
 
 /**
- * Adding or removing keys on a sealed shape parameter.
+ * Writing or unsetting a key changes the tracked shape.
  *
- * `arrays_shape_sealed_by_default` asks whether an extra key is admitted at
- * the call site. This file asks the same of mutation after the value is
- * received: `$shape['extra'] = …` and `unset($shape['foo'])` on
- * `array{foo: int}`.
+ * Arrays are values, so `$shape['extra'] = …` or `unset($shape['foo'])` on a
+ * local `array{foo: int}` is not itself an error: the variable just holds a
+ * different shape afterwards. The question is whether the tool tracks that
+ * shape, which shows when the mutated value is handed back to an
+ * `array{foo: int}` receiver. `arrays_shape_sealed_by_default` asks the
+ * extra-key question at a call site without the mutation.
  *
  * References:
  * - PHPStan array shapes
@@ -20,18 +22,42 @@ namespace Conformance\Tests\ArraysSealedShapeMutation;
 /**
  * @param array{foo: int} $shape
  */
-function mutatesSealedShape(array $shape): void
+function takesFoo(array $shape): void
 {
-    $shape['foo'] = 1; // V: declared key, matching type
-    $shape['extra'] = 'x'; // E?: a sealed array{foo: int} does not admit an extra key
-    unset($shape['foo']); // E?: unsetting a required key breaks the shape
 }
 
 /**
- * @param array{foo: int, ...} $shape
+ * @param array{foo: int} $shape
  */
-function mutatesUnsealedShape(array $shape): void // T: array{foo: int, ...}
+function overwritesDeclaredKey(array $shape): void
 {
-    $shape['extra'] = 'x'; // V: unsealed shapes admit extra keys
-    $shape['foo'] = 1; // V
+    $shape['foo'] = 2;
+    takesFoo($shape); // V: the declared key with a matching type keeps the shape
+}
+
+/**
+ * @param array{foo: int} $shape
+ */
+function changesDeclaredKeyType(array $shape): void
+{
+    $shape['foo'] = 'x';
+    takesFoo($shape); // E: foo now holds a string
+}
+
+/**
+ * @param array{foo: int} $shape
+ */
+function addsExtraKey(array $shape): void
+{
+    $shape['extra'] = 'x';
+    takesFoo($shape); // E?: a sealed array{foo: int} does not admit the extra key — sealedness is tool-dependent
+}
+
+/**
+ * @param array{foo: int} $shape
+ */
+function unsetsRequiredKey(array $shape): void
+{
+    unset($shape['foo']);
+    takesFoo($shape); // E: the required key foo is gone
 }

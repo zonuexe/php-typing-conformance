@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_iterator_to_array.php:44: Argument 1 of takesStringList expects list<string>, but parent type array<int, int> provided [ArgumentTypeCoercion]
+generics_iterator_to_array.php:54: Argument 1 of takesIntMap expects array<int, int>, but list<string> provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

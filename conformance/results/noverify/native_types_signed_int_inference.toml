@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "native_types_signed_int_inference.php:29: Class or interface named \\Conformance\\Tests\\NativeTypesSignedIntInference\\negative-int does not exist [undefinedClass]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [29]
+false_positive_lines = []
+over_rejected_lines = []

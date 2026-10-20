@@ -1,11 +1,13 @@
 status = "Unknown"
 conformance_automated = "Fail"
-expected_diagnostic_count = 4
+expected_diagnostic_count = 6
 output = ""
 errors_diff = """
-Line 35: Expected 1 error(s)
-Line 47: Expected 1 error(s)
-Line 60: Expected 1 error(s)
-Line 70: Expected 1 error(s)"""
+Line 37: Expected 1 error(s)
+Line 49: Expected 1 error(s)
+Line 62: Expected 1 error(s)
+Line 72: Expected 1 error(s)
+Line 81: Expected 1 error(s)
+Line 88: Expected 1 error(s)"""
 notes = ""
 ignore_errors = []

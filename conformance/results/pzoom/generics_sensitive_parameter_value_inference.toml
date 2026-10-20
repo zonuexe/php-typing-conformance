@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+generics_sensitive_parameter_value_inference.php:31: Argument 1 of takesInt expects int, but 'secret' provided [InvalidArgument]
+generics_sensitive_parameter_value_inference.php:35: Argument 1 of takesString expects string, but 1 provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+callables_array_element_signature.php:32: Parameter '$closures[0]('hello')' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+callables_array_element_signature.php:32: Parameter '$closures[0]('hello')' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+callables_array_element_signature.php:42: Parameter '$closures['key'](42)' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
+callables_array_element_signature.php:42: Parameter '$closures['key'](42)' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "2/3"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

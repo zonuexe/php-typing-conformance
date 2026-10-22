@@ -30,8 +30,8 @@ version = "6.0.11"
 date = "2026-10-15"
 
 [psalm]
-version = "6.20.0"
-date = "2026-10-09"
+version = "6.20.1"
+date = "2026-10-20"
 
 [phpstan]
 version = "2.3.1"
@@ -58,8 +58,8 @@ version = "1.58.2"
 date = "2026-10-19"
 
 [phpy]
-version = "1.0.19439"
-date = "2026-10-19"
+version = "1.0.19461"
+date = "2026-10-22"
 
 [phpantom]
 version = "0.11.1"
@@ -80,12 +80,12 @@ date = "2026-09-21"
 # Language servers.
 
 [devsense-php-ls]
-version = "1.0.19439"
-date = "2026-10-19"
+version = "1.0.19461"
+date = "2026-10-22"
 
 [php-lsp]
-version = "0.26.0"
-date = "2026-10-02"
+version = "0.27.0"
+date = "2026-10-22"
 
 # Reference-only: function-specific and historical servers are listed, not
 # measured. Laravel LSP is function-specific but still launched.
@@ -99,8 +99,8 @@ version = "0.0.32"
 date = "2026-09-15"
 
 [symfony-lsp]
-version = "0.24.0"
-date = "2026-10-17"
+version = "0.24.2"
+date = "2026-10-22"
 
 [php-language-server]
 version = "5.4.6"

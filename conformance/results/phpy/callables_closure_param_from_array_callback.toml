@@ -1,10 +1,10 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = ""
-errors_diff = """
-Line 34: Expected 1 error(s)
-Line 41: Expected 1 error(s)
-Line 48: Expected 1 error(s)"""
+output = """
+callables_closure_param_from_array_callback.php:34: Call to unknown method: Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing()
+callables_closure_param_from_array_callback.php:41: Call to unknown method: Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing()
+callables_closure_param_from_array_callback.php:48: Call to unknown method: Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User::missing()"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

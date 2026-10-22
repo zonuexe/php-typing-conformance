@@ -1,6 +1,6 @@
 tool = "psalm"
-version = "Psalm 6.20.0@804f03c0c183d149fcd4b8c7c0c9b3fbf836d34c"
-server_info = "Psalm Language Server 6.20.0@804f03c0c183d149fcd4b8c7c0c9b3fbf836d34c"
+version = "Psalm 6.20.1@376425b8e67b79773add388e16b4f6be5693dc87"
+server_info = "Psalm Language Server 6.20.1@376425b8e67b79773add388e16b4f6be5693dc87"
 dynamic_registrations = []
 raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":1,\"willSave\":null,\"willSaveWaitUntil\":null,\"save\":{\"includeText\":true}},\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":false,\"triggerCharacters\":[\"$\",\">\",\":\",\"[\",\"(\",\",\",\" \"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":null,\"implementationProvider\":null,\"referencesProvider\":false,\"documentHighlightProvider\":false,\"documentSymbolProvider\":false,\"workspaceSymbolProvider\":false,\"codeActionProvider\":null,\"codeLensProvider\":null,\"documentFormattingProvider\":null,\"documentRangeFormattingProvider\":null,\"documentOnTypeFormattingProvider\":null,\"renameProvider\":null,\"executeCommandProvider\":null,\"xworkspaceReferencesProvider\":null,\"xdefinitionProvider\":null,\"dependenciesProvider\":null}"
 navigation_corpus = "psy/psysh@0e8ec1af5990"

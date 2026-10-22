@@ -1,18 +1,16 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_fallback_decimal_int_string.php:25: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\returnsDecimalIntString [InvalidDocblock]
-phpdoc_advanced_fallback_decimal_int_string.php:25: Method Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\returnsDecimalIntString does not have a return type, expecting '123' [MissingReturnType]
-phpdoc_advanced_fallback_decimal_int_string.php:35: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\decimal-int-string in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString [InvalidDocblock]
-phpdoc_advanced_fallback_decimal_int_string.php:37: Parameter $value has no provided type [MissingParamType]
-phpdoc_advanced_fallback_decimal_int_string.php:42: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsString cannot be mixed, expecting string [MixedArgument]"""
-errors_diff = "Line 42: Expected valid value to be accepted, got [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackDecimalIntString\\\\acceptsString cannot be mixed, expecting string [MixedArgument]\"]"
+phpdoc_advanced_fallback_decimal_int_string.php:50: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString expects decimal-int-string, but '007' provided [InvalidArgument]
+phpdoc_advanced_fallback_decimal_int_string.php:51: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString expects decimal-int-string, but '+1' provided [InvalidArgument]
+phpdoc_advanced_fallback_decimal_int_string.php:54: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackDecimalIntString\\acceptsDecimalIntString expects decimal-int-string, but 'abc' provided [InvalidArgument]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
-enforcement = "none"
-enforced_lines = "0/3"
-unrecognized_lines = [25, 35, 37]
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

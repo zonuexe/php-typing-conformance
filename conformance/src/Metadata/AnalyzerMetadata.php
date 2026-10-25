@@ -60,7 +60,7 @@ abstract class AnalyzerMetadata
      *        recorded in results/<tool>/version.toml; the evaluated release is
      *        the version this suite actually ran, kept alongside the curated
      *        latest release because the point of the report is often that they
-     *        differ (psalm at 6.20.1 while the next line is 7.0.0-rc8)
+     *        differ (psalm at 6.20.1 while the next line is 7.0.0-rc10)
      *        is the everyday case)
      */
     public function __construct(

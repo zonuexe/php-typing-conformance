@@ -1,5 +1,5 @@
 {
     "require-dev": {
-        "vimeo/psalm": "^7.0.0-rc8@RC"
+        "vimeo/psalm": "^7.0.0-rc10@RC"
     }
 }

@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 10
-output = "regressions_trait_property_type_conflict.php:30: MissingConstructor: Class Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\Composed has uninitialized properties but no constructor [MIR1507]"
-errors_diff = ""
-notes = ""
+output = """
+regressions_trait_property_type_conflict.php:30: MissingConstructor: Class Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\Composed has uninitialized properties but no constructor [MIR1507]
+regressions_trait_property_type_conflict.php:33: CompileError: Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\LeftTrait and Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\RightTrait define the same property ($prop) in the composition of Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\Composed. However, the definition differs and is considered incompatible. Class was composed [trait-property-conflict] [MIR1401]"""
+errors_diff = "Lines 22, 27, 30, 32, 33: Expected exactly one error (tag conflict)"
+notes = "0.89.0 reports CompileError (MIR1401, trait-property-conflict) at the class `use` line, in addition to MissingConstructor. The test wants exactly one conflict-tagged error per marked line."
 ignore_errors = []

@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = "properties_override_attribute.php:56: InvalidAttribute: Attribute Override cannot be used on this target [MIR1600]"
-errors_diff = "Lines 50, 51: Expected error (tag missing)"
+output = """
+properties_override_attribute.php:51: InvalidOverride: Conformance\\Tests\\PropertiesOverrideAttribute\\MissingParentProperty::$other has #[\\Override] attribute, but no matching parent property exists [MIR0708]
+properties_override_attribute.php:56: CompileError: Attribute "Override" cannot target class constant (allowed targets: method, property) [attribute-target-mismatch] [MIR1401]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

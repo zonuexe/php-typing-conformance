@@ -112,9 +112,9 @@ final class Psalm extends AnalyzerMetadata
 
     protected function versionPattern(): ?string
     {
-        // The suffix matters for the 7.x line: the version cell must show
-        // 7.0.0-rc22, not 7.0.0, so the release link points at the tag
-        // that actually exists.
+        // The suffix matters for prerelease tags: the version cell must show
+        // 7.0.0-rcN, not 7.0.0, so the release link points at the tag that
+        // actually exists. Stable 7.0.0 matches without a suffix.
         return '/Psalm\s+(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)/';
     }
 

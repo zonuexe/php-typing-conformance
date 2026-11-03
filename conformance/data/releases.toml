@@ -30,12 +30,12 @@ version = "6.0.11"
 date = "2026-10-15"
 
 [psalm]
-version = "7.0.0"
-date = "2026-11-02"
+version = "7.0.1"
+date = "2026-11-03"
 
 [phpstan]
-version = "2.3.4"
-date = "2026-10-28"
+version = "2.3.5"
+date = "2026-11-03"
 
 [intelephense]
 version = "1.18.5"
@@ -66,8 +66,8 @@ version = "0.11.1"
 date = "2026-10-07"
 
 [mir]
-version = "0.89.0"
-date = "2026-10-31"
+version = "0.90.0"
+date = "2026-11-03"
 
 [pzoom]
 version = "unversioned"

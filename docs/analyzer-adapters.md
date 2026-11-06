@@ -142,16 +142,16 @@ issues were found and is treated as success.
 ### psalm-next — the 7.x line, folded into the psalm column
 
 A second Psalm installation (`vendor-bin/psalm-next`, currently
-`7.0.1`) run through the same adapter with a config of its own
+`7.0.4`) run through the same adapter with a config of its own
 (`conformance/psalm-next.xml` — a copy of `psalm.xml` plus the 7.x-only
 purity and taint suppresses, which Psalm 6's schema rejects). It is a configuration
 of the psalm column's metadata: the reference and release tables describe
 Psalm once, the index matrix does not give it a column of its own (the
-psalm version cell names it on a second line — `6.20.7 / next:
-7.0.1`), and the detail pages show it as a full row. Only the CLI is
+psalm version cell names it on a second line — `6.20.9 / next:
+7.0.4`), and the detail pages show it as a full row. Only the CLI is
 measured — no LSP probe for the next line. The 7.x-only purity findings
 (`MissingPureAnnotation`, `MissingAbstractPureAnnotation`) are suppressed
-in `psalm-next.xml`; and the version banner reads `Psalm 7.0.1@…`,
+in `psalm-next.xml`; and the version banner reads `Psalm 7.0.4@…`,
 which the version pattern still parses with a prerelease suffix so a
 future `7.0.0-rcN` would link to the tag that exists.
 
@@ -386,19 +386,21 @@ json -d conformance/tests`, has particulars of its own:
 - The version banner reads `PhpStorm <build>` instead of `Qodana <build>`:
   the same build number, naming what actually ran.
 
-Measured against PhpStorm 2026.2.3 (262.10968.76) and the corpus the committed
-results were taken from, 244 of the 248 results came out byte-identical. The
-other four are `debug_*` rows that call PHPStan's and Mago's debug functions:
-that run's IDE did not resolve the `PHPStan` and `Mago` namespaces from
-`vendor-bin/` and added an "Undefined namespace" line to each, with every
-verdict unchanged. Which namespaces resolve depends on what the IDE indexes,
-not on the build.
+Measured against PhpStorm 2026.2.4 (262.11879.104). Versus the 2026.2.3
+(262.10968.76) column, no verdict moved. Five files changed wording only:
+the four `debug_*` rows that call PHPStan's and Mago's debug functions
+dropped their "Undefined namespace" lines — this run's IDE resolved those
+namespaces from `vendor-bin/` — and `phpdoc_advanced_method_parenthesized_union`
+gained a `PhpStrictTypeCheckingInspection` on the same `$magic->takeInt('x')`
+line that already had `PhpParamsInspection`. Which namespaces resolve depends
+on what the IDE indexes, not on the build.
 
 The `Falls back to …` statuses in this column were curated against PhpStorm
 2026.2.3, from PhpStorm's own account rather than from the corpus probes
-alone. Each spelling was declared on a PHPDoc-only parameter and called with
-the same set of values as a parameter of its candidate base type, through the
-headless MCP server (`get_file_problems`, see `docs/language-servers.md`).
+alone. 2026.2.4 moved no verdicts on those rows. Each spelling was declared
+on a PHPDoc-only parameter and called with the same set of values as a
+parameter of its candidate base type, through the headless MCP server
+(`get_file_problems`, see `docs/language-servers.md`).
 There the parameter inspection names the type it checks against — "Expected
 parameter of type 'int', 'string' provided" — and a spelling counts as widened
 only when it is checked under the base type's name and rejects exactly what

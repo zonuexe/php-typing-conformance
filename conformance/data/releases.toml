@@ -30,8 +30,8 @@ version = "6.0.11"
 date = "2026-10-15"
 
 [psalm]
-version = "7.0.1"
-date = "2026-11-03"
+version = "7.0.4"
+date = "2026-11-06"
 
 [phpstan]
 version = "2.3.5"
@@ -50,8 +50,8 @@ version = "0.5.5"
 date = "2025-04-22"
 
 [qodana]
-version = "262.11879.104"
-date = "2026-10-30"
+version = "263.7307.215"
+date = "2026-11-05"
 
 [mago]
 version = "1.59.0"
@@ -66,8 +66,8 @@ version = "0.11.1"
 date = "2026-10-07"
 
 [mir]
-version = "0.90.0"
-date = "2026-11-03"
+version = "0.91.0"
+date = "2026-11-05"
 
 [pzoom]
 version = "unversioned"
@@ -84,8 +84,8 @@ version = "1.0.19497"
 date = "2026-11-01"
 
 [php-lsp]
-version = "0.30.0"
-date = "2026-11-01"
+version = "0.31.0"
+date = "2026-11-06"
 
 # Reference-only: function-specific and historical servers are listed, not
 # measured. Laravel LSP is function-specific but still launched.

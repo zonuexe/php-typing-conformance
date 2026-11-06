@@ -297,6 +297,13 @@ Traps, each now handled in `PhpStormProbeRunner` or `PhpStormMcpClient`:
   for the disposed one to finish indexing. Opening a project in the GUI from
   the command line replaces the open one the same way. Each session therefore
   gets its own instance.
+- **A second instance needs a settle.** `close()` waits until `pgrep -x phpstorm`
+  is empty, then sleeps ten seconds before the next `mcpServer`. Without that
+  pause, the second instance reaches smart mode and `get_symbol_info` returns
+  only documentation of the call site — no `declarationFile` — for the whole
+  `waitUntilResolved` window. Separate OS processes work because of the delay
+  between them; the same PHP process with two runners does not, until the
+  settle. Seen on 2026.2.4 going from the fixtures session to psysh.
 - **Sessions are tied to the connection.** The server forgets an
   `mcp-session-id` once the connection that opened it closes. The client keeps
   one curl handle alive and re-handshakes once if a request comes back 404.

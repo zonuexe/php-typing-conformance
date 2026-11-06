@@ -65,6 +65,15 @@ final class PhpStormProbeRunner
     /** The methods that change the file they are asked about. */
     private const EDITING = ['textDocument/rename', 'textDocument/formatting'];
 
+    /**
+     * Seconds to wait after the previous JVM has vanished before starting
+     * another mcpServer. Zero is not enough: a second instance started in
+     * the same process immediately after close() reaches smart mode, then
+     * get_symbol_info returns documentation without a declarationFile for
+     * the whole waitUntilResolved window. Ten seconds is enough on 2026.2.4.
+     */
+    private const SETTLE_AFTER_CLOSE_SECONDS = 10;
+
     private ?PhpStormMcpClient $client = null;
 
     /** @var resource|null the headless instance serving $client */
@@ -148,18 +157,39 @@ final class PhpStormProbeRunner
         $this->client = null;
         $process = $this->process;
         $this->process = null;
-        if ($process === null) {
-            return;
+        if ($process !== null) {
+            proc_terminate($process);
+            for ($i = 0; $i < 60 && proc_get_status($process)['running']; $i++) {
+                usleep(500000);
+            }
+            if (proc_get_status($process)['running']) {
+                proc_terminate($process, 9);
+            }
+            proc_close($process);
+            $this->waitUntilLauncherGone();
+            sleep(self::SETTLE_AFTER_CLOSE_SECONDS);
+        } else {
+            $this->waitUntilLauncherGone();
         }
+    }
 
-        proc_terminate($process);
-        for ($i = 0; $i < 60 && proc_get_status($process)['running']; $i++) {
-            usleep(500000);
-        }
-        if (proc_get_status($process)['running']) {
-            proc_terminate($process, 9);
-        }
-        proc_close($process);
+    private function waitUntilLauncherGone(int $timeoutSeconds = 60): void
+    {
+        $deadline = time() + $timeoutSeconds;
+        do {
+            $pids = [];
+            exec('pgrep -x phpstorm 2>/dev/null', $pids);
+            if ($pids === []) {
+                usleep(500000);
+
+                return;
+            }
+            usleep(250000);
+        } while (time() < $deadline);
+
+        throw new RuntimeException(
+            'Previous PhpStorm instance is still running after close(); the next session would index unusably.',
+        );
     }
 
     /**
@@ -545,9 +575,12 @@ final class PhpStormProbeRunner
         $last = '';
         while (time() < $deadline) {
             try {
-                if ($this->declarationOf($project, $ready['file'], $ready['line'], $ready['character'] + 1) !== null) {
+                $info = $this->symbolInfo($project, $ready);
+                $declaration = $info['symbolInfo'] ?? null;
+                if (is_array($declaration) && is_string($declaration['declarationFile'] ?? null) && is_int($declaration['declarationLine'] ?? null)) {
                     return;
                 }
+                $last = json_encode($info);
             } catch (ProbeFailed $e) {
                 $last = $e->getMessage();
             }

@@ -1,9 +1,13 @@
 status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
-output = ""
+output = """
+generics_array_iterator_constructor_inference.php:34: Parameter '$iterator->current()' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+generics_array_iterator_constructor_inference.php:35: Parameter '$iterator->current()' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+generics_array_iterator_constructor_inference.php:42: Parameter '$iterator->current()' type is not compatible with declaration [PhpStrictTypeCheckingInspection]
+generics_array_iterator_constructor_inference.php:43: Parameter '$iterator->current()' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
 errors_diff = """
-Line 35: Expected 1 error(s)
-Line 43: Expected 1 error(s)"""
+Line 34: Expected valid value to be accepted, got ["Parameter '$iterator->current()' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"]
+Line 42: Expected valid value to be accepted, got ["Parameter '$iterator->current()' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"]"""
 notes = ""
 ignore_errors = []

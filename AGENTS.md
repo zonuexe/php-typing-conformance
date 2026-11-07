@@ -189,13 +189,13 @@ Current checker columns in the report, in display order:
 - `steins`
 
 `psalm-next` is a second Psalm installation running the next major line
-(`vendor-bin/psalm-next`, currently 7.0.4) through the same adapter
+(`vendor-bin/psalm-next`, currently 7.0.5) through the same adapter
 and config. It is a configuration of `psalm` for the metadata and release
 tables, and the evaluator makes `// E<psalm>` expectations apply to it too —
 where the 7.x line diverges, that shows up as a missed or unexpected
 diagnostic rather than a marker the column never saw. It is not a column of
 the index matrix; the psalm version cell names the next line on its second
-line (`6.20.9 / next: 7.0.4`), and the detail pages carry it as a
+line (`6.20.9 / next: 7.0.5`), and the detail pages carry it as a
 full row. Only the CLI is measured; there is no LSP probe for the next line.
 The 7.x-only purity findings (`MissingPureAnnotation`,
 `MissingAbstractPureAnnotation`) are suppressed in
@@ -215,14 +215,13 @@ the same inspections:
 - Headless: with PhpStorm closed and `composer install` done at the root,
   `make run-qodana PHPSTORM=/path/to/phpstorm` runs PhpStorm's command-line
   inspector (`phpstorm inspect`) with the pinned project profile and reads its
-  JSON output. Against PhpStorm 2026.2.4 (262.11879.104) versus the 2026.2.3
-  column, no verdict moved. Five files changed wording only: four `debug_*`
-  rows dropped "Undefined namespace" for the PHPStan and Mago debug functions
-  (this run resolved those namespaces from `vendor-bin/`), and
-  `phpdoc_advanced_method_parenthesized_union` gained a
-  `PhpStrictTypeCheckingInspection` on the same line as `PhpParamsInspection`.
-  Whether those namespaces resolve depends on what the IDE indexes from
-  `vendor-bin/`, not on the build.
+  JSON output. Against PhpStorm 2026.3 (263.7307.215) versus the 2026.2.4
+  column, every Pass/Fail cell stayed. `generics_array_iterator_constructor_inference`
+  remains Fail: 2026.3 reports `PhpStrictTypeCheckingInspection` on the
+  valid-control `$iterator->current()` lines as well as the expected mismatches.
+  Four `debug_*` rows dropped leftover "Undefined namespace" lines (this run
+  resolved those namespaces from `vendor-bin/`). Which namespaces resolve
+  depends on what the IDE indexes from `vendor-bin/`.
   Qodana's own headless starter (`phpstorm qodana`) is no substitute: it
   relaunches the IDE as "Qodana for PHP" and wants a Qodana licence.
 

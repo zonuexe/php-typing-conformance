@@ -70,7 +70,8 @@ final class PhpStormProbeRunner
      * another mcpServer. Zero is not enough: a second instance started in
      * the same process immediately after close() reaches smart mode, then
      * get_symbol_info returns documentation without a declarationFile for
-     * the whole waitUntilResolved window. Ten seconds is enough on 2026.2.4.
+     * the whole waitUntilResolved window. Ten seconds is enough on 2026.2.4
+     * and 2026.3.
      */
     private const SETTLE_AFTER_CLOSE_SECONDS = 10;
 

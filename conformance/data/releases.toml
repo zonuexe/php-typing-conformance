@@ -30,8 +30,8 @@ version = "6.0.11"
 date = "2026-10-15"
 
 [psalm]
-version = "7.0.5"
-date = "2026-11-07"
+version = "7.3.1"
+date = "2026-11-12"
 
 [phpstan]
 version = "2.3.5"
@@ -66,8 +66,8 @@ version = "0.11.1"
 date = "2026-10-07"
 
 [mir]
-version = "0.91.0"
-date = "2026-11-05"
+version = "0.99.0"
+date = "2026-11-12"
 
 [pzoom]
 version = "unversioned"
@@ -80,8 +80,8 @@ date = "2026-09-21"
 # Language servers.
 
 [devsense-php-ls]
-version = "1.0.19497"
-date = "2026-11-01"
+version = "1.0.19523"
+date = "2026-11-09"
 
 [php-lsp]
 version = "0.31.0"

@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = ""
-errors_diff = "Line 41: Expected 1 error(s)"
+output = "directives_nodiscard_return.php:41: NoDiscardReturnIgnored: The return value of function Conformance\\Tests\\DirectivesNodiscardReturn\\mintId() should either be used or intentionally ignored by casting it as (void) [MIR1514]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_phpstan_require_extends.php:29: InvalidExtendClass: Class Conformance\\Tests\\PhpdocAdvancedPhpstanRequireExtends\\BadChild implements Conformance\\Tests\\PhpdocAdvancedPhpstanRequireExtends\\NeedsParent, which requires extending Conformance\\Tests\\PhpdocAdvancedPhpstanRequireExtends\\RequiredParent [MIR0704]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

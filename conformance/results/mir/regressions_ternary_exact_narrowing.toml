@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
-errors_diff = "Line 38: Expected 1 error(s)"
+output = """
+regressions_ternary_exact_narrowing.php:35: PossiblyInvalidArgument: Argument $value of takesFalse() expects 'false', possibly different type 'bool' provided [MIR0105]
+regressions_ternary_exact_narrowing.php:38: PossiblyInvalidArgument: Argument $value of takesFalse() expects 'false', possibly different type 'bool' provided [MIR0105]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

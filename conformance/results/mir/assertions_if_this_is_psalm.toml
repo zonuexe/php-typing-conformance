@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = ""
+output = "assertions_if_this_is_psalm.php:53: IfThisIsMismatch: Cannot call Conformance\\Tests\\AssertionsIfThisIsPsalm\\Box::needsInt() — @if-this-is requires $this to be 'Conformance\\Tests\\AssertionsIfThisIsPsalm\\Box<int>', but it is 'Conformance\\Tests\\AssertionsIfThisIsPsalm\\Box<string>' [MIR0902]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

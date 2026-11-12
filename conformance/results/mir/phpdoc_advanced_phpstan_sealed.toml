@@ -1,13 +1,13 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_phpstan_sealed.php:33: InvalidExtendClass: Class Conformance\\Tests\\PhpdocAdvancedPhpstanSealed\\Forbidden cannot extend sealed Conformance\\Tests\\PhpdocAdvancedPhpstanSealed\\Base, which allows only Conformance\\Tests\\PhpdocAdvancedPhpstanSealed\\AllowedOne|Conformance\\Tests\\PhpdocAdvancedPhpstanSealed\\AllowedTwo [MIR0704]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

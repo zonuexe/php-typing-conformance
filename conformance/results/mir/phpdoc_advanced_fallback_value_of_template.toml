@@ -1,15 +1,8 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-phpdoc_advanced_fallback_value_of_template.php:33: InvalidReturnType: Return type 'value-of<T>' is not compatible with declared 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplate\\T>' [MIR0200]
-phpdoc_advanced_fallback_value_of_template.php:55: InvalidArgument: Argument $value of acceptsInt() expects 'int', got 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplate\\T>' [MIR0201]
-phpdoc_advanced_fallback_value_of_template.php:59: InvalidArgument: Argument $level of acceptsLevel() expects '1|10', got 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplate\\T>' [MIR0201]
-phpdoc_advanced_fallback_value_of_template.php:62: InvalidArgument: Argument $value of acceptsString() expects 'string', got 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplate\\T>' [MIR0201]"""
-errors_diff = """
-Line 33: Expected valid value to be accepted, got ["InvalidReturnType: Return type 'value-of<T>' is not compatible with declared 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplate\\\\T>' [MIR0200]"]
-Line 55: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsInt() expects 'int', got 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplate\\\\T>' [MIR0201]"]
-Line 59: Expected valid value to be accepted, got ["InvalidArgument: Argument $level of acceptsLevel() expects '1|10', got 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplate\\\\T>' [MIR0201]"]"""
+output = "phpdoc_advanced_fallback_value_of_template.php:62: InvalidArgument: Argument $value of acceptsString() expects 'string', got '1|10' [MIR0201]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
@@ -17,4 +10,4 @@ enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [55, 59]
+over_rejected_lines = []

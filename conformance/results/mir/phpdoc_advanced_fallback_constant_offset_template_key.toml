@@ -2,19 +2,20 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_constant_offset_template_key.php:46: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE[T]' does not exist [MIR1505]
-phpdoc_advanced_fallback_constant_offset_template_key.php:53: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
-phpdoc_advanced_fallback_constant_offset_template_key.php:54: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
-phpdoc_advanced_fallback_constant_offset_template_key.php:57: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]
-phpdoc_advanced_fallback_constant_offset_template_key.php:58: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE>' [MIR0900]"""
+phpdoc_advanced_fallback_constant_offset_template_key.php:52: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]
+phpdoc_advanced_fallback_constant_offset_template_key.php:53: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]
+phpdoc_advanced_fallback_constant_offset_template_key.php:54: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]
+phpdoc_advanced_fallback_constant_offset_template_key.php:57: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]
+phpdoc_advanced_fallback_constant_offset_template_key.php:58: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]"""
 errors_diff = """
-Line 53: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"immutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE>' [MIR0900]"]
-Line 54: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"mutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\\\ID_TABLE>' [MIR0900]"]"""
+Line 52: Expected valid value to be accepted, got ["PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]"]
+Line 53: Expected valid value to be accepted, got ["PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]"]
+Line 54: Expected valid value to be accepted, got ["PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]"]"""
 notes = "Accepts the spelling and then carries `ID_TABLE[T]` around unevaluated, handing it to every call site: all five calls are rejected, the three correct ones included."
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
-unrecognized_lines = [46]
+unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

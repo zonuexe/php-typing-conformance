@@ -1,27 +1,17 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-phpdoc_advanced_fallback_non_empty_scalar.php:31: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar' does not exist [MIR1505]
-phpdoc_advanced_fallback_non_empty_scalar.php:48: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '1' [MIR0201]
-phpdoc_advanced_fallback_non_empty_scalar.php:49: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '1.5' [MIR0201]
-phpdoc_advanced_fallback_non_empty_scalar.php:50: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '"x"' [MIR0201]
-phpdoc_advanced_fallback_non_empty_scalar.php:51: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got 'true' [MIR0201]
-phpdoc_advanced_fallback_non_empty_scalar.php:54: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '0' [MIR0201]
-phpdoc_advanced_fallback_non_empty_scalar.php:55: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '0' [MIR0201]
-phpdoc_advanced_fallback_non_empty_scalar.php:56: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '""' [MIR0201]
-phpdoc_advanced_fallback_non_empty_scalar.php:57: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got 'false' [MIR0201]
-phpdoc_advanced_fallback_non_empty_scalar.php:60: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonEmptyScalar\\non-empty-scalar', got '"0"' [MIR0201]"""
-errors_diff = """
-Line 48: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar', got '1' [MIR0201]"]
-Line 49: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar', got '1.5' [MIR0201]"]
-Line 50: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar', got '\\"x\\"' [MIR0201]"]
-Line 51: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonEmptyScalar\\\\non-empty-scalar', got 'true' [MIR0201]"]"""
+phpdoc_advanced_fallback_non_empty_scalar.php:54: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'non-falsy-string|negative-int|positive-int|float|true', got '0' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:56: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'non-falsy-string|negative-int|positive-int|float|true', got '""' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:57: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'non-falsy-string|negative-int|positive-int|float|true', got 'false' [MIR0201]
+phpdoc_advanced_fallback_non_empty_scalar.php:60: InvalidArgument: Argument $value of acceptsNonEmptyScalar() expects 'non-falsy-string|negative-int|positive-int|float|true', got '"0"' [MIR0201]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
-enforcement = "enforced"
-enforced_lines = "5/5"
-unrecognized_lines = [31]
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "4/5"
+unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [48, 49, 50, 51]
+over_rejected_lines = []

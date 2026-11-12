@@ -1,13 +1,11 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-native_types_resource_argument.php:32: MixedAssignment: Variable $handle is assigned a mixed type [MIR1201]
-native_types_resource_argument.php:38: MixedArgument: Argument $value of takesString() is mixed [MIR1200]
-native_types_resource_argument.php:39: MixedArgument: Argument $value of takesInt() is mixed [MIR1200]
-native_types_resource_argument.php:40: MixedArgument: Argument $value of takesBool() is mixed [MIR1200]"""
-errors_diff = """
-Line 16: Expected 1 error(s)
-Line 32: Unexpected errors ["MixedAssignment: Variable $handle is assigned a mixed type [MIR1201]"]"""
+native_types_resource_argument.php:16: NativeResourceType: 'resource' is not a native type; PHP reads it as class 'Conformance\\Tests\\NativeTypesResourceArgument\\resource', which no resource satisfies [MIR0236]
+native_types_resource_argument.php:38: InvalidArgument: Argument $value of takesString() expects 'string', got 'resource' [MIR0201]
+native_types_resource_argument.php:39: InvalidArgument: Argument $value of takesInt() expects 'int', got 'resource' [MIR0201]
+native_types_resource_argument.php:40: InvalidArgument: Argument $value of takesBool() expects 'bool', got 'resource' [MIR0201]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

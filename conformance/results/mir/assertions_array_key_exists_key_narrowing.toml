@@ -1,9 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 7
 output = """
-assertions_array_key_exists_key_narrowing.php:40: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]
-assertions_array_key_exists_key_narrowing.php:43: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]"""
-errors_diff = "Line 40: Expected silence (quiet probe), got [\"PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]\"]"
+assertions_array_key_exists_key_narrowing.php:43: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'string|int' provided [MIR0105]
+assertions_array_key_exists_key_narrowing.php:64: ArgumentTypeCoercion: Argument $key of takesAB() expects '"a"|"b"', got 'string' — coercion may fail at runtime [MIR0225]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

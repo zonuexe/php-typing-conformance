@@ -1,9 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = ""
-errors_diff = """
-Lines 45, 46: Expected error (tag widened)
-Lines 48, 49: Expected error (tag narrowed)"""
+output = """
+properties_docblock_type_invariance.php:46: NonInvariantDocblockPropertyType: Docblock type 'Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ParentInterface|null' of Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$widened is not invariant with 'Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ChildInterface|null' in class Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Base [MIR0721]
+properties_docblock_type_invariance.php:49: NonInvariantDocblockPropertyType: Docblock type 'Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ChildInterface|null' of Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Child::$narrowed is not invariant with 'Conformance\\Tests\\PropertiesDocblockTypeInvariance\\ParentInterface|null' in class Conformance\\Tests\\PropertiesDocblockTypeInvariance\\Base [MIR0721]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

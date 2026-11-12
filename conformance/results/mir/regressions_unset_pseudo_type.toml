@@ -1,17 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-regressions_unset_pseudo_type.php:48: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' does not exist [MIR1505]
-regressions_unset_pseudo_type.php:51: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' does not exist [MIR1505]
-regressions_unset_pseudo_type.php:54: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' does not exist [MIR1505]
-regressions_unset_pseudo_type.php:54: RedundantCondition: Condition is always true, so the check is redundant [MIR0400]"""
-errors_diff = "Line 54: Expected silence (quiet probe), got [\"UndefinedDocblockClass: Docblock type 'Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset' does not exist [MIR1505]\",\"RedundantCondition: Condition is always true, so the check is redundant [MIR0400]\"]"
+regressions_unset_pseudo_type.php:48: PossiblyNullMethodCall: Cannot call method format() on possibly null value [MIR0107]
+regressions_unset_pseudo_type.php:51: PossiblyNullArgument: Argument $object of date_format() might be null [MIR0104]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
-enforcement = "partial"
-enforced_lines = "4/5"
-unrecognized_lines = [48, 51, 54]
+enforcement = "enforced"
+enforced_lines = "5/5"
+unrecognized_lines = [48, 51]
 false_positive_lines = []
 over_rejected_lines = []

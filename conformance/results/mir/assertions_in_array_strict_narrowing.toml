@@ -1,10 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = """
-assertions_in_array_strict_narrowing.php:37: PossiblyNullMethodCall: Cannot call method name() on possibly null value [MIR0107]
-assertions_in_array_strict_narrowing.php:45: PossiblyNullMethodCall: Cannot call method missing() on possibly null value [MIR0107]
-assertions_in_array_strict_narrowing.php:45: UndefinedMethod: Method Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User::missing() does not exist [MIR0004]"""
-errors_diff = "Line 37: Expected silence (quiet probe), got [\"PossiblyNullMethodCall: Cannot call method name() on possibly null value [MIR0107]\"]"
+output = "assertions_in_array_strict_narrowing.php:45: UndefinedMethod: Method Conformance\\Tests\\AssertionsInArrayStrictNarrowing\\User::missing() does not exist [MIR0004]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

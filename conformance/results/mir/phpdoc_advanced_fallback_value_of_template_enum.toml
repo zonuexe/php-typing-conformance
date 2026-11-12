@@ -1,15 +1,8 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-phpdoc_advanced_fallback_value_of_template_enum.php:39: InvalidReturnType: Return type 'string' is not compatible with declared 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\T>' [MIR0200]
-phpdoc_advanced_fallback_value_of_template_enum.php:58: InvalidArgument: Argument $value of acceptsString() expects 'string', got 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\T>' [MIR0201]
-phpdoc_advanced_fallback_value_of_template_enum.php:62: InvalidArgument: Argument $value of acceptsHearts() expects '"hearts"', got 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\T>' [MIR0201]
-phpdoc_advanced_fallback_value_of_template_enum.php:65: InvalidArgument: Argument $value of acceptsInt() expects 'int', got 'value-of<Conformance\\Tests\\PhpdocAdvancedFallbackValueOfTemplateEnum\\T>' [MIR0201]"""
-errors_diff = """
-Line 39: Expected valid value to be accepted, got ["InvalidReturnType: Return type 'string' is not compatible with declared 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\T>' [MIR0200]"]
-Line 58: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsString() expects 'string', got 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\T>' [MIR0201]"]
-Line 62: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsHearts() expects '\\"hearts\\"', got 'value-of<Conformance\\\\Tests\\\\PhpdocAdvancedFallbackValueOfTemplateEnum\\\\T>' [MIR0201]"]"""
+output = "phpdoc_advanced_fallback_value_of_template_enum.php:65: InvalidArgument: Argument $value of acceptsInt() expects 'int', got '\"spades\"' [MIR0201]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
@@ -17,4 +10,4 @@ enforcement = "enforced"
 enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [58, 62]
+over_rejected_lines = []

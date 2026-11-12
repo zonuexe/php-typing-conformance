@@ -2,14 +2,14 @@ status = "Falls back"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_return_noreturn_synonym.php:27: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn' does not exist [MIR1505]
-phpdoc_advanced_return_noreturn_synonym.php:35: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedReturnNoreturnSynonym\\noreturn' does not exist [MIR1505]"""
+phpdoc_advanced_return_noreturn_synonym.php:37: InvalidReturnType: Return type '1' is not compatible with declared 'never' [MIR0200]
+phpdoc_advanced_return_noreturn_synonym.php:44: UnreachableCode: Unreachable code detected [MIR0502]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
-enforcement = "none"
-enforced_lines = "0/2"
-unrecognized_lines = [27, 35]
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

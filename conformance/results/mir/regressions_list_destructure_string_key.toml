@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = ""
-errors_diff = "Line 28: Expected 1 error(s)"
+output = """
+regressions_list_destructure_string_key.php:28: InvalidArrayOffset: Array offset expects 'string', got '0' [MIR0300]
+regressions_list_destructure_string_key.php:28: InvalidArrayOffset: Array offset expects 'string', got '1' [MIR0300]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

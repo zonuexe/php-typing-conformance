@@ -1,17 +1,11 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 7
 output = """
-assertions_switch_get_class_gettype_narrowing.php:55: PossiblyUndefinedMethod: Method Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar::fooOnly() might not exist [MIR0015]
-assertions_switch_get_class_gettype_narrowing.php:58: PossiblyUndefinedMethod: Method Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Foo::barOnly() might not exist [MIR0015]
 assertions_switch_get_class_gettype_narrowing.php:65: PossiblyUndefinedMethod: Method Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar::fooOnly() might not exist [MIR0015]
-assertions_switch_get_class_gettype_narrowing.php:86: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]
-assertions_switch_get_class_gettype_narrowing.php:93: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]"""
-errors_diff = """
-Line 72: Expected 1 error(s)
-Line 100: Expected 1 error(s)
-Line 55: Expected silence (quiet probe), got ["PossiblyUndefinedMethod: Method Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\Bar::fooOnly() might not exist [MIR0015]"]
-Line 58: Expected silence (quiet probe), got ["PossiblyUndefinedMethod: Method Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\Foo::barOnly() might not exist [MIR0015]"]
-Line 86: Expected silence (quiet probe), got ["PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]"]"""
+assertions_switch_get_class_gettype_narrowing.php:72: RedundantCondition: Condition is always false, so the then branch is never reached [MIR0400]
+assertions_switch_get_class_gettype_narrowing.php:93: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]
+assertions_switch_get_class_gettype_narrowing.php:100: RedundantCondition: Condition is always false, so the then branch is never reached [MIR0400]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

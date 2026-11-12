@@ -1,21 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_number.php:21: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number' does not exist [MIR1505]
-phpdoc_advanced_fallback_number.php:29: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number' does not exist [MIR1505]
-phpdoc_advanced_fallback_number.php:36: InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number', got '1' [MIR0201]
-phpdoc_advanced_fallback_number.php:37: InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number', got '1.5' [MIR0201]
-phpdoc_advanced_fallback_number.php:40: InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number', got '"1"' [MIR0201]
-phpdoc_advanced_fallback_number.php:43: InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNumber\\number', got 'true' [MIR0201]"""
-errors_diff = """
-Line 36: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number', got '1' [MIR0201]"]
-Line 37: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNumber() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNumber\\\\number', got '1.5' [MIR0201]"]"""
+phpdoc_advanced_fallback_number.php:40: InvalidArgument: Argument $value of acceptsNumber() expects 'int|float', got '"1"' [MIR0201]
+phpdoc_advanced_fallback_number.php:43: InvalidArgument: Argument $value of acceptsNumber() expects 'int|float', got 'true' [MIR0201]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
-unrecognized_lines = [21, 29]
+unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [36, 37]
+over_rejected_lines = []

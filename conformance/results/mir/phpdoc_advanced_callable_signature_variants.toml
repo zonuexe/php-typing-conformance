@@ -3,13 +3,14 @@ conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
 phpdoc_advanced_callable_signature_variants.php:67: InvalidArgument: Argument $callback of takesOptionalArgumentCallable() expects 'callable whose parameter #1 accepts int', got 'callable whose parameter #1 only accepts string' [MIR0201]
+phpdoc_advanced_callable_signature_variants.php:68: InvalidArgument: Argument $callback of takesByReferenceCallable() expects 'callable taking parameter #1 by reference', got 'callable taking parameter #1 by value' [MIR0201]
 phpdoc_advanced_callable_signature_variants.php:70: InvalidArgument: Argument $callback of takesClosureSignature() expects 'callable whose parameter #1 accepts int', got 'callable whose parameter #1 only accepts string' [MIR0201]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"
-enforced_lines = "2/4"
+enforced_lines = "3/4"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

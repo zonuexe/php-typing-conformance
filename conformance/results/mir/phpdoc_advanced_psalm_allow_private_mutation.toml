@@ -1,9 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = """
-phpdoc_advanced_psalm_allow_private_mutation.php:28: ReadonlyPropertyAssignment: Cannot assign to readonly property Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value outside of constructor [MIR0600]
-phpdoc_advanced_psalm_allow_private_mutation.php:35: ReadonlyPropertyAssignment: Cannot assign to readonly property Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value outside of constructor [MIR0600]"""
+output = "phpdoc_advanced_psalm_allow_private_mutation.php:35: InaccessibleProperty: Cannot access property Conformance\\Tests\\PhpdocAdvancedPsalmAllowPrivateMutation\\Counter::$value [MIR0014]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,17 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_static_closure.php:22: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\static-closure' does not exist [MIR1505]
-phpdoc_advanced_fallback_static_closure.php:42: InvalidArgument: Argument $value of acceptsStaticClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\static-closure', got 'Closure(): positive-int' [MIR0201]
-phpdoc_advanced_fallback_static_closure.php:45: InvalidArgument: Argument $value of acceptsStaticClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\static-closure', got 'Closure(): positive-int' [MIR0201]
-phpdoc_advanced_fallback_static_closure.php:48: InvalidArgument: Argument $value of acceptsStaticClosure() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\static-closure', got '"strlen"' [MIR0201]"""
-errors_diff = "Line 42: Expected valid value to be accepted, got [\"InvalidArgument: Argument $value of acceptsStaticClosure() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure', got 'Closure(): positive-int' [MIR0201]\"]"
+phpdoc_advanced_fallback_static_closure.php:45: InvalidArgument: Argument $value of acceptsStaticClosure() expects 'Closure(mixed): mixed', got 'non-static Closure(): positive-int' [MIR0201]
+phpdoc_advanced_fallback_static_closure.php:48: InvalidArgument: Argument $value of acceptsStaticClosure() expects 'Closure(mixed): mixed', got '"strlen"' [MIR0201]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
-unrecognized_lines = [22]
+unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [42]
+over_rejected_lines = []

@@ -1,13 +1,16 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = "phpdoc_advanced_fallback_resource.php:26: MixedAssignment: Variable $handle is assigned a mixed type [MIR1201]"
-errors_diff = "Line 26: Unexpected errors [\"MixedAssignment: Variable $handle is assigned a mixed type [MIR1201]\"]"
+output = """
+phpdoc_advanced_fallback_resource.php:33: InvalidArgument: Argument $value of acceptsResource() expects 'resource', got '123' [MIR0201]
+phpdoc_advanced_fallback_resource.php:34: InvalidArgument: Argument $value of acceptsResource() expects 'resource', got '"php://memory"' [MIR0201]
+phpdoc_advanced_fallback_resource.php:35: InvalidArgument: Argument $value of acceptsResource() expects 'resource', got 'stdClass' [MIR0201]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/3"
+enforcement = "enforced"
+enforced_lines = "3/3"
 unrecognized_lines = []
-false_positive_lines = [26]
+false_positive_lines = []
 over_rejected_lines = []

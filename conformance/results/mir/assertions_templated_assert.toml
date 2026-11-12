@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = ""
+output = """
+assertions_templated_assert.php:41: RedundantCondition: Condition is always false, so the then branch is never reached [MIR0400]
+assertions_templated_assert.php:48: RedundantCondition: Condition is always false, so the then branch is never reached [MIR0400]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "2/4"
+enforcement = "enforced"
+enforced_lines = "4/4"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

@@ -1,11 +1,10 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_phan_non_empty_associative_array.php:26: InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects 'Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array<string, int>', got 'array{'a': 1}' [MIR0201]
-phpdoc_advanced_phan_non_empty_associative_array.php:29: InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects 'Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array<string, int>', got 'array{}' [MIR0201]
-phpdoc_advanced_phan_non_empty_associative_array.php:32: InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects 'Conformance\\Tests\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\non-empty-associative-array<string, int>', got 'array{0: 1, 1: 2, 2: 3}' [MIR0201]"""
-errors_diff = "Line 26: Expected valid value to be accepted, got [\"InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedPhanNonEmptyAssociativeArray\\\\non-empty-associative-array<string, int>', got 'array{'a': 1}' [MIR0201]\"]"
+phpdoc_advanced_phan_non_empty_associative_array.php:29: InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects 'non-empty-array<string, int>&array{}', got 'array{}' [MIR0201]
+phpdoc_advanced_phan_non_empty_associative_array.php:32: InvalidArgument: Argument $map of acceptsNonEmptyAssoc() expects 'non-empty-array<string, int>&array{}', got 'array{0: 1, 1: 2, 2: 3}' [MIR0201]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
@@ -13,4 +12,4 @@ enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [26]
+over_rejected_lines = []

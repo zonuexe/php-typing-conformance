@@ -1,11 +1,10 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-aliases_shape_inline_comments.php:41: InvalidArgument: Argument $user of take() expects 'array{'id': int, '// user ID [MIR0201]
-aliases_shape_inline_comments.php:42: InvalidArgument: Argument $user of take() expects 'array{'id': int, '// user ID [MIR0201]
-aliases_shape_inline_comments.php:43: InvalidArgument: Argument $user of take() expects 'array{'id': int, '// user ID [MIR0201]"""
-errors_diff = "Line 41: Expected valid value to be accepted, got [\"InvalidArgument: Argument $user of take() expects 'array{'id': int, '// user ID [MIR0201]\"]"
+aliases_shape_inline_comments.php:42: InvalidArgument: Argument $user of take() expects 'array{'id': int, 'name': string}', got 'array{'id': 1}' [MIR0201]
+aliases_shape_inline_comments.php:43: InvalidArgument: Argument $user of take() expects 'array{'id': int, 'name': string}', got 'array{'id': 1, 'name': 2}' [MIR0201]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
@@ -13,4 +12,4 @@ enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [41]
+over_rejected_lines = []

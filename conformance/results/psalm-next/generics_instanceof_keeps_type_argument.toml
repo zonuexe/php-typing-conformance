@@ -5,8 +5,10 @@ output = """
 generics_instanceof_keeps_type_argument.php:34: Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Box has missing template params when extending Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Container, expecting 1 [MissingTemplateParam]
 generics_instanceof_keeps_type_argument.php:47: Method Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Box::get should have the "Override" attribute [MissingOverrideAttribute]
 generics_instanceof_keeps_type_argument.php:66: Docblock-defined type Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Container<string>&Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Box for $value is always Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\Box [RedundantConditionGivenDocblockType]
+generics_instanceof_keeps_type_argument.php:67: Argument 1 of Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\takesString cannot be mixed, expecting string [MixedArgument]
 generics_instanceof_keeps_type_argument.php:68: Argument 1 of Conformance\\Tests\\GenericsInstanceofKeepsTypeArgument\\takesInt expects int, but string provided [InvalidScalarArgument]"""
 errors_diff = """
+Line 67: Expected valid value to be accepted, got ["Argument 1 of Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\takesString cannot be mixed, expecting string [MixedArgument]"]
 Line 34: Unexpected errors ["Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\Box has missing template params when extending Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\Container, expecting 1 [MissingTemplateParam]"]
 Line 47: Unexpected errors ["Method Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\Box::get should have the \\"Override\\" attribute [MissingOverrideAttribute]"]
 Line 66: Unexpected errors ["Docblock-defined type Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\Container<string>&Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\Box for $value is always Conformance\\\\Tests\\\\GenericsInstanceofKeepsTypeArgument\\\\Box [RedundantConditionGivenDocblockType]"]"""

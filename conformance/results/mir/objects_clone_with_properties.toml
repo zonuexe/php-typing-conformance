@@ -1,9 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
-errors_diff = """
-Line 49: Expected 1 error(s)
-Line 50: Expected 1 error(s)"""
+output = """
+objects_clone_with_properties.php:49: DynamicPropertyCreation: Creation of dynamic property Conformance\\Tests\\ObjectsCloneWithProperties\\Point::$nope is deprecated [MIR1014]
+objects_clone_with_properties.php:50: InvalidPropertyAssignment: Property $x expects 'int', cannot assign '"str"' [MIR0206]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
+output = """
+phpdoc_advanced_psalm_public_properties_of.php:44: InvalidArgument: Argument $data of acceptsPublicUserProps() expects 'array{'name': string}', got 'array{'name': "Ada", 'age': 42}' [MIR0201]
+phpdoc_advanced_psalm_public_properties_of.php:47: InvalidArgument: Argument $data of acceptsPublicUserProps() expects 'array{'name': string}', got 'array{'name': 1}' [MIR0201]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

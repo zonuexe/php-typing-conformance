@@ -1,19 +1,13 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-phpdoc_advanced_fallback_non_positive_int.php:22: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int' does not exist [MIR1505]
-phpdoc_advanced_fallback_non_positive_int.php:43: InvalidArgument: Argument $value of acceptsNonPositiveInt() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int', got '0' [MIR0201]
-phpdoc_advanced_fallback_non_positive_int.php:44: InvalidArgument: Argument $value of acceptsNonPositiveInt() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int', got '-1' [MIR0201]
-phpdoc_advanced_fallback_non_positive_int.php:47: InvalidArgument: Argument $value of acceptsNonPositiveInt() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveInt\\non-positive-int', got '1' [MIR0201]"""
-errors_diff = """
-Line 43: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonPositiveInt() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\non-positive-int', got '0' [MIR0201]"]
-Line 44: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsNonPositiveInt() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveInt\\\\non-positive-int', got '-1' [MIR0201]"]"""
+output = "phpdoc_advanced_fallback_non_positive_int.php:47: InvalidArgument: Argument $value of acceptsNonPositiveInt() expects 'int<min, 0>', got '1' [MIR0201]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "1/1"
-unrecognized_lines = [22]
+unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [43, 44]
+over_rejected_lines = []

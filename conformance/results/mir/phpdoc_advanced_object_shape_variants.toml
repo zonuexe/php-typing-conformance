@@ -1,15 +1,15 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_object_shape_variants.php:53: InvalidArgument: Argument $shape of takesWritableObjectShape() expects 'object{foo: int}&stdClass', got 'stdClass' [MIR0201]
-phpdoc_advanced_object_shape_variants.php:56: InvalidArgument: Argument $shape of takesWritableObjectShape() expects 'object{foo: int}&stdClass', got 'stdClass' [MIR0201]"""
-errors_diff = "Line 53: Expected valid value to be accepted, got [\"InvalidArgument: Argument $shape of takesWritableObjectShape() expects 'object{foo: int}&stdClass', got 'stdClass' [MIR0201]\"]"
+phpdoc_advanced_object_shape_variants.php:55: InvalidArgument: Argument $shape of takesOptionalObjectShape() expects 'object{foo: int, bar?: string}', got 'Conformance\\Tests\\PhpdocAdvancedObjectShapeVariants\\WrongFooType' [MIR0201]
+phpdoc_advanced_object_shape_variants.php:56: InvalidArgument: Argument $shape of takesWritableObjectShape() expects 'object{foo: int}&stdClass', got 'object{foo: "wrong"}&stdClass' [MIR0201]"""
+errors_diff = ""
 notes = "0.90.0 types `(object) ['foo' => 1]` as stdClass. 0.91.0 keeps the shape in the expected type (`object{foo: int}&stdClass`) and still over-rejects the valid cast on line 53."
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [53]
+over_rejected_lines = []

@@ -1,13 +1,13 @@
 status = "Falls back to int"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_fallback_int_mask_of.php:54: InvalidArgument: Argument $flags of acceptsPermissionMask() expects '0|1|2|3|4|5|6|7', got '8' [MIR0201]"
 errors_diff = ""
 notes = "Does not model `int-mask-of` and falls back to `int`, so it accepts the out-of-range value."
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

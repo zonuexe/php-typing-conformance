@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = ""
+output = """
+aliases_declaration_order.php:61: InvalidArgument: Argument $users of takeUsers() expects 'list<array{'id': int, 'name': string}>', got 'array{0: array{'id': "x", 'name': "a"}}' [MIR0201]
+aliases_declaration_order.php:65: InvalidArgument: Argument $users of takeUsers() expects 'list<array{'id': int, 'name': string}>', got 'array{0: array{'id': "x", 'name': "a"}}' [MIR0201]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

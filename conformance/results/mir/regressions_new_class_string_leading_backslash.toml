@@ -1,9 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
-output = ""
-errors_diff = """
-Line 41: Expected 1 error(s)
-Line 47: Expected 1 error(s)"""
+output = """
+regressions_new_class_string_leading_backslash.php:41: InterfaceInstantiation: Cannot instantiate interface Countable [MIR0709]
+regressions_new_class_string_leading_backslash.php:47: InterfaceInstantiation: Cannot instantiate interface Countable [MIR0709]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

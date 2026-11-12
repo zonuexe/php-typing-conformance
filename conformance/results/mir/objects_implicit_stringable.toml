@@ -1,9 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-objects_implicit_stringable.php:37: InvalidArgument: Argument $value of takesStringable() expects 'Stringable', got 'Conformance\\Tests\\ObjectsImplicitStringable\\CustomStringable' [MIR0201]
-objects_implicit_stringable.php:42: InvalidArgument: Argument $value of takesStringable() expects 'Stringable', got 'Conformance\\Tests\\ObjectsImplicitStringable\\NotStringable' [MIR0201]"""
-errors_diff = "Line 37: Expected valid value to be accepted, got [\"InvalidArgument: Argument $value of takesStringable() expects 'Stringable', got 'Conformance\\\\Tests\\\\ObjectsImplicitStringable\\\\CustomStringable' [MIR0201]\"]"
+output = "objects_implicit_stringable.php:42: InvalidArgument: Argument $value of takesStringable() expects 'Stringable', got 'Conformance\\Tests\\ObjectsImplicitStringable\\NotStringable' [MIR0201]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,7 +1,9 @@
 status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 8
-output = ""
-errors_diff = "Line 41: Expected 1 error(s)"
+output = """
+regressions_array_element_null_subtraction.php:35: PossiblyInvalidArgument: Argument $arr of takesStringList() expects 'array{0: string}', possibly different type 'array{0: string|null}' provided [MIR0105]
+regressions_array_element_null_subtraction.php:41: PossiblyInvalidArgument: Argument $arr of takesStringList() expects 'array{0: string}', possibly different type 'array{0: string|null}' provided [MIR0105]"""
+errors_diff = "Line 35: Unexpected errors [\"PossiblyInvalidArgument: Argument $arr of takesStringList() expects 'array{0: string}', possibly different type 'array{0: string|null}' provided [MIR0105]\"]"
 notes = ""
 ignore_errors = []

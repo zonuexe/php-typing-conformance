@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_fallback_pure_closure.php:50: InvalidArgument: Argument $value of acceptsPureClosure() expects 'Closure', got '\"strlen\"' [MIR0201]"
+output = """
+phpdoc_advanced_fallback_pure_closure.php:50: InvalidArgument: Argument $value of acceptsPureClosure() expects 'pure-Closure(mixed): mixed', got '"strlen"' [MIR0201]
+phpdoc_advanced_fallback_pure_closure.php:56: InvalidArgument: Argument $value of acceptsPureClosure() expects 'pure-Closure(mixed): mixed', got 'impure Closure(): void' [MIR0201]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

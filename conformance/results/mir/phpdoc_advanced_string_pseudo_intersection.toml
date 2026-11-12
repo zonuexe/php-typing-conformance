@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_string_pseudo_intersection.php:44: InvalidArgument: Argument $value of acceptsIntersection() expects 'non-empty-string', got '\"\"' [MIR0201]"
+output = """
+phpdoc_advanced_string_pseudo_intersection.php:44: InvalidArgument: Argument $value of acceptsIntersection() expects 'non-empty-lowercase-string', got '""' [MIR0201]
+phpdoc_advanced_string_pseudo_intersection.php:45: InvalidArgument: Argument $value of acceptsIntersection() expects 'non-empty-lowercase-string', got '"ABC"' [MIR0201]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

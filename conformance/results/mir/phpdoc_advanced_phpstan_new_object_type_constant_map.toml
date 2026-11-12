@@ -2,22 +2,20 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new' does not exist [MIR1505]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES[T]' does not exist [MIR1505]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:46: MixedArrayAccess: Array access on mixed type [MIR1209]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:51: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES>' [MIR0900]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:52: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES>' [MIR0900]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: InvalidTemplateParam: Template type 'T' inferred as '"immutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES>' [MIR0900]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: InvalidTemplateParam: Template type 'T' inferred as '"mutable"' does not satisfy bound 'key-of<Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES>' [MIR0900]"""
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:50: ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:51: ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:52: ArgumentTypeCoercion: Argument $value of takesMutable() expects 'DateTime', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: ArgumentTypeCoercion: Argument $value of takesMutable() expects 'DateTime', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]"""
 errors_diff = """
-Line 46: Expected valid value to be accepted, got ["MixedArrayAccess: Array access on mixed type [MIR1209]"]
-Line 51: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"immutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\DATETIME_CLASSES>' [MIR0900]"]
-Line 52: Expected valid value to be accepted, got ["InvalidTemplateParam: Template type 'T' inferred as '\\"mutable\\"' does not satisfy bound 'key-of<Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\\\DATETIME_CLASSES>' [MIR0900]"]"""
+Line 50: Expected valid value to be accepted, got ["ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]"]
+Line 51: Expected valid value to be accepted, got ["ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]"]
+Line 52: Expected valid value to be accepted, got ["ArgumentTypeCoercion: Argument $value of takesMutable() expects 'DateTime', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]"]"""
 notes = "Silent everywhere, probes included. The native `DateTimeInterface` alone would have made the three correct calls fail, so this is not a widening to it either."
 ignore_errors = []
-recognition = "unrecognized"
+recognition = "recognized"
 enforcement = "enforced"
 enforced_lines = "2/2"
-unrecognized_lines = [44]
+unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = []
+over_rejected_lines = [50, 51, 52]

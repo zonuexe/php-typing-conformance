@@ -2,8 +2,10 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 10
 output = """
-regressions_object_property_discriminant_narrowing.php:34: RedundantCondition: Condition is always true, so the check is redundant [MIR0400]
-regressions_object_property_discriminant_narrowing.php:38: UnreachableCode: Unreachable code detected [MIR0502]"""
-errors_diff = "Line 43: Expected 1 error(s)"
+regressions_object_property_discriminant_narrowing.php:35: InvalidReturnType: Return type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox' is not compatible with declared 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' [MIR0200]
+regressions_object_property_discriminant_narrowing.php:43: InvalidReturnType: Return type 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox' is not compatible with declared 'Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox' [MIR0200]"""
+errors_diff = """
+Line 34: Expected 1 error(s)
+Line 35: Unexpected errors ["InvalidReturnType: Return type 'Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\StrBox|Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\IntBox' is not compatible with declared 'Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\StrBox' [MIR0200]"]"""
 notes = ""
 ignore_errors = []

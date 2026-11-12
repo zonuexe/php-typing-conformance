@@ -1,17 +1,13 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 7
-output = """
-regressions_nested_param_conditional.php:66: PossiblyInvalidArgument: Argument $user of takesUserOrNull() expects 'Conformance\\Tests\\RegressionsNestedParamConditional\\User|null', possibly different type 'Conformance\\Tests\\RegressionsNestedParamConditional\\User|null|Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<Conformance\\Tests\\RegressionsNestedParamConditional\\User>' provided [MIR0105]
-regressions_nested_param_conditional.php:74: PossiblyNullArgument: Argument $collection of takesCollection() might be null [MIR0104]
-regressions_nested_param_conditional.php:74: PossiblyInvalidArgument: Argument $collection of takesCollection() expects 'Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<Conformance\\Tests\\RegressionsNestedParamConditional\\User>', possibly different type 'Conformance\\Tests\\RegressionsNestedParamConditional\\User|null|Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<Conformance\\Tests\\RegressionsNestedParamConditional\\User>' provided [MIR0105]
-regressions_nested_param_conditional.php:75: PossiblyInvalidArgument: Argument $user of takesUserOrNull() expects 'Conformance\\Tests\\RegressionsNestedParamConditional\\User|null', possibly different type 'Conformance\\Tests\\RegressionsNestedParamConditional\\User|null|Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<Conformance\\Tests\\RegressionsNestedParamConditional\\User>' provided [MIR0105]"""
-errors_diff = "Line 66: Expected silence (quiet probe), got [\"PossiblyInvalidArgument: Argument $user of takesUserOrNull() expects 'Conformance\\\\Tests\\\\RegressionsNestedParamConditional\\\\User|null', possibly different type 'Conformance\\\\Tests\\\\RegressionsNestedParamConditional\\\\User|null|Conformance\\\\Tests\\\\RegressionsNestedParamConditional\\\\Collection<Conformance\\\\Tests\\\\RegressionsNestedParamConditional\\\\User>' provided [MIR0105]\"]"
+output = "regressions_nested_param_conditional.php:75: InvalidArgument: Argument $user of takesUserOrNull() expects 'Conformance\\Tests\\RegressionsNestedParamConditional\\User|null', got 'Conformance\\Tests\\RegressionsNestedParamConditional\\Collection<Conformance\\Tests\\RegressionsNestedParamConditional\\User>' [MIR0201]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/3"
+enforcement = "enforced"
+enforced_lines = "3/3"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

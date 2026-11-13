@@ -1,9 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = """
-phpdoc_advanced_method_parenthesized_union.php:41: Parameter ''x'' type is not compatible with declaration when using strict type matching [PhpParamsInspection]
-phpdoc_advanced_method_parenthesized_union.php:41: Parameter ''x'' type is not compatible with declaration [PhpStrictTypeCheckingInspection]"""
+output = "phpdoc_advanced_method_parenthesized_union.php:41: Parameter ''x'' type is not compatible with declaration when using strict type matching [PhpParamsInspection]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

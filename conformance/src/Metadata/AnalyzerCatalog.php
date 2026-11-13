@@ -55,7 +55,7 @@ final class AnalyzerCatalog
      * banner and the same releases.
      *
      * psalm-next is a second, separately installed Psalm — the 7.x line,
-     * currently 7.3.1 — so it has its own version banner, but it is
+     * currently 7.3.2 — so it has its own version banner, but it is
      * still the same project: the reference table and the release table
      * describe Psalm once. The matrix column is 6.x; the header names 7.x
      * on a second line, cells tag where the two diverge, and the detail

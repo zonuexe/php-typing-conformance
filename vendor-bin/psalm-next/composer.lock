@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e49ab8b2fbf5b3a8f403b56092b9b614",
+    "content-hash": "4f38777f376d3d1473ef793eb0cd5f42",
     "packages": [],
     "packages-dev": [
         {
@@ -1950,23 +1950,23 @@
         },
         {
             "name": "psalm/plugin-laravel",
-            "version": "v4.19.3",
+            "version": "v4.19.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-laravel.git",
-                "reference": "8eb2822e1c695d1c9ab90e97fd6c333d8b7bbaa3"
+                "reference": "f9b54e015ff81be1240bfdc7bf3b4f95e45c3218"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/8eb2822e1c695d1c9ab90e97fd6c333d8b7bbaa3",
-                "reference": "8eb2822e1c695d1c9ab90e97fd6c333d8b7bbaa3",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/f9b54e015ff81be1240bfdc7bf3b4f95e45c3218",
+                "reference": "f9b54e015ff81be1240bfdc7bf3b4f95e45c3218",
                 "shasum": ""
             },
             "require": {
                 "ext-simplexml": "*",
                 "nikic/php-parser": "^5.0",
                 "php": "^8.2",
-                "psalm/psalm-plugin-api": "^0.4.1",
+                "psalm/psalm-plugin-api": "^0.4.2",
                 "sebastian/diff": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
                 "symfony/console": "^6.4 || ^7.0 || ^8.0",
                 "vimeo/psalm": "^7.3.1@stable"
@@ -2027,7 +2027,7 @@
             ],
             "support": {
                 "issues": "https://github.com/psalm/psalm-plugin-laravel/issues",
-                "source": "https://github.com/psalm/psalm-plugin-laravel/tree/v4.19.3"
+                "source": "https://github.com/psalm/psalm-plugin-laravel/tree/v4.19.5"
             },
             "funding": [
                 {
@@ -2035,8 +2035,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-12T10:12:50+00:00",
-            "published-time": "2026-11-12T10:44:05+00:00"
+            "time": "2026-11-13T00:15:12+00:00",
+            "published-time": "2026-11-13T00:15:38+00:00"
         },
         {
             "name": "psalm/plugin-mockery",
@@ -3636,16 +3636,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "7.3.1",
+            "version": "7.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "81bda61675df22fc4e5e1ceab1c33f4c61a4830b"
+                "reference": "5ae5547150b3b097f8027e64770abaf1a5ef761c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/81bda61675df22fc4e5e1ceab1c33f4c61a4830b",
-                "reference": "81bda61675df22fc4e5e1ceab1c33f4c61a4830b",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/5ae5547150b3b097f8027e64770abaf1a5ef761c",
+                "reference": "5ae5547150b3b097f8027e64770abaf1a5ef761c",
                 "shasum": ""
             },
             "require": {
@@ -3753,8 +3753,8 @@
                 "issues": "https://github.com/vimeo/psalm/issues",
                 "source": "https://github.com/vimeo/psalm"
             },
-            "time": "2026-11-12T00:44:09+00:00",
-            "published-time": "2026-11-12T01:27:10+00:00"
+            "time": "2026-11-12T23:52:31+00:00",
+            "published-time": "2026-11-13T00:44:30+00:00"
         },
         {
             "name": "webmozart/assert",

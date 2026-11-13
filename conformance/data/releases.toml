@@ -30,8 +30,8 @@ version = "6.0.11"
 date = "2026-10-15"
 
 [psalm]
-version = "7.3.1"
-date = "2026-11-12"
+version = "7.3.2"
+date = "2026-11-13"
 
 [phpstan]
 version = "2.3.5"
@@ -84,8 +84,8 @@ version = "1.0.19523"
 date = "2026-11-09"
 
 [php-lsp]
-version = "0.31.0"
-date = "2026-11-06"
+version = "0.32.0"
+date = "2026-11-12"
 
 # Reference-only: function-specific and historical servers are listed, not
 # measured. Laravel LSP is function-specific but still launched.

@@ -14,10 +14,10 @@ namespace Conformance\Tests\PhpdocAdvancedVendorPrefixedAssertEqualityPsalm;
  * 2. The false branch does *not* get the negation — `$value` may still be
  *    an int. A plain `int` assertion would make the false branch `!int`.
  *
- * The true-branch probe below checks that the `=` form is recognised and
- * still narrows. The false branch is left unprobed as a required diagnostic
- * because tools that ignore the tag and tools that honour equality look the
- * same there (no "always false" noise either way).
+ * The true-branch probe checks that the `=` form is recognised and still
+ * narrows. The false-branch `// Q` fails only when `=` is read as ordinary
+ * `int` (is_int becomes always-false). Honouring equality and ignoring the
+ * tag are both silent there.
  *
  * References:
  * - Psalm assertion_syntax.md: Equality assertions (`=int`)
@@ -45,8 +45,9 @@ function example(mixed $value): void
         echo \is_string($value) ? 'string' : 'int'; // E?: in the true branch of =int, is_string() is always false
     } else {
         // False branch of =int must NOT force !int: `$value` may still be int.
-        // A tool that treats `=int` as plain `int` would flag is_int as always
-        // false here; tools that honour equality (or ignore the tag) stay quiet.
-        echo \is_int($value) ? 'maybe-int' : 'other';
+        // Honouring `=` and ignoring the tag are both silent here. A tool that
+        // treats `=int` as ordinary `int` flags is_int as always false — that
+        // is the spec miss this quiet probe is for.
+        echo \is_int($value) ? 'maybe-int' : 'other'; // Q: false branch of =int must not force !int
     }
 }

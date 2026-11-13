@@ -38,6 +38,9 @@ function example(mixed $value): void
         echo \is_string($value) ? 'string' : 'int'; // E?: in the true branch of =int, is_string() is always false
     } else {
         // False branch of =int must NOT force !int: `$value` may still be int.
-        echo \is_int($value) ? 'maybe-int' : 'other';
+        // Honouring `=` and ignoring the tag are both silent here. A tool that
+        // treats `=int` as ordinary `int` flags is_int as always false — that
+        // is the spec miss this quiet probe is for.
+        echo \is_int($value) ? 'maybe-int' : 'other'; // Q: false branch of =int must not force !int
     }
 }

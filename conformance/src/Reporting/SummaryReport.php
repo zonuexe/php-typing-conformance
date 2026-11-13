@@ -155,9 +155,10 @@ final class SummaryReport
 
             $toolColumns[] = [
                 'name' => $tool,
-                // The header shows only the column's own version; configuration
-                // lines (psalm-next) stay on the detail pages.
-                'versionHtml' => $this->versionCell($resultsRoot, $tool, false),
+                // psalm-next is a different binary, so the header names 7.x
+                // under the 6.x version. phpstan-strict is the same binary
+                // and adds nothing.
+                'versionHtml' => $this->versionCell($resultsRoot, $tool),
             ];
         }
 
@@ -301,14 +302,17 @@ final class SummaryReport
         ?TestGroup $group,
         array $tools,
     ): string {
-        // The detail pages show the configurations too — psalm-next gets a
-        // full row here even though the index matrix folds it into psalm.
+        // The detail pages show the configurations too — psalm 7 sits
+        // under psalm, phpstan-strict under phpstan — even though the
+        // index matrix folds both into the base column.
+        $expanded = [];
         foreach ($tools as $tool) {
+            $expanded[] = $tool;
             foreach ($this->analyzers->configurationsOf($tool) as $configuration) {
-                $tools[] = $configuration['tool'];
+                $expanded[] = $configuration['tool'];
             }
         }
-        $tools = array_values(array_unique($tools));
+        $tools = array_values(array_unique($expanded));
 
         [$title, $description] = $this->docblock($testCase);
 
@@ -336,9 +340,17 @@ final class SummaryReport
                     ];
                 }
             } elseif ($tool === 'psalm') {
-                [, , $suffix] = $this->psalmMerged($resultsRoot, $testCase->name, $result, false);
+                // The 7.x line has its own row on this page, so the 6.x cell
+                // only carries the pzoom tag.
+                [, , $suffix, $pzoomDiffers] = $this->psalmMerged(
+                    $resultsRoot,
+                    $testCase->name,
+                    $result,
+                    false,
+                    includeSeven: false,
+                );
                 $status = htmlspecialchars($display) . $suffix;
-                if ($suffix !== '') {
+                if ($pzoomDiffers) {
                     $extra = [
                         'summary' => 'pzoom (Psalm port)',
                         'output' => trim((string) ($this->loadResult($resultsRoot, 'pzoom', $testCase->name)['output'] ?? '')),
@@ -348,8 +360,8 @@ final class SummaryReport
             }
 
             $rows[] = [
-                'tool' => $tool,
-                'versionHtml' => $this->versionCell($resultsRoot, $tool),
+                'tool' => $this->toolLabel($tool),
+                'versionHtml' => $this->versionCell($resultsRoot, $tool, false),
                 'statusClass' => $class,
                 'statusHtml' => $status,
                 'output' => $output,
@@ -892,23 +904,101 @@ final class SummaryReport
     }
 
     /**
-     * Fold the pzoom column into psalm. pzoom is a Psalm port, so its status
-     * drives nothing; the psalm cell is only tagged "(pzoom≠)" where pzoom flags
-     * a different set of lines than Psalm.
+     * Fold psalm-next and pzoom into the psalm cell. 6.x drives the status.
+     * The 7.x line is tagged where it answers differently; pzoom is tagged
+     * where it flags a different set of lines. Neither tag changes the cell
+     * colour.
      *
-     * @param array<string, mixed> $result psalm result
-     * @return array{0: string, 1: string, 2: string} [display, cssClass, suffix]
+     * @param array<string, mixed> $result psalm (6.x) result
+     * @return array{0: string, 1: string, 2: string, 3: bool} [display, cssClass, suffix, pzoomDiffers]
      */
-    private function psalmMerged(string $resultsRoot, string $testName, array $result, bool $style): array
-    {
+    private function psalmMerged(
+        string $resultsRoot,
+        string $testName,
+        array $result,
+        bool $style,
+        bool $includeSeven = true,
+    ): array {
         $pzoom = $this->loadResult($resultsRoot, 'pzoom', $testName);
+        $seven = $this->loadResult($resultsRoot, 'psalm-next', $testName);
         [$display, $class] = $style ? $this->styleStatusOf($result) : $this->statusOf($result);
 
-        // Only compare when pzoom actually ran for this test.
-        $differs = $pzoom !== []
-            && $this->diagnosticLineSet($result) !== $this->diagnosticLineSet($pzoom);
+        $suffix = $includeSeven ? $this->psalmSevenTag($result, $seven, $style) : '';
 
-        return [$display, $class, $differs ? ' <small>(pzoom&ne;)</small>' : ''];
+        $pzoomDiffers = $pzoom !== []
+            && $this->diagnosticLineSet($result) !== $this->diagnosticLineSet($pzoom);
+        if ($pzoomDiffers) {
+            $suffix .= ' <small>(pzoom&ne;)</small>';
+        }
+
+        return [$display, $class, $suffix, $pzoomDiffers];
+    }
+
+    /**
+     * Tag for a 6.x cell when 7.x answers differently.
+     *
+     * A short 7.x label (`Pass`, `Enforced`, …) is spelled out as `(7 Pass)`.
+     * Longer labels and same-verdict line-set diffs are `(7≠)`, with the 7.x
+     * wording in the title.
+     *
+     * @param array<string, mixed> $six
+     * @param array<string, mixed> $seven
+     */
+    private function psalmSevenTag(array $six, array $seven, bool $style): string
+    {
+        if ($seven === []) {
+            return '';
+        }
+
+        [$sixDisplay] = $style ? $this->styleStatusOf($six) : $this->statusOf($six);
+        [$sevenDisplay] = $style ? $this->styleStatusOf($seven) : $this->statusOf($seven);
+
+        if ($sixDisplay !== $sevenDisplay) {
+            $title = htmlspecialchars('7.x: ' . $sevenDisplay);
+            if ($this->isShortPsalmSevenLabel($sevenDisplay)) {
+                return sprintf(
+                    ' <small title="%s">(7 %s)</small>',
+                    $title,
+                    htmlspecialchars($sevenDisplay),
+                );
+            }
+
+            return sprintf(' <small title="%s">(7&ne;)</small>', $title);
+        }
+
+        if ($this->diagnosticLineSet($six) !== $this->diagnosticLineSet($seven)) {
+            return ' <small title="7.x flags a different set of lines">(7&ne;)</small>';
+        }
+
+        return '';
+    }
+
+    /**
+     * Labels short enough to sit in a `(7 …)` tag without wrapping the cell.
+     */
+    private function isShortPsalmSevenLabel(string $display): bool
+    {
+        return in_array($display, [
+            'Pass',
+            'Fail',
+            'Enforced',
+            'Unrecognized',
+            'Incidental',
+            'Reported',
+            '—',
+        ], true);
+    }
+
+    /**
+     * What the report prints for a tool name. Runner directories stay
+     * `psalm-next`; the screen says `psalm 7`.
+     */
+    private function toolLabel(string $tool): string
+    {
+        return match ($tool) {
+            'psalm-next' => 'psalm 7',
+            default => $tool,
+        };
     }
 
     /**
@@ -958,12 +1048,11 @@ final class SummaryReport
             $popupHtml,
         );
 
-        // A configuration that runs a different binary — psalm-next under
-        // psalm — is named on its own line in the base column's version cell,
-        // so the folded line stays visible where the column is. A
-        // configuration that reuses the same binary (phpstan-strict) has the
-        // same version and adds nothing. The matrix header does not show the
-        // line; the detail pages do.
+        // A configuration that runs a different binary — psalm 7 under
+        // psalm — is named on its own line in the base column's version cell.
+        // The number already contains the major, so it is not labelled
+        // "next". A configuration that reuses the same binary
+        // (phpstan-strict) has the same version and adds nothing.
         if ($withConfigurations) {
             foreach ($this->analyzers->configurationsOf($tool) as $configuration) {
                 $configShort = $configuration['release']->version;
@@ -981,7 +1070,7 @@ final class SummaryReport
                     );
                 }
 
-                $card .= sprintf('<br>next: %s', $configHtml);
+                $card .= sprintf('<br>%s', $configHtml);
             }
         }
 

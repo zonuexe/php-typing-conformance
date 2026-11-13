@@ -188,15 +188,16 @@ Current checker columns in the report, in display order:
 - `noverify`
 - `steins`
 
-`psalm-next` is a second Psalm installation running the next major line
+`psalm-next` is a second Psalm installation running the 7.x line
 (`vendor-bin/psalm-next`, currently 7.3.1) through the same adapter
 and config. It is a configuration of `psalm` for the metadata and release
 tables, and the evaluator makes `// E<psalm>` expectations apply to it too —
 where the 7.x line diverges, that shows up as a missed or unexpected
 diagnostic rather than a marker the column never saw. It is not a column of
-the index matrix; the psalm version cell names the next line on its second
-line (`6.20.11 / next: 7.3.1`), and the detail pages carry it as a
-full row. Only the CLI is measured; there is no LSP probe for the next line.
+the index matrix: the psalm column is 6.x, the header names 7.x on a second
+line (`6.20.11` / `7.3.1`), cells tag `(7 Pass)` / `(7≠)` where the two
+diverge, and the detail pages carry a `psalm 7` row. Only the CLI is
+measured; there is no LSP probe for the 7.x line.
 The 7.x-only purity findings (`MissingPureAnnotation`,
 `MissingAbstractPureAnnotation`) are suppressed in
 `conformance/psalm-next.xml` — a copy of `psalm.xml` with the 7.x-only

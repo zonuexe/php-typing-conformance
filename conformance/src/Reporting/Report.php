@@ -29,9 +29,9 @@ final class Report
     /**
      * The columns the matrix shows.
      *
-     * phpstan-strict and pzoom are run for their data but are not columns of
-     * their own: the report merges the first into phpstan and the second into
-     * psalm.
+     * phpstan-strict, psalm-next and pzoom are run for their data but are not
+     * columns of their own: the report merges strict-rules into phpstan, and
+     * both the 7.x line and pzoom into psalm.
      *
      * After the type checkers, the remaining columns are editors and
      * catalogues in this order: intelephense, phpactor, phpy, qodana,

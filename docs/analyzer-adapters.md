@@ -146,10 +146,11 @@ A second Psalm installation (`vendor-bin/psalm-next`, currently
 (`conformance/psalm-next.xml` — a copy of `psalm.xml` plus the 7.x-only
 purity and taint suppresses, which Psalm 6's schema rejects). It is a configuration
 of the psalm column's metadata: the reference and release tables describe
-Psalm once, the index matrix does not give it a column of its own (the
-psalm version cell names it on a second line — `6.20.11 / next:
-7.3.1`), and the detail pages show it as a full row. Only the CLI is
-measured — no LSP probe for the next line. The 7.x-only purity findings
+Psalm once. The index matrix does not give 7.x a column of its own: the
+column is 6.x, the header names 7.x on a second line (`6.20.11` /
+`7.3.1`), cells tag `(7 Pass)` / `(7≠)` where the two diverge, and the
+detail pages show a `psalm 7` row. Only the CLI is measured — no LSP probe
+for the 7.x line. The 7.x-only purity findings
 (`MissingPureAnnotation`, `MissingAbstractPureAnnotation`) are suppressed
 in `psalm-next.xml`; and the version banner reads `Psalm 7.3.1@…`,
 which the version pattern still parses with a prerelease suffix so a
@@ -157,7 +158,7 @@ future `7.0.0-rcN` would link to the tag that exists.
 
 ### pzoom — a Psalm port folded into Psalm's column
 
-pzoom reads the same `psalm.xml` and aims at Psalm compatibility, so the report
+pzoom reads the same `psalm.xml` and aims at Psalm 6 compatibility, so the report
 merges it into the `psalm` column and surfaces it only where the two diverge. Its
 `--format json` is not wired up, so the adapter parses console lines of the form
 `ERROR: <IssueType> - <path>:<line>:<col> - <message> (see <url>)`, dropping the

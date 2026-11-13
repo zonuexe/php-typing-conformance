@@ -8,8 +8,8 @@ use Conformance\Discovery\TestCase;
 use RuntimeException;
 
 /**
- * Adapter for Psalm (https://psalm.dev/), used for both the released line and
- * the `psalm-next` column that tracks the next major.
+ * Adapter for Psalm (https://psalm.dev/), used for both the 6.x matrix column
+ * and the `psalm-next` installation that tracks the 7.x line.
  *
  * The corpus is analysed in a single whole-project run rather than one
  * invocation per test file. That is not an optimisation bolted on afterwards:

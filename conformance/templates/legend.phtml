@@ -57,7 +57,9 @@ $handling = [
 <dd>Diagnostics on lines the test neither expects nor marks with <code>// T</code>. On a type-handling test these are the analyzer&rsquo;s own false positives &mdash; Phan resolving <code>number</code> as a class name and then rejecting <code>1</code> for it, say. Hover for the line numbers.</dd>
 <dt><span class="legend-swatch plain"><small>(strict)</small></span></dt>
 <dd>PHPStan only. Nothing is reported with the standard config; only <code>phpstan-strict-rules</code> catches it.</dd>
+<dt><span class="legend-swatch plain"><small>(7 Pass)</small> / <small>(7&ne;)</small></span></dt>
+<dd>Psalm only. The cell is the 6.x line. <code>(7 Pass)</code> / <code>(7 Fail)</code> / <code>(7 Enforced)</code> is 7.x&rsquo;s answer when the two verdicts differ; <code>(7&ne;)</code> is the same Pass/Fail (or a longer 7.x label) with a different set of lines. Hover the tag for the 7.x wording. The detail page has a full <code>psalm 7</code> row.</dd>
 <dt><span class="legend-swatch plain"><small>(pzoom&ne;)</small></span></dt>
-<dd>Psalm only. pzoom, the Rust port of Psalm, flags a different set of lines than Psalm itself.</dd>
+<dd>Psalm only. pzoom, the Rust port of Psalm 6, flags a different set of lines than the 6.x cell.</dd>
 </dl>
 </details>

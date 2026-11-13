@@ -41,7 +41,7 @@ final class ExpectationEvaluator
 
         foreach ($expectedDiagnostics as $diagnostic) {
             // psalm-next is a second Psalm installation, not a tool of its
-            // own: expectations written for psalm apply to the next line
+            // own: expectations written for psalm apply to the 7.x line
             // too, and where the 7.x line diverges that shows up as a
             // missed expectation or an unexpected diagnostic — a real
             // finding — rather than as a marker the column never saw.

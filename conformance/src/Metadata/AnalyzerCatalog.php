@@ -57,7 +57,9 @@ final class AnalyzerCatalog
      * psalm-next is a second, separately installed Psalm — the 7.x line,
      * currently 7.3.1 — so it has its own version banner, but it is
      * still the same project: the reference table and the release table
-     * describe Psalm once, and the matrix column carries the next line.
+     * describe Psalm once. The matrix column is 6.x; the header names 7.x
+     * on a second line, cells tag where the two diverge, and the detail
+     * pages give 7.x a row of its own.
      *
      * @var array<string, string>
      */
@@ -134,7 +136,7 @@ final class AnalyzerCatalog
      * True for a result directory that is one analyzer under another
      * configuration (phpstan-strict, psalm-next) rather than a column of its
      * own. The index matrix does not give such a row a column; the detail
-     * pages still show it.
+     * pages still show it (psalm-next as "psalm 7").
      */
     public function isConfiguration(string $tool): bool
     {
@@ -142,7 +144,7 @@ final class AnalyzerCatalog
     }
 
     /**
-     * The configuration rows of one analyzer (psalm-next under psalm), for the
+     * The configuration rows of one analyzer (psalm 7 under psalm), for the
      * version cell to name the other line when it has one. Each entry carries
      * the configuration's own evaluated release; the base analyzer's version
      * pattern reads its banner, since a configuration is the same project.

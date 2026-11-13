@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_psalm_assert_this_method.php:46: PossiblyNullMethodCall: Cannot call method getMessage() on possibly null value [MIR0107]"
+errors_diff = "Line 46: Expected valid value to be accepted, got [\"PossiblyNullMethodCall: Cannot call method getMessage() on possibly null value [MIR0107]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

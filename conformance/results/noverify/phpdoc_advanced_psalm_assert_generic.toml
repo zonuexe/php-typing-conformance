@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_psalm_assert_generic.php:36: potential null array access in parameter value of function Conformance\\Tests\\PhpdocAdvancedPsalmAssertGeneric\\takesString [notNullSafetyFunctionArgumentArrayDimFetch]"
+errors_diff = "Line 36: Expected valid value to be accepted, got [\"potential null array access in parameter value of function Conformance\\\\Tests\\\\PhpdocAdvancedPsalmAssertGeneric\\\\takesString [notNullSafetyFunctionArgumentArrayDimFetch]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_psalm_assert_not_false.php:40: Redundant `===` comparison: left-hand side is never identical to right-hand side. [redundant-comparison]
+phpdoc_advanced_psalm_assert_not_false.php:40: Redundant ternary operator: condition is always falsy. [impossible-condition]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

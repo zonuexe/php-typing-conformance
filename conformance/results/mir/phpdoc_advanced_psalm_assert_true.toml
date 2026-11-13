@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_psalm_assert_true.php:37: ImpossibleIdenticalComparison: '===' between 'true' and 'false' is always false — these types can never be identical [MIR0408]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

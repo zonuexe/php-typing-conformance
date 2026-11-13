@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = """
+phpdoc_advanced_this_out_aliases.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\takesStringBox`: expected `Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<string>`, but found `Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<int>`. [invalid-argument]
+phpdoc_advanced_this_out_aliases.php:62: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\takesStringBox`: expected `Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<string>`, but found `Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<int>`. [invalid-argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

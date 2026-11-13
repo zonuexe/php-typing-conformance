@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = """
+phpdoc_advanced_this_out_aliases.php:56: Argument 1 ($box) expects Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<string>, got Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<int> [type_mismatch_argument]
+phpdoc_advanced_this_out_aliases.php:63: Argument 1 ($box) expects Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<int>, got Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<string> [type_mismatch_argument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

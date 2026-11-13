@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "generics_use.php:47: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsUse\\BoxTrait::wrap`: expected `int`, but found `string('x')`. [invalid-argument]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

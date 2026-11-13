@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phpstan_internal.php:44: PhpdocAdvancedPhpstanInternalLib\\Secret is internal to PhpdocAdvancedPhpstanInternalLib but called from PhpdocAdvancedPhpstanInternalApp\\outside [InternalClass]
+phpdoc_advanced_phpstan_internal.php:44: The method PhpdocAdvancedPhpstanInternalLib\\Secret::token is internal to PhpdocAdvancedPhpstanInternalLib but called from PhpdocAdvancedPhpstanInternalApp\\outside [InternalMethod]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

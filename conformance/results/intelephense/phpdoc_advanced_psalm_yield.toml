@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_psalm_yield.php:64: Expected type 'string'. Found 'mixed'. [P1006]
+phpdoc_advanced_psalm_yield.php:69: Expected type 'int'. Found 'mixed'. [P1006]"""
+errors_diff = "Line 64: Expected valid value to be accepted, got [\"Expected type 'string'. Found 'mixed'. [P1006]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = [64]

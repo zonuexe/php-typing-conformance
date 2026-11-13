@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = """
+phpdoc_advanced_this_out_aliases.php:56: Argument 1 of takesStringBox expects Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<string>, but Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<int> provided [InvalidArgument]
+phpdoc_advanced_this_out_aliases.php:63: Argument 1 of takesIntBox expects Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<int>, but Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\MutableBox<string> provided [InvalidArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_psalm_require_extends.php:33: Conformance\\Tests\\PhpdocAdvancedPsalmRequireExtends\\NeedsParent requires using class to extend Conformance\\Tests\\PhpdocAdvancedPsalmRequireExtends\\RequiredParent, but Conformance\\Tests\\PhpdocAdvancedPsalmRequireExtends\\BadUser does not [ExtensionRequirementViolation]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

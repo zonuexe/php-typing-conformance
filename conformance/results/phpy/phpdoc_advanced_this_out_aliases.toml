@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = """
+phpdoc_advanced_this_out_aliases.php:56: Type 'MutableBox<int>' does not satisfy 'MutableBox<string>'
+phpdoc_advanced_this_out_aliases.php:63: Type 'MutableBox<string>' does not satisfy 'MutableBox<int>'"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

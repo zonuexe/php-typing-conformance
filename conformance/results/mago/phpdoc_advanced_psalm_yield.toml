@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_psalm_yield.php:24: Template parameter `TValue` is never used in interface `Conformance\\Tests\\PhpdocAdvancedPsalmYield\\Promise`. [unused-template-parameter]
+phpdoc_advanced_psalm_yield.php:60: Assigning `mixed` type to a variable may lead to unexpected behavior. [mixed-assignment]
+phpdoc_advanced_psalm_yield.php:64: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmYield\\takesString`: expected `string`, but found `mixed`. [mixed-argument]
+phpdoc_advanced_psalm_yield.php:69: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedPsalmYield\\takesInt`: expected `int`, but found `mixed`. [mixed-argument]"""
+errors_diff = "Line 64: Expected valid value to be accepted, got [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedPsalmYield\\\\takesString`: expected `string`, but found `mixed`. [mixed-argument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = [64]

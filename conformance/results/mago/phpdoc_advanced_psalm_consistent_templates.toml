@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_psalm_consistent_templates.php:27: Inconsistent template: expected a template parameter, but found a concrete type. [invalid-template-parameter]
+phpdoc_advanced_psalm_consistent_templates.php:62: Template parameter count mismatch: `Conformance\\Tests\\PhpdocAdvancedPsalmConsistentTemplates\\PinnedChild` must have 1 template parameters to match `Conformance\\Tests\\PhpdocAdvancedPsalmConsistentTemplates\\Container`. [inconsistent-template]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = [27]
+false_positive_lines = []
+over_rejected_lines = []

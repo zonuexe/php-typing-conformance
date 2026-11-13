@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 8
+output = """
+phpdoc_advanced_this_out_aliases.php:26: param $value miss matched with phpdoc type <<T>> [funcParamTypeMissMatch]
+phpdoc_advanced_this_out_aliases.php:32: Class or interface named \\Conformance\\Tests\\PhpdocAdvancedThisOutAliases\\U does not exist [undefinedClass]
+phpdoc_advanced_this_out_aliases.php:36: param $value miss matched with phpdoc type <<U>> [funcParamTypeMissMatch]
+phpdoc_advanced_this_out_aliases.php:42: param $box miss matched with phpdoc type <<MutableBox<int>>> [funcParamTypeMissMatch]
+phpdoc_advanced_this_out_aliases.php:47: param $box miss matched with phpdoc type <<MutableBox<string>>> [funcParamTypeMissMatch]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "5/7"
+unrecognized_lines = [32, 36]
+false_positive_lines = []
+over_rejected_lines = []

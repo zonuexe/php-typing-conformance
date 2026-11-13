@@ -1,0 +1,14 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_phpstan_throws_void.php:23: Function Conformance\\Tests\\PhpdocAdvancedPhpstanThrowsVoid\\claimsQuiet() throws exception RuntimeException but the PHPDoc contains @throws void. [reported-from-level=3]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+expected_diagnostic_level = 3
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

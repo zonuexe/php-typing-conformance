@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = "phpdoc_advanced_phpstan_require_extends_trait.php:30: Trait Conformance\\Tests\\PhpdocAdvancedPhpstanRequireExtendsTrait\\NeedsParent requires using class to extend Conformance\\Tests\\PhpdocAdvancedPhpstanRequireExtendsTrait\\RequiredParent, but Conformance\\Tests\\PhpdocAdvancedPhpstanRequireExtendsTrait\\BadUser does not."
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

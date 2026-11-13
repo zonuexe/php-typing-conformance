@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_psalm_consistent_templates.php:62: Cannot extend a strictly-enforced parent template param T with a non-template type [InvalidTemplateParam]
+phpdoc_advanced_psalm_consistent_templates.php:62: Conformance\\Tests\\PhpdocAdvancedPsalmConsistentTemplates\\PinnedChild requires the same number of template params as Conformance\\Tests\\PhpdocAdvancedPsalmConsistentTemplates\\Container but saw 0 [MissingTemplateParam]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

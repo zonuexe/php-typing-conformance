@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 6
+output = """
+phpdoc_advanced_psalm_yield.php:68: Type string for $data is never int [TypeDoesNotContainType]
+phpdoc_advanced_psalm_yield.php:68: Type string for $data is never int [RedundantCondition]
+phpdoc_advanced_psalm_yield.php:69: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmYield\\takesInt expects int, but string provided [InvalidScalarArgument]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

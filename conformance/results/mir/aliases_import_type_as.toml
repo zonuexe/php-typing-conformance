@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+aliases_import_type_as.php:37: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\AliasesImportTypeAs\\Point' does not exist [MIR1505]
+aliases_import_type_as.php:45: InvalidArgument: Argument $point of pin() expects 'Conformance\\Tests\\AliasesImportTypeAs\\Point', got 'array{'lat': 35, 'lng': 139}' [MIR0201]
+aliases_import_type_as.php:48: InvalidArgument: Argument $point of pin() expects 'Conformance\\Tests\\AliasesImportTypeAs\\Point', got 'array{'lat': "north", 'lng': 139}' [MIR0201]"""
+errors_diff = "Line 45: Expected valid value to be accepted, got [\"InvalidArgument: Argument $point of pin() expects 'Conformance\\\\Tests\\\\AliasesImportTypeAs\\\\Point', got 'array{'lat': 35, 'lng': 139}' [MIR0201]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [37]
+false_positive_lines = []
+over_rejected_lines = [45]

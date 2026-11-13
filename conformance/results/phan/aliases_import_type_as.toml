@@ -1,0 +1,16 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+aliases_import_type_as.php:37: Parameter $point has undeclared type \\Conformance\\Tests\\AliasesImportTypeAs\\Point (Did you mean class \\Conformance\\Tests\\ObjectsCloneWithProperties\\Point or class \\Conformance\\Tests\\PhpdocAdvancedPhpstanImmutable\\Point or class \\Conformance\\Tests\\PhpdocAdvancedPsalmImmutable\\Point) [PhanUndeclaredTypeParameter]
+aliases_import_type_as.php:45: Argument 1 ($point) is ['lat'=>35.0,'lng'=>139.0] of type array{lat:35.0,lng:139.0} but \\Conformance\\Tests\\AliasesImportTypeAs\\Map::pin() takes \\Conformance\\Tests\\AliasesImportTypeAs\\Point (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_import_type_as.php:37 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]
+aliases_import_type_as.php:48: Argument 1 ($point) is ['lat'=>'north','lng'=>139.0] of type array{lat:'north',lng:139.0} but \\Conformance\\Tests\\AliasesImportTypeAs\\Map::pin() takes \\Conformance\\Tests\\AliasesImportTypeAs\\Point (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_import_type_as.php:37 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]"""
+errors_diff = "Line 45: Expected valid value to be accepted, got [\"Argument 1 ($point) is ['lat'=>35.0,'lng'=>139.0] of type array{lat:35.0,lng:139.0} but \\\\Conformance\\\\Tests\\\\AliasesImportTypeAs\\\\Map::pin() takes \\\\Conformance\\\\Tests\\\\AliasesImportTypeAs\\\\Point (no real type) defined at /Users/megurine/repo/php/php-typing-conformance/conformance/tests/aliases_import_type_as.php:37 (the inferred real argument type has nothing in common with the parameter's phpdoc type) [PhanTypeMismatchArgumentProbablyReal]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [37]
+false_positive_lines = []
+over_rejected_lines = [45]

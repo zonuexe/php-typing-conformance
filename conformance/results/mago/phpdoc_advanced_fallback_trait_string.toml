@@ -1,13 +1,13 @@
 status = "Falls back to class-string"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "phpdoc_advanced_fallback_trait_string.php:55: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\acceptsTraitString`: expected `trait-string`, but found `class-string('Conformance\\Tests\\PhpdocAdvancedFallbackTraitString\\SomeClass')`. [invalid-argument]"
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "none"
-enforced_lines = "0/1"
+enforcement = "enforced"
+enforced_lines = "1/1"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

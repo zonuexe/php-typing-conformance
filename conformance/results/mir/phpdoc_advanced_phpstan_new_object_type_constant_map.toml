@@ -1,16 +1,10 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:50: ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:51: ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:52: ArgumentTypeCoercion: Argument $value of takesMutable() expects 'DateTime', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: ArgumentTypeCoercion: Argument $value of takesMutable() expects 'DateTime', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]
-phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]"""
-errors_diff = """
-Line 50: Expected valid value to be accepted, got ["ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]"]
-Line 51: Expected valid value to be accepted, got ["ArgumentTypeCoercion: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]"]
-Line 52: Expected valid value to be accepted, got ["ArgumentTypeCoercion: Argument $value of takesMutable() expects 'DateTime', got 'DateTimeInterface' — coercion may fail at runtime [MIR0225]"]"""
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: InvalidArgument: Argument $value of takesMutable() expects 'DateTime', got 'DateTimeImmutable' [MIR0201]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: InvalidArgument: Argument $value of takesImmutable() expects 'DateTimeImmutable', got 'DateTime' [MIR0201]"""
+errors_diff = ""
 notes = "Silent everywhere, probes included. The native `DateTimeInterface` alone would have made the three correct calls fail, so this is not a widening to it either."
 ignore_errors = []
 recognition = "recognized"
@@ -18,4 +12,4 @@ enforcement = "enforced"
 enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
-over_rejected_lines = [50, 51, 52]
+over_rejected_lines = []

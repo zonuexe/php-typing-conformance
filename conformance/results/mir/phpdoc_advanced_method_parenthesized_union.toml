@@ -2,7 +2,7 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_method_parenthesized_union.php:39: InvalidArgument: Argument $x of takeUnion() expects 'int|string', got 'true' [MIR0201]
+phpdoc_advanced_method_parenthesized_union.php:39: InvalidScalarArgument: Argument $x of takeUnion() expects 'int|string', got scalar 'true' [MIR0238]
 phpdoc_advanced_method_parenthesized_union.php:41: InvalidArgument: Argument $x of takeInt() expects 'int', got '"x"' [MIR0201]"""
 errors_diff = ""
 notes = ""

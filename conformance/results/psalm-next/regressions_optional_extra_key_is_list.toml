@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
-output = "regressions_optional_extra_key_is_list.php:24: Type array{0: int, a?: string} for $b is never list<mixed> [TypeDoesNotContainType]"
-errors_diff = ""
+output = ""
+errors_diff = "Line 24: Expected 1 error(s)"
 notes = ""
 ignore_errors = []

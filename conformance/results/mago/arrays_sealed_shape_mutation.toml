@@ -4,7 +4,7 @@ expected_diagnostic_count = 3
 output = """
 arrays_sealed_shape_mutation.php:44: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo`: expected `array{'foo': int}`, but possibly received `array{'foo': string('x')}`. [possibly-invalid-argument]
 arrays_sealed_shape_mutation.php:53: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo`: expected `array{'foo': int}`, but possibly received `array{'extra': string('x'), 'foo': int}`. [possibly-invalid-argument]
-arrays_sealed_shape_mutation.php:62: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo`: expected `array{'foo': int}`, but possibly received `array{}`. [possibly-invalid-argument]"""
+arrays_sealed_shape_mutation.php:62: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo`: expected `array{'foo': int}`, but found `array{}`. [invalid-argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -2,7 +2,7 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
-assertions_key_loose_narrowing.php:42: ImpossibleIdenticalComparison: '===' between '"foo"' and '"bar"' is always false — these types can never be identical [MIR0408]
+assertions_key_loose_narrowing.php:42: DocblockTypeContradiction: Type '"foo"' makes '$key === 'bar'' impossible — this can never hold [MIR0406]
 assertions_key_loose_narrowing.php:56: InvalidArgument: Argument $value of takesFoo() expects '"foo"', got 'int' [MIR0201]"""
 errors_diff = ""
 notes = ""

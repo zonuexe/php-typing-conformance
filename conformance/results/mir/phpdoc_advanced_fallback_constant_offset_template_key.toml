@@ -1,16 +1,10 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_fallback_constant_offset_template_key.php:52: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]
-phpdoc_advanced_fallback_constant_offset_template_key.php:53: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]
-phpdoc_advanced_fallback_constant_offset_template_key.php:54: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]
-phpdoc_advanced_fallback_constant_offset_template_key.php:57: PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]
-phpdoc_advanced_fallback_constant_offset_template_key.php:58: PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]"""
-errors_diff = """
-Line 52: Expected valid value to be accepted, got ["PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]"]
-Line 53: Expected valid value to be accepted, got ["PossiblyInvalidArgument: Argument $value of takesInt() expects 'int', possibly different type 'int|string' provided [MIR0105]"]
-Line 54: Expected valid value to be accepted, got ["PossiblyInvalidArgument: Argument $value of takesString() expects 'string', possibly different type 'int|string' provided [MIR0105]"]"""
+phpdoc_advanced_fallback_constant_offset_template_key.php:57: InvalidArgument: Argument $value of takesString() expects 'string', got '1' [MIR0201]
+phpdoc_advanced_fallback_constant_offset_template_key.php:58: InvalidArgument: Argument $value of takesInt() expects 'int', got '"two"' [MIR0201]"""
+errors_diff = ""
 notes = "Accepts the spelling and then carries `ID_TABLE[T]` around unevaluated, handing it to every call site: all five calls are rejected, the three correct ones included."
 ignore_errors = []
 recognition = "recognized"

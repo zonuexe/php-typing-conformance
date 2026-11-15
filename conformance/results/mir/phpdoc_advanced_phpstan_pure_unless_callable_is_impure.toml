@@ -1,10 +1,8 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:47: ImpureFunctionCall: Calling impure function mapInts() in a @pure function [MIR1704]
-phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:58: ImpureFunctionCall: Calling impure function mapInts() in a @pure function [MIR1704]"""
-errors_diff = "Line 47: Expected valid value to be accepted, got [\"ImpureFunctionCall: Calling impure function mapInts() in a @pure function [MIR1704]\"]"
+output = "phpdoc_advanced_phpstan_pure_unless_callable_is_impure.php:58: ImpureFunctionCall: Calling impure function mapInts() in a @pure function [MIR1704]"
+errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+assertions_float_comparison_narrowing.php:27: Strict comparison using === between float<1.5000000000000002, max> and 1.5 will always evaluate to false.
+assertions_float_comparison_narrowing.php:41: Strict comparison using === between float<min, 1.4999999999999998> and 1.5 will always evaluate to false."""
+errors_diff = ""
+notes = ""
+ignore_errors = []

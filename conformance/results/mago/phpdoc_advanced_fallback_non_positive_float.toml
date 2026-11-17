@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_non_positive_float.php:22: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float`. [non-existent-class-like]
+phpdoc_advanced_fallback_non_positive_float.php:26: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\returnsNonPositiveFloat`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float)`, but found `float(-1.5)`. [invalid-return-statement]
+phpdoc_advanced_fallback_non_positive_float.php:34: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float`. [non-existent-class-like]
+phpdoc_advanced_fallback_non_positive_float.php:41: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\acceptsFloat`: expected `float`, but found `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float)`. [invalid-argument]
+phpdoc_advanced_fallback_non_positive_float.php:45: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\acceptsNonPositiveFloat`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float)`, but found `float(0.0)`. [invalid-argument]
+phpdoc_advanced_fallback_non_positive_float.php:46: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\acceptsNonPositiveFloat`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float)`, but found `float(-1.5)`. [invalid-argument]
+phpdoc_advanced_fallback_non_positive_float.php:49: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\acceptsNonPositiveFloat`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float)`, but found `float(0.1)`. [invalid-argument]"""
+errors_diff = """
+Line 26: Expected valid value to be accepted, got ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\returnsNonPositiveFloat`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\non-positive-float)`, but found `float(-1.5)`. [invalid-return-statement]"]
+Line 41: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\acceptsFloat`: expected `float`, but found `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\non-positive-float)`. [invalid-argument]"]
+Line 45: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\acceptsNonPositiveFloat`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\non-positive-float)`, but found `float(0.0)`. [invalid-argument]"]
+Line 46: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\acceptsNonPositiveFloat`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\non-positive-float)`, but found `float(-1.5)`. [invalid-argument]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [22, 34]
+false_positive_lines = []
+over_rejected_lines = [26, 41, 45, 46]

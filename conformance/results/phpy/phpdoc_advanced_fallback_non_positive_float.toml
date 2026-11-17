@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_non_positive_float.php:22: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float'
+phpdoc_advanced_fallback_non_positive_float.php:26: Return value of Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\returnsNonPositiveFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float, float returned
+phpdoc_advanced_fallback_non_positive_float.php:34: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float'
+phpdoc_advanced_fallback_non_positive_float.php:41: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\acceptsFloat() is expected to be of type float, Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float given
+phpdoc_advanced_fallback_non_positive_float.php:45: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\acceptsNonPositiveFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float, float given
+phpdoc_advanced_fallback_non_positive_float.php:46: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\acceptsNonPositiveFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float, float given
+phpdoc_advanced_fallback_non_positive_float.php:49: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\acceptsNonPositiveFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float, float given"""
+errors_diff = """
+Line 26: Expected valid value to be accepted, got ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\returnsNonPositiveFloat() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\non-positive-float, float returned"]
+Line 41: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\acceptsFloat() is expected to be of type float, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\non-positive-float given"]
+Line 45: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\acceptsNonPositiveFloat() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\non-positive-float, float given"]
+Line 46: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\acceptsNonPositiveFloat() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\non-positive-float, float given"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [22, 34]
+false_positive_lines = []
+over_rejected_lines = []

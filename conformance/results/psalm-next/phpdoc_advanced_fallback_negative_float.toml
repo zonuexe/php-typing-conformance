@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_negative_float.php:23: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackNegativeFloat\\negative-float in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackNegativeFloat\\returnsNegativeFloat [InvalidDocblock]
+phpdoc_advanced_fallback_negative_float.php:23: Method Conformance\\Tests\\PhpdocAdvancedFallbackNegativeFloat\\returnsNegativeFloat does not have a return type, expecting float(-1.5) [MissingReturnType]
+phpdoc_advanced_fallback_negative_float.php:33: Unrecognized type Conformance\\Tests\\PhpdocAdvancedFallbackNegativeFloat\\negative-float in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackNegativeFloat\\acceptsNegativeFloat [InvalidDocblock]
+phpdoc_advanced_fallback_negative_float.php:35: Parameter $value has no provided type [MissingParamType]
+phpdoc_advanced_fallback_negative_float.php:40: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackNegativeFloat\\acceptsFloat cannot be mixed, expecting float [MixedArgument]"""
+errors_diff = "Line 40: Expected valid value to be accepted, got [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNegativeFloat\\\\acceptsFloat cannot be mixed, expecting float [MixedArgument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [23, 33, 35]
+false_positive_lines = []
+over_rejected_lines = []

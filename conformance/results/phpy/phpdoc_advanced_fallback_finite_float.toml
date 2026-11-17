@@ -1,0 +1,28 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_finite_float.php:21: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float'
+phpdoc_advanced_fallback_finite_float.php:25: Return value of Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\returnsFiniteFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float, float returned
+phpdoc_advanced_fallback_finite_float.php:33: Use of unknown class: 'Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float'
+phpdoc_advanced_fallback_finite_float.php:40: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\acceptsFloat() is expected to be of type float, Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float given
+phpdoc_advanced_fallback_finite_float.php:43: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\acceptsFiniteFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float, float given
+phpdoc_advanced_fallback_finite_float.php:44: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\acceptsFiniteFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float, float given
+phpdoc_advanced_fallback_finite_float.php:45: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\acceptsFiniteFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float, float given
+phpdoc_advanced_fallback_finite_float.php:48: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\acceptsFiniteFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float, float given
+phpdoc_advanced_fallback_finite_float.php:49: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\acceptsFiniteFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float, float given
+phpdoc_advanced_fallback_finite_float.php:50: Argument '1' passed to Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\acceptsFiniteFloat() is expected to be of type Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float, float given"""
+errors_diff = """
+Line 25: Expected valid value to be accepted, got ["Return value of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\returnsFiniteFloat() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\finite-float, float returned"]
+Line 40: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\acceptsFloat() is expected to be of type float, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\finite-float given"]
+Line 43: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\acceptsFiniteFloat() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\finite-float, float given"]
+Line 44: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\acceptsFiniteFloat() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\finite-float, float given"]
+Line 45: Expected valid value to be accepted, got ["Argument '1' passed to Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\acceptsFiniteFloat() is expected to be of type Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\finite-float, float given"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = [21, 33]
+false_positive_lines = []
+over_rejected_lines = []

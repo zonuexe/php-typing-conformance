@@ -1,0 +1,24 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_negative_float.php:21: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_negative_float.php:21: Undefined class 'negative-float' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_negative_float.php:25: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_negative_float.php:33: Undefined class 'negative-float' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_negative_float.php:43: Parameter '-1.5' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_negative_float.php:46: Parameter '-INF' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_negative_float.php:49: Parameter '0.0' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_negative_float.php:52: Parameter '1.5' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 25: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 43: Expected valid value to be accepted, got ["Parameter '-1.5' type is not compatible with declaration [PhpParamsInspection]"]
+Line 46: Expected valid value to be accepted, got ["Parameter '-INF' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [21, 33]
+false_positive_lines = []
+over_rejected_lines = [43, 46]

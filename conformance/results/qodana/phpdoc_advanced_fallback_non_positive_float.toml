@@ -1,0 +1,23 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_fallback_non_positive_float.php:22: Return type in PHPDoc does not match the actual return type [PhpReturnDocTypeMismatchInspection]
+phpdoc_advanced_fallback_non_positive_float.php:22: Undefined class 'non-positive-float' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_positive_float.php:26: Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]
+phpdoc_advanced_fallback_non_positive_float.php:34: Undefined class 'non-positive-float' [PhpUndefinedClassInspection]
+phpdoc_advanced_fallback_non_positive_float.php:45: Parameter '0.0' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_positive_float.php:46: Parameter '-1.5' type is not compatible with declaration [PhpParamsInspection]
+phpdoc_advanced_fallback_non_positive_float.php:49: Parameter '0.1' type is not compatible with declaration [PhpParamsInspection]"""
+errors_diff = """
+Line 26: Expected valid value to be accepted, got ["Return value type is not compatible with declared [PhpIncompatibleReturnTypeInspection]"]
+Line 45: Expected valid value to be accepted, got ["Parameter '0.0' type is not compatible with declaration [PhpParamsInspection]"]
+Line 46: Expected valid value to be accepted, got ["Parameter '-1.5' type is not compatible with declaration [PhpParamsInspection]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [22, 34]
+false_positive_lines = []
+over_rejected_lines = [45, 46]

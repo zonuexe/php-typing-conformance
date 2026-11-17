@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_fallback_non_positive_float.php:41: Expected type 'float'. Found 'Conformance\\Tests\\PhpdocAdvancedFallbackNonPositiveFloat\\non-positive-float'. [P1006]"
+errors_diff = "Line 41: Expected valid value to be accepted, got [\"Expected type 'float'. Found 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackNonPositiveFloat\\\\non-positive-float'. [P1006]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = [41]

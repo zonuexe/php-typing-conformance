@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = "phpdoc_advanced_fallback_float_range.php:56: param $n miss matched with phpdoc type <<float<0, 1.5>>> [funcParamTypeMissMatch]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/4"
+unrecognized_lines = [56]
+false_positive_lines = []
+over_rejected_lines = []

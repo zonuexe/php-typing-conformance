@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_finite_float.php:21: `finite-float` is not type vocabulary — a class name cannot contain `-`, so the name denotes nothing [phpdoc.unknown-vocabulary]
+phpdoc_advanced_fallback_finite_float.php:33: `finite-float` is not type vocabulary — a class name cannot contain `-`, so the name denotes nothing [phpdoc.unknown-vocabulary]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "none"
+enforced_lines = "0/3"
+unrecognized_lines = [21, 33]
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,13 @@
+status = "Falls back to float"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = ""
+errors_diff = ""
+notes = "Mago enforces `int<min, max>` (phpdoc_advanced_fallback_int_range) but is silent on `float<0, 1.5>`: out-of-range literals and the already-bounded `> 1.5` comparison stay quiet."
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/4"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

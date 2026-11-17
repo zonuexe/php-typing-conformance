@@ -1,0 +1,19 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_fallback_float_range.php:25: Cannot create generic object with reserved word in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackFloatRange\\returnsUnitInterval [InvalidDocblock]
+phpdoc_advanced_fallback_float_range.php:25: Method Conformance\\Tests\\PhpdocAdvancedFallbackFloatRange\\returnsUnitInterval does not have a return type, expecting float(0.75) [MissingReturnType]
+phpdoc_advanced_fallback_float_range.php:35: Cannot create generic object with reserved word in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackFloatRange\\acceptsUnitInterval [InvalidDocblock]
+phpdoc_advanced_fallback_float_range.php:37: Parameter $value has no provided type [MissingParamType]
+phpdoc_advanced_fallback_float_range.php:42: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackFloatRange\\acceptsFloat cannot be mixed, expecting float [MixedArgument]
+phpdoc_advanced_fallback_float_range.php:54: Cannot create generic object with reserved word in docblock for Conformance\\Tests\\PhpdocAdvancedFallbackFloatRange\\alreadyBounded [InvalidDocblock]"""
+errors_diff = "Line 42: Expected valid value to be accepted, got [\"Argument 1 of Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFloatRange\\\\acceptsFloat cannot be mixed, expecting float [MixedArgument]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/4"
+unrecognized_lines = [25, 35, 37, 54]
+false_positive_lines = []
+over_rejected_lines = []

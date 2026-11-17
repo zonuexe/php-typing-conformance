@@ -1,0 +1,23 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+phpdoc_advanced_fallback_finite_float.php:23: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float' does not exist [MIR1505]
+phpdoc_advanced_fallback_finite_float.php:43: InvalidArgument: Argument $value of acceptsFiniteFloat() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float', got '1.5' [MIR0201]
+phpdoc_advanced_fallback_finite_float.php:44: InvalidArgument: Argument $value of acceptsFiniteFloat() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float', got '0' [MIR0201]
+phpdoc_advanced_fallback_finite_float.php:45: InvalidArgument: Argument $value of acceptsFiniteFloat() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackFiniteFloat\\finite-float', got 'float' [MIR0201]
+phpdoc_advanced_fallback_finite_float.php:48: MixedArgument: Argument $value of acceptsFiniteFloat() is mixed [MIR1200]
+phpdoc_advanced_fallback_finite_float.php:49: MixedArgument: Argument $value of acceptsFiniteFloat() is mixed [MIR1200]
+phpdoc_advanced_fallback_finite_float.php:50: MixedArgument: Argument $value of acceptsFiniteFloat() is mixed [MIR1200]"""
+errors_diff = """
+Line 43: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsFiniteFloat() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\finite-float', got '1.5' [MIR0201]"]
+Line 44: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsFiniteFloat() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\finite-float', got '0' [MIR0201]"]
+Line 45: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsFiniteFloat() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackFiniteFloat\\\\finite-float', got 'float' [MIR0201]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "3/3"
+unrecognized_lines = [23]
+false_positive_lines = []
+over_rejected_lines = [43, 44, 45]

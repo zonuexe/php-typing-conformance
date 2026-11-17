@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_positive_float.php:24: UndefinedDocblockClass: Docblock type 'Conformance\\Tests\\PhpdocAdvancedFallbackPositiveFloat\\positive-float' does not exist [MIR1505]
+phpdoc_advanced_fallback_positive_float.php:44: InvalidArgument: Argument $value of acceptsPositiveFloat() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackPositiveFloat\\positive-float', got '1.5' [MIR0201]
+phpdoc_advanced_fallback_positive_float.php:47: MixedArgument: Argument $value of acceptsPositiveFloat() is mixed [MIR1200]
+phpdoc_advanced_fallback_positive_float.php:51: InvalidArgument: Argument $value of acceptsPositiveFloat() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackPositiveFloat\\positive-float', got '0' [MIR0201]
+phpdoc_advanced_fallback_positive_float.php:54: InvalidArgument: Argument $value of acceptsPositiveFloat() expects 'Conformance\\Tests\\PhpdocAdvancedFallbackPositiveFloat\\positive-float', got 'float' [MIR0201]"""
+errors_diff = """
+Line 44: Expected valid value to be accepted, got ["InvalidArgument: Argument $value of acceptsPositiveFloat() expects 'Conformance\\\\Tests\\\\PhpdocAdvancedFallbackPositiveFloat\\\\positive-float', got '1.5' [MIR0201]"]
+Line 47: Expected valid value to be accepted, got ["MixedArgument: Argument $value of acceptsPositiveFloat() is mixed [MIR1200]"]"""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [24]
+false_positive_lines = []
+over_rejected_lines = [44]

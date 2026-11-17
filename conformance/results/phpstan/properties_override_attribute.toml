@@ -1,7 +1,10 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = "properties_override_attribute.php:51: Property Conformance\\Tests\\PropertiesOverrideAttribute\\MissingParentProperty::$other has #[\\Override] attribute but does not override any property. [reported-from-level=0]"
+output = """
+properties_override_attribute.php:51: Property Conformance\\Tests\\PropertiesOverrideAttribute\\MissingParentProperty::$other has #[\\Override] attribute but does not override any property. [reported-from-level=0]
+properties_override_attribute.php:56: Attribute class Override can be used with class constants only on PHP 8.6 and later. [reported-from-level=0]
+properties_override_attribute.php:56: Constant Conformance\\Tests\\PropertiesOverrideAttribute\\OverrideOnConstant::FLAG has #[\\Override] attribute but does not override any constant. [reported-from-level=0]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

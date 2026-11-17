@@ -1,10 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-objects_nullsafe_narrowing.php:36: Type string for $user->name is never null [RedundantCondition]
 objects_nullsafe_narrowing.php:43: Cannot get property on possibly null variable $user of type Conformance\\Tests\\ObjectsNullsafeNarrowing\\User|null [PossiblyNullPropertyFetch]
 objects_nullsafe_narrowing.php:43: Argument 1 of Conformance\\Tests\\ObjectsNullsafeNarrowing\\takesString cannot be null, possibly null value provided [PossiblyNullArgument]"""
-errors_diff = "Line 36: Unexpected errors [\"Type string for $user->name is never null [RedundantCondition]\"]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

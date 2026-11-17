@@ -293,21 +293,26 @@ Paths come back relative to the *invoking* working directory rather than to
 `PzoomChecker` already makes for a tool that does not control its own path
 formatting. Exit codes 0 (clean) and 1 (issues found) are both normal.
 
-### Qodana — a report to read, or PhpStorm run headless
+### Qodana — PhpStorm run headless, SARIF as fallback
 
 Qodana is proprietary and cannot be shipped here, so the column is measured
-through a PhpStorm installation someone holds a licence for. There are two ways
-in, and they run the same inspections:
+through a PhpStorm installation someone holds a licence for. The default path
+is headless: `PhpStormLauncher` finds the IDE binary (Home then
+`/Applications`, `PHPSTORM` overrides) and `QodanaChecker` runs PhpStorm's
+[command-line inspector](https://www.jetbrains.com/help/phpstorm/command-line-code-inspector.html);
+`PhpStormInspectionReport` reads the JSON. Particulars are at the end of this
+section. A full matrix run includes this column; `--tool=qodana` and
+`make run-qodana` measure it alone.
 
-- By hand, with the IDE's
-  [Run Qodana in the IDE](https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide)
-  action; `QodanaChecker` reads the `qodana.sarif.json` the IDE leaves in a
-  temporary directory, and `QodanaSarifReport` normalises it.
-- Headless, when `PHPSTORM` names the IDE's launcher (`make run-qodana`):
-  `QodanaChecker` runs PhpStorm's
-  [command-line inspector](https://www.jetbrains.com/help/phpstorm/command-line-code-inspector.html)
-  itself and `PhpStormInspectionReport` reads its output. Its particulars are
-  at the end of this section.
+The inspector does not start while another PhpStorm instance is running. The
+runner then skips the column (an explicit `--tool=qodana` exits 1) rather than
+failing every other analyzer.
+
+`--tool=qodana` with no launcher still accepts a leftover `qodana.sarif.json`
+from the IDE's
+[Run Qodana in the IDE](https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide)
+action; `QodanaSarifReport` normalises it. That is the fallback, not the
+default.
 
 This is deliberately not [qodana-cli](https://github.com/JetBrains/qodana-cli),
 which is a separate artifact with its own versioning and its own Qodana Cloud
@@ -375,7 +380,8 @@ json -d conformance/tests`, has particulars of its own:
   `qodana` app starter in the same installation does not: it relaunches the
   IDE as "Qodana for PHP" (`QDPHP-<build>`) and exits with "No valid license
   found".
-- It does not start while another PhpStorm instance is running.
+- It does not start while another PhpStorm instance is running. The runner
+  skips the column in that case; `--tool=qodana` exits 1 instead of skipping.
 - Before inspecting, PhpStorm's PHP project configurator runs
   `composer install` for any composer.json whose vendor directory is
   missing. At this repository's root the bin plugin forwards that install into

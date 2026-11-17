@@ -254,14 +254,15 @@ PhpStorm is not a language server and answers no LSP request, but it has the
 one thing two of the layers need: a machine interface that resolves positions.
 The MCP server bundled with the IDE exposes `get_symbol_info`, which returns
 Quick Documentation for a position plus the declaration it resolves to.
-`make run-phpstorm-probes PHPSTORM=/path/to/phpstorm`
+`make run-phpstorm-probes`
 (`conformance/src/run-phpstorm-probes.php`) asks the hover and navigation
 probes at the same anchors through it, grades them with the same
 `ProbeGrading`, and writes `conformance/results/lsp/phpstorm.toml`. The report
 gives PhpStorm a column, marked "via MCP", in the hover table and the two
-navigation tables only. It needs a licensed PhpStorm that is not running: each
-session launches it headless on a scratch copy under `<temp>/phpstorm-probes/`
-and stops it afterwards.
+navigation tables only. It needs a licensed PhpStorm that is not running:
+`PhpStormLauncher` finds the app binary (`PHPSTORM` overrides), each session
+launches it headless on a scratch copy under `<temp>/phpstorm-probes/`, and
+stops it afterwards.
 
 | Layer | What stands in for the LSP request |
 | --- | --- |

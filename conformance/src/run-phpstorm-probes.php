@@ -8,11 +8,13 @@ declare(strict_types=1);
  * results/lsp/phpstorm.toml next to the language servers' results.
  *
  * Usage:
+ *   php src/run-phpstorm-probes.php
  *   PHPSTORM=/path/to/phpstorm php src/run-phpstorm-probes.php
  *
- * PHPSTORM is the IDE's launcher (default `phpstorm`). The installation needs
- * a licence and must not be running: each session launches it headless, on a
- * scratch project under <temp>/phpstorm-probes/, and stops it afterwards.
+ * PhpStormLauncher finds the IDE binary (PHPSTORM overrides). The
+ * installation needs a licence and must not be running: each session launches
+ * it headless, on a scratch project under <temp>/phpstorm-probes/, and stops
+ * it afterwards.
  *
  * Separate from run-lsp-probes.php because PhpStorm is not a language server:
  * the same probe definitions, fixtures, corpus and grading, but a different
@@ -24,6 +26,7 @@ declare(strict_types=1);
  * missing features the IDE does have. PhpStormProbeRunner explains the mapping.
  */
 
+use Conformance\Checker\PhpStormLauncher;
 use Conformance\Lsp\LspResultFile;
 use Conformance\Lsp\NavigationDefinitions;
 use Conformance\Lsp\PhpStormProbeRunner;
@@ -37,7 +40,16 @@ $rootDir = dirname(__DIR__);
 $lspDir = $rootDir . '/lsp';
 $resultsRoot = $rootDir . '/results';
 
-$launcher = (($value = getenv('PHPSTORM')) !== false && $value !== '') ? $value : 'phpstorm';
+$override = (($value = getenv('PHPSTORM')) !== false && $value !== '') ? $value : null;
+$launcher = PhpStormLauncher::resolve($override);
+if ($launcher === null) {
+    fwrite(STDERR, "phpstorm: no launcher found. Set PHPSTORM to the IDE binary (not Toolbox's PATH wrapper).\n");
+    exit(1);
+}
+if (PhpStormLauncher::isRunning()) {
+    fwrite(STDERR, "phpstorm: already running; close the IDE first.\n");
+    exit(1);
+}
 
 $definitions = ProbeDefinitions::load($lspDir . '/probes.toml', $lspDir . '/fixtures');
 $stripGrading = static fn (array $probe): array => array_diff_key(

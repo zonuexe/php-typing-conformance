@@ -103,6 +103,7 @@ run-sonarqube:
 test-harness:
 	php conformance/src/Expectation/self-test.php
 	php conformance/src/Metadata/self-test.php
+	php conformance/src/Checker/self-test.php
 
 # Re-derive Pass/Fail and recognition/enforcement from stored analyzer output
 # without re-running the tools. Use after evaluator or marker changes.
@@ -121,11 +122,12 @@ run-lsp-probes:
 # PhpStorm's launcher, for the two targets below. Both run it headless, so
 # the installation needs a licence and must not be running.
 # Toolbox's `phpstorm` on macOS PATH is `open -na` and cannot run inspect or
-# mcpServer; prefer the app binary when it is installed.
+# mcpServer; prefer the app binary when it is installed. main.php resolves
+# the same paths on its own when PHPSTORM is unset.
 PHPSTORM ?= $(firstword $(wildcard $(HOME)/Applications/PhpStorm.app/Contents/MacOS/phpstorm /Applications/PhpStorm.app/Contents/MacOS/phpstorm) phpstorm)
 
-# Re-measure the qodana column through PhpStorm's command-line inspector
-# instead of "Run Qodana in the IDE". Needs composer install at the root.
+# Re-measure only the qodana column. A full `php conformance/src/main.php`
+# already includes it when PhpStorm is installed and not running.
 run-qodana:
 	PHPSTORM=$(PHPSTORM) php conformance/src/main.php --tool=qodana
 

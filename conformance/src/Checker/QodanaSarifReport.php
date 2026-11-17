@@ -122,7 +122,7 @@ final class QodanaSarifReport
 
         if ($newest === null) {
             throw new RuntimeException(sprintf(
-                'No qodana_output*/qodana.sarif.json found under %s. Run "Inspect Code" in PhpStorm first.',
+                'No qodana_output*/qodana.sarif.json found under %s. Close PhpStorm and re-run so the checker can inspect, or run "Inspect Code" in the IDE first.',
                 $directory,
             ));
         }

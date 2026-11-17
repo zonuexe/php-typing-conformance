@@ -207,28 +207,31 @@ does not test mutation-free annotations. From 7.0.0-rc2, `TaintedHtml` and
 taint sources even without `--taint-analysis`, and the corpus does not
 measure taint.
 
-`qodana` is measured through a licensed PhpStorm, in one of two ways that run
-the same inspections:
+`qodana` is a licensed PhpStorm, measured the same way as the other columns:
+a full `php conformance/src/main.php` (and `--tool=qodana`) runs
+`phpstorm inspect` when a launcher is found and the IDE is not already
+running. `PhpStormLauncher` prefers `~/Applications/PhpStorm.app` then
+`/Applications`; `PHPSTORM` overrides that search. Toolbox's PATH
+`phpstorm` (`open -na`) is rejected because it cannot wait.
+`Contents/bin/inspect.sh` already prepends `inspect`; pointing `PHPSTORM`
+at it double-prepends.
 
-- By hand: run Qodana from PhpStorm (Code | Analyze Code | Run Qodana in the
-  IDE), then `php conformance/src/main.php --tool=qodana`, which reads the
-  newest report out of the system temp directory.
-- Headless: with PhpStorm closed and `composer install` done at the root,
-  `make run-qodana PHPSTORM=/path/to/phpstorm` runs PhpStorm's command-line
-  inspector (`phpstorm inspect`) with the pinned project profile and reads its
-  JSON output. Against PhpStorm 2026.3 (263.7307.215) versus the 2026.2.4
-  column, every Pass/Fail cell stayed. `generics_array_iterator_constructor_inference`
-  remains Fail: 2026.3 reports `PhpStrictTypeCheckingInspection` on the
-  valid-control `$iterator->current()` lines as well as the expected mismatches.
-  Four `debug_*` rows dropped leftover "Undefined namespace" lines (this run
-  resolved those namespaces from `vendor-bin/`). Which namespaces resolve
-  depends on what the IDE indexes from `vendor-bin/`.
-  Qodana's own headless starter (`phpstorm qodana`) is no substitute: it
-  relaunches the IDE as "Qodana for PHP" and wants a Qodana licence.
+If PhpStorm is already running, the runner skips the column and leaves
+stored results in place (an explicit `--tool=qodana` exits 1 instead).
+Close the IDE and re-run. `make run-qodana` is a shortcut for
+`--tool=qodana`, not a separate measurement path.
 
-Any test file newer than the report is recorded as `Not measured` instead of
-passing, so a newly added test case shows the gap in the matrix until the
-inspection is re-run.
+`--tool=qodana` with no launcher still reads a leftover `qodana.sarif.json`
+from "Run Qodana in the IDE". Qodana's own headless starter
+(`phpstorm qodana`) is no substitute: it relaunches the IDE as "Qodana for
+PHP" and wants a Qodana licence.
+
+Which namespaces resolve depends on what the IDE indexes from `vendor-bin/`;
+a re-inspect can add or drop leftover "Undefined namespace" lines on
+`debug_*` rows. That is indexing, not a version change.
+
+A SARIF/inspect report older than a test file is recorded as `Not measured`
+instead of passing.
 
 SonarQube / sonar-php was evaluated and declined (#10): it is a rule
 catalogue, not a type checker. The adapter is kept for a repeat

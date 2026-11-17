@@ -8,6 +8,7 @@ use Conformance\Checker\CoverageAware;
 use Conformance\Checker\PhanChecker;
 use Conformance\Checker\PhpStanChecker;
 use Conformance\Checker\PsalmChecker;
+use Conformance\Checker\PhpStormLauncher;
 use Conformance\Checker\QodanaChecker;
 use Conformance\Checker\SonarQubeChecker;
 use Conformance\Checker\MagoChecker;
@@ -72,6 +73,56 @@ function expectedDiagnosticCount(array $expectedDiagnostics): int
     }
 
     return $count;
+}
+
+/**
+ * Measure qodana through `phpstorm inspect` when a launcher is available
+ * and the IDE is not already running. An explicit `--tool=qodana` fails
+ * instead of skipping if the IDE is up, and falls back to a leftover
+ * SARIF report when no launcher exists.
+ *
+ * @param list<Checker> $checkers
+ * @return list<Checker>
+ */
+function attachQodanaChecker(array $checkers, string $projectRoot, bool $required): array
+{
+    $override = (($phpStorm = getenv('PHPSTORM')) !== false && $phpStorm !== '')
+        ? $phpStorm
+        : null;
+
+    if (PhpStormLauncher::isRunning()) {
+        $message = 'qodana: PhpStorm is already running; close the IDE and re-run to measure the column.';
+        if ($required) {
+            fwrite(STDERR, $message . "\n");
+            exit(1);
+        }
+
+        fwrite(STDERR, $message . " Skipping.\n");
+
+        return $checkers;
+    }
+
+    $launcher = PhpStormLauncher::resolve($override);
+    if ($launcher !== null) {
+        printf("qodana: measuring via %s inspect\n", $launcher);
+        $checkers[] = new QodanaChecker(
+            projectRoot: $projectRoot,
+            phpStormLauncher: $launcher,
+        );
+
+        return $checkers;
+    }
+
+    if ($required) {
+        fwrite(STDERR, "qodana: no PhpStorm launcher found; reading the newest IDE SARIF report.\n");
+        $checkers[] = new QodanaChecker(projectRoot: $projectRoot);
+
+        return $checkers;
+    }
+
+    fwrite(STDERR, "qodana: no PhpStorm launcher found; skipping the column.\n");
+
+    return $checkers;
 }
 
 /**
@@ -178,14 +229,6 @@ $pzoomChecker = new PzoomChecker(
     configPath: $psalmConfigPath,
     testsDir: $testsDir,
 );
-// PHPSTORM names a PhpStorm launcher to run the inspection headless; unset,
-// the column is read from the newest report "Run Qodana in the IDE" left.
-$qodanaChecker = new QodanaChecker(
-    projectRoot: $projectRoot,
-    phpStormLauncher: (($phpStorm = getenv('PHPSTORM')) !== false && $phpStorm !== '')
-        ? $phpStorm
-        : null,
-);
 $phpyChecker = new PhpyChecker(
     nodeBinary: 'node',
     cliPath: $projectRoot . '/vendor-bin/phpy/node_modules/phpy/dist/index.js',
@@ -205,7 +248,7 @@ $sonarQubeChecker = new SonarQubeChecker(
         : 'http://127.0.0.1:9000',
     token: (string) (getenv('SONAR_TOKEN') ?: ''),
 );
-$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $phpantomChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $qodanaChecker, $phpactorChecker];
+$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $phpantomChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $phpactorChecker];
 
 // Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
 // selected checker(s), leaving every other tool's results untouched. Accepts a
@@ -227,6 +270,7 @@ for ($i = 1, $argc = count($argvValues); $i < $argc; $i++) {
 }
 
 $reportFilterActive = false;
+$selected = null;
 if ($toolFilter !== null) {
     $selected = array_values(array_filter(array_map('trim', explode(',', $toolFilter)), static fn (string $n): bool => $n !== ''));
     if (in_array('sonarqube', $selected, true)) {
@@ -243,13 +287,21 @@ if ($toolFilter !== null) {
         static fn (Checker $checker): bool => in_array($checker->name(), $selected, true),
     ));
 
-    if ($checkers === []) {
+    if (!$rescoreOnly && in_array('qodana', $selected, true)) {
+        $checkers = attachQodanaChecker($checkers, $projectRoot, required: true);
+    }
+
+    if (!$rescoreOnly && $checkers === []) {
         fwrite(STDERR, sprintf("No checker matched --tool filter '%s'\n", $toolFilter));
         exit(1);
     }
 
     $reportFilterActive = true;
-    printf("Tool filter active: running only [%s]\n", implode(', ', array_map(static fn (Checker $c): string => $c->name(), $checkers)));
+    if (!$rescoreOnly) {
+        printf("Tool filter active: running only [%s]\n", implode(', ', array_map(static fn (Checker $c): string => $c->name(), $checkers)));
+    }
+} elseif (!$rescoreOnly) {
+    $checkers = attachQodanaChecker($checkers, $projectRoot, required: false);
 }
 
 if ($rescoreOnly) {
@@ -377,9 +429,9 @@ foreach ($testCases as $testCase) {
     }
 
     foreach ($checkers as $checker) {
-        // A checker whose results are produced by hand can be older than the
-        // corpus. Recording an empty diagnostic list for a test it never saw
-        // would enter the matrix as a clean pass, so say so instead.
+        // A leftover SARIF report can be older than the corpus. Recording an
+        // empty diagnostic list for a test it never saw would enter the
+        // matrix as a clean pass, so say so instead.
         if ($checker instanceof CoverageAware && !$checker->covers($testCase)) {
             $gap = $checker->coverageGap($testCase);
             printf("  %s: not measured (%s)\n", $checker->name(), $gap);

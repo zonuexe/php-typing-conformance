@@ -53,7 +53,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
  *
  * qodana is measured without being installable: its licence rules out
  * shipping the linter, so its column comes from a PhpStorm installation
- * someone holds a licence for, run by hand or headless (`make run-qodana`).
+ * someone holds a licence for. The runner inspects headless when the IDE
+ * is present and not already running (`--tool=qodana` or a full matrix run).
  */
 const INSTALLS = [
     'phan' => ['composer', 'phan', 'phan/phan'],

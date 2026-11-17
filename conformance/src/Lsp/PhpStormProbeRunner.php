@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Conformance\Lsp;
 
+use Conformance\Checker\PhpStormLauncher;
 use RuntimeException;
 
 /**
@@ -178,9 +179,7 @@ final class PhpStormProbeRunner
     {
         $deadline = time() + $timeoutSeconds;
         do {
-            $pids = [];
-            exec('pgrep -x phpstorm 2>/dev/null', $pids);
-            if ($pids === []) {
+            if (!PhpStormLauncher::isRunning()) {
                 usleep(500000);
 
                 return;

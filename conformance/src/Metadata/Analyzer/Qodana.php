@@ -18,11 +18,10 @@ use Conformance\Metadata\ReleaseFeed;
  * is the PHP plugin's inspection engine — the same one that underlines a type
  * error as you type in PhpStorm.
  *
- * This column measures it through PhpStorm, using the IDE's own "Run Qodana
- * in the IDE" action, documented at
- * https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide
- * — not through https://github.com/JetBrains/qodana-cli, which is a separate
- * artifact on a separate release cadence and reports to Qodana Cloud.
+ * This column measures it through PhpStorm's command-line inspector
+ * (`phpstorm inspect`), the same engine the IDE underlines with. That is not
+ * https://github.com/JetBrains/qodana-cli, which is a separate artifact on a
+ * separate release cadence and reports to Qodana Cloud.
  *
  * The founder column is the one this row cannot answer the way the others do.
  * Everywhere else it names someone who started a project and links the profile

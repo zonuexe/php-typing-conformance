@@ -11,8 +11,9 @@ use Conformance\Discovery\TestCase;
  *
  * Every {@see Checker} that runs a binary answers for the test file as it is
  * on disk right now, so the question never arises. {@see QodanaChecker} may
- * instead read a report someone produced by hand at some point in the past,
- * and a test written after that point was never looked at.
+ * instead read a leftover SARIF report produced at some point in the past,
+ * and a test written after that point was never looked at. Headless inspect
+ * records its launch time, so this only bites the SARIF fallback.
  *
  * Without this the two cases are indistinguishable: an analyzer that inspected
  * a file and found nothing, and an analyzer that never saw the file, both

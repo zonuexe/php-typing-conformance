@@ -672,9 +672,9 @@ final class SummaryReport
      */
     private function typeHandlingOf(array $result): array
     {
-        // A hand-run analyzer that has not seen this test yet has no
-        // recognition or enforcement to report, and saying "Unrecognized"
-        // would blame it for a measurement nobody took.
+        // An analyzer that has not seen this test yet has no recognition or
+        // enforcement to report, and saying "Unrecognized" would blame it
+        // for a measurement nobody took.
         if ((string) ($result['conformance_automated'] ?? '') === 'Not measured') {
             return ['Not measured', 'not-measured'];
         }

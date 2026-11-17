@@ -26,11 +26,13 @@ things are deliberately outside it:
   phpantom, php-lsp) are described by the report but never run. `--apply`
   records their new releases; there is nothing to re-measure.
 - **Qodana** is a licensed PhpStorm, not something `vendor-bin/` installs.
-  When its upstream build moves, the matrix keeps the old build until someone
-  with a licence re-measures: with PhpStorm updated and closed,
-  `make run-qodana PHPSTORM=…` for the matrix column and
-  `make run-phpstorm-probes PHPSTORM=…` for its language-server column.
-  Without a licence at hand, report the new build and leave both.
+  A full matrix run and `--tool=qodana` inspect headless when the IDE is
+  installed and not running (`PhpStormLauncher` finds the app binary;
+  `PHPSTORM` overrides). When its upstream build moves, re-measure it the
+  same way as any other changed column: `--tool=qodana`, plus
+  `make run-phpstorm-probes` for the hover/navigation column. If PhpStorm is
+  already running, skip and say so rather than failing the rest of the
+  update. Without a licence at hand, report the new build and leave both.
 
 The runner's own dependencies (`conformance/composer.json`) and the
 `references/` submodules are separate concerns. Leave them unless asked.

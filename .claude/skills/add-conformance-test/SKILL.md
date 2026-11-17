@@ -160,13 +160,11 @@ Two things to know:
 - **Editing a test file invalidates every stored result for it.** Line numbers
   move, and the results are keyed by line. `--rescore` cannot repair this — it
   re-evaluates stored output, whose line numbers are already wrong. Re-run.
-- **Qodana is hand-run** and its report can lie about freshness. Before
-  importing, check the line numbers it reports for your file against the
-  current source; a new `startTimeUtc` does not mean the IDE re-read the file.
-  The `QodanaChecker` and `QodanaSarifReport` docblocks explain why. With a
-  licensed PhpStorm that is not running, `make run-qodana PHPSTORM=…` measures
-  it headless instead, from an IDE started fresh on the files as they are on
-  disk.
+- **Qodana is in the full run.** `php conformance/src/main.php` inspects
+  headless when PhpStorm is installed and not running. If the IDE is already
+  up, the runner skips that column and prints why; close it and re-run
+  `--tool=qodana`. Do not exclude qodana from the tool list to "save" a
+  SARIF lookup — that path was the old hand-run import.
 
 ## 4. Read the verdicts
 

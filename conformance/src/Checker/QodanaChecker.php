@@ -12,16 +12,17 @@ use RuntimeException;
  * behind PhpStorm's inspections.
  *
  * Qodana is proprietary and cannot be shipped here, so the column is measured
- * through a PhpStorm installation someone holds a licence for, in one of two
- * ways that run the same inspections:
+ * through a PhpStorm installation someone holds a licence for. The default
+ * path is headless: {@see PhpStormLauncher} finds the IDE binary and this
+ * class runs `phpstorm inspect`, then {@see PhpStormInspectionReport} reads
+ * the JSON. The inspector refuses to start while another PhpStorm instance
+ * is running; the runner skips the column in that case rather than failing
+ * the rest of the matrix.
  *
- * - By hand, with the IDE's own "Run Qodana in the IDE" action, described at
- *   https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide.
- *   This class then reads the `qodana.sarif.json` it leaves behind.
- * - Headless, when constructed with a PhpStorm launcher: the checker runs
- *   PhpStorm's command-line inspector itself and reads its JSON output — see
- *   {@see PhpStormInspectionReport}. The inspector refuses to start while
- *   another PhpStorm instance is running, so the IDE has to be closed.
+ * `--tool=qodana` with no launcher still accepts a leftover
+ * `qodana.sarif.json` from the IDE's "Run Qodana in the IDE" action, described
+ * at
+ * https://www.jetbrains.com/help/qodana/quick-start.html#quickstart-run-in-ide.
  *
  * It is worth being explicit that neither is
  * https://github.com/JetBrains/qodana-cli. That is a separate artifact with
@@ -55,11 +56,9 @@ final class QodanaChecker implements CoverageAware
     /**
      * @param string|null $reportPath      null resolves the newest report at the
      *                                     moment of the first analysis
-     * @param string|null $phpStormLauncher PhpStorm's launcher (`phpstorm`, or
-     *                                     `phpstorm.sh` in the install's bin/);
-     *                                     when given, the checker runs the
-     *                                     inspection itself instead of reading
-     *                                     a report produced by hand
+     * @param string|null $phpStormLauncher PhpStorm's launcher; when given, the
+     *                                     checker runs the inspection itself.
+     *                                     Null reads a leftover SARIF report.
      */
     public function __construct(
         private readonly string $projectRoot,
@@ -105,7 +104,7 @@ final class QodanaChecker implements CoverageAware
         }
 
         return sprintf(
-            '%s changed after the Qodana report of %s was produced, so the report cannot answer for it. Run Qodana in PhpStorm, or set PHPSTORM to run the inspection headless, and re-run this tool.',
+            '%s changed after the Qodana report of %s was produced, so the report cannot answer for it. Close PhpStorm if it is running and re-run this tool (or `--tool=qodana`).',
             basename($stale),
             $this->report()->startedAt ?? 'unknown date',
         );

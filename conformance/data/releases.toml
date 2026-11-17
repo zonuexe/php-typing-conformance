@@ -30,12 +30,12 @@ version = "6.0.11"
 date = "2026-10-15"
 
 [psalm]
-version = "7.6.0"
-date = "2026-11-15"
+version = "7.9.0"
+date = "2026-11-17"
 
 [phpstan]
-version = "2.3.5"
-date = "2026-11-03"
+version = "2.3.6"
+date = "2026-11-15"
 
 [intelephense]
 version = "1.18.5"
@@ -54,8 +54,8 @@ version = "263.7307.215"
 date = "2026-11-05"
 
 [mago]
-version = "1.60.1"
-date = "2026-11-15"
+version = "1.60.2"
+date = "2026-11-16"
 
 [phpy]
 version = "1.0.19490"
@@ -84,8 +84,8 @@ version = "1.0.19523"
 date = "2026-11-09"
 
 [php-lsp]
-version = "0.32.0"
-date = "2026-11-12"
+version = "0.33.0"
+date = "2026-11-15"
 
 # Reference-only: function-specific and historical servers are listed, not
 # measured. Laravel LSP is function-specific but still launched.

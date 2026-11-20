@@ -53,6 +53,42 @@ final class PhpStanChecker implements Checker
 {
     private const MAX_LEVEL = 10;
 
+    /**
+     * Environment variables that make PHPStan think an AI agent is driving
+     * it, and therefore print `[identifier=…]` after every message in the raw
+     * format (`PHPStan\Internal\AgentDetector`).
+     *
+     * That is a property of the shell the suite was started from, not of the
+     * analyzer, so it must not reach the stored output: a run under an agent
+     * harness would measure a different format from the same PHPStan that CI
+     * runs, and the diff would look like a version change. Both invocations
+     * below therefore strip these before PHPStan sees them. The list is the
+     * union of PHPStan's own markers and Psalm's (`CliUtils::runningUnderAiAgent`),
+     * so neither tool can spot the agent through a variable the other named.
+     *
+     * @var list<string>
+     */
+    private const AGENT_MARKERS = [
+        'AI_AGENT',
+        'AMP_CURRENT_THREAD_ID',
+        'ANTIGRAVITY_AGENT',
+        'AUGMENT_AGENT',
+        'CLAUDECODE',
+        'CLAUDE_CODE',
+        'CLINE_ACTIVE',
+        'CODEX_SANDBOX',
+        'CODEX_THREAD_ID',
+        'COPILOT_CLI',
+        'CURSOR_AGENT',
+        'CURSOR_TRACE_ID',
+        'GEMINI_CLI',
+        'OPENCODE',
+        'OPENCODE_CLIENT',
+        'PI_CODING_AGENT',
+        'REPL_ID',
+        'TRAE_AI_SHELL_ID',
+    ];
+
     public function __construct(
         private readonly string $toolName,
         private readonly string $binaryPath,
@@ -197,6 +233,31 @@ final class PhpStanChecker implements Checker
     }
 
     /**
+     * `env -u …` prefix that hides agent markers from the analyzer, blank when
+     * none of them are set.
+     *
+     * `-u` rather than an empty value: PHPStan's detector treats a present but
+     * empty `AI_AGENT` as absent and every other marker as present whatever it
+     * holds, so emptying would only fix one of them.
+     */
+    private static function withoutAgentMarkers(): string
+    {
+        $present = array_filter(
+            self::AGENT_MARKERS,
+            static fn (string $name): bool => getenv($name) !== false,
+        );
+
+        if ($present === []) {
+            return '';
+        }
+
+        return 'env ' . implode(' ', array_map(
+            static fn (string $name): string => '-u ' . escapeshellarg($name),
+            $present,
+        )) . ' ';
+    }
+
+    /**
      * One invocation over the whole test set.
      *
      * @return array<string, array<int, list<string>>> file name => diagnostics
@@ -204,7 +265,8 @@ final class PhpStanChecker implements Checker
     private function runCorpusAnalysis(string $level): array
     {
         $command = sprintf(
-            '%s analyse -c %s --level=%s --no-progress --error-format=raw %s 2>&1',
+            '%s%s analyse -c %s --level=%s --no-progress --error-format=raw %s 2>&1',
+            self::withoutAgentMarkers(),
             escapeshellarg($this->binaryPath),
             escapeshellarg($this->configPath),
             escapeshellarg($level),
@@ -344,7 +406,8 @@ final class PhpStanChecker implements Checker
         );
 
         $command = sprintf(
-            '%s analyse -c %s --level=%s --no-progress --error-format=raw %s 2>&1',
+            '%s%s analyse -c %s --level=%s --no-progress --error-format=raw %s 2>&1',
+            self::withoutAgentMarkers(),
             escapeshellarg($this->binaryPath),
             escapeshellarg($this->configPath),
             escapeshellarg($level),

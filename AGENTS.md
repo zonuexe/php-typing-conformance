@@ -189,13 +189,13 @@ Current checker columns in the report, in display order:
 - `steins`
 
 `psalm-next` is a second Psalm installation running the 7.x line
-(`vendor-bin/psalm-next`, currently 7.9.0) through the same adapter
+(`vendor-bin/psalm-next`, currently 7.12.0) through the same adapter
 and config. It is a configuration of `psalm` for the metadata and release
 tables, and the evaluator makes `// E<psalm>` expectations apply to it too —
 where the 7.x line diverges, that shows up as a missed or unexpected
 diagnostic rather than a marker the column never saw. It is not a column of
 the index matrix: the psalm column is 6.x, the header names 7.x on a second
-line (`6.20.12` / `7.9.0`), cells tag `(7 Pass)` / `(7≠)` where the two
+line (`6.21.0` / `7.12.0`), cells tag `(7 Pass)` / `(7≠)` where the two
 diverge, and the detail pages carry a `psalm 7` row. Only the CLI is
 measured; there is no LSP probe for the 7.x line.
 The 7.x-only purity findings (`MissingPureAnnotation`,
@@ -243,6 +243,11 @@ PHPStan handling is intentionally split:
 
 - `phpstan`: non-strict config, persists max-level output, and resolves the reporting level of each individual diagnostic
 - `phpstan-strict`: strict-rules config at max only
+
+The adapter unsets the agent-detection variables PHPStan reads (`AI_AGENT`,
+`CLAUDECODE`, `CODEX_THREAD_ID`, …). When one is set, PHPStan appends
+`[identifier=…]` to every raw-format message, which would store a different
+format from the one CI produces and look like a version change.
 
 ### The Analysis Target Is Pinned To PHP 8.5
 

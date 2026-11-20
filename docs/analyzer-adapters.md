@@ -133,6 +133,14 @@ different when the project is one file) falls back to a per-test walk.
 
 Exit codes 0 and 1 are both normal.
 
+PHPStan prints `[identifier=argument.type]` after each message in the raw
+format when it believes an AI agent is driving it (`PHPStan\Internal\AgentDetector`,
+which reads `AI_AGENT`, `CLAUDECODE`, `CODEX_THREAD_ID` and friends). That is a
+property of the shell the suite was started from, not of the analyzer, so the
+adapter unsets those variables before every invocation. Without that, a run
+started from an agent harness stores a different message format from the one
+CI produces, and the diff reads as a version change that never happened.
+
 ### Psalm — JSON, and a config that answers back
 
 `--output-format=json` with `--config`; issues are matched on `file_path` and
@@ -142,17 +150,17 @@ issues were found and is treated as success.
 ### psalm-next — the 7.x line, folded into the psalm column
 
 A second Psalm installation (`vendor-bin/psalm-next`, currently
-`7.9.0`) run through the same adapter with a config of its own
+`7.12.0`) run through the same adapter with a config of its own
 (`conformance/psalm-next.xml` — a copy of `psalm.xml` plus the 7.x-only
 purity and taint suppresses, which Psalm 6's schema rejects). It is a configuration
 of the psalm column's metadata: the reference and release tables describe
 Psalm once. The index matrix does not give 7.x a column of its own: the
-column is 6.x, the header names 7.x on a second line (`6.20.12` /
-`7.9.0`), cells tag `(7 Pass)` / `(7≠)` where the two diverge, and the
+column is 6.x, the header names 7.x on a second line (`6.21.0` /
+`7.12.0`), cells tag `(7 Pass)` / `(7≠)` where the two diverge, and the
 detail pages show a `psalm 7` row. Only the CLI is measured — no LSP probe
 for the 7.x line. The 7.x-only purity findings
 (`MissingPureAnnotation`, `MissingAbstractPureAnnotation`) are suppressed
-in `psalm-next.xml`; and the version banner reads `Psalm 7.9.0@…`,
+in `psalm-next.xml`; and the version banner reads `Psalm 7.12.0@…`,
 which the version pattern still parses with a prerelease suffix so a
 future `7.0.0-rcN` would link to the tag that exists.
 

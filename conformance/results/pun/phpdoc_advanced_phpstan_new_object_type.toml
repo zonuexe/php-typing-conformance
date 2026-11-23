@@ -1,0 +1,17 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_new_object_type.php:39: Function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\instantiate() has invalid return type Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new. [class.notFound]
+phpdoc_advanced_phpstan_new_object_type.php:41: Function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\instantiate() should return Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\new<TClass of string> but returns object. [return.type]
+phpdoc_advanced_phpstan_new_object_type.php:49: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesMutable expects DateTime, DateTimeImmutable given. [argument.type]
+phpdoc_advanced_phpstan_new_object_type.php:50: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectType\\takesImmutable expects DateTimeImmutable, DateTime given. [argument.type]"""
+errors_diff = "Line 41: Expected valid value to be accepted, got [\"Function Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\instantiate() should return Conformance\\\\Tests\\\\PhpdocAdvancedPhpstanNewObjectType\\\\new<TClass of string> but returns object. [return.type]\"]"
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [39]
+false_positive_lines = []
+over_rejected_lines = [41]

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+properties_override_attribute.php:51: Property Conformance\\Tests\\PropertiesOverrideAttribute\\MissingParentProperty::$other has #[\\Override] attribute but does not override any property. [property.override]
+properties_override_attribute.php:56: Attribute class Override does not have the class constant target. [attribute.target]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

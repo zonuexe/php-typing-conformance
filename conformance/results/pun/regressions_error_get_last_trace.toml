@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+regressions_error_get_last_trace.php:52: Offset 'trace' on array{type: int, message: string, file: string, line: int} on left side of ?? does not exist. [nullCoalesce.offset]
+regressions_error_get_last_trace.php:53: Offset 'nope' does not exist on array{type: int, message: string, file: string, line: int}. [offsetAccess.notFound]"""
+errors_diff = "Line 52: Expected silence (quiet probe), got [\"Offset 'trace' on array{type: int, message: string, file: string, line: int} on left side of ?? does not exist. [nullCoalesce.offset]\"]"
+notes = ""
+ignore_errors = []

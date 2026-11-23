@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phpstan_template_type.php:34: PHPDoc tag @return contains unresolvable type. [return.unresolvableType]
+phpdoc_advanced_phpstan_template_type.php:47: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanTemplateType\\takesString expects string, int given. [argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = [34]
+false_positive_lines = []
+over_rejected_lines = []

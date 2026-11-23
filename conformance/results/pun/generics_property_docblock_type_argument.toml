@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 1
+output = """
+generics_property_docblock_type_argument.php:43: Property Conformance\\Tests\\GenericsPropertyDocblockTypeArgument\\Container::$box (Conformance\\Tests\\GenericsPropertyDocblockTypeArgument\\Box<int>) does not accept Conformance\\Tests\\GenericsPropertyDocblockTypeArgument\\Box<42>. [assign.propertyType]
+generics_property_docblock_type_argument.php:57: Parameter #1 $value of function Conformance\\Tests\\GenericsPropertyDocblockTypeArgument\\takesString expects string, int given. [argument.type]"""
+errors_diff = "Line 43: Unexpected errors [\"Property Conformance\\\\Tests\\\\GenericsPropertyDocblockTypeArgument\\\\Container::$box (Conformance\\\\Tests\\\\GenericsPropertyDocblockTypeArgument\\\\Box<int>) does not accept Conformance\\\\Tests\\\\GenericsPropertyDocblockTypeArgument\\\\Box<42>. [assign.propertyType]\"]"
+notes = ""
+ignore_errors = []

@@ -1,0 +1,18 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+phpdoc_advanced_fallback_float_range.php:25: Function Conformance\\Tests\\PhpdocAdvancedFallbackFloatRange\\returnsUnitInterval() has no return type specified. [missingType.return]
+phpdoc_advanced_fallback_float_range.php:25: PHPDoc tag @return contains unresolvable type. [return.unresolvableType]
+phpdoc_advanced_fallback_float_range.php:37: Function Conformance\\Tests\\PhpdocAdvancedFallbackFloatRange\\acceptsUnitInterval() has parameter $value with no type specified. [missingType.parameter]
+phpdoc_advanced_fallback_float_range.php:37: PHPDoc tag @param for parameter $value contains unresolvable type. [parameter.unresolvableType]
+phpdoc_advanced_fallback_float_range.php:56: PHPDoc tag @param for parameter $n contains unresolvable type. [parameter.unresolvableType]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "partial"
+enforced_lines = "1/4"
+unrecognized_lines = [25, 37, 56]
+false_positive_lines = []
+over_rejected_lines = []

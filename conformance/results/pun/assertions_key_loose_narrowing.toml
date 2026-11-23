@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 4
+output = """
+assertions_key_loose_narrowing.php:42: Strict comparison using === between 'foo' and 'bar' will always evaluate to false. [identical.alwaysFalse]
+assertions_key_loose_narrowing.php:56: Parameter #1 $value of function Conformance\\Tests\\AssertionsKeyLooseNarrowing\\takesFoo expects 'foo', int given. [argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

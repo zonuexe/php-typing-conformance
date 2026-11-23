@@ -1,4 +1,4 @@
-.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes run-phpstorm-probes run-qodana run-sonarqube serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom install-laravel-lsp install-laravel-corpus test-harness rescore
+.PHONY: init-submodules pull-submodules render-report-html run-lsp-probes run-phpstorm-probes run-qodana run-sonarqube serve update-tools install-intelephense install-phpy install-devsense-php-ls install-php-lsp install-phpantom install-pun install-laravel-lsp install-laravel-corpus test-harness rescore
 
 REFERENCE_SUBMODULES := \
 	references/python-typing \
@@ -68,6 +68,7 @@ install-devsense-php-ls:
 # step with conformance/data/releases.toml when bumping.
 PHP_LSP_VERSION := 0.33.0
 PHPANTOM_VERSION := 0.11.1
+PUN_VERSION := 0.2.7
 LSP_BIN_PLATFORM := aarch64-apple-darwin
 
 install-php-lsp:
@@ -81,6 +82,12 @@ install-phpantom:
 	gh release download $(PHPANTOM_VERSION) --repo phpantom-dev/phpantom_lsp \
 		-p 'phpantom_lsp-$(LSP_BIN_PLATFORM).tar.gz' -O - | tar xz -C vendor-bin/phpantom/bin
 	chmod +x vendor-bin/phpantom/bin/phpantom_lsp
+
+install-pun:
+	mkdir -p vendor-bin/pun/bin
+	gh release download v$(PUN_VERSION) --repo shipfastlabs/pun \
+		-p 'punphp-$(LSP_BIN_PLATFORM).tar.gz' -O - | tar xz --strip-components=1 -C vendor-bin/pun/bin
+	chmod +x vendor-bin/pun/bin/pun
 
 install-laravel-lsp:
 	composer bin laravel-lsp install --no-interaction --no-progress

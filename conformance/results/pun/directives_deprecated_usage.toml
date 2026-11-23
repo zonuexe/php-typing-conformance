@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+directives_deprecated_usage.php:17: Call to deprecated function Conformance\\Tests\\DirectivesDeprecatedUsage\\oldMessage():
+Use newMessage() instead. [function.deprecated]
+directives_deprecated_usage.php:18: Instantiation of deprecated class Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter:
+Use ModernFormatter instead. [new.deprecatedClass]
+directives_deprecated_usage.php:19: Call to method format() of deprecated class Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter:
+Use ModernFormatter instead. [method.deprecatedClass]"""
+errors_diff = "Line 19: Unexpected errors [\"Call to method format() of deprecated class Conformance\\\\Tests\\\\DirectivesDeprecatedUsage\\\\LegacyFormatter:\\nUse ModernFormatter instead. [method.deprecatedClass]\"]"
+notes = ""
+ignore_errors = []

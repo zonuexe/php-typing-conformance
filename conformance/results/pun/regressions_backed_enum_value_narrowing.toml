@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 12
+output = """
+regressions_backed_enum_value_narrowing.php:33: Match expression does not handle remaining value: Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit::Hearts [match.unhandled]
+regressions_backed_enum_value_narrowing.php:40: Match expression does not handle remaining value: Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit::Hearts [match.unhandled]"""
+errors_diff = "Line 33: Unexpected errors [\"Match expression does not handle remaining value: Conformance\\\\Tests\\\\RegressionsBackedEnumValueNarrowing\\\\Suit::Hearts [match.unhandled]\"]"
+notes = ""
+ignore_errors = []

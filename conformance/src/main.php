@@ -18,6 +18,7 @@ use Conformance\Checker\IntelephenseChecker;
 use Conformance\Checker\NoVerifyChecker;
 use Conformance\Checker\PhpactorChecker;
 use Conformance\Checker\PhpyChecker;
+use Conformance\Checker\PunChecker;
 use Conformance\Checker\PzoomChecker;
 use Conformance\Checker\SteinsChecker;
 use Conformance\Discovery\TestCaseDiscovery;
@@ -164,6 +165,7 @@ $phpStanConfigPath = $rootDir . '/phpstan.dist.neon';
 $phpStanNoStrictConfigPath = $rootDir . '/phpstan-no-strict.neon';
 $psalmConfigPath = $rootDir . '/psalm.xml';
 $psalmNextConfigPath = $rootDir . '/psalm-next.xml';
+$punConfigPath = $rootDir . '/pun.toml';
 
 $loader = new TestGroupLoader();
 $testGroups = $loader->load($testGroupsFile);
@@ -193,6 +195,11 @@ $magoChecker = new MagoChecker(
 $phpantomChecker = new PhpantomChecker(
     binaryPath: $projectRoot . '/vendor-bin/phpantom/bin/phpantom_lsp',
     workspacePath: $rootDir,
+);
+$punChecker = new PunChecker(
+    binaryPath: $projectRoot . '/vendor-bin/pun/bin/pun',
+    workspacePath: $rootDir,
+    configPath: $punConfigPath,
 );
 $mirChecker = new MirChecker(
     binaryPath: $projectRoot . '/vendor-bin/mir/vendor/bin/mir',
@@ -248,7 +255,7 @@ $sonarQubeChecker = new SonarQubeChecker(
         : 'http://127.0.0.1:9000',
     token: (string) (getenv('SONAR_TOKEN') ?: ''),
 );
-$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $phpantomChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $phpactorChecker];
+$checkers = [$phanChecker, $phpStanChecker, $phpStanStrictChecker, $psalmChecker, $psalmNextChecker, $pzoomChecker, $magoChecker, $phpantomChecker, $punChecker, $mirChecker, $noVerifyChecker, $intelephenseChecker, $phpyChecker, $steinsChecker, $phpactorChecker];
 
 // Optional `--tool NAME` / `--tool=NAME` filter: run and persist only the
 // selected checker(s), leaving every other tool's results untouched. Accepts a

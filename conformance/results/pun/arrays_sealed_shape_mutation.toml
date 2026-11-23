@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+arrays_sealed_shape_mutation.php:44: Parameter #1 $shape of function Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo expects array{foo: int}, array{foo: 'x'} given. [argument.type]
+arrays_sealed_shape_mutation.php:62: Parameter #1 $shape of function Conformance\\Tests\\ArraysSealedShapeMutation\\takesFoo expects array{foo: int}, array{} given. [argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

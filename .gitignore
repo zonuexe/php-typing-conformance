@@ -11,9 +11,10 @@ conformance/.scannerwork/
 conformance/.steins/
 
 # Per-platform GitHub-release binaries, fetched by make install-php-lsp /
-# install-phpantom; too large and too platform-bound to commit.
+# install-phpantom / install-pun; too large and too platform-bound to commit.
 vendor-bin/php-lsp/bin/
 vendor-bin/phpantom/bin/
+vendor-bin/pun/bin/
 
 # The report is generated -- from the committed results/<tool>/*.toml -- by
 # `make render-report-html`, and rebuilt in CI on every push to master.

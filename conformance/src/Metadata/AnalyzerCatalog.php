@@ -14,6 +14,7 @@ use Conformance\Metadata\Analyzer\Phpantom;
 use Conformance\Metadata\Analyzer\Phpy;
 use Conformance\Metadata\Analyzer\PhpStan;
 use Conformance\Metadata\Analyzer\Psalm;
+use Conformance\Metadata\Analyzer\Pun;
 use Conformance\Metadata\Analyzer\Pzoom;
 use Conformance\Metadata\Analyzer\Qodana;
 use Conformance\Metadata\Analyzer\Steins;
@@ -47,6 +48,7 @@ final class AnalyzerCatalog
         'mir' => Mir::class,
         'pzoom' => Pzoom::class,
         'steins' => Steins::class,
+        'pun' => Pun::class,
     ];
 
     /**

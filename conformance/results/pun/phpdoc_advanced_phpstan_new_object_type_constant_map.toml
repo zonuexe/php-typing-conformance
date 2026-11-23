@@ -1,0 +1,21 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: Function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\createNow() has invalid return type Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\DATETIME_CLASSES. [class.notFound]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: Function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\createNow() has invalid return type Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\new. [class.notFound]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: PHPDoc tag @param for parameter $type contains unresolvable type. [parameter.unresolvableType]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: PHPDoc tag @return contains unresolvable type. [return.unresolvableType]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: PHPDoc tag @template T for function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\createNow() with bound type mixed is not supported. [generics.notSupportedBound]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:44: Template type T of function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\createNow() is not referenced in a parameter. [method.templateTypeNotInParameter]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:55: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesMutable expects DateTime, DateTimeImmutable given. [argument.type]
+phpdoc_advanced_phpstan_new_object_type_constant_map.php:56: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedPhpstanNewObjectTypeConstantMap\\takesImmutable expects DateTimeImmutable, DateTime given. [argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [44]
+false_positive_lines = []
+over_rejected_lines = []

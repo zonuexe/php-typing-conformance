@@ -1,0 +1,11 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+arrays_shape_sealed_by_default.php:35: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{} given. [argument.type]
+arrays_shape_sealed_by_default.php:36: Parameter #1 $shape of function Conformance\\Tests\\ArraysShapeSealedByDefault\\takesShape expects array{foo: int}, array{foo: 'one'} given. [argument.type]"""
+errors_diff = """
+Line 40: Expected 1 error(s)
+Line 49: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []

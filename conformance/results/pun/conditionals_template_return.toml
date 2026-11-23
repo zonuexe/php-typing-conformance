@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 3
+output = """
+conditionals_template_return.php:33: Function Conformance\\Tests\\ConditionalsTemplateReturn\\fetch() return type has no value type specified in iterable type array. [missingType.iterableValue]
+conditionals_template_return.php:52: Parameter #1 $item of function Conformance\\Tests\\ConditionalsTemplateReturn\\takesItem expects Conformance\\Tests\\ConditionalsTemplateReturn\\Item, list<Conformance\\Tests\\ConditionalsTemplateReturn\\Item> given. [argument.type]"""
+errors_diff = "Line 33: Unexpected errors [\"Function Conformance\\\\Tests\\\\ConditionalsTemplateReturn\\\\fetch() return type has no value type specified in iterable type array. [missingType.iterableValue]\"]"
+notes = ""
+ignore_errors = []

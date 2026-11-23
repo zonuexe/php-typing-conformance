@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = """
+phpdoc_advanced_phpstan_not_deprecated.php:43: Call to deprecated method run() of class Conformance\\Tests\\PhpdocAdvancedPhpstanNotDeprecated\\Base:
+Use child instead [method.deprecated]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "no-probes"
+enforced_lines = "0/0"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

@@ -1,0 +1,10 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = ""
+errors_diff = """
+Line 62: Expected 1 error(s)
+Line 72: Expected 1 error(s)
+Line 77: Expected 1 error(s)"""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,15 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_static_closure.php:39: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsClosure expects Closure, Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\static-closure given. [argument.type]
+phpdoc_advanced_fallback_static_closure.php:48: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackStaticClosure\\acceptsStaticClosure expects Closure, 'strlen' given. [argument.type]"""
+errors_diff = "Line 39: Expected valid value to be accepted, got [\"Parameter #1 $value of function Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\acceptsClosure expects Closure, Conformance\\\\Tests\\\\PhpdocAdvancedFallbackStaticClosure\\\\static-closure given. [argument.type]\"]"
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "partial"
+enforced_lines = "1/2"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = [39]

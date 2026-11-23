@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+objects_nullsafe_narrowing.php:43: Cannot access property $name on Conformance\\Tests\\ObjectsNullsafeNarrowing\\User|null. [property.nonObject]
+objects_nullsafe_narrowing.php:43: Parameter #1 $value of function Conformance\\Tests\\ObjectsNullsafeNarrowing\\takesString expects string, string|null given. [argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

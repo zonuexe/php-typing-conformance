@@ -40,9 +40,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
  * `bin` is a vendor-bin namespace: a Composer one is updated by requiring the
  * newest release into it, an npm one by installing the newest tag. Tools with
  * no entry are read about but not installed here -- pzoom is built from a
- * local checkout, and phpantom and php-lsp ship only as per-platform GitHub
+ * local checkout, and phpantom, php-lsp and pun ship per-platform GitHub
  * release binaries (installed by `make install-phpantom` / `make
- * install-php-lsp`, which this script cannot version-track). devsense-php-ls
+ * install-php-lsp` / `make install-pun`, which this script cannot
+ * version-track). devsense-php-ls
  * and laravel-lsp have entries for the opposite reason: they are installed
  * purely to be probed over LSP. phpactor was installed for that reason too
  * until its `worse:analyse` command became a matrix column; one install now

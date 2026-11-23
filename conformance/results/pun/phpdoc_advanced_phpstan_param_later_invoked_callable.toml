@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "phpdoc_advanced_phpstan_param_later_invoked_callable.php:48: Dead catch - Conformance\\Tests\\PhpdocAdvancedPhpstanParamLaterInvokedCallable\\Boom is never thrown in the try block. [catch.neverThrown]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "enforced"
+enforced_lines = "1/1"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

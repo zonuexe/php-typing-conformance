@@ -77,6 +77,10 @@ date = "2026-06-24"
 version = "0.1.8"
 date = "2026-09-21"
 
+[pun]
+version = "0.2.7"
+date = "2026-11-22"
+
 # Language servers.
 
 [devsense-php-ls]

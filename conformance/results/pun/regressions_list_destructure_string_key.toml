@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 5
+output = """
+regressions_list_destructure_string_key.php:28: Offset 0 does not exist on array<string, int>. [offsetAccess.notFound]
+regressions_list_destructure_string_key.php:28: Offset 1 does not exist on array<string, int>. [offsetAccess.notFound]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

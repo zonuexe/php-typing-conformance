@@ -1,0 +1,13 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 11
+output = "phpdoc_advanced_phpstan_param_closure_this.php:43: Access to an undefined property Conformance\\Tests\\PhpdocAdvancedPhpstanParamClosureThis\\Host::$missing. [property.notFound]"
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "recognized"
+enforcement = "no-probes"
+enforced_lines = "0/0"
+unrecognized_lines = []
+false_positive_lines = []
+over_rejected_lines = []

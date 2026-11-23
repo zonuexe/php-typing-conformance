@@ -1,0 +1,19 @@
+status = "Unknown"
+conformance_automated = "Fail"
+expected_diagnostic_count = 4
+output = """
+native_types_untyped_return_inferred.php:30: Function Conformance\\Tests\\NativeTypesUntypedReturnInferred\\makeUser() has no return type specified. [missingType.return]
+native_types_untyped_return_inferred.php:37: Method Conformance\\Tests\\NativeTypesUntypedReturnInferred\\Repository::find() has no return type specified. [missingType.return]
+native_types_untyped_return_inferred.php:45: Cannot call method name() on mixed. [method.nonObject]
+native_types_untyped_return_inferred.php:45: Parameter #1 (mixed) of echo cannot be converted to string. [echo.nonString]
+native_types_untyped_return_inferred.php:46: Cannot call method missing() on mixed. [method.nonObject]
+native_types_untyped_return_inferred.php:46: Parameter #1 (mixed) of echo cannot be converted to string. [echo.nonString]
+native_types_untyped_return_inferred.php:51: Cannot call method name() on mixed. [method.nonObject]
+native_types_untyped_return_inferred.php:51: Parameter #1 (mixed) of echo cannot be converted to string. [echo.nonString]
+native_types_untyped_return_inferred.php:52: Cannot call method missing() on mixed. [method.nonObject]
+native_types_untyped_return_inferred.php:52: Parameter #1 (mixed) of echo cannot be converted to string. [echo.nonString]"""
+errors_diff = """
+Line 45: Expected valid value to be accepted, got ["Cannot call method name() on mixed. [method.nonObject]","Parameter #1 (mixed) of echo cannot be converted to string. [echo.nonString]"]
+Line 51: Expected valid value to be accepted, got ["Cannot call method name() on mixed. [method.nonObject]","Parameter #1 (mixed) of echo cannot be converted to string. [echo.nonString]"]"""
+notes = ""
+ignore_errors = []

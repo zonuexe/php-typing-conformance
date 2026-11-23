@@ -1,0 +1,20 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 2
+output = """
+phpdoc_advanced_fallback_constant_offset_template_key.php:46: Function Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\lookUp() has invalid return type Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\ID_TABLE. [class.notFound]
+phpdoc_advanced_fallback_constant_offset_template_key.php:46: PHPDoc tag @param for parameter $type contains unresolvable type. [parameter.unresolvableType]
+phpdoc_advanced_fallback_constant_offset_template_key.php:46: PHPDoc tag @return contains unresolvable type. [return.unresolvableType]
+phpdoc_advanced_fallback_constant_offset_template_key.php:46: PHPDoc tag @template T for function Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\lookUp() with bound type mixed is not supported. [generics.notSupportedBound]
+phpdoc_advanced_fallback_constant_offset_template_key.php:46: Template type T of function Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\lookUp() is not referenced in a parameter. [method.templateTypeNotInParameter]
+phpdoc_advanced_fallback_constant_offset_template_key.php:57: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\takesString expects string, int given. [argument.type]
+phpdoc_advanced_fallback_constant_offset_template_key.php:58: Parameter #1 $value of function Conformance\\Tests\\PhpdocAdvancedFallbackConstantOffsetTemplateKey\\takesInt expects int, string given. [argument.type]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []
+recognition = "unrecognized"
+enforcement = "enforced"
+enforced_lines = "2/2"
+unrecognized_lines = [46]
+false_positive_lines = []
+over_rejected_lines = []

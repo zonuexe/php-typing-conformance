@@ -52,6 +52,7 @@ This repository builds a PHP static-analysis conformance suite inspired by `pyth
     ├── php-lsp/
     ├── phpstan/
     ├── psalm/
+    ├── pun/
     └── laravel-lsp/
 ```
 
@@ -86,7 +87,7 @@ Concrete paths currently used:
 - `vendor-bin/mir/vendor/bin/mir`
 - `vendor-bin/phpactor/vendor/bin/phpactor` (one install serving both axes — the `worse:analyse` matrix column and the LSP probes; its `composer.json` needs `minimum-stability: dev` + `prefer-stable` because phpactor requires `jetbrains/phpstorm-stubs dev-master`)
 - `vendor-bin/devsense-php-ls/node_modules/.bin/devsense-php-ls` (npm, `make install-devsense-php-ls`; separately versioned from the copy phpy bundles)
-- `vendor-bin/php-lsp/bin/php-lsp` and `vendor-bin/phpantom/bin/phpantom_lsp` (per-platform GitHub release binaries, git-ignored; `make install-php-lsp` / `make install-phpantom`)
+- `vendor-bin/php-lsp/bin/php-lsp`, `vendor-bin/phpantom/bin/phpantom_lsp`, and `vendor-bin/pun/bin/pun` (per-platform GitHub release binaries, git-ignored; `make install-php-lsp` / `make install-phpantom` / `make install-pun`)
 - `vendor-bin/laravel-lsp/vendor/bin/laravel-lsp` (Composer, `laravel/lsp`; `make install-laravel-lsp`). Framework-specific: initialize requires an `artisan` file in the workspace.
 
 Intelephense is a Node LSP server (not a CLI). Install it with `make install-intelephense` (npm), and it is driven through the LSP client at `conformance/src/Checker/intelephense-client.mjs`. Binary: `vendor-bin/intelephense/node_modules/.bin/intelephense`.
@@ -181,6 +182,7 @@ Current checker columns in the report, in display order:
 - `mago`
 - `mir`
 - `phpantom`
+- `pun`
 - `intelephense`
 - `phpactor`
 - `phpy`
@@ -267,6 +269,7 @@ reports parse noise instead of the type behavior under test.
 | Phan | `--target-php-version 8.5` |
 | Mago | `--php-version 8.5` (global flag, before `analyze`) |
 | mir | `--php-version 8.5` |
+| Pun | `[php] version = "8.5"` in `conformance/pun.toml` |
 | Intelephense | `environment.phpVersion` in `intelephense-client.mjs` |
 | Qodana | `php.version: 8.5` in `qodana.yaml`, and the IDE's own PHP language level |
 

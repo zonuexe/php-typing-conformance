@@ -1,0 +1,22 @@
+[php]
+version = "8.5"
+
+[analyse]
+preset = "max"
+bleeding-edge = true
+
+# Pun's `max` preset enables checks that PHPStan leaves off by default and that
+# fire as fixture noise across unrelated tests:
+# - `missingType.checkedException`: fires on `random_int()` and assertion
+#   helpers (`InvalidArgumentException` / `BadMethodCallException`), and masks
+#   `throws.void` in `phpdoc_advanced_phpstan_throws_void` (the same rationale
+#   MirChecker documents for dropping MIR1102).
+# - `*.unusedParameter`: these fixtures exist to exercise signatures, not to
+#   consume every parameter (the same rationale IntelephenseChecker and
+#   MirChecker document for dropping P1003 and MIR0501).
+[analyse.rules]
+"types/missing-throws" = "off"
+"types/missing-method-throws" = "off"
+"types/missing-hook-throws" = "off"
+"dead-code/unused-function-parameter" = "off"
+"dead-code/unused-method-parameter" = "off"

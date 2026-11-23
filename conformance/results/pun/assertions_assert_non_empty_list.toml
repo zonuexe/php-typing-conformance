@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 1
+output = "assertions_assert_non_empty_list.php:32: Function Conformance\\Tests\\AssertionsAssertNonEmptyList\\rejectsEmptyBranch() should return int but returns null. [return.type]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

@@ -1,0 +1,9 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 3
+output = """
+objects_new_from_class_string_union.php:47: Call to an undefined method Conformance\\Tests\\ObjectsNewFromClassStringUnion\\Admin|Conformance\\Tests\\ObjectsNewFromClassStringUnion\\User::missing(). [method.notFound]
+objects_new_from_class_string_union.php:47: Parameter #1 (mixed) of echo cannot be converted to string. [echo.nonString]"""
+errors_diff = ""
+notes = ""
+ignore_errors = []

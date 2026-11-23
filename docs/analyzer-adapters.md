@@ -68,6 +68,7 @@ single meaningful line out of the tool and stop there.
 | Phan | `--version` | three lines: Phan, php-ast, host PHP | drops a `php-ast is not installed` line |
 | Mago | `--version` | `mago 1.45.0` | none |
 | mir | `--version` | `mir 0.62.0` | ANSI escapes stripped |
+| Pun | `--version` | `pun 0.2.7` | none |
 | NoVerify | `version` (subcommand) | one long line with build date, OS and commit | none |
 | Steins | `version` (subcommand) | four-line banner | takes the `steins …` line, strips the trailing ` - <url>` |
 | phpy | `--version` | bare `0.2.0` | prefixed with `phpy ` |
@@ -101,6 +102,7 @@ to 8.5 — see [the README](../README.md) for the policy and
 | Phan | `--target-php-version 8.5` | `PhanChecker` |
 | Mago | `--php-version 8.5` | `MagoChecker` (global flag, before `analyze`) |
 | mir | `--php-version 8.5` | `MirChecker` |
+| Pun | `[php] version = "8.5"` | `conformance/pun.toml` |
 | Intelephense | `environment.phpVersion` | `intelephense-client.mjs`, over LSP |
 | NoVerify | — | only `--php7`, a boolean |
 | phpy | — | no option |
@@ -229,6 +231,28 @@ there turns on the diagnostics PHPantom leaves off by default
 (`unresolved-member-access`, `extra-arguments`, `report-magic-properties`),
 since every other column runs at its strictest setting. The LSP probes copy
 the same file into each PHPantom workspace.
+
+### Pun — `pun.toml`, per-test isolation, agent detector off
+
+`pun analyse --no-agent --config conformance/pun.toml --format=json <paths...>`
+runs from `conformance/` (Pun resolves its root from `cwd`). `conformance/pun.toml`
+pins `[php] version = "8.5"`, `[analyse] preset = "max"`, and
+`bleeding-edge = true`. Five `max`-preset rules are turned off in `pun.toml` as
+fixture noise: `types/missing-throws`, `types/missing-method-throws`, and
+`types/missing-hook-throws` (which fire `missingType.checkedException` on
+`random_int()` and assertion helpers and mask `throws.void` in
+`phpdoc_advanced_phpstan_throws_void`, the same rationale `MirChecker` uses for
+dropping `MIR1102`), plus `dead-code/unused-function-parameter` and
+`dead-code/unused-method-parameter` (the same rationale as `P1003` and
+`MIR0501`).
+
+Invocations run per test case (`[...supportPaths, testPath]`) rather than over
+the whole `tests/` directory: in Pun, if any file in an invocation hits a
+`phpstan.parse` error, `pun analyse` discards all non-parse errors across the
+entire batch. Both `PUN_AGENT=0` and `--no-agent` are passed so Pun's agent
+detector never alters CLI behaviour. Exit codes 0 (clean) and 1 (findings
+reported) are treated as success; exit 2 is a run/config failure. `PUN_BIN`
+overrides the binary path when set.
 
 ### Intelephense — a language server, not a CLI
 

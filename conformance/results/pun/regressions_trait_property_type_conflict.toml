@@ -1,0 +1,7 @@
+status = "Unknown"
+conformance_automated = "Pass"
+expected_diagnostic_count = 10
+output = "regressions_trait_property_type_conflict.php:27: Class Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\Composed has an uninitialized property $prop. Give it default value or assign it in the constructor. [property.uninitialized]"
+errors_diff = ""
+notes = ""
+ignore_errors = []

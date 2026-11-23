@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-aliases_static_members.php:65: Argument 1 of Conformance\\Tests\\AliasesStaticMembers\\takesString expects string, but int provided [InvalidScalarArgument]
-aliases_static_members.php:67: Argument 1 of Conformance\\Tests\\AliasesStaticMembers\\takesInt expects int, but string provided [InvalidScalarArgument]"""
+aliases_static_members.php:65: Argument 1 of Conformance\\Tests\\AliasesStaticMembers\\takesString expects string, but int provided [InvalidArgument]
+aliases_static_members.php:67: Argument 1 of Conformance\\Tests\\AliasesStaticMembers\\takesInt expects int, but string provided [InvalidArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

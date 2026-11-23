@@ -1,10 +1,14 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
 output = """
-phpdoc_advanced_native_overrides_contradictory_docblock.php:35: Docblock return type `bool` is incompatible with native return type `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query`. [docblock-type-mismatch]
-phpdoc_advanced_native_overrides_contradictory_docblock.php:37: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\load`: expected `bool`, but found `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query`. [invalid-return-statement]
-phpdoc_advanced_native_overrides_contradictory_docblock.php:60: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\takesBool`: expected `bool`, but found `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query`. [invalid-argument]"""
-errors_diff = ""
+phpdoc_advanced_native_overrides_contradictory_docblock.php:36: Docblock return type `bool` is incompatible with native return type `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query`. [docblock-type-mismatch]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:38: Invalid return type for function `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\load`: expected `bool`, but found `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query`. [invalid-return-statement]
+phpdoc_advanced_native_overrides_contradictory_docblock.php:61: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\takesBool`: expected `bool`, but found `Conformance\\Tests\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\Query`. [invalid-argument]"""
+errors_diff = """
+Line 60: Expected 1 error(s)
+Line 36: Unexpected errors ["Docblock return type `bool` is incompatible with native return type `Conformance\\\\Tests\\\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\\\Query`. [docblock-type-mismatch]"]
+Line 38: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\\\load`: expected `bool`, but found `Conformance\\\\Tests\\\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\\\Query`. [invalid-return-statement]"]
+Line 61: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\\\takesBool`: expected `bool`, but found `Conformance\\\\Tests\\\\PhpdocAdvancedNativeOverridesContradictoryDocblock\\\\Query`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

@@ -1,13 +1,19 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
-arrays_keyed_destructuring.php:47: Method `total` does not exist on type `Conformance\\Tests\\ArraysKeyedDestructuring\\User`. [non-existent-method]
-arrays_keyed_destructuring.php:47: The first value for `echo` is too general. [mixed-argument]
-arrays_keyed_destructuring.php:49: Method `name` does not exist on type `Conformance\\Tests\\ArraysKeyedDestructuring\\Order`. [non-existent-method]
-arrays_keyed_destructuring.php:49: The first value for `echo` is too general. [mixed-argument]
-arrays_keyed_destructuring.php:55: Method `missing` does not exist on type `Conformance\\Tests\\ArraysKeyedDestructuring\\User`. [non-existent-method]
-arrays_keyed_destructuring.php:55: The first value for `echo` is too general. [mixed-argument]"""
-errors_diff = ""
+arrays_keyed_destructuring.php:48: Method `total` does not exist on type `Conformance\\Tests\\ArraysKeyedDestructuring\\User`. [non-existent-method]
+arrays_keyed_destructuring.php:48: The first value for `echo` is too general. [mixed-argument]
+arrays_keyed_destructuring.php:50: Method `name` does not exist on type `Conformance\\Tests\\ArraysKeyedDestructuring\\Order`. [non-existent-method]
+arrays_keyed_destructuring.php:50: The first value for `echo` is too general. [mixed-argument]
+arrays_keyed_destructuring.php:56: Method `missing` does not exist on type `Conformance\\Tests\\ArraysKeyedDestructuring\\User`. [non-existent-method]
+arrays_keyed_destructuring.php:56: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = """
+Line 47: Expected 1 error(s)
+Line 49: Expected 1 error(s)
+Line 55: Expected 1 error(s)
+Line 48: Unexpected errors ["Method `total` does not exist on type `Conformance\\\\Tests\\\\ArraysKeyedDestructuring\\\\User`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]
+Line 50: Unexpected errors ["Method `name` does not exist on type `Conformance\\\\Tests\\\\ArraysKeyedDestructuring\\\\Order`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]
+Line 56: Unexpected errors ["Method `missing` does not exist on type `Conformance\\\\Tests\\\\ArraysKeyedDestructuring\\\\User`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]"""
 notes = ""
 ignore_errors = []

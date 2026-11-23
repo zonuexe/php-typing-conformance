@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-debug_phpstan_assert_type.php:24: Function 'PHPStan\\Testing\\assertType' not found [unknown_function]
-debug_phpstan_assert_type.php:27: Function 'PHPStan\\Testing\\assertType' not found [unknown_function]"""
+debug_phpstan_assert_type.php:24: Function PHPStan\\Testing\\assertType() not found [unknown_function]
+debug_phpstan_assert_type.php:27: Function PHPStan\\Testing\\assertType() not found [unknown_function]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,10 +1,12 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
 output = """
-assertions_key_loose_narrowing.php:42: Redundant `===` comparison: left-hand side is never identical to right-hand side. [redundant-comparison]
-assertions_key_loose_narrowing.php:42: Redundant ternary operator: condition is always falsy. [impossible-condition]
-assertions_key_loose_narrowing.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\AssertionsKeyLooseNarrowing\\takesFoo`: expected `string('foo')`, but found `int`. [invalid-argument]"""
-errors_diff = ""
+assertions_key_loose_narrowing.php:43: Redundant `===` comparison: left-hand side is never identical to right-hand side. [redundant-comparison]
+assertions_key_loose_narrowing.php:43: Redundant ternary operator: condition is always falsy. [impossible-condition]
+assertions_key_loose_narrowing.php:57: Invalid argument type for argument #1 of `Conformance\\Tests\\AssertionsKeyLooseNarrowing\\takesFoo`: expected `string('foo')`, but found `int`. [invalid-argument]"""
+errors_diff = """
+Line 43: Unexpected errors ["Redundant `===` comparison: left-hand side is never identical to right-hand side. [redundant-comparison]","Redundant ternary operator: condition is always falsy. [impossible-condition]"]
+Line 57: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\AssertionsKeyLooseNarrowing\\\\takesFoo`: expected `string('foo')`, but found `int`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

@@ -1,9 +1,11 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
-generics_template_bound_array.php:57: Argument type mismatch for template `T`. [template-constraint-violation]
-generics_template_bound_array.php:57: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsTemplateBoundArray\\Collection::__construct`: expected `('T.conformance\\tests\\genericstemplateboundarray\\collection extends array<array-key, mixed>)`, but found `int(1)`. [invalid-argument]"""
-errors_diff = ""
+generics_template_bound_array.php:58: Argument type mismatch for template `T`. [template-constraint-violation]
+generics_template_bound_array.php:58: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsTemplateBoundArray\\Collection::__construct`: expected `('T.conformance\\tests\\genericstemplateboundarray\\collection extends array<array-key, mixed>)`, but found `int(1)`. [invalid-argument]"""
+errors_diff = """
+Line 57: Expected 1 error(s)
+Line 58: Unexpected errors ["Argument type mismatch for template `T`. [template-constraint-violation]","Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\GenericsTemplateBoundArray\\\\Collection::__construct`: expected `('T.conformance\\\\tests\\\\genericstemplateboundarray\\\\collection extends array<array-key, mixed>)`, but found `int(1)`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

@@ -1,12 +1,20 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 7
 output = """
-assertions_switch_get_class_gettype_narrowing.php:65: Method `fooOnly` does not exist on type `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar`. [non-existent-method]
-assertions_switch_get_class_gettype_narrowing.php:72: Redundant ternary operator: condition is always falsy. [impossible-condition]
-assertions_switch_get_class_gettype_narrowing.php:93: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]
-assertions_switch_get_class_gettype_narrowing.php:100: Impossible type assertion: `$impossible` of type `int` can never be `string`. [impossible-type-comparison]
-assertions_switch_get_class_gettype_narrowing.php:100: Redundant ternary operator: condition is always falsy. [impossible-condition]"""
-errors_diff = ""
+assertions_switch_get_class_gettype_narrowing.php:66: Method `fooOnly` does not exist on type `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\Bar`. [non-existent-method]
+assertions_switch_get_class_gettype_narrowing.php:73: Redundant ternary operator: condition is always falsy. [impossible-condition]
+assertions_switch_get_class_gettype_narrowing.php:94: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\AssertionsSwitchGetClassGettypeNarrowing\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]
+assertions_switch_get_class_gettype_narrowing.php:101: Impossible type assertion: `$impossible` of type `int` can never be `string`. [impossible-type-comparison]
+assertions_switch_get_class_gettype_narrowing.php:101: Redundant ternary operator: condition is always falsy. [impossible-condition]"""
+errors_diff = """
+Line 65: Expected 1 error(s)
+Line 72: Expected 1 error(s)
+Line 93: Expected 1 error(s)
+Line 100: Expected 1 error(s)
+Line 66: Unexpected errors ["Method `fooOnly` does not exist on type `Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\Bar`. [non-existent-method]"]
+Line 73: Unexpected errors ["Redundant ternary operator: condition is always falsy. [impossible-condition]"]
+Line 94: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\AssertionsSwitchGetClassGettypeNarrowing\\\\takesInt`: expected `int`, but possibly received `int|string`. [possibly-invalid-argument]"]
+Line 101: Unexpected errors ["Impossible type assertion: `$impossible` of type `int` can never be `string`. [impossible-type-comparison]","Redundant ternary operator: condition is always falsy. [impossible-condition]"]"""
 notes = "Pass on Mago 1.58.2. get_class()/gettype() switch narrowing landed in 1.58.0 (carthage-software/mago#2558): quiet probes stay silent, the unguarded references fire, and the in-branch impossible checks fire as always-falsy."
 ignore_errors = []

@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "objects_interface_compat.php:41: Invalid argument type for argument #1 of `Conformance\\Tests\\ObjectsInterfaceCompat\\takesHasName`: expected `Conformance\\Tests\\ObjectsInterfaceCompat\\HasName`, but found `Conformance\\Tests\\ObjectsInterfaceCompat\\AnonymousUser`. [invalid-argument]"
-errors_diff = ""
+output = "objects_interface_compat.php:42: Invalid argument type for argument #1 of `Conformance\\Tests\\ObjectsInterfaceCompat\\takesHasName`: expected `Conformance\\Tests\\ObjectsInterfaceCompat\\HasName`, but found `Conformance\\Tests\\ObjectsInterfaceCompat\\AnonymousUser`. [invalid-argument]"
+errors_diff = """
+Line 41: Expected 1 error(s)
+Line 42: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\ObjectsInterfaceCompat\\\\takesHasName`: expected `Conformance\\\\Tests\\\\ObjectsInterfaceCompat\\\\HasName`, but found `Conformance\\\\Tests\\\\ObjectsInterfaceCompat\\\\AnonymousUser`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

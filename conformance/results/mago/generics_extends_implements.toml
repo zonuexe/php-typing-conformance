@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
-output = "generics_extends_implements.php:61: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsExtendsImplements\\takesStringBox`: expected `Conformance\\Tests\\GenericsExtendsImplements\\Box<string>`, but found `Conformance\\Tests\\GenericsExtendsImplements\\IntBox`. [invalid-argument]"
-errors_diff = ""
+output = "generics_extends_implements.php:62: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsExtendsImplements\\takesStringBox`: expected `Conformance\\Tests\\GenericsExtendsImplements\\Box<string>`, but found `Conformance\\Tests\\GenericsExtendsImplements\\IntBox`. [invalid-argument]"
+errors_diff = """
+Line 61: Expected 1 error(s)
+Line 62: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\GenericsExtendsImplements\\\\takesStringBox`: expected `Conformance\\\\Tests\\\\GenericsExtendsImplements\\\\Box<string>`, but found `Conformance\\\\Tests\\\\GenericsExtendsImplements\\\\IntBox`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

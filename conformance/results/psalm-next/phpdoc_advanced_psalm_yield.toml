@@ -4,7 +4,7 @@ expected_diagnostic_count = 6
 output = """
 phpdoc_advanced_psalm_yield.php:68: Type string for $data is never int [TypeDoesNotContainType]
 phpdoc_advanced_psalm_yield.php:68: Type string for $data is never int [RedundantCondition]
-phpdoc_advanced_psalm_yield.php:69: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmYield\\takesInt expects int, but string provided [InvalidScalarArgument]"""
+phpdoc_advanced_psalm_yield.php:69: Argument 1 of Conformance\\Tests\\PhpdocAdvancedPsalmYield\\takesInt expects int, but string provided [InvalidArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "generics_property_docblock_type_argument.php:57: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsPropertyDocblockTypeArgument\\takesString`: expected `string`, but found `int`. [invalid-argument]"
-errors_diff = ""
+output = "generics_property_docblock_type_argument.php:58: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsPropertyDocblockTypeArgument\\takesString`: expected `string`, but found `int`. [invalid-argument]"
+errors_diff = """
+Line 57: Expected 1 error(s)
+Line 58: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\GenericsPropertyDocblockTypeArgument\\\\takesString`: expected `string`, but found `int`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

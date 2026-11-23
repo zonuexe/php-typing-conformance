@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 8
-output = "properties_property_hooks.php:29: Invalid type for property `$name`: expected `string`, but got `int(1)`. [invalid-property-assignment-value]"
-errors_diff = ""
+output = "properties_property_hooks.php:30: Invalid type for property `$name`: expected `string`, but got `int(1)`. [invalid-property-assignment-value]"
+errors_diff = """
+Line 29: Expected 1 error(s)
+Line 30: Unexpected errors ["Invalid type for property `$name`: expected `string`, but got `int(1)`. [invalid-property-assignment-value]"]"""
 notes = ""
 ignore_errors = []

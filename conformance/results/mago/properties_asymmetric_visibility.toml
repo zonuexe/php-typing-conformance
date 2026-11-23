@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 6
-output = "properties_asymmetric_visibility.php:29: Cannot write to private property `$value` on class `Conformance\\Tests\\PropertiesAsymmetricVisibility\\Counter`. [invalid-property-write]"
-errors_diff = ""
+output = "properties_asymmetric_visibility.php:30: Cannot write to private property `$value` on class `Conformance\\Tests\\PropertiesAsymmetricVisibility\\Counter`. [invalid-property-write]"
+errors_diff = """
+Line 29: Expected 1 error(s)
+Line 30: Unexpected errors ["Cannot write to private property `$value` on class `Conformance\\\\Tests\\\\PropertiesAsymmetricVisibility\\\\Counter`. [invalid-property-write]"]"""
 notes = ""
 ignore_errors = []

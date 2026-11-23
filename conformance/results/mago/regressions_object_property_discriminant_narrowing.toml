@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 10
-output = "regressions_object_property_discriminant_narrowing.php:43: Invalid return type for function `Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\stillUnion`: expected `Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox`, but found `Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox`. [invalid-return-statement]"
-errors_diff = ""
+output = "regressions_object_property_discriminant_narrowing.php:44: Invalid return type for function `Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\stillUnion`: expected `Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox`, but found `Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\IntBox|Conformance\\Tests\\RegressionsObjectPropertyDiscriminantNarrowing\\StrBox`. [invalid-return-statement]"
+errors_diff = """
+Line 43: Expected 1 error(s)
+Line 44: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\stillUnion`: expected `Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\StrBox`, but found `Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\IntBox|Conformance\\\\Tests\\\\RegressionsObjectPropertyDiscriminantNarrowing\\\\StrBox`. [invalid-return-statement]"]"""
 notes = ""
 ignore_errors = []

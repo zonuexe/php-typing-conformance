@@ -1,7 +1,10 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 3
-output = "arrays_sealed_shape_mutation.php:44: Argument 1 ($shape) expects array{foo: int}, got array{foo: 'x'} [type_mismatch_argument]"
-errors_diff = "Line 62: Expected 1 error(s)"
+output = """
+arrays_sealed_shape_mutation.php:44: Argument 1 ($shape) expects array{foo: int}, got array{foo: 'x'} [type_mismatch_argument]
+arrays_sealed_shape_mutation.php:53: Argument 1 ($shape) expects array{foo: int}, got array{foo: int, extra: 'x'} (undeclared key 'extra') [type_mismatch_argument]
+arrays_sealed_shape_mutation.php:62: Argument 1 ($shape) expects array{foo: int}, got array{} (missing required key 'foo') [type_mismatch_argument]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

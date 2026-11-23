@@ -1,9 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-callables_array_callable_invocation.php:37: Cannot verify method 'name' — type of '$find()' could not be resolved [unresolved_member_access]
-callables_array_callable_invocation.php:39: Cannot verify method 'missing' — type of '$lookup()' could not be resolved [unresolved_member_access]"""
-errors_diff = "Line 37: Expected valid value to be accepted, got [\"Cannot verify method 'name' — type of '$find()' could not be resolved [unresolved_member_access]\"]"
+output = "callables_array_callable_invocation.php:39: Method Conformance\\Tests\\CallablesArrayCallableInvocation\\User::missing() not found [unknown_member]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

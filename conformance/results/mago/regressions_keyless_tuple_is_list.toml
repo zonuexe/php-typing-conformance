@@ -1,9 +1,11 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 6
 output = """
-regressions_keyless_tuple_is_list.php:22: Redundant type assertion: `$t` is already `array{0: int, 1: string}`. [redundant-type-comparison]
-regressions_keyless_tuple_is_list.php:22: This condition (type `true`) will always evaluate to true. [redundant-condition]"""
-errors_diff = ""
+regressions_keyless_tuple_is_list.php:23: Redundant type assertion: `$t` is already `array{0: int, 1: string}`. [redundant-type-comparison]
+regressions_keyless_tuple_is_list.php:23: This condition (type `true`) will always evaluate to true. [redundant-condition]"""
+errors_diff = """
+Line 22: Expected 1 error(s)
+Line 23: Unexpected errors ["Redundant type assertion: `$t` is already `array{0: int, 1: string}`. [redundant-type-comparison]","This condition (type `true`) will always evaluate to true. [redundant-condition]"]"""
 notes = ""
 ignore_errors = []

@@ -1,9 +1,11 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
-callables_pipe_operator_result.php:40: Method `missing` does not exist on type `Conformance\\Tests\\CallablesPipeOperatorResult\\Slug`. [non-existent-method]
-callables_pipe_operator_result.php:40: The first value for `echo` is too general. [mixed-argument]"""
-errors_diff = ""
+callables_pipe_operator_result.php:41: Method `missing` does not exist on type `Conformance\\Tests\\CallablesPipeOperatorResult\\Slug`. [non-existent-method]
+callables_pipe_operator_result.php:41: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = """
+Line 40: Expected 1 error(s)
+Line 41: Unexpected errors ["Method `missing` does not exist on type `Conformance\\\\Tests\\\\CallablesPipeOperatorResult\\\\Slug`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]"""
 notes = ""
 ignore_errors = []

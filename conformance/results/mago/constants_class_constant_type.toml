@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "constants_class_constant_type.php:24: Invalid argument type for argument #1 of `Conformance\\Tests\\ConstantsClassConstantType\\takesString`: expected `string`, but found `int(200)`. [invalid-argument]"
-errors_diff = ""
+output = "constants_class_constant_type.php:25: Invalid argument type for argument #1 of `Conformance\\Tests\\ConstantsClassConstantType\\takesString`: expected `string`, but found `int(200)`. [invalid-argument]"
+errors_diff = """
+Line 24: Expected 1 error(s)
+Line 25: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\ConstantsClassConstantType\\\\takesString`: expected `string`, but found `int(200)`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

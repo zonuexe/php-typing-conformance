@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
-output = "regressions_list_or_map_union_rejects_hybrid.php:37: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\RegressionsListOrMapUnionRejectsHybrid\\attrs`: expected `array<string, bool|int|string>|list<string>`, but possibly received `array{0: string('disabled'), 'href': string('https://example.com')}`. [possibly-invalid-argument]"
-errors_diff = ""
+output = "regressions_list_or_map_union_rejects_hybrid.php:38: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\RegressionsListOrMapUnionRejectsHybrid\\attrs`: expected `array<string, bool|int|string>|list<string>`, but possibly received `array{0: string('disabled'), 'href': string('https://example.com')}`. [possibly-invalid-argument]"
+errors_diff = """
+Line 37: Expected 1 error(s)
+Line 38: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\RegressionsListOrMapUnionRejectsHybrid\\\\attrs`: expected `array<string, bool|int|string>|list<string>`, but possibly received `array{0: string('disabled'), 'href': string('https://example.com')}`. [possibly-invalid-argument]"]"""
 notes = ""
 ignore_errors = []

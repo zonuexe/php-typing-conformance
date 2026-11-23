@@ -83,8 +83,9 @@ final class PsalmChecker implements Checker
 
         // No paths: the config's projectFiles is the corpus. stderr is kept off
         // stdout because it would otherwise land in the middle of the JSON.
+        // --threads=1 avoids pcntl_fork worker IPC deadlocks under PHP 8.6 on macOS.
         $command = sprintf(
-            '%s --config=%s --no-progress --output-format=json 2>/dev/null',
+            '%s --config=%s --threads=1 --no-progress --output-format=json 2>/dev/null',
             escapeshellarg($this->binaryPath),
             escapeshellarg($this->configPath),
         );

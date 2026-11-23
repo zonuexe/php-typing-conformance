@@ -1,9 +1,13 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 12
 output = """
-regressions_backed_enum_value_narrowing.php:33: Non-exhaustive `match` expression: subject of type `enum(Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit)` is not fully handled. [match-not-exhaustive]
-regressions_backed_enum_value_narrowing.php:40: Non-exhaustive `match` expression: subject of type `enum(Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit)` is not fully handled. [match-not-exhaustive]"""
-errors_diff = ""
+regressions_backed_enum_value_narrowing.php:34: Non-exhaustive `match` expression: subject of type `enum(Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit)` is not fully handled. [match-not-exhaustive]
+regressions_backed_enum_value_narrowing.php:41: Non-exhaustive `match` expression: subject of type `enum(Conformance\\Tests\\RegressionsBackedEnumValueNarrowing\\Suit)` is not fully handled. [match-not-exhaustive]"""
+errors_diff = """
+Line 33: Expected 1 error(s)
+Line 40: Expected 1 error(s)
+Line 34: Unexpected errors ["Non-exhaustive `match` expression: subject of type `enum(Conformance\\\\Tests\\\\RegressionsBackedEnumValueNarrowing\\\\Suit)` is not fully handled. [match-not-exhaustive]"]
+Line 41: Unexpected errors ["Non-exhaustive `match` expression: subject of type `enum(Conformance\\\\Tests\\\\RegressionsBackedEnumValueNarrowing\\\\Suit)` is not fully handled. [match-not-exhaustive]"]"""
 notes = ""
 ignore_errors = []

@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-callables_array_element_signature.php:32: Argument 1 of Conformance\\Tests\\CallablesArrayElementSignature\\takesInt expects int, but string provided [InvalidScalarArgument]
+callables_array_element_signature.php:32: Argument 1 of Conformance\\Tests\\CallablesArrayElementSignature\\takesInt expects int, but string provided [InvalidArgument]
 callables_array_element_signature.php:33: Argument 1 expects string, but 1 provided [InvalidArgument]
-callables_array_element_signature.php:42: Argument 1 of Conformance\\Tests\\CallablesArrayElementSignature\\takesString expects string, but int provided [InvalidScalarArgument]"""
+callables_array_element_signature.php:42: Argument 1 of Conformance\\Tests\\CallablesArrayElementSignature\\takesString expects string, but int provided [InvalidArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

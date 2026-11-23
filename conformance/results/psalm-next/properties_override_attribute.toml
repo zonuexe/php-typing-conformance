@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = "properties_override_attribute.php:56: Attribute Override cannot be used on a class constant [InvalidAttribute]"
-errors_diff = "Lines 50, 51: Expected error (tag missing)"
+output = """
+properties_override_attribute.php:50: Property $other does not match any parent property [InvalidOverride]
+properties_override_attribute.php:56: Attribute Override cannot be used on a class constant [InvalidAttribute]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

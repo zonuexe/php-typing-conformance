@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "unions_object_member_rejection.php:32: Invalid argument type for argument #1 of `Conformance\\Tests\\UnionsObjectMemberRejection\\takesUserOrGuest`: expected `Conformance\\Tests\\UnionsObjectMemberRejection\\Guest|Conformance\\Tests\\UnionsObjectMemberRejection\\User`, but found `Conformance\\Tests\\UnionsObjectMemberRejection\\Robot`. [invalid-argument]"
-errors_diff = ""
+output = "unions_object_member_rejection.php:33: Invalid argument type for argument #1 of `Conformance\\Tests\\UnionsObjectMemberRejection\\takesUserOrGuest`: expected `Conformance\\Tests\\UnionsObjectMemberRejection\\Guest|Conformance\\Tests\\UnionsObjectMemberRejection\\User`, but found `Conformance\\Tests\\UnionsObjectMemberRejection\\Robot`. [invalid-argument]"
+errors_diff = """
+Line 32: Expected 1 error(s)
+Line 33: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\UnionsObjectMemberRejection\\\\takesUserOrGuest`: expected `Conformance\\\\Tests\\\\UnionsObjectMemberRejection\\\\Guest|Conformance\\\\Tests\\\\UnionsObjectMemberRejection\\\\User`, but found `Conformance\\\\Tests\\\\UnionsObjectMemberRejection\\\\Robot`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

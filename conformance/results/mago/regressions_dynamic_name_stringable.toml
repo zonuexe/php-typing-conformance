@@ -1,12 +1,19 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
 output = """
-regressions_dynamic_name_stringable.php:57: This member selector uses a non-literal string type (`string`); its specific value cannot be statically determined. [string-member-selector]
-regressions_dynamic_name_stringable.php:62: Cannot cast object of type `Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable` to `string` because it does not implement `Stringable`. [invalid-type-cast]
-regressions_dynamic_name_stringable.php:62: This member selector uses a non-literal string type (`string`); its specific value cannot be statically determined. [string-member-selector]
-regressions_dynamic_name_stringable.php:72: Invalid type `Conformance\\Tests\\RegressionsDynamicNameStringable\\Name` used as a member selector; a string is expected. [invalid-member-selector]
-regressions_dynamic_name_stringable.php:77: Invalid type `Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable` used as a member selector; a string is expected. [invalid-member-selector]"""
-errors_diff = ""
+regressions_dynamic_name_stringable.php:58: This member selector uses a non-literal string type (`string`); its specific value cannot be statically determined. [string-member-selector]
+regressions_dynamic_name_stringable.php:63: Cannot cast object of type `Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable` to `string` because it does not implement `Stringable`. [invalid-type-cast]
+regressions_dynamic_name_stringable.php:63: This member selector uses a non-literal string type (`string`); its specific value cannot be statically determined. [string-member-selector]
+regressions_dynamic_name_stringable.php:73: Invalid type `Conformance\\Tests\\RegressionsDynamicNameStringable\\Name` used as a member selector; a string is expected. [invalid-member-selector]
+regressions_dynamic_name_stringable.php:78: Invalid type `Conformance\\Tests\\RegressionsDynamicNameStringable\\NotStringable` used as a member selector; a string is expected. [invalid-member-selector]"""
+errors_diff = """
+Line 62: Expected 1 error(s)
+Line 72: Expected 1 error(s)
+Line 77: Expected 1 error(s)
+Line 58: Unexpected errors ["This member selector uses a non-literal string type (`string`); its specific value cannot be statically determined. [string-member-selector]"]
+Line 63: Unexpected errors ["Cannot cast object of type `Conformance\\\\Tests\\\\RegressionsDynamicNameStringable\\\\NotStringable` to `string` because it does not implement `Stringable`. [invalid-type-cast]","This member selector uses a non-literal string type (`string`); its specific value cannot be statically determined. [string-member-selector]"]
+Line 73: Unexpected errors ["Invalid type `Conformance\\\\Tests\\\\RegressionsDynamicNameStringable\\\\Name` used as a member selector; a string is expected. [invalid-member-selector]"]
+Line 78: Unexpected errors ["Invalid type `Conformance\\\\Tests\\\\RegressionsDynamicNameStringable\\\\NotStringable` used as a member selector; a string is expected. [invalid-member-selector]"]"""
 notes = ""
 ignore_errors = []

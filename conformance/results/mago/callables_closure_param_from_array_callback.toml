@@ -1,11 +1,17 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
-callables_closure_param_from_array_callback.php:34: Method `missing` does not exist on type `Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User`. [non-existent-method]
-callables_closure_param_from_array_callback.php:41: Method `missing` does not exist on type `Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User`. [non-existent-method]
-callables_closure_param_from_array_callback.php:48: Method `missing` does not exist on type `Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User`. [non-existent-method]
-callables_closure_param_from_array_callback.php:48: Could not infer a precise return type for function `{closure:tests/callables_closure_param_from_array_callback.php:47:26}`. Saw type `mixed`. [mixed-return-statement]"""
-errors_diff = ""
+callables_closure_param_from_array_callback.php:35: Method `missing` does not exist on type `Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User`. [non-existent-method]
+callables_closure_param_from_array_callback.php:42: Method `missing` does not exist on type `Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User`. [non-existent-method]
+callables_closure_param_from_array_callback.php:49: Method `missing` does not exist on type `Conformance\\Tests\\CallablesClosureParamFromArrayCallback\\User`. [non-existent-method]
+callables_closure_param_from_array_callback.php:49: Could not infer a precise return type for function `{closure:tests/callables_closure_param_from_array_callback.php:47:26}`. Saw type `mixed`. [mixed-return-statement]"""
+errors_diff = """
+Line 34: Expected 1 error(s)
+Line 41: Expected 1 error(s)
+Line 48: Expected 1 error(s)
+Line 35: Unexpected errors ["Method `missing` does not exist on type `Conformance\\\\Tests\\\\CallablesClosureParamFromArrayCallback\\\\User`. [non-existent-method]"]
+Line 42: Unexpected errors ["Method `missing` does not exist on type `Conformance\\\\Tests\\\\CallablesClosureParamFromArrayCallback\\\\User`. [non-existent-method]"]
+Line 49: Unexpected errors ["Method `missing` does not exist on type `Conformance\\\\Tests\\\\CallablesClosureParamFromArrayCallback\\\\User`. [non-existent-method]","Could not infer a precise return type for function `{closure:tests/callables_closure_param_from_array_callback.php:47:26}`. Saw type `mixed`. [mixed-return-statement]"]"""
 notes = ""
 ignore_errors = []

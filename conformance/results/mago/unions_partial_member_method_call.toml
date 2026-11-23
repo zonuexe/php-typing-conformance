@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "unions_partial_member_method_call.php:48: Method `name` does not exist on type `Conformance\\Tests\\UnionsPartialMemberMethodCall\\Guest`. [non-existent-method]"
-errors_diff = ""
+output = "unions_partial_member_method_call.php:49: Method `name` does not exist on type `Conformance\\Tests\\UnionsPartialMemberMethodCall\\Guest`. [non-existent-method]"
+errors_diff = """
+Line 48: Expected 1 error(s)
+Line 49: Unexpected errors ["Method `name` does not exist on type `Conformance\\\\Tests\\\\UnionsPartialMemberMethodCall\\\\Guest`. [non-existent-method]"]"""
 notes = ""
 ignore_errors = []

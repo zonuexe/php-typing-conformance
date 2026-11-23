@@ -4,7 +4,7 @@ expected_diagnostic_count = 1
 output = """
 phpdoc_advanced_fallback_key_of_template.php:26: The declared return type 'key-of<T:fn-conformance\\tests\\phpdocadvancedfallbackkeyoftemplate\\firstkey as array<array-key, mixed>>' for Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfTemplate\\firstKey is incorrect, got 'array-key' [InvalidReturnType]
 phpdoc_advanced_fallback_key_of_template.php:34: The inferred type 'array-key' does not match the declared return type 'key-of<T:fn-conformance\\tests\\phpdocadvancedfallbackkeyoftemplate\\firstkey as array<array-key, mixed>>' for Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfTemplate\\firstKey [InvalidReturnStatement]
-phpdoc_advanced_fallback_key_of_template.php:63: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfTemplate\\acceptsInt expects int, but 'debug'|'verbose' provided [InvalidScalarArgument]"""
+phpdoc_advanced_fallback_key_of_template.php:63: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackKeyOfTemplate\\acceptsInt expects int, but 'debug'|'verbose' provided [InvalidArgument]"""
 errors_diff = "Line 34: Expected valid value to be accepted, got [\"The inferred type 'array-key' does not match the declared return type 'key-of<T:fn-conformance\\\\tests\\\\phpdocadvancedfallbackkeyoftemplate\\\\firstkey as array<array-key, mixed>>' for Conformance\\\\Tests\\\\PhpdocAdvancedFallbackKeyOfTemplate\\\\firstKey [InvalidReturnStatement]\"]"
 notes = ""
 ignore_errors = []

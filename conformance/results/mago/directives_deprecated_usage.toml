@@ -1,9 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-directives_deprecated_usage.php:17: Call to deprecated function: `Conformance\\Tests\\DirectivesDeprecatedUsage\\oldMessage`. [deprecated-function]
-directives_deprecated_usage.php:18: Class `Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter` is deprecated and should no longer be used. [deprecated-class]"""
-errors_diff = ""
+directives_deprecated_usage.php:18: Call to deprecated function: `Conformance\\Tests\\DirectivesDeprecatedUsage\\oldMessage`. [deprecated-function]
+directives_deprecated_usage.php:19: Class `Conformance\\Tests\\DirectivesDeprecatedUsage\\LegacyFormatter` is deprecated and should no longer be used. [deprecated-class]"""
+errors_diff = "Line 19: Unexpected errors [\"Class `Conformance\\\\Tests\\\\DirectivesDeprecatedUsage\\\\LegacyFormatter` is deprecated and should no longer be used. [deprecated-class]\"]"
 notes = ""
 ignore_errors = []

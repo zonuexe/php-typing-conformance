@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 5
-output = ""
-errors_diff = "Line 28: Expected 1 error(s)"
+output = """
+regressions_list_destructure_string_key.php:28: Offset 0 does not exist on array<string, int> [unknown_offset]
+regressions_list_destructure_string_key.php:28: Offset 1 does not exist on array<string, int> [unknown_offset]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

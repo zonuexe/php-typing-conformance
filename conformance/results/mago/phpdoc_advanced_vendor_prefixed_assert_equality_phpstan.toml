@@ -1,15 +1,15 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_vendor_prefixed_assert_equality_phpstan.php:38: Impossible type assertion: `$value` of type `int` can never be `string`. [impossible-type-comparison]
-phpdoc_advanced_vendor_prefixed_assert_equality_phpstan.php:38: Redundant ternary operator: condition is always falsy. [impossible-condition]"""
-errors_diff = ""
+phpdoc_advanced_vendor_prefixed_assert_equality_phpstan.php:39: Impossible type assertion: `$value` of type `int` can never be `string`. [impossible-type-comparison]
+phpdoc_advanced_vendor_prefixed_assert_equality_phpstan.php:39: Redundant ternary operator: condition is always falsy. [impossible-condition]"""
+errors_diff = "Line 39: Unexpected errors [\"Impossible type assertion: `$value` of type `int` can never be `string`. [impossible-type-comparison]\",\"Redundant ternary operator: condition is always falsy. [impossible-condition]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "2/2"
+enforcement = "partial"
+enforced_lines = "1/2"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [39]
 over_rejected_lines = []

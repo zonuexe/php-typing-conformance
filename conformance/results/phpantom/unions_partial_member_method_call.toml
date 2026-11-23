@@ -1,7 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
-errors_diff = "Line 48: Expected 1 error(s)"
+output = "unions_partial_member_method_call.php:48: Method name() exists on Conformance\\Tests\\UnionsPartialMemberMethodCall\\User but not on Conformance\\Tests\\UnionsPartialMemberMethodCall\\Guest [partial_union_member]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

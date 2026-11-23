@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "intersections_interface_merge.php:54: Invalid argument type for argument #1 of `Conformance\\Tests\\IntersectionsInterfaceMerge\\takesIdentifiedNamed`: expected `Conformance\\Tests\\IntersectionsInterfaceMerge\\HasId&Conformance\\Tests\\IntersectionsInterfaceMerge\\HasName`, but found `Conformance\\Tests\\IntersectionsInterfaceMerge\\AnonymousUser`. [invalid-argument]"
-errors_diff = ""
+output = "intersections_interface_merge.php:55: Invalid argument type for argument #1 of `Conformance\\Tests\\IntersectionsInterfaceMerge\\takesIdentifiedNamed`: expected `Conformance\\Tests\\IntersectionsInterfaceMerge\\HasId&Conformance\\Tests\\IntersectionsInterfaceMerge\\HasName`, but found `Conformance\\Tests\\IntersectionsInterfaceMerge\\AnonymousUser`. [invalid-argument]"
+errors_diff = """
+Line 54: Expected 1 error(s)
+Line 55: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\IntersectionsInterfaceMerge\\\\takesIdentifiedNamed`: expected `Conformance\\\\Tests\\\\IntersectionsInterfaceMerge\\\\HasId&Conformance\\\\Tests\\\\IntersectionsInterfaceMerge\\\\HasName`, but found `Conformance\\\\Tests\\\\IntersectionsInterfaceMerge\\\\AnonymousUser`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

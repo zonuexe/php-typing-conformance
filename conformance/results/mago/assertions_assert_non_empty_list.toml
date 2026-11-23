@@ -1,9 +1,11 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
-assertions_assert_non_empty_list.php:32: Cannot access elements of an empty list `list<never>`. [impossible-array-access]
-assertions_assert_non_empty_list.php:32: Invalid return type for function `Conformance\\Tests\\AssertionsAssertNonEmptyList\\rejectsEmptyBranch`: expected `int`, but found `null`. [invalid-return-statement]"""
-errors_diff = ""
+assertions_assert_non_empty_list.php:33: Cannot access elements of an empty list `list<never>`. [impossible-array-access]
+assertions_assert_non_empty_list.php:33: Invalid return type for function `Conformance\\Tests\\AssertionsAssertNonEmptyList\\rejectsEmptyBranch`: expected `int`, but found `null`. [invalid-return-statement]"""
+errors_diff = """
+Line 32: Expected 1 error(s)
+Line 33: Unexpected errors ["Cannot access elements of an empty list `list<never>`. [impossible-array-access]","Invalid return type for function `Conformance\\\\Tests\\\\AssertionsAssertNonEmptyList\\\\rejectsEmptyBranch`: expected `int`, but found `null`. [invalid-return-statement]"]"""
 notes = ""
 ignore_errors = []

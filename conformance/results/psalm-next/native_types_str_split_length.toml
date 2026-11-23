@@ -1,10 +1,12 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
 native_types_str_split_length.php:27: Argument 2 of str_split expects int<1, max>, but -1 provided [InvalidArgument]
 native_types_str_split_length.php:28: Argument 2 of str_split expects int<1, max>, but 0 provided [InvalidArgument]
+native_types_str_split_length.php:30: mb_str_split is part of the ext-mbstring extension, which composer.json doesn't require: add it to require, or to suggest if the code works without it [MissingExtensionRequirement]
+native_types_str_split_length.php:32: mb_str_split is part of the ext-mbstring extension, which composer.json doesn't require: add it to require, or to suggest if the code works without it [MissingExtensionRequirement]
 native_types_str_split_length.php:32: Argument 2 of mb_str_split expects int<1, max>, but -1 provided [InvalidArgument]"""
-errors_diff = ""
+errors_diff = "Line 30: Unexpected errors [\"mb_str_split is part of the ext-mbstring extension, which composer.json doesn't require: add it to require, or to suggest if the code works without it [MissingExtensionRequirement]\"]"
 notes = ""
 ignore_errors = []

@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
-output = "regressions_union_of_arrays_vs_array_of_unions.php:36: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\RegressionsUnionOfArraysVsArrayOfUnions\\takesHomogeneousIntOrStringArray`: expected `array<array-key, int>|array<array-key, string>`, but possibly received `list{int(1), string('b'), int(3)}`. [possibly-invalid-argument]"
-errors_diff = ""
+output = "regressions_union_of_arrays_vs_array_of_unions.php:37: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\RegressionsUnionOfArraysVsArrayOfUnions\\takesHomogeneousIntOrStringArray`: expected `array<array-key, int>|array<array-key, string>`, but possibly received `list{int(1), string('b'), int(3)}`. [possibly-invalid-argument]"
+errors_diff = """
+Line 36: Expected 1 error(s)
+Line 37: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\RegressionsUnionOfArraysVsArrayOfUnions\\\\takesHomogeneousIntOrStringArray`: expected `array<array-key, int>|array<array-key, string>`, but possibly received `list{int(1), string('b'), int(3)}`. [possibly-invalid-argument]"]"""
 notes = ""
 ignore_errors = []

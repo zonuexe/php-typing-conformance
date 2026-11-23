@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-regressions_unset_pseudo_type.php:47: Class 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' not found [unknown_class]
-regressions_unset_pseudo_type.php:50: Class 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' not found [unknown_class]
-regressions_unset_pseudo_type.php:53: Class 'Conformance\\Tests\\RegressionsUnsetPseudoType\\unset' not found [unknown_class]"""
+regressions_unset_pseudo_type.php:47: Class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset not found [unknown_class]
+regressions_unset_pseudo_type.php:50: Class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset not found [unknown_class]
+regressions_unset_pseudo_type.php:53: Class Conformance\\Tests\\RegressionsUnsetPseudoType\\unset not found [unknown_class]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

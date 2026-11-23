@@ -1,17 +1,21 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-generics_generator_get_return.php:53: Method `count` does not exist on type `Conformance\\Tests\\GenericsGeneratorGetReturn\\Item`. [non-existent-method]
-generics_generator_get_return.php:53: The first value for `echo` is too general. [mixed-argument]
-generics_generator_get_return.php:55: Method `label` does not exist on type `Conformance\\Tests\\GenericsGeneratorGetReturn\\Summary`. [non-existent-method]
-generics_generator_get_return.php:55: The first value for `echo` is too general. [mixed-argument]"""
-errors_diff = ""
+generics_generator_get_return.php:54: Method `count` does not exist on type `Conformance\\Tests\\GenericsGeneratorGetReturn\\Item`. [non-existent-method]
+generics_generator_get_return.php:54: The first value for `echo` is too general. [mixed-argument]
+generics_generator_get_return.php:56: Method `label` does not exist on type `Conformance\\Tests\\GenericsGeneratorGetReturn\\Summary`. [non-existent-method]
+generics_generator_get_return.php:56: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = """
+Line 53: Expected 1 error(s)
+Line 55: Expected 1 error(s)
+Line 54: Unexpected errors ["Method `count` does not exist on type `Conformance\\\\Tests\\\\GenericsGeneratorGetReturn\\\\Item`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]
+Line 56: Unexpected errors ["Method `label` does not exist on type `Conformance\\\\Tests\\\\GenericsGeneratorGetReturn\\\\Summary`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "2/2"
+enforcement = "none"
+enforced_lines = "0/2"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [54, 56]
 over_rejected_lines = []

@@ -1,9 +1,12 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 9
 output = """
-psr_phpdoc_param_return.php:44: Invalid argument type for argument #1 of `Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage`: expected `string`, but found `int(42)`. [invalid-argument]
-psr_phpdoc_param_return.php:47: Invalid argument type for argument #1 of `Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage`: expected `string`, but found `int`. [invalid-argument]"""
-errors_diff = ""
+psr_phpdoc_param_return.php:45: Invalid argument type for argument #1 of `Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage`: expected `string`, but found `int(42)`. [invalid-argument]
+psr_phpdoc_param_return.php:48: Invalid argument type for argument #1 of `Conformance\\Tests\\PsrPhpdocParamReturn\\encodeMessage`: expected `string`, but found `int`. [invalid-argument]"""
+errors_diff = """
+Line 44: Expected 1 error(s)
+Line 45: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PsrPhpdocParamReturn\\\\encodeMessage`: expected `string`, but found `int(42)`. [invalid-argument]"]
+Line 48: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PsrPhpdocParamReturn\\\\encodeMessage`: expected `string`, but found `int`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

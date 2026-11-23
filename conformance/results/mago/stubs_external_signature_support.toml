@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "stubs_external_signature_support.php:37: Invalid argument type for argument #1 of `Conformance\\Tests\\StubsExternalSignatureSupport\\takesClock`: expected `Conformance\\Tests\\StubsExternalSignatureSupport\\ExternalClock`, but found `Conformance\\Tests\\StubsExternalSignatureSupport\\InvalidClock`. [invalid-argument]"
-errors_diff = ""
+output = "stubs_external_signature_support.php:38: Invalid argument type for argument #1 of `Conformance\\Tests\\StubsExternalSignatureSupport\\takesClock`: expected `Conformance\\Tests\\StubsExternalSignatureSupport\\ExternalClock`, but found `Conformance\\Tests\\StubsExternalSignatureSupport\\InvalidClock`. [invalid-argument]"
+errors_diff = """
+Line 37: Expected 1 error(s)
+Line 38: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\StubsExternalSignatureSupport\\\\takesClock`: expected `Conformance\\\\Tests\\\\StubsExternalSignatureSupport\\\\ExternalClock`, but found `Conformance\\\\Tests\\\\StubsExternalSignatureSupport\\\\InvalidClock`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

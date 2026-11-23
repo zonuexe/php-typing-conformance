@@ -1,11 +1,16 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
 output = """
-regressions_new_class_string_leading_backslash.php:35: Class `\\DateTimeImmutable` not found. [non-existent-class]
-regressions_new_class_string_leading_backslash.php:35: Argument #1 passed to function `Conformance\\Tests\\RegressionsNewClassStringLeadingBackslash\\takesImmutable` has type `never`, meaning it cannot produce a value. [no-value]
-regressions_new_class_string_leading_backslash.php:41: Class `\\Countable` not found. [non-existent-class]
-regressions_new_class_string_leading_backslash.php:47: Interface `Countable` cannot be instantiated with `new`. [interface-instantiation]"""
-errors_diff = ""
+regressions_new_class_string_leading_backslash.php:36: Class `\\DateTimeImmutable` not found. [non-existent-class]
+regressions_new_class_string_leading_backslash.php:36: Argument #1 passed to function `Conformance\\Tests\\RegressionsNewClassStringLeadingBackslash\\takesImmutable` has type `never`, meaning it cannot produce a value. [no-value]
+regressions_new_class_string_leading_backslash.php:42: Class `\\Countable` not found. [non-existent-class]
+regressions_new_class_string_leading_backslash.php:48: Interface `Countable` cannot be instantiated with `new`. [interface-instantiation]"""
+errors_diff = """
+Line 41: Expected 1 error(s)
+Line 47: Expected 1 error(s)
+Line 36: Unexpected errors ["Class `\\\\DateTimeImmutable` not found. [non-existent-class]","Argument #1 passed to function `Conformance\\\\Tests\\\\RegressionsNewClassStringLeadingBackslash\\\\takesImmutable` has type `never`, meaning it cannot produce a value. [no-value]"]
+Line 42: Unexpected errors ["Class `\\\\Countable` not found. [non-existent-class]"]
+Line 48: Unexpected errors ["Interface `Countable` cannot be instantiated with `new`. [interface-instantiation]"]"""
 notes = ""
 ignore_errors = []

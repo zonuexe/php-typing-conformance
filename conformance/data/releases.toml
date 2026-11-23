@@ -30,8 +30,8 @@ version = "6.0.11"
 date = "2026-10-15"
 
 [psalm]
-version = "7.12.0"
-date = "2026-11-20"
+version = "7.17.0"
+date = "2026-11-23"
 
 [phpstan]
 version = "2.3.7"
@@ -42,8 +42,8 @@ version = "1.18.5"
 date = "2026-06-21"
 
 [phpactor]
-version = "2026.10.07.0"
-date = "2026-10-07"
+version = "2026.11.22.0"
+date = "2026-11-22"
 
 [noverify]
 version = "0.5.5"
@@ -54,16 +54,16 @@ version = "263.7307.215"
 date = "2026-11-05"
 
 [mago]
-version = "1.60.2"
-date = "2026-11-16"
+version = "1.61.0"
+date = "2026-11-21"
 
 [phpy]
-version = "1.0.19490"
-date = "2026-11-01"
+version = "1.0.19556"
+date = "2026-11-20"
 
 [phpantom]
-version = "0.11.1"
-date = "2026-10-07"
+version = "1.0.0"
+date = "2026-11-23"
 
 [mir]
 version = "0.101.0"
@@ -78,14 +78,14 @@ version = "0.1.8"
 date = "2026-09-21"
 
 [pun]
-version = "0.2.7"
-date = "2026-11-22"
+version = "0.3.0"
+date = "2026-11-23"
 
 # Language servers.
 
 [devsense-php-ls]
-version = "1.0.19523"
-date = "2026-11-09"
+version = "1.0.19566"
+date = "2026-11-23"
 
 [php-lsp]
 version = "0.33.0"

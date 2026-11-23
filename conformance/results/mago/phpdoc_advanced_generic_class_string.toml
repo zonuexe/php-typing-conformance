@@ -1,16 +1,16 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
-phpdoc_advanced_generic_class_string.php:49: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractClassString`: expected `class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>`, but found `class-string('Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Unrelated')`. [invalid-argument]
-phpdoc_advanced_generic_class_string.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractInterfaceString`: expected `interface-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>`, but found `class-string('Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Implementation')`. [invalid-argument]
-phpdoc_advanced_generic_class_string.php:51: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractClassString`: expected `class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>`, but possibly received `string('not a class name')`. [possibly-invalid-argument]"""
-errors_diff = ""
+phpdoc_advanced_generic_class_string.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractClassString`: expected `class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>`, but found `class-string('Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Unrelated')`. [invalid-argument]
+phpdoc_advanced_generic_class_string.php:51: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractInterfaceString`: expected `interface-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>`, but found `class-string('Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Implementation')`. [invalid-argument]
+phpdoc_advanced_generic_class_string.php:52: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\PhpdocAdvancedGenericClassString\\takesContractClassString`: expected `class-string<Conformance\\Tests\\PhpdocAdvancedGenericClassString\\Contract>`, but possibly received `string('not a class name')`. [possibly-invalid-argument]"""
+errors_diff = "Line 52: Unexpected errors [\"Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedGenericClassString\\\\takesContractClassString`: expected `class-string<Conformance\\\\Tests\\\\PhpdocAdvancedGenericClassString\\\\Contract>`, but possibly received `string('not a class name')`. [possibly-invalid-argument]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "3/3"
+enforcement = "partial"
+enforced_lines = "2/3"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [52]
 over_rejected_lines = []

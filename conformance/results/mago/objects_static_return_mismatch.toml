@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
-output = "objects_static_return_mismatch.php:23: Invalid return type for function `Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder::rebuild`: expected `conformance\\tests\\objectsstaticreturnmismatch\\brokenbuilder`, but found `Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder`. [invalid-return-statement]"
-errors_diff = ""
+output = "objects_static_return_mismatch.php:24: Invalid return type for function `Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder::rebuild`: expected `Conformance\\Tests\\ObjectsStaticReturnMismatch\\BrokenBuilder`, but found `Conformance\\Tests\\ObjectsStaticReturnMismatch\\Builder`. [invalid-return-statement]"
+errors_diff = """
+Lines 21, 23: Expected error (tag static_return)
+Line 24: Unexpected errors ["Invalid return type for function `Conformance\\\\Tests\\\\ObjectsStaticReturnMismatch\\\\BrokenBuilder::rebuild`: expected `Conformance\\\\Tests\\\\ObjectsStaticReturnMismatch\\\\BrokenBuilder`, but found `Conformance\\\\Tests\\\\ObjectsStaticReturnMismatch\\\\Builder`. [invalid-return-statement]"]"""
 notes = ""
 ignore_errors = []

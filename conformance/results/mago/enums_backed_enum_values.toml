@@ -1,9 +1,13 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-enums_backed_enum_values.php:40: Invalid argument type for argument #1 of `Conformance\\Tests\\EnumsBackedEnumValues\\takesInt`: expected `int`, but found `string('active')`. [invalid-argument]
-enums_backed_enum_values.php:42: Invalid argument type for argument #1 of `Conformance\\Tests\\EnumsBackedEnumValues\\takesString`: expected `string`, but found `int(3)`. [invalid-argument]"""
-errors_diff = ""
+enums_backed_enum_values.php:41: Invalid argument type for argument #1 of `Conformance\\Tests\\EnumsBackedEnumValues\\takesInt`: expected `int`, but found `string('active')`. [invalid-argument]
+enums_backed_enum_values.php:43: Invalid argument type for argument #1 of `Conformance\\Tests\\EnumsBackedEnumValues\\takesString`: expected `string`, but found `int(3)`. [invalid-argument]"""
+errors_diff = """
+Line 40: Expected 1 error(s)
+Line 42: Expected 1 error(s)
+Line 41: Expected valid value to be accepted, got ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\EnumsBackedEnumValues\\\\takesInt`: expected `int`, but found `string('active')`. [invalid-argument]"]
+Line 43: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\EnumsBackedEnumValues\\\\takesString`: expected `string`, but found `int(3)`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

@@ -2,16 +2,21 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-phpdoc_advanced_leading_backslash_keyword.php:26: Cannot find class, interface, enum, or type alias `int`. [non-existent-class-like]
-phpdoc_advanced_leading_backslash_keyword.php:48: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesInt`: expected `int`, but found `string('x')`. [invalid-argument]
-phpdoc_advanced_leading_backslash_keyword.php:52: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt`: expected `unknown-ref(int)`, but found `int(1)`. [invalid-argument]
-phpdoc_advanced_leading_backslash_keyword.php:55: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt`: expected `unknown-ref(int)`, but found `string('x')`. [invalid-argument]"""
-errors_diff = "Line 52: Expected valid value to be accepted, got [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedLeadingBackslashKeyword\\\\takesBackslashInt`: expected `unknown-ref(int)`, but found `int(1)`. [invalid-argument]\"]"
+phpdoc_advanced_leading_backslash_keyword.php:27: Cannot find class, interface, enum, or type alias `int`. [non-existent-class-like]
+phpdoc_advanced_leading_backslash_keyword.php:49: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesInt`: expected `int`, but found `string('x')`. [invalid-argument]
+phpdoc_advanced_leading_backslash_keyword.php:53: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt`: expected `unknown-ref(int)`, but found `int(1)`. [invalid-argument]
+phpdoc_advanced_leading_backslash_keyword.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedLeadingBackslashKeyword\\takesBackslashInt`: expected `unknown-ref(int)`, but found `string('x')`. [invalid-argument]"""
+errors_diff = """
+Line 48: Expected 1 error(s)
+Line 55: Expected 1 error(s)
+Line 49: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedLeadingBackslashKeyword\\\\takesInt`: expected `int`, but found `string('x')`. [invalid-argument]"]
+Line 53: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedLeadingBackslashKeyword\\\\takesBackslashInt`: expected `unknown-ref(int)`, but found `int(1)`. [invalid-argument]"]
+Line 56: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedLeadingBackslashKeyword\\\\takesBackslashInt`: expected `unknown-ref(int)`, but found `string('x')`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
-enforcement = "enforced"
-enforced_lines = "2/2"
-unrecognized_lines = [26]
-false_positive_lines = []
-over_rejected_lines = [52]
+enforcement = "none"
+enforced_lines = "0/2"
+unrecognized_lines = [27]
+false_positive_lines = [49, 53, 56]
+over_rejected_lines = [49, 53, 56]

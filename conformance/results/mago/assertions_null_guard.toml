@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "assertions_null_guard.php:38: Attempting to call a method on `null`. [method-access-on-null]"
-errors_diff = ""
+output = "assertions_null_guard.php:39: Attempting to call a method on `null`. [method-access-on-null]"
+errors_diff = """
+Line 38: Expected 1 error(s)
+Line 39: Unexpected errors ["Attempting to call a method on `null`. [method-access-on-null]"]"""
 notes = ""
 ignore_errors = []

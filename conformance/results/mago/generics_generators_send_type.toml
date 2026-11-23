@@ -1,13 +1,15 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
-output = "generics_generators_send_type.php:58: Invalid argument type for argument #1 of `Generator::send`: expected `int`, but found `string('x')`. [invalid-argument]"
-errors_diff = ""
+output = "generics_generators_send_type.php:59: Invalid argument type for argument #1 of `Generator::send`: expected `int`, but found `string('x')`. [invalid-argument]"
+errors_diff = """
+Line 58: Expected 1 error(s)
+Line 59: Unexpected errors ["Invalid argument type for argument #1 of `Generator::send`: expected `int`, but found `string('x')`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "none"
+enforced_lines = "0/2"
 unrecognized_lines = []
-false_positive_lines = []
-over_rejected_lines = []
+false_positive_lines = [59]
+over_rejected_lines = [59]

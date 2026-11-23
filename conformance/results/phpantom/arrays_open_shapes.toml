@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-arrays_open_shapes.php:33: Argument 1 ($options) expects array{name: string, ...<array-key, mixed>}, got array{extra: 123} (missing required key 'name') [type_mismatch_argument]
-arrays_open_shapes.php:51: Argument 1 ($values) expects list{string, int, ...<mixed>}, got array{1, 'demo', true} [type_mismatch_argument]"""
+arrays_open_shapes.php:33: Argument 1 ($options) expects array{name: string, ...}, got array{extra: 123} (missing required key 'name') [type_mismatch_argument]
+arrays_open_shapes.php:51: Argument 1 ($values) expects list{string, int, ...}, got array{1, 'demo', true} [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

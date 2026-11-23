@@ -2,7 +2,7 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-native_types_resource_argument.php:16: Class 'Conformance\\Tests\\NativeTypesResourceArgument\\resource' not found [unknown_class]
+native_types_resource_argument.php:16: Class Conformance\\Tests\\NativeTypesResourceArgument\\resource not found [unknown_class]
 native_types_resource_argument.php:38: Argument 1 ($value) expects string, got resource [type_mismatch_argument]
 native_types_resource_argument.php:39: Argument 1 ($value) expects int, got resource [type_mismatch_argument]
 native_types_resource_argument.php:40: Argument 1 ($value) expects bool, got resource [type_mismatch_argument]"""

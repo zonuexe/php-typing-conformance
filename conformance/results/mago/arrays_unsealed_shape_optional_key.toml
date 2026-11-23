@@ -1,16 +1,18 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
-arrays_unsealed_shape_optional_key.php:40: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey`: expected `array{'bar'?: bool, 'foo': int, ...}`, but possibly received `array{'bar': string('yes'), 'foo': int(1)}`. [possibly-invalid-argument]
-arrays_unsealed_shape_optional_key.php:44: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey`: expected `array{'bar'?: bool, 'foo': int, ...}`, but possibly received `array{'bar': true}`. [possibly-invalid-argument]
-arrays_unsealed_shape_optional_key.php:45: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey`: expected `array{'bar'?: bool, 'foo': int, ...}`, but possibly received `array{'buz': float(42.0)}`. [possibly-invalid-argument]"""
-errors_diff = ""
+arrays_unsealed_shape_optional_key.php:41: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey`: expected `array{'bar'?: bool, 'foo': int, ...}`, but possibly received `array{'bar': string('yes'), 'foo': int(1)}`. [possibly-invalid-argument]
+arrays_unsealed_shape_optional_key.php:45: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey`: expected `array{'bar'?: bool, 'foo': int, ...}`, but possibly received `array{'bar': true}`. [possibly-invalid-argument]
+arrays_unsealed_shape_optional_key.php:46: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysUnsealedShapeOptionalKey\\acceptsUnsealedShapeWithOptionalKey`: expected `array{'bar'?: bool, 'foo': int, ...}`, but possibly received `array{'buz': float(42.0)}`. [possibly-invalid-argument]"""
+errors_diff = """
+Line 41: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\ArraysUnsealedShapeOptionalKey\\\\acceptsUnsealedShapeWithOptionalKey`: expected `array{'bar'?: bool, 'foo': int, ...}`, but possibly received `array{'bar': string('yes'), 'foo': int(1)}`. [possibly-invalid-argument]"]
+Line 46: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\ArraysUnsealedShapeOptionalKey\\\\acceptsUnsealedShapeWithOptionalKey`: expected `array{'bar'?: bool, 'foo': int, ...}`, but possibly received `array{'buz': float(42.0)}`. [possibly-invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "enforced"
-enforced_lines = "3/3"
+enforcement = "partial"
+enforced_lines = "1/3"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [41, 46]
 over_rejected_lines = []

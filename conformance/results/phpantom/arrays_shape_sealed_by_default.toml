@@ -1,11 +1,11 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 4
 output = """
 arrays_shape_sealed_by_default.php:35: Argument 1 ($shape) expects array{foo: int}, got array{} (missing required key 'foo') [type_mismatch_argument]
-arrays_shape_sealed_by_default.php:36: Argument 1 ($shape) expects array{foo: int}, got array{foo: 'one'} [type_mismatch_argument]"""
-errors_diff = """
-Line 40: Expected 1 error(s)
-Line 49: Expected 1 error(s)"""
+arrays_shape_sealed_by_default.php:36: Argument 1 ($shape) expects array{foo: int}, got array{foo: 'one'} [type_mismatch_argument]
+arrays_shape_sealed_by_default.php:40: Argument 1 ($shape) expects array{foo: int}, got array{foo: 2, buz: 42.0} (undeclared key 'buz') [type_mismatch_argument]
+arrays_shape_sealed_by_default.php:49: Argument 1 ($shape) expects array{foo: int}, got array{foo: int, buz: float} (undeclared key 'buz') [type_mismatch_argument]"""
+errors_diff = ""
 notes = ""
 ignore_errors = []

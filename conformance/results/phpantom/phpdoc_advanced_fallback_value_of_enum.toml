@@ -3,7 +3,7 @@ conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_fallback_value_of_enum.php:54: Argument 1 ($value) expects 'hearts'|'spades', got 'clubs' [type_mismatch_argument]
-phpdoc_advanced_fallback_value_of_enum.php:58: Argument 1 ($value) expects 'hearts'|'spades', got Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit [type_mismatch_argument]"""
+phpdoc_advanced_fallback_value_of_enum.php:58: Argument 1 ($value) expects 'hearts'|'spades', got Conformance\\Tests\\PhpdocAdvancedFallbackValueOfEnum\\Suit::Hearts [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

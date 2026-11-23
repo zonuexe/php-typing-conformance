@@ -1,19 +1,21 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 5
 output = """
-phpdoc_advanced_phan_closure_scope.php:33: Undefined variable: `$this`. [undefined-variable]
-phpdoc_advanced_phan_closure_scope.php:33: Attempting to access property `$label` on a non-object type (`mixed`). [mixed-property-access]
-phpdoc_advanced_phan_closure_scope.php:33: The first value for `echo` is too general. [mixed-argument]
-phpdoc_advanced_phan_closure_scope.php:37: Undefined variable: `$this`. [undefined-variable]
-phpdoc_advanced_phan_closure_scope.php:37: Attempting to access property `$missing` on a non-object type (`mixed`). [mixed-property-access]
-phpdoc_advanced_phan_closure_scope.php:37: The first value for `echo` is too general. [mixed-argument]"""
-errors_diff = ""
+phpdoc_advanced_phan_closure_scope.php:34: Undefined variable: `$this`. [undefined-variable]
+phpdoc_advanced_phan_closure_scope.php:34: Attempting to access property `$label` on a non-object type (`mixed`). [mixed-property-access]
+phpdoc_advanced_phan_closure_scope.php:34: The first value for `echo` is too general. [mixed-argument]
+phpdoc_advanced_phan_closure_scope.php:38: Undefined variable: `$this`. [undefined-variable]
+phpdoc_advanced_phan_closure_scope.php:38: Attempting to access property `$missing` on a non-object type (`mixed`). [mixed-property-access]
+phpdoc_advanced_phan_closure_scope.php:38: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = """
+Line 34: Unexpected errors ["Undefined variable: `$this`. [undefined-variable]","Attempting to access property `$label` on a non-object type (`mixed`). [mixed-property-access]","The first value for `echo` is too general. [mixed-argument]"]
+Line 38: Unexpected errors ["Undefined variable: `$this`. [undefined-variable]","Attempting to access property `$missing` on a non-object type (`mixed`). [mixed-property-access]","The first value for `echo` is too general. [mixed-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "no-probes"
 enforced_lines = "0/0"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [34, 38]
 over_rejected_lines = []

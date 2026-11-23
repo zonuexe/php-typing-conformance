@@ -1,13 +1,19 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 3
 output = """
-callables_immediately_invoked_closure.php:31: Method `missing` does not exist on type `Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User`. [non-existent-method]
-callables_immediately_invoked_closure.php:31: The first value for `echo` is too general. [mixed-argument]
-callables_immediately_invoked_closure.php:39: Method `missing` does not exist on type `Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User`. [non-existent-method]
-callables_immediately_invoked_closure.php:39: The first value for `echo` is too general. [mixed-argument]
-callables_immediately_invoked_closure.php:47: Method `missing` does not exist on type `Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User`. [non-existent-method]
-callables_immediately_invoked_closure.php:47: The first value for `echo` is too general. [mixed-argument]"""
-errors_diff = ""
+callables_immediately_invoked_closure.php:32: Method `missing` does not exist on type `Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User`. [non-existent-method]
+callables_immediately_invoked_closure.php:32: The first value for `echo` is too general. [mixed-argument]
+callables_immediately_invoked_closure.php:40: Method `missing` does not exist on type `Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User`. [non-existent-method]
+callables_immediately_invoked_closure.php:40: The first value for `echo` is too general. [mixed-argument]
+callables_immediately_invoked_closure.php:48: Method `missing` does not exist on type `Conformance\\Tests\\CallablesImmediatelyInvokedClosure\\User`. [non-existent-method]
+callables_immediately_invoked_closure.php:48: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = """
+Line 31: Expected 1 error(s)
+Line 39: Expected 1 error(s)
+Line 47: Expected 1 error(s)
+Line 32: Unexpected errors ["Method `missing` does not exist on type `Conformance\\\\Tests\\\\CallablesImmediatelyInvokedClosure\\\\User`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]
+Line 40: Unexpected errors ["Method `missing` does not exist on type `Conformance\\\\Tests\\\\CallablesImmediatelyInvokedClosure\\\\User`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]
+Line 48: Unexpected errors ["Method `missing` does not exist on type `Conformance\\\\Tests\\\\CallablesImmediatelyInvokedClosure\\\\User`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]"""
 notes = ""
 ignore_errors = []

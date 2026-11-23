@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 8
-output = "regressions_array_element_null_subtraction.php:41: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\RegressionsArrayElementNullSubtraction\\takesStringList`: expected `list{string}`, but possibly received `list{null|string}`. [possibly-invalid-argument]"
-errors_diff = ""
+output = "regressions_array_element_null_subtraction.php:42: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\RegressionsArrayElementNullSubtraction\\takesStringList`: expected `list{string}`, but possibly received `list{null|string}`. [possibly-invalid-argument]"
+errors_diff = """
+Line 41: Expected 1 error(s)
+Line 42: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\RegressionsArrayElementNullSubtraction\\\\takesStringList`: expected `list{string}`, but possibly received `list{null|string}`. [possibly-invalid-argument]"]"""
 notes = ""
 ignore_errors = []

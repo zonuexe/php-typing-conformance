@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-properties_override_attribute.php:50: Invalid `#[Override]` attribute on `Conformance\\Tests\\PropertiesOverrideAttribute\\MissingParentProperty::$other`. [invalid-override-attribute]
-properties_override_attribute.php:56: Attribute `Override` cannot be used on a class constant. [invalid-attribute-target]"""
+properties_override_attribute.php:51: Invalid `#[Override]` attribute on `Conformance\\Tests\\PropertiesOverrideAttribute\\MissingParentProperty::$other`. [invalid-override-attribute]
+properties_override_attribute.php:57: Attribute `Override` cannot be used on a class constant. [invalid-attribute-target]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

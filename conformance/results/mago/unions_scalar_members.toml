@@ -1,9 +1,11 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-unions_scalar_members.php:27: Invalid argument type for argument #1 of `Conformance\\Tests\\UnionsScalarMembers\\takesIntOrString`: expected `int|string`, but found `float(1.5)`. [invalid-argument]
-unions_scalar_members.php:28: Invalid argument type for argument #1 of `Conformance\\Tests\\UnionsScalarMembers\\takesNullableInt`: expected `int|null`, but found `string('x')`. [invalid-argument]"""
-errors_diff = ""
+unions_scalar_members.php:28: Invalid argument type for argument #1 of `Conformance\\Tests\\UnionsScalarMembers\\takesIntOrString`: expected `int|string`, but found `float(1.5)`. [invalid-argument]
+unions_scalar_members.php:29: Invalid argument type for argument #1 of `Conformance\\Tests\\UnionsScalarMembers\\takesNullableInt`: expected `int|null`, but found `string('x')`. [invalid-argument]"""
+errors_diff = """
+Line 27: Expected 1 error(s)
+Line 29: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\UnionsScalarMembers\\\\takesNullableInt`: expected `int|null`, but found `string('x')`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

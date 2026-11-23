@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 4
-output = "directives_nodiscard_return.php:41: The return value of 'Conformance\\Tests\\DirectivesNodiscardReturn\\mintId' must be used. [unused-function-call]"
-errors_diff = ""
+output = "directives_nodiscard_return.php:42: The return value of 'Conformance\\Tests\\DirectivesNodiscardReturn\\mintId' must be used. [unused-function-call]"
+errors_diff = """
+Line 41: Expected 1 error(s)
+Line 42: Expected valid value to be accepted, got ["The return value of 'Conformance\\\\Tests\\\\DirectivesNodiscardReturn\\\\mintId' must be used. [unused-function-call]"]"""
 notes = ""
 ignore_errors = []

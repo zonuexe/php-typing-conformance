@@ -2,9 +2,9 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-arrays_unsealed_shape_optional_key.php:40: Argument 1 ($shape) expects array{foo: int, bar?: bool, ...<array-key, mixed>}, got array{foo: 1, bar: 'yes'} [type_mismatch_argument]
-arrays_unsealed_shape_optional_key.php:44: Argument 1 ($shape) expects array{foo: int, bar?: bool, ...<array-key, mixed>}, got array{bar: true} (missing required key 'foo') [type_mismatch_argument]
-arrays_unsealed_shape_optional_key.php:45: Argument 1 ($shape) expects array{foo: int, bar?: bool, ...<array-key, mixed>}, got array{buz: 42.0} (missing required key 'foo') [type_mismatch_argument]"""
+arrays_unsealed_shape_optional_key.php:40: Argument 1 ($shape) expects array{foo: int, bar?: bool, ...}, got array{foo: 1, bar: 'yes'} [type_mismatch_argument]
+arrays_unsealed_shape_optional_key.php:44: Argument 1 ($shape) expects array{foo: int, bar?: bool, ...}, got array{bar: true} (missing required key 'foo') [type_mismatch_argument]
+arrays_unsealed_shape_optional_key.php:45: Argument 1 ($shape) expects array{foo: int, bar?: bool, ...}, got array{buz: 42.0} (missing required key 'foo') [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

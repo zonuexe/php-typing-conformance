@@ -2,12 +2,12 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-debug_phpstan_assert_variable_certainty.php:23: Function 'PHPStan\\Testing\\assertVariableCertainty' not found [unknown_function]
-debug_phpstan_assert_variable_certainty.php:23: Class 'PHPStan\\TrinaryLogic' not found [unknown_class]
-debug_phpstan_assert_variable_certainty.php:23: Cannot verify method 'createYes' — type of '\\PHPStan\\TrinaryLogic' could not be resolved [unresolved_member_access]
-debug_phpstan_assert_variable_certainty.php:27: Function 'PHPStan\\Testing\\assertVariableCertainty' not found [unknown_function]
-debug_phpstan_assert_variable_certainty.php:27: Class 'PHPStan\\TrinaryLogic' not found [unknown_class]
-debug_phpstan_assert_variable_certainty.php:27: Cannot verify method 'createMaybe' — type of '\\PHPStan\\TrinaryLogic' could not be resolved [unresolved_member_access]"""
+debug_phpstan_assert_variable_certainty.php:23: Function PHPStan\\Testing\\assertVariableCertainty() not found [unknown_function]
+debug_phpstan_assert_variable_certainty.php:23: Class PHPStan\\TrinaryLogic not found [unknown_class]
+debug_phpstan_assert_variable_certainty.php:23: Cannot check method createYes(), because the type of \\PHPStan\\TrinaryLogic could not be resolved [unresolved_member_access]
+debug_phpstan_assert_variable_certainty.php:27: Function PHPStan\\Testing\\assertVariableCertainty() not found [unknown_function]
+debug_phpstan_assert_variable_certainty.php:27: Class PHPStan\\TrinaryLogic not found [unknown_class]
+debug_phpstan_assert_variable_certainty.php:27: Cannot check method createMaybe(), because the type of \\PHPStan\\TrinaryLogic could not be resolved [unresolved_member_access]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "generics_template_box.php:38: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsTemplateBox\\takesIntBox`: expected `Conformance\\Tests\\GenericsTemplateBox\\Box<int>`, but found `Conformance\\Tests\\GenericsTemplateBox\\Box<string>`. [invalid-argument]"
-errors_diff = ""
+output = "generics_template_box.php:39: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsTemplateBox\\takesIntBox`: expected `Conformance\\Tests\\GenericsTemplateBox\\Box<int>`, but found `Conformance\\Tests\\GenericsTemplateBox\\Box<string>`. [invalid-argument]"
+errors_diff = """
+Line 38: Expected 1 error(s)
+Line 39: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\GenericsTemplateBox\\\\takesIntBox`: expected `Conformance\\\\Tests\\\\GenericsTemplateBox\\\\Box<int>`, but found `Conformance\\\\Tests\\\\GenericsTemplateBox\\\\Box<string>`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

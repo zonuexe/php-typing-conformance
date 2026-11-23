@@ -1,9 +1,7 @@
 status = "Unknown"
-conformance_automated = "Fail"
+conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = """
-objects_implicit_stringable.php:37: Argument 1 ($value) expects Stringable, got Conformance\\Tests\\ObjectsImplicitStringable\\CustomStringable [type_mismatch_argument]
-objects_implicit_stringable.php:42: Argument 1 ($value) expects Stringable, got Conformance\\Tests\\ObjectsImplicitStringable\\NotStringable [type_mismatch_argument]"""
-errors_diff = "Line 37: Expected valid value to be accepted, got [\"Argument 1 ($value) expects Stringable, got Conformance\\\\Tests\\\\ObjectsImplicitStringable\\\\CustomStringable [type_mismatch_argument]\"]"
+output = "objects_implicit_stringable.php:42: Argument 1 ($value) expects Stringable, got Conformance\\Tests\\ObjectsImplicitStringable\\NotStringable [type_mismatch_argument]"
+errors_diff = ""
 notes = ""
 ignore_errors = []

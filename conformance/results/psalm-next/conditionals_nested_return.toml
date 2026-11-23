@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 3
 output = """
-conditionals_nested_return.php:48: Argument 1 of Conformance\\Tests\\ConditionalsNestedReturn\\takesInt expects int, but float provided [InvalidScalarArgument]
-conditionals_nested_return.php:49: Argument 1 of Conformance\\Tests\\ConditionalsNestedReturn\\takesInt expects int, but float provided [InvalidScalarArgument]"""
+conditionals_nested_return.php:48: Argument 1 of Conformance\\Tests\\ConditionalsNestedReturn\\takesInt expects int, but float provided [InvalidArgument]
+conditionals_nested_return.php:49: Argument 1 of Conformance\\Tests\\ConditionalsNestedReturn\\takesInt expects int, but float provided [InvalidArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

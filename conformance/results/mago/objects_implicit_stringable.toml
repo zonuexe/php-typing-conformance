@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "objects_implicit_stringable.php:42: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ObjectsImplicitStringable\\takesStringable`: expected `Stringable`, but possibly received `Conformance\\Tests\\ObjectsImplicitStringable\\NotStringable`. [possibly-invalid-argument]"
-errors_diff = ""
+output = "objects_implicit_stringable.php:43: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ObjectsImplicitStringable\\takesStringable`: expected `Stringable`, but possibly received `Conformance\\Tests\\ObjectsImplicitStringable\\NotStringable`. [possibly-invalid-argument]"
+errors_diff = """
+Line 42: Expected 1 error(s)
+Line 43: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\ObjectsImplicitStringable\\\\takesStringable`: expected `Stringable`, but possibly received `Conformance\\\\Tests\\\\ObjectsImplicitStringable\\\\NotStringable`. [possibly-invalid-argument]"]"""
 notes = ""
 ignore_errors = []

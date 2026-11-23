@@ -2,23 +2,26 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 5
 output = """
-regressions_unset_pseudo_type.php:47: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\RegressionsUnsetPseudoType\\unset`. [non-existent-class-like]
-regressions_unset_pseudo_type.php:48: Attempting to call method `format()` on type `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`, which can be `unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [invalid-method-access]
-regressions_unset_pseudo_type.php:50: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\RegressionsUnsetPseudoType\\unset`. [non-existent-class-like]
-regressions_unset_pseudo_type.php:51: Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [possibly-invalid-argument]
-regressions_unset_pseudo_type.php:53: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\RegressionsUnsetPseudoType\\unset`. [non-existent-class-like]
-regressions_unset_pseudo_type.php:54: This condition (type `true`) will always evaluate to true. [redundant-condition]
-regressions_unset_pseudo_type.php:55: Attempting to call method `format()` on type `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`, which can be `unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [invalid-method-access]
-regressions_unset_pseudo_type.php:56: Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [possibly-invalid-argument]"""
+regressions_unset_pseudo_type.php:48: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\RegressionsUnsetPseudoType\\unset`. [non-existent-class-like]
+regressions_unset_pseudo_type.php:49: Attempting to call method `format()` on type `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`, which can be `unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [invalid-method-access]
+regressions_unset_pseudo_type.php:51: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\RegressionsUnsetPseudoType\\unset`. [non-existent-class-like]
+regressions_unset_pseudo_type.php:52: Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [possibly-invalid-argument]
+regressions_unset_pseudo_type.php:54: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\RegressionsUnsetPseudoType\\unset`. [non-existent-class-like]
+regressions_unset_pseudo_type.php:55: This condition (type `true`) will always evaluate to true. [redundant-condition]
+regressions_unset_pseudo_type.php:56: Attempting to call method `format()` on type `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`, which can be `unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [invalid-method-access]
+regressions_unset_pseudo_type.php:57: Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\Tests\\RegressionsUnsetPseudoType\\unset)`. [possibly-invalid-argument]"""
 errors_diff = """
-Line 54: Expected silence (quiet probe), got ["This condition (type `true`) will always evaluate to true. [redundant-condition]"]
-Line 55: Expected silence (quiet probe), got ["Attempting to call method `format()` on type `DateTime|unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`, which can be `unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`. [invalid-method-access]"]
-Line 56: Expected silence (quiet probe), got ["Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`. [possibly-invalid-argument]"]"""
+Line 54: Expected silence (quiet probe), got ["Cannot find class, interface, enum, or type alias `Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset`. [non-existent-class-like]"]
+Line 55: Expected silence (quiet probe), got ["This condition (type `true`) will always evaluate to true. [redundant-condition]"]
+Line 56: Expected silence (quiet probe), got ["Attempting to call method `format()` on type `DateTime|unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`, which can be `unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`. [invalid-method-access]"]
+Line 49: Unexpected errors ["Attempting to call method `format()` on type `DateTime|unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`, which can be `unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`. [invalid-method-access]"]
+Line 52: Unexpected errors ["Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`. [possibly-invalid-argument]"]
+Line 57: Unexpected errors ["Possible argument type mismatch for argument #1 of `date_format`: expected `DateTimeInterface`, but possibly received `DateTime|unknown-ref(Conformance\\\\Tests\\\\RegressionsUnsetPseudoType\\\\unset)`. [possibly-invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "unrecognized"
 enforcement = "partial"
 enforced_lines = "2/5"
-unrecognized_lines = [47, 48, 50, 51, 53, 54]
-false_positive_lines = []
+unrecognized_lines = [48, 51, 54]
+false_positive_lines = [49, 52, 57]
 over_rejected_lines = []

@@ -1,15 +1,17 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 6
 output = """
-phpdoc_advanced_psalm_seal_methods.php:72: Ambiguous method call to `wave` on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Sealed`. [non-documented-method]
-phpdoc_advanced_psalm_seal_methods.php:81: Ambiguous method call to `wave` on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Unsealed`. [non-documented-method]"""
-errors_diff = ""
+phpdoc_advanced_psalm_seal_methods.php:73: Ambiguous method call to `wave` on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Sealed`. [non-documented-method]
+phpdoc_advanced_psalm_seal_methods.php:82: Ambiguous method call to `wave` on class `Conformance\\Tests\\PhpdocAdvancedPsalmSealMethods\\Unsealed`. [non-documented-method]"""
+errors_diff = """
+Line 73: Unexpected errors ["Ambiguous method call to `wave` on class `Conformance\\\\Tests\\\\PhpdocAdvancedPsalmSealMethods\\\\Sealed`. [non-documented-method]"]
+Line 82: Unexpected errors ["Ambiguous method call to `wave` on class `Conformance\\\\Tests\\\\PhpdocAdvancedPsalmSealMethods\\\\Unsealed`. [non-documented-method]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "no-probes"
 enforced_lines = "0/0"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [73, 82]
 over_rejected_lines = []

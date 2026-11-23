@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 8
-output = ""
+output = "properties_property_hooks.php:29: Property Conformance\\Tests\\PropertiesPropertyHooks\\HookedName::$name expects string, got 1 [type_mismatch_property]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

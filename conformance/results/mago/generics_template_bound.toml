@@ -1,9 +1,11 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
-generics_template_bound.php:56: Argument type mismatch for template `T`. [template-constraint-violation]
-generics_template_bound.php:56: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsTemplateBound\\NamedBox::__construct`: expected `('T.conformance\\tests\\genericstemplatebound\\namedbox extends Conformance\\Tests\\GenericsTemplateBound\\HasName)`, but found `Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser`. [invalid-argument]"""
-errors_diff = ""
+generics_template_bound.php:57: Argument type mismatch for template `T`. [template-constraint-violation]
+generics_template_bound.php:57: Invalid argument type for argument #1 of `Conformance\\Tests\\GenericsTemplateBound\\NamedBox::__construct`: expected `('T.conformance\\tests\\genericstemplatebound\\namedbox extends Conformance\\Tests\\GenericsTemplateBound\\HasName)`, but found `Conformance\\Tests\\GenericsTemplateBound\\AnonymousUser`. [invalid-argument]"""
+errors_diff = """
+Line 56: Expected 1 error(s)
+Line 57: Unexpected errors ["Argument type mismatch for template `T`. [template-constraint-violation]","Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\GenericsTemplateBound\\\\NamedBox::__construct`: expected `('T.conformance\\\\tests\\\\genericstemplatebound\\\\namedbox extends Conformance\\\\Tests\\\\GenericsTemplateBound\\\\HasName)`, but found `Conformance\\\\Tests\\\\GenericsTemplateBound\\\\AnonymousUser`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

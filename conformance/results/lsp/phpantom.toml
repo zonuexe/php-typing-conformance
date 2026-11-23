@@ -1,8 +1,8 @@
 tool = "phpantom"
-version = "phpantom_lsp 0.11.1"
-server_info = "PHPantom 0.11.1"
-dynamic_registrations = ["workspace/didChangeWatchedFiles"]
-raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":2,\"save\":{\"includeText\":false}},\"selectionRangeProvider\":true,\"hoverProvider\":true,\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\">\",\":\",\"@\",\"'\",\"\\\"\",\"[\",\"\\\\\",\"/\",\"*\"]},\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"],\"retriggerCharacters\":[\",\",\")\"]},\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor.extract\",\"refactor.inline\",\"source.organizeImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":true},\"documentFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"\\n\"},\"renameProvider\":{\"prepareProvider\":true},\"documentLinkProvider\":{\"resolveProvider\":false},\"foldingRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"phpantom.navigateToPrototype\"]},\"callHierarchyProvider\":true,\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"enum\",\"type\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"function\",\"method\",\"decorator\",\"enumMember\",\"keyword\",\"comment\"],\"tokenModifiers\":[\"declaration\",\"static\",\"readonly\",\"deprecated\",\"abstract\",\"definition\",\"defaultLibrary\"]},\"range\":false,\"full\":true},\"inlayHintProvider\":true}"
+version = "phpantom_lsp 1.0.0"
+server_info = "PHPantom 1.0.0"
+dynamic_registrations = []
+raw_capabilities = "{\"textDocumentSync\":{\"openClose\":true,\"change\":2,\"save\":{\"includeText\":false}},\"completionProvider\":{\"triggerCharacters\":[\"$\",\">\",\":\",\"@\",\"'\",\"\\\"\",\"[\",\"\\\\\",\"/\",\"*\"],\"resolveProvider\":true},\"hoverProvider\":true,\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\"],\"retriggerCharacters\":[\",\",\")\"]},\"declarationProvider\":true,\"definitionProvider\":true,\"typeDefinitionProvider\":true,\"implementationProvider\":true,\"referencesProvider\":true,\"documentHighlightProvider\":true,\"documentSymbolProvider\":true,\"codeActionProvider\":{\"codeActionKinds\":[\"quickfix\",\"refactor\",\"refactor.extract\",\"refactor.inline\",\"refactor.rewrite\",\"source.organizeImports\",\"source.addMissingImports\"],\"resolveProvider\":true},\"codeLensProvider\":{\"resolveProvider\":true},\"documentLinkProvider\":{\"resolveProvider\":false},\"workspaceSymbolProvider\":true,\"documentFormattingProvider\":true,\"documentRangeFormattingProvider\":true,\"documentOnTypeFormattingProvider\":{\"firstTriggerCharacter\":\"\\n\"},\"renameProvider\":{\"prepareProvider\":true},\"foldingRangeProvider\":true,\"selectionRangeProvider\":true,\"executeCommandProvider\":{\"commands\":[\"phpantom.navigateToPrototype\"]},\"callHierarchyProvider\":true,\"semanticTokensProvider\":{\"legend\":{\"tokenTypes\":[\"namespace\",\"class\",\"interface\",\"enum\",\"type\",\"typeParameter\",\"parameter\",\"variable\",\"property\",\"function\",\"method\",\"decorator\",\"enumMember\",\"keyword\",\"comment\"],\"tokenModifiers\":[\"declaration\",\"static\",\"readonly\",\"deprecated\",\"abstract\",\"definition\",\"defaultLibrary\"]},\"range\":false,\"full\":true},\"typeHierarchyProvider\":true,\"inlayHintProvider\":true,\"diagnosticProvider\":{\"identifier\":\"phpantom\",\"interFileDependencies\":true,\"workspaceDiagnostics\":true},\"workspace\":{\"workspaceFolders\":{\"supported\":true,\"changeNotifications\":true}}}"
 framework_corpus = "rigortype/laravel-gate-image-board@939a805b8607"
 navigation_corpus = "psy/psysh@0e8ec1af5990"
 
@@ -12,9 +12,9 @@ via = "n/a"
 probe = "answered"
 
 [capabilities.pull-diagnostics]
-advertised = false
-via = "none"
-probe = "skipped"
+advertised = true
+via = "static"
+probe = "answered"
 
 [capabilities.hover]
 advertised = true
@@ -37,8 +37,8 @@ via = "static"
 probe = "answered"
 
 [capabilities.declaration]
-advertised = false
-via = "none"
+advertised = true
+via = "static"
 probe = "not-probed"
 
 [capabilities.type-definition]
@@ -92,8 +92,8 @@ via = "static"
 probe = "answered"
 
 [capabilities.range-formatting]
-advertised = false
-via = "none"
+advertised = true
+via = "static"
 probe = "not-probed"
 
 [capabilities.folding-range]
@@ -122,9 +122,9 @@ via = "static"
 probe = "answered"
 
 [capabilities.type-hierarchy]
-advertised = false
-via = "none"
-probe = "skipped"
+advertised = true
+via = "static"
+probe = "answered"
 
 [hover.native-return]
 feature = "Native return type"
@@ -189,14 +189,14 @@ verdict = "precise"
 [hover.pipe-result]
 feature = "PHP 8.5 pipe operator result"
 expected = "int"
-shown = "```php\n<?php\n$piped\n```"
-verdict = "other"
+shown = "```php\n<?php\n$piped = int<0, max>\n```"
+verdict = "precise"
 
 [hover.inferred-return]
 feature = "Return type inferred from an untyped body"
 expected = "Receipt"
-shown = "```php\n<?php\n$inferred\n```"
-verdict = "other"
+shown = "```php\n<?php\nnamespace Conformance\\LspFixture;\n$inferred = Receipt\n```"
+verdict = "precise"
 
 [hover.generator-return]
 feature = "Generator TReturn through getReturn()"
@@ -244,14 +244,14 @@ feature = "config-hover"
 method = "textDocument/hover"
 expected = "Laravel"
 probe = "answered"
-shown = "**Config** `app.name`\n\nDefined in `config/app.php`"
+shown = "**Config** `app.name`\n\nEnvironment variable `APP_NAME`, defaulting to `'Laravel'`\n\nIn `.env`, it is set to `Laravel`\n\nDefined in `config/app.php`"
 
 [framework.config-diagnostic]
 feature = "config-diagnostic"
 method = "push-diagnostics"
 expected = "gate.missing"
-probe = "empty"
-shown = ""
+probe = "answered"
+shown = "Unknown config key 'gate.missing'"
 
 [framework.route-hover]
 feature = "route-hover"
@@ -272,7 +272,7 @@ feature = "route-diagnostic"
 method = "push-diagnostics"
 expected = "gate.missing"
 probe = "answered"
-shown = "Unknown route: 'gate.missing'"
+shown = "Unknown route 'gate.missing'"
 
 [framework.route-blade-hover]
 feature = "route-blade-hover"
@@ -293,35 +293,35 @@ feature = "view-diagnostic"
 method = "push-diagnostics"
 expected = "missing.page"
 probe = "answered"
-shown = "Unknown view: 'missing.page'"
+shown = "Unknown view 'missing.page'"
 
 [framework.trans-hover]
 feature = "trans-hover"
 method = "textDocument/hover"
 expected = "Explore"
 probe = "answered"
-shown = "**Trans** `boards.explore`\n\n`en`: `Explore`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ad089370211e0.32188620/lang/en/boards.php#L5>)"
+shown = "**Trans** `boards.explore`\n\n`en`: `Explore`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6b04a93324ca47.13649476/lang/en/boards.php#L5>)"
 
 [framework.trans-dotted-hover]
 feature = "trans-dotted-hover"
 method = "textDocument/hover"
 expected = "Public"
 probe = "answered"
-shown = "**Trans** `boards.visibility.public`\n\n`en`: `Public`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ad089370211e0.32188620/lang/en/boards.php#L10>)"
+shown = "**Trans** `boards.visibility.public`\n\n`en`: `Public`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6b04a93324ca47.13649476/lang/en/boards.php#L10>)"
 
 [framework.trans-replace-hover]
 feature = "trans-replace-hover"
 method = "textDocument/hover"
 expected = "No public threads on :name."
 probe = "answered"
-shown = "**Trans** `boards.explore_empty_board`\n\n`en`: `No public threads on :name.`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6ad089370211e0.32188620/lang/en/boards.php#L8>)"
+shown = "**Trans** `boards.explore_empty_board`\n\n`en`: `No public threads on :name.`\n\nDefined in [`lang/en/boards.php`](<file:///private/var/folders/3c/sjr_6h4n0vd46zx0n03_v9nr0000gn/T/lsp-ws-6b04a93324ca47.13649476/lang/en/boards.php#L8>)"
 
 [framework.trans-diagnostic]
 feature = "trans-diagnostic"
 method = "push-diagnostics"
 expected = "boards.missing"
 probe = "answered"
-shown = "Unknown translation key: 'boards.missing'"
+shown = "Unknown translation key 'boards.missing'"
 
 [navigation.function]
 kind = "Function"
@@ -383,7 +383,7 @@ name = "Psy\\Util\\Docblock::$vectors"
 definition = "correct"
 refs_expected = 6
 refs_found = 6
-refs_extra = 0
+refs_extra = 3
 references = "all"
 
 [navigation.constructor]

@@ -64,7 +64,8 @@ three. Phpactor's inlay hints are off until
 `language_server_worse_reflection.inlay_hints.enable` is set, and off for the
 type kind specifically until `.types` is set as well; the run sets both, since
 the inferred type at a binding is this suite's whole subject. PHPantom leaves
-`unresolved-member-access`, `extra-arguments` and `report-magic-properties`
+`unresolved-member-access`, `extra-arguments`, `magic-properties`,
+`partial-union-members` and `possibly-empty-mismatches`
 off until `.phpantom.toml` turns them on; every PHPantom workspace (fixtures,
 the Gate corpus, psysh) gets a copy of `conformance/.phpantom.toml`, the file
 its CLI column reads too. Psalm's `--enable-*` switches all default to on, so

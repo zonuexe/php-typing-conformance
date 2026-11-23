@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "enums_case_object_vs_backing_scalar.php:25: Invalid argument type for argument #1 of `Conformance\\Tests\\EnumsCaseObjectVsBackingScalar\\takesString`: expected `string`, but found `enum(Conformance\\Tests\\EnumsCaseObjectVsBackingScalar\\Status::Active)`. [invalid-argument]"
-errors_diff = ""
+output = "enums_case_object_vs_backing_scalar.php:26: Invalid argument type for argument #1 of `Conformance\\Tests\\EnumsCaseObjectVsBackingScalar\\takesString`: expected `string`, but found `enum(Conformance\\Tests\\EnumsCaseObjectVsBackingScalar\\Status::Active)`. [invalid-argument]"
+errors_diff = """
+Line 25: Expected 1 error(s)
+Line 26: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\EnumsCaseObjectVsBackingScalar\\\\takesString`: expected `string`, but found `enum(Conformance\\\\Tests\\\\EnumsCaseObjectVsBackingScalar\\\\Status::Active)`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

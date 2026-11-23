@@ -3,7 +3,7 @@ conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
 phpdoc_advanced_object_shape_variants.php:55: Argument 1 ($shape) expects object{foo: int, bar?: string}, got Conformance\\Tests\\PhpdocAdvancedObjectShapeVariants\\WrongFooType [type_mismatch_argument]
-phpdoc_advanced_object_shape_variants.php:56: Argument 1 ($shape) expects object{foo: int}&stdClass, got object{foo: string}&stdClass [type_mismatch_argument]"""
+phpdoc_advanced_object_shape_variants.php:56: Argument 1 ($shape) expects object{foo: int}&stdClass, got object{foo: 'wrong'}&stdClass [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

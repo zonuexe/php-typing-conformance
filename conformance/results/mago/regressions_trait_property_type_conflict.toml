@@ -1,7 +1,10 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 10
-output = "regressions_trait_property_type_conflict.php:33: Property `$prop` is defined differently in `Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\LeftTrait` and `Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\RightTrait` used by `conformance\\tests\\regressionstraitpropertytypeconflict\\composed`: type declaration differs (string vs int) [incompatible-property-type]"
-errors_diff = ""
+output = "regressions_trait_property_type_conflict.php:34: Property `$prop` is defined differently in `Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\LeftTrait` and `Conformance\\Tests\\RegressionsTraitPropertyTypeConflict\\RightTrait` used by `conformance\\tests\\regressionstraitpropertytypeconflict\\composed`: type declaration differs (string vs int) [incompatible-property-type]"
+errors_diff = """
+Line 33: Expected 1 error(s)
+Lines 22, 27, 30, 32, 33: Expected error (tag conflict)
+Line 34: Unexpected errors ["Property `$prop` is defined differently in `Conformance\\\\Tests\\\\RegressionsTraitPropertyTypeConflict\\\\LeftTrait` and `Conformance\\\\Tests\\\\RegressionsTraitPropertyTypeConflict\\\\RightTrait` used by `conformance\\\\tests\\\\regressionstraitpropertytypeconflict\\\\composed`: type declaration differs (string vs int) [incompatible-property-type]"]"""
 notes = ""
 ignore_errors = []

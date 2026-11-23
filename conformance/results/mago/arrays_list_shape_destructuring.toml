@@ -1,17 +1,19 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 8
 output = """
-arrays_list_shape_destructuring.php:48: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\takesInt`: expected `int`, but found `bool`. [invalid-argument]
-arrays_list_shape_destructuring.php:49: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\takesString`: expected `string`, but found `bool`. [invalid-argument]
-arrays_list_shape_destructuring.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\takesBool`: expected `bool`, but found `int`. [invalid-argument]
-arrays_list_shape_destructuring.php:54: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\inspectListShape`: expected `list{bool, float, string, int}`, but possibly received `list{true, float(1.5), int(2), string('x')}`. [possibly-invalid-argument]"""
-errors_diff = ""
+arrays_list_shape_destructuring.php:49: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\takesInt`: expected `int`, but found `bool`. [invalid-argument]
+arrays_list_shape_destructuring.php:50: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\takesString`: expected `string`, but found `bool`. [invalid-argument]
+arrays_list_shape_destructuring.php:51: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\takesBool`: expected `bool`, but found `int`. [invalid-argument]
+arrays_list_shape_destructuring.php:55: Possible argument type mismatch for argument #1 of `Conformance\\Tests\\ArraysListShapeDestructuring\\inspectListShape`: expected `list{bool, float, string, int}`, but possibly received `list{true, float(1.5), int(2), string('x')}`. [possibly-invalid-argument]"""
+errors_diff = """
+Line 51: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\ArraysListShapeDestructuring\\\\takesBool`: expected `bool`, but found `int`. [invalid-argument]"]
+Line 55: Unexpected errors ["Possible argument type mismatch for argument #1 of `Conformance\\\\Tests\\\\ArraysListShapeDestructuring\\\\inspectListShape`: expected `list{bool, float, string, int}`, but possibly received `list{true, float(1.5), int(2), string('x')}`. [possibly-invalid-argument]"]"""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "partial"
-enforced_lines = "4/8"
+enforced_lines = "2/8"
 unrecognized_lines = []
-false_positive_lines = []
-over_rejected_lines = []
+false_positive_lines = [51, 55]
+over_rejected_lines = [51]

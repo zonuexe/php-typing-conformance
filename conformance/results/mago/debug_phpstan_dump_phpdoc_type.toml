@@ -1,13 +1,13 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "debug_phpstan_dump_phpdoc_type.php:22: Function `PHPStan\\dumpPhpDocType` could not be found. [non-existent-function]"
-errors_diff = ""
+output = "debug_phpstan_dump_phpdoc_type.php:23: Function `PHPStan\\dumpPhpDocType` could not be found. [non-existent-function]"
+errors_diff = "Line 23: Unexpected errors [\"Function `PHPStan\\\\dumpPhpDocType` could not be found. [non-existent-function]\"]"
 notes = ""
 ignore_errors = []
 recognition = "recognized"
 enforcement = "none"
 enforced_lines = "0/1"
 unrecognized_lines = []
-false_positive_lines = []
+false_positive_lines = [23]
 over_rejected_lines = []

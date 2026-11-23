@@ -1,9 +1,11 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
-callables_array_callable_invocation.php:39: Method `missing` does not exist on type `Conformance\\Tests\\CallablesArrayCallableInvocation\\User`. [non-existent-method]
-callables_array_callable_invocation.php:39: The first value for `echo` is too general. [mixed-argument]"""
-errors_diff = ""
+callables_array_callable_invocation.php:40: Method `missing` does not exist on type `Conformance\\Tests\\CallablesArrayCallableInvocation\\User`. [non-existent-method]
+callables_array_callable_invocation.php:40: The first value for `echo` is too general. [mixed-argument]"""
+errors_diff = """
+Line 39: Expected 1 error(s)
+Line 40: Unexpected errors ["Method `missing` does not exist on type `Conformance\\\\Tests\\\\CallablesArrayCallableInvocation\\\\User`. [non-existent-method]","The first value for `echo` is too general. [mixed-argument]"]"""
 notes = ""
 ignore_errors = []

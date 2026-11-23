@@ -1,9 +1,11 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 2
 output = """
-native_types_scalar_params.php:25: Invalid argument type for argument #1 of `Conformance\\Tests\\NativeTypesScalarParams\\takesInt`: expected `int`, but found `string('x')`. [invalid-argument]
-native_types_scalar_params.php:26: Invalid argument type for argument #1 of `Conformance\\Tests\\NativeTypesScalarParams\\takesString`: expected `string`, but found `int(1)`. [invalid-argument]"""
-errors_diff = ""
+native_types_scalar_params.php:26: Invalid argument type for argument #1 of `Conformance\\Tests\\NativeTypesScalarParams\\takesInt`: expected `int`, but found `string('x')`. [invalid-argument]
+native_types_scalar_params.php:27: Invalid argument type for argument #1 of `Conformance\\Tests\\NativeTypesScalarParams\\takesString`: expected `string`, but found `int(1)`. [invalid-argument]"""
+errors_diff = """
+Line 25: Expected 1 error(s)
+Line 27: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\NativeTypesScalarParams\\\\takesString`: expected `string`, but found `int(1)`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

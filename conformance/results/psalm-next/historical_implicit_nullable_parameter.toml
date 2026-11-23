@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 1
-output = ""
+output = "historical_implicit_nullable_parameter.php:16: Making the type of $values nullable with its null default is deprecated since PHP 8.4, declare the type nullable [DeprecatedSyntax]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

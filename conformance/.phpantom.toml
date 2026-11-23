@@ -13,4 +13,10 @@ unresolved-member-access = true
 extra-arguments = true
 # Unknown properties on a class with `__get` that also declares
 # `@property` tags (PHPStan's `reportMagicProperties`).
-report-magic-properties = true
+magic-properties = true
+# Member accesses where only some classes of a union declare the member
+# (PHPStan's level-7 `checkUnionTypes`).
+partial-union-members = true
+# Argument/return/property mismatches whose only failing members are `null` or
+# `false` (PHPStan's level-7/8 `checkUnionTypes` and `checkNullables`).
+possibly-empty-mismatches = true

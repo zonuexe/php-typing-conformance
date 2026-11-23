@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
 output = """
-properties_promoted_property_hook_body.php:33: Argument 1 of Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString expects string, but int provided [InvalidScalarArgument]
-properties_promoted_property_hook_body.php:44: Argument 1 of Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString expects string, but int provided [InvalidScalarArgument]"""
+properties_promoted_property_hook_body.php:33: Argument 1 of Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString expects string, but int provided [InvalidArgument]
+properties_promoted_property_hook_body.php:44: Argument 1 of Conformance\\Tests\\PropertiesPromotedPropertyHookBody\\takesString expects string, but int provided [InvalidArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

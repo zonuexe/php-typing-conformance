@@ -2,8 +2,8 @@ status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 5
 output = """
-phpdoc_advanced_phan_closure_scope.php:33: Cannot verify property 'label' — type of '$this' could not be resolved [unresolved_member_access]
-phpdoc_advanced_phan_closure_scope.php:37: Cannot verify property 'missing' — type of '$this' could not be resolved [unresolved_member_access]"""
+phpdoc_advanced_phan_closure_scope.php:33: Cannot check property $label, because the type of $this could not be resolved [unresolved_member_access]
+phpdoc_advanced_phan_closure_scope.php:37: Cannot check property $missing, because the type of $this could not be resolved [unresolved_member_access]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []

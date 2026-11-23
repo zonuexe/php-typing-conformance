@@ -68,7 +68,7 @@ single meaningful line out of the tool and stop there.
 | Phan | `--version` | three lines: Phan, php-ast, host PHP | drops a `php-ast is not installed` line |
 | Mago | `--version` | `mago 1.45.0` | none |
 | mir | `--version` | `mir 0.62.0` | ANSI escapes stripped |
-| Pun | `--version` | `pun 0.2.7` | none |
+| Pun | `--version` | `pun 0.3.0` | none |
 | NoVerify | `version` (subcommand) | one long line with build date, OS and commit | none |
 | Steins | `version` (subcommand) | four-line banner | takes the `steins …` line, strips the trailing ` - <url>` |
 | phpy | `--version` | bare `0.2.0` | prefixed with `phpy ` |
@@ -152,17 +152,17 @@ issues were found and is treated as success.
 ### psalm-next — the 7.x line, folded into the psalm column
 
 A second Psalm installation (`vendor-bin/psalm-next`, currently
-`7.12.0`) run through the same adapter with a config of its own
+`7.17.0`) run through the same adapter with a config of its own
 (`conformance/psalm-next.xml` — a copy of `psalm.xml` plus the 7.x-only
 purity and taint suppresses, which Psalm 6's schema rejects). It is a configuration
 of the psalm column's metadata: the reference and release tables describe
 Psalm once. The index matrix does not give 7.x a column of its own: the
-column is 6.x, the header names 7.x on a second line (`6.21.0` /
-`7.12.0`), cells tag `(7 Pass)` / `(7≠)` where the two diverge, and the
+column is 6.x, the header names 7.x on a second line (`6.21.3` /
+`7.17.0`), cells tag `(7 Pass)` / `(7≠)` where the two diverge, and the
 detail pages show a `psalm 7` row. Only the CLI is measured — no LSP probe
 for the 7.x line. The 7.x-only purity findings
 (`MissingPureAnnotation`, `MissingAbstractPureAnnotation`) are suppressed
-in `psalm-next.xml`; and the version banner reads `Psalm 7.12.0@…`,
+in `psalm-next.xml`; and the version banner reads `Psalm 7.17.0@…`,
 which the version pattern still parses with a prerelease suffix so a
 future `7.0.0-rcN` would link to the tag that exists.
 
@@ -228,7 +228,8 @@ tools that expose nothing to set.
 `--project-root` pins the root to `conformance/` rather than the current
 directory, because that is where PHPantom reads `.phpantom.toml`. The copy
 there turns on the diagnostics PHPantom leaves off by default
-(`unresolved-member-access`, `extra-arguments`, `report-magic-properties`),
+(`unresolved-member-access`, `extra-arguments`, `magic-properties`,
+`partial-union-members`, `possibly-empty-mismatches`),
 since every other column runs at its strictest setting. The LSP probes copy
 the same file into each PHPantom workspace.
 

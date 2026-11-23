@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "arrays_written_by_reference.php:40: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysWrittenByReference\\takesIntList`: expected `list<int>`, but found `list<string('x')>`. [invalid-argument]"
-errors_diff = ""
+output = "arrays_written_by_reference.php:41: Invalid argument type for argument #1 of `Conformance\\Tests\\ArraysWrittenByReference\\takesIntList`: expected `list<int>`, but found `list<string('x')>`. [invalid-argument]"
+errors_diff = """
+Line 40: Expected 1 error(s)
+Line 41: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\ArraysWrittenByReference\\\\takesIntList`: expected `list<int>`, but found `list<string('x')>`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

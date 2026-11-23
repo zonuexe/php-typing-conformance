@@ -2,15 +2,17 @@ status = "Unknown"
 conformance_automated = "Fail"
 expected_diagnostic_count = 1
 output = """
-phpdoc_advanced_int_range_keyword.php:19: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range`. [non-existent-class-like]
-phpdoc_advanced_int_range_keyword.php:26: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range)`, but found `int(200)`. [invalid-argument]
-phpdoc_advanced_int_range_keyword.php:30: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range)`, but found `int(256)`. [invalid-argument]"""
-errors_diff = "Line 26: Expected valid value to be accepted, got [\"Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\acceptsByte`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range)`, but found `int(200)`. [invalid-argument]\"]"
+phpdoc_advanced_int_range_keyword.php:20: Cannot find class, interface, enum, or type alias `Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range`. [non-existent-class-like]
+phpdoc_advanced_int_range_keyword.php:27: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range)`, but found `int(200)`. [invalid-argument]
+phpdoc_advanced_int_range_keyword.php:31: Invalid argument type for argument #1 of `Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\acceptsByte`: expected `unknown-ref(Conformance\\Tests\\PhpdocAdvancedIntRangeKeyword\\int-range)`, but found `int(256)`. [invalid-argument]"""
+errors_diff = """
+Line 27: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\acceptsByte`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range)`, but found `int(200)`. [invalid-argument]"]
+Line 31: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\acceptsByte`: expected `unknown-ref(Conformance\\\\Tests\\\\PhpdocAdvancedIntRangeKeyword\\\\int-range)`, but found `int(256)`. [invalid-argument]"]"""
 notes = "`int-range<min,max>` is Phan's spelling; PHPStan, Psalm and Mago write the same range as `int<min,max>`. Not recognizing the other tool's spelling is expected, not a defect. Only Phan models `int-range`."
 ignore_errors = []
 recognition = "unrecognized"
-enforcement = "enforced"
-enforced_lines = "1/1"
-unrecognized_lines = [19]
-false_positive_lines = []
-over_rejected_lines = [26]
+enforcement = "none"
+enforced_lines = "0/1"
+unrecognized_lines = [20]
+false_positive_lines = [27, 31]
+over_rejected_lines = [27, 31]

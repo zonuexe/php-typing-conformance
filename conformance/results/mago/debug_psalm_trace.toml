@@ -1,7 +1,7 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "debug_psalm_trace.php:29: Trace: Type of `$value` is `int` [psalm-trace]"
+output = "debug_psalm_trace.php:30: Trace: Type of `$value` is `int` [psalm-trace]"
 errors_diff = ""
 notes = ""
 ignore_errors = []

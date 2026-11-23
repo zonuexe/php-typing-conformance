@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_fallback_non_empty_literal_string.php:46: Argument 1 ($value) expects non-empty-literal-string, got '' [type_mismatch_argument]"
+output = """
+phpdoc_advanced_fallback_non_empty_literal_string.php:46: Argument 1 ($value) expects non-empty-literal-string, got '' [type_mismatch_argument]
+phpdoc_advanced_fallback_non_empty_literal_string.php:51: Argument 1 ($value) expects non-empty-literal-string, got string [type_mismatch_argument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

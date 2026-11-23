@@ -1,7 +1,9 @@
 status = "Unknown"
-conformance_automated = "Pass"
+conformance_automated = "Fail"
 expected_diagnostic_count = 1
-output = "callables_return_type_mismatch.php:28: Invalid argument type for argument #1 of `Conformance\\Tests\\CallablesReturnTypeMismatch\\takesStringCallback`: expected `(callable(int): string)`, but found `(closure(int): int)`. [invalid-argument]"
-errors_diff = ""
+output = "callables_return_type_mismatch.php:29: Invalid argument type for argument #1 of `Conformance\\Tests\\CallablesReturnTypeMismatch\\takesStringCallback`: expected `(callable(int): string)`, but found `(closure(int): int)`. [invalid-argument]"
+errors_diff = """
+Line 28: Expected 1 error(s)
+Line 29: Unexpected errors ["Invalid argument type for argument #1 of `Conformance\\\\Tests\\\\CallablesReturnTypeMismatch\\\\takesStringCallback`: expected `(callable(int): string)`, but found `(closure(int): int)`. [invalid-argument]"]"""
 notes = ""
 ignore_errors = []

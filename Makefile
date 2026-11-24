@@ -67,8 +67,8 @@ install-devsense-php-ls:
 # (no Packagist/npm package), so they are fetched by tag. Keep the versions in
 # step with conformance/data/releases.toml when bumping.
 PHP_LSP_VERSION := 0.33.0
-PHPANTOM_VERSION := 1.0.0
-PUN_VERSION := 0.3.0
+PHPANTOM_VERSION := 1.1.0
+PUN_VERSION := 0.4.1
 LSP_BIN_PLATFORM := aarch64-apple-darwin
 
 install-php-lsp:

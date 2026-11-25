@@ -68,7 +68,7 @@ install-devsense-php-ls:
 # step with conformance/data/releases.toml when bumping.
 PHP_LSP_VERSION := 0.33.0
 PHPANTOM_VERSION := 1.1.0
-PUN_VERSION := 0.4.1
+PUN_VERSION := 0.4.3
 LSP_BIN_PLATFORM := aarch64-apple-darwin
 
 install-php-lsp:

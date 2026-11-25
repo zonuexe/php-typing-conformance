@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_fallback_object_shape.php:54: Parameter #1 $shape of function Conformance\\Tests\\PhpdocAdvancedFallbackObjectShape\\takesObjectShape expects object{foo: int}, Conformance\\Tests\\PhpdocAdvancedFallbackObjectShape\\Unrelated given. [argument.type]"
+output = """
+phpdoc_advanced_fallback_object_shape.php:51: Parameter #1 $shape of function Conformance\\Tests\\PhpdocAdvancedFallbackObjectShape\\takesObjectShape expects object{foo: int}, Conformance\\Tests\\PhpdocAdvancedFallbackObjectShape\\Mistyped given. [argument.type]
+phpdoc_advanced_fallback_object_shape.php:54: Parameter #1 $shape of function Conformance\\Tests\\PhpdocAdvancedFallbackObjectShape\\takesObjectShape expects object{foo: int}, Conformance\\Tests\\PhpdocAdvancedFallbackObjectShape\\Unrelated given. [argument.type]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []

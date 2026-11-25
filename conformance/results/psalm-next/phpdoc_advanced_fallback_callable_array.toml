@@ -1,13 +1,15 @@
 status = "Unknown"
 conformance_automated = "Pass"
 expected_diagnostic_count = 2
-output = "phpdoc_advanced_fallback_callable_array.php:59: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray expects callable-array{0: class-string|object, 1: non-empty-string}, but list{1, 2} provided [InvalidArgument]"
+output = """
+phpdoc_advanced_fallback_callable_array.php:56: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray expects callable-array{0: class-string|object, 1: non-empty-string}, but list{Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\Greeter, 'missing'} provided [InvalidArgument]
+phpdoc_advanced_fallback_callable_array.php:59: Argument 1 of Conformance\\Tests\\PhpdocAdvancedFallbackCallableArray\\acceptsCallableArray expects callable-array{0: class-string|object, 1: non-empty-string}, but list{1, 2} provided [InvalidArgument]"""
 errors_diff = ""
 notes = ""
 ignore_errors = []
 recognition = "recognized"
-enforcement = "partial"
-enforced_lines = "1/2"
+enforcement = "enforced"
+enforced_lines = "2/2"
 unrecognized_lines = []
 false_positive_lines = []
 over_rejected_lines = []
